@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Voucher Discount Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .autocomplete-input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    .autocomplete-suggestions {
+      position: absolute;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 50;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .autocomplete-suggestions div {
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .autocomplete-suggestions div:hover {
+      background: #f0f0f0;
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-900 p-4 flex items-start justify-center">
+  <div class="w-full max-w-3xl">
+    <header class="mb-6 text-center">
+      <h1 class="text-2xl font-semibold">Credit Card Voucher Discount Calculator</h1>
+      <p class="mt-1 text-sm text-slate-600">
+        Search for a brand. The tool automatically finds the best portal + card combination based on your wallet.
+      </p>
+    </header>
+
+    <main class="bg-white border border-slate-200 rounded-xl shadow-sm p-5">
+      <section class="grid grid-cols-1 gap-4">
+        
+        <div style="position:relative;">
+          <label class="block text-sm font-medium text-slate-700 mb-1">Search Brand</label>
+          <input id="brandSearch" type="text" placeholder="e.g., Amazon, Swiggy, Myntra..." class="autocomplete-input" autocomplete="off" />
+          <div class="text-right mt-1">
+            <button id="openBrandModalBtn" class="text-xs text-sky-600 font-semibold hover:underline">+ Brand not listed? Add custom</button>
+          </div>
+          <div id="brandSuggestions" class="autocomplete-suggestions hidden" aria-hidden="true"></div>
+        </div>
+
+        <div class="flex gap-3">
+          <button id="calculateBtn" class="flex-1 rounded-md bg-emerald-600 text-white px-4 py-2 font-semibold hover:bg-emerald-500">Calculate</button>
+          <button id="resetBtn" class="rounded-md border border-slate-300 px-4 py-2 text-slate-700 bg-white">Reset</button>
+        </div>
+      </section>
+
+      <div id="myWallet" class="mt-4 p-3 border rounded-md bg-white">
+        <p class="font-semibold mb-2">My Wallet (select cards you own)</p>
+        <div class="flex justify-between items-end mb-2">
+          <p class="font-semibold">My Wallet</p>
+          <button id="openCardModalBtn" class="text-xs text-emerald-600 font-semibold hover:underline">+ Add Custom Card</button>
+        </div>
+        <div id="walletControls" class="grid grid-cols-2 gap-2"></div>
+        <p id="walletHint" class="text-xs text-slate-500 mt-2">By default none are selected. Results will be calculated only for checked cards.</p>
+      </div>
+
+      <section id="results" class="mt-6 hidden">
+        <div class="rounded-lg border border-slate-200 bg-slate-50 p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <h2 id="resultTitle" class="text-lg font-semibold text-slate-800">Result</h2>
+              <p id="resultSubtitle" class="text-sm text-slate-600 mt-1"></p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-slate-500">Calculated</p>
+              <p id="timestamp" class="text-xs text-slate-500 mt-1"></p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+            <div class="p-3 bg-white rounded-md border border-slate-200">
+              <p class="text-xs text-slate-500">Upfront Portal Discount</p>
+              <p id="upfrontValue" class="mt-1 text-lg font-semibold text-emerald-600">—</p>
+            </div>
+            <div class="p-3 bg-white rounded-md border border-slate-200">
+              <p class="text-xs text-slate-500">Card Reward Value</p>
+              <p id="rewardValue" class="mt-1 text-lg font-semibold text-sky-600">—</p>
+            </div>
+            <div class="p-3 bg-white rounded-md border border-slate-200">
+              <p class="text-xs text-slate-500">Net Effective Discount</p>
+              <p id="netValue" class="mt-1 text-lg font-semibold text-amber-600">—</p>
+            </div>
+          </div>
+
+          <p id="explanation" class="mt-3 text-sm text-slate-600"></p>
+          <div id="bestCardBox" class="hidden mt-4" aria-live="polite"></div>
+          <div id="allCardsList" class="mt-4 text-sm text-slate-700"></div>
+          <div id="verifiedStamp" class="mt-3 text-xs text-slate-500 opacity-70">
+            Discounts last verified on May 2026.
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="customCardModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-lg p-5 w-full max-w-sm">
+    <h3 class="font-bold text-lg mb-4">Add Custom Card</h3>
+    <input id="ccName" type="text" placeholder="Card Name (e.g. ICICI Coral)" class="w-full border p-2 rounded mb-3 text-sm">
+    <input id="ccBase" type="number" step="0.1" placeholder="Base Reward % (e.g. 1.5)" class="w-full border p-2 rounded mb-3 text-sm">
+    <input id="ccSmartbuy" type="number" step="0.1" placeholder="SmartBuy Multiplier (default 1)" class="w-full border p-2 rounded mb-3 text-sm">
+    <input id="ccGyftr" type="number" step="0.1" placeholder="Gyftr Multiplier (default 1)" class="w-full border p-2 rounded mb-4 text-sm">
+    <div class="flex gap-2">
+      <button id="saveCardBtn" class="flex-1 bg-emerald-600 text-white py-2 rounded">Save Card</button>
+      <button id="closeCardModalBtn" class="flex-1 bg-slate-200 text-slate-800 py-2 rounded">Cancel</button>
+    </div>
+  </div>
+</div>
+
+  <div id="customBrandModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-lg p-5 w-full max-w-sm">
+      <h3 class="font-bold text-lg mb-4">Add Custom Brand</h3>
+      <input id="cbName" type="text" placeholder="Brand Name" class="w-full border p-2 rounded mb-3 text-sm">
+      <input id="cbGyftr" type="number" step="0.1" placeholder="Gyftr Upfront Discount %" class="w-full border p-2 rounded mb-3 text-sm">
+      <input id="cbSmartbuy" type="number" step="0.1" placeholder="SmartBuy Upfront Discount %" class="w-full border p-2 rounded mb-4 text-sm">
+      <div class="flex gap-2">
+        <button id="saveBrandBtn" class="flex-1 bg-sky-600 text-white py-2 rounded">Save Brand</button>
+        <button id="closeBrandModalBtn" class="flex-1 bg-slate-200 text-slate-800 py-2 rounded">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
