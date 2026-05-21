@@ -6,7 +6,10 @@ export function getMultiplierForCard(card, portal) {
 
 export function getRewardPercent(card, portal) {
   const multiplier = getMultiplierForCard(card, portal);
-  return card.baseRewardPercent * multiplier;
+  const rawPointRate = card.baseRewardPercent * multiplier;
+  
+  // Normalize points to real-world monetary percentage yield
+  return rawPointRate * (card.pointValue ?? 1);
 }
 
 export function computeNetEffectiveDiscount(upfrontPercent, rewardPercent) {

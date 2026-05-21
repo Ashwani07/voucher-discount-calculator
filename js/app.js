@@ -26,6 +26,26 @@ function nowTimestamp() {
   return new Date().toLocaleString();
 }
 
+function getRawRewardPercent(card, portal) {
+  if (!card || !portal) return 0;
+  const multiplier = card.portalMultipliers?.[portal.id] ?? card.portalMultipliers?.[portal.group] ?? card.portalMultipliers?.default ?? 1;
+  let rawReward = card.baseRewardPercent * multiplier;
+
+  if (card.id === "sbi_cashback" && portal.id === "gyftr") {
+    rawReward = card.portalMultipliers?.[portal.id] ?? card.portalMultipliers?.[portal.group] ?? rawReward;
+  }
+
+  return rawReward;
+}
+
+function getCashRewardPercent(card, portal) {
+  return getRawRewardPercent(card, portal) * (card.pointValue ?? 1);
+}
+
+function formatRupees(value) {
+  return `₹${value.toFixed(2)}`;
+}
+
 /************************************************************************
  * DOM wiring - Main Elements
  ************************************************************************/
@@ -128,26 +148,62 @@ document.addEventListener('click', (e) => {
  * Calculation Engine & Results Rendering
  ************************************************************************/
 function renderAllCardsList(results) {
-  const sorted = [...results].sort((a, b) => b.net - a.net);
+  const groupedByCard = results.reduce((groups, result) => {
+    const cardId = result.card.id;
+    if (!groups[cardId]) {
+      groups[cardId] = { card: result.card, entries: [] };
+    }
+    groups[cardId].entries.push(result);
+    return groups;
+  }, {});
 
-  const html = sorted.map(r => `
-    <div class="border-b py-2" data-card-id="${r.card.id}">
-      <div class="flex justify-between">
-        <span class="font-medium">${r.card.name} <span class="text-slate-500">(${r.portal.name})</span></span>
-        <span class="font-semibold">${r.net.toFixed(2)}%</span>
-      </div>
-      <div class="text-xs text-slate-600 mt-1">
-        Upfront ${r.upfront.toFixed(2)}% + Card reward ${r.reward.toFixed(2)}% = Net ${r.net.toFixed(2)}%
-      </div>
-    </div>
-  `).join("");
+  const groups = Object.values(groupedByCard).map(group => {
+    group.entries.sort((a, b) => b.net - a.net);
+    group.bestNet = group.entries[0].net;
+    return group;
+  });
 
-  document.getElementById("allCardsList").innerHTML = `
-    <div class="p-3 bg-white border border-slate-200 rounded-md mt-4">
-      <p class="font-semibold mb-2">All Cards Comparison</p>
-      ${html}
-    </div>
-  `;
+  groups.sort((a, b) => b.bestNet - a.bestNet);
+
+  const html = groups.map(group => {
+    const portalRows = group.entries.map(entry => {
+      const voucherAmount = 1000;
+      const upfrontSavings = voucherAmount * (entry.upfront / 100);
+      const netPaid = voucherAmount - upfrontSavings;
+      const rpEarned = netPaid * (entry.rawRewardPercent / 100);
+      const cashValue = rpEarned * (entry.card.pointValue ?? 1);
+      const finalNetCost = netPaid - cashValue;
+
+      return `
+        <div class="border-b border-slate-200 py-3">
+          <div class="flex justify-between items-center gap-3">
+            <div>
+              <div class="font-medium">${entry.portal.name}</div>
+              <div class="text-xs text-slate-600 mt-1">
+                Reward: ${entry.rawRewardPercent.toFixed(2)}% RP (Value: ${entry.cashRewardPercent.toFixed(2)}%)
+              </div>
+            </div>
+            <div class="text-sm font-semibold">Net: ${entry.net.toFixed(2)}%</div>
+          </div>
+          <div class="text-xs text-slate-500 mt-2 bg-slate-50 p-2 rounded-md">
+            Example on ₹1,000: Pay ${formatRupees(netPaid)} upfront. Earn ${rpEarned.toFixed(2)} points (Worth ${formatRupees(cashValue)}). Net Cost: ${formatRupees(finalNetCost)}.
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    return `
+      <div class="p-3 bg-white border border-slate-200 rounded-md mt-4">
+        <div class="font-semibold mb-3">${group.card.name}</div>
+        ${portalRows}
+        <div class="text-[11px] italic text-slate-500 mt-3">
+          Note: Calculation assumes 1 Reward Point = ${formatRupees(group.card.pointValue ?? 1)}
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  document.getElementById("allCardsList").innerHTML = html;
 }
 
 function handleCalculate() {
@@ -158,7 +214,6 @@ function handleCalculate() {
 
   const brand = brands.find(b => b.id === currentBrandId);
   if (!brand) return;
-
   const walletSelectedIds = getWalletSelectedCardIds();
 
   if (!walletSelectedIds.length) {
@@ -189,16 +244,22 @@ function handleCalculate() {
 
     let allowedCards = [];
     if (p.portalId === "hdfc_smartbuy") {
-      // SmartBuy usually restricted to HDFC, plus any custom cards users specify they want to test
       allowedCards = cards.filter(c => c.id.startsWith("hdfc_") || c.id.startsWith("custom_"));
+    } else if (p.portalId === "shopwise") {
+      allowedCards = cards.filter(c => c.id.startsWith("amex_") || c.id.startsWith("custom_"));
+    } else if (p.portalId === "axis_edgerewards") {
+      allowedCards = cards.filter(c => c.id.startsWith("axis_") || c.id.startsWith("custom_"));
     } else {
+      // Public portals (Gyftr, Woohoo, etc.) accept all cards
       allowedCards = cards;
     }
 
     allowedCards = allowedCards.filter(c => walletSelectedIds.includes(c.id));
-    if (allowedCards.length === 0) continue;
+    if (!allowedCards.length) continue;
 
     for (const card of allowedCards) {
+      const rawRewardPercent = getRawRewardPercent(card, portal);
+      const cashRewardPercent = getCashRewardPercent(card, portal);
       const net = computeNetForCardWithRules(card, portal, brand);
 
       const reward = (100 - upfront) === 0
@@ -211,7 +272,9 @@ function handleCalculate() {
         card,
         upfront,
         reward,
-        net
+        net,
+        rawRewardPercent,
+        cashRewardPercent
       });
     }
   }
@@ -302,6 +365,7 @@ document.getElementById("closeCardModalBtn").addEventListener("click", () => {
 document.getElementById("saveCardBtn").addEventListener("click", () => {
   const name = document.getElementById("ccName").value.trim();
   const base = parseFloat(document.getElementById("ccBase").value) || 0;
+  const pointVal = parseFloat(document.getElementById("ccPointValue").value) || 1.0; // Capture value
   const sbMult = parseFloat(document.getElementById("ccSmartbuy").value) || 1;
   const gyftrMult = parseFloat(document.getElementById("ccGyftr").value) || 1;
 
@@ -311,6 +375,7 @@ document.getElementById("saveCardBtn").addEventListener("click", () => {
     id: "custom_card_" + Date.now(),
     name: name,
     baseRewardPercent: base,
+    pointValue: pointVal, // Pass it to data state
     portalMultipliers: {
       smartbuy: sbMult,
       gyftr: gyftrMult,
