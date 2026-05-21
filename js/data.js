@@ -1,8 +1,8 @@
 export const portals = [
   { id: "hdfc_smartbuy", name: "HDFC SmartBuy", group: "smartbuy" },
   { id: "hdfc_woohoo", name: "HDFC Woohoo", group: "smartbuy" },
-  { id: "axis_edgerewards", name: "Axis EdgeRewards", group: "axis_edgerewards" },
-  { id: "axis_grabdeals", name: "Axis GrabDeals Woohoo", group: "axis_grabdeals" },
+  { id: "axis_edgerewards", name: "Axis EdgeRewards", group: "axis_portal" },
+  { id: "axis_grabdeals", name: "Axis GrabDeals Woohoo", group: "axis_portal" },
   { id: "shopwise", name: "Amex Shopwise", group: "shopwise" },
   { id: "gyftr", name: "Gyftr", group: "gyftr" },
   { id: "woohoo", name: "Woohoo", group: "woohoo" },
@@ -20,22 +20,31 @@ const masterCards = [
   { 
     id: "hdfc_regalia_gold", 
     name: "HDFC Regalia Gold", 
-    baseRewardPercent: (5/200)*100, // Raw point earning rate
+    baseRewardPercent: 2.5, // Raw point earning rate
     pointValue: 0.50,         // 1 point = 50 paise (Travel)
+    rewardType: "points",
+    spendBlock: 200,      
+    pointsPerBlock: 5,    // 5 points per ₹200 spent
     portalMultipliers: { retailbuy: 5, smartbuy: 5, default: 1 } 
   },
   { 
     id: "axis_atlas", 
     name: "Axis Atlas", 
-    baseRewardPercent: (2/100)*100, // Base edge miles
+    baseRewardPercent: 2.0,  // Base edge miles
     pointValue: 1.0,         // 1 Edge Mile = ₹1.00 (Partner transfer value)
+    rewardType: "points",
+    spendBlock: 100,      
+    pointsPerBlock: 2,  // 2 points per ₹100 spent
     portalMultipliers: { direct_flight_hotel: 2.5, axis_edgerewards: 1, default: 1 } 
   },
   { 
     id: "amex_mrcc", 
     name: "Amex MRCC", 
-    baseRewardPercent: (1/50)*100,
+    baseRewardPercent: 2.0,
     pointValue: 0.33,        // 24K points → ₹9,000 voucher
+    rewardType: "points",
+    spendBlock: 50,
+    pointsPerBlock: 1,    // 1 point per ₹50 spent
     portalMultipliers: { shopwise: 2, default: 1 } 
   },
   { 
@@ -43,13 +52,15 @@ const masterCards = [
     name: "SBI Cashback", 
     baseRewardPercent: 5.0,
     pointValue: 1.0,         // Pure cashback 1:1
-    portalMultipliers: { default: 1 } 
+    rewardType: "cashback", // Bypasses block math entirely
+    portalMultipliers: { gyftr: 0, smartbuy: 0, axis_portal: 0, shopwise:0, default: 1 } 
   },
   { 
     id: "hdfc_swiggy", 
     name: "HDFC Swiggy", 
     baseRewardPercent: 1.0,
     pointValue: 1.0,         // Pure cashback 1:1
+    rewardType: "cashback", // Bypasses block math entirely
     portalMultipliers: { smartbuy: 5, default: 1 } 
   },
   { 
@@ -57,13 +68,19 @@ const masterCards = [
     name: "Scapia", 
     baseRewardPercent: 10.0,
     pointValue: 0.20,         // Pure cashback 5:1
+    rewardType: "points",
+    spendBlock: 20,
+    pointsPerBlock: 2,    // 2 points per ₹20 spent
     portalMultipliers: { default: 1 } 
   },
   { 
     id: "icici_sapphiro", 
     name: "ICICI Sapphiro", 
-    baseRewardPercent: (2/100)*100, 
+    baseRewardPercent: 2.0, 
     pointValue: 0.25,         // 1 Reward point = Rs 0.25
+    rewardType: "points",
+    spendBlock: 100,
+    pointsPerBlock: 2,
     portalMultipliers: { default: 1 } 
   }
   

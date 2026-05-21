@@ -170,8 +170,38 @@ function renderAllCardsList(results) {
       const voucherAmount = 1000;
       const upfrontSavings = voucherAmount * (entry.upfront / 100);
       const netPaid = voucherAmount - upfrontSavings;
-      const rpEarned = netPaid * (entry.rawRewardPercent / 100);
-      const cashValue = rpEarned * (entry.card.pointValue ?? 1);
+      
+      let rpEarned = 0;
+      let cashValue = 0;
+      let exampleMathText = "";
+
+      // Dynamic multiplier lookup based on group, specific ID, or default fallback
+      const multiplier = entry.card.portalMultipliers[entry.portal.group] ?? 
+                         entry.card.portalMultipliers[entry.portal.id] ?? 
+                         entry.card.portalMultipliers.default ?? 1;
+
+      // Step-Function Execution based on Bank Rules
+      if (entry.card.rewardType === "points" && entry.card.spendBlock) {
+        // Find how many complete blocks fit into the checkout amount
+        const completedBlocks = Math.floor(netPaid / entry.card.spendBlock);
+        
+        // Calculate base points for those blocks
+        const basePoints = completedBlocks * entry.card.pointsPerBlock;
+        
+        // Final points are strictly integers
+        rpEarned = Math.floor(basePoints * multiplier);
+        cashValue = rpEarned * (entry.card.pointValue ?? 1);
+        
+        exampleMathText = `Pay ${formatRupees(netPaid)} upfront. Earn ${rpEarned} points (Worth ${formatRupees(cashValue)}).`;
+      } else {
+        // Continuous Math for Pure Cashback Cards (Enforces the 0 multiplier if excluded)
+        rpEarned = 0; 
+        const effectiveCashbackPercent = entry.card.baseRewardPercent * multiplier;
+        cashValue = netPaid * (effectiveCashbackPercent / 100);
+        
+        exampleMathText = `Pay ${formatRupees(netPaid)} upfront. Earn ${formatRupees(cashValue)} Cashback.`;
+      }
+
       const finalNetCost = netPaid - cashValue;
 
       return `
@@ -186,19 +216,33 @@ function renderAllCardsList(results) {
             <div class="text-sm font-semibold">Net: ${entry.net.toFixed(2)}%</div>
           </div>
           <div class="text-xs text-slate-500 mt-2 bg-slate-50 p-2 rounded-md">
-            Example on ₹1,000: Pay ${formatRupees(netPaid)} upfront. Earn ${rpEarned.toFixed(2)} points (Worth ${formatRupees(cashValue)}). Net Cost: ${formatRupees(finalNetCost)}.
+            Example on ₹1,000: ${exampleMathText} Net Cost: ${formatRupees(finalNetCost)}.
           </div>
         </div>
       `;
     }).join("");
 
+    // Handle dynamic disclaimer layout at the bottom of the card block
+    let disclaimerHTML = "";
+    if (group.card.rewardType === "points") {
+      disclaimerHTML = `
+        <div class="text-[11px] italic text-slate-500 mt-3">
+          Note: Calculation assumes 1 Reward Point = ${formatRupees(group.card.pointValue ?? 1)}
+        </div>
+      `;
+    } else {
+      disclaimerHTML = `
+        <div class="text-[11px] italic text-slate-500 mt-3">
+          Note: Card yields direct statement cashback credit.
+        </div>
+      `;
+    }
+
     return `
       <div class="p-3 bg-white border border-slate-200 rounded-md mt-4">
         <div class="font-semibold mb-3">${group.card.name}</div>
         ${portalRows}
-        <div class="text-[11px] italic text-slate-500 mt-3">
-          Note: Calculation assumes 1 Reward Point = ${formatRupees(group.card.pointValue ?? 1)}
-        </div>
+        ${disclaimerHTML}
       </div>
     `;
   }).join("");
