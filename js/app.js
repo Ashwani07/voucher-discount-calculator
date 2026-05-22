@@ -71,18 +71,47 @@ const walletControls = document.getElementById("walletControls");
  ************************************************************************/
 function renderWalletUI() {
   walletControls.innerHTML = ""; // Clear existing
+
+  // 1. Group cards dynamically by bank prefix
+  const groups = {};
   cards.forEach(card => {
-    const label = document.createElement("label");
-    // Add a tiny badge if it's a custom card
-    const isCustom = card.id.startsWith('custom_') ? ' <span class="text-[10px] bg-slate-200 px-1 rounded text-slate-600">Custom</span>' : '';
-    label.innerHTML = `<input type="checkbox" data-card-id="${card.id}"> ${card.name} ${isCustom}`;
-    walletControls.appendChild(label);
+    let bank = "Others";
+    if (card.id.startsWith("hdfc_")) bank = "HDFC Bank";
+    else if (card.id.startsWith("sbi_")) bank = "SBI Card";
+    else if (card.id.startsWith("axis_")) bank = "Axis Bank";
+    else if (card.id.startsWith("icici_")) bank = "ICICI Bank";
+    else if (card.id.startsWith("amex_")) bank = "American Express";
+    else if (card.id.startsWith("custom_")) bank = "Custom Cards";
+
+    if (!groups[bank]) groups[bank] = [];
+    groups[bank].push(card);
   });
 
-  // Attach change listeners to the new checkboxes
+  // 2. Render grouped HTML with clean headers
+  for (const [bankName, bankCards] of Object.entries(groups)) {
+    const section = document.createElement("div");
+    section.className = "mb-4 border-b border-slate-100 pb-2 last:border-0";
+    
+    let cardsHTML = bankCards.map(card => {
+      const isCustom = card.id.startsWith('custom_') ? ' <span class="text-[10px] bg-slate-200 px-1 rounded text-slate-600">Custom</span>' : '';
+      return `
+        <label class="flex items-center gap-2 text-sm text-slate-700 py-1.5 cursor-pointer hover:text-slate-900">
+          <input type="checkbox" data-card-id="${card.id}" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+          <span>${card.name}${isCustom}</span>
+        </label>
+      `;
+    }).join("");
+
+    section.innerHTML = `
+      <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5 mt-1">${bankName}</p>
+      <div class="pl-1">${cardsHTML}</div>
+    `;
+    walletControls.appendChild(section);
+  }
+
+  // 3. Re-attach event listeners
   document.querySelectorAll('#walletControls input[type="checkbox"]').forEach(cb => {
     cb.addEventListener('change', () => {
-      // Auto-recalculate if a brand is actively selected
       if (currentBrandId && !resultsSection.classList.contains("hidden")) {
         handleCalculate();
       }
@@ -406,29 +435,59 @@ document.getElementById("closeCardModalBtn").addEventListener("click", () => {
   document.getElementById("ccGyftr").value = "";
 });
 
+// Dynamic conditional visibility for the Ledger Block inputs
+document.getElementById("ccRewardType").addEventListener("change", (e) => {
+  const blockFieldsSection = document.getElementById("blockFieldsSection");
+  if (e.target.value === "cashback") {
+    blockFieldsSection.classList.add("hidden");
+  } else {
+    blockFieldsSection.classList.remove("hidden");
+  }
+});
+
 document.getElementById("saveCardBtn").addEventListener("click", () => {
   const name = document.getElementById("ccName").value.trim();
+  const rewardType = document.getElementById("ccRewardType").value; // "points" or "cashback"
   const base = parseFloat(document.getElementById("ccBase").value) || 0;
-  const pointVal = parseFloat(document.getElementById("ccPointValue").value) || 1.0; // Capture value
+  const pointVal = parseFloat(document.getElementById("ccPointValue").value) || 1.0;
+  
   const sbMult = parseFloat(document.getElementById("ccSmartbuy").value) || 1;
   const gyftrMult = parseFloat(document.getElementById("ccGyftr").value) || 1;
+  const ishopMult = parseFloat(document.getElementById("ccIshop").value) || 1;
+
+  let spendBlock = 1;
+  let pointsPerBlock = 0;
+
+  // Enforce step-function logic values only if it is a points engine
+  if (rewardType === "points") {
+    spendBlock = parseFloat(document.getElementById("ccSpendBlock").value) || 150;
+    pointsPerBlock = parseFloat(document.getElementById("ccPointsPerBlock").value) || 1;
+  } else {
+    // Cashback cards use continuous mathematical 1:1 precision blocks
+    spendBlock = 1;
+    pointsPerBlock = 0;
+  }
 
   if (!name) return alert("Card Name is required.");
 
   const newCard = {
     id: "custom_card_" + Date.now(),
     name: name,
-    baseRewardPercent: base,
-    pointValue: pointVal, // Pass it to data state
+    rewardType: rewardType,
+    baseRewardPercent: base, // Preserved for list sorting and UI sub-labels
+    pointValue: pointVal,
+    spendBlock: spendBlock,
+    pointsPerBlock: pointsPerBlock,
     portalMultipliers: {
       smartbuy: sbMult,
       gyftr: gyftrMult,
+      ishop: ishopMult,
       default: 1
     }
   };
 
   saveCustomCard(newCard);
-  renderWalletUI(); // Refresh checkboxes
+  renderWalletUI(); // Refresh your new dynamic bank-grouped checkboxes
   
   // Auto-check the newly added card
   const newCheckbox = document.querySelector(`input[data-card-id="${newCard.id}"]`);
@@ -436,13 +495,17 @@ document.getElementById("saveCardBtn").addEventListener("click", () => {
 
   customCardModal.classList.add("hidden");
   
-  // Clear inputs
+  // Clear inputs clean
   document.getElementById("ccName").value = "";
   document.getElementById("ccBase").value = "";
+  document.getElementById("ccPointValue").value = "";
+  document.getElementById("ccSpendBlock").value = "";
+  document.getElementById("ccPointsPerBlock").value = "";
   document.getElementById("ccSmartbuy").value = "";
   document.getElementById("ccGyftr").value = "";
+  document.getElementById("ccIshop").value = "";
 
-  // Auto-recalc if a brand is selected
+  // Auto-recalc if a brand target is currently active
   if (currentBrandId && !resultsSection.classList.contains("hidden")) {
     handleCalculate();
   }

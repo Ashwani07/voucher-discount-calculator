@@ -9,7 +9,8 @@ export const portals = [
   { id: "myntra", name: "Myntra", group: "retailbuy" },
   { id: "nykaa", name: "Nykaa", group: "retailbuy" },
   { id: "reliance_digital", name: "Reliance Digital", group: "retailbuy" },
-  { id: "marks_spencer", name: "Marks & Spencer", group: "retailbuy" }
+  { id: "marks_spencer", name: "Marks & Spencer", group: "retailbuy" },
+  { id: "ishop", name: "ICICI iShop", group: "ishop" }
   // park+
   // magicpin
   // cred
@@ -17,6 +18,16 @@ export const portals = [
 
 // 1. Define Master Arrays
 const masterCards = [
+  {
+    id: "hdfc_infinia",
+    name: "HDFC Infinia",
+    baseRewardPercent: 3.3,
+    pointValue: 1.0,         // 1 point = ₹1.00 (Travel)
+    rewardType: "points",
+    spendBlock: 150,
+    pointsPerBlock: 5,   // 10 points per ₹100 spent
+    portalMultipliers: { smartbuy: 5, default: 1 }
+  },
   { 
     id: "hdfc_regalia_gold", 
     name: "HDFC Regalia Gold", 
@@ -26,6 +37,14 @@ const masterCards = [
     spendBlock: 200,      
     pointsPerBlock: 5,    // 5 points per ₹200 spent
     portalMultipliers: { retailbuy: 5, smartbuy: 5, default: 1 } 
+  },
+  { 
+    id: "hdfc_swiggy", 
+    name: "HDFC Swiggy", 
+    baseRewardPercent: 1.0,
+    pointValue: 1.0,         // Pure cashback 1:1
+    rewardType: "cashback", // Bypasses block math entirely
+    portalMultipliers: { smartbuy: 5, default: 1 } 
   },
   { 
     id: "axis_atlas", 
@@ -55,14 +74,7 @@ const masterCards = [
     rewardType: "cashback", // Bypasses block math entirely
     portalMultipliers: { gyftr: 0, smartbuy: 0, axis_portal: 0, shopwise:0, default: 1 } 
   },
-  { 
-    id: "hdfc_swiggy", 
-    name: "HDFC Swiggy", 
-    baseRewardPercent: 1.0,
-    pointValue: 1.0,         // Pure cashback 1:1
-    rewardType: "cashback", // Bypasses block math entirely
-    portalMultipliers: { smartbuy: 5, default: 1 } 
-  },
+  
   { 
     id: "scapia", 
     name: "Scapia", 
@@ -73,6 +85,20 @@ const masterCards = [
     pointsPerBlock: 2,    // 2 points per ₹20 spent
     portalMultipliers: { default: 1 } 
   },
+  {
+    id: "icici_epm",
+    name: "ICICI Emeralde Private Metal",
+    rewardType: "points",
+    baseRewardPercent: 3.0, // 6 points per ₹200 = 3% raw points generation rate
+    pointValue: 1.0,         // Assuming maximum value travel redemption
+    spendBlock: 200,
+    pointsPerBlock: 6,
+    portalMultipliers: {
+      ishop: 1,              // Scaled down from 6x following the Amazon Pay/Swiggy nuke
+      gyftr: 1,
+      default: 1
+    }
+  },
   { 
     id: "icici_sapphiro", 
     name: "ICICI Sapphiro", 
@@ -81,9 +107,8 @@ const masterCards = [
     rewardType: "points",
     spendBlock: 100,
     pointsPerBlock: 2,
-    portalMultipliers: { default: 1 } 
-  }
-  
+    portalMultipliers: { "smartbuy": 0, "gyftr": 1, "ishop": 1, "default": 1 }
+  } 
 ];
 
 const masterBrands = [
