@@ -5,6 +5,7 @@ export const portals = [
   { id: "axis_grabdeals", name: "Axis GrabDeals Woohoo", group: "axis_portal" },
   { id: "shopwise", name: "Amex Shopwise", group: "shopwise" },
   { id: "gyftr", name: "Gyftr", group: "gyftr" },
+  { id: "amazon", name: "Amazon", group: "amazon" },
   { id: "woohoo", name: "Woohoo", group: "woohoo" },
   { id: "myntra", name: "Myntra", group: "retailbuy" },
   { id: "nykaa", name: "Nykaa", group: "retailbuy" },
@@ -50,7 +51,7 @@ const masterCards = [
     id: "axis_atlas", 
     name: "Axis Atlas", 
     baseRewardPercent: 2.0,  // Base edge miles
-    pointValue: 1.0,         // 1 Edge Mile = ₹1.00 (Partner transfer value)
+    pointValue: 2.0,         // 1 Edge Mile = ₹2.00 (Partner transfer value)
     rewardType: "points",
     spendBlock: 100,      
     pointsPerBlock: 2,  // 2 points per ₹100 spent
@@ -72,7 +73,7 @@ const masterCards = [
     baseRewardPercent: 5.0,
     pointValue: 1.0,         // Pure cashback 1:1
     rewardType: "cashback", // Bypasses block math entirely
-    portalMultipliers: { gyftr: 0, smartbuy: 0, axis_portal: 0, shopwise:0, default: 1 } 
+    portalMultipliers: { gyftr: 0, smartbuy: 0, axis_portal: 0, shopwise:0, amazon: 1, default: 1 } 
   },
   
   { 
@@ -112,142 +113,858 @@ const masterCards = [
 ];
 
 const masterBrands = [
-  { id: "amazon", 
-    name: "Amazon", 
-    category_name: "Marketplace", 
-    portals: [ 
-      { portalId: "gyftr", upfrontDiscountPercent: -3, site: "https://www.gyftr.com/amazon" }, 
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: -4.13, site: "https://www.gyftr.com/instantvouchers/amazon-gift-vouchers" },
-      { portalId: "shopwise", upfrontDiscountPercent: -1.77, site: "https://shopwise.giftstacc.com/giftcard?productId=gko2OEEac6Y24dmH%2FbBa7g%3D%3D" }
-    ] 
-  },
-  { id: "amazon_fresh", 
-    name: "Amazon Fresh", 
-    category_name: "Grocery", 
-    portals: [ 
-      { portalId: "gyftr", upfrontDiscountPercent: 0, site: "https://www.gyftr.com/amazon-fresh" }, 
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 0, site: "https://www.gyftr.com/instantvouchers/amazon-fresh-gift-vouchers" } 
-    ] 
-  },
-  { id: "amazon_shopping_voucher", 
-    name: "Amazon Shopping Voucher", 
-    category_name: "Marketplace", 
-    portals: [ 
-      { portalId: "gyftr", upfrontDiscountPercent: -3, site: "https://www.gyftr.com/amazon-shopping-voucher" }, 
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: -4.13, site: "https://www.gyftr.com/instantvouchers/amazon-shopping-voucher-gift-vouchers" } 
-    ] 
-  },
   {
-    id: "flipkart",
-    name: "Flipkart",
-    category_name: "Marketplace",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 0.0, site: "https://www.gyftr.com/flipkart" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 0.0, site: "https://www.gyftr.com/instantvouchers/flipkart-gift-vouchers" }
+    "id": "amazon_fresh",
+    "name": "Amazon Fresh",
+    "category_name": "Grocery",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/amazon-fresh-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=5K1Kd9UyhjRT8zEr0xD3pQ%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/edgerewards/amazon-fresh-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 0,
+        "site": "https://amzn.in/d/0ahQ9UUj",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/amazon-fresh",
+        "perks": ""
+      }
     ]
   },
   {
-    id: "swiggy",
-    name: "Swiggy",
-    category_name: "Food & Beverage",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 6.0, site: "https://www.gyftr.com/swiggy" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 5.0, site: "https://www.gyftr.com/instantvouchers/swiggy-gift-vouchers" }
+    "id": "amazon",
+    "name": "Amazon Pay",
+    "category_name": "E-Commerce",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": -4.13,
+        "site": "https://www.gyftr.com/instantvouchers/amazon-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": -1.77,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=gko2OEEac6Y24dmH%2FbBa7g%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/edgerewards/amazon-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 0,
+        "site": "https://amzn.in/d/08wUhb9W",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": -3.54,
+        "site": "https://www.gyftr.com/amazon",
+        "perks": ""
+      }
     ]
   },
   {
-    id: "zomato",
-    name: "Zomato",
-    category_name: "Food & Beverage",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 1.0, site: "https://www.gyftr.com/zomato" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 0.0, site: "https://www.gyftr.com/instantvouchers/zomato-gift-vouchers" },
-      { portalId: "woohoo", upfrontDiscountPercent: 0.0, site: "https://www.woohoo.in/zomato-egift-card" }
+    "id": "amazon_shopping",
+    "name": "Amazon Shopping",
+    "category_name": "E-Commerce",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": -4.13,
+        "site": "https://www.gyftr.com/instantvouchers/amazon-shopping-voucher-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": -1.77,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=lfBrrZnTO4VXQS036BhJrQ%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/edgerewards/amazon-shopping-voucher-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 0,
+        "site": "https://amzn.in/d/01fWZQZW",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": -3.54,
+        "site": "https://www.gyftr.com/amazon-shopping-voucher",
+        "perks": ""
+      }
     ]
   },
   {
-    id: "bigbasket ",
-    name: "BigBasket",
-    category_name: "Quick Commerce",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 10.0, site: "https://www.gyftr.com/bigbasket" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 5.0, site: "https://www.gyftr.com/instantvouchers/bigbasket-gift-vouchers" }
+    "id": "bath_&_body_works",
+    "name": "Bath & Body Works",
+    "category_name": "Fashion",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 7.5,
+        "site": "https://www.gyftr.com/instantvouchers/bath-body-works-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 12.5,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=66bESZOf67l7aLYQCk29%2BA%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 14,
+        "site": "https://www.gyftr.com/edgerewards/amazon-fresh-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 14,
+        "site": "https://amzn.in/d/026jKTYO",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 10,
+        "site": "https://www.gyftr.com/bath-&-body-works",
+        "perks": ""
+      }
     ]
   },
   {
-    id: "zepto",
-    name: "Zepto",
-    category_name: "Quick Commerce",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 3.0, site: "https://www.gyftr.com/zepto" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 0.0, site: "https://www.gyftr.com/instantvouchers/zepto-gift-vouchers" }
-    ]
-  },
-  
-  {
-    id: "blinkit",
-    name: "Blinkit",
-    category_name: "Quick Commerce",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 18.0, site: "https://www.gyftr.com/blinkit" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 12.5, site: "https://www.gyftr.com/instantvouchers/blinkit-gift-vouchers" }
-    ]
-  },
-  {
-    id: "myntra",
-    name: "Myntra",
-    category_name: "Fashion",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 2.0, site: "https://www.gyftr.com/myntra" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 0.0, site: "https://www.gyftr.com/instantvouchers/myntra-gift-vouchers" }
-    ]
-  },
-  {
-    id: "nykaa",
-    name: "Nykaa",
-    category_name: "Beauty",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 4.5, site: "https://www.gyftr.com/nykaa" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 0.0, site: "https://www.gyftr.com/instantvouchers/nykaa-gift-vouchers" }
-    ]
-  },
-  {
-    id: "makemytrip",
-    name: "MakeMyTrip (MMT)",
-    category_name: "Travel & Entertainment",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 10.0, site: "https://www.gyftr.com/makemytrip" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 5.0, site: "https://www.gyftr.com/instantvouchers/makemytrip-gift-vouchers" }
+    "id": "bigbasket",
+    "name": "Bigbasket",
+    "category_name": "Grocery",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/bigbasket-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=AiPkXVCcpkH%2Fbu4vFXXWaw%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/edgerewards/bigbasket-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 2,
+        "site": "https://amzn.in/d/02QYv372",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 1,
+        "site": "https://www.gyftr.com/bigbasket",
+        "perks": ""
+      }
     ]
   },
   {
-    id: "bookmyshow",
-    name: "BookMyShow",
-    category_name: "Travel & Entertainment",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 12.0, site: "https://www.gyftr.com/bookmyshow" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 5.0, site: "https://www.gyftr.com/instantvouchers/bookmyshow-gift-vouchers" }
+    "id": "flipkart",
+    "name": "Flipkart",
+    "category_name": "E-Commerce",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/bigbasket-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=Q8odsCgNCDraL5hFw%2FI0AA%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/edgerewards/amazon-fresh-gift-vouchers",
+        "perks": "Earns 1.5% GyFTR Coins"
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/flipkart",
+        "perks": ""
+      }
     ]
   },
   {
-    id: "croma",
-    name: "Croma",
-    category_name: "Electronics",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 1.0, site: "https://www.gyftr.com/croma" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 0.0, site: "https://www.gyftr.com/instantvouchers/croma-gift-vouchers" }
+    "id": "igp",
+    "name": "IGP",
+    "category_name": "E-Commerce",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 10,
+        "site": "https://www.gyftr.com/instantvouchers/igp-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 7.4,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=K21FJ7Jh1CAIUNOdDy%2Fwcg%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 15,
+        "site": "https://www.gyftr.com/edgerewards/igp-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 15,
+        "site": "https://www.gyftr.com/igp",
+        "perks": ""
+      }
     ]
   },
   {
-    id: "reliance_digital",
-    name: "Reliance Digital",
-    category_name: "Electronics",
-    portals: [
-      { portalId: "gyftr", upfrontDiscountPercent: 8.0, site: "https://www.gyftr.com/reliance-digital" },
-      { portalId: "hdfc_smartbuy", upfrontDiscountPercent: 5.0, site: "https://www.gyftr.com/instantvouchers/reliance-digital-gift-vouchers" }
+    "id": "lifestyle_offline",
+    "name": "Lifestyle Offline",
+    "category_name": "Fashion",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/lifestyle-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 3.3,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=Gip7w8GFjPeq6Vg%2FtLrqIA%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 6,
+        "site": "https://amzn.in/d/0iRzULm2",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 2,
+        "site": "https://www.gyftr.com/lifestyle",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "lifestyle_online",
+    "name": "Lifestyle Online",
+    "category_name": "Fashion",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/lifestyle-online-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 6.5,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=z9quE%2F8JYBRxgJSyVhBiaw%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 7,
+        "site": "https://amzn.in/d/09RPzE5H",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 6,
+        "site": "https://www.gyftr.com/lifestyle-online",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "makemytrip",
+    "name": "Makemytrip",
+    "category_name": "Travel",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/makemytrip-e-pay-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=Yggk7FKTTgx%2FNG8eS8Rr5w%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 4.5,
+        "site": "https://www.gyftr.com/edgerewards/makemytrip-e-pay-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 7,
+        "site": "https://amzn.in/d/0hTL6r14",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 4,
+        "site": "https://www.gyftr.com/makemytrip-e-pay",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "makemytrip_holiday",
+    "name": "Makemytrip Holiday",
+    "category_name": "Travel",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 7.5,
+        "site": "https://www.gyftr.com/instantvouchers/easemytrip-holiday-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 6.6,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=8gp40I9RLyYETjYlAYFQ2w%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 9,
+        "site": "https://www.gyftr.com/edgerewards/makemytrip-holiday-e-pay-gift-vouchers",
+        "perks": "Earns 2.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 12,
+        "site": "https://amzn.in/d/0bNR1Tpx",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 11.5,
+        "site": "https://www.gyftr.com/makemytrip-holiday-e-pay",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "marks_&_spencer",
+    "name": "Marks & Spencer",
+    "category_name": "Fashion",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 5,
+        "site": "https://www.gyftr.com/instantvouchers/marks-spencer-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 8.25,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=hv7pUyTvBW9QhaMC1Prh1w%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 10,
+        "site": "https://www.gyftr.com/edgerewards/marks-spencer-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 10,
+        "site": "https://amzn.in/d/0ffksCxF",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 9,
+        "site": "https://www.gyftr.com/marks-&-spencer",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "myntra",
+    "name": "Myntra",
+    "category_name": "E-Commerce",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/myntra-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=lTvX96rwO1nmJUyLprDUUQ%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 2,
+        "site": "https://www.gyftr.com/edgerewards/myntra-gift-vouchers",
+        "perks": "Earns 1.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 2,
+        "site": "https://amzn.in/d/08pGvBFF",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 2,
+        "site": "https://www.gyftr.com/myntra",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "nykaa",
+    "name": "Nykaa",
+    "category_name": "E-Commerce",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/nykaa-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 3,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=mF7SoqSqDzXYeCWbF5lH9w%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 4.5,
+        "site": "https://www.gyftr.com/edgerewards/nykaa-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 4,
+        "site": "https://amzn.in/d/0ipGJFzR",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 3,
+        "site": "https://www.gyftr.com/nykaa",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "skechers",
+    "name": "Skechers",
+    "category_name": "Fashion",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 5,
+        "site": "https://www.gyftr.com/instantvouchers/skechers-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 7,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=FaNbdpBM132ED70SrgKcvw%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 8,
+        "site": "https://www.gyftr.com/edgerewards/skechers-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 9,
+        "site": "https://amzn.in/d/0fZMof9c",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 8,
+        "site": "https://www.gyftr.com/skechers",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "starbucks",
+    "name": "Starbucks",
+    "category_name": "Gifting",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/starbucks-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 4.2,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=AUtAaCTrmk7L0QqX6TQxdA%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 6,
+        "site": "https://www.gyftr.com/edgerewards/starbucks-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 5,
+        "site": "https://amzn.in/d/0fdnXwLM",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/amazon-fresh",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "subway",
+    "name": "Subway",
+    "category_name": "Dining",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 2.5,
+        "site": "https://www.gyftr.com/instantvouchers/subway-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 6,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=Xi%2BrfIYy013MUx9ouRHezg%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 9,
+        "site": "https://www.gyftr.com/edgerewards/subway-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 0,
+        "site": "https://amzn.in/d/0cu87nHW",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 9,
+        "site": "https://www.gyftr.com/subway",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "swiggy",
+    "name": "Swiggy",
+    "category_name": "Food",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/swiggy-gv-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=67QXkJBH5ual2f8tm2sCvQ%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 1.5,
+        "site": "https://www.gyftr.com/edgerewards/swiggy-gv-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/swiggy-gv",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "taj_experiences",
+    "name": "Taj Experiences",
+    "category_name": "Travel",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 2,
+        "site": "https://www.gyftr.com/instantvouchers/taj-hotels-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 2.4,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=OQ3eIg2UEQcGVFUfVTM0Hw%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 9,
+        "site": "https://www.gyftr.com/edgerewards/taj-hotels-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 10,
+        "site": "https://amzn.in/d/0iUrDIcM",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 8,
+        "site": "https://www.gyftr.com/taj-hotels",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "tanishq",
+    "name": "Tanishq",
+    "category_name": "Fashion",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 2,
+        "site": "https://www.gyftr.com/instantvouchers/tanishq-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=enWnA%2Bbs22kSK%2Fme1PRoSA%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 0,
+        "site": "https://amzn.in/d/0ha5AXzD",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/tanishq",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "tata_cliq",
+    "name": "Tata Cliq",
+    "category_name": "Fashion",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 6.5,
+        "site": "https://www.gyftr.com/instantvouchers/tata-cliq-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 5,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=vFFaCf88AswrO4vtto%2BKRQ%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 7.5,
+        "site": "https://www.gyftr.com/edgerewards/tata-cliq-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 10,
+        "site": "https://amzn.in/d/04wKYeYk",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 7,
+        "site": "https://www.gyftr.com/tata-cliq",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "uber",
+    "name": "Uber",
+    "category_name": "Travel",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/uber-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=Yjz%2FjrZ6z4UlsvkcO5a1oQ%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/edgerewards/uber-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 5,
+        "site": "https://amzn.in/d/02dpIMta",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 1,
+        "site": "https://www.gyftr.com/uber",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "vijay_sales",
+    "name": "Vijay Sales",
+    "category_name": "Electronics",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/vijay-sales-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=T1CCjECQ57f9XKHHdmNqtg%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/edgerewards/vijay-sales-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 0,
+        "site": "https://amzn.in/d/05LBMOcv",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 1,
+        "site": "https://www.gyftr.com/vijay-sales",
+        "perks": ""
+      }
+    ]
+  },
+  {
+    "id": "westside",
+    "name": "Westside",
+    "category_name": "Fashion",
+    "portals": [
+      {
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/instantvouchers/westside-gift-vouchers",
+        "perks": ""
+      },
+      {
+        "portalId": "shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://shopwise.giftstacc.com/giftcard?productId=biRRhlkDnYjs8pi8XDElew%3D%3D",
+        "perks": ""
+      },
+      {
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/edgerewards/westside-gift-vouchers",
+        "perks": "Earns 0.5% GyFTR Coins"
+      },
+      {
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 0,
+        "site": "https://amzn.in/d/07Y3YpqQ",
+        "perks": ""
+      },
+      {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://www.gyftr.com/westside",
+        "perks": ""
+      }
     ]
   }
-  // Add your other master brands back here...
 ];
 
 // 2. Load Custom Data from LocalStorage

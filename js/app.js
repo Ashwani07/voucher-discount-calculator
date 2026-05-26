@@ -46,6 +46,35 @@ function formatRupees(value) {
   return `₹${value.toFixed(2)}`;
 }
 
+// Internal operational engine to safely compute True Net across both display panels
+function calculateTrueNetMetrics(entry, voucherAmount = 1000) {
+  const upfrontSavings = voucherAmount * (entry.upfront / 100);
+  const netPaid = voucherAmount - upfrontSavings;
+  
+  const multiplier = entry.card.portalMultipliers[entry.portal.group] ?? 
+                     entry.card.portalMultipliers[entry.portal.id] ?? 
+                     entry.card.portalMultipliers.default ?? 1;
+
+  let rpEarned = 0;
+  let cashValue = 0;
+  let exampleMathText = "";
+
+  if (entry.card.rewardType === "points" && entry.card.spendBlock) {
+    const completedBlocks = Math.floor(netPaid / entry.card.spendBlock);
+    const basePoints = completedBlocks * entry.card.pointsPerBlock;
+    rpEarned = Math.floor(basePoints * multiplier);
+    cashValue = rpEarned * (entry.card.pointValue ?? 1);
+  } else {
+    const effectiveCashbackPercent = entry.card.baseRewardPercent * multiplier;
+    cashValue = netPaid * (effectiveCashbackPercent / 100);
+  }
+  
+  const finalNetCost = netPaid - cashValue;
+  const computedTrueNet = ((voucherAmount - finalNetCost) / voucherAmount) * 100;
+
+  return { computedTrueNet, rpEarned, cashValue, netPaid, multiplier };
+}
+
 /************************************************************************
  * DOM wiring - Main Elements
  ************************************************************************/
@@ -70,9 +99,8 @@ const walletControls = document.getElementById("walletControls");
  * Dynamic Wallet UI
  ************************************************************************/
 function renderWalletUI() {
-  walletControls.innerHTML = ""; // Clear existing
+  walletControls.innerHTML = ""; 
 
-  // 1. Group cards dynamically by bank prefix
   const groups = {};
   cards.forEach(card => {
     let bank = "Others";
@@ -87,7 +115,6 @@ function renderWalletUI() {
     groups[bank].push(card);
   });
 
-  // 2. Render grouped HTML with clean headers
   for (const [bankName, bankCards] of Object.entries(groups)) {
     const section = document.createElement("div");
     section.className = "mb-4 border-b border-slate-100 pb-2 last:border-0";
@@ -109,7 +136,6 @@ function renderWalletUI() {
     walletControls.appendChild(section);
   }
 
-  // 3. Re-attach event listeners
   document.querySelectorAll('#walletControls input[type="checkbox"]').forEach(cb => {
     cb.addEventListener('change', () => {
       if (currentBrandId && !resultsSection.classList.contains("hidden")) {
@@ -119,7 +145,6 @@ function renderWalletUI() {
   });
 }
 
-// Initialize wallet immediately on load
 renderWalletUI();
 
 /************************************************************************
@@ -161,12 +186,8 @@ brandSuggestions.addEventListener("click", (e) => {
   brandSearch.value = brand.name;
   currentBrandId = brand.id;
   brandSuggestions.classList.add("hidden");
-  
-  // Optional: Auto-calculate as soon as they select a brand
-  // handleCalculate(); 
 });
 
-// Close suggestions if clicked outside
 document.addEventListener('click', (e) => {
   if (!brandSearch.contains(e.target) && !brandSuggestions.contains(e.target)) {
     brandSuggestions.classList.add("hidden");
@@ -176,62 +197,32 @@ document.addEventListener('click', (e) => {
 /************************************************************************
  * Calculation Engine & Results Rendering
  ************************************************************************/
-function renderAllCardsList(results) {
-  const groupedByCard = results.reduce((groups, result) => {
-    const cardId = result.card.id;
-    if (!groups[cardId]) {
-      groups[cardId] = { card: result.card, entries: [] };
-    }
-    groups[cardId].entries.push(result);
-    return groups;
-  }, {});
-
-  const groups = Object.values(groupedByCard).map(group => {
-    group.entries.sort((a, b) => b.net - a.net);
-    group.bestNet = group.entries[0].net;
-    return group;
-  });
-
-  groups.sort((a, b) => b.bestNet - a.bestNet);
-
+function renderAllCardsList(groups, activeBrandObj) {
   const html = groups.map(group => {
     const portalRows = group.entries.map(entry => {
-      const voucherAmount = 1000;
-      const upfrontSavings = voucherAmount * (entry.upfront / 100);
-      const netPaid = voucherAmount - upfrontSavings;
+      const metrics = calculateTrueNetMetrics(entry);
       
-      let rpEarned = 0;
-      let cashValue = 0;
+      // Fallback configuration lookup via the passed brand object scope
+      const activeBrandConfig = activeBrandObj?.portals?.find(p => p.portalId === entry.portal.id);
+      const perksText = entry.portalConfig?.perks || activeBrandConfig?.perks || ""; 
+      const perksHTML = perksText 
+        ? `<div class="inline-block mt-1 bg-emerald-50 text-[10px] text-emerald-700 font-medium px-1.5 py-0.5 rounded border border-emerald-200">${perksText}</div>`
+        : "";
+
+      const currencyLabel = entry.card.id === "axis_atlas" ? "Miles" : "RP";
+
+      const rewardSubLabel = entry.card.rewardType === "points" 
+        ? `Reward: ${(entry.card.baseRewardPercent * metrics.multiplier).toFixed(2)}% ${currencyLabel} (Value: ${(entry.card.baseRewardPercent * metrics.multiplier * entry.card.pointValue).toFixed(2)}%)`
+        : `Reward: ${(entry.card.baseRewardPercent * metrics.multiplier).toFixed(2)}% Flat Cashback`;
+
       let exampleMathText = "";
-
-      // Dynamic multiplier lookup based on group, specific ID, or default fallback
-      const multiplier = entry.card.portalMultipliers[entry.portal.group] ?? 
-                         entry.card.portalMultipliers[entry.portal.id] ?? 
-                         entry.card.portalMultipliers.default ?? 1;
-
-      // Step-Function Execution based on Bank Rules
       if (entry.card.rewardType === "points" && entry.card.spendBlock) {
-        // Find how many complete blocks fit into the checkout amount
-        const completedBlocks = Math.floor(netPaid / entry.card.spendBlock);
-        
-        // Calculate base points for those blocks
-        const basePoints = completedBlocks * entry.card.pointsPerBlock;
-        
-        // Final points are strictly integers
-        rpEarned = Math.floor(basePoints * multiplier);
-        cashValue = rpEarned * (entry.card.pointValue ?? 1);
-        
-        exampleMathText = `Pay ${formatRupees(netPaid)} upfront. Earn ${rpEarned} points (Worth ${formatRupees(cashValue)}).`;
+        exampleMathText = `Pay ${formatRupees(metrics.netPaid)} upfront. Earn ${metrics.rpEarned} ${currencyLabel} (Worth ${formatRupees(metrics.cashValue)}).`;
       } else {
-        // Continuous Math for Pure Cashback Cards (Enforces the 0 multiplier if excluded)
-        rpEarned = 0; 
-        const effectiveCashbackPercent = entry.card.baseRewardPercent * multiplier;
-        cashValue = netPaid * (effectiveCashbackPercent / 100);
-        
-        exampleMathText = `Pay ${formatRupees(netPaid)} upfront. Earn ${formatRupees(cashValue)} Cashback.`;
+        exampleMathText = `Pay ${formatRupees(metrics.netPaid)} upfront. Earn ${formatRupees(metrics.cashValue)} Cashback.`;
       }
 
-      const finalNetCost = netPaid - cashValue;
+      const finalNetCost = metrics.netPaid - metrics.cashValue;
 
       return `
         <div class="border-b border-slate-200 py-3">
@@ -239,10 +230,11 @@ function renderAllCardsList(results) {
             <div>
               <div class="font-medium">${entry.portal.name}</div>
               <div class="text-xs text-slate-600 mt-1">
-                Reward: ${entry.rawRewardPercent.toFixed(2)}% RP (Value: ${entry.cashRewardPercent.toFixed(2)}%)
+                ${rewardSubLabel}
               </div>
+              ${perksHTML} 
             </div>
-            <div class="text-sm font-semibold">Net: ${entry.net.toFixed(2)}%</div>
+            <div class="text-sm font-semibold text-emerald-600">Net: ${entry.computedTrueNet.toFixed(2)}%</div>
           </div>
           <div class="text-xs text-slate-500 mt-2 bg-slate-50 p-2 rounded-md">
             Example on ₹1,000: ${exampleMathText} Net Cost: ${formatRupees(finalNetCost)}.
@@ -251,12 +243,11 @@ function renderAllCardsList(results) {
       `;
     }).join("");
 
-    // Handle dynamic disclaimer layout at the bottom of the card block
     let disclaimerHTML = "";
     if (group.card.rewardType === "points") {
       disclaimerHTML = `
         <div class="text-[11px] italic text-slate-500 mt-3">
-          Note: Calculation assumes 1 Reward Point = ${formatRupees(group.card.pointValue ?? 1)}
+          Note: Calculation assumes 1 ${group.card.id === "axis_atlas" ? "Edge Mile" : "Reward Point"} = ${formatRupees(group.card.pointValue ?? 1)}
         </div>
       `;
     } else {
@@ -323,7 +314,6 @@ function handleCalculate() {
     } else if (p.portalId === "axis_edgerewards") {
       allowedCards = cards.filter(c => c.id.startsWith("axis_") || c.id.startsWith("custom_"));
     } else {
-      // Public portals (Gyftr, Woohoo, etc.) accept all cards
       allowedCards = cards;
     }
 
@@ -333,22 +323,31 @@ function handleCalculate() {
     for (const card of allowedCards) {
       const rawRewardPercent = getRawRewardPercent(card, portal);
       const cashRewardPercent = getCashRewardPercent(card, portal);
-      const net = computeNetForCardWithRules(card, portal, brand);
+      const initialNet = computeNetForCardWithRules(card, portal, brand);
 
       const reward = (100 - upfront) === 0
         ? 0
-        : ((net - upfront) / (100 - upfront)) * 100;
+        : ((initialNet - upfront) / (100 - upfront)) * 100;
 
-      results.push({
+      // Build intermediate output payload wrapper
+      const tempEntry = {
         portal,
         portalId: p.portalId,
         card,
         upfront,
         reward,
-        net,
+        net: initialNet,
         rawRewardPercent,
-        cashRewardPercent
-      });
+        cashRewardPercent,
+        portalConfig: p
+      };
+
+      // Force step-function logic calculation execution instantly to populate raw metric
+      const trueMetrics = calculateTrueNetMetrics(tempEntry);
+      tempEntry.computedTrueNet = trueMetrics.computedTrueNet;
+      tempEntry.reward = trueMetrics.computedTrueNet - tempEntry.upfront; // Synchronize leaderboard metrics
+
+      results.push(tempEntry);
     }
   }
 
@@ -371,8 +370,28 @@ function handleCalculate() {
     return;
   }
 
-  results.sort((a, b) => b.net - a.net);
-  const best = results[0];
+  // 1. Group results cleanly and sort using pre-calculated step parameters
+  const groupedByCard = results.reduce((groups, result) => {
+    const cardId = result.card.id;
+    if (!groups[cardId]) {
+      groups[cardId] = { card: result.card, entries: [] };
+    }
+    groups[cardId].entries.push(result);
+    return groups;
+  }, {});
+
+  const groups = Object.values(groupedByCard).map(group => {
+    group.entries.sort((a, b) => b.computedTrueNet - a.computedTrueNet);
+    group.bestNet = group.entries[0].computedTrueNet;
+    return group;
+  });
+
+  // Sort overall groups list by the best actual step yield
+  groups.sort((a, b) => b.bestNet - a.bestNet);
+
+  // 2. Safely extract true absolute winner parameters
+  const bestGroup = groups[0];
+  const best = bestGroup.entries[0];
 
   resultTitle.textContent = `${brand.name}`;
   resultSubtitle.textContent = `${best.card.name} via ${best.portal.name}`;
@@ -380,20 +399,20 @@ function handleCalculate() {
 
   upfrontValueEl.textContent = `${best.upfront.toFixed(2)}%`;
   rewardValueEl.textContent = `${best.reward.toFixed(2)}%`;
-  netValueEl.textContent = `${best.net.toFixed(2)}%`;
+  netValueEl.textContent = `${best.computedTrueNet.toFixed(2)}%`;
 
   explanationEl.textContent =
     `Best combination: ${best.card.name} on ${best.portal.name}. ` +
-    `Upfront ${best.upfront.toFixed(2)}% + Card reward ${best.reward.toFixed(2)}% = Net ${best.net.toFixed(2)}%.`;
+    `Upfront ${best.upfront.toFixed(2)}% + Card reward ${best.reward.toFixed(2)}% = Net ${best.computedTrueNet.toFixed(2)}%.`;
 
   bestCardBox.classList.remove("hidden");
   bestCardBox.innerHTML = `
     <div class="winner p-3 rounded-md bg-green-100 border border-green-400 font-semibold mt-4">
-      🏆 Best Card: ${best.card.name} — ${best.net.toFixed(2)}% via ${best.portal.name}
+      🏆 Best Card: ${best.card.name} — ${best.computedTrueNet.toFixed(2)}% via ${best.portal.name}
     </div>
   `;
 
-  renderAllCardsList(results);
+  renderAllCardsList(groups, brand);
   resultsSection.classList.remove("hidden");
   resultsSection.scrollIntoView({ behavior: "smooth", block: "center" });
 }
@@ -425,7 +444,6 @@ resetBtn.addEventListener("click", handleReset);
 const customCardModal = document.getElementById("customCardModal");
 const customBrandModal = document.getElementById("customBrandModal");
 
-// --- Card Modal ---
 document.getElementById("openCardModalBtn").addEventListener("click", () => customCardModal.classList.remove("hidden"));
 document.getElementById("closeCardModalBtn").addEventListener("click", () => {
   customCardModal.classList.add("hidden");
@@ -435,7 +453,6 @@ document.getElementById("closeCardModalBtn").addEventListener("click", () => {
   document.getElementById("ccGyftr").value = "";
 });
 
-// Dynamic conditional visibility for the Ledger Block inputs
 document.getElementById("ccRewardType").addEventListener("change", (e) => {
   const blockFieldsSection = document.getElementById("blockFieldsSection");
   if (e.target.value === "cashback") {
@@ -447,7 +464,7 @@ document.getElementById("ccRewardType").addEventListener("change", (e) => {
 
 document.getElementById("saveCardBtn").addEventListener("click", () => {
   const name = document.getElementById("ccName").value.trim();
-  const rewardType = document.getElementById("ccRewardType").value; // "points" or "cashback"
+  const rewardType = document.getElementById("ccRewardType").value; 
   const base = parseFloat(document.getElementById("ccBase").value) || 0;
   const pointVal = parseFloat(document.getElementById("ccPointValue").value) || 1.0;
   
@@ -458,12 +475,10 @@ document.getElementById("saveCardBtn").addEventListener("click", () => {
   let spendBlock = 1;
   let pointsPerBlock = 0;
 
-  // Enforce step-function logic values only if it is a points engine
   if (rewardType === "points") {
     spendBlock = parseFloat(document.getElementById("ccSpendBlock").value) || 150;
     pointsPerBlock = parseFloat(document.getElementById("ccPointsPerBlock").value) || 1;
   } else {
-    // Cashback cards use continuous mathematical 1:1 precision blocks
     spendBlock = 1;
     pointsPerBlock = 0;
   }
@@ -474,7 +489,7 @@ document.getElementById("saveCardBtn").addEventListener("click", () => {
     id: "custom_card_" + Date.now(),
     name: name,
     rewardType: rewardType,
-    baseRewardPercent: base, // Preserved for list sorting and UI sub-labels
+    baseRewardPercent: base, 
     pointValue: pointVal,
     spendBlock: spendBlock,
     pointsPerBlock: pointsPerBlock,
@@ -487,15 +502,13 @@ document.getElementById("saveCardBtn").addEventListener("click", () => {
   };
 
   saveCustomCard(newCard);
-  renderWalletUI(); // Refresh your new dynamic bank-grouped checkboxes
+  renderWalletUI(); 
   
-  // Auto-check the newly added card
   const newCheckbox = document.querySelector(`input[data-card-id="${newCard.id}"]`);
   if (newCheckbox) newCheckbox.checked = true;
 
   customCardModal.classList.add("hidden");
   
-  // Clear inputs clean
   document.getElementById("ccName").value = "";
   document.getElementById("ccBase").value = "";
   document.getElementById("ccPointValue").value = "";
@@ -505,13 +518,11 @@ document.getElementById("saveCardBtn").addEventListener("click", () => {
   document.getElementById("ccGyftr").value = "";
   document.getElementById("ccIshop").value = "";
 
-  // Auto-recalc if a brand target is currently active
   if (currentBrandId && !resultsSection.classList.contains("hidden")) {
     handleCalculate();
   }
 });
 
-// --- Brand Modal ---
 document.getElementById("openBrandModalBtn").addEventListener("click", () => customBrandModal.classList.remove("hidden"));
 document.getElementById("closeBrandModalBtn").addEventListener("click", () => {
   customBrandModal.classList.add("hidden");
@@ -540,12 +551,10 @@ document.getElementById("saveBrandBtn").addEventListener("click", () => {
   saveCustomBrand(newBrand);
   customBrandModal.classList.add("hidden");
   
-  // Clear inputs
   document.getElementById("cbName").value = "";
   document.getElementById("cbGyftr").value = "";
   document.getElementById("cbSmartbuy").value = "";
   
-  // Set the search bar to the new brand and calculate instantly
   brandSearch.value = newBrand.name;
   currentBrandId = newBrand.id;
   handleCalculate();
