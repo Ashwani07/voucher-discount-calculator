@@ -4,20 +4,22 @@ export const portals = [
   { id: "axis_edgerewards", name: "Axis EdgeRewards", group: "axis_portal" },
   { id: "axis_grabdeals", name: "Axis GrabDeals Woohoo", group: "axis_portal" },
   { id: "shopwise", name: "Amex Shopwise", group: "shopwise" },
+  { id: "icici_ishop", name: "ICICI iShop", group: "ishop" },
   { id: "gyftr", name: "Gyftr", group: "gyftr" },
   { id: "amazon", name: "Amazon", group: "amazon" },
   { id: "woohoo", name: "Woohoo", group: "woohoo" },
   { id: "myntra", name: "Myntra", group: "retailbuy" },
   { id: "nykaa", name: "Nykaa", group: "retailbuy" },
   { id: "reliance_digital", name: "Reliance Digital", group: "retailbuy" },
-  { id: "marks_spencer", name: "Marks & Spencer", group: "retailbuy" },
-  { id: "ishop", name: "ICICI iShop", group: "ishop" }
+  { id: "marks_spencer", name: "Marks & Spencer", group: "retailbuy" }
   // park+
   // magicpin
   // cred
 ];
 
 // 1. Define Master Arrays
+// https://offers.smartbuy.hdfc.bank.in/v2/accelerated-earn-rules
+// https://www.ishoprewards.com/shopping-vouchers
 const masterCards = [
   {
     id: "hdfc_infinia",
@@ -26,8 +28,18 @@ const masterCards = [
     pointValue: 1.0,         // 1 point = ₹1.00 (Travel)
     rewardType: "points",
     spendBlock: 150,
-    pointsPerBlock: 5,   // 10 points per ₹100 spent
+    pointsPerBlock: 5,   // 5 points per ₹150 spent
     portalMultipliers: { smartbuy: 5, default: 1 }
+  },
+  {
+    id: "hdfc_dbm",
+    name: "HDFC Diners Black Metal",
+    baseRewardPercent: 3.3,
+    pointValue: 1.0,         // 1 point = ₹1.00 (Travel)
+    rewardType: "points",
+    spendBlock: 150,
+    pointsPerBlock: 5,   // 5 points per ₹150 spent
+    portalMultipliers: { smartbuy: 3, default: 1 }
   },
   { 
     id: "hdfc_regalia_gold", 
@@ -47,6 +59,26 @@ const masterCards = [
     rewardType: "cashback", // Bypasses block math entirely
     portalMultipliers: { smartbuy: 5, default: 1 } 
   },
+  {
+    id: "axis_magnus", 
+    name: "Axis Magnus", 
+    baseRewardPercent: 2.0,  // Base edge miles
+    pointValue: 2.0,         // 5 Edge Rewards = ₹2.00 (Partner miles)
+    rewardType: "points",
+    spendBlock: 200,      
+    pointsPerBlock: 12,  // 35 points per ₹200 spent on above Rs 1.5 lakhs
+    portalMultipliers: {  axis_edgerewards: 1, default: 1 } 
+  },
+  {
+    id: "axis_magnus_burgundy", 
+    name: "Axis Magnus Burgundy", 
+    baseRewardPercent: 2.0,  // Base edge miles
+    pointValue: 4.0,         // 5 Edge Rewards = ₹4.00 (Partner miles)
+    rewardType: "points",
+    spendBlock: 200,      
+    pointsPerBlock: 12,  // 35 points per ₹200 spent on above Rs 1.5 lakhs
+    portalMultipliers: { axis_edgerewards: 1, default: 1 } 
+  },
   { 
     id: "axis_atlas", 
     name: "Axis Atlas", 
@@ -55,7 +87,17 @@ const masterCards = [
     rewardType: "points",
     spendBlock: 100,      
     pointsPerBlock: 2,  // 2 points per ₹100 spent
-    portalMultipliers: { direct_flight_hotel: 2.5, axis_edgerewards: 1, default: 1 } 
+    portalMultipliers: { axis_edgerewards: 1, default: 1 } 
+  },
+  { 
+    id: "axis_horizon", 
+    name: "Axis Horizon", 
+    baseRewardPercent: 2.0,  // Base edge miles
+    pointValue: 1.0,         // 1 Edge Mile = ₹1.00 (Partner transfer value)
+    rewardType: "points",
+    spendBlock: 100,      
+    pointsPerBlock: 2,  // 2 points per ₹100 spent
+    portalMultipliers: { axis_edgerewards: 1, default: 1 } 
   },
   { 
     id: "amex_mrcc", 
@@ -67,13 +109,69 @@ const masterCards = [
     pointsPerBlock: 1,    // 1 point per ₹50 spent
     portalMultipliers: { shopwise: 2, default: 1 } 
   },
+  {
+    id: "icici_epm",
+    name: "ICICI Emeralde Private Metal",
+    rewardType: "points",
+    baseRewardPercent: 3.0,  // 6 points per ₹200
+    pointValue: 1.0,         // Assuming maximum value travel redemption
+    spendBlock: 200,
+    pointsPerBlock: 6,
+    portalMultipliers: {
+      ishop: 6,              // 
+      gyftr: 1,
+      default: 1
+    }
+  },
+  {
+    id: "icici_times",
+    name: "ICICI Times Black",
+    rewardType: "points",
+    baseRewardPercent: 2.0,  // 1 point per ₹50
+    pointValue: 1.0,         // Assuming maximum value travel redemption
+    spendBlock: 50,
+    pointsPerBlock: 1,
+    portalMultipliers: {
+      ishop: 6,              // 
+      gyftr: 1,
+      default: 1
+    }
+  },
+  { 
+    id: "icici_emeralde", 
+    name: "ICICI Emeralde", 
+    baseRewardPercent: 4.0,  // 4 points per ₹100
+    pointValue: 0.25,         // Assuming maximum value travel redemption
+    rewardType: "points",
+    spendBlock: 100,
+    pointsPerBlock: 4,
+    portalMultipliers: { "ishop": 6, "default": 1 }
+  },
+  { 
+    id: "icici_others", 
+    name: "ICICI Others",     // Coral/CSK/HPCL/ManU/Parakram/Rubyx/Sapphiro
+    baseRewardPercent: 2.0,  // 2 points per ₹100
+    pointValue: 0.25,         // Assuming maximum value travel redemption
+    rewardType: "points",
+    spendBlock: 100,
+    pointsPerBlock: 2,
+    portalMultipliers: { "ishop": 6, "default": 1 }
+  },
+  { 
+    id: "icici_cobranded", 
+    name: "ICICI Co-branded",     // Amazon/Adani/Emirates/MMT
+    baseRewardPercent: 1.0,     // 2 points per ₹100
+    pointValue: 1.0,         // Assuming maximum value travel redemption
+    rewardType: "cashback",
+    portalMultipliers: { "ishop": 4, "default": 1 }
+  },
   { 
     id: "sbi_cashback", 
     name: "SBI Cashback", 
     baseRewardPercent: 5.0,
     pointValue: 1.0,         // Pure cashback 1:1
     rewardType: "cashback", // Bypasses block math entirely
-    portalMultipliers: { gyftr: 0, smartbuy: 0, axis_portal: 0, shopwise:0, amazon: 1, default: 1 } 
+    portalMultipliers: { gyftr: 0, amazon: 1, default: 1 } 
   },
   
   { 
@@ -85,31 +183,7 @@ const masterCards = [
     spendBlock: 20,
     pointsPerBlock: 2,    // 2 points per ₹20 spent
     portalMultipliers: { default: 1 } 
-  },
-  {
-    id: "icici_epm",
-    name: "ICICI Emeralde Private Metal",
-    rewardType: "points",
-    baseRewardPercent: 3.0, // 6 points per ₹200 = 3% raw points generation rate
-    pointValue: 1.0,         // Assuming maximum value travel redemption
-    spendBlock: 200,
-    pointsPerBlock: 6,
-    portalMultipliers: {
-      ishop: 1,              // Scaled down from 6x following the Amazon Pay/Swiggy nuke
-      gyftr: 1,
-      default: 1
-    }
-  },
-  { 
-    id: "icici_sapphiro", 
-    name: "ICICI Sapphiro", 
-    baseRewardPercent: 2.0, 
-    pointValue: 0.25,         // 1 Reward point = Rs 0.25
-    rewardType: "points",
-    spendBlock: 100,
-    pointsPerBlock: 2,
-    portalMultipliers: { "smartbuy": 0, "gyftr": 1, "ishop": 1, "default": 1 }
-  } 
+  }
 ];
 
 const masterBrands = [
@@ -676,7 +750,7 @@ const masterBrands = [
       {
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/amazon-fresh",
+        "site": "https://www.gyftr.com/starbucks",
         "perks": ""
       }
     ]
