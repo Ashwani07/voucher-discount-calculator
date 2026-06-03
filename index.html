@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Find the best credit card + portal combo for buying vouchers. Calculates net effective discount including card rewards.">
+  <meta property="og:title" content="VouchWise — Voucher Discount Calculator">
+  <meta property="og:description" content="HDFC SmartBuy vs Axis EdgeRewards vs Gyftr — which gives you the best net discount? Enter your cards and find out.">
+  <meta property="og:url" content="https://vouchwise.in">
   <title>Voucher Discount Calculator</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -77,7 +81,13 @@
           <div id="brandSuggestions" class="autocomplete-suggestions hidden" aria-hidden="true"></div>
         </div>
 
-        <div class="flex gap-3">
+        <!-- NEW VOUCHER AMOUNT FIELD -->
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Voucher Value (₹)</label>
+          <input id="voucherAmount" type="number" placeholder="1000" value="1000" class="w-full border border-slate-300 p-2 rounded-md text-sm">
+        </div>
+
+        <div class="flex gap-3 mt-2">
           <button id="calculateBtn" class="flex-1 rounded-md bg-emerald-600 text-white px-4 py-2 font-semibold hover:bg-emerald-500">Calculate</button>
           <button id="resetBtn" class="rounded-md border border-slate-300 px-4 py-2 text-slate-700 bg-white">Reset</button>
         </div>
@@ -125,7 +135,7 @@
           <div id="bestCardBox" class="hidden mt-4" aria-live="polite"></div>
           <div id="allCardsList" class="mt-4 text-sm text-slate-700"></div>
           <div id="verifiedStamp" class="mt-3 text-xs text-slate-500 opacity-70">
-            Discounts last verified on May 2026.
+            Discounts last verified on June 2026.
           </div>
 
         </div>
@@ -144,7 +154,6 @@
 
       <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Card Details</label>
       <input id="ccName" type="text" placeholder="Card Name (e.g. ICICI Coral)" class="w-full border p-2 rounded mb-3 text-sm">
-      <input id="ccBase" type="number" step="0.01" placeholder="Base Reward % (Display / Sorting)" class="w-full border p-2 rounded mb-3 text-sm">
       <input id="ccPointValue" type="number" step="0.01" placeholder="Point Value in ₹ (e.g. 0.25 or 1)" class="w-full border p-2 rounded mb-3 text-sm">
 
       <div id="blockFieldsSection" class="mb-3">
@@ -156,9 +165,14 @@
       </div>
 
       <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Portal Multipliers</label>
-      <input id="ccSmartbuy" type="number" step="0.1" placeholder="SmartBuy Multiplier (default 1)" class="w-full border p-2 rounded mb-3 text-sm">
-      <input id="ccGyftr" type="number" step="0.1" placeholder="Gyftr Multiplier (default 1)" class="w-full border p-2 rounded mb-3 text-sm">
-      <input id="ccIshop" type="number" step="0.1" placeholder="iShop Multiplier (default 1)" class="w-full border p-2 rounded mb-4 text-sm">
+      <div class="grid grid-cols-2 gap-2 mb-4">
+        <input id="ccSmartbuy" type="number" step="0.1" placeholder="SmartBuy (default 1)" class="border p-2 rounded text-sm w-full">
+        <input id="ccIshop" type="number" step="0.1" placeholder="iShop (default 1)" class="border p-2 rounded text-sm w-full">
+        <input id="ccShopwise" type="number" step="0.1" placeholder="Shopwise (default 1)" class="border p-2 rounded text-sm w-full">
+        <input id="ccEdgerewards" type="number" step="0.1" placeholder="EdgeRewards (default 1)" class="border p-2 rounded text-sm w-full">
+        <input id="ccGyftr" type="number" step="0.1" placeholder="Gyftr (default 1)" class="border p-2 rounded text-sm w-full">
+        <input id="ccAmazon" type="number" step="0.1" placeholder="Amazon (default 1)" class="border p-2 rounded text-sm w-full">        
+      </div>
 
       <div class="flex gap-2">
         <button id="saveCardBtn" class="flex-1 bg-emerald-600 text-white py-2 rounded font-medium text-sm hover:bg-emerald-700 transition-colors">Save Card</button>
@@ -170,9 +184,17 @@
   <div id="customBrandModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-lg p-5 w-full max-w-sm">
       <h3 class="font-bold text-lg mb-4">Add Custom Brand</h3>
-      <input id="cbName" type="text" placeholder="Brand Name" class="w-full border p-2 rounded mb-3 text-sm">
-      <input id="cbGyftr" type="number" step="0.1" placeholder="Gyftr Upfront Discount %" class="w-full border p-2 rounded mb-3 text-sm">
-      <input id="cbSmartbuy" type="number" step="0.1" placeholder="SmartBuy Upfront Discount %" class="w-full border p-2 rounded mb-4 text-sm">
+      <input id="cbName" type="text" placeholder="Brand Name" class="w-full border p-2 rounded mb-3 text-sm font-semibold">
+      
+      <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Upfront Discounts (%)</label>
+      <div class="grid grid-cols-2 gap-2 mb-4">
+        <input id="cbSmartbuy" type="number" step="0.1" placeholder="SmartBuy (e.g. 5)" class="border p-2 rounded text-sm w-full">
+        <input id="cbGyftr" type="number" step="0.1" placeholder="Gyftr (e.g. 2)" class="border p-2 rounded text-sm w-full">
+        <input id="cbIshop" type="number" step="0.1" placeholder="iShop" class="border p-2 rounded text-sm w-full">
+        <input id="cbAmazon" type="number" step="0.1" placeholder="Amazon" class="border p-2 rounded text-sm w-full">
+        <input id="cbEdgerewards" type="number" step="0.1" placeholder="EdgeRewards" class="border p-2 rounded text-sm w-full">
+        <input id="cbShopwise" type="number" step="0.1" placeholder="Shopwise" class="border p-2 rounded text-sm w-full">
+      </div>
       <div class="flex gap-2">
         <button id="saveBrandBtn" class="flex-1 bg-sky-600 text-white py-2 rounded">Save Brand</button>
         <button id="closeBrandModalBtn" class="flex-1 bg-slate-200 text-slate-800 py-2 rounded">Cancel</button>

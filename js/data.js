@@ -1,6 +1,5 @@
 export const portals = [
   { id: "hdfc_smartbuy", name: "HDFC SmartBuy", group: "smartbuy" },
-  { id: "hdfc_woohoo", name: "HDFC Woohoo", group: "smartbuy" },
   { id: "axis_edgerewards", name: "Axis EdgeRewards", group: "axis_portal" },
   { id: "axis_grabdeals", name: "Axis GrabDeals Woohoo", group: "axis_portal" },
   { id: "shopwise", name: "Amex Shopwise", group: "shopwise" },
@@ -22,167 +21,378 @@ export const portals = [
 // https://www.ishoprewards.com/shopping-vouchers
 const masterCards = [
   {
-    id: "hdfc_infinia",
-    name: "HDFC Infinia",
-    baseRewardPercent: 3.3,
-    pointValue: 1.0,         // 1 point = ₹1.00 (Travel)
-    rewardType: "points",
-    spendBlock: 150,
-    pointsPerBlock: 5,   // 5 points per ₹150 spent
-    portalMultipliers: { smartbuy: 5, default: 1 }
+    "id": "amex_platinum_reserve",
+    "name": "Amex Platinum Reserve",
+    "rewardType": "points",
+    "pointValue": 0.33,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 3,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-platinum-reserve",
+    "assumption_note": "Assuming 1 MR Point = \u20B90.33 based on standard catalog yield."
   },
   {
-    id: "hdfc_dbm",
-    name: "HDFC Diners Black Metal",
-    baseRewardPercent: 3.3,
-    pointValue: 1.0,         // 1 point = ₹1.00 (Travel)
-    rewardType: "points",
-    spendBlock: 150,
-    pointsPerBlock: 5,   // 5 points per ₹150 spent
-    portalMultipliers: { smartbuy: 3, default: 1 }
-  },
-  { 
-    id: "hdfc_regalia_gold", 
-    name: "HDFC Regalia Gold", 
-    baseRewardPercent: 2.5, // Raw point earning rate
-    pointValue: 0.50,         // 1 point = 50 paise (Travel)
-    rewardType: "points",
-    spendBlock: 200,      
-    pointsPerBlock: 5,    // 5 points per ₹200 spent
-    portalMultipliers: { retailbuy: 5, smartbuy: 5, default: 1 } 
-  },
-  { 
-    id: "hdfc_swiggy", 
-    name: "HDFC Swiggy", 
-    baseRewardPercent: 1.0,
-    pointValue: 1.0,         // Pure cashback 1:1
-    rewardType: "cashback", // Bypasses block math entirely
-    portalMultipliers: { smartbuy: 5, default: 1 } 
+    "id": "amex_platinum_travel",
+    "name": "Amex Platinum Travel",
+    "rewardType": "points",
+    "pointValue": 0.33,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 3,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-platinum-travel",
+    "assumption_note": "Assuming 1 MR Point = \u20B90.33; optimal value unlocked at milestone spends."
   },
   {
-    id: "axis_magnus", 
-    name: "Axis Magnus", 
-    baseRewardPercent: 2.0,  // Base edge miles
-    pointValue: 2.0,         // 5 Edge Rewards = ₹2.00 (Partner miles)
-    rewardType: "points",
-    spendBlock: 200,      
-    pointsPerBlock: 12,  // 35 points per ₹200 spent on above Rs 1.5 lakhs
-    portalMultipliers: {  axis_edgerewards: 1, default: 1 } 
+    "id": "amex_mrcc",
+    "name": "Amex MRCC",
+    "rewardType": "points",
+    "pointValue": 0.33,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 2,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
+    "assumption_note": "Assuming 1 MR Point = \u20B90.33 based on 24K Gold Collection redemption."
   },
   {
-    id: "axis_magnus_burgundy", 
-    name: "Axis Magnus Burgundy", 
-    baseRewardPercent: 2.0,  // Base edge miles
-    pointValue: 4.0,         // 5 Edge Rewards = ₹4.00 (Partner miles)
-    rewardType: "points",
-    spendBlock: 200,      
-    pointsPerBlock: 12,  // 35 points per ₹200 spent on above Rs 1.5 lakhs
-    portalMultipliers: { axis_edgerewards: 1, default: 1 } 
-  },
-  { 
-    id: "axis_atlas", 
-    name: "Axis Atlas", 
-    baseRewardPercent: 2.0,  // Base edge miles
-    pointValue: 2.0,         // 1 Edge Mile = ₹2.00 (Partner transfer value)
-    rewardType: "points",
-    spendBlock: 100,      
-    pointsPerBlock: 2,  // 2 points per ₹100 spent
-    portalMultipliers: { axis_edgerewards: 1, default: 1 } 
-  },
-  { 
-    id: "axis_horizon", 
-    name: "Axis Horizon", 
-    baseRewardPercent: 2.0,  // Base edge miles
-    pointValue: 1.0,         // 1 Edge Mile = ₹1.00 (Partner transfer value)
-    rewardType: "points",
-    spendBlock: 100,      
-    pointsPerBlock: 2,  // 2 points per ₹100 spent
-    portalMultipliers: { axis_edgerewards: 1, default: 1 } 
-  },
-  { 
-    id: "amex_mrcc", 
-    name: "Amex MRCC", 
-    baseRewardPercent: 2.0,
-    pointValue: 0.33,        // 24K points → ₹9,000 voucher
-    rewardType: "points",
-    spendBlock: 50,
-    pointsPerBlock: 1,    // 1 point per ₹50 spent
-    portalMultipliers: { shopwise: 2, default: 1 } 
+    "id": "amex_gold",
+    "name": "Amex Gold",
+    "rewardType": "points",
+    "pointValue": 0.33,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 5,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-gold",
+    "assumption_note": "Assuming 1 MR Point = \u20B90.33 based on 24K Gold Collection redemption."
   },
   {
-    id: "icici_epm",
-    name: "ICICI Emeralde Private Metal",
-    rewardType: "points",
-    baseRewardPercent: 3.0,  // 6 points per ₹200
-    pointValue: 1.0,         // Assuming maximum value travel redemption
-    spendBlock: 200,
-    pointsPerBlock: 6,
-    portalMultipliers: {
-      ishop: 6,              // 
-      gyftr: 1,
-      default: 1
-    }
+    "id": "axis_magnus_burgundy",
+    "name": "Axis Magnus Burgundy",
+    "rewardType": "points",
+    "pointValue": 0.8,
+    "spendBlock": 200,
+    "pointsPerBlock": 12,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 1,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
+    "assumption_note": "Assuming 5 Edge Rewards = 4 Air Miles = \u20B94.00 (\u20B90.80 per point)."
   },
   {
-    id: "icici_times",
-    name: "ICICI Times Black",
-    rewardType: "points",
-    baseRewardPercent: 2.0,  // 1 point per ₹50
-    pointValue: 1.0,         // Assuming maximum value travel redemption
-    spendBlock: 50,
-    pointsPerBlock: 1,
-    portalMultipliers: {
-      ishop: 6,              // 
-      gyftr: 1,
-      default: 1
-    }
+    "id": "axis_magnus",
+    "name": "Axis Magnus",
+    "rewardType": "points",
+    "pointValue": 0.4,
+    "spendBlock": 200,
+    "pointsPerBlock": 12,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 1,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-magnus",
+    "assumption_note": "Assuming 5 Edge Rewards = 2 Air Miles = \u20B92.00 (\u20B90.40 per point)."
   },
-  { 
-    id: "icici_emeralde", 
-    name: "ICICI Emeralde", 
-    baseRewardPercent: 4.0,  // 4 points per ₹100
-    pointValue: 0.25,         // Assuming maximum value travel redemption
-    rewardType: "points",
-    spendBlock: 100,
-    pointsPerBlock: 4,
-    portalMultipliers: { "ishop": 6, "default": 1 }
+  {
+    "id": "axis_atlas",
+    "name": "Axis Atlas",
+    "rewardType": "points",
+    "pointValue": 2,
+    "spendBlock": 100,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 1,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-atlas",
+    "assumption_note": "Assuming 1 Edge Mile = 2 Partner Miles = \u20B92.00."
   },
-  { 
-    id: "icici_others", 
-    name: "ICICI Others",     // Coral/CSK/HPCL/ManU/Parakram/Rubyx/Sapphiro
-    baseRewardPercent: 2.0,  // 2 points per ₹100
-    pointValue: 0.25,         // Assuming maximum value travel redemption
-    rewardType: "points",
-    spendBlock: 100,
-    pointsPerBlock: 2,
-    portalMultipliers: { "ishop": 6, "default": 1 }
+  {
+    "id": "axis_horizon",
+    "name": "Axis Horizon",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 1,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-horizon",
+    "assumption_note": "Assuming 1 Edge Reward = 1 Partner Mile = \u20B91.00."
   },
-  { 
-    id: "icici_cobranded", 
-    name: "ICICI Co-branded",     // Amazon/Adani/Emirates/MMT
-    baseRewardPercent: 1.0,     // 2 points per ₹100
-    pointValue: 1.0,         // Assuming maximum value travel redemption
-    rewardType: "cashback",
-    portalMultipliers: { "ishop": 4, "default": 1 }
+  {
+    "id": "hdfc_infinia",
+    "name": "HDFC Infinia",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 150,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 5,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
+    "assumption_note": "Assuming 1 Reward Point = \u20B91.00 via SmartBuy travel redemption."
   },
-  { 
-    id: "sbi_cashback", 
-    name: "SBI Cashback", 
-    baseRewardPercent: 5.0,
-    pointValue: 1.0,         // Pure cashback 1:1
-    rewardType: "cashback", // Bypasses block math entirely
-    portalMultipliers: { gyftr: 0, amazon: 1, default: 1 } 
+  {
+    "id": "hdfc_dbm",
+    "name": "HDFC Diners Black Metal",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 150,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 3,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-dbm",
+    "assumption_note": "Assuming 1 Reward Point = \u20B91.00 via SmartBuy travel redemption."
   },
-  
-  { 
-    id: "scapia", 
-    name: "Scapia", 
-    baseRewardPercent: 10.0,
-    pointValue: 0.20,         // Pure cashback 5:1
-    rewardType: "points",
-    spendBlock: 20,
-    pointsPerBlock: 2,    // 2 points per ₹20 spent
-    portalMultipliers: { default: 1 } 
+  {
+    "id": "hdfc_regalia_gold",
+    "name": "HDFC Regalia Gold",
+    "rewardType": "points",
+    "pointValue": 0.5,
+    "spendBlock": 200,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 5,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-regalia-gold",
+    "assumption_note": "Assuming 1 Reward Point = \u20B90.50 via SmartBuy travel redemption."
+  },
+  {
+    "id": "hdfc_swiggy",
+    "name": "HDFC Swiggy",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 1,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-swiggy",
+    "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  {
+    "id": "hsbc_premier",
+    "name": "HSBC Premier",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 3,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hsbc-premier",
+    "assumption_note": "Assuming 1 Reward Point = 1 Air Mile = \u20B91.00."
+  },
+  {
+    "id": "hsbc_travelone",
+    "name": "HSBC Travel One",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hsbc-travelone",
+    "assumption_note": "Assuming 1 Reward Point = 1 Air Mile = \u20B91.00."
+  },
+  {
+    "id": "hsbc_liveplus",
+    "name": "HSBC Live+",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 1.5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hsbc-liveplus",
+    "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  {
+    "id": "icici_epm",
+    "name": "ICICI Emeralde Private Metal",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 200,
+    "pointsPerBlock": 6,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 6,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-epm",
+    "assumption_note": "Assuming 1 Reward Point = \u20B91.00 via EaseMyTrip/in-app redemption."
+  },
+  {
+    "id": "icici_times",
+    "name": "ICICI Times Black",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 6,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-times",
+    "assumption_note": "Assuming 1 Reward Point = \u20B91.00; actual value varies by catalog."
+  },
+  {
+    "id": "icici_emeralde",
+    "name": "ICICI Emeralde",
+    "rewardType": "points",
+    "pointValue": 0.25,
+    "spendBlock": 100,
+    "pointsPerBlock": 4,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 6,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-emeralde",
+    "assumption_note": "Assuming 1 Reward Point = \u20B90.25 via standard redemption."
+  },
+  {
+    "id": "icici_amazon",
+    "name": "ICICI Amazon",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 4,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-amazon",
+    "assumption_note": "Direct Amazon Pay balance cashback; no valuation assumption required."
+  },
+  {
+    "id": "sbi_cashback",
+    "name": "SBI Cashback",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
+    "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  {
+    "id": "jupiter_edge_plus",
+    "name": "Jupiter Edge+",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-jupiter-edge-plus",
+    "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  {
+    "id": "scapia",
+    "name": "Scapia",
+    "rewardType": "points",
+    "pointValue": 0.2,
+    "spendBlock": 20,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "axis_edgerewards": 0,
+      "icici_ishop": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-scapia",
+    "assumption_note": "Assuming 5 Scapia coins = \u20B91.00 (\u20B90.20 per coin) via in-app travel booking."
   }
 ];
 
@@ -193,33 +403,33 @@ const masterBrands = [
     "category_name": "Grocery",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-amazon-fresh-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/amazon-fresh-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-amazon-fresh-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=5K1Kd9UyhjRT8zEr0xD3pQ%3D%3D",
+        "site": "https://vouchwise.in/out/buy-amazon-fresh-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/edgerewards/amazon-fresh-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-amazon-fresh-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://amzn.in/d/0ahQ9UUj",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/amazon-fresh",
+        "site": "https://vouchwise.in/out/buy-amazon-fresh-amazon",
         "perks": ""
       }
     ]
@@ -230,33 +440,33 @@ const masterBrands = [
     "category_name": "E-Commerce",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": -3.54,
+        "site": "https://vouchwise.in/out/buy-amazon-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": -4.13,
-        "site": "https://www.gyftr.com/instantvouchers/amazon-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-amazon-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": -1.77,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=gko2OEEac6Y24dmH%2FbBa7g%3D%3D",
+        "site": "https://vouchwise.in/out/buy-amazon-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/edgerewards/amazon-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-amazon-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://amzn.in/d/08wUhb9W",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": -3.54,
-        "site": "https://www.gyftr.com/amazon",
+        "site": "https://vouchwise.in/out/buy-amazon-amazon",
         "perks": ""
       }
     ]
@@ -267,33 +477,33 @@ const masterBrands = [
     "category_name": "E-Commerce",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": -3.54,
+        "site": "https://vouchwise.in/out/buy-amazon-shopping-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": -4.13,
-        "site": "https://www.gyftr.com/instantvouchers/amazon-shopping-voucher-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-amazon-shopping-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": -1.77,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=lfBrrZnTO4VXQS036BhJrQ%3D%3D",
+        "site": "https://vouchwise.in/out/buy-amazon-shopping-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/edgerewards/amazon-shopping-voucher-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-amazon-shopping-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://amzn.in/d/01fWZQZW",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": -3.54,
-        "site": "https://www.gyftr.com/amazon-shopping-voucher",
+        "site": "https://vouchwise.in/out/buy-amazon-shopping-amazon",
         "perks": ""
       }
     ]
@@ -304,33 +514,33 @@ const masterBrands = [
     "category_name": "Fashion",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-bath-and-body-works-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.gyftr.com/instantvouchers/bath-body-works-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-bath-and-body-works-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 12.5,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=66bESZOf67l7aLYQCk29%2BA%3D%3D",
+        "site": "https://vouchwise.in/out/buy-bath-and-body-works-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 14,
-        "site": "https://www.gyftr.com/edgerewards/amazon-fresh-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-bath-and-body-works-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 14,
-        "site": "https://amzn.in/d/026jKTYO",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 10,
-        "site": "https://www.gyftr.com/bath-&-body-works",
+        "site": "https://vouchwise.in/out/buy-bath-and-body-works-amazon",
         "perks": ""
       }
     ]
@@ -341,33 +551,33 @@ const masterBrands = [
     "category_name": "Grocery",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-bigbasket-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/bigbasket-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-bigbasket-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=AiPkXVCcpkH%2Fbu4vFXXWaw%3D%3D",
+        "site": "https://vouchwise.in/out/buy-bigbasket-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/edgerewards/bigbasket-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-bigbasket-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 2,
-        "site": "https://amzn.in/d/02QYv372",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 1,
-        "site": "https://www.gyftr.com/bigbasket",
+        "site": "https://vouchwise.in/out/buy-bigbasket-amazon",
         "perks": ""
       }
     ]
@@ -378,28 +588,28 @@ const masterBrands = [
     "category_name": "E-Commerce",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-flipkart-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/bigbasket-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-flipkart-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=Q8odsCgNCDraL5hFw%2FI0AA%3D%3D",
+        "site": "https://vouchwise.in/out/buy-flipkart-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/edgerewards/amazon-fresh-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-flipkart-edgerewards",
         "perks": "Earns 1.5% GyFTR Coins"
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/flipkart",
-        "perks": ""
       }
     ]
   },
@@ -409,28 +619,28 @@ const masterBrands = [
     "category_name": "E-Commerce",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-igp-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.gyftr.com/instantvouchers/igp-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-igp-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 7.4,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=K21FJ7Jh1CAIUNOdDy%2Fwcg%3D%3D",
+        "site": "https://vouchwise.in/out/buy-igp-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 15,
-        "site": "https://www.gyftr.com/edgerewards/igp-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-igp-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 15,
-        "site": "https://www.gyftr.com/igp",
-        "perks": ""
       }
     ]
   },
@@ -440,27 +650,27 @@ const masterBrands = [
     "category_name": "Fashion",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-lifestyle-offline-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/lifestyle-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-lifestyle-offline-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 3.3,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=Gip7w8GFjPeq6Vg%2FtLrqIA%3D%3D",
+        "site": "https://vouchwise.in/out/buy-lifestyle-offline-shopwise",
         "perks": ""
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 6,
-        "site": "https://amzn.in/d/0iRzULm2",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 2,
-        "site": "https://www.gyftr.com/lifestyle",
+        "site": "https://vouchwise.in/out/buy-lifestyle-offline-amazon",
         "perks": ""
       }
     ]
@@ -471,27 +681,27 @@ const masterBrands = [
     "category_name": "Fashion",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-lifestyle-online-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/lifestyle-online-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-lifestyle-online-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=z9quE%2F8JYBRxgJSyVhBiaw%3D%3D",
+        "site": "https://vouchwise.in/out/buy-lifestyle-online-shopwise",
         "perks": ""
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 7,
-        "site": "https://amzn.in/d/09RPzE5H",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 6,
-        "site": "https://www.gyftr.com/lifestyle-online",
+        "site": "https://vouchwise.in/out/buy-lifestyle-online-amazon",
         "perks": ""
       }
     ]
@@ -502,33 +712,33 @@ const masterBrands = [
     "category_name": "Travel",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-makemytrip-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/makemytrip-e-pay-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-makemytrip-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=Yggk7FKTTgx%2FNG8eS8Rr5w%3D%3D",
+        "site": "https://vouchwise.in/out/buy-makemytrip-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 4.5,
-        "site": "https://www.gyftr.com/edgerewards/makemytrip-e-pay-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-makemytrip-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 7,
-        "site": "https://amzn.in/d/0hTL6r14",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 4,
-        "site": "https://www.gyftr.com/makemytrip-e-pay",
+        "site": "https://vouchwise.in/out/buy-makemytrip-amazon",
         "perks": ""
       }
     ]
@@ -539,33 +749,33 @@ const masterBrands = [
     "category_name": "Travel",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 11.5,
+        "site": "https://vouchwise.in/out/buy-makemytrip-holiday-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.gyftr.com/instantvouchers/easemytrip-holiday-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-makemytrip-holiday-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 6.6,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=8gp40I9RLyYETjYlAYFQ2w%3D%3D",
+        "site": "https://vouchwise.in/out/buy-makemytrip-holiday-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 9,
-        "site": "https://www.gyftr.com/edgerewards/makemytrip-holiday-e-pay-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-makemytrip-holiday-edgerewards",
         "perks": "Earns 2.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 12,
-        "site": "https://amzn.in/d/0bNR1Tpx",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 11.5,
-        "site": "https://www.gyftr.com/makemytrip-holiday-e-pay",
+        "site": "https://vouchwise.in/out/buy-makemytrip-holiday-amazon",
         "perks": ""
       }
     ]
@@ -576,33 +786,33 @@ const masterBrands = [
     "category_name": "Fashion",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-marks-and-spencer-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.gyftr.com/instantvouchers/marks-spencer-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-marks-and-spencer-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 8.25,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=hv7pUyTvBW9QhaMC1Prh1w%3D%3D",
+        "site": "https://vouchwise.in/out/buy-marks-and-spencer-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.gyftr.com/edgerewards/marks-spencer-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-marks-and-spencer-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://amzn.in/d/0ffksCxF",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 9,
-        "site": "https://www.gyftr.com/marks-&-spencer",
+        "site": "https://vouchwise.in/out/buy-marks-and-spencer-amazon",
         "perks": ""
       }
     ]
@@ -613,33 +823,33 @@ const masterBrands = [
     "category_name": "E-Commerce",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-myntra-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/myntra-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-myntra-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=lTvX96rwO1nmJUyLprDUUQ%3D%3D",
+        "site": "https://vouchwise.in/out/buy-myntra-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.gyftr.com/edgerewards/myntra-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-myntra-edgerewards",
         "perks": "Earns 1.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 2,
-        "site": "https://amzn.in/d/08pGvBFF",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 2,
-        "site": "https://www.gyftr.com/myntra",
+        "site": "https://vouchwise.in/out/buy-myntra-amazon",
         "perks": ""
       }
     ]
@@ -650,33 +860,33 @@ const masterBrands = [
     "category_name": "E-Commerce",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-nykaa-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/nykaa-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-nykaa-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 3,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=mF7SoqSqDzXYeCWbF5lH9w%3D%3D",
+        "site": "https://vouchwise.in/out/buy-nykaa-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 4.5,
-        "site": "https://www.gyftr.com/edgerewards/nykaa-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-nykaa-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
-        "site": "https://amzn.in/d/0ipGJFzR",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 3,
-        "site": "https://www.gyftr.com/nykaa",
+        "site": "https://vouchwise.in/out/buy-nykaa-amazon",
         "perks": ""
       }
     ]
@@ -687,33 +897,33 @@ const masterBrands = [
     "category_name": "Fashion",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-skechers-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.gyftr.com/instantvouchers/skechers-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-skechers-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 7,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=FaNbdpBM132ED70SrgKcvw%3D%3D",
+        "site": "https://vouchwise.in/out/buy-skechers-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.gyftr.com/edgerewards/skechers-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-skechers-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 9,
-        "site": "https://amzn.in/d/0fZMof9c",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 8,
-        "site": "https://www.gyftr.com/skechers",
+        "site": "https://vouchwise.in/out/buy-skechers-amazon",
         "perks": ""
       }
     ]
@@ -724,33 +934,33 @@ const masterBrands = [
     "category_name": "Gifting",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-starbucks-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/starbucks-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-starbucks-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 4.2,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=AUtAaCTrmk7L0QqX6TQxdA%3D%3D",
+        "site": "https://vouchwise.in/out/buy-starbucks-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.gyftr.com/edgerewards/starbucks-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-starbucks-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
-        "site": "https://amzn.in/d/0fdnXwLM",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/starbucks",
+        "site": "https://vouchwise.in/out/buy-starbucks-amazon",
         "perks": ""
       }
     ]
@@ -761,33 +971,33 @@ const masterBrands = [
     "category_name": "Dining",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-subway-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.gyftr.com/instantvouchers/subway-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-subway-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 6,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=Xi%2BrfIYy013MUx9ouRHezg%3D%3D",
+        "site": "https://vouchwise.in/out/buy-subway-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 9,
-        "site": "https://www.gyftr.com/edgerewards/subway-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-subway-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://amzn.in/d/0cu87nHW",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 9,
-        "site": "https://www.gyftr.com/subway",
+        "site": "https://vouchwise.in/out/buy-subway-amazon",
         "perks": ""
       }
     ]
@@ -798,28 +1008,28 @@ const masterBrands = [
     "category_name": "Food",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-swiggy-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/swiggy-gv-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-swiggy-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=67QXkJBH5ual2f8tm2sCvQ%3D%3D",
+        "site": "https://vouchwise.in/out/buy-swiggy-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 1.5,
-        "site": "https://www.gyftr.com/edgerewards/swiggy-gv-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-swiggy-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/swiggy-gv",
-        "perks": ""
       }
     ]
   },
@@ -829,33 +1039,33 @@ const masterBrands = [
     "category_name": "Travel",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-taj-experiences-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.gyftr.com/instantvouchers/taj-hotels-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-taj-experiences-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 2.4,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=OQ3eIg2UEQcGVFUfVTM0Hw%3D%3D",
+        "site": "https://vouchwise.in/out/buy-taj-experiences-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 9,
-        "site": "https://www.gyftr.com/edgerewards/taj-hotels-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-taj-experiences-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://amzn.in/d/0iUrDIcM",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 8,
-        "site": "https://www.gyftr.com/taj-hotels",
+        "site": "https://vouchwise.in/out/buy-taj-experiences-amazon",
         "perks": ""
       }
     ]
@@ -866,27 +1076,27 @@ const masterBrands = [
     "category_name": "Fashion",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-tanishq-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.gyftr.com/instantvouchers/tanishq-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-tanishq-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=enWnA%2Bbs22kSK%2Fme1PRoSA%3D%3D",
+        "site": "https://vouchwise.in/out/buy-tanishq-shopwise",
         "perks": ""
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://amzn.in/d/0ha5AXzD",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/tanishq",
+        "site": "https://vouchwise.in/out/buy-tanishq-amazon",
         "perks": ""
       }
     ]
@@ -897,33 +1107,33 @@ const masterBrands = [
     "category_name": "Fashion",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-tata-cliq-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://www.gyftr.com/instantvouchers/tata-cliq-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-tata-cliq-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 5,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=vFFaCf88AswrO4vtto%2BKRQ%3D%3D",
+        "site": "https://vouchwise.in/out/buy-tata-cliq-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.gyftr.com/edgerewards/tata-cliq-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-tata-cliq-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://amzn.in/d/04wKYeYk",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 7,
-        "site": "https://www.gyftr.com/tata-cliq",
+        "site": "https://vouchwise.in/out/buy-tata-cliq-amazon",
         "perks": ""
       }
     ]
@@ -934,33 +1144,33 @@ const masterBrands = [
     "category_name": "Travel",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-uber-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/uber-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-uber-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=Yjz%2FjrZ6z4UlsvkcO5a1oQ%3D%3D",
+        "site": "https://vouchwise.in/out/buy-uber-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/edgerewards/uber-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-uber-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
-        "site": "https://amzn.in/d/02dpIMta",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 1,
-        "site": "https://www.gyftr.com/uber",
+        "site": "https://vouchwise.in/out/buy-uber-amazon",
         "perks": ""
       }
     ]
@@ -971,33 +1181,33 @@ const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-vijay-sales-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/vijay-sales-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-vijay-sales-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=T1CCjECQ57f9XKHHdmNqtg%3D%3D",
+        "site": "https://vouchwise.in/out/buy-vijay-sales-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/edgerewards/vijay-sales-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-vijay-sales-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://amzn.in/d/05LBMOcv",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 1,
-        "site": "https://www.gyftr.com/vijay-sales",
+        "site": "https://vouchwise.in/out/buy-vijay-sales-amazon",
         "perks": ""
       }
     ]
@@ -1008,33 +1218,33 @@ const masterBrands = [
     "category_name": "Fashion",
     "portals": [
       {
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-westside-gyftr",
+        "perks": ""
+      },
+      {
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/instantvouchers/westside-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-westside-smartbuy",
         "perks": ""
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://shopwise.giftstacc.com/giftcard?productId=biRRhlkDnYjs8pi8XDElew%3D%3D",
+        "site": "https://vouchwise.in/out/buy-westside-shopwise",
         "perks": ""
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/edgerewards/westside-gift-vouchers",
+        "site": "https://vouchwise.in/out/buy-westside-edgerewards",
         "perks": "Earns 0.5% GyFTR Coins"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://amzn.in/d/07Y3YpqQ",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
-        "site": "https://www.gyftr.com/westside",
+        "site": "https://vouchwise.in/out/buy-westside-amazon",
         "perks": ""
       }
     ]
@@ -1049,15 +1259,25 @@ const customBrands = JSON.parse(localStorage.getItem('customBrands') || '[]');
 export const cards = [...masterCards, ...customCards];
 export const brands = [...masterBrands, ...customBrands];
 
-// 4. Export Save Functions
+// 4. Export Save Functions (Hardened)
 export function saveCustomCard(newCard) {
   customCards.push(newCard);
-  localStorage.setItem('customCards', JSON.stringify(customCards));
+  try {
+    localStorage.setItem('customCards', JSON.stringify(customCards));
+  } catch (error) {
+    console.error("Storage update failed:", error);
+    alert("Could not sync profile preferences. Storage may be restricted or full.");
+  }
   cards.push(newCard); // Update live memory
 }
 
 export function saveCustomBrand(newBrand) {
   customBrands.push(newBrand);
-  localStorage.setItem('customBrands', JSON.stringify(customBrands));
+  try {
+    localStorage.setItem('customBrands', JSON.stringify(customBrands));
+  } catch (error) {
+    console.error("Storage update failed:", error);
+    alert("Could not sync profile preferences. Storage may be restricted or full.");
+  }
   brands.push(newBrand); // Update live memory
 }
