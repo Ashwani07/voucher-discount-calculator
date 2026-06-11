@@ -1,485 +1,570 @@
-import { portals, cards, brands, saveCustomCard, saveCustomBrand } from './data.js';
+import { portals, cards, brands, saveCustomCard, saveCustomBrand, lastVerified } from './data.js';
 import { calculateTrueNetMetrics } from './calculator.js';
 
-let currentBrandId = null;
+let currentBrandId   = null;
+let isFirstCalculate = true;
 
 /************************************************************************
- * Modular Data Processors (Pure Logic, No DOM) - Fixes #5
+ * WALLET PERSISTENCE
  ************************************************************************/
+const WALLET_KEY = 'walletCardIds';
 
-function findPortal(portalId) {
-  return portals.find(p => p.id === portalId) || null;
+function loadWalletIds() {
+  try { return JSON.parse(localStorage.getItem(WALLET_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveWalletIds(ids) {
+  localStorage.setItem(WALLET_KEY, JSON.stringify(ids));
+}
+function getActiveWalletIds() {
+  const panel = document.getElementById('walletPanel');
+  if (panel && !panel.classList.contains('hidden')) {
+    return Array.from(panel.querySelectorAll('input[type="checkbox"]:checked'))
+      .map(cb => cb.getAttribute('data-card-id'));
+  }
+  return loadWalletIds();
+}
+function deleteCustomCard(cardId) {
+  const idx = cards.findIndex(c => c.id === cardId);
+  if (idx !== -1) cards.splice(idx, 1);
+  const stored = JSON.parse(localStorage.getItem('customCards') || '[]');
+  localStorage.setItem('customCards', JSON.stringify(stored.filter(c => c.id !== cardId)));
+  saveWalletIds(loadWalletIds().filter(id => id !== cardId));
 }
 
-function getWalletSelectedCardIds() {
-  const inputs = document.querySelectorAll('#walletControls input[type="checkbox"]');
-  return Array.from(inputs).filter(i => i.checked).map(i => i.getAttribute('data-card-id'));
+/************************************************************************
+ * FLAGGED DISCOUNTS
+ ************************************************************************/
+function isDiscountFlagged(brandId, portalId) {
+  return localStorage.getItem(`flag:${brandId}:${portalId}`) === '1';
+}
+function toggleDiscountFlag(brandId, portalId) {
+  const key = `flag:${brandId}:${portalId}`;
+  localStorage.getItem(key) === '1' ? localStorage.removeItem(key) : localStorage.setItem(key, '1');
 }
 
 /************************************************************************
- * DOM wiring - Main Elements
+ * DOM REFERENCES
  ************************************************************************/
-const calculateBtn = document.getElementById("calculateBtn");
-const resetBtn = document.getElementById("resetBtn");
-const resultsSection = document.getElementById("results");
-const bestCardBox = document.getElementById("bestCardBox");
-const brandSearch = document.getElementById("brandSearch");
-const brandSuggestions = document.getElementById("brandSuggestions");
-const walletControls = document.getElementById("walletControls");
+const calculateBtn     = document.getElementById('calculateBtn');
+const resetBtn         = document.getElementById('resetBtn');
+const resultsSection   = document.getElementById('results');
+const bestCardBox      = document.getElementById('bestCardBox');
+const brandSearch      = document.getElementById('brandSearch');
+const brandSuggestions = document.getElementById('brandSuggestions');
+const walletControls   = document.getElementById('walletControls');
+const calcError        = document.getElementById('calcError');
 
 /************************************************************************
- * Dynamic Wallet UI
+ * WALLET UI
  ************************************************************************/
-function renderWalletUI() {
-  walletControls.innerHTML = ""; 
-
+function buildBankGroups() {
   const groups = {};
   cards.forEach(card => {
-    let bank = "Others";
-    if (card.id.startsWith("hdfc_")) bank = "HDFC Bank";
-    else if (card.id.startsWith("sbi_")) bank = "SBI Card";
-    else if (card.id.startsWith("axis_")) bank = "Axis Bank";
-    else if (card.id.startsWith("icici_")) bank = "ICICI Bank";
-    else if (card.id.startsWith("amex_")) bank = "American Express";
-    else if (card.id.startsWith("hsbc_")) bank = "HSBC Bank";
-    else if (card.id.startsWith("custom_")) bank = "Custom Cards";
-
+    let bank = 'Others';
+    if      (card.id.startsWith('hdfc_'))   bank = 'HDFC Bank';
+    else if (card.id.startsWith('sbi_'))    bank = 'SBI Card';
+    else if (card.id.startsWith('axis_'))   bank = 'Axis Bank';
+    else if (card.id.startsWith('icici_'))  bank = 'ICICI Bank';
+    else if (card.id.startsWith('amex_'))   bank = 'American Express';
+    else if (card.id.startsWith('hsbc_'))   bank = 'HSBC Bank';
+    else if (card.id.startsWith('custom_')) bank = 'Custom Cards';
     if (!groups[bank]) groups[bank] = [];
     groups[bank].push(card);
   });
+  return groups;
+}
 
-  for (const [bankName, bankCards] of Object.entries(groups)) {
-    const section = document.createElement("div");
-    section.className = "mb-4 border-b border-slate-100 pb-2 last:border-0";
-    
-    let cardsHTML = bankCards.map(card => {
-      const isCustom = card.id.startsWith('custom_') ? ' <span class="text-[10px] bg-slate-200 px-1 rounded text-slate-600">Custom</span>' : '';
-      return `
-        <label class="flex items-center gap-2 text-sm text-slate-700 py-1.5 cursor-pointer hover:text-slate-900">
-          <input type="checkbox" data-card-id="${card.id}" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
-          <span>${card.name}${isCustom}</span>
-        </label>
-      `;
-    }).join("");
+function renderWalletUI() {
+  const savedIds    = loadWalletIds();
+  const isFirstTime = savedIds.length === 0;
+  walletControls.innerHTML = '';
 
-    section.innerHTML = `
-      <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5 mt-1">${bankName}</p>
-      <div class="pl-1">${cardsHTML}</div>
-    `;
-    walletControls.appendChild(section);
+  // ── SUMMARY BAR (return visits) ──────────────────────────────────────
+  if (!isFirstTime) {
+    const savedCards = cards.filter(c => savedIds.includes(c.id));
+    const label = savedCards.length <= 3
+      ? savedCards.map(c => c.name).join(', ')
+      : savedCards.slice(0, 2).map(c => c.name).join(', ') + ` +${savedCards.length - 2} more`;
+
+    const summaryBar = document.createElement('div');
+    summaryBar.id        = 'walletSummaryBar';
+    summaryBar.className = 'flex items-center justify-between gap-2 py-1';
+    summaryBar.innerHTML = `
+      <p class="text-sm text-slate-700 truncate flex-1">
+        <span class="text-emerald-600 font-semibold">${savedCards.length} card${savedCards.length > 1 ? 's' : ''}:</span>
+        <span class="text-slate-600"> ${label}</span>
+      </p>
+      <button id="editWalletBtn" class="text-xs font-semibold text-sky-600 hover:underline whitespace-nowrap">Edit</button>`;
+    walletControls.appendChild(summaryBar);
   }
 
-  // Live Recalculation Listener
-  document.querySelectorAll('#walletControls input[type="checkbox"]').forEach(cb => {
+  // ── CHECKBOX PANEL ───────────────────────────────────────────────────
+  const panel     = document.createElement('div');
+  panel.id        = 'walletPanel';
+  panel.className = isFirstTime ? '' : 'hidden';
+
+  const groups  = buildBankGroups();
+  let panelHTML = '';
+
+  for (const [bankName, bankCards] of Object.entries(groups)) {
+    const rows = bankCards.map(card => {
+      const checked   = savedIds.includes(card.id) ? 'checked' : '';
+      const isCustom  = card.id.startsWith('custom_');
+      const customTag = isCustom
+        ? `<span class="text-[10px] bg-slate-200 px-1 rounded text-slate-500 ml-1">Custom</span>` : '';
+      const deleteBtn = isCustom
+        ? `<button data-delete-card="${card.id}" class="ml-auto text-[10px] text-red-300 hover:text-red-500 transition-colors" title="Remove">✕</button>` : '';
+      return `
+        <label class="flex items-center gap-2 text-sm text-slate-700 py-1 cursor-pointer hover:text-slate-900">
+          <input type="checkbox" data-card-id="${card.id}" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" ${checked}>
+          <span class="flex-1">${card.name}${customTag}</span>
+          ${deleteBtn}
+        </label>`;
+    }).join('');
+
+    panelHTML += `
+      <div class="mb-3 last:mb-0">
+        <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">${bankName}</p>
+        <div class="pl-1">${rows}</div>
+      </div>`;
+  }
+
+  const isEdit = !isFirstTime;
+  panelHTML += `
+    <div class="flex gap-2 mt-3 pt-3 border-t border-slate-100">
+      <button id="saveWalletBtn" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium py-1.5 rounded transition-colors">
+        ${isEdit ? 'Save Changes' : 'Save Wallet'}
+      </button>
+      ${isEdit ? `<button id="cancelWalletBtn" class="px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm rounded transition-colors">Cancel</button>` : ''}
+    </div>`;
+
+  panel.innerHTML = panelHTML;
+  walletControls.appendChild(panel);
+
+  // Edit button
+  walletControls.querySelector('#editWalletBtn')?.addEventListener('click', () => {
+    panel.classList.remove('hidden');
+    document.getElementById('walletSummaryBar')?.classList.add('hidden');
+  });
+
+  // Cancel button
+  panel.querySelector('#cancelWalletBtn')?.addEventListener('click', () => {
+    panel.classList.add('hidden');
+    document.getElementById('walletSummaryBar')?.classList.remove('hidden');
+    const saved = loadWalletIds();
+    panel.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.checked = saved.includes(cb.getAttribute('data-card-id'));
+    });
+  });
+
+  // Save Wallet button
+  panel.querySelector('#saveWalletBtn')?.addEventListener('click', () => {
+    const selected = Array.from(panel.querySelectorAll('input[type="checkbox"]:checked'))
+      .map(cb => cb.getAttribute('data-card-id'));
+    saveWalletIds(selected);
+    renderWalletUI();
+    if (currentBrandId && !resultsSection.classList.contains('hidden')) {
+      handleCalculate({ scroll: false });
+    }
+  });
+
+  // Delete custom card
+  panel.querySelectorAll('[data-delete-card]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = cards.find(c => c.id === btn.getAttribute('data-delete-card'));
+      if (!confirm(`Remove "${card?.name || 'this card'}"?`)) return;
+      deleteCustomCard(btn.getAttribute('data-delete-card'));
+      renderWalletUI();
+    });
+  });
+
+  // Live recalculate on checkbox change (no scroll)
+  panel.querySelectorAll('input[type="checkbox"]').forEach(cb => {
     cb.addEventListener('change', () => {
-      if (currentBrandId && !resultsSection.classList.contains("hidden")) {
-        handleCalculate();
+      if (currentBrandId && !resultsSection.classList.contains('hidden')) {
+        handleCalculate({ scroll: false });
       }
     });
   });
 }
 
-// Initialize wallet immediately on load
 renderWalletUI();
 
+// Populate verified date
+const verifiedDateEl = document.getElementById('verifiedDate');
+if (verifiedDateEl && lastVerified) verifiedDateEl.textContent = lastVerified;
+
 /************************************************************************
- * Autocomplete Search Logic
+ * AUTOCOMPLETE
  ************************************************************************/
-brandSearch.addEventListener("input", () => {
+brandSearch.addEventListener('input', () => {
   const q = brandSearch.value.trim().toLowerCase();
-  
-  if (!q) {
-    brandSuggestions.classList.add("hidden");
-    currentBrandId = null; 
-    return;
-  }
-
-  const matches = brands
-    .filter(b => b.name.toLowerCase().includes(q))
-    .slice(0, 10);
-
-  if (matches.length === 0) {
-    brandSuggestions.classList.add("hidden");
-    return;
-  }
-
+  if (!q) { brandSuggestions.classList.add('hidden'); currentBrandId = null; return; }
+  const matches = brands.filter(b => b.name.toLowerCase().includes(q)).slice(0, 10);
+  if (!matches.length) { brandSuggestions.classList.add('hidden'); return; }
   brandSuggestions.innerHTML = matches
-    .map(b => `<div data-id="${b.id}" class="hover:bg-slate-100 p-2 cursor-pointer border-b last:border-0">${b.name}</div>`)
-    .join("");
-
-  brandSuggestions.classList.remove("hidden");
+    .map(b => `<div data-id="${b.id}" class="hover:bg-slate-100 p-2 cursor-pointer border-b last:border-0 text-sm">${b.name}</div>`)
+    .join('');
+  brandSuggestions.classList.remove('hidden');
 });
 
-brandSuggestions.addEventListener("click", (e) => {
+brandSuggestions.addEventListener('click', (e) => {
   const target = e.target.closest('div[data-id]');
   if (!target) return;
-
-  const id = target.getAttribute("data-id");
-  const brand = brands.find(b => b.id === id);
+  const brand = brands.find(b => b.id === target.getAttribute('data-id'));
   if (!brand) return;
-
   brandSearch.value = brand.name;
-  currentBrandId = brand.id;
-  brandSuggestions.classList.add("hidden");
+  currentBrandId    = brand.id;
+  isFirstCalculate  = true;
+  brandSuggestions.classList.add('hidden');
 });
 
 document.addEventListener('click', (e) => {
   if (!brandSearch.contains(e.target) && !brandSuggestions.contains(e.target)) {
-    brandSuggestions.classList.add("hidden");
+    brandSuggestions.classList.add('hidden');
   }
 });
 
+/************************************************************************
+ * RESET
+ ************************************************************************/
 function handleReset() {
-  resultsSection.classList.add("hidden");
-  bestCardBox.classList.add("hidden");
-  document.getElementById("allCardsList").innerHTML = "";
+  resultsSection.classList.add('hidden');
+  bestCardBox.classList.add('hidden');
+  document.getElementById('allCardsList').innerHTML = '';
+  currentBrandId   = null;
+  isFirstCalculate = true;
+  brandSearch.value = '';
+  brandSuggestions.classList.add('hidden');
+  calcError.classList.add('hidden');
+  document.getElementById('resultTitle').textContent    = 'Result';
+  document.getElementById('resultSubtitle').textContent = '';
+  document.getElementById('upfrontValue').textContent   = '—';
+  document.getElementById('rewardValue').textContent    = '—';
+  document.getElementById('netValue').textContent       = '—';
+  document.getElementById('timestamp').textContent      = '';
+}
+resetBtn.addEventListener('click', handleReset);
 
-  currentBrandId = null;
-  brandSearch.value = "";
-  brandSuggestions.classList.add("hidden");
-
-  document.getElementById("resultTitle").textContent = "Result";
-  document.getElementById("resultSubtitle").textContent = "";
-  document.getElementById("upfrontValue").textContent = "—";
-  document.getElementById("rewardValue").textContent = "—";
-  document.getElementById("netValue").textContent = "—";
-  document.getElementById("explanation").textContent = "";
-  document.getElementById("timestamp").textContent = "";
+/************************************************************************
+ * CALCULATION PIPELINE
+ ************************************************************************/
+function findPortal(portalId) {
+  return portals.find(p => p.id === portalId) || null;
 }
 
-resetBtn.addEventListener("click", handleReset);
-
-/**
- * Step 1: Filter card + portal paths and compute true metrics
- */
 function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
   const results = [];
 
   for (const p of brand.portals) {
+    if (p.upfrontDiscountPercent === null) continue;
     const portal = findPortal(p.portalId);
     if (!portal) continue;
 
     let allowedCards = [];
-    if (p.portalId === "hdfc_smartbuy") {
-      allowedCards = cards.filter(c => c.id.startsWith("hdfc_") || c.id.startsWith("custom_"));
-    } else if (p.portalId === "shopwise") {
-      allowedCards = cards.filter(c => c.id.startsWith("amex_") || c.id.startsWith("custom_"));
-    } else if (p.portalId === "axis_edgerewards") {
-      allowedCards = cards.filter(c => c.id.startsWith("axis_") || c.id.startsWith("custom_"));
-    } else {
-      allowedCards = cards;
-    }
+    if      (p.portalId === 'hdfc_smartbuy')   allowedCards = cards.filter(c => c.id.startsWith('hdfc_')  || c.id.startsWith('custom_'));
+    else if (p.portalId === 'shopwise')         allowedCards = cards.filter(c => c.id.startsWith('amex_')  || c.id.startsWith('custom_'));
+    else if (p.portalId === 'axis_edgerewards') allowedCards = cards.filter(c => c.id.startsWith('axis_')  || c.id.startsWith('custom_'));
+    else if (p.portalId === 'axis_grabdeals')   allowedCards = cards.filter(c => c.id.startsWith('axis_')  || c.id.startsWith('custom_'));
+    else if (p.portalId === 'icici_ishop')      allowedCards = cards.filter(c => c.id.startsWith('icici_') || c.id.startsWith('custom_'));
+    else                                        allowedCards = cards;
 
     allowedCards = allowedCards.filter(c => walletSelectedIds.includes(c.id));
 
     for (const card of allowedCards) {
-      // Pass the voucherAmount into the math engine
-      const metrics = calculateTrueNetMetrics(card, { ...portal, upfrontDiscountPercent: p.upfrontDiscountPercent }, voucherAmount);
+      const metrics = calculateTrueNetMetrics(
+        card,
+        { ...portal, upfrontDiscountPercent: p.upfrontDiscountPercent },
+        voucherAmount
+      );
+      const cardRewardRate = card.spendBlock
+        ? (card.pointsPerBlock / card.spendBlock) * metrics.multiplier * (card.pointValue ?? 1) * 100
+        : 0;
 
       results.push({
-        portal,
-        portalId: p.portalId,
-        card,
-        upfront: p.upfrontDiscountPercent || 0,
-        reward: metrics.computedTrueNet - (p.upfrontDiscountPercent || 0),
-        net: metrics.computedTrueNet, 
+        portal, portalId: p.portalId, card,
+        upfront:         p.upfrontDiscountPercent || 0,
+        reward:          cardRewardRate,
+        net:             metrics.computedTrueNet,
         computedTrueNet: metrics.computedTrueNet,
-        metrics,
-        portalConfig: p
+        metrics,         portalConfig: p
       });
     }
   }
   return results;
 }
 
-/**
- * Step 2: Group and sort array configurations
- */
 function groupAndSortResults(results) {
-  const groupedByCard = results.reduce((groups, result) => {
-    const cardId = result.card.id;
-    if (!groups[cardId]) {
-      groups[cardId] = { card: result.card, entries: [] };
-    }
-    groups[cardId].entries.push(result);
-    return groups;
+  const byCard = results.reduce((acc, r) => {
+    if (!acc[r.card.id]) acc[r.card.id] = { card: r.card, entries: [] };
+    acc[r.card.id].entries.push(r);
+    return acc;
   }, {});
-
-  const groups = Object.values(groupedByCard).map(group => {
-    group.entries.sort((a, b) => b.computedTrueNet - a.computedTrueNet);
-    group.bestNet = group.entries[0].computedTrueNet;
-    return group;
-  });
-
-  groups.sort((a, b) => b.bestNet - a.bestNet);
-  return groups;
+  return Object.values(byCard).map(g => {
+    g.entries.sort((a, b) => b.computedTrueNet - a.computedTrueNet);
+    g.bestNet = g.entries[0].computedTrueNet;
+    return g;
+  }).sort((a, b) => b.bestNet - a.bestNet);
 }
 
 /************************************************************************
- * UI Render Engines (Pure DOM, No Logic) - Fixes #5
+ * RENDER
  ************************************************************************/
-
 function renderAllCardsList(groups, activeBrandObj) {
-  const generateGroupHTML = (subset) => subset.map(group => {
-    const portalRows = group.entries.map(entry => {
-      const activeBrandConfig = activeBrandObj?.portals?.find(p => p.portalId === entry.portal.id);
-      const perksText = entry.portalConfig?.perks || activeBrandConfig?.perks || ""; 
-      const perksHTML = perksText 
-        ? `<div class="inline-block mt-1 bg-emerald-50 text-[10px] text-emerald-700 font-medium px-1.5 py-0.5 rounded border border-emerald-200">${perksText}</div>`
-        : "";
+  const voucherAmount = parseFloat(document.getElementById('voucherAmount').value) || 1000;
 
-      // Universally calculate base percentage safely to prevent NaN crashes
-      const dynamicBasePercent = entry.card.spendBlock 
-        ? (entry.card.pointsPerBlock / entry.card.spendBlock) * 100 
-        : 0;
+  const generateCardBlock = (group) => {
+    const canApply = group.card.applyURL &&
+      group.card.applyStatus !== 'invite_only' &&
+      group.card.applyStatus !== 'closed';
 
-      const currencyLabel = entry.card.id === "axis_atlas" ? "Miles" : "RP";
-      
-      const rewardSubLabel = entry.card.rewardType === "points" 
-        ? `Reward: ${(dynamicBasePercent * entry.metrics.multiplier).toFixed(2)}% ${currencyLabel} (Value: ${(dynamicBasePercent * entry.metrics.multiplier * entry.card.pointValue).toFixed(2)}%)`
-        : `Reward: ${(dynamicBasePercent * entry.metrics.multiplier).toFixed(2)}% Flat Cashback`;
+    const applyBadge = canApply
+      ? `<a href="${group.card.applyURL}" target="_blank" rel="noopener noreferrer"
+           class="text-[10px] uppercase font-bold tracking-wider text-blue-600 border border-blue-200 hover:bg-blue-50 px-2 py-0.5 rounded transition-colors">Apply Now</a>`
+      : group.card.applyStatus === 'invite_only'
+        ? `<span class="text-[10px] text-slate-400 border border-slate-200 px-2 py-0.5 rounded">Invite Only</span>`
+        : '';
 
-      const exampleMathText = entry.card.rewardType === "points" && entry.card.spendBlock
-        ? `Pay ₹${entry.metrics.netPaid.toFixed(2)} upfront. Earn ${entry.metrics.rpEarned} ${currencyLabel} (Worth ₹${entry.metrics.cashValue.toFixed(2)}).`
-        : `Pay ₹${entry.metrics.netPaid.toFixed(2)} upfront. Earn ₹${entry.metrics.cashValue.toFixed(2)} Cashback.`;
+    const noteText = group.card.assumption_note || '';
+
+    const tableRows = group.entries.map(entry => {
+      const p            = entry.portalConfig;
+      const flagged      = isDiscountFlagged(activeBrandObj.id, entry.portalId);
+      const buyURL       = p?.site || '';
+      const perks        = p?.perks || '';
+      const disclaimer   = p?.disclaimer || '';
+      const notAvailable = disclaimer.toLowerCase().includes('not available');
+
+      const currencyLabel = entry.card.id === 'axis_atlas' ? 'Miles' : 'RP';
+
+      const exampleText = entry.card.rewardType === 'points' && entry.card.spendBlock
+        ? `Pay ₹${entry.metrics.netPaid.toFixed(0)} → ${entry.metrics.rpEarned} ${currencyLabel} (₹${entry.metrics.cashValue.toFixed(2)}) → Net ₹${entry.metrics.finalNetCost.toFixed(0)}`
+        : `Pay ₹${entry.metrics.netPaid.toFixed(0)} → ₹${entry.metrics.cashValue.toFixed(2)} cashback → Net ₹${entry.metrics.finalNetCost.toFixed(0)}`;
+
+      const disclaimerHTML = disclaimer
+        ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : '';
+      const perksHTML = perks
+        ? `<div class="inline-block mt-0.5 bg-emerald-50 text-[10px] text-emerald-700 px-1.5 py-0.5 rounded border border-emerald-200">${perks}</div>` : '';
+      const flagHTML = `
+        <button data-flag-brand="${activeBrandObj.id}" data-flag-portal="${entry.portalId}"
+          class="flag-btn text-[10px] ${flagged ? 'text-amber-500' : 'text-slate-300 hover:text-slate-400'} ml-1 transition-colors"
+          title="${flagged ? 'Marked as possibly outdated — click to unmark' : 'Flag discount as possibly outdated'}">⚑</button>`;
+      const flaggedBadge = flagged
+        ? `<span class="text-[10px] text-amber-600 bg-amber-50 border border-amber-200 px-1 py-0.5 rounded ml-1">Verify</span>` : '';
+      const buyBtn = (buyURL && !notAvailable)
+        ? `<a href="${buyURL}" target="_blank" rel="noopener noreferrer"
+             class="text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Buy ↗</a>`
+        : `<span class="text-[10px] text-slate-300">—</span>`;
 
       return `
-        <div class="border-b border-slate-200 py-3 last:border-0">
-          <div class="flex justify-between items-center gap-3">
-            <div>
-              <div class="font-medium">${entry.portal.name}</div>
-              <div class="text-xs text-slate-600 mt-1">${rewardSubLabel}</div>
-              ${perksHTML} 
-            </div>
-            <div class="text-sm font-semibold text-emerald-600">Net: ${entry.computedTrueNet.toFixed(2)}%</div>
-          </div>
-          <div class="text-xs text-slate-500 mt-2 bg-slate-50 p-2 rounded-md">
-            Example on ₹1,000: ${exampleMathText} Net Cost: ₹${entry.metrics.finalNetCost.toFixed(2)}.
-          </div>
-        </div>
-      `;
-    }).join("");
-
-    const disclaimerHTML = group.card.assumption_note
-      ? `<div class="text-[11px] italic text-slate-500 mt-3 border-t border-slate-100 pt-2">💡 ${group.card.assumption_note}</div>`
-      : `<div class="text-[11px] italic text-slate-500 mt-3 border-t border-slate-100 pt-2">Note: Card yields direct statement cashback credit.</div>`;
-
-    const applyButtonHTML = group.card.applyURL
-      ? `<a href="${group.card.applyURL}" target="_blank" rel="noopener noreferrer" class="text-[10px] uppercase font-bold tracking-wider text-blue-600 border border-blue-600 hover:bg-blue-50 px-2 py-0.5 rounded ml-3 transition-colors">Apply Now</a>` 
-      : "";
+        <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
+          <td class="py-2 pr-2 align-top">
+            <div class="font-medium text-sm text-slate-700">${entry.portal.name}${flagHTML}${flaggedBadge}</div>
+            ${perksHTML}${disclaimerHTML}
+            <div class="text-[10px] text-slate-400 mt-1">${exampleText}</div>
+          </td>
+          <td class="py-2 px-2 text-right align-top whitespace-nowrap text-xs text-slate-500">
+            ${entry.upfront > 0 ? entry.upfront.toFixed(1) + '%' : '—'}
+          </td>
+          <td class="py-2 px-2 text-right align-top whitespace-nowrap text-xs text-slate-500">
+            ${(entry.metrics.cashValue / voucherAmount * 100).toFixed(2)}%
+          </td>
+          <td class="py-2 pl-2 text-right align-top whitespace-nowrap font-semibold text-emerald-600 text-sm">
+            ${entry.computedTrueNet.toFixed(2)}%
+          </td>
+          <td class="py-2 pl-3 text-right align-top">${buyBtn}</td>
+        </tr>`;
+    }).join('');
 
     return `
-      <div class="p-3 bg-white border border-slate-200 shadow-sm rounded-md mt-4">
-        <div class="font-bold text-slate-800 mb-2 flex items-center">
-          ${group.card.name} 
-          ${applyButtonHTML}
+      <div class="bg-white border border-slate-200 rounded-md mt-3 overflow-hidden">
+        <div class="flex items-center justify-between px-3 py-2 bg-slate-50 border-b border-slate-200">
+          <span class="font-semibold text-sm text-slate-800">${group.card.name}</span>
+          ${applyBadge}
         </div>
-        ${portalRows}
-        ${disclaimerHTML}
-      </div>
-    `;
-  }).join("");
+        <div class="px-3 overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-[10px] uppercase tracking-wider text-slate-400 border-b border-slate-100">
+                <th class="text-left py-1.5 pr-2">Portal</th>
+                <th class="text-right py-1.5 px-2">Upfront</th>
+                <th class="text-right py-1.5 px-2">Card</th>
+                <th class="text-right py-1.5 pl-2">Net</th>
+                <th class="text-right py-1.5 pl-3">Buy</th>
+              </tr>
+            </thead>
+            <tbody>${tableRows}</tbody>
+          </table>
+        </div>
+        ${noteText ? `<div class="text-[11px] italic text-slate-400 px-3 pb-2 pt-1 border-t border-slate-100">💡 ${noteText}</div>` : ''}
+      </div>`;
+  };
 
-  const topTwoGroups = groups.slice(0, 2);
-  const remainingGroups = groups.slice(2);
+  const top2 = groups.slice(0, 2);
+  const rest = groups.slice(2);
+  let html   = top2.map(generateCardBlock).join('');
 
-  let finalHTML = generateGroupHTML(topTwoGroups);
-
-  if (remainingGroups.length > 0) {
-    finalHTML += `
-      <details class="mt-6 group">
-        <summary class="cursor-pointer text-sm font-semibold text-slate-700 bg-slate-100 p-3 rounded-md hover:bg-slate-200 transition-colors list-none flex justify-between items-center shadow-sm">
-          <span>View ${remainingGroups.length} other eligible cards</span>
-          <span class="transform group-open:rotate-180 transition-transform duration-200">▼</span>
+  if (rest.length) {
+    html += `
+      <details class="mt-4 group">
+        <summary class="cursor-pointer text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-2 rounded-md hover:bg-slate-200 transition-colors list-none flex justify-between items-center">
+          <span>View ${rest.length} other card${rest.length > 1 ? 's' : ''}</span>
+          <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs">▼</span>
         </summary>
-        <div class="mt-2 pl-2 border-l-2 border-slate-200">
-          ${generateGroupHTML(remainingGroups)}
-        </div>
-      </details>
-    `;
+        <div class="mt-1">${rest.map(generateCardBlock).join('')}</div>
+      </details>`;
   }
 
-  document.getElementById("allCardsList").innerHTML = finalHTML;
+  const allCardsList = document.getElementById('allCardsList');
+  allCardsList.innerHTML = html;
+
+  allCardsList.querySelectorAll('.flag-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      toggleDiscountFlag(btn.getAttribute('data-flag-brand'), btn.getAttribute('data-flag-portal'));
+      const brand = brands.find(b => b.id === currentBrandId);
+      const va    = parseFloat(document.getElementById('voucherAmount').value) || 1000;
+      renderAllCardsList(groupAndSortResults(getEligibleResults(brand, getActiveWalletIds(), va)), brand);
+    });
+  });
 }
 
-function renderResults(groups, brand) {
-  const resultsSection = document.getElementById("results");
-  const bestCardBox = document.getElementById("bestCardBox");
-  
-  const best = groups[0].entries[0];
+function renderResults(groups, brand, shouldScroll) {
+  const best     = groups[0].entries[0];
   const runnerUp = groups.length > 1 ? groups[1].entries[0] : null;
 
-  document.getElementById("resultTitle").textContent = brand.name;
-  document.getElementById("resultSubtitle").textContent = `${best.card.name} via ${best.portal.name}`;
-  document.getElementById("timestamp").textContent = new Date().toLocaleString();
+  document.getElementById('resultTitle').textContent    = brand.name;
+  document.getElementById('resultSubtitle').textContent = `${best.card.name} via ${best.portal.name}`;
+  document.getElementById('timestamp').textContent      = new Date().toLocaleTimeString();
+  document.getElementById('upfrontValue').textContent   = `${best.upfront.toFixed(2)}%`;
+  document.getElementById('rewardValue').textContent    = `${best.reward.toFixed(2)}%`;
+  document.getElementById('netValue').textContent       = `${best.computedTrueNet.toFixed(2)}%`;
 
-  document.getElementById("upfrontValue").textContent = `${best.upfront.toFixed(2)}%`;
-  document.getElementById("rewardValue").textContent = `${best.reward.toFixed(2)}%`;
-  document.getElementById("netValue").textContent = `${best.computedTrueNet.toFixed(2)}%`;
+  const buyBannerBtn = (url, cls) => url
+    ? `<a href="${url}" target="_blank" rel="noopener noreferrer"
+         class="text-xs ${cls} text-white px-4 py-1.5 rounded transition-colors whitespace-nowrap font-medium">Buy Voucher ↗</a>` : '';
 
-  document.getElementById("explanation").textContent =
-    `Best combination: ${best.card.name} on ${best.portal.name}. ` +
-    `Upfront Discount ${best.upfront.toFixed(2)}% + Card reward ${best.reward.toFixed(2)}% = Net ${best.computedTrueNet.toFixed(2)}%.`;
-
-  const bestUrl = best.portalConfig?.site;
-  const runnerUpUrl = runnerUp?.portalConfig?.site;
-
-  let bannersHTML = `
-    <div class="winner p-3 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold mt-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-      <div class="flex items-center gap-2">
-        <span class="text-lg">🥇</span> 
-        <span>Best: ${best.card.name} — ${best.computedTrueNet.toFixed(2)}% via ${best.portal.name}</span>
-      </div>
-      ${bestUrl ? `<a href="${bestUrl}" target="_blank" rel="noopener noreferrer" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded transition-colors whitespace-nowrap shadow-sm text-center">Buy Voucher ↗</a>` : ''}
+  bestCardBox.innerHTML = `
+    <div class="p-3 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold mt-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+      <div class="flex items-center gap-2"><span>🥇</span><span>Best: ${best.card.name} — ${best.computedTrueNet.toFixed(2)}% via ${best.portal.name}</span></div>
+      ${buyBannerBtn(best.portalConfig?.site, 'bg-emerald-600 hover:bg-emerald-700')}
     </div>
-  `;
+    ${runnerUp ? `
+    <div class="p-3 rounded-md bg-blue-50 border border-blue-200 text-blue-800 font-medium mt-2 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+      <div class="flex items-center gap-2"><span>🥈</span><span>2nd: ${runnerUp.card.name} — ${runnerUp.computedTrueNet.toFixed(2)}% via ${runnerUp.portal.name}</span></div>
+      ${buyBannerBtn(runnerUp.portalConfig?.site, 'bg-blue-600 hover:bg-blue-700')}
+    </div>` : ''}`;
 
-  if (runnerUp) {
-    bannersHTML += `
-      <div class="runner-up p-3 rounded-md bg-blue-50 border border-blue-200 text-blue-800 font-medium mt-2 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-        <div class="flex items-center gap-2">
-          <span class="text-lg">🥈</span> 
-          <span>2nd: ${runnerUp.card.name} — ${runnerUp.computedTrueNet.toFixed(2)}% via ${runnerUp.portal.name}</span>
-        </div>
-        ${runnerUpUrl ? `<a href="${runnerUpUrl}" target="_blank" rel="noopener noreferrer" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded transition-colors whitespace-nowrap shadow-sm text-center">Buy Voucher ↗</a>` : ''}
-      </div>
-    `;
-  }
-
-  bestCardBox.classList.remove("hidden");
-  bestCardBox.innerHTML = bannersHTML;
-
+  bestCardBox.classList.remove('hidden');
   renderAllCardsList(groups, brand);
-  resultsSection.classList.remove("hidden");
-  resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  resultsSection.classList.remove('hidden');
+  if (shouldScroll) resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 /************************************************************************
- * Orchestrator Handler
+ * ORCHESTRATOR
  ************************************************************************/
-function handleCalculate() {
-  if (!currentBrandId) return alert("Please search and select a brand first.");
+function handleCalculate({ scroll = true } = {}) {
+  const showError  = (msg) => { calcError.textContent = msg; calcError.classList.remove('hidden'); };
+  const clearError = () => calcError.classList.add('hidden');
+
+  if (!currentBrandId) return showError('Please search and select a brand first.');
+
+  const rawAmount = parseFloat(document.getElementById('voucherAmount').value);
+  if (!rawAmount || rawAmount < 1) return showError('Please enter a valid voucher amount (minimum ₹1).');
+  clearError();
 
   const brand = brands.find(b => b.id === currentBrandId);
   if (!brand) return;
 
-  const walletSelectedIds = getWalletSelectedCardIds();
-  if (!walletSelectedIds.length) {
-    document.getElementById("results").classList.remove("hidden");
-    document.getElementById("bestCardBox").classList.add("hidden");
-    document.getElementById("allCardsList").innerHTML = `<div class="p-3 text-sm text-slate-600 mt-4">No cards checked.</div>`;
+  const walletIds     = getActiveWalletIds();
+  const voucherAmount = rawAmount;
+
+  if (!walletIds.length) {
+    resultsSection.classList.remove('hidden');
+    bestCardBox.classList.add('hidden');
+    document.getElementById('allCardsList').innerHTML =
+      `<div class="p-3 text-sm text-slate-600 mt-4">No cards in wallet. Save your cards using the Edit button above.</div>`;
     return;
   }
 
-  // Extract the custom voucher amount, defaulting to 1000 if empty
-  const voucherAmount = parseFloat(document.getElementById("voucherAmount").value) || 1000;
-
-  // Pass the extracted amount into the logic pipeline
-  const rawResults = getEligibleResults(brand, walletSelectedIds, voucherAmount);
-  if (!rawResults.length) return;
+  const rawResults = getEligibleResults(brand, walletIds, voucherAmount);
+  if (!rawResults.length) {
+    resultsSection.classList.remove('hidden');
+    bestCardBox.classList.add('hidden');
+    document.getElementById('allCardsList').innerHTML =
+      `<div class="p-3 text-sm text-slate-600 mt-4">None of your saved cards work with portals available for this brand.</div>`;
+    return;
+  }
 
   const sortedGroups = groupAndSortResults(rawResults);
-  
-  renderResults(sortedGroups, brand);
+  renderResults(sortedGroups, brand, scroll && isFirstCalculate);
+  isFirstCalculate = false;
 }
 
-// Bind main operational click handlers cleanly
-document.getElementById("calculateBtn").addEventListener("click", handleCalculate);
+calculateBtn.addEventListener('click', () => {
+  isFirstCalculate = true;
+  handleCalculate({ scroll: true });
+});
 
 /************************************************************************
- * Modal & Custom Entry Handlers
+ * CUSTOM CARD MODAL
  ************************************************************************/
-// 1. DOM Element Mapping
-const customCardModal = document.getElementById("customCardModal");
-const openCardModalBtn = document.getElementById("openCardModalBtn");
-const closeCardModalBtn = document.getElementById("closeCardModalBtn");
-const saveCardBtn = document.getElementById("saveCardBtn");
+const customCardModal = document.getElementById('customCardModal');
+document.getElementById('openCardModalBtn').addEventListener('click',  () => customCardModal.classList.remove('hidden'));
+document.getElementById('closeCardModalBtn').addEventListener('click', () => customCardModal.classList.add('hidden'));
 
-const customBrandModal = document.getElementById("customBrandModal");
-const openBrandModalBtn = document.getElementById("openBrandModalBtn");
-const closeBrandModalBtn = document.getElementById("closeBrandModalBtn");
-const saveBrandBtn = document.getElementById("saveBrandBtn");
-
-// 2. Open / Close Event Listeners
-openCardModalBtn.addEventListener("click", () => customCardModal.classList.remove("hidden"));
-closeCardModalBtn.addEventListener("click", () => customCardModal.classList.add("hidden"));
-
-openBrandModalBtn.addEventListener("click", () => customBrandModal.classList.remove("hidden"));
-closeBrandModalBtn.addEventListener("click", () => customBrandModal.classList.add("hidden"));
-
-// 3. Save Custom Card Logic
-saveCardBtn.addEventListener("click", () => {
-  const id = "custom_" + Date.now();
-  const name = document.getElementById("ccName").value.trim() || "Custom Card";
-  const rewardType = document.getElementById("ccRewardType").value;
-  const pointValue = parseFloat(document.getElementById("ccPointValue").value) || 1;
-  const spendBlock = parseFloat(document.getElementById("ccSpendBlock").value) || 100;
-  const pointsPerBlock = parseFloat(document.getElementById("ccPointsPerBlock").value) || 1;
-
+document.getElementById('saveCardBtn').addEventListener('click', () => {
+  const id   = 'custom_' + Date.now();
+  const name = document.getElementById('ccName').value.trim() || 'Custom Card';
   const newCard = {
-    id,
-    name,
-    rewardType,
-    pointValue,
-    spendBlock,
-    pointsPerBlock,
+    id, name,
+    rewardType:     document.getElementById('ccRewardType').value,
+    pointValue:     parseFloat(document.getElementById('ccPointValue').value)     || 1,
+    spendBlock:     parseFloat(document.getElementById('ccSpendBlock').value)     || 100,
+    pointsPerBlock: parseFloat(document.getElementById('ccPointsPerBlock').value) || 1,
     portalMultipliers: {
-      hdfc_smartbuy: parseFloat(document.getElementById("ccSmartbuy").value) || 1,
-      gyftr: parseFloat(document.getElementById("ccGyftr").value) || 1,
-      icici_ishop: parseFloat(document.getElementById("ccIshop").value) || 1,
-      amazon: parseFloat(document.getElementById("ccAmazon").value) || 1,
-      axis_edgerewards: parseFloat(document.getElementById("ccEdgerewards").value) || 1,
-      shopwise: parseFloat(document.getElementById("ccShopwise").value) || 1,
+      hdfc_smartbuy:    parseFloat(document.getElementById('ccSmartbuy').value)     || 1,
+      gyftr:            parseFloat(document.getElementById('ccGyftr').value)        || 1,
+      icici_ishop:      parseFloat(document.getElementById('ccIshop').value)        || 1,
+      amazon:           parseFloat(document.getElementById('ccAmazon').value)       || 1,
+      axis_edgerewards: parseFloat(document.getElementById('ccEdgerewards').value)  || 1,
+      axis_grabdeals:   parseFloat(document.getElementById('ccEdgerewards').value)  || 1,
+      shopwise:         parseFloat(document.getElementById('ccShopwise').value)     || 1,
       default: 1
     },
-    assumption_note: "Custom user-defined portfolio card."
+    assumption_note: 'Custom user-defined card.'
   };
-
-  saveCustomCard(newCard); // Pushes to localStorage and live array
-  customCardModal.classList.add("hidden");
-  
-  // Clear the inputs
-  document.querySelectorAll('#customCardModal input').forEach(input => input.value = '');
-  
-  // Re-render the wallet immediately so the user sees their new card
+  saveCustomCard(newCard);
+  const walletIds = loadWalletIds();
+  if (!walletIds.includes(id)) { walletIds.push(id); saveWalletIds(walletIds); }
+  customCardModal.classList.add('hidden');
+  document.querySelectorAll('#customCardModal input').forEach(i => i.value = '');
   renderWalletUI();
 });
 
-// 4. Save Custom Brand Logic
-// 4. Save Custom Brand Logic (Updated for Portal Parity)
-saveBrandBtn.addEventListener("click", () => {
-  const id = "custom_brand_" + Date.now();
-  const name = document.getElementById("cbName").value.trim() || "Custom Brand";
-  
-  const newBrand = {
-    id,
-    name,
-    category_name: "Custom",
-    portals: []
-  };
+/************************************************************************
+ * CUSTOM BRAND MODAL
+ ************************************************************************/
+const customBrandModal = document.getElementById('customBrandModal');
+document.getElementById('openBrandModalBtn').addEventListener('click',  () => customBrandModal.classList.remove('hidden'));
+document.getElementById('closeBrandModalBtn').addEventListener('click', () => customBrandModal.classList.add('hidden'));
 
-  // Helper function to safely extract discounts and build the array
-  const pushPortal = (portalId, inputElementId) => {
-    const inputValue = document.getElementById(inputElementId).value;
-    newBrand.portals.push({
-      portalId: portalId,
-      upfrontDiscountPercent: parseFloat(inputValue) || 0, // Defaults to 0 if blank
-      site: "",
-      perks: ""
-    });
-  };
-
-  // Map all 6 active calculation portals
-  pushPortal("hdfc_smartbuy", "cbSmartbuy");
-  pushPortal("gyftr", "cbGyftr");
-  pushPortal("icici_ishop", "cbIshop");
-  pushPortal("amazon", "cbAmazon");
-  pushPortal("axis_edgerewards", "cbEdgerewards");
-  pushPortal("shopwise", "cbShopwise");
-
-  saveCustomBrand(newBrand); // Pushes to localStorage and live array
-  customBrandModal.classList.add("hidden");
-  
-  // Clear the inputs
-  document.querySelectorAll('#customBrandModal input').forEach(input => input.value = '');
+document.getElementById('saveBrandBtn').addEventListener('click', () => {
+  const id   = 'custom_brand_' + Date.now();
+  const name = document.getElementById('cbName').value.trim() || 'Custom Brand';
+  const newBrand = { id, name, category_name: 'Custom', portals: [] };
+  const push = (portalId, elId) => newBrand.portals.push({
+    portalId, upfrontDiscountPercent: parseFloat(document.getElementById(elId).value) || 0, site: '', perks: ''
+  });
+  push('hdfc_smartbuy',    'cbSmartbuy');
+  push('gyftr',            'cbGyftr');
+  push('icici_ishop',      'cbIshop');
+  push('amazon',           'cbAmazon');
+  push('axis_edgerewards', 'cbEdgerewards');
+  push('shopwise',         'cbShopwise');
+  saveCustomBrand(newBrand);
+  customBrandModal.classList.add('hidden');
+  document.querySelectorAll('#customBrandModal input').forEach(i => i.value = '');
 });

@@ -3,11 +3,68 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Find the best credit card + portal combo for buying vouchers. Calculates net effective discount including card rewards.">
-  <meta property="og:title" content="VouchWise — Voucher Discount Calculator">
-  <meta property="og:description" content="HDFC SmartBuy vs Axis EdgeRewards vs Gyftr — which gives you the best net discount? Enter your cards and find out.">
-  <meta property="og:url" content="https://vouchwise.in">
-  <title>Voucher Discount Calculator</title>
+
+  <!-- Primary SEO -->
+  <title>VouchWise — Best Credit Card Voucher Calculator India | HDFC SmartBuy, Gyftr, Axis EdgeRewards</title>
+  <meta name="description" content="Find the best credit card and portal combo for buying gift vouchers in India. Compare HDFC SmartBuy, Gyftr, Axis EdgeRewards, Shopwise, Amazon and more. Calculates net effective discount including card reward points.">
+  <meta name="keywords" content="voucher discount calculator, gift card credit card India, HDFC SmartBuy voucher, Gyftr discount, Axis EdgeRewards voucher, best portal for gift vouchers, credit card voucher offers India">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vouchwise.in/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="VouchWise — Best Credit Card Voucher Calculator India">
+  <meta property="og:description" content="HDFC SmartBuy vs Axis EdgeRewards vs Gyftr — which gives the best net discount on gift vouchers? Enter your cards and find out instantly.">
+  <meta property="og:url" content="https://vouchwise.in/">
+  <meta property="og:site_name" content="VouchWise">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@VouchWise">
+  <meta name="twitter:title" content="VouchWise — Credit Card Voucher Discount Calculator">
+  <meta name="twitter:description" content="Find the best portal + card combo for buying gift vouchers in India. Calculates net effective discount including reward points.">
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "VouchWise Voucher Discount Calculator",
+    "url": "https://vouchwise.in/",
+    "description": "A free calculator that helps Indian credit card holders find the best portal and card combination for purchasing gift vouchers. Compares HDFC SmartBuy, Gyftr, Axis EdgeRewards, Amex Shopwise, Amazon, ICICI iShop and Axis GrabDeals.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "audience": { "@type": "Audience", "audienceType": "Credit card holders in India" },
+    "provider": { "@type": "Organization", "name": "VouchWise", "url": "https://vouchwise.in/" }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage (rich snippets in search results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which portal gives the best discount on gift vouchers in India?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on your credit card. HDFC SmartBuy offers accelerated reward points for HDFC cardholders, Axis EdgeRewards gives better returns for Axis Magnus and Burgundy cards, while Amex Shopwise is best for Amex cardholders. VouchWise calculates the net effective discount for your specific wallet." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I get maximum discount on gift vouchers like Myntra, Swiggy or Amazon?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Search for the brand on VouchWise, select the credit cards you own, and the calculator instantly shows the best portal and card combination — including upfront portal discount plus the rupee value of reward points earned." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is VouchWise free to use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, VouchWise is completely free with no signup or subscription required." }
+      }
+    ]
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -84,23 +141,22 @@
         <!-- NEW VOUCHER AMOUNT FIELD -->
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-1">Voucher Value (₹)</label>
-          <input id="voucherAmount" type="number" placeholder="1000" value="1000" class="w-full border border-slate-300 p-2 rounded-md text-sm">
+          <input id="voucherAmount" type="number" placeholder="1000" value="1000" min="1" inputmode="numeric" class="w-full border border-slate-300 p-2 rounded-md text-sm">
         </div>
 
         <div class="flex gap-3 mt-2">
           <button id="calculateBtn" class="flex-1 rounded-md bg-emerald-600 text-white px-4 py-2 font-semibold hover:bg-emerald-500">Calculate</button>
           <button id="resetBtn" class="rounded-md border border-slate-300 px-4 py-2 text-slate-700 bg-white">Reset</button>
         </div>
+        <p id="calcError" class="hidden text-sm text-red-500 mt-1"></p>
       </section>
 
-      <div id="myWallet" class="mt-4 p-3 border rounded-md bg-white">
-        <p class="font-semibold mb-2">My Wallet (select cards you own)</p>
-        <div class="flex justify-between items-end mb-2">
-          <p class="font-semibold">My Wallet</p>
+      <div id="myWallet" class="mt-4 p-3 border border-slate-200 rounded-md bg-white">
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-sm font-semibold text-slate-800">💳 My Wallet</p>
           <button id="openCardModalBtn" class="text-xs text-emerald-600 font-semibold hover:underline">+ Add Custom Card</button>
         </div>
-        <div id="walletControls" class="grid grid-cols-2 gap-2"></div>
-        <p id="walletHint" class="text-xs text-slate-500 mt-2">By default none are selected. Results will be calculated only for checked cards.</p>
+        <div id="walletControls"></div>
       </div>
 
       <section id="results" class="mt-6 hidden">
@@ -131,11 +187,11 @@
             </div>
           </div>
 
-          <p id="explanation" class="mt-3 text-sm text-slate-600"></p>
+          <!-- explanation removed: redundant with banner below -->
           <div id="bestCardBox" class="hidden mt-4" aria-live="polite"></div>
           <div id="allCardsList" class="mt-4 text-sm text-slate-700"></div>
           <div id="verifiedStamp" class="mt-3 text-xs text-slate-500 opacity-70">
-            Discounts last verified on June 2026.
+            Discounts last verified: <span id="verifiedDate"></span>
           </div>
 
         </div>
@@ -202,5 +258,43 @@
     </div>
   </div>
   <script type="module" src="./js/app.js"></script>
+
+  <!--
+    Static content for search crawlers.
+    Solves JS-rendering indexing gap: brand/portal/card names readable without JavaScript.
+  -->
+  <div style="display:none" aria-hidden="true">
+    <h2>Gift Voucher Brands Supported</h2>
+    <p>VouchWise calculates the best credit card and portal discount for gift vouchers across these brands:</p>
+    <ul>
+      <li>Adidas</li><li>Air India</li><li>Ajio</li><li>Amazon Pay</li><li>Amazon Fresh</li>
+      <li>Amazon Prime Membership</li><li>Apollo Pharmacy</li><li>Barbeque Nation</li>
+      <li>Bath &amp; Body Works</li><li>Bigbasket</li><li>Blinkit</li><li>BookMyShow</li>
+      <li>Cleartrip</li><li>Costa Coffee</li><li>Croma</li><li>Decathlon</li><li>Domino&#39;s</li>
+      <li>EaseMyTrip</li><li>Fabindia</li><li>Ferns N Petals</li><li>Flipkart</li>
+      <li>H&amp;M</li><li>IKEA</li><li>ITC Hotels</li><li>JioHotstar</li><li>KFC</li>
+      <li>Klook</li><li>Lakme Salon</li><li>Lenskart</li><li>Levis</li><li>Lifestyle</li>
+      <li>MakeMyTrip</li><li>Mamaearth</li><li>Manyavar</li><li>Marks &amp; Spencer</li>
+      <li>Max Fashion</li><li>Myntra</li><li>Netmeds</li><li>Nykaa</li><li>Nykaa Fashion</li>
+      <li>Ola Cabs</li><li>Pantaloons</li><li>Pharmeasy</li><li>Pizza Hut</li><li>Puma</li>
+      <li>PVR</li><li>Reliance Digital</li><li>Reliance Smart</li><li>Shoppers Stop</li>
+      <li>Skechers</li><li>SonyLiv</li><li>Starbucks</li><li>Subway</li><li>Swiggy</li>
+      <li>Taj Hotels</li><li>Tanishq</li><li>Tata Cliq</li><li>Tata Cliq Luxury</li>
+      <li>Uber</li><li>Vijay Sales</li><li>Westside</li><li>Zepto</li><li>Zomato</li>
+    </ul>
+    <h2>Portals Compared</h2>
+    <ul>
+      <li>HDFC SmartBuy — best for HDFC Infinia, Diners Black Metal, Regalia Gold, Swiggy card</li>
+      <li>Gyftr — open to all cards, upfront discount on gift vouchers</li>
+      <li>Axis EdgeRewards — best for Axis Magnus Burgundy, Magnus, Atlas, Horizon</li>
+      <li>Axis GrabDeals Woohoo — Axis Bank portal with select brand offers</li>
+      <li>Amex Shopwise — exclusive to American Express cardholders</li>
+      <li>Amazon Gift Cards — open to all cards, eligible for card rewards</li>
+      <li>ICICI iShop — best for ICICI Emeralde, Times Black, Amazon Pay card</li>
+    </ul>
+    <h2>Cards Supported</h2>
+    <p>HDFC Infinia, HDFC Diners Black Metal, HDFC Regalia Gold, HDFC Swiggy, Axis Magnus Burgundy, Axis Magnus, Axis Atlas, Axis Horizon, Amex Platinum Reserve, Amex Platinum Travel, Amex MRCC, Amex Gold, ICICI Emeralde Private Metal, ICICI Times Black, ICICI Emeralde, ICICI Amazon Pay, HSBC Premier, HSBC TravelOne, HSBC Live+, SBI Cashback, Jupiter Edge+, Scapia.</p>
+  </div>
+
 </body>
 </html>
