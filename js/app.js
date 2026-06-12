@@ -102,7 +102,9 @@ function renderWalletUI() {
   // ── CHECKBOX PANEL ───────────────────────────────────────────────────
   const panel     = document.createElement('div');
   panel.id        = 'walletPanel';
-  panel.className = isFirstTime ? '' : 'hidden';
+  panel.className = isFirstTime 
+  ? 'grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2' 
+  : 'hidden grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2';
 
   const groups  = buildBankGroups();
   let panelHTML = '';
