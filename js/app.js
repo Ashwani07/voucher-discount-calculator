@@ -277,6 +277,7 @@ function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
       const metrics = calculateTrueNetMetrics(
         card,
         { ...portal, upfrontDiscountPercent: p.upfrontDiscountPercent },
+        p,
         voucherAmount
       );
       const cardRewardRate = card.spendBlock
@@ -339,10 +340,13 @@ function renderAllCardsList(groups, activeBrandObj) {
 
       const currencyLabel = entry.card.id === 'axis_atlas' ? 'Miles' : 'RP';
 
-      const exampleText = entry.card.rewardType === 'points' && entry.card.spendBlock
-        ? `Pay ₹${entry.metrics.netPaid.toFixed(0)} → ${entry.metrics.rpEarned} ${currencyLabel} (₹${entry.metrics.cashValue.toFixed(2)}) → Net ₹${entry.metrics.finalNetCost.toFixed(0)}`
-        : `Pay ₹${entry.metrics.netPaid.toFixed(0)} → ₹${entry.metrics.cashValue.toFixed(2)} cashback → Net ₹${entry.metrics.finalNetCost.toFixed(0)}`;
+      // Calculate the specific yield against the original voucher amount
+      const cardYieldPercent = (entry.metrics.cashValue / voucherAmount * 100).toFixed(2);
 
+      // Generate clear UX strings explaining the exact flow of money
+      const exampleText = entry.card.rewardType === 'points' && entry.card.spendBlock
+        ? `Pay ₹${entry.metrics.netPaid.toFixed(0)} (after discount) → ${entry.metrics.rpEarned} ${currencyLabel} (₹${entry.metrics.cashValue.toFixed(2)} value / ${cardYieldPercent}% of voucher) → Net ₹${entry.metrics.finalNetCost.toFixed(0)}`
+        : `Pay ₹${entry.metrics.netPaid.toFixed(0)} (after discount) → ₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}% of voucher) cashback → Net ₹${entry.metrics.finalNetCost.toFixed(0)}`;
       const disclaimerHTML = disclaimer
         ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : '';
       const perksHTML = perks
@@ -369,7 +373,7 @@ function renderAllCardsList(groups, activeBrandObj) {
             ${entry.upfront > 0 ? entry.upfront.toFixed(1) + '%' : '—'}
           </td>
           <td class="py-2 px-2 text-right align-top whitespace-nowrap text-xs text-slate-500">
-            ${(entry.metrics.cashValue / voucherAmount * 100).toFixed(2)}%
+            ${entry.reward.toFixed(2)}%
           </td>
           <td class="py-2 pl-2 text-right align-top whitespace-nowrap font-semibold text-emerald-600 text-sm">
             ${entry.computedTrueNet.toFixed(2)}%

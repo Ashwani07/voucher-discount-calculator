@@ -21,382 +21,6 @@ export const portals = [
 // 1. Define Master Arrays
 // https://offers.smartbuy.hdfc.bank.in/v2/accelerated-earn-rules
 // https://www.ishoprewards.com/shopping-vouchers
-const masterCards = [
-  {
-    "id": "amex_platinum_reserve",
-    "name": "Amex Platinum Reserve",
-    "rewardType": "points",
-    "pointValue": 0.33,
-    "spendBlock": 50,
-    "pointsPerBlock": 1,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 3,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-amex-platinum-reserve",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on standard catalog yield."
-  },
-  {
-    "id": "amex_platinum_travel",
-    "name": "Amex Platinum Travel",
-    "rewardType": "points",
-    "pointValue": 0.33,
-    "spendBlock": 50,
-    "pointsPerBlock": 1,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 3,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-amex-platinum-travel",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33; optimal value unlocked at milestone spends."
-  },
-  {
-    "id": "amex_mrcc",
-    "name": "Amex MRCC",
-    "rewardType": "points",
-    "pointValue": 0.33,
-    "spendBlock": 50,
-    "pointsPerBlock": 1,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 2,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption."
-  },
-  {
-    "id": "amex_gold",
-    "name": "Amex Gold",
-    "rewardType": "points",
-    "pointValue": 0.33,
-    "spendBlock": 50,
-    "pointsPerBlock": 1,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 5,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-amex-gold",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption."
-  },
-  {
-    "id": "axis_magnus_burgundy",
-    "name": "Axis Magnus Burgundy",
-    "rewardType": "points",
-    "pointValue": 0.8,
-    "spendBlock": 200,
-    "pointsPerBlock": 12,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 1,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
-    "assumption_note": "Assuming 5 Edge Rewards = 4 Air Miles = ₹4.00 (₹0.80 per point)."
-  },
-  {
-    "id": "axis_magnus",
-    "name": "Axis Magnus",
-    "rewardType": "points",
-    "pointValue": 0.4,
-    "spendBlock": 200,
-    "pointsPerBlock": 12,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 1,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-axis-magnus",
-    "assumption_note": "Assuming 5 Edge Rewards = 2 Air Miles = ₹2.00 (₹0.40 per point)."
-  },
-  {
-    "id": "axis_atlas",
-    "name": "Axis Atlas",
-    "rewardType": "points",
-    "pointValue": 2,
-    "spendBlock": 100,
-    "pointsPerBlock": 2,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 1,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-axis-atlas",
-    "assumption_note": "Assuming 1 Edge Mile = 2 Partner Miles = ₹2.00."
-  },
-  {
-    "id": "axis_horizon",
-    "name": "Axis Horizon",
-    "rewardType": "points",
-    "pointValue": 1,
-    "spendBlock": 100,
-    "pointsPerBlock": 2,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 1,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-axis-horizon",
-    "assumption_note": "Assuming 1 Edge Reward = 1 Partner Mile = ₹1.00."
-  },
-  {
-    "id": "hdfc_infinia",
-    "name": "HDFC Infinia",
-    "rewardType": "points",
-    "pointValue": 1,
-    "spendBlock": 150,
-    "pointsPerBlock": 5,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 5,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
-    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via SmartBuy travel redemption."
-  },
-  {
-    "id": "hdfc_dbm",
-    "name": "HDFC Diners Black Metal",
-    "rewardType": "points",
-    "pointValue": 1,
-    "spendBlock": 150,
-    "pointsPerBlock": 5,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 3,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-hdfc-dbm",
-    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via SmartBuy travel redemption."
-  },
-  {
-    "id": "hdfc_regalia_gold",
-    "name": "HDFC Regalia Gold",
-    "rewardType": "points",
-    "pointValue": 0.5,
-    "spendBlock": 200,
-    "pointsPerBlock": 5,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 5,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-hdfc-regalia-gold",
-    "assumption_note": "Assuming 1 Reward Point = ₹0.50 via SmartBuy travel redemption."
-  },
-  {
-    "id": "hdfc_swiggy",
-    "name": "HDFC Swiggy",
-    "rewardType": "cashback",
-    "pointValue": 1,
-    "spendBlock": 100,
-    "pointsPerBlock": 5,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 1,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-hdfc-swiggy",
-    "assumption_note": "Direct statement cashback; no valuation assumption required."
-  },
-  {
-    "id": "hsbc_premier",
-    "name": "HSBC Premier",
-    "rewardType": "points",
-    "pointValue": 1,
-    "spendBlock": 100,
-    "pointsPerBlock": 3,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-hsbc-premier",
-    "assumption_note": "Assuming 1 Reward Point = 1 Air Mile = ₹1.00."
-  },
-  {
-    "id": "hsbc_travelone",
-    "name": "HSBC Travel One",
-    "rewardType": "points",
-    "pointValue": 1,
-    "spendBlock": 100,
-    "pointsPerBlock": 2,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-hsbc-travelone",
-    "assumption_note": "Assuming 1 Reward Point = 1 Air Mile = ₹1.00."
-  },
-  {
-    "id": "hsbc_liveplus",
-    "name": "HSBC Live+",
-    "rewardType": "cashback",
-    "pointValue": 1,
-    "spendBlock": 100,
-    "pointsPerBlock": 1.5,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-hsbc-liveplus",
-    "assumption_note": "Direct statement cashback; no valuation assumption required."
-  },
-  {
-    "id": "icici_epm",
-    "name": "ICICI Emeralde Private Metal",
-    "rewardType": "points",
-    "pointValue": 1,
-    "spendBlock": 200,
-    "pointsPerBlock": 6,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 6,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-icici-epm",
-    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via EaseMyTrip/in-app redemption."
-  },
-  {
-    "id": "icici_times",
-    "name": "ICICI Times Black",
-    "rewardType": "points",
-    "pointValue": 1,
-    "spendBlock": 50,
-    "pointsPerBlock": 1,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 6,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-icici-times",
-    "assumption_note": "Assuming 1 Reward Point = ₹1.00; actual value varies by catalog."
-  },
-  {
-    "id": "icici_emeralde",
-    "name": "ICICI Emeralde",
-    "rewardType": "points",
-    "pointValue": 0.25,
-    "spendBlock": 100,
-    "pointsPerBlock": 4,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 6,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-icici-emeralde",
-    "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard redemption."
-  },
-  {
-    "id": "icici_amazon",
-    "name": "ICICI Amazon",
-    "rewardType": "cashback",
-    "pointValue": 1,
-    "spendBlock": 100,
-    "pointsPerBlock": 1,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 4,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-icici-amazon",
-    "assumption_note": "Direct Amazon Pay balance cashback; no valuation assumption required."
-  },
-  {
-    "id": "sbi_cashback",
-    "name": "SBI Cashback",
-    "rewardType": "cashback",
-    "pointValue": 1,
-    "spendBlock": 100,
-    "pointsPerBlock": 5,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
-    "assumption_note": "Direct statement cashback; no valuation assumption required."
-  },
-  {
-    "id": "jupiter_edge_plus",
-    "name": "Jupiter Edge+",
-    "rewardType": "cashback",
-    "pointValue": 1,
-    "spendBlock": 100,
-    "pointsPerBlock": 1,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-jupiter-edge-plus",
-    "assumption_note": "Direct statement cashback; no valuation assumption required."
-  },
-  {
-    "id": "scapia",
-    "name": "Scapia",
-    "rewardType": "points",
-    "pointValue": 0.2,
-    "spendBlock": 20,
-    "pointsPerBlock": 2,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "axis_edgerewards": 0,
-      "icici_ishop": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-scapia",
-    "assumption_note": "Assuming 5 Scapia coins = ₹1.00 (₹0.20 per coin) via in-app travel booking."
-  }
-];
 
 // <<BRANDS_START>>
 const masterBrands = [
@@ -428,7 +52,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-adidas-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
@@ -478,29 +103,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-air-india-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-air-india-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-air-india-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-air-india-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "1% iCash"
       }
     ]
   },
@@ -530,9 +154,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 6,
+        "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-ajio-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -542,17 +167,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-ajio-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ajio-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "1% iCash"
       }
     ]
   },
@@ -585,7 +208,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -597,15 +221,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "1.5% iCash"
       }
     ]
   },
@@ -637,7 +259,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-fresh-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -649,15 +272,14 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-fresh-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-fresh-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "3% iCash",
+        "disclaimer": "overrideRewardMultiplier: 0"
       }
     ]
   },
@@ -689,27 +311,26 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-prime-membership-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-amazon-prime-membership-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 15,
         "site": "https://vouchwise.in/out/buy-amazon-prime-membership-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-prime-membership-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "18% iCash"
       }
     ]
   },
@@ -742,7 +363,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-shopping-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -754,15 +376,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-shopping-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-shopping-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "2.5% iCash"
       }
     ]
   },
@@ -792,22 +412,22 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-apollo-pharmacy-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 7,
         "site": "https://vouchwise.in/out/buy-apollo-pharmacy-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 9.5,
         "site": "https://vouchwise.in/out/buy-apollo-pharmacy-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -846,7 +466,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-barbeque-nation-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -865,8 +486,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-barbeque-nation-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "3% iCash"
       }
     ]
   },
@@ -898,7 +518,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 14,
         "site": "https://vouchwise.in/out/buy-bath-and-body-works-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
@@ -917,8 +538,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bath-and-body-works-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "9% iCash"
       }
     ]
   },
@@ -951,7 +571,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-bigbasket-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -961,17 +582,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3.5,
         "site": "https://vouchwise.in/out/buy-bigbasket-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bigbasket-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "1% iCash"
       }
     ]
   },
@@ -1004,27 +623,27 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-blinkit-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-blinkit-gyftr",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-blinkit-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-blinkit-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       }
     ]
   },
@@ -1058,7 +677,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-bookmyshow-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -1069,10 +689,9 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-bookmyshow-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -1111,7 +730,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-cleartrip-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -1121,17 +741,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-cleartrip-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-cleartrip-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "3% iCash"
       }
     ]
   },
@@ -1161,31 +779,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 15,
         "site": "https://vouchwise.in/out/buy-cleartrip-hotel-amazon",
         "perks": "",
-        "disclaimer": "Not Available"
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 15,
         "site": "https://vouchwise.in/out/buy-cleartrip-hotel-gyftr",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 16,
         "site": "https://vouchwise.in/out/buy-cleartrip-hotel-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-cleartrip-hotel-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "6% iCash"
       }
     ]
   },
@@ -1215,13 +830,14 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-costa-coffee-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-costa-coffee-gyftr",
         "perks": ""
       },
@@ -1236,8 +852,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-costa-coffee-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "5% iCash"
       }
     ]
   },
@@ -1268,9 +883,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 3,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-croma-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
@@ -1280,17 +896,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-croma-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-croma-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       }
     ]
   },
@@ -1322,7 +936,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-decathlon-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
@@ -1332,17 +947,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3.5,
         "site": "https://vouchwise.in/out/buy-decathlon-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-decathlon-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "2% iCash"
       }
     ]
   },
@@ -1372,13 +985,14 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-dominos-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 16,
         "site": "https://vouchwise.in/out/buy-dominos-gyftr",
         "perks": ""
       },
@@ -1393,8 +1007,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-dominos-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "4% iCash"
       }
     ]
   },
@@ -1426,7 +1039,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-easemytrip-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -1437,17 +1051,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-easemytrip-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-easemytrip-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "3% iCash"
       }
     ]
   },
@@ -1478,9 +1090,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-easemytrip-holiday-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -1490,10 +1103,9 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10.5,
         "site": "https://vouchwise.in/out/buy-easemytrip-holiday-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -1531,10 +1143,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 9,
         "site": "https://vouchwise.in/out/buy-easemytrip-hotel-amazon",
         "perks": "",
-        "disclaimer": "Not Available"
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -1545,10 +1157,9 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 9,
         "site": "https://vouchwise.in/out/buy-easemytrip-hotel-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -1587,13 +1198,15 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fabindia-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fabindia-gyftr",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "axis_grabdeals",
@@ -1606,8 +1219,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fabindia-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "4% iCash"
       }
     ]
   },
@@ -1639,11 +1251,12 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ferns-n-petals-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 16,
         "site": "https://vouchwise.in/out/buy-ferns-n-petals-gyftr",
         "perks": ""
       },
@@ -1658,8 +1271,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ferns-n-petals-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "8% iCash"
       }
     ]
   },
@@ -1692,7 +1304,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-flipkart-gift-card-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
@@ -1704,69 +1317,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-flipkart-gift-card-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-flipkart-gift-card-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
-      }
-    ]
-  },
-  {
-    "id": "h&m",
-    "name": "H&M",
-    "category_name": "Fashion",
-    "portals": [
-      {
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-h-and-m-smartbuy",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "shopwise",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-h-and-m-shopwise",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-h-and-m-edgerewards",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-h&m-amazon",
         "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-h-and-m-gyftr",
-        "perks": "na"
-      },
-      {
-        "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-handm-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-handm-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
       }
     ]
   },
@@ -1798,7 +1355,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-igp-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
@@ -1817,8 +1375,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-igp-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "10% iCash"
       }
     ]
   },
@@ -1848,29 +1405,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-ikea-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-ikea-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3.5,
         "site": "https://vouchwise.in/out/buy-ikea-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ikea-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "1% iCash"
       }
     ]
   },
@@ -1902,7 +1458,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-itc-hotels-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
@@ -1912,17 +1469,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-itc-hotels-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-itc-hotels-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "5% iCash"
       }
     ]
   },
@@ -1952,13 +1507,14 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-jiohotstar-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-jiohotstar-gyftr",
         "perks": ""
       },
@@ -2004,29 +1560,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-kfc-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-kfc-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6.5,
         "site": "https://vouchwise.in/out/buy-kfc-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-kfc-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "2% iCash"
       }
     ]
   },
@@ -2056,17 +1611,16 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-klook-amazon",
         "perks": "",
-        "disclaimer": "Not Available"
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6.5,
         "site": "https://vouchwise.in/out/buy-klook-gyftr",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
@@ -2114,27 +1668,27 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-lakme-salon-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lakme-salon-gyftr",
-        "perks": "na"
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-lakme-salon-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lakme-salon-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "1% iCash"
       }
     ]
   },
@@ -2164,29 +1718,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-lenskart-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-lenskart-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 9,
         "site": "https://vouchwise.in/out/buy-lenskart-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lenskart-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "5% iCash"
       }
     ]
   },
@@ -2216,9 +1769,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-levis-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -2230,15 +1784,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-levis-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-levis-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "6% iCash"
       }
     ]
   },
@@ -2269,9 +1821,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 5,
+        "upfrontDiscountPercent": 7,
         "site": "https://vouchwise.in/out/buy-lifestyle-offline-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -2281,10 +1834,9 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-lifestyle-offline-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -2324,7 +1876,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 7,
         "site": "https://vouchwise.in/out/buy-lifestyle-online-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -2334,10 +1887,9 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-lifestyle-online-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -2376,7 +1928,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-makemytrip-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -2386,17 +1939,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 5.5,
         "site": "https://vouchwise.in/out/buy-makemytrip-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-makemytrip-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "3% iCash"
       }
     ]
   },
@@ -2428,7 +1979,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-makemytrip-holiday-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -2438,17 +1990,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 13.5,
         "site": "https://vouchwise.in/out/buy-makemytrip-holiday-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-makemytrip-holiday-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "4% iCash"
       }
     ]
   },
@@ -2478,85 +2028,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-makemytrip-hotel-amazon",
         "perks": "",
-        "disclaimer": "Not Available"
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-makemytrip-hotel-gyftr",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-makemytrip-hotel-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-makemytrip-hotel-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
-      }
-    ]
-  },
-  {
-    "id": "mamaearth",
-    "name": "Mamaearth",
-    "category_name": "Beauty",
-    "portals": [
-      {
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-mamaearth-smartbuy",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "shopwise",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-mamaearth-shopwise",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-mamaearth-edgerewards",
-        "perks": "Earns 0.5% GyFTR Coins",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-mamaearth-amazon",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-mamaearth-gyftr",
-        "perks": ""
-      },
-      {
-        "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-mamaearth-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-mamaearth-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "6% iCash"
       }
     ]
   },
@@ -2586,9 +2079,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-manyavar-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
@@ -2640,7 +2134,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-marks-and-spencer-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
@@ -2650,17 +2145,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10.5,
         "site": "https://vouchwise.in/out/buy-marks-and-spencer-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-marks-and-spencer-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "8% iCash"
       }
     ]
   },
@@ -2691,22 +2184,22 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-max-fashion-online-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-max-fashion-online-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 8.5,
         "site": "https://vouchwise.in/out/buy-max-fashion-online-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -2744,20 +2237,27 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-max-fashion-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-max-fashion-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6.5,
         "site": "https://vouchwise.in/out/buy-max-fashion-grabdeal",
+        "perks": ""
+      },
+      {
+        "portalId": "icici_ishop",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-max-fashion-ishop",
         "perks": "",
         "disclaimer": "Not Available"
       }
@@ -2790,9 +2290,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 2,
+        "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-myntra-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -2802,17 +2303,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-myntra-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-myntra-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "2% iCash"
       }
     ]
   },
@@ -2844,11 +2343,12 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-netmeds-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-netmeds-gyftr",
         "perks": ""
       },
@@ -2896,20 +2396,20 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-nykaa-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 5,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-nykaa-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-nykaa-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -2946,29 +2446,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-nykaa-fashion-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-nykaa-fashion-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-nykaa-fashion-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-nykaa-fashion-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "4% iCash"
       }
     ]
   },
@@ -2998,29 +2497,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-nykaa-man-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-nykaa-man-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-nykaa-man-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-nykaa-man-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "4% iCash"
       }
     ]
   },
@@ -3053,7 +2551,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ola-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
@@ -3103,29 +2602,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-pantaloons-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-pantaloons-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-pantaloons-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pantaloons-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "8% iCash"
       }
     ]
   },
@@ -3158,13 +2656,15 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pharmeasy-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pharmeasy-gyftr",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "axis_grabdeals",
@@ -3208,29 +2708,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-pizza-hut-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 7,
         "site": "https://vouchwise.in/out/buy-pizza-hut-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 6.5,
         "site": "https://vouchwise.in/out/buy-pizza-hut-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pizza-hut-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "4% iCash"
       }
     ]
   },
@@ -3262,7 +2761,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-puma-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
@@ -3272,10 +2772,9 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 8.5,
         "site": "https://vouchwise.in/out/buy-puma-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -3314,7 +2813,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 19,
         "site": "https://vouchwise.in/out/buy-pvr-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -3324,17 +2824,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 15.5,
         "site": "https://vouchwise.in/out/buy-pvr-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pvr-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "1% iCash"
       }
     ]
   },
@@ -3367,7 +2865,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance-digital-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
@@ -3379,8 +2878,7 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance-digital-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -3417,24 +2915,22 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-reliance-smart-amazon",
         "perks": "",
-        "disclaimer": "Not Available"
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance-smart-gyftr",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-reliance-smart-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -3471,9 +2967,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-shoppers-stop-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
@@ -3483,10 +2980,9 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 7,
         "site": "https://vouchwise.in/out/buy-shoppers-stop-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
@@ -3525,27 +3021,26 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 9,
         "site": "https://vouchwise.in/out/buy-skechers-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 10,
+        "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-skechers-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-skechers-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-skechers-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "6% iCash"
       }
     ]
   },
@@ -3577,11 +3072,12 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-sonyliv-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 38,
         "site": "https://vouchwise.in/out/buy-sonyliv-gyftr",
         "perks": ""
       },
@@ -3629,7 +3125,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-starbucks-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -3639,17 +3136,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 5.5,
         "site": "https://vouchwise.in/out/buy-starbucks-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-starbucks-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "2% iCash"
       }
     ]
   },
@@ -3681,27 +3176,26 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-subway-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 7,
+        "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-subway-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 9.5,
         "site": "https://vouchwise.in/out/buy-subway-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-subway-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "5% iCash"
       }
     ]
   },
@@ -3733,7 +3227,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-swiggy-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "gyftr",
@@ -3743,17 +3238,16 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-swiggy-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-swiggy-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "1% iCash",
+        "disclaimer": "overrideRewardMultiplier: 0"
       }
     ]
   },
@@ -3785,7 +3279,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 11,
         "site": "https://vouchwise.in/out/buy-taj-experiences-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -3795,70 +3290,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10.5,
         "site": "https://vouchwise.in/out/buy-taj-experiences-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-taj-experiences-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
-      }
-    ]
-  },
-  {
-    "id": "tanishq",
-    "name": "Tanishq",
-    "category_name": "Fashion",
-    "portals": [
-      {
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-tanishq-smartbuy",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "shopwise",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-tanishq-shopwise",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 1,
-        "site": "https://vouchwise.in/out/buy-tanishq-edgerewards",
-        "perks": "Earns 0.5% GyFTR Coins"
-      },
-      {
-        "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-tanishq-amazon",
-        "perks": ""
-      },
-      {
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-tanishq-gyftr",
-        "perks": ""
-      },
-      {
-        "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-tanishq-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
-      },
-      {
-        "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-tanishq-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "2% iCash"
       }
     ]
   },
@@ -3889,10 +3329,10 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-tanishq-gold-jewellery-amazon",
         "perks": "",
-        "disclaimer": "Not Available"
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -3903,17 +3343,16 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-tanishq-gold-jewellery-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tanishq-gold-jewellery-ishop",
         "perks": "",
-        "disclaimer": "Not Available"
+        "disclaimer": "overrideRewardMultiplier: 0"
       }
     ]
   },
@@ -3945,7 +3384,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-tata-cliq-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
@@ -3955,17 +3395,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-tata-cliq-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tata-cliq-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "3% iCash"
       }
     ]
   },
@@ -3995,29 +3433,28 @@ const masterBrands = [
       },
       {
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 7,
         "site": "https://vouchwise.in/out/buy-tata-cliq-luxury-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-tata-cliq-luxury-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-tata-cliq-luxury-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tata-cliq-luxury-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "3% iCash"
       }
     ]
   },
@@ -4049,7 +3486,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-uber-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -4059,17 +3497,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-uber-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-uber-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "1% iCash"
       }
     ]
   },
@@ -4101,27 +3537,26 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-vijay-sales-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: GyFTR"
       },
       {
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 2.5,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-vijay-sales-gyftr",
         "perks": ""
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-vijay-sales-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-vijay-sales-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       }
     ]
   },
@@ -4153,7 +3588,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-westside-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -4163,17 +3599,15 @@ const masterBrands = [
       },
       {
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-westside-grabdeal",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": ""
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-westside-ishop",
-        "perks": "",
-        "disclaimer": "Not Available"
+        "perks": "5% iCash"
       }
     ]
   },
@@ -4206,7 +3640,8 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zepto-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
@@ -4260,13 +3695,15 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zomato-amazon",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Seller: PineLabs"
       },
       {
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zomato-gyftr",
-        "perks": ""
+        "perks": "",
+        "disclaimer": "Not Available"
       },
       {
         "portalId": "axis_grabdeals",
@@ -4285,10 +3722,471 @@ const masterBrands = [
     ]
   }
 ];
+// <<BRANDS_END>>
+
+
+// <<CARDS_START>>
+const masterCards = [
+  {
+    "id": "amex_platinum_reserve",
+    "name": "Amex Platinum Reserve",
+    "rewardType": "points",
+    "pointValue": 0.33,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 3,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-platinum-reserve",
+    "applyStatus": "referral",
+    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on standard catalog yield."
+  },
+  {
+    "id": "amex_platinum_travel",
+    "name": "Amex Platinum Travel",
+    "rewardType": "points",
+    "pointValue": 0.33,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 3,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-platinum-travel",
+    "applyStatus": "closed",
+    "assumption_note": "Assuming 1 MR Point = ₹0.33; optimal value unlocked at milestone spends."
+  },
+  {
+    "id": "amex_mrcc",
+    "name": "Amex MRCC",
+    "rewardType": "points",
+    "pointValue": 0.33,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 2,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
+    "applyStatus": "closed",
+    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption."
+  },
+  {
+    "id": "amex_gold",
+    "name": "Amex Gold",
+    "rewardType": "points",
+    "pointValue": 0.33,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 5,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-gold",
+    "applyStatus": "closed",
+    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption."
+  },
+  {
+    "id": "axis_magnus_burgundy",
+    "name": "Axis Magnus Burgundy",
+    "rewardType": "points",
+    "pointValue": 0.8,
+    "spendBlock": 200,
+    "pointsPerBlock": 12,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 1,
+      "axis_grabdeals": 1,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
+    "applyStatus": "referral",
+    "assumption_note": "Assuming 5 Edge Rewards = 4 Air Miles = ₹4.00 (₹0.80 per point)."
+  },
+  {
+    "id": "axis_magnus",
+    "name": "Axis Magnus",
+    "rewardType": "points",
+    "pointValue": 0.4,
+    "spendBlock": 200,
+    "pointsPerBlock": 12,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 1,
+      "axis_grabdeals": 1,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-magnus",
+    "applyStatus": "referral",
+    "assumption_note": "Assuming 5 Edge Rewards = 2 Air Miles = ₹2.00 (₹0.40 per point)."
+  },
+  {
+    "id": "axis_atlas",
+    "name": "Axis Atlas",
+    "rewardType": "points",
+    "pointValue": 2,
+    "spendBlock": 100,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 1,
+      "axis_grabdeals": 1,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-atlas",
+    "applyStatus": "closed",
+    "assumption_note": "Assuming 1 Edge Mile = 2 Partner Miles = ₹2.00."
+  },
+  {
+    "id": "axis_horizon",
+    "name": "Axis Horizon",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 1,
+      "axis_grabdeals": 1,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-horizon",
+    "applyStatus": "referral",
+    "assumption_note": "Assuming 1 Edge Reward = 1 Partner Mile = ₹1.00."
+  },
+  {
+    "id": "hdfc_infinia",
+    "name": "HDFC Infinia",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 150,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 5,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
+    "applyStatus": "invite_only",
+    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via SmartBuy travel redemption."
+  },
+  {
+    "id": "hdfc_dbm",
+    "name": "HDFC Diners Black Metal",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 150,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 3,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-dbm",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via SmartBuy travel redemption."
+  },
+  {
+    "id": "hdfc_regalia_gold",
+    "name": "HDFC Regalia Gold",
+    "rewardType": "points",
+    "pointValue": 0.5,
+    "spendBlock": 200,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 5,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-regalia-gold",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = ₹0.50 via SmartBuy travel redemption."
+  },
+  {
+    "id": "hdfc_swiggy",
+    "name": "HDFC Swiggy",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 1,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-swiggy",
+    "applyStatus": "direct",
+    "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  {
+    "id": "hsbc_premier",
+    "name": "HSBC Premier",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 3,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hsbc-premier",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = 1 Air Mile = ₹1.00."
+  },
+  {
+    "id": "hsbc_travelone",
+    "name": "HSBC Travel One",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hsbc-travelone",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = 1 Air Mile = ₹1.00."
+  },
+  {
+    "id": "hsbc_liveplus",
+    "name": "HSBC Live+",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 1.5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hsbc-liveplus",
+    "applyStatus": "direct",
+    "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  {
+    "id": "icici_epm",
+    "name": "ICICI Emeralde Private Metal",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 200,
+    "pointsPerBlock": 6,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 6,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-epm",
+    "applyStatus": "invite_only",
+    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via EaseMyTrip/in-app redemption."
+  },
+  {
+    "id": "icici_times",
+    "name": "ICICI Times Black",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 50,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 6,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-times",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = ₹1.00; actual value varies by catalog."
+  },
+  {
+    "id": "icici_emeralde",
+    "name": "ICICI Emeralde",
+    "rewardType": "points",
+    "pointValue": 0.25,
+    "spendBlock": 100,
+    "pointsPerBlock": 4,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 6,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-emeralde",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard redemption."
+  },
+  {
+    "id": "icici_amazon",
+    "name": "ICICI Amazon",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 4,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-amazon",
+    "applyStatus": "direct",
+    "assumption_note": "Direct Amazon Pay balance cashback; no valuation assumption required."
+  },
+  {
+    "id": "sbi_cashback",
+    "name": "SBI Cashback",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 5,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 0,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
+    "applyStatus": "direct",
+    "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  {
+    "id": "jupiter_edge_plus",
+    "name": "Jupiter Edge+",
+    "rewardType": "cashback",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 1,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-jupiter-edge-plus",
+    "applyStatus": "direct",
+    "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  {
+    "id": "scapia",
+    "name": "Scapia",
+    "rewardType": "points",
+    "pointValue": 0.2,
+    "spendBlock": 20,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-scapia",
+    "applyStatus": "referral",
+    "assumption_note": "Assuming 5 Scapia coins = ₹1.00 (₹0.20 per coin) via in-app travel booking."
+  }
+];
+// <<CARDS_END>>
 
 // 2. Load Custom Data from LocalStorage
-const customCards = JSON.parse(localStorage.getItem('customCards') || '[]');
-const customBrands = JSON.parse(localStorage.getItem('customBrands') || '[]');
+// 2. Load Custom Data from LocalStorage (HARDENED)
+let customCards = [];
+try {
+  customCards = JSON.parse(localStorage.getItem('customCards') || '[]');
+} catch (error) {
+  console.warn("Corrupted custom card data found. Resetting cache.");
+  localStorage.removeItem('customCards');
+}
+
+let customBrands = [];
+try {
+  customBrands = JSON.parse(localStorage.getItem('customBrands') || '[]');
+} catch (error) {
+  console.warn("Corrupted custom brand data found. Resetting cache.");
+  localStorage.removeItem('customBrands');
+}
 
 // 3. Export the Merged Live Arrays
 export const cards = [...masterCards, ...customCards];

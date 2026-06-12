@@ -3,7 +3,10 @@
 /**
  * Extracts the correct multiplier for a card/portal path
  */
-export function getMultiplier(card, portal) {
+export function getMultiplier(card, portal, portalConfig) {
+  if (portalConfig?.overrideRewardMultiplier !== undefined) {
+    return portalConfig.overrideRewardMultiplier;
+  }
   return card.portalMultipliers?.[portal.id] ?? 
          card.portalMultipliers?.[portal.group] ?? 
          card.portalMultipliers?.default ?? 1;
@@ -12,12 +15,12 @@ export function getMultiplier(card, portal) {
 /**
  * Core Operational Engine - The single source of truth for financial metrics
  */
-export function calculateTrueNetMetrics(card, portal, voucherAmount = 1000) {
+export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount = 1000) {
   // Upfront savings (surcharges pass as negative numbers, e.g., -4.13)
   const upfrontSavings = voucherAmount * (portal.upfrontDiscountPercent / 100);
   const netPaid = voucherAmount - upfrontSavings;
   
-  const multiplier = getMultiplier(card, portal);
+  const multiplier = getMultiplier(card, portal, portalConfig);
   let rpEarned = 0;
   let cashValue = 0;
 
