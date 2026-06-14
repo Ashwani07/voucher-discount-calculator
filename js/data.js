@@ -225,9 +225,11 @@ const masterBrands = [
       },
       {
         "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": -4.13,
         "site": "https://vouchwise.in/out/buy-amazon-ishop",
-        "perks": "1.5% iCash"
+        "perks": "1.5% iCash",
+        "disclaimer": "Reward Multiplier: 0",
+        "overrideRewardMultiplier": 1
       }
     ]
   },
@@ -279,7 +281,8 @@ const masterBrands = [
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-fresh-ishop",
         "perks": "3% iCash",
-        "disclaimer": "overrideRewardMultiplier: 0"
+        "disclaimer": "Reward Multiplier: 0",
+        "overrideRewardMultiplier": 1
       }
     ]
   },
@@ -380,7 +383,7 @@ const masterBrands = [
       },
       {
         "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": -4.13,
         "site": "https://vouchwise.in/out/buy-amazon-shopping-ishop",
         "perks": "2.5% iCash"
       }
@@ -3247,7 +3250,8 @@ const masterBrands = [
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-swiggy-ishop",
         "perks": "1% iCash",
-        "disclaimer": "overrideRewardMultiplier: 0"
+        "disclaimer": "Reward Multiplier: 0",
+        "overrideRewardMultiplier": 1
       }
     ]
   },
@@ -3352,7 +3356,8 @@ const masterBrands = [
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tanishq-gold-jewellery-ishop",
         "perks": "",
-        "disclaimer": "overrideRewardMultiplier: 0"
+        "disclaimer": "Reward Multiplier: 0",
+        "overrideRewardMultiplier": 1
       }
     ]
   },
@@ -4045,7 +4050,7 @@ const masterCards = [
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-epm",
     "applyStatus": "invite_only",
-    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via EaseMyTrip/in-app redemption."
+    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via in-app redemption."
   },
   {
     "id": "icici_times",
