@@ -3965,8 +3965,8 @@ const masterCards = [
       "icici_ishop": 0,
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
-      "gyftr": 1,
-      "default": 1
+      "gyftr": 0,
+      "default": 0.2
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-swiggy",
     "applyStatus": "direct",
