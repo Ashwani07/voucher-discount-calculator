@@ -56,6 +56,16 @@ const walletControls   = document.getElementById('walletControls');
 const calcError        = document.getElementById('calcError');
 
 /************************************************************************
+ * CUSTOM DISCOUNT CALCULATOR - DOM REFERENCES
+ ************************************************************************/
+const toggleCustomCalcBtn   = document.getElementById('toggleCustomCalcBtn');
+const customCalcPanel       = document.getElementById('customCalcPanel');
+const calculateCustomBtn    = document.getElementById('calculateCustomBtn');
+const resetCustomBtn        = document.getElementById('resetCustomBtn');
+const customResults         = document.getElementById('customResults');
+const customCalcError       = document.getElementById('customCalcError');
+
+/************************************************************************
  * WALLET UI
  ************************************************************************/
 function buildBankGroups() {
@@ -353,12 +363,19 @@ function renderAllCardsList(groups, activeBrandObj) {
         ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : '';
       const perksHTML = perks
         ? `<div class="inline-block mt-0.5 bg-emerald-50 text-[10px] text-emerald-700 px-1.5 py-0.5 rounded border border-emerald-200">${perks}</div>` : '';
+      const shownDiscountStr = entry.upfront > 0 ? entry.upfront.toFixed(1) + '%' : 'N/A';
+      const reportURL =
+        `https://docs.google.com/forms/d/e/1FAIpQLSeDeeY8MielvLxAvq9HCd7iyz9X473A7FwrjLgj-cb0sGAf4Q/viewform?usp=pp_url` +
+        `&entry.1760196418=${encodeURIComponent(activeBrandObj.name)}` +
+        `&entry.251882125=${encodeURIComponent(entry.portal.name)}` +
+        `&entry.17865828=${encodeURIComponent(shownDiscountStr)}` +
+        `&entry.49106349=${encodeURIComponent(lastVerified)}`;
       const flagHTML = `
-        <button data-flag-brand="${activeBrandObj.id}" data-flag-portal="${entry.portalId}"
+        <a href="${reportURL}" target="_blank" rel="noopener noreferrer" data-flag-brand="${activeBrandObj.id}" data-flag-portal="${entry.portalId}"
           class="flag-btn text-[10px] ${flagged ? 'text-amber-500' : 'text-slate-300 hover:text-slate-400'} ml-1 transition-colors"
-          title="${flagged ? 'Marked as possibly outdated — click to unmark' : 'Flag discount as possibly outdated'}">⚑</button>`;
+          title="${flagged ? 'Marked as possibly outdated — click to unmark' : 'Report this discount as outdated or incorrect'}">⚑</a>`;
       const flaggedBadge = flagged
-        ? `<span class="text-[10px] text-amber-600 bg-amber-50 border border-amber-200 px-1 py-0.5 rounded ml-1">Verify</span>` : '';
+        ? `<span class="text-[10px] text-amber-600 bg-amber-50 border border-amber-200 px-1 py-0.5 rounded ml-1">Reported</span>` : '';
       const buyBtn = (buyURL && !notAvailable)
         ? `<a href="${buyURL}" target="_blank" rel="noopener noreferrer"
              class="text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Buy ↗</a>`
@@ -515,6 +532,255 @@ calculateBtn.addEventListener('click', () => {
 });
 
 /************************************************************************
+ * CUSTOM DISCOUNT CALCULATOR
+ ************************************************************************/
+
+// Toggle panel visibility
+toggleCustomCalcBtn.addEventListener('click', () => {
+  const isHidden = customCalcPanel.classList.contains('hidden');
+  customCalcPanel.classList.toggle('hidden');
+  toggleCustomCalcBtn.textContent = isHidden ? 'Collapse' : 'Expand';
+});
+
+// Reset custom calculator
+resetCustomBtn.addEventListener('click', () => {
+  document.getElementById('customBrandName').value = '';
+  document.getElementById('customDiscountPercent').value = '';
+  document.getElementById('customVoucherAmount').value = '1000';
+  customResults.classList.add('hidden');
+  customCalcError.classList.add('hidden');
+});
+
+// Calculate custom discount
+calculateCustomBtn.addEventListener('click', handleCustomCalculate);
+
+function handleCustomCalculate() {
+  const showError  = (msg) => { customCalcError.textContent = msg; customCalcError.classList.remove('hidden'); };
+  const clearError = () => customCalcError.classList.add('hidden');
+
+  const discountPercent = parseFloat(document.getElementById('customDiscountPercent').value);
+  if (isNaN(discountPercent)) {
+    return showError('Please enter a valid discount percentage.');
+  }
+
+  const voucherAmount = parseFloat(document.getElementById('customVoucherAmount').value) || 1000;
+  if (voucherAmount < 1) {
+    return showError('Please enter a valid voucher amount (minimum ₹1).');
+  }
+
+  clearError();
+
+  const brandName = document.getElementById('customBrandName').value.trim() || 'Custom Discount';
+
+  // Get cards from wallet, fallback to all cards if wallet is empty
+  let walletIds = getActiveWalletIds();
+  let cardsToEvaluate = walletIds.length > 0
+    ? cards.filter(c => walletIds.includes(c.id))
+    : cards;
+
+  if (cardsToEvaluate.length === 0) {
+    cardsToEvaluate = cards; // Ultimate fallback
+  }
+
+  // Calculate metrics for each card using default multiplier
+  const results = [];
+
+  for (const card of cardsToEvaluate) {
+    // Create a mock portal object for the calculator
+    const mockPortal = {
+      id: 'custom_portal',
+      name: 'Custom',
+      group: 'custom',
+      upfrontDiscountPercent: discountPercent
+    };
+
+    // Create mock portal config (no special overrides)
+    const mockPortalConfig = {
+      portalId: 'custom_portal',
+      upfrontDiscountPercent: discountPercent,
+      site: '',
+      perks: ''
+    };
+
+    const metrics = calculateTrueNetMetrics(card, mockPortal, mockPortalConfig, voucherAmount);
+
+    // Calculate card reward rate for display
+    const multiplier = card.portalMultipliers?.default ?? 1;
+    let cardRewardRate = 0;
+    if (card.rewardType === 'points' && card.spendBlock) {
+      cardRewardRate = (card.pointsPerBlock / card.spendBlock) * multiplier * (card.pointValue ?? 1) * 100;
+    } else if (card.rewardType === 'cashback' && card.spendBlock) {
+      cardRewardRate = (card.pointsPerBlock / card.spendBlock) * multiplier * 100;
+    }
+
+    results.push({
+      card,
+      upfront: discountPercent,
+      reward: cardRewardRate,
+      net: metrics.computedTrueNet,
+      metrics,
+      multiplier
+    });
+  }
+
+  // Sort by net effective discount (descending)
+  results.sort((a, b) => b.net - a.net);
+
+  // Render results
+  renderCustomResults(results, brandName, discountPercent, voucherAmount);
+}
+
+function renderCustomResults(results, brandName, discountPercent, voucherAmount) {
+  if (results.length === 0) {
+    customResults.classList.remove('hidden');
+    document.getElementById('customCardsList').innerHTML =
+      `<div class="p-3 text-sm text-slate-600">No cards available for calculation.</div>`;
+    return;
+  }
+
+  const best = results[0];
+  const runnerUp = results.length > 1 ? results[1] : null;
+
+  // Update header
+  document.getElementById('customResultTitle').textContent = brandName;
+  document.getElementById('customResultSubtitle').textContent = `Best card: ${best.card.name}`;
+  document.getElementById('customTimestamp').textContent = new Date().toLocaleTimeString();
+  document.getElementById('customUpfrontValue').textContent = `${discountPercent.toFixed(2)}%`;
+  document.getElementById('customNetValue').textContent = `${best.net.toFixed(2)}%`;
+
+  // Best card banner
+  const customBestCardBox = document.getElementById('customBestCardBox');
+  customBestCardBox.innerHTML = `
+    <div class="p-3 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+      <div class="flex items-center gap-2">
+        <span>🥇</span>
+        <span>Best: ${best.card.name} — ${best.net.toFixed(2)}% net discount</span>
+      </div>
+      ${getApplyButton(best.card, 'bg-emerald-600 hover:bg-emerald-700')}
+    </div>
+    ${runnerUp ? `
+    <div class="p-3 rounded-md bg-blue-50 border border-blue-200 text-blue-800 font-medium mt-2 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+      <div class="flex items-center gap-2">
+        <span>🥈</span>
+        <span>2nd: ${runnerUp.card.name} — ${runnerUp.net.toFixed(2)}% net discount</span>
+      </div>
+      ${getApplyButton(runnerUp.card, 'bg-blue-600 hover:bg-blue-700')}
+    </div>` : ''}
+  `;
+
+  // Full results list
+  renderCustomCardsList(results, voucherAmount);
+
+  customResults.classList.remove('hidden');
+  customResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function getApplyButton(card, colorClass) {
+  const canApply = card.applyURL &&
+    card.applyStatus !== 'invite_only' &&
+    card.applyStatus !== 'closed';
+
+  if (canApply) {
+    return `<a href="${card.applyURL}" target="_blank" rel="noopener noreferrer"
+              class="text-xs ${colorClass} text-white px-4 py-1.5 rounded transition-colors whitespace-nowrap font-medium">Apply Now ↗</a>`;
+  }
+  return '';
+}
+
+function renderCustomCardsList(results, voucherAmount) {
+  const generateCardRow = (result, rank) => {
+    const card = result.card;
+    const metrics = result.metrics;
+
+    const currencyLabel = card.id === 'axis_atlas' ? 'Miles' : 'RP';
+    const cardYieldPercent = (metrics.cashValue / voucherAmount * 100).toFixed(2);
+
+    // Status badges
+    let statusBadge = '';
+    if (card.applyStatus === 'invite_only') {
+      statusBadge = `<span class="text-[10px] text-slate-400 border border-slate-200 px-1.5 py-0.5 rounded ml-2">Invite Only</span>`;
+    } else if (card.applyStatus === 'closed') {
+      statusBadge = `<span class="text-[10px] text-red-400 border border-red-200 px-1.5 py-0.5 rounded ml-2">Closed</span>`;
+    }
+
+    const isCustomCard = card.id.startsWith('custom_');
+    const customTag = isCustomCard
+      ? `<span class="text-[10px] bg-slate-200 px-1 rounded text-slate-500 ml-1">Custom</span>` : '';
+
+    // Generate explanation text
+    const exampleText = card.rewardType === 'points' && card.spendBlock
+      ? `Pay ₹${metrics.netPaid.toFixed(0)} → ${metrics.rpEarned} ${currencyLabel} (₹${metrics.cashValue.toFixed(2)} / ${cardYieldPercent}%) → Net ₹${metrics.finalNetCost.toFixed(0)}`
+      : `Pay ₹${metrics.netPaid.toFixed(0)} → ₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%) cashback → Net ₹${metrics.finalNetCost.toFixed(0)}`;
+
+    const rowClass = rank <= 2 ? 'bg-slate-50' : '';
+    const rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
+
+    return `
+      <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50 ${rowClass}">
+        <td class="py-2 pr-2 text-center text-sm font-medium text-slate-500 w-10">${rankEmoji}</td>
+        <td class="py-2 pr-2 align-top">
+          <div class="font-medium text-sm text-slate-700">${card.name}${customTag}${statusBadge}</div>
+          <div class="text-[10px] text-slate-400 mt-1">${exampleText}</div>
+          ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-0.5">💡 ${card.assumption_note}</div>` : ''}
+        </td>
+        <td class="py-2 px-2 text-right align-top whitespace-nowrap text-xs text-slate-500">
+          ${result.reward.toFixed(2)}%
+        </td>
+        <td class="py-2 pl-2 text-right align-top whitespace-nowrap font-semibold ${rank <= 3 ? 'text-emerald-600' : 'text-slate-600'} text-sm">
+          ${result.net.toFixed(2)}%
+        </td>
+      </tr>`;
+  };
+
+  const top3 = results.slice(0, 3);
+  const rest = results.slice(3);
+
+  let html = `
+    <div class="bg-white border border-slate-200 rounded-md overflow-hidden">
+      <div class="px-3 py-2 bg-slate-50 border-b border-slate-200">
+        <span class="font-semibold text-sm text-slate-800">All Cards Ranked</span>
+        <span class="text-xs text-slate-500 ml-2">(using default reward multiplier)</span>
+      </div>
+      <div class="px-3 overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-[10px] uppercase tracking-wider text-slate-400 border-b border-slate-100">
+              <th class="text-center py-1.5 pr-2 w-10">Rank</th>
+              <th class="text-left py-1.5 pr-2">Card</th>
+              <th class="text-right py-1.5 px-2">Reward</th>
+              <th class="text-right py-1.5 pl-2">Net</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${top3.map((r, i) => generateCardRow(r, i + 1)).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+
+  if (rest.length > 0) {
+    html += `
+      <details class="mt-3 group">
+        <summary class="cursor-pointer text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-2 rounded-md hover:bg-slate-200 transition-colors list-none flex justify-between items-center">
+          <span>View ${rest.length} more card${rest.length > 1 ? 's' : ''}</span>
+          <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs">▼</span>
+        </summary>
+        <div class="mt-1 bg-white border border-slate-200 rounded-md overflow-hidden">
+          <div class="px-3 overflow-x-auto">
+            <table class="w-full text-sm">
+              <tbody>
+                ${rest.map((r, i) => generateCardRow(r, i + 4)).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>`;
+  }
+
+  document.getElementById('customCardsList').innerHTML = html;
+}
+
+/************************************************************************
  * CUSTOM CARD MODAL
  ************************************************************************/
 const customCardModal = document.getElementById('customCardModal');
@@ -536,7 +802,7 @@ document.getElementById('saveCardBtn').addEventListener('click', () => {
       icici_ishop:      parseFloat(document.getElementById('ccIshop').value)        || 1,
       amazon:           parseFloat(document.getElementById('ccAmazon').value)       || 1,
       axis_edgerewards: parseFloat(document.getElementById('ccEdgerewards').value)  || 1,
-      axis_grabdeals:   parseFloat(document.getElementById('ccEdgerewards').value)  || 1,
+      axis_grabdeals:   parseFloat(document.getElementById('ccGrabdeals').value)    || 1,
       shopwise:         parseFloat(document.getElementById('ccShopwise').value)     || 1,
       default: 1
     },
@@ -569,6 +835,7 @@ document.getElementById('saveBrandBtn').addEventListener('click', () => {
   push('icici_ishop',      'cbIshop');
   push('amazon',           'cbAmazon');
   push('axis_edgerewards', 'cbEdgerewards');
+  push('axis_grabdeals',   'cbGrabdeals');
   push('shopwise',         'cbShopwise');
   saveCustomBrand(newBrand);
   customBrandModal.classList.add('hidden');
