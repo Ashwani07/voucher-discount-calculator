@@ -1,5 +1,5 @@
-import { portals, cards, brands, saveCustomCard, saveCustomBrand, lastVerified } from './data.js';
-import { calculateTrueNetMetrics } from './calculator.js';
+import { portals, cards, brands, saveCustomCard, saveCustomBrand, lastVerified, bankPortalDefaults, bankSpecificPortalIds } from './data.js';
+import { calculateTrueNetMetrics, getCardRewardRate } from './calculator.js';
 
 let currentBrandId   = null;
 let isFirstCalculate = true;
@@ -275,13 +275,16 @@ function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
     const portal = findPortal(p.portalId);
     if (!portal) continue;
 
-    let allowedCards = [];
-    if      (p.portalId === 'hdfc_smartbuy')   allowedCards = cards.filter(c => c.id.startsWith('hdfc_')  || c.id.startsWith('custom_'));
-    else if (p.portalId === 'shopwise')         allowedCards = cards.filter(c => c.id.startsWith('amex_')  || c.id.startsWith('custom_'));
-    else if (p.portalId === 'axis_edgerewards') allowedCards = cards.filter(c => c.id.startsWith('axis_')  || c.id.startsWith('custom_'));
-    else if (p.portalId === 'axis_grabdeals')   allowedCards = cards.filter(c => c.id.startsWith('axis_')  || c.id.startsWith('custom_'));
-    else if (p.portalId === 'icici_ishop')      allowedCards = cards.filter(c => c.id.startsWith('icici_') || c.id.startsWith('custom_'));
-    else                                        allowedCards = cards;
+    // A card is eligible for a portal if it would get a non-zero multiplier
+    // there. Mirrors getMultiplier's fallback chain exactly (portal.id ->
+    // portal.group -> default) so eligibility and the multiplier actually
+    // used never disagree. This is the same data the Bank dropdown sets for
+    // custom cards — no separate ID-prefix list to keep in sync.
+    let allowedCards = cards.filter(c => {
+      const pm = c.portalMultipliers || {};
+      const m = pm[p.portalId] ?? pm[portal.group] ?? pm.default ?? 0;
+      return m > 0;
+    });
 
     allowedCards = allowedCards.filter(c => walletSelectedIds.includes(c.id));
 
@@ -292,9 +295,7 @@ function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
         p,
         voucherAmount
       );
-      const cardRewardRate = card.spendBlock
-        ? (card.pointsPerBlock / card.spendBlock) * metrics.multiplier * (card.pointValue ?? 1) * 100
-        : 0;
+      const cardRewardRate = getCardRewardRate(card, metrics.multiplier);
 
       results.push({
         portal, portalId: p.portalId, card,
@@ -504,11 +505,18 @@ function handleCalculate({ scroll = true } = {}) {
   const walletIds     = getActiveWalletIds();
   const voucherAmount = rawAmount;
 
+  // Collapse wallet selection panel if open, now that we've captured the selection
+  const walletPanel = document.getElementById('walletPanel');
+  if (walletPanel && !walletPanel.classList.contains('hidden')) {
+    walletPanel.classList.add('hidden');
+    document.getElementById('walletSummaryBar')?.classList.remove('hidden');
+  }
+
   if (!walletIds.length) {
     resultsSection.classList.remove('hidden');
     bestCardBox.classList.add('hidden');
     document.getElementById('allCardsList').innerHTML =
-      `<div class="p-3 text-sm text-slate-600 mt-4">No cards in wallet. Save your cards using the Edit button above.</div>`;
+      `<div class="p-3 text-sm text-slate-600 mt-4">No card selected. Use the Edit button above to add cards to your wallet.</div>`;
     return;
   }
 
@@ -549,6 +557,7 @@ resetCustomBtn.addEventListener('click', () => {
   document.getElementById('customVoucherAmount').value = '1000';
   customResults.classList.add('hidden');
   customCalcError.classList.add('hidden');
+  lastCustomCalc = null;
 });
 
 // Calculate custom discount
@@ -572,62 +581,49 @@ function handleCustomCalculate() {
 
   const brandName = document.getElementById('customBrandName').value.trim() || 'Custom Discount';
 
-  // Get cards from wallet, fallback to all cards if wallet is empty
+  runCustomCalculation({ discountPercent, brandName, voucherAmount });
+
+  // Cache last-used inputs so a card delete (from within the results) can
+  // re-run the calculation without depending on the (about to be cleared) form fields.
+  lastCustomCalc = { discountPercent, brandName, voucherAmount };
+
+  // Reset the base inputs (brand name + discount %) for the next calculation.
+  // Voucher amount is intentionally preserved.
+  document.getElementById('customBrandName').value = '';
+  document.getElementById('customDiscountPercent').value = '';
+}
+
+let lastCustomCalc = null;
+
+/**
+ * Single source of truth for the Discount Calculator's card comparison.
+ * Used both by the "Calculate Best Card" button and by the re-run that
+ * happens after a custom card is deleted from the results.
+ */
+function runCustomCalculation({ discountPercent, brandName, voucherAmount }) {
   let walletIds = getActiveWalletIds();
   let cardsToEvaluate = walletIds.length > 0
     ? cards.filter(c => walletIds.includes(c.id))
     : cards;
+  if (cardsToEvaluate.length === 0) cardsToEvaluate = cards; // ultimate fallback
 
-  if (cardsToEvaluate.length === 0) {
-    cardsToEvaluate = cards; // Ultimate fallback
-  }
+  const mockPortal = { id: 'custom_portal', name: 'Custom', group: 'custom', upfrontDiscountPercent: discountPercent };
+  const mockPortalConfig = { portalId: 'custom_portal', upfrontDiscountPercent: discountPercent, site: '', perks: '' };
 
-  // Calculate metrics for each card using default multiplier
-  const results = [];
-
-  for (const card of cardsToEvaluate) {
-    // Create a mock portal object for the calculator
-    const mockPortal = {
-      id: 'custom_portal',
-      name: 'Custom',
-      group: 'custom',
-      upfrontDiscountPercent: discountPercent
-    };
-
-    // Create mock portal config (no special overrides)
-    const mockPortalConfig = {
-      portalId: 'custom_portal',
-      upfrontDiscountPercent: discountPercent,
-      site: '',
-      perks: ''
-    };
-
+  const results = cardsToEvaluate.map(card => {
     const metrics = calculateTrueNetMetrics(card, mockPortal, mockPortalConfig, voucherAmount);
+    const multiplier = card.portalMultipliers?.default ?? 0;
+    const cardRewardRate = getCardRewardRate(card, multiplier);
+    return { card, upfront: discountPercent, reward: cardRewardRate, net: metrics.computedTrueNet, metrics, multiplier };
+  });
 
-    // Calculate card reward rate for display
-    const multiplier = card.portalMultipliers?.default ?? 1;
-    let cardRewardRate = 0;
-    if (card.rewardType === 'points' && card.spendBlock) {
-      cardRewardRate = (card.pointsPerBlock / card.spendBlock) * multiplier * (card.pointValue ?? 1) * 100;
-    } else if (card.rewardType === 'cashback' && card.spendBlock) {
-      cardRewardRate = (card.pointsPerBlock / card.spendBlock) * multiplier * 100;
-    }
-
-    results.push({
-      card,
-      upfront: discountPercent,
-      reward: cardRewardRate,
-      net: metrics.computedTrueNet,
-      metrics,
-      multiplier
-    });
-  }
-
-  // Sort by net effective discount (descending)
   results.sort((a, b) => b.net - a.net);
-
-  // Render results
   renderCustomResults(results, brandName, discountPercent, voucherAmount);
+}
+
+function recalcAfterCardDelete() {
+  if (!lastCustomCalc) return;
+  runCustomCalculation(lastCustomCalc);
 }
 
 function renderCustomResults(results, brandName, discountPercent, voucherAmount) {
@@ -706,6 +702,8 @@ function renderCustomCardsList(results, voucherAmount) {
     const isCustomCard = card.id.startsWith('custom_');
     const customTag = isCustomCard
       ? `<span class="text-[10px] bg-slate-200 px-1 rounded text-slate-500 ml-1">Custom</span>` : '';
+    const deleteBtn = isCustomCard
+      ? `<button data-delete-card="${card.id}" class="text-[10px] text-red-300 hover:text-red-500 transition-colors ml-1" title="Remove custom card">✕</button>` : '';
 
     // Generate explanation text
     const exampleText = card.rewardType === 'points' && card.spendBlock
@@ -713,13 +711,13 @@ function renderCustomCardsList(results, voucherAmount) {
       : `Pay ₹${metrics.netPaid.toFixed(0)} → ₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%) cashback → Net ₹${metrics.finalNetCost.toFixed(0)}`;
 
     const rowClass = rank <= 2 ? 'bg-slate-50' : '';
-    const rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
+    const rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : `#${rank}`;
 
     return `
       <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50 ${rowClass}">
         <td class="py-2 pr-2 text-center text-sm font-medium text-slate-500 w-10">${rankEmoji}</td>
         <td class="py-2 pr-2 align-top">
-          <div class="font-medium text-sm text-slate-700">${card.name}${customTag}${statusBadge}</div>
+          <div class="font-medium text-sm text-slate-700">${card.name}${customTag}${statusBadge}${deleteBtn}</div>
           <div class="text-[10px] text-slate-400 mt-1">${exampleText}</div>
           ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-0.5">💡 ${card.assumption_note}</div>` : ''}
         </td>
@@ -732,15 +730,15 @@ function renderCustomCardsList(results, voucherAmount) {
       </tr>`;
   };
 
-  const top3 = results.slice(0, 3);
-  const rest = results.slice(3);
-
   let html = `
-    <div class="bg-white border border-slate-200 rounded-md overflow-hidden">
-      <div class="px-3 py-2 bg-slate-50 border-b border-slate-200">
-        <span class="font-semibold text-sm text-slate-800">All Cards Ranked</span>
-        <span class="text-xs text-slate-500 ml-2">(using default reward multiplier)</span>
-      </div>
+    <details class="bg-white border border-slate-200 rounded-md overflow-hidden group" open>
+      <summary class="px-3 py-2 bg-slate-50 border-b border-slate-200 cursor-pointer list-none flex justify-between items-center">
+        <div>
+          <span class="font-semibold text-sm text-slate-800">All Cards Ranked</span>
+          <span class="text-xs text-slate-500 ml-2">(using default reward multiplier)</span>
+        </div>
+        <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs text-slate-400">▼</span>
+      </summary>
       <div class="px-3 overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
@@ -752,32 +750,23 @@ function renderCustomCardsList(results, voucherAmount) {
             </tr>
           </thead>
           <tbody>
-            ${top3.map((r, i) => generateCardRow(r, i + 1)).join('')}
+            ${results.map((r, i) => generateCardRow(r, i + 1)).join('')}
           </tbody>
         </table>
       </div>
-    </div>`;
-
-  if (rest.length > 0) {
-    html += `
-      <details class="mt-3 group">
-        <summary class="cursor-pointer text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-2 rounded-md hover:bg-slate-200 transition-colors list-none flex justify-between items-center">
-          <span>View ${rest.length} more card${rest.length > 1 ? 's' : ''}</span>
-          <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs">▼</span>
-        </summary>
-        <div class="mt-1 bg-white border border-slate-200 rounded-md overflow-hidden">
-          <div class="px-3 overflow-x-auto">
-            <table class="w-full text-sm">
-              <tbody>
-                ${rest.map((r, i) => generateCardRow(r, i + 4)).join('')}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </details>`;
-  }
+    </details>`;
 
   document.getElementById('customCardsList').innerHTML = html;
+
+  document.getElementById('customCardsList').querySelectorAll('[data-delete-card]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = cards.find(c => c.id === btn.getAttribute('data-delete-card'));
+      if (!confirm(`Remove "${card?.name || 'this card'}"?`)) return;
+      deleteCustomCard(btn.getAttribute('data-delete-card'));
+      recalcAfterCardDelete();
+    });
+  });
 }
 
 /************************************************************************
@@ -786,6 +775,44 @@ function renderCustomCardsList(results, voucherAmount) {
 const customCardModal = document.getElementById('customCardModal');
 document.getElementById('openCardModalBtn').addEventListener('click',  () => customCardModal.classList.remove('hidden'));
 document.getElementById('closeCardModalBtn').addEventListener('click', () => customCardModal.classList.add('hidden'));
+
+// Map of portal IDs -> the input element ID for that portal in the modal
+const ccPortalFieldIds = {
+  hdfc_smartbuy:    'ccSmartbuy',
+  icici_ishop:      'ccIshop',
+  axis_edgerewards: 'ccEdgerewards',
+  axis_grabdeals:   'ccGrabdeals',
+  shopwise:         'ccShopwise'
+};
+
+const ccBankNotes = {
+  Amex: "Amex multipliers vary by specific card — check your card's T&Cs for Shopwise reward rate.",
+  Other: 'SmartBuy / iShop / EdgeRewards / GrabDeals / Shopwise are locked at 0 — your card can only earn on its own bank\u2019s portal(s).'
+};
+
+function applyBankDefaults() {
+  const bank = document.getElementById('ccBank').value;
+  const defaults = bankPortalDefaults[bank] || {};
+
+  bankSpecificPortalIds.forEach(portalId => {
+    const field = document.getElementById(ccPortalFieldIds[portalId]);
+    if (!field) return;
+    const cfg = defaults[portalId];
+    if (cfg) {
+      field.value = cfg.value;
+      field.disabled = !!cfg.frozen;
+    } else {
+      // No specific config for this portal under this bank -> not earnable, frozen at 0
+      field.value = 0;
+      field.disabled = true;
+    }
+  });
+
+  document.getElementById('ccBankNote').textContent = ccBankNotes[bank] || '';
+}
+
+document.getElementById('ccBank').addEventListener('change', applyBankDefaults);
+applyBankDefaults(); // initialize on load with default "Other" selection
 
 document.getElementById('saveCardBtn').addEventListener('click', () => {
   const id   = 'custom_' + Date.now();
@@ -797,14 +824,12 @@ document.getElementById('saveCardBtn').addEventListener('click', () => {
     spendBlock:     parseFloat(document.getElementById('ccSpendBlock').value)     || 100,
     pointsPerBlock: parseFloat(document.getElementById('ccPointsPerBlock').value) || 1,
     portalMultipliers: {
-      hdfc_smartbuy:    parseFloat(document.getElementById('ccSmartbuy').value)     || 1,
-      gyftr:            parseFloat(document.getElementById('ccGyftr').value)        || 1,
-      icici_ishop:      parseFloat(document.getElementById('ccIshop').value)        || 1,
-      amazon:           parseFloat(document.getElementById('ccAmazon').value)       || 1,
-      axis_edgerewards: parseFloat(document.getElementById('ccEdgerewards').value)  || 1,
-      axis_grabdeals:   parseFloat(document.getElementById('ccGrabdeals').value)    || 1,
-      shopwise:         parseFloat(document.getElementById('ccShopwise').value)     || 1,
-      default: 1
+      hdfc_smartbuy:    parseFloat(document.getElementById('ccSmartbuy').value)     || 0,
+      icici_ishop:      parseFloat(document.getElementById('ccIshop').value)        || 0,
+      axis_edgerewards: parseFloat(document.getElementById('ccEdgerewards').value)  || 0,
+      axis_grabdeals:   parseFloat(document.getElementById('ccGrabdeals').value)    || 0,
+      shopwise:         parseFloat(document.getElementById('ccShopwise').value)     || 0,
+      default:          parseFloat(document.getElementById('ccDefault').value)      || 0
     },
     assumption_note: 'Custom user-defined card.'
   };
@@ -813,6 +838,8 @@ document.getElementById('saveCardBtn').addEventListener('click', () => {
   if (!walletIds.includes(id)) { walletIds.push(id); saveWalletIds(walletIds); }
   customCardModal.classList.add('hidden');
   document.querySelectorAll('#customCardModal input').forEach(i => i.value = '');
+  document.getElementById('ccBank').value = 'Other';
+  applyBankDefaults();
   renderWalletUI();
 });
 

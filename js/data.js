@@ -1,5 +1,44 @@
 export const lastVerified = 'June 2026';
 
+// Bank-specific "home portal" multiplier defaults for the Custom Card modal.
+// A card can only earn issuer-specific portal multipliers on its OWN bank's
+// portal(s) — e.g. an Axis card cannot earn HDFC SmartBuy's multiplier.
+// `frozen: true` means the field is locked at this value in the UI (user cannot
+// override) because the value is a known, bank-set constant.
+// `frozen: false` means a sensible starting value is shown but the user can edit it
+// (used for Amex, where the multiplier varies by specific card).
+// Update these values here if banks change their rates — nothing else needs editing.
+export const bankPortalDefaults = {
+  HDFC: {
+    hdfc_smartbuy:    { value: 5, frozen: true }
+  },
+  ICICI: {
+    icici_ishop:      { value: 6, frozen: true }
+  },
+  Axis: {
+    axis_edgerewards: { value: 1, frozen: true },
+    axis_grabdeals:   { value: 1, frozen: true }
+  },
+  Amex: {
+    shopwise:         { value: 1, frozen: false }
+  },
+  Other: {
+    // All bank-specific portals are frozen at 0 for "Other" — a card from an
+    // unlisted bank cannot earn on HDFC/ICICI/Axis/Amex's own portals.
+    hdfc_smartbuy:    { value: 0, frozen: true },
+    icici_ishop:      { value: 0, frozen: true },
+    axis_edgerewards: { value: 0, frozen: true },
+    axis_grabdeals:   { value: 0, frozen: true },
+    shopwise:         { value: 0, frozen: true }
+  }
+};
+
+// All bank-specific portal IDs (used to know which fields to freeze/unfreeze
+// when a bank is NOT explicitly covered above, e.g. Other freezes all of these).
+export const bankSpecificPortalIds = [
+  'hdfc_smartbuy', 'icici_ishop', 'axis_edgerewards', 'axis_grabdeals', 'shopwise'
+];
+
 export const portals = [
   { id: "hdfc_smartbuy", name: "HDFC SmartBuy", group: "smartbuy" },
   { id: "shopwise", name: "Amex Shopwise", group: "shopwise" },

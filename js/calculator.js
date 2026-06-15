@@ -13,6 +13,17 @@ export function getMultiplier(card, portal, portalConfig) {
 }
 
 /**
+ * Headline reward rate (%) for a card at a given multiplier — independent of
+ * voucher amount. This is the "X% back" figure shown in result tables.
+ * Single source of truth: previously duplicated in 3 places in app.js.
+ */
+export function getCardRewardRate(card, multiplier) {
+  if (!card.spendBlock) return 0;
+  const baseRate = (card.pointsPerBlock / card.spendBlock) * multiplier * 100;
+  return card.rewardType === 'points' ? baseRate * (card.pointValue ?? 1) : baseRate;
+}
+
+/**
  * Core Operational Engine - The single source of truth for financial metrics
  */
 export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount = 1000) {
