@@ -495,6 +495,19 @@ function renderResults(groups, brand, shouldScroll) {
 }
 
 /************************************************************************
+ * MUTUALLY-EXCLUSIVE RESULT SECTIONS
+ * Only one of "Portal comparison" (resultsSection) and "Coupon calculation"
+ * (customResults) is visible at a time, so numbers on screen always belong
+ * to a single, unambiguous question.
+ ************************************************************************/
+function hidePortalResults() {
+  resultsSection.classList.add('hidden');
+}
+function hideCustomResults() {
+  customResults.classList.add('hidden');
+}
+
+/************************************************************************
  * ORCHESTRATOR
  ************************************************************************/
 function handleCalculate({ scroll = true } = {}) {
@@ -506,6 +519,8 @@ function handleCalculate({ scroll = true } = {}) {
   const rawAmount = parseFloat(document.getElementById('voucherAmount').value);
   if (!rawAmount || rawAmount < 1) return showError('Please enter a valid voucher amount (minimum ₹1).');
   clearError();
+
+  hideCustomResults();
 
   const brand = brands.find(b => b.id === currentBrandId);
   if (!brand) return;
@@ -586,6 +601,7 @@ function handleCustomCalculate() {
   }
 
   clearError();
+  hidePortalResults();
 
   const brandName = document.getElementById('customBrandName').value.trim() || 'Custom Discount';
 
