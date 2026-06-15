@@ -335,7 +335,7 @@ function renderAllCardsList(groups, activeBrandObj) {
       group.card.applyStatus !== 'closed';
 
     const applyBadge = canApply
-      ? `<a href="${group.card.applyURL}" target="_blank" rel="noopener noreferrer"
+      ? `<a href="${group.card.applyURL}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"
            class="text-[10px] uppercase font-bold tracking-wider text-blue-600 border border-blue-200 hover:bg-blue-50 px-2 py-0.5 rounded transition-colors">Apply Now</a>`
       : group.card.applyStatus === 'invite_only'
         ? `<span class="text-[10px] text-slate-400 border border-slate-200 px-2 py-0.5 rounded">Invite Only</span>`
@@ -402,12 +402,20 @@ function renderAllCardsList(groups, activeBrandObj) {
         </tr>`;
     }).join('');
 
+    const bestNet = group.entries[0].computedTrueNet;
+
     return `
-      <div class="bg-white border border-slate-200 rounded-md mt-3 overflow-hidden">
-        <div class="flex items-center justify-between px-3 py-2 bg-slate-50 border-b border-slate-200">
-          <span class="font-semibold text-sm text-slate-800">${group.card.name}</span>
-          ${applyBadge}
-        </div>
+      <details class="bg-white border border-slate-200 rounded-md mt-3 overflow-hidden group">
+        <summary class="flex items-center justify-between px-3 py-2 bg-slate-50 border-b border-slate-200 cursor-pointer list-none">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="font-semibold text-sm text-slate-800">${group.card.name}</span>
+            <span class="text-xs font-semibold text-emerald-600">${bestNet.toFixed(2)}% best</span>
+          </div>
+          <div class="flex items-center gap-2">
+            ${applyBadge}
+            <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs text-slate-400">▼</span>
+          </div>
+        </summary>
         <div class="px-3 overflow-x-auto">
           <table class="w-full text-sm">
             <thead>
@@ -423,7 +431,7 @@ function renderAllCardsList(groups, activeBrandObj) {
           </table>
         </div>
         ${noteText ? `<div class="text-[11px] italic text-slate-400 px-3 pb-2 pt-1 border-t border-slate-100">💡 ${noteText}</div>` : ''}
-      </div>`;
+      </details>`;
   };
 
   const top2 = groups.slice(0, 2);
