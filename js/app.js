@@ -578,6 +578,7 @@ resetCustomBtn.addEventListener('click', () => {
   document.getElementById('customBrandName').value = '';
   document.getElementById('customDiscountPercent').value = '';
   document.getElementById('customVoucherAmount').value = '1000';
+  document.getElementById('customPortal').value = 'other';
   customResults.classList.add('hidden');
   customCalcError.classList.add('hidden');
   lastCustomCalc = null;
@@ -604,15 +605,16 @@ function handleCustomCalculate() {
   hidePortalResults();
 
   const brandName = document.getElementById('customBrandName').value.trim() || 'Custom Discount';
+  const portalId  = document.getElementById('customPortal').value; // 'other' or a real portal id
 
-  runCustomCalculation({ discountPercent, brandName, voucherAmount });
+  runCustomCalculation({ discountPercent, brandName, voucherAmount, portalId });
 
   // Cache last-used inputs so a card delete (from within the results) can
   // re-run the calculation without depending on the (about to be cleared) form fields.
-  lastCustomCalc = { discountPercent, brandName, voucherAmount };
+  lastCustomCalc = { discountPercent, brandName, voucherAmount, portalId };
 
   // Reset the base inputs (brand name + discount %) for the next calculation.
-  // Voucher amount is intentionally preserved.
+  // Voucher amount and portal selection are intentionally preserved.
   document.getElementById('customBrandName').value = '';
   document.getElementById('customDiscountPercent').value = '';
 }
@@ -623,26 +625,57 @@ let lastCustomCalc = null;
  * Single source of truth for the Discount Calculator's card comparison.
  * Used both by the "Calculate Best Card" button and by the re-run that
  * happens after a custom card is deleted from the results.
+ *
+ * portalId: 'other' checks all wallet cards using each card's Default
+ * multiplier. A real portal id (e.g. 'hdfc_smartbuy') narrows to cards
+ * eligible for that portal and uses THAT portal's actual multiplier —
+ * reuses the same eligibility check as the main portal comparison
+ * (yesterday's consolidation), so the two never disagree.
  */
-function runCustomCalculation({ discountPercent, brandName, voucherAmount }) {
+function runCustomCalculation({ discountPercent, brandName, voucherAmount, portalId = 'other' }) {
   let walletIds = getActiveWalletIds();
-  let cardsToEvaluate = walletIds.length > 0
+  let walletCards = walletIds.length > 0
     ? cards.filter(c => walletIds.includes(c.id))
     : cards;
-  if (cardsToEvaluate.length === 0) cardsToEvaluate = cards; // ultimate fallback
+  if (walletCards.length === 0) walletCards = cards; // ultimate fallback
 
-  const mockPortal = { id: 'custom_portal', name: 'Custom', group: 'custom', upfrontDiscountPercent: discountPercent };
-  const mockPortalConfig = { portalId: 'custom_portal', upfrontDiscountPercent: discountPercent, site: '', perks: '' };
+  const portal = portalId !== 'other' ? findPortal(portalId) : null;
+
+  let cardsToEvaluate;
+  if (portal) {
+    // Narrow to cards eligible for this specific portal (same rule as the
+    // main results: non-zero multiplier via portal.id -> group -> default)
+    cardsToEvaluate = walletCards.filter(c => {
+      const pm = c.portalMultipliers || {};
+      const m = pm[portal.id] ?? pm[portal.group] ?? pm.default ?? 0;
+      return m > 0;
+    });
+  } else {
+    cardsToEvaluate = walletCards;
+  }
+
+  if (cardsToEvaluate.length === 0) {
+    renderCustomResults([], brandName, discountPercent, voucherAmount, portal);
+    return;
+  }
+
+  const mockPortal = portal
+    ? { id: portal.id, name: portal.name, group: portal.group, upfrontDiscountPercent: discountPercent }
+    : { id: 'custom_portal', name: 'Custom', group: 'custom', upfrontDiscountPercent: discountPercent };
+  const mockPortalConfig = { portalId: mockPortal.id, upfrontDiscountPercent: discountPercent, site: '', perks: '' };
 
   const results = cardsToEvaluate.map(card => {
     const metrics = calculateTrueNetMetrics(card, mockPortal, mockPortalConfig, voucherAmount);
-    const multiplier = card.portalMultipliers?.default ?? 0;
+    // For a real portal, use that portal's actual multiplier (via getMultiplier
+    // inside calculateTrueNetMetrics, already reflected in metrics.multiplier).
+    // For "Other", fall back to the card's Default multiplier.
+    const multiplier = portal ? metrics.multiplier : (card.portalMultipliers?.default ?? 0);
     const cardRewardRate = getCardRewardRate(card, multiplier);
     return { card, upfront: discountPercent, reward: cardRewardRate, net: metrics.computedTrueNet, metrics, multiplier };
   });
 
   results.sort((a, b) => b.net - a.net);
-  renderCustomResults(results, brandName, discountPercent, voucherAmount);
+  renderCustomResults(results, brandName, discountPercent, voucherAmount, portal);
 }
 
 function recalcAfterCardDelete() {
@@ -650,20 +683,23 @@ function recalcAfterCardDelete() {
   runCustomCalculation(lastCustomCalc);
 }
 
-function renderCustomResults(results, brandName, discountPercent, voucherAmount) {
+function renderCustomResults(results, brandName, discountPercent, voucherAmount, portal = null) {
+  const portalLabel = portal ? portal.name : 'All cards (Other / general)';
+
   if (results.length === 0) {
     customResults.classList.remove('hidden');
     document.getElementById('customCardsList').innerHTML =
-      `<div class="p-3 text-sm text-slate-600">No cards available for calculation.</div>`;
+      `<div class="p-3 text-sm text-slate-600">No cards in your wallet are eligible for <strong>${portalLabel}</strong>. Add an eligible card via My Wallet or choose a different portal.</div>`;
     return;
   }
 
-  const best = results[0];
+  const best    = results[0];
   const runnerUp = results.length > 1 ? results[1] : null;
 
-  // Update header
+  // Update header — now includes portal context
   document.getElementById('customResultTitle').textContent = brandName;
-  document.getElementById('customResultSubtitle').textContent = `Best card: ${best.card.name}`;
+  document.getElementById('customResultSubtitle').textContent =
+    `Best card: ${best.card.name} · via ${portalLabel}`;
   document.getElementById('customTimestamp').textContent = new Date().toLocaleTimeString();
   document.getElementById('customUpfrontValue').textContent = `${discountPercent.toFixed(2)}%`;
   document.getElementById('customNetValue').textContent = `${best.net.toFixed(2)}%`;

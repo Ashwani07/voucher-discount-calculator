@@ -206,6 +206,17 @@
               <input id="customVoucherAmount" type="number" placeholder="1000" value="1000" min="1" class="w-full border border-slate-300 p-2 rounded-md text-sm">
             </div>
           </div>
+          <div class="mb-3">
+            <label class="block text-xs font-medium text-slate-600 mb-1">Where is this discount? (limits which cards are checked)</label>
+            <select id="customPortal" class="w-full border border-slate-300 p-2 rounded-md text-sm bg-white">
+              <option value="other" selected>Other / general (Amazon, Gyftr, any site) — checks all cards</option>
+              <option value="hdfc_smartbuy">HDFC SmartBuy — HDFC cards only</option>
+              <option value="icici_ishop">ICICI iShop — ICICI cards only</option>
+              <option value="axis_edgerewards">Axis EdgeRewards — Axis cards only</option>
+              <option value="axis_grabdeals">Axis GrabDeals — Axis cards only</option>
+              <option value="shopwise">Amex Shopwise — Amex cards only</option>
+            </select>
+          </div>
           <div class="flex gap-2">
             <button id="calculateCustomBtn" class="flex-1 rounded-md bg-sky-600 text-white px-4 py-2 font-semibold hover:bg-sky-500 text-sm">Calculate Best Card</button>
             <button id="resetCustomBtn" class="rounded-md border border-slate-300 px-4 py-2 text-slate-700 bg-white text-sm">Clear</button>
