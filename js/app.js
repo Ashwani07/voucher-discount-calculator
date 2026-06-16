@@ -357,9 +357,19 @@ function renderAllCardsList(groups, activeBrandObj) {
       const cardYieldPercent = (entry.metrics.cashValue / voucherAmount * 100).toFixed(2);
 
       // Generate clear UX strings explaining the exact flow of money
-      const exampleText = entry.card.rewardType === 'points' && entry.card.spendBlock
-        ? `Pay ₹${entry.metrics.netPaid.toFixed(0)} (after discount) → ${entry.metrics.rpEarned} ${currencyLabel} (₹${entry.metrics.cashValue.toFixed(2)} value / ${cardYieldPercent}% of voucher) → Net ₹${entry.metrics.finalNetCost.toFixed(0)}`
-        : `Pay ₹${entry.metrics.netPaid.toFixed(0)} (after discount) → ₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}% of voucher) cashback → Net ₹${entry.metrics.finalNetCost.toFixed(0)}`;
+      // Structured as a 2-col mini-grid (label / value) so it never wraps
+      // word-by-word on narrow mobile screens.
+      const exampleHTML = entry.card.rewardType === 'points' && entry.card.spendBlock
+        ? `<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[10px] text-slate-400 mt-1">
+             <span>Pay</span><span class="text-right">₹${entry.metrics.netPaid.toFixed(0)}</span>
+             <span>Earn</span><span class="text-right">${entry.metrics.rpEarned} ${currencyLabel} = ₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
+             <span class="font-medium text-slate-500">Net</span><span class="text-right font-medium text-slate-500">₹${entry.metrics.finalNetCost.toFixed(0)}</span>
+           </div>`
+        : `<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[10px] text-slate-400 mt-1">
+             <span>Pay</span><span class="text-right">₹${entry.metrics.netPaid.toFixed(0)}</span>
+             <span>Cashback</span><span class="text-right">₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
+             <span class="font-medium text-slate-500">Net</span><span class="text-right font-medium text-slate-500">₹${entry.metrics.finalNetCost.toFixed(0)}</span>
+           </div>`;
       const disclaimerHTML = disclaimer
         ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : '';
       const perksHTML = perks
@@ -387,7 +397,7 @@ function renderAllCardsList(groups, activeBrandObj) {
           <td class="py-2 pr-2 align-top">
             <div class="font-medium text-sm text-slate-700">${entry.portal.name}${flagHTML}${flaggedBadge}</div>
             ${perksHTML}${disclaimerHTML}
-            <div class="text-[10px] text-slate-400 mt-1">${exampleText}</div>
+            ${exampleHTML}
           </td>
           <td class="py-2 px-2 text-right align-top whitespace-nowrap text-xs text-slate-500">
             ${entry.upfront > 0 ? entry.upfront.toFixed(1) + '%' : '—'}
@@ -765,10 +775,18 @@ function renderCustomCardsList(results, voucherAmount) {
     const deleteBtn = isCustomCard
       ? `<button data-delete-card="${card.id}" class="text-[10px] text-red-300 hover:text-red-500 transition-colors ml-1" title="Remove custom card">✕</button>` : '';
 
-    // Generate explanation text
-    const exampleText = card.rewardType === 'points' && card.spendBlock
-      ? `Pay ₹${metrics.netPaid.toFixed(0)} → ${metrics.rpEarned} ${currencyLabel} (₹${metrics.cashValue.toFixed(2)} / ${cardYieldPercent}%) → Net ₹${metrics.finalNetCost.toFixed(0)}`
-      : `Pay ₹${metrics.netPaid.toFixed(0)} → ₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%) cashback → Net ₹${metrics.finalNetCost.toFixed(0)}`;
+    // Generate explanation — 2-col grid so it never wraps on mobile
+    const exampleHTML = card.rewardType === 'points' && card.spendBlock
+      ? `<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[10px] text-slate-400 mt-1">
+           <span>Pay</span><span class="text-right">₹${metrics.netPaid.toFixed(0)}</span>
+           <span>Earn</span><span class="text-right">${metrics.rpEarned} ${currencyLabel} = ₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
+           <span class="font-medium text-slate-500">Net</span><span class="text-right font-medium text-slate-500">₹${metrics.finalNetCost.toFixed(0)}</span>
+         </div>`
+      : `<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[10px] text-slate-400 mt-1">
+           <span>Pay</span><span class="text-right">₹${metrics.netPaid.toFixed(0)}</span>
+           <span>Cashback</span><span class="text-right">₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
+           <span class="font-medium text-slate-500">Net</span><span class="text-right font-medium text-slate-500">₹${metrics.finalNetCost.toFixed(0)}</span>
+         </div>`;
 
     const rowClass = rank <= 2 ? 'bg-slate-50' : '';
     const rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : `#${rank}`;
@@ -778,7 +796,7 @@ function renderCustomCardsList(results, voucherAmount) {
         <td class="py-2 pr-2 text-center text-sm font-medium text-slate-500 w-10">${rankEmoji}</td>
         <td class="py-2 pr-2 align-top">
           <div class="font-medium text-sm text-slate-700">${card.name}${customTag}${statusBadge}${deleteBtn}</div>
-          <div class="text-[10px] text-slate-400 mt-1">${exampleText}</div>
+          ${exampleHTML}
           ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-0.5">💡 ${card.assumption_note}</div>` : ''}
         </td>
         <td class="py-2 px-2 text-right align-top whitespace-nowrap text-xs text-slate-500">
