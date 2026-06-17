@@ -399,12 +399,6 @@ function renderAllCardsList(groups, activeBrandObj) {
             ${perksHTML}${disclaimerHTML}
             ${exampleHTML}
           </td>
-          <td class="py-2 px-2 text-right align-top whitespace-nowrap text-xs text-slate-500">
-            ${entry.upfront > 0 ? entry.upfront.toFixed(1) + '%' : '—'}
-          </td>
-          <td class="py-2 px-2 text-right align-top whitespace-nowrap text-xs text-slate-500">
-            ${entry.reward.toFixed(2)}%
-          </td>
           <td class="py-2 pl-2 text-right align-top whitespace-nowrap font-semibold text-emerald-600 text-sm">
             ${entry.computedTrueNet.toFixed(2)}%
           </td>
@@ -431,8 +425,6 @@ function renderAllCardsList(groups, activeBrandObj) {
             <thead>
               <tr class="text-[10px] uppercase tracking-wider text-slate-400 border-b border-slate-100">
                 <th class="text-left py-1.5 pr-2">Portal</th>
-                <th class="text-right py-1.5 px-2">Upfront</th>
-                <th class="text-right py-1.5 px-2">Card</th>
                 <th class="text-right py-1.5 pl-2">Net</th>
                 <th class="text-right py-1.5 pl-3">Buy</th>
               </tr>
@@ -450,10 +442,10 @@ function renderAllCardsList(groups, activeBrandObj) {
 
   if (rest.length) {
     html += `
-      <details class="mt-4 group">
+      <details class="mt-4 group/outer">
         <summary class="cursor-pointer text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-2 rounded-md hover:bg-slate-200 transition-colors list-none flex justify-between items-center">
           <span>View ${rest.length} other card${rest.length > 1 ? 's' : ''}</span>
-          <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs">▼</span>
+          <span class="transform group-open/outer:rotate-180 transition-transform duration-200 text-xs">▼</span>
         </summary>
         <div class="mt-1">${rest.map(generateCardBlock).join('')}</div>
       </details>`;
@@ -799,9 +791,6 @@ function renderCustomCardsList(results, voucherAmount) {
           ${exampleHTML}
           ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-0.5">💡 ${card.assumption_note}</div>` : ''}
         </td>
-        <td class="py-2 px-2 text-right align-top whitespace-nowrap text-xs text-slate-500">
-          ${result.reward.toFixed(2)}%
-        </td>
         <td class="py-2 pl-2 text-right align-top whitespace-nowrap font-semibold ${rank <= 3 ? 'text-emerald-600' : 'text-slate-600'} text-sm">
           ${result.net.toFixed(2)}%
         </td>
@@ -823,7 +812,6 @@ function renderCustomCardsList(results, voucherAmount) {
             <tr class="text-[10px] uppercase tracking-wider text-slate-400 border-b border-slate-100">
               <th class="text-center py-1.5 pr-2 w-10">Rank</th>
               <th class="text-left py-1.5 pr-2">Card</th>
-              <th class="text-right py-1.5 px-2">Reward</th>
               <th class="text-right py-1.5 pl-2">Net</th>
             </tr>
           </thead>
