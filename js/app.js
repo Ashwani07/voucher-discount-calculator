@@ -347,7 +347,6 @@ function renderAllCardsList(groups, activeBrandObj) {
       const p            = entry.portalConfig;
       const flagged      = isDiscountFlagged(activeBrandObj.id, entry.portalId);
       const buyURL       = p?.site || '';
-      const perks        = p?.perks || '';
       const disclaimer   = p?.disclaimer || '';
       const notAvailable = disclaimer.toLowerCase().includes('not available');
 
@@ -356,24 +355,28 @@ function renderAllCardsList(groups, activeBrandObj) {
       // Calculate the specific yield against the original voucher amount
       const cardYieldPercent = (entry.metrics.cashValue / voucherAmount * 100).toFixed(2);
 
-      // Generate clear UX strings explaining the exact flow of money
-      // Structured as a 2-col mini-grid (label / value) so it never wraps
-      // word-by-word on narrow mobile screens.
+      // Generate clear UX strings explaining the exact flow of money.
+      // Structured as a 2-col grid (label / value) so it never wraps
+      // word-by-word on narrow mobile screens. Upfront discount/surcharge
+      // is shown first so the jump from voucher price to "Pay" amount is
+      // never a mystery number.
+      const upfrontLabel = entry.upfront > 0 ? 'Upfront Discount' : entry.upfront < 0 ? 'Convenience Charge' : 'Upfront Discount';
+      const upfrontValueStr = entry.upfront !== 0 ? `${Math.abs(entry.upfront).toFixed(2)}%` : '—';
       const exampleHTML = entry.card.rewardType === 'points' && entry.card.spendBlock
-        ? `<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[10px] text-slate-400 mt-1">
+        ? `<div class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-xs text-slate-500 mt-2 w-full">
+             <span>${upfrontLabel}</span><span class="text-right">${upfrontValueStr}</span>
              <span>Pay</span><span class="text-right">₹${entry.metrics.netPaid.toFixed(0)}</span>
-             <span>Earn</span><span class="text-right">${entry.metrics.rpEarned} ${currencyLabel} = ₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
-             <span class="font-medium text-slate-500">Net</span><span class="text-right font-medium text-slate-500">₹${entry.metrics.finalNetCost.toFixed(0)}</span>
+             <span>Reward</span><span class="text-right">${entry.metrics.rpEarned} ${currencyLabel} = ₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
+             <span class="font-medium text-slate-600">Net</span><span class="text-right font-medium text-slate-600">₹${entry.metrics.finalNetCost.toFixed(0)}</span>
            </div>`
-        : `<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[10px] text-slate-400 mt-1">
+        : `<div class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-xs text-slate-500 mt-2 w-full">
+             <span>${upfrontLabel}</span><span class="text-right">${upfrontValueStr}</span>
              <span>Pay</span><span class="text-right">₹${entry.metrics.netPaid.toFixed(0)}</span>
-             <span>Cashback</span><span class="text-right">₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
-             <span class="font-medium text-slate-500">Net</span><span class="text-right font-medium text-slate-500">₹${entry.metrics.finalNetCost.toFixed(0)}</span>
+             <span>Reward</span><span class="text-right">₹${entry.metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)</span>
+             <span class="font-medium text-slate-600">Net</span><span class="text-right font-medium text-slate-600">₹${entry.metrics.finalNetCost.toFixed(0)}</span>
            </div>`;
       const disclaimerHTML = disclaimer
         ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : '';
-      const perksHTML = perks
-        ? `<div class="inline-block mt-0.5 bg-emerald-50 text-[10px] text-emerald-700 px-1.5 py-0.5 rounded border border-emerald-200">${perks}</div>` : '';
       const shownDiscountStr = entry.upfront > 0 ? entry.upfront.toFixed(1) + '%' : 'N/A';
       const reportURL =
         `https://docs.google.com/forms/d/e/1FAIpQLSeDeeY8MielvLxAvq9HCd7iyz9X473A7FwrjLgj-cb0sGAf4Q/viewform?usp=pp_url` +
@@ -393,17 +396,17 @@ function renderAllCardsList(groups, activeBrandObj) {
         : `<span class="text-[10px] text-slate-300">—</span>`;
 
       return `
-        <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
-          <td class="py-2 pr-2 align-top">
+        <div class="py-2.5 border-b border-slate-100 last:border-0">
+          <div class="flex items-center justify-between gap-2">
             <div class="font-medium text-sm text-slate-700">${entry.portal.name}${flagHTML}${flaggedBadge}</div>
-            ${perksHTML}${disclaimerHTML}
-            ${exampleHTML}
-          </td>
-          <td class="py-2 pl-2 text-right align-top whitespace-nowrap font-semibold text-emerald-600 text-sm">
-            ${entry.computedTrueNet.toFixed(2)}%
-          </td>
-          <td class="py-2 pl-3 text-right align-top">${buyBtn}</td>
-        </tr>`;
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="font-semibold text-emerald-600 text-sm whitespace-nowrap">${entry.computedTrueNet.toFixed(2)}%</span>
+              ${buyBtn}
+            </div>
+          </div>
+          ${disclaimerHTML}
+          ${exampleHTML}
+        </div>`;
     }).join('');
 
     const bestNet = group.entries[0].computedTrueNet;
@@ -420,17 +423,8 @@ function renderAllCardsList(groups, activeBrandObj) {
             <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs text-slate-400">▼</span>
           </div>
         </summary>
-        <div class="px-3 overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="text-[10px] uppercase tracking-wider text-slate-400 border-b border-slate-100">
-                <th class="text-left py-1.5 pr-2">Portal</th>
-                <th class="text-right py-1.5 pl-2">Net</th>
-                <th class="text-right py-1.5 pl-3">Buy</th>
-              </tr>
-            </thead>
-            <tbody>${tableRows}</tbody>
-          </table>
+        <div class="px-3">
+          ${tableRows}
         </div>
         ${noteText ? `<div class="text-[11px] italic text-slate-400 px-3 pb-2 pt-1 border-t border-slate-100">💡 ${noteText}</div>` : ''}
       </details>`;
@@ -664,7 +658,7 @@ function runCustomCalculation({ discountPercent, brandName, voucherAmount, porta
   const mockPortal = portal
     ? { id: portal.id, name: portal.name, group: portal.group, upfrontDiscountPercent: discountPercent }
     : { id: 'custom_portal', name: 'Custom', group: 'custom', upfrontDiscountPercent: discountPercent };
-  const mockPortalConfig = { portalId: mockPortal.id, upfrontDiscountPercent: discountPercent, site: '', perks: '' };
+  const mockPortalConfig = { portalId: mockPortal.id, upfrontDiscountPercent: discountPercent, site: '' };
 
   const results = cardsToEvaluate.map(card => {
     const metrics = calculateTrueNetMetrics(card, mockPortal, mockPortalConfig, voucherAmount);
@@ -767,34 +761,34 @@ function renderCustomCardsList(results, voucherAmount) {
     const deleteBtn = isCustomCard
       ? `<button data-delete-card="${card.id}" class="text-[10px] text-red-300 hover:text-red-500 transition-colors ml-1" title="Remove custom card">✕</button>` : '';
 
-    // Generate explanation — 2-col grid so it never wraps on mobile
+    // Generate explanation — full-width 2-col grid so it never wraps/squeezes on mobile
     const exampleHTML = card.rewardType === 'points' && card.spendBlock
-      ? `<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[10px] text-slate-400 mt-1">
+      ? `<div class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-xs text-slate-500 mt-2 w-full">
            <span>Pay</span><span class="text-right">₹${metrics.netPaid.toFixed(0)}</span>
-           <span>Earn</span><span class="text-right">${metrics.rpEarned} ${currencyLabel} = ₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
-           <span class="font-medium text-slate-500">Net</span><span class="text-right font-medium text-slate-500">₹${metrics.finalNetCost.toFixed(0)}</span>
+           <span>Reward</span><span class="text-right">${metrics.rpEarned} ${currencyLabel} = ₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
+           <span class="font-medium text-slate-600">Net</span><span class="text-right font-medium text-slate-600">₹${metrics.finalNetCost.toFixed(0)}</span>
          </div>`
-      : `<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[10px] text-slate-400 mt-1">
+      : `<div class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-xs text-slate-500 mt-2 w-full">
            <span>Pay</span><span class="text-right">₹${metrics.netPaid.toFixed(0)}</span>
-           <span>Cashback</span><span class="text-right">₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)</span>
-           <span class="font-medium text-slate-500">Net</span><span class="text-right font-medium text-slate-500">₹${metrics.finalNetCost.toFixed(0)}</span>
+           <span>Reward</span><span class="text-right">₹${metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)</span>
+           <span class="font-medium text-slate-600">Net</span><span class="text-right font-medium text-slate-600">₹${metrics.finalNetCost.toFixed(0)}</span>
          </div>`;
 
     const rowClass = rank <= 2 ? 'bg-slate-50' : '';
     const rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : `#${rank}`;
 
     return `
-      <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50 ${rowClass}">
-        <td class="py-2 pr-2 text-center text-sm font-medium text-slate-500 w-10">${rankEmoji}</td>
-        <td class="py-2 pr-2 align-top">
-          <div class="font-medium text-sm text-slate-700">${card.name}${customTag}${statusBadge}${deleteBtn}</div>
+      <div class="py-2.5 border-b border-slate-100 last:border-0 flex gap-2 ${rowClass}">
+        <div class="text-sm font-medium text-slate-500 w-7 pt-0.5 shrink-0">${rankEmoji}</div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between gap-2">
+            <div class="font-medium text-sm text-slate-700">${card.name}${customTag}${statusBadge}${deleteBtn}</div>
+            <span class="font-semibold ${rank <= 3 ? 'text-emerald-600' : 'text-slate-600'} text-sm whitespace-nowrap shrink-0">${result.net.toFixed(2)}%</span>
+          </div>
           ${exampleHTML}
-          ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-0.5">💡 ${card.assumption_note}</div>` : ''}
-        </td>
-        <td class="py-2 pl-2 text-right align-top whitespace-nowrap font-semibold ${rank <= 3 ? 'text-emerald-600' : 'text-slate-600'} text-sm">
-          ${result.net.toFixed(2)}%
-        </td>
-      </tr>`;
+          ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-1">💡 ${card.assumption_note}</div>` : ''}
+        </div>
+      </div>`;
   };
 
   let html = `
@@ -806,19 +800,8 @@ function renderCustomCardsList(results, voucherAmount) {
         </div>
         <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs text-slate-400">▼</span>
       </summary>
-      <div class="px-3 overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="text-[10px] uppercase tracking-wider text-slate-400 border-b border-slate-100">
-              <th class="text-center py-1.5 pr-2 w-10">Rank</th>
-              <th class="text-left py-1.5 pr-2">Card</th>
-              <th class="text-right py-1.5 pl-2">Net</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${results.map((r, i) => generateCardRow(r, i + 1)).join('')}
-          </tbody>
-        </table>
+      <div class="px-3">
+        ${results.map((r, i) => generateCardRow(r, i + 1)).join('')}
       </div>
     </details>`;
 
@@ -921,7 +904,7 @@ document.getElementById('saveBrandBtn').addEventListener('click', () => {
   const name = document.getElementById('cbName').value.trim() || 'Custom Brand';
   const newBrand = { id, name, category_name: 'Custom', portals: [] };
   const push = (portalId, elId) => newBrand.portals.push({
-    portalId, upfrontDiscountPercent: parseFloat(document.getElementById(elId).value) || 0, site: '', perks: ''
+    portalId, upfrontDiscountPercent: parseFloat(document.getElementById(elId).value) || 0, site: ''
   });
   push('hdfc_smartbuy',    'cbSmartbuy');
   push('gyftr',            'cbGyftr');
