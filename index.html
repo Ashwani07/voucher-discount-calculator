@@ -164,7 +164,8 @@
 
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-1">Voucher Value (₹)</label>
-          <input id="voucherAmount" type="number" placeholder="1000" value="1000" min="1" inputmode="numeric" class="w-full border border-slate-300 p-2 rounded-md text-sm">
+          <input id="voucherAmount" type="number" placeholder="1000" value="1000" min="500" step="500" inputmode="numeric" class="w-full border border-slate-300 p-2 rounded-md text-sm">
+          <p class="text-[11px] text-slate-400 mt-0.5">Must be a multiple of ₹500 (e.g. 500, 1000, 1500...)</p>
         </div>
 
         <div class="flex gap-3 mt-2">
@@ -203,7 +204,7 @@
             </div>
             <div>
               <label class="block text-xs font-medium text-slate-600 mb-1">Voucher Amount (₹)</label>
-              <input id="customVoucherAmount" type="number" placeholder="1000" value="1000" min="1" class="w-full border border-slate-300 p-2 rounded-md text-sm">
+              <input id="customVoucherAmount" type="number" placeholder="1000" value="1000" min="500" step="500" class="w-full border border-slate-300 p-2 rounded-md text-sm">
             </div>
           </div>
           <div class="mb-3">
@@ -243,11 +244,11 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
             <div class="p-3 bg-white rounded-md border border-slate-200">
               <p class="text-xs text-slate-500">Upfront Discount</p>
-              <p id="customUpfrontValue" class="mt-1 text-lg font-semibold text-emerald-600">—</p>
+              <p id="customUpfrontValue" class="mt-1 text-base font-semibold text-emerald-600 leading-snug">—</p>
             </div>
             <div class="p-3 bg-white rounded-md border border-slate-200">
               <p class="text-xs text-slate-500">Best Net Effective Discount</p>
-              <p id="customNetValue" class="mt-1 text-lg font-semibold text-amber-600">—</p>
+              <p id="customNetValue" class="mt-1 text-base font-semibold text-amber-600 leading-snug">—</p>
             </div>
           </div>
 
@@ -279,15 +280,15 @@
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
             <div class="p-3 bg-white rounded-md border border-slate-200">
               <p class="text-xs text-slate-500">Upfront Portal Discount</p>
-              <p id="upfrontValue" class="mt-1 text-lg font-semibold text-emerald-600">—</p>
+              <p id="upfrontValue" class="mt-1 text-base font-semibold text-emerald-600 leading-snug">—</p>
             </div>
             <div class="p-3 bg-white rounded-md border border-slate-200">
               <p class="text-xs text-slate-500">Card Reward Value</p>
-              <p id="rewardValue" class="mt-1 text-lg font-semibold text-sky-600">—</p>
+              <p id="rewardValue" class="mt-1 text-base font-semibold text-sky-600 leading-snug">—</p>
             </div>
             <div class="p-3 bg-white rounded-md border border-slate-200">
               <p class="text-xs text-slate-500">Net Effective Discount</p>
-              <p id="netValue" class="mt-1 text-lg font-semibold text-amber-600">—</p>
+              <p id="netValue" class="mt-1 text-base font-semibold text-amber-600 leading-snug">—</p>
             </div>
           </div>
 

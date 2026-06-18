@@ -465,9 +465,9 @@ function renderResults(groups, brand, shouldScroll) {
   document.getElementById('resultTitle').textContent    = brand.name;
   document.getElementById('resultSubtitle').textContent = `${best.card.name} via ${best.portal.name}`;
   document.getElementById('timestamp').textContent      = new Date().toLocaleTimeString();
-  document.getElementById('upfrontValue').textContent   = `${best.upfront.toFixed(2)}%`;
-  document.getElementById('rewardValue').textContent    = `${best.reward.toFixed(2)}%`;
-  document.getElementById('netValue').textContent       = `${best.computedTrueNet.toFixed(2)}%`;
+  document.getElementById('upfrontValue').textContent   = `${best.upfront.toFixed(2)}% (₹${best.metrics.netPaid.toFixed(0)} to pay)`;
+  document.getElementById('rewardValue').textContent    = `${best.reward.toFixed(2)}% (₹${best.metrics.cashValue.toFixed(2)} back)`;
+  document.getElementById('netValue').textContent       = `${best.computedTrueNet.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
   const buyBannerBtn = (url, cls) => url
     ? `<a href="${url}" target="_blank" rel="noopener noreferrer"
@@ -504,6 +504,23 @@ function hideCustomResults() {
 }
 
 /************************************************************************
+ * VOUCHER AMOUNT VALIDATION
+ * Vouchers are sold in fixed denominations, not arbitrary amounts (e.g.
+ * a user can't buy a ₹258 voucher). Enforced as multiples of ₹500.
+ * Single source of truth - used by both calculators.
+ ************************************************************************/
+function validateVoucherAmount(rawValue) {
+  const amount = parseFloat(rawValue);
+  if (!amount || amount < 500) {
+    return { valid: false, error: 'Please enter a valid voucher amount (minimum ₹500).' };
+  }
+  if (amount % 500 !== 0) {
+    return { valid: false, error: `Voucher amount must be a multiple of ₹500 (e.g. ₹${Math.round(amount / 500) * 500 || 500}).` };
+  }
+  return { valid: true, amount };
+}
+
+/************************************************************************
  * ORCHESTRATOR
  ************************************************************************/
 function handleCalculate({ scroll = true } = {}) {
@@ -512,8 +529,8 @@ function handleCalculate({ scroll = true } = {}) {
 
   if (!currentBrandId) return showError('Please search and select a brand first.');
 
-  const rawAmount = parseFloat(document.getElementById('voucherAmount').value);
-  if (!rawAmount || rawAmount < 1) return showError('Please enter a valid voucher amount (minimum ₹1).');
+  const amountCheck = validateVoucherAmount(document.getElementById('voucherAmount').value);
+  if (!amountCheck.valid) return showError(amountCheck.error);
   clearError();
 
   hideCustomResults();
@@ -522,7 +539,7 @@ function handleCalculate({ scroll = true } = {}) {
   if (!brand) return;
 
   const walletIds     = getActiveWalletIds();
-  const voucherAmount = rawAmount;
+  const voucherAmount = amountCheck.amount;
 
   // Collapse wallet selection panel if open, now that we've captured the selection
   const walletPanel = document.getElementById('walletPanel');
@@ -592,10 +609,9 @@ function handleCustomCalculate() {
     return showError('Please enter a valid discount percentage.');
   }
 
-  const voucherAmount = parseFloat(document.getElementById('customVoucherAmount').value) || 1000;
-  if (voucherAmount < 1) {
-    return showError('Please enter a valid voucher amount (minimum ₹1).');
-  }
+  const amountCheck = validateVoucherAmount(document.getElementById('customVoucherAmount').value);
+  if (!amountCheck.valid) return showError(amountCheck.error);
+  const voucherAmount = amountCheck.amount;
 
   clearError();
   hidePortalResults();
@@ -697,8 +713,8 @@ function renderCustomResults(results, brandName, discountPercent, voucherAmount,
   document.getElementById('customResultSubtitle').textContent =
     `Best card: ${best.card.name} · via ${portalLabel}`;
   document.getElementById('customTimestamp').textContent = new Date().toLocaleTimeString();
-  document.getElementById('customUpfrontValue').textContent = `${discountPercent.toFixed(2)}%`;
-  document.getElementById('customNetValue').textContent = `${best.net.toFixed(2)}%`;
+  document.getElementById('customUpfrontValue').textContent = `${discountPercent.toFixed(2)}% (₹${best.metrics.netPaid.toFixed(0)} to pay)`;
+  document.getElementById('customNetValue').textContent = `${best.net.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
   // Best card banner
   const customBestCardBox = document.getElementById('customBestCardBox');
