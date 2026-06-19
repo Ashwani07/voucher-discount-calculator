@@ -1,4 +1,5 @@
-import { portals, cards, brands, saveCustomCard, saveCustomBrand, lastVerified, bankPortalDefaults, bankSpecificPortalIds } from './data.js';
+// Legacy compatibility entrypoint. The page now loads main.js directly.
+import './main.js';import { portals, cards, brands, saveCustomCard, saveCustomBrand, lastVerified, bankPortalDefaults, bankSpecificPortalIds } from './data.js';
 import { calculateTrueNetMetrics, getCardRewardRate } from './calculator.js';
 
 let currentBrandId   = null;
