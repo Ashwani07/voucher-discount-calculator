@@ -49,7 +49,6 @@ function toggleDiscountFlag(brandId, portalId) {
 const calculateBtn     = document.getElementById('calculateBtn');
 const resetBtn         = document.getElementById('resetBtn');
 const resultsSection   = document.getElementById('results');
-const bestCardBox      = document.getElementById('bestCardBox');
 const brandSearch      = document.getElementById('brandSearch');
 const brandSuggestions = document.getElementById('brandSuggestions');
 const walletControls   = document.getElementById('walletControls');
@@ -244,7 +243,6 @@ document.addEventListener('click', (e) => {
  ************************************************************************/
 function handleReset() {
   resultsSection.classList.add('hidden');
-  bestCardBox.classList.add('hidden');
   document.getElementById('allCardsList').innerHTML = '';
   currentBrandId   = null;
   isFirstCalculate = true;
@@ -272,6 +270,7 @@ function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
 
   for (const p of brand.portals) {
     if (p.upfrontDiscountPercent === null) continue;
+    if (p.availability === 'unavailable') continue; // explicitly marked unavailable in data — exclude entirely, not just hide the Buy button
     const portal = findPortal(p.portalId);
     if (!portal) continue;
 
@@ -329,7 +328,7 @@ function groupAndSortResults(results) {
 function renderAllCardsList(groups, activeBrandObj) {
   const voucherAmount = parseFloat(document.getElementById('voucherAmount').value) || 1000;
 
-  const generateCardBlock = (group) => {
+  const generateCardBlock = (group, index) => {
     const canApply = group.card.applyURL &&
       group.card.applyStatus !== 'invite_only' &&
       group.card.applyStatus !== 'closed';
@@ -412,7 +411,7 @@ function renderAllCardsList(groups, activeBrandObj) {
     const bestNet = group.entries[0].computedTrueNet;
 
     return `
-      <details class="bg-white border border-slate-200 rounded-md mt-3 overflow-hidden group">
+      <details class="bg-white border border-slate-200 rounded-md mt-3 overflow-hidden group" ${index === 0 ? 'open' : ''}>
         <summary class="flex items-center justify-between px-3 py-2 bg-slate-50 border-b border-slate-200 cursor-pointer list-none">
           <div class="flex items-center gap-2 flex-wrap">
             <span class="font-semibold text-sm text-slate-800">${group.card.name}</span>
@@ -432,7 +431,7 @@ function renderAllCardsList(groups, activeBrandObj) {
 
   const top2 = groups.slice(0, 2);
   const rest = groups.slice(2);
-  let html   = top2.map(generateCardBlock).join('');
+  let html   = top2.map((g, i) => generateCardBlock(g, i)).join('');
 
   if (rest.length) {
     html += `
@@ -441,7 +440,7 @@ function renderAllCardsList(groups, activeBrandObj) {
           <span>View ${rest.length} other card${rest.length > 1 ? 's' : ''}</span>
           <span class="transform group-open/outer:rotate-180 transition-transform duration-200 text-xs">▼</span>
         </summary>
-        <div class="mt-1">${rest.map(generateCardBlock).join('')}</div>
+        <div class="mt-1">${rest.map(g => generateCardBlock(g, 99)).join('')}</div>
       </details>`;
   }
 
@@ -459,8 +458,7 @@ function renderAllCardsList(groups, activeBrandObj) {
 }
 
 function renderResults(groups, brand, shouldScroll) {
-  const best     = groups[0].entries[0];
-  const runnerUp = groups.length > 1 ? groups[1].entries[0] : null;
+  const best = groups[0].entries[0];
 
   document.getElementById('resultTitle').textContent    = brand.name;
   document.getElementById('resultSubtitle').textContent = `${best.card.name} via ${best.portal.name}`;
@@ -469,22 +467,6 @@ function renderResults(groups, brand, shouldScroll) {
   document.getElementById('rewardValue').textContent    = `${best.reward.toFixed(2)}% (₹${best.metrics.cashValue.toFixed(2)} back)`;
   document.getElementById('netValue').textContent       = `${best.computedTrueNet.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
-  const buyBannerBtn = (url, cls) => url
-    ? `<a href="${url}" target="_blank" rel="noopener noreferrer"
-         class="text-xs ${cls} text-white px-4 py-1.5 rounded transition-colors whitespace-nowrap font-medium">Buy Voucher ↗</a>` : '';
-
-  bestCardBox.innerHTML = `
-    <div class="p-3 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold mt-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-      <div class="flex items-center gap-2"><span>🥇</span><span>Best: ${best.card.name} — ${best.computedTrueNet.toFixed(2)}% via ${best.portal.name}</span></div>
-      ${buyBannerBtn(best.portalConfig?.site, 'bg-emerald-600 hover:bg-emerald-700')}
-    </div>
-    ${runnerUp ? `
-    <div class="p-3 rounded-md bg-blue-50 border border-blue-200 text-blue-800 font-medium mt-2 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-      <div class="flex items-center gap-2"><span>🥈</span><span>2nd: ${runnerUp.card.name} — ${runnerUp.computedTrueNet.toFixed(2)}% via ${runnerUp.portal.name}</span></div>
-      ${buyBannerBtn(runnerUp.portalConfig?.site, 'bg-blue-600 hover:bg-blue-700')}
-    </div>` : ''}`;
-
-  bestCardBox.classList.remove('hidden');
   renderAllCardsList(groups, brand);
   resultsSection.classList.remove('hidden');
   if (shouldScroll) resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -550,7 +532,6 @@ function handleCalculate({ scroll = true } = {}) {
 
   if (!walletIds.length) {
     resultsSection.classList.remove('hidden');
-    bestCardBox.classList.add('hidden');
     document.getElementById('allCardsList').innerHTML =
       `<div class="p-3 text-sm text-slate-600 mt-4">No card selected. Use the Edit button above to add cards to your wallet.</div>`;
     return;
@@ -559,7 +540,6 @@ function handleCalculate({ scroll = true } = {}) {
   const rawResults = getEligibleResults(brand, walletIds, voucherAmount);
   if (!rawResults.length) {
     resultsSection.classList.remove('hidden');
-    bestCardBox.classList.add('hidden');
     document.getElementById('allCardsList').innerHTML =
       `<div class="p-3 text-sm text-slate-600 mt-4">None of your saved cards work with portals available for this brand.</div>`;
     return;
@@ -716,43 +696,9 @@ function renderCustomResults(results, brandName, discountPercent, voucherAmount,
   document.getElementById('customUpfrontValue').textContent = `${discountPercent.toFixed(2)}% (₹${best.metrics.netPaid.toFixed(0)} to pay)`;
   document.getElementById('customNetValue').textContent = `${best.net.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
-  // Best card banner
-  const customBestCardBox = document.getElementById('customBestCardBox');
-  customBestCardBox.innerHTML = `
-    <div class="p-3 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-      <div class="flex items-center gap-2">
-        <span>🥇</span>
-        <span>Best: ${best.card.name} — ${best.net.toFixed(2)}% net discount</span>
-      </div>
-      ${getApplyButton(best.card, 'bg-emerald-600 hover:bg-emerald-700')}
-    </div>
-    ${runnerUp ? `
-    <div class="p-3 rounded-md bg-blue-50 border border-blue-200 text-blue-800 font-medium mt-2 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-      <div class="flex items-center gap-2">
-        <span>🥈</span>
-        <span>2nd: ${runnerUp.card.name} — ${runnerUp.net.toFixed(2)}% net discount</span>
-      </div>
-      ${getApplyButton(runnerUp.card, 'bg-blue-600 hover:bg-blue-700')}
-    </div>` : ''}
-  `;
-
-  // Full results list
   renderCustomCardsList(results, voucherAmount);
-
   customResults.classList.remove('hidden');
   customResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function getApplyButton(card, colorClass) {
-  const canApply = card.applyURL &&
-    card.applyStatus !== 'invite_only' &&
-    card.applyStatus !== 'closed';
-
-  if (canApply) {
-    return `<a href="${card.applyURL}" target="_blank" rel="noopener noreferrer"
-              class="text-xs ${colorClass} text-white px-4 py-1.5 rounded transition-colors whitespace-nowrap font-medium">Apply Now ↗</a>`;
-  }
-  return '';
 }
 
 function renderCustomCardsList(results, voucherAmount) {

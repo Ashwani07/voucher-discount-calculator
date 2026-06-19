@@ -12,14 +12,13 @@
   <link rel="canonical" href="https://vouchwise.in/">
 
   <!-- Modern SVG Favicon (Primary High-Res Master) -->
-  <link rel="icon" type="image/svg+xml" href="/Favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  
+    <!-- Apple iOS Home Screen (Use your High-Res Master for this export) -->
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
   
   <!-- Standard Fallbacks (Legacy Browsers - generated from favicon-micro.svg) -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  
-  <!-- Apple iOS Home Screen (Use your High-Res Master for this export) -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/icon-512.png">
   
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -116,24 +115,12 @@
 
 <body class="min-h-screen bg-slate-50 text-slate-900 p-4 flex items-start justify-center">
   <div class="w-full max-w-3xl">
-    <header class="mb-6 text-center">
-      <div class="flex items-center gap-2.5 select-none">
-        <div class="flex items-end gap-1 h-6 w-7">
-          <div class="w-1.5 h-3 bg-emerald-500 rounded-t-sm"></div>
-          <div class="w-1.5 h-5 bg-slate-800 rounded-t-sm"></div>
-          <div class="w-1.5 h-4 bg-emerald-500 rounded-t-sm"></div>
-          <div class="w-1.5 h-6 bg-slate-800 rounded-t-sm"></div>
-        </div>
-    
-        <span class="text-lg font-bold tracking-tight text-slate-900">
-          Vouch<span class="text-emerald-600 font-semibold">Wise</span>
-        </span>
-      </div>
+    <header class="mb-6 text-center flex flex-col items-center">
+      <img src="./assets/vouchwise-horizontal.svg" alt="VouchWise" class="w-56 md:w-72 h-auto mb-4 select-none pointer-events-none" />
       <h1 class="text-2xl font-semibold">Which Card Should You Use for This Voucher?</h1>
       <p class="mt-1 text-sm text-slate-600">
         Search a brand — we compare every card in your wallet against every portal to find the biggest saving.
       </p>
-      
     </header>
 
     <details class="mb-4 bg-white border border-slate-200 rounded-md group">
@@ -257,7 +244,6 @@
               <span>Card-by-card breakdown</span>
               <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs">▼</span>
             </summary>
-            <div id="customBestCardBox" class="mt-3"></div>
             <div id="customCardsList" class="mt-3 text-sm text-slate-700"></div>
           </details>
         </div>
@@ -292,7 +278,6 @@
             </div>
           </div>
 
-          <div id="bestCardBox" class="hidden mt-4" aria-live="polite"></div>
           <div id="allCardsList" class="mt-4 text-sm text-slate-700"></div>
           <div id="verifiedStamp" class="mt-3 text-xs text-slate-500 opacity-70">
             Discounts last verified: <span id="verifiedDate"></span>
