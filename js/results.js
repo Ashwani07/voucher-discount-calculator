@@ -1,7 +1,7 @@
 // Portal comparison calculations and result rendering. This module owns the
 // main voucher comparison flow and the portal result markup.
 import { cards, portals, brands, lastVerified } from './data.js';
-import { calculateTrueNetMetrics, getCardRewardRate } from './calculator.js';
+import { calculateTrueNetMetrics, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 import { getBrandById, getPortalById, renderApplyBadge, renderMetricGrid } from './utils.js';
@@ -44,9 +44,7 @@ export function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
     if (!portal) continue;
 
     let allowedCards = cards.filter(card => {
-      const multipliers = card.portalMultipliers || {};
-      const multiplier = multipliers[portalConfig.portalId] ?? multipliers[portal.group] ?? multipliers.default ?? 0;
-      return multiplier > 0;
+      return getCardPortalMultiplier(card, portal) > 0;
     });
 
     allowedCards = allowedCards.filter(card => walletSelectedIds.includes(card.id));
@@ -214,6 +212,17 @@ export function hidePortalResults() {
   dom.resultsSection.classList.add('hidden');
 }
 
+export function showWalletWarning(message = 'Select at least one card from your wallet to compare.') {
+  if (!dom.walletWarning) return;
+  dom.walletWarning.textContent = message;
+  dom.walletWarning.classList.remove('hidden');
+}
+
+export function hideWalletWarning() {
+  if (!dom.walletWarning) return;
+  dom.walletWarning.classList.add('hidden');
+}
+
 export function handleCalculate({ scroll = true } = {}) {
   const showError = message => { dom.calcError.textContent = message; dom.calcError.classList.remove('hidden'); };
   const clearError = () => dom.calcError.classList.add('hidden');
@@ -226,6 +235,7 @@ export function handleCalculate({ scroll = true } = {}) {
 
   hidePortalResults();
   clearCustomResults();
+  hideWalletWarning();
 
   const brand = getBrandById(state.currentBrandId, brands);
   if (!brand) return;
@@ -241,6 +251,7 @@ export function handleCalculate({ scroll = true } = {}) {
   }
 
   if (!walletIds.length) {
+    showWalletWarning();
     dom.resultsSection.classList.remove('hidden');
     dom.allCardsList.innerHTML = '<div class="p-3 text-sm text-slate-600 mt-4">No card selected. Use the Edit button above to add cards to your wallet.</div>';
     return;
@@ -262,6 +273,7 @@ export function handleReset() {
   dom.resultsSection.classList.add('hidden');
   dom.allCardsList.innerHTML = '';
   clearCustomResults();
+  hideWalletWarning();
   state.currentBrandId = null;
   state.isFirstCalculate = true;
   resetSearchState();

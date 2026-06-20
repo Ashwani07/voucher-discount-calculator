@@ -62,6 +62,12 @@ export function renderWalletUI() {
   const groups = groupCardsByBank(cards);
   let panelHTML = '';
 
+  panelHTML += `
+    <div class="flex flex-wrap items-center gap-3 mb-3">
+      <button id="selectAllWalletBtn" type="button" class="text-xs text-sky-600 hover:underline cursor-pointer">Select All</button>
+      <button id="unselectAllWalletBtn" type="button" class="text-xs text-sky-600 hover:underline cursor-pointer">Unselect All</button>
+    </div>`;
+
   for (const [bankName, bankCards] of Object.entries(groups)) {
     const rows = bankCards.map(card => {
       const checked = savedIds.includes(card.id) ? 'checked' : '';

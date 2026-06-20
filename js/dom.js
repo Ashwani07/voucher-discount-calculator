@@ -6,6 +6,7 @@ export const dom = {
   resultsSection: document.getElementById('results'),
   brandSearch: document.getElementById('brandSearch'),
   brandSuggestions: document.getElementById('brandSuggestions'),
+  walletWarning: document.getElementById('walletWarning'),
   walletControls: document.getElementById('walletControls'),
   calcError: document.getElementById('calcError'),
   toggleCustomCalcBtn: document.getElementById('toggleCustomCalcBtn'),

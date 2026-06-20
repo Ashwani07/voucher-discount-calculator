@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vouchwise.in/</loc>
@@ -6,4 +5,10 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- Add each brand page -->
+  <url><loc>https://vouchwise.in/amazon-voucher-discount-calculator.html</loc></url>
+  <url><loc>https://vouchwise.in/myntra-voucher-discount-calculator.html</loc></url>
+  <url><loc>https://vouchwise.in/swiggy-voucher-discount-calculator.html</loc></url>
+  <url><loc>https://vouchwise.in/flipkart-voucher-discount-calculator.html</loc></url>
+  <url><loc>https://vouchwise.in/bigbasket-voucher-discount-calculator.html</loc></url>
 </urlset>

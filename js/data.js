@@ -62,7 +62,7 @@ export const portals = [
 // https://www.ishoprewards.com/shopping-vouchers
 
 // <<BRANDS_START>>
-const masterBrands = [
+export const masterBrands = [
   {
     "id": "adidas",
     "name": "Adidas Kids",
@@ -103,15 +103,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-adidas-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-adidas-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -262,10 +260,10 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": -4.13,
         "site": "https://vouchwise.in/out/buy-amazon-ishop",
-        "availability": "available"
+        "availability": "available",
+        "overrideRewardMultiplier": 0
       }
-    ],
-    "overrideRewardMultiplier": 0
+    ]
   },
   {
     "id": "amazon_fresh",
@@ -313,10 +311,10 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-fresh-ishop",
-        "availability": "available"
+        "availability": "available",
+        "overrideRewardMultiplier": 0
       }
-    ],
-    "overrideRewardMultiplier": 0
+    ]
   },
   {
     "id": "amazon_prime_membership",
@@ -346,8 +344,7 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon-prime-membership-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -466,8 +463,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-apollo-pharmacy-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -511,8 +507,7 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-barbeque-nation-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
@@ -562,8 +557,7 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bath-and-body-works-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
@@ -640,8 +634,7 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-blinkit-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
@@ -659,8 +652,7 @@ const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-blinkit-gyftr",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_grabdeals",
@@ -685,8 +677,7 @@ const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bookmyshow-smartbuy",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "shopwise",
@@ -699,8 +690,7 @@ const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bookmyshow-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
@@ -712,8 +702,7 @@ const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bookmyshow-gyftr",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_grabdeals",
@@ -725,8 +714,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bookmyshow-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -870,8 +858,7 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-costa-coffee-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
@@ -960,8 +947,7 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-decathlon-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -1023,8 +1009,7 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-dominos-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
@@ -1068,8 +1053,7 @@ const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-easemytrip-gyftr",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_grabdeals",
@@ -1107,8 +1091,7 @@ const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-easemytrip-holiday-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
@@ -1132,8 +1115,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-easemytrip-holiday-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -1146,8 +1128,7 @@ const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-easemytrip-hotel-smartbuy",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "shopwise",
@@ -1172,8 +1153,7 @@ const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-easemytrip-hotel-gyftr",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_grabdeals",
@@ -1185,8 +1165,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-easemytrip-hotel-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -1205,8 +1184,7 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fabindia-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
@@ -1218,22 +1196,19 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fabindia-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fabindia-gyftr",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fabindia-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
@@ -1271,8 +1246,7 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ferns-n-petals-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -1284,8 +1258,7 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ferns-n-petals-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
@@ -1324,8 +1297,7 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-flipkart-gift-card-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -1375,8 +1347,7 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-igp-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -1388,8 +1359,7 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-igp-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
@@ -1514,8 +1484,7 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-jiohotstar-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
@@ -1539,15 +1508,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-jiohotstar-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-jiohotstar-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -1616,8 +1583,7 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-klook-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
@@ -1641,15 +1607,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-klook-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-klook-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -1662,8 +1626,7 @@ const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lakme-salon-smartbuy",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "shopwise",
@@ -1676,8 +1639,7 @@ const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lakme-salon-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
@@ -1689,8 +1651,7 @@ const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lakme-salon-gyftr",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_grabdeals",
@@ -1828,8 +1789,7 @@ const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lifestyle-offline-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
@@ -1853,8 +1813,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lifestyle-offline-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -1880,8 +1839,7 @@ const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lifestyle-online-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
@@ -1905,8 +1863,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lifestyle-online-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2100,15 +2057,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-manyavar-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-manyavar-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2184,8 +2139,7 @@ const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-max-fashion-online-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
@@ -2209,8 +2163,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-max-fashion-online-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2236,8 +2189,7 @@ const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-max-fashion-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
@@ -2261,8 +2213,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-max-fashion-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2332,8 +2283,7 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-netmeds-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
@@ -2345,8 +2295,7 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-netmeds-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -2358,15 +2307,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-netmeds-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-netmeds-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2416,8 +2363,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-nykaa-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2543,15 +2489,13 @@ const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ola-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ola-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -2563,15 +2507,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ola-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ola-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2640,43 +2582,37 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pharmeasy-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pharmeasy-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pharmeasy-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pharmeasy-gyftr",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pharmeasy-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pharmeasy-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2776,8 +2712,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-puma-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2846,22 +2781,19 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance-digital-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance-digital-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance-digital-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -2879,8 +2811,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance-digital-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2930,8 +2861,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance-smart-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -2981,8 +2911,7 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-shoppers-stop-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -3051,8 +2980,7 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-sonyliv-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
@@ -3064,8 +2992,7 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-sonyliv-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -3077,15 +3004,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-sonyliv-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-sonyliv-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -3217,8 +3142,7 @@ const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-swiggy-amazon",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "gyftr",
@@ -3236,10 +3160,10 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-swiggy-ishop",
-        "availability": "available"
+        "availability": "available",
+        "overrideRewardMultiplier": 0
       }
-    ],
-    "overrideRewardMultiplier": 0
+    ]
   },
   {
     "id": "taj_experiences",
@@ -3300,15 +3224,13 @@ const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tanishq-gold-jewellery-smartbuy",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tanishq-gold-jewellery-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
@@ -3326,8 +3248,7 @@ const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tanishq-gold-jewellery-gyftr",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_grabdeals",
@@ -3339,10 +3260,10 @@ const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tanishq-gold-jewellery-ishop",
-        "availability": "available"
+        "availability": "available",
+        "overrideRewardMultiplier": 0
       }
-    ],
-    "overrideRewardMultiplier": 0
+    ]
   },
   {
     "id": "tata_cliq",
@@ -3609,15 +3530,13 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zepto-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zepto-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
@@ -3635,15 +3554,13 @@ const masterBrands = [
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zepto-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zepto-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   },
@@ -3663,15 +3580,13 @@ const masterBrands = [
         "portalId": "shopwise",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zomato-shopwise",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zomato-edgerewards",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "amazon",
@@ -3683,22 +3598,19 @@ const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zomato-gyftr",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zomato-grabdeal",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       },
       {
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zomato-ishop",
-        "availability": "unavailable",
-        "disclaimer": "Not Available"
+        "availability": "available"
       }
     ]
   }
@@ -3706,7 +3618,7 @@ const masterBrands = [
 // <<BRANDS_END>>
 
 // <<CARDS_START>>
-const masterCards = [
+export const masterCards = [
   {
     "id": "amex_platinum_reserve",
     "name": "Amex Platinum Reserve",
@@ -3721,6 +3633,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-platinum-reserve",
@@ -3741,6 +3654,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-platinum-travel",
@@ -3761,6 +3675,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
@@ -3781,6 +3696,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-gold",
@@ -3801,6 +3717,7 @@ const masterCards = [
       "axis_edgerewards": 1,
       "axis_grabdeals": 1,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
@@ -3821,6 +3738,7 @@ const masterCards = [
       "axis_edgerewards": 1,
       "axis_grabdeals": 1,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-magnus",
@@ -3841,6 +3759,7 @@ const masterCards = [
       "axis_edgerewards": 1,
       "axis_grabdeals": 1,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-atlas",
@@ -3861,6 +3780,7 @@ const masterCards = [
       "axis_edgerewards": 1,
       "axis_grabdeals": 1,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-horizon",
@@ -3881,6 +3801,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
@@ -3901,6 +3822,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-dbm",
@@ -3921,6 +3843,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-regalia-gold",
@@ -3940,8 +3863,9 @@ const masterCards = [
       "icici_ishop": 0,
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
-      "gyftr": 1,
-      "default": 1
+      "gyftr": 0,
+      "amazon": 0,
+      "default": 0
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-swiggy",
     "applyStatus": "direct",
@@ -3961,6 +3885,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-premier",
@@ -3981,6 +3906,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-travelone",
@@ -4001,11 +3927,33 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-liveplus",
     "applyStatus": "direct",
     "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  {
+    "id": "hsbc_visaplatinum",
+    "name": "HSBC Visa Platinum",
+    "rewardType": "points",
+    "pointValue": 0.5,
+    "spendBlock": 150,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "amazon": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hsbc-visaplatinum",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 2 Reward Point = 1 Air Mile = ₹0.50."
   },
   {
     "id": "icici_epm",
@@ -4021,6 +3969,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-epm",
@@ -4041,6 +3990,7 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-times",
@@ -4061,9 +4011,31 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-emeralde",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard redemption."
+  },
+  {
+    "id": "icici_sapphiro",
+    "name": "ICICI Sapphiro",
+    "rewardType": "points",
+    "pointValue": 0.25,
+    "spendBlock": 100,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 6,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "amazon": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-sapphiro",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard redemption."
   },
@@ -4080,7 +4052,8 @@ const masterCards = [
       "icici_ishop": 4,
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
-      "gyftr": 1,
+      "gyftr": 0,
+      "amazon": 5,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-amazon",
@@ -4093,26 +4066,6 @@ const masterCards = [
     "rewardType": "cashback",
     "pointValue": 1,
     "spendBlock": 100,
-    "pointsPerBlock": 5,
-    "portalMultipliers": {
-      "hdfc_smartbuy": 0,
-      "shopwise": 0,
-      "icici_ishop": 0,
-      "axis_edgerewards": 0,
-      "axis_grabdeals": 0,
-      "gyftr": 0,
-      "default": 1
-    },
-    "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
-    "applyStatus": "direct",
-    "assumption_note": "Direct statement cashback; no valuation assumption required."
-  },
-  {
-    "id": "jupiter_edge_plus",
-    "name": "Jupiter Edge+",
-    "rewardType": "cashback",
-    "pointValue": 1,
-    "spendBlock": 100,
     "pointsPerBlock": 1,
     "portalMultipliers": {
       "hdfc_smartbuy": 0,
@@ -4120,10 +4073,11 @@ const masterCards = [
       "icici_ishop": 0,
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
-      "gyftr": 1,
-      "default": 1
+      "gyftr": 0,
+      "amazon": 5,
+      "default": 0
     },
-    "applyURL": "https://vouchwise.in/out/apply-jupiter-edge-plus",
+    "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
     "applyStatus": "direct",
     "assumption_note": "Direct statement cashback; no valuation assumption required."
   },
@@ -4141,11 +4095,54 @@ const masterCards = [
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 1,
+      "amazon": 1,
       "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-scapia",
     "applyStatus": "referral",
     "assumption_note": "Assuming 5 Scapia coins = ₹1.00 (₹0.20 per coin) via in-app travel booking."
+  },
+  {
+    "id": "kotak_airplus",
+    "name": "Kotak Air+",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 2,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "amazon": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-kotak-airplus",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Mile = ₹1 (Kotak Unbox) or 1:1 Air India"
+  },
+  {
+    "id": "kotak_solitare",
+    "name": "Kotak Solitare",
+    "rewardType": "points",
+    "pointValue": 1,
+    "spendBlock": 100,
+    "pointsPerBlock": 3,
+    "portalMultipliers": {
+      "hdfc_smartbuy": 0,
+      "shopwise": 0,
+      "icici_ishop": 0,
+      "axis_edgerewards": 0,
+      "axis_grabdeals": 0,
+      "gyftr": 1,
+      "amazon": 1,
+      "default": 1
+    },
+    "applyURL": "https://vouchwise.in/out/apply-kotak-solitare",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Mile = ₹1 (Kotak Unbox) or 1:1 Air India"
   }
 ];
 // <<CARDS_END>>

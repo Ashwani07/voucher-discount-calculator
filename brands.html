@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Brand Voucher Discount Guide | VouchWise</title>
+  <meta name="description" content="View voucher discounts across all portals for any supported brand on VouchWise.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-900 p-4 flex items-start justify-center">
+  <div class="w-full max-w-3xl">
+
+    <!-- Header -->
+    <header class="mb-6">
+      <a href="/" class="inline-flex items-center text-sm text-slate-500 hover:text-slate-700 mb-2">← Back</a>
+      <h1 id="brandTitle" class="text-2xl font-semibold"></h1>
+      <p class="mt-2 text-sm text-slate-600">
+        Unified comparison of all portals offering vouchers for this brand, including discounts, caps, disclaimers, and reward assumptions.
+      </p>
+    </header>
+
+    <!-- Unified Portal Table -->
+    <section class="mb-6 bg-white border border-slate-200 rounded-lg p-4">
+      <h2 id="discountTitle" class="text-lg font-semibold text-slate-800 mb-2"></h2>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm text-left border border-slate-200 rounded">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-3 py-2 border-b">Portal</th>
+              <th class="px-3 py-2 border-b">Upfront %</th>
+              <th class="px-3 py-2 border-b">Notes</th>
+            </tr>
+          </thead>
+          <tbody id="portalTableBody"></tbody>
+        </table>
+      </div>
+
+      <p class="mt-3 text-xs text-slate-500">
+        Exact percentages change over time. VouchWise uses live configurations and lets you report outdated discounts.
+      </p>
+    </section>
+
+    <!-- Best Card Widget (non-numeric) -->
+    <section class="bg-white border border-emerald-200 rounded-lg p-4 mb-6">
+      <h2 id="bestCardTitle" class="text-lg font-semibold text-slate-800 mb-2"></h2>
+
+      <div class="text-sm text-slate-700 mb-3">
+        The best card depends on your wallet and card-specific reward rules  
+        (multipliers, caps, exclusions, SmartBuy/iShop overrides, etc.).
+        For accurate net benefit, use the full VouchWise calculator with this brand pre-selected.
+      </div>
+
+      <a id="calculatorLink"
+         href="/"
+         class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500">
+        Open VouchWise →
+      </a>
+    </section>
+
+    <!-- Page Logic -->
+    <script type="module">
+      import { masterBrands, portals } from './js/data.js';
+
+      // Read brand from URL: brands.html?brand=amazon
+      const params = new URLSearchParams(window.location.search);
+      const brandId = params.get("brand");
+
+      if (!brandId) {
+        document.getElementById("brandTitle").innerText = "Brand not specified";
+        throw new Error("Missing ?brand= parameter");
+      }
+
+      const brand = masterBrands.find(b => b.id === brandId);
+
+      if (!brand) {
+        document.getElementById("brandTitle").innerText = "Brand not found";
+        throw new Error("Invalid brand ID");
+      }
+
+      // Set titles
+      document.getElementById("brandTitle").innerText = `${brand.name} Voucher Discount Guide`;
+      document.getElementById("discountTitle").innerText = `${brand.name} Voucher Discounts`;
+      document.getElementById("bestCardTitle").innerText = `Best Card for ${brand.name}`;
+      document.getElementById("calculatorLink").href = `/#${brand.id}`;
+
+      // Map portalId → portalName
+      const portalNameMap = Object.fromEntries(
+        portals.map(p => [p.id, p.name])
+      );
+
+      // Filter only available portals
+      const availablePortals = brand.portals.filter(
+        p => p.availability === "available" && p.upfrontDiscountPercent !== null
+      );
+
+      // Sort by discount
+      const sorted = [...availablePortals].sort(
+        (a, b) => b.upfrontDiscountPercent - a.upfrontDiscountPercent
+      );
+
+      const max = sorted[0].upfrontDiscountPercent;
+
+      // If all discounts are same (e.g., all 0%), no best portal
+      const allSame = sorted.every(p => p.upfrontDiscountPercent === max);
+
+      const bestPortals = allSame
+        ? []
+        : sorted.filter(p => p.upfrontDiscountPercent === max);
+
+      // Render table
+      const tableBody = document.getElementById('portalTableBody');
+
+      tableBody.innerHTML = sorted.map(p => {
+        const isBest = bestPortals.some(bp => bp.portalId === p.portalId);
+        const hasCap = p.disclaimer && /(cap|limit|max)/i.test(p.disclaimer);
+
+        return `
+          <tr class="${isBest ? 'bg-green-50 font-medium' : ''}">
+            <td class="px-3 py-2 border-b">
+              ${portalNameMap[p.portalId] || p.portalId}
+              ${isBest ? '<span class="ml-2 inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-xs">Best portal</span>' : ''}
+            </td>
+            <td class="px-3 py-2 border-b">${p.upfrontDiscountPercent}%</td>
+            <td class="px-3 py-2 border-b text-slate-600">
+              ${p.disclaimer ? `<span title="${p.disclaimer}">${p.disclaimer}</span>` : ''}
+              ${hasCap ? `<span class="text-amber-600 ml-1">(Cap warning)</span>` : ''}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    </script>
+
+  </div>
+</body>
+</html>

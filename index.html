@@ -78,6 +78,7 @@
     ]
   }
   </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -127,6 +128,17 @@
       </p>
     </header>
 
+    <section class="mt-6 bg-white border border-slate-200 rounded-lg p-4">
+      <h2 class="text-lg font-semibold text-slate-800 mb-3">Popular Voucher Calculators</h2>
+      <ul class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        <li><a href="/amazon-voucher-discount-calculator.html" class="text-sky-600 hover:underline text-sm">Amazon</a></li>
+        <li><a href="/myntra-voucher-discount-calculator.html" class="text-sky-600 hover:underline text-sm">Myntra</a></li>
+        <li><a href="/swiggy-voucher-discount-calculator.html" class="text-sky-600 hover:underline text-sm">Swiggy</a></li>
+        <li><a href="/flipkart-voucher-discount-calculator.html" class="text-sky-600 hover:underline text-sm">Flipkart</a></li>
+        <li><a href="/bigbasket-voucher-discount-calculator.html" class="text-sky-600 hover:underline text-sm">BigBasket</a></li>
+      </ul>
+    </section>
+
     <details class="mb-4 bg-white border border-slate-200 rounded-md group">
       <summary class="cursor-pointer text-sm font-semibold text-slate-700 px-4 py-2.5 flex justify-between items-center list-none">
         <span>ℹ️ How VouchWise works</span>
@@ -164,6 +176,7 @@
           <button id="resetBtn" class="rounded-md border border-slate-300 px-4 py-2 text-slate-700 bg-white">Reset</button>
         </div>
         <p id="calcError" class="hidden text-sm text-red-500 mt-1"></p>
+        <div id="walletWarning" class="hidden text-sm text-red-500 mt-1">Select at least one card from your wallet to compare.</div>
       </section>
 
       <div id="myWallet" class="mt-4 p-3 border border-slate-200 rounded-md bg-white">

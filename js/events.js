@@ -5,7 +5,7 @@ import { state } from './state.js';
 import { debounce } from './utils.js';
 import { cards } from './data.js';
 import { handleBrandInput, hideBrandSuggestions, selectBrand } from './search.js';
-import { handleCalculate, handleReset, refreshPortalResults, toggleDiscountFlag } from './results.js';
+import { handleCalculate, handleReset, refreshPortalResults, toggleDiscountFlag, hideWalletWarning } from './results.js';
 import { handleCustomCalculate, resetCustomCalcForm, toggleCustomCalcPanel, recalcAfterCardDelete } from './customCalc.js';
 import { renderWalletUI, saveWalletIds, deleteCustomCard } from './wallet.js';
 import { openCustomCardModal, closeCustomCardModal, openCustomBrandModal, closeCustomBrandModal, applyBankDefaults, handleSaveCard, handleSaveBrand } from './modals.js';
@@ -45,8 +45,19 @@ export function initEvents() {
     const editBtn = event.target.closest('#editWalletBtn');
     const cancelBtn = event.target.closest('#cancelWalletBtn');
     const saveBtn = event.target.closest('#saveWalletBtn');
+    const selectAllBtn = event.target.closest('#selectAllWalletBtn');
+    const unselectAllBtn = event.target.closest('#unselectAllWalletBtn');
     const deleteBtn = event.target.closest('[data-delete-card]');
     const checkbox = event.target.closest('input[type="checkbox"]');
+
+    const syncWalletAndRefresh = selectedIds => {
+      saveWalletIds(selectedIds);
+      renderWalletUI();
+      hideWalletWarning();
+      if (state.currentBrandId && !document.getElementById('results').classList.contains('hidden')) {
+        handleCalculate({ scroll: false });
+      }
+    };
 
     if (editBtn) {
       document.getElementById('walletPanel')?.classList.remove('hidden');
@@ -62,11 +73,23 @@ export function initEvents() {
     if (saveBtn) {
       const panel = document.getElementById('walletPanel');
       const selected = Array.from(panel.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.getAttribute('data-card-id'));
-      saveWalletIds(selected);
+      syncWalletAndRefresh(selected);
+      return;
+    }
+
+    if (selectAllBtn) {
+      const panel = document.getElementById('walletPanel');
+      const selected = Array.from(panel.querySelectorAll('input[type="checkbox"]')).map(cb => cb.getAttribute('data-card-id'));
+      syncWalletAndRefresh(selected);
+      return;
+    }
+
+    if (unselectAllBtn) {
+      saveWalletIds([]);
       renderWalletUI();
-      if (state.currentBrandId && !document.getElementById('results').classList.contains('hidden')) {
-        handleCalculate({ scroll: false });
-      }
+      hideWalletWarning();
+      dom.resultsSection.classList.add('hidden');
+      dom.allCardsList.innerHTML = '';
       return;
     }
 
@@ -84,6 +107,7 @@ export function initEvents() {
     }
 
     if (checkbox) {
+      if (checkbox.checked) hideWalletWarning();
       if (state.currentBrandId && !document.getElementById('results').classList.contains('hidden')) {
         handleCalculate({ scroll: false });
       }

@@ -282,7 +282,7 @@ function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
     // custom cards — no separate ID-prefix list to keep in sync.
     let allowedCards = cards.filter(c => {
       const pm = c.portalMultipliers || {};
-      const m = pm[p.portalId] ?? pm[portal.group] ?? pm.default ?? 0;
+        const m = pm[p.portalId] ?? pm[portal.group] ?? pm.default ?? 1;
       return m > 0;
     });
 
@@ -640,7 +640,7 @@ function runCustomCalculation({ discountPercent, brandName, voucherAmount, porta
     // main results: non-zero multiplier via portal.id -> group -> default)
     cardsToEvaluate = walletCards.filter(c => {
       const pm = c.portalMultipliers || {};
-      const m = pm[portal.id] ?? pm[portal.group] ?? pm.default ?? 0;
+      const m = pm[portal.id] ?? pm[portal.group] ?? pm.default ?? 1;
       return m > 0;
     });
   } else {
@@ -662,7 +662,7 @@ function runCustomCalculation({ discountPercent, brandName, voucherAmount, porta
     // For a real portal, use that portal's actual multiplier (via getMultiplier
     // inside calculateTrueNetMetrics, already reflected in metrics.multiplier).
     // For "Other", fall back to the card's Default multiplier.
-    const multiplier = portal ? metrics.multiplier : (card.portalMultipliers?.default ?? 0);
+    const multiplier = portal ? metrics.multiplier : (card.portalMultipliers?.default ?? 1);
     const cardRewardRate = getCardRewardRate(card, multiplier);
     return { card, upfront: discountPercent, reward: cardRewardRate, net: metrics.computedTrueNet, metrics, multiplier };
   });

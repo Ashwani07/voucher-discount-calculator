@@ -1,7 +1,7 @@
 // Custom coupon / sale calculator. This module mirrors the portal flow but
 // lets the user evaluate a standalone discount against the wallet.
 import { cards, portals } from './data.js';
-import { calculateTrueNetMetrics, getCardRewardRate } from './calculator.js';
+import { calculateTrueNetMetrics, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 import { getPortalById, renderMetricGrid } from './utils.js';
@@ -49,11 +49,7 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
 
   const portal = portalId !== 'other' ? findPortal(portalId) : null;
   const cardsToEvaluate = portal
-    ? walletCards.filter(card => {
-        const multipliers = card.portalMultipliers || {};
-        const multiplier = multipliers[portal.id] ?? multipliers[portal.group] ?? multipliers.default ?? 0;
-        return multiplier > 0;
-      })
+    ? walletCards.filter(card => getCardPortalMultiplier(card, portal) > 0)
     : walletCards;
 
   if (!cardsToEvaluate.length) {
@@ -68,7 +64,7 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
 
   const results = cardsToEvaluate.map(card => {
     const metrics = calculateTrueNetMetrics(card, mockPortal, mockPortalConfig, voucherAmount);
-    const multiplier = portal ? metrics.multiplier : (card.portalMultipliers?.default ?? 0);
+    const multiplier = portal ? metrics.multiplier : getCardPortalMultiplier(card, null);
     const cardRewardRate = getCardRewardRate(card, multiplier);
     return { card, upfront: discountPercent, reward: cardRewardRate, net: metrics.computedTrueNet, metrics, multiplier };
   });

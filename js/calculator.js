@@ -3,13 +3,30 @@
 /**
  * Extracts the correct multiplier for a card/portal path
  */
-export function getMultiplier(card, portal, portalConfig) {
-  if (portalConfig?.overrideRewardMultiplier !== undefined) {
-    return portalConfig.overrideRewardMultiplier;
+export function getRewardMultiplier(card, portal, portalEntry) {
+  if (portalEntry?.overrideRewardMultiplier !== undefined) {
+    return 1;
   }
-  return card.portalMultipliers?.[portal.id] ?? 
-         card.portalMultipliers?.[portal.group] ?? 
-         card.portalMultipliers?.default ?? 1;
+
+  return getCardPortalMultiplier(card, portal);
+}
+
+export function getCardPortalMultiplier(card, portal) {
+  const multipliers = card.portalMultipliers || {};
+  if (portal?.id !== undefined && multipliers[portal.id] !== undefined) {
+    return multipliers[portal.id];
+  }
+  if (portal?.group !== undefined && multipliers[portal.group] !== undefined) {
+    return multipliers[portal.group];
+  }
+  if (multipliers.default !== undefined) {
+    return multipliers.default;
+  }
+  return 1;
+}
+
+export function getMultiplier(card, portal, portalConfig) {
+  return getRewardMultiplier(card, portal, portalConfig);
 }
 
 /**
