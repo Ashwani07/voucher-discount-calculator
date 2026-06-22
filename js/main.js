@@ -7,6 +7,7 @@ import { applyBankDefaults } from './modals.js';
 import { initEvents } from './events.js';
 import { selectBrand } from './search.js';
 import { handleCalculate } from './results.js';
+import { renderCategoryBrands } from './search.js';
 
 function applyBrandPreselectFromHash() {
   const hash = decodeURIComponent(window.location.hash.replace('#', '')).trim().toLowerCase();

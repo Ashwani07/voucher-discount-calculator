@@ -116,6 +116,12 @@
 
     .hidden { display: none !important; }
   </style>
+  <style>
+    /* Hide scrollbar for category menu but keep functionality */
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
 </head>
 
 <body class="min-h-screen bg-slate-50 text-slate-900 p-4 flex items-start justify-center">
@@ -127,53 +133,6 @@
         Search a brand — we compare every card in your wallet against every portal to find the biggest saving.
       </p>
     </header>
-
-    <section class="mt-6 bg-white border border-slate-200 rounded-lg p-4">
-      <h2 class="text-base font-semibold text-slate-800 mb-3">Browse by Category</h2>
-      <div class="space-y-3">
-        <div>
-          <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Shopping</p>
-          <div class="flex flex-wrap gap-2">
-            <a href="./brands.html?brand=amazon" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Amazon</a>
-            <a href="./brands.html?brand=myntra" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Myntra</a>
-            <a href="./brands.html?brand=flipkart_gift_card" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Flipkart</a>
-            <a href="./brands.html?brand=ajio" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Ajio</a>
-            <a href="./brands.html?brand=nykaa" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Nykaa</a>
-            <a href="./brands.html?brand=tata_cliq" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Tata Cliq</a>
-            <a href="./brands.html?brand=croma" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Croma</a>
-          </div>
-        </div>
-        <div>
-          <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Food &amp; Grocery</p>
-          <div class="flex flex-wrap gap-2">
-            <a href="./brands.html?brand=swiggy" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Swiggy</a>
-            <a href="./brands.html?brand=zomato" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Zomato</a>
-            <a href="./brands.html?brand=bigbasket" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">BigBasket</a>
-            <a href="./brands.html?brand=blinkit" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Blinkit</a>
-            <a href="./brands.html?brand=zepto" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Zepto</a>
-          </div>
-        </div>
-        <div>
-          <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Travel</p>
-          <div class="flex flex-wrap gap-2">
-            <a href="./brands.html?brand=makemytrip" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">MakeMyTrip</a>
-            <a href="./brands.html?brand=cleartrip" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Cleartrip</a>
-            <a href="./brands.html?brand=easemytrip" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">EaseMyTrip</a>
-            <a href="./brands.html?brand=uber" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Uber</a>
-            <a href="./brands.html?brand=klook" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">Klook</a>
-          </div>
-        </div>
-        <div>
-          <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Entertainment</p>
-          <div class="flex flex-wrap gap-2">
-            <a href="./brands.html?brand=bookmyshow" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">BookMyShow</a>
-            <a href="./brands.html?brand=pvr" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">PVR</a>
-            <a href="./brands.html?brand=sonyliv" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">SonyLiv</a>
-            <a href="./brands.html?brand=jiohotstar" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full transition-colors">JioHotstar</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <details class="mb-4 bg-white border border-slate-200 rounded-md group">
       <summary class="cursor-pointer text-sm font-semibold text-slate-700 px-4 py-2.5 flex justify-between items-center list-none">
@@ -188,7 +147,52 @@
         <p>Spotted a discount that looks wrong or outdated? Click the small <span class="text-amber-500">⚑</span> next to it to report it to us — portal offers change often and we'd rather fix it than show stale info.</p>
       </div>
     </details>
+    <div class="w-full mt-6 mb-4">
+      <h3 class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2 px-1">Browse by Category</h3>
+      
+      <div class="flex items-center gap-2 overflow-x-auto hide-scrollbar pb-2 w-full px-1">
+        
+        <button class="px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors">
+          All Brands
+        </button>
+        
+        <button class="px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors">
+          Fashion
+        </button>
+        
+        <button class="px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors">
+          Travel
+        </button>
+        
+        <button class="px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors">
+          Food & Dining
+        </button>
+        
+        <button class="px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors">
+          Electronics
+        </button>
+        
+        <button class="px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors">
+          Grocery
+        </button>
+        
+        <button class="px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors">
+          Entertainment
+        </button>
+        
+        <button class="px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors">
+          Health & Wellness
+        </button>
 
+        <div class="w-2 shrink-0"></div>
+        
+      </div>
+    </div>
+
+    <div id="categoryBrandsSection" class="hidden mb-6 bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+      <div id="brandGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        </div>
+    </div>
     <main class="bg-white border border-slate-200 rounded-xl shadow-sm p-5">
       <section class="grid grid-cols-1 gap-4">
         

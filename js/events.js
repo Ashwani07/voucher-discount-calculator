@@ -10,6 +10,7 @@ import { handleCalculate, handleReset, refreshPortalResults, toggleDiscountFlag,
 import { handleCustomCalculate, resetCustomCalcForm, toggleCustomCalcPanel, recalcAfterCardDelete } from './customCalc.js';
 import { renderWalletUI, saveWalletIds, deleteCustomCard } from './wallet.js';
 import { openCustomCardModal, closeCustomCardModal, openCustomBrandModal, closeCustomBrandModal, applyBankDefaults, handleSaveCard, handleSaveBrand } from './modals.js';
+import { renderCategoryBrands } from './search.js';
 
 export function initEvents() {
   dom.calculateBtn.addEventListener('click', () => {
@@ -182,4 +183,66 @@ export function initEvents() {
   dom.customBrandModal.addEventListener('click', event => {
     if (event.target === dom.customBrandModal) closeCustomBrandModal();
   });
+
+  // menu Bar
+  const categoryContainer = document.querySelector('.overflow-x-auto.hide-scrollbar');
+  const categoryBrandsSection = document.getElementById('categoryBrandsSection');
+  
+  if (categoryContainer && categoryBrandsSection) {
+    categoryContainer.addEventListener('click', event => {
+      const btn = event.target.closest('button');
+      if (!btn) return;
+
+      // Check if the clicked button is ALREADY active before we reset them
+      const isAlreadyActive = btn.classList.contains('bg-emerald-100');
+
+      // 1. Reset all pills to inactive state
+      categoryContainer.querySelectorAll('button').forEach(b => {
+        b.className = "px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors";
+      });
+
+      // 2. Toggle behavior
+      if (isAlreadyActive) {
+        // If they clicked the active pill, just hide the grid and leave all pills inactive
+        categoryBrandsSection.classList.add('hidden');
+      } else {
+        // Otherwise, activate this pill, render the brands, and show the grid
+        btn.className = "px-4 py-1.5 bg-emerald-100 text-emerald-700 text-sm font-semibold rounded-full whitespace-nowrap shrink-0 border border-emerald-200 transition-colors";
+        
+        const categoryName = btn.textContent.trim();
+        renderCategoryBrands(categoryName);
+        categoryBrandsSection.classList.remove('hidden');
+      }
+    });
+  }
+  // Listen to clicks inside the Brand Grid cards
+  const brandGrid = document.getElementById('brandGrid');
+  if (brandGrid) {
+    brandGrid.addEventListener('click', event => {
+      const card = event.target.closest('[data-grid-brand-id]');
+      if (!card) return;
+      
+      // 1. Select the brand and fill the input
+      const brandId = card.getAttribute('data-grid-brand-id');
+      selectBrand(brandId);
+      
+      // 2. Hide the category grid so it gets out of the user's way
+      const categoryBrandsSection = document.getElementById('categoryBrandsSection');
+      if (categoryBrandsSection) {
+        categoryBrandsSection.classList.add('hidden');
+      }
+
+      // 3. Reset all the category pills back to white/inactive
+      const categoryContainer = document.querySelector('.overflow-x-auto.hide-scrollbar');
+      if (categoryContainer) {
+        categoryContainer.querySelectorAll('button').forEach(b => {
+          b.className = "px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors";
+        });
+      }
+
+      // 4. Smoothly scroll the user to the search bar to see their selected brand
+      document.getElementById('brandSearch').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
 }

@@ -76,3 +76,30 @@ export function resetSearchState() {
   // ADD THIS: Reset the link if the search is cleared
   if (dom.showAllPortalsBtn) dom.showAllPortalsBtn.href = '#';
 }
+
+
+export function renderCategoryBrands(category = 'All Brands') {
+  const grid = document.getElementById('brandGrid');
+  if (!grid) return;
+
+  // 1. Filter brands based on the clicked category
+  const filtered = category === 'All Brands' 
+    ? brands 
+    : brands.filter(b => b.category_name.toLowerCase().includes(category.toLowerCase()) || 
+                         (category === 'Food & Dining' && (b.category_name === 'Food' || b.category_name === 'Restaurants' || b.category_name === 'Dining')));
+
+  if (!filtered.length) {
+    grid.innerHTML = `<p class="col-span-full text-sm text-slate-500 py-4 text-center">No brands available in this category.</p>`;
+    return;
+  }
+
+  // 2. Generate clean, actionable cards for each brand
+  grid.innerHTML = filtered
+    .map(brand => `
+      <button data-grid-brand-id="${brand.id}" 
+              class="flex flex-col items-center justify-center p-3 border border-slate-100 hover:border-emerald-200 rounded-lg bg-slate-50 hover:bg-emerald-50/30 transition-all text-center group h-20">
+        <span class="text-xs font-semibold text-slate-700 group-hover:text-emerald-700 transition-colors line-clamp-2">${brand.name}</span>
+        <span class="text-[9px] text-slate-400 mt-1 uppercase tracking-wider">${brand.category_name}</span>
+      </button>
+    `).join('');
+}
