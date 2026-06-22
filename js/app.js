@@ -44,26 +44,6 @@ function toggleDiscountFlag(brandId, portalId) {
   localStorage.getItem(key) === '1' ? localStorage.removeItem(key) : localStorage.setItem(key, '1');
 }
 
-/************************************************************************
- * DOM REFERENCES
- ************************************************************************/
-const calculateBtn     = document.getElementById('calculateBtn');
-const resetBtn         = document.getElementById('resetBtn');
-const resultsSection   = document.getElementById('results');
-const brandSearch      = document.getElementById('brandSearch');
-const brandSuggestions = document.getElementById('brandSuggestions');
-const walletControls   = document.getElementById('walletControls');
-const calcError        = document.getElementById('calcError');
-
-/************************************************************************
- * CUSTOM DISCOUNT CALCULATOR - DOM REFERENCES
- ************************************************************************/
-const toggleCustomCalcBtn   = document.getElementById('toggleCustomCalcBtn');
-const customCalcPanel       = document.getElementById('customCalcPanel');
-const calculateCustomBtn    = document.getElementById('calculateCustomBtn');
-const resetCustomBtn        = document.getElementById('resetCustomBtn');
-const customResults         = document.getElementById('customResults');
-const customCalcError       = document.getElementById('customCalcError');
 
 /************************************************************************
  * WALLET UI
