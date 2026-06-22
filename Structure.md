@@ -271,10 +271,11 @@ was undefined because `data.js` only exports `brands` (the merged array).
   multipliers from `bankPortalDefaults` in `data.js`
 - Custom card delete: ✕ button in wallet panel and in Discount Calculator results
 
-### 6.4 Custom brand modal (modals.js)
+### 6.4 Custom brand modal (modals.js & search.js)
 - Add a brand not in the catalog with per-portal upfront discount %
 - Saved to localStorage as `customBrands`
 - Appears in autocomplete and results immediately after save
+- **Deletion:** Custom brands feature a red "✕" button directly inside the search autocomplete dropdown. Clicking it permanently deletes the brand from `localStorage` and live memory.
 
 ### 6.5 `brands.html` — per-brand portal guide
 - Loaded via `brands.html?brand=<brandId>`
@@ -287,9 +288,11 @@ was undefined because `data.js` only exports `brands` (the merged array).
   triggers `applyBrandPreselectFromHash` in main.js
 - Error states for missing `?brand=` param and unknown brand IDs
 
-### 6.6 Category browse (index.html)
-- Four category sections: Shopping, Food & Grocery, Travel, Entertainment
-- Each link goes to `brands.html?brand=<id>` (verified IDs from data.js)
+### 6.6 Category browse (index.html & search.js)
+- Gyftr-style horizontal scrollable "pill" menu (All Brands, Fashion, Travel, Food & Dining, etc.).
+- Starts collapsed. Clicking an inactive pill dynamically renders matching brands into an inline grid (`#brandGrid`) via `renderCategoryBrands` in `search.js`.
+- Clicking an active pill toggles the grid closed.
+- Clicking a brand card inside the grid instantly selects it, hides the grid, resets the pills, and smooth-scrolls the user to the active search bar.
 
 ### 6.7 Hash-based brand preselection (main.js)
 - `index.html#amazon` → calls `selectBrand('amazon')` → auto-runs calculation
