@@ -3856,16 +3856,16 @@ export const masterCards = [
     "rewardType": "cashback",
     "pointValue": 1,
     "spendBlock": 100,
-    "pointsPerBlock": 5,
+    "pointsPerBlock": 1,
     "portalMultipliers": {
-      "hdfc_smartbuy": 1,
+      "hdfc_smartbuy": 5,
       "shopwise": 0,
       "icici_ishop": 0,
       "axis_edgerewards": 0,
       "axis_grabdeals": 0,
       "gyftr": 0,
-      "amazon": 0,
-      "default": 0
+      "amazon": 1,
+      "default": 1
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-swiggy",
     "applyStatus": "direct",

@@ -234,13 +234,6 @@ export function handleCalculate({ scroll = true } = {}) {
   const walletIds = getActiveWalletIds();
   const voucherAmount = amountCheck.amount;
 
-  const walletPanel = document.getElementById('walletPanel');
-  if (walletPanel && !walletPanel.classList.contains('hidden')) {
-    walletPanel.classList.add('hidden');
-    const summaryBar = document.getElementById('walletSummaryBar');
-    if (summaryBar) summaryBar.classList.remove('hidden');
-  }
-
   if (!walletIds.length) {
     showWalletWarning();
     dom.resultsSection.classList.remove('hidden');

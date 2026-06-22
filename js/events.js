@@ -14,6 +14,14 @@ import { openCustomCardModal, closeCustomCardModal, openCustomBrandModal, closeC
 export function initEvents() {
   dom.calculateBtn.addEventListener('click', () => {
     state.isFirstCalculate = true;
+    
+    // Collapse the wallet panel if it is open when explicitly calculating
+    const walletPanel = document.getElementById('walletPanel');
+    if (walletPanel && !walletPanel.classList.contains('hidden')) {
+      walletPanel.classList.add('hidden');
+      document.getElementById('walletSummaryBar')?.classList.remove('hidden');
+    }
+    
     handleCalculate({ scroll: true });
   });
 
@@ -104,20 +112,27 @@ export function initEvents() {
 
     if (selectAllBtn) {
       const panel = document.getElementById('walletPanel');
-      const selected = Array.from(panel.querySelectorAll('input[type="checkbox"]')).map(cb => cb.getAttribute('data-card-id'));
-      syncWalletAndRefresh(selected);
+      // Just check the boxes in the UI, don't close the panel
+      panel.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+      hideWalletWarning();
+      // Live update the calculator using the newly checked boxes
+      if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
+        handleCalculate({ scroll: false });
+      }
       return;
     }
 
     if (unselectAllBtn) {
-      saveWalletIds([]);
-      renderWalletUI();
-      hideWalletWarning();
-      dom.resultsSection.classList.add('hidden');
-      dom.allCardsList.innerHTML = '';
+      const panel = document.getElementById('walletPanel');
+      // Just uncheck the boxes in the UI, don't close the panel
+      panel.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      // Live update the calculator using the newly unchecked boxes
+      if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
+        handleCalculate({ scroll: false });
+      }
       return;
     }
-
+    
     if (deleteBtn) {
       event.preventDefault();
       const cardId = deleteBtn.getAttribute('data-delete-card');
