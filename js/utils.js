@@ -1,4 +1,8 @@
 // Small shared helpers used by the feature modules.
+// validateVoucherAmount, hidePortalResults and hideBrandGuideLink live here
+// (not in results.js) to break the circular import: customCalc.js ↔ results.js
+import { dom } from './dom.js';
+
 const brandCache = new Map();
 const portalCache = new Map();
 
@@ -71,4 +75,30 @@ export function renderApplyBadge(card) {
     return `<span class="text-[10px] text-slate-400 border border-slate-200 px-2 py-0.5 rounded">Invite Only</span>`;
   }
   return '';
+}
+// ---------------------------------------------------------------------------
+// Voucher amount validation — single source of truth, used by both calculators
+// ---------------------------------------------------------------------------
+export function validateVoucherAmount(rawValue) {
+  const amount = parseFloat(rawValue);
+  if (!amount || amount < 500) {
+    return { valid: false, error: 'Please enter a valid voucher amount (minimum ₹500).' };
+  }
+  if (amount % 500 !== 0) {
+    const nearest = Math.round(amount / 500) * 500 || 500;
+    return { valid: false, error: `Voucher amount must be a multiple of ₹500 (e.g. ₹${nearest}).` };
+  }
+  return { valid: true, amount };
+}
+
+// ---------------------------------------------------------------------------
+// Shared visibility helpers — here to avoid circular imports
+// ---------------------------------------------------------------------------
+export function hidePortalResults() {
+  dom.resultsSection.classList.add('hidden');
+}
+
+export function hideBrandGuideLink() {
+  const link = document.getElementById('brandGuideLink');
+  if (link) link.classList.add('hidden');
 }

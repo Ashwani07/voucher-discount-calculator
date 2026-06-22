@@ -26,5 +26,7 @@ export const dom = {
   closeBrandModalBtn: document.getElementById('closeBrandModalBtn'),
   saveBrandBtn: document.getElementById('saveBrandBtn'),
   allCardsList: document.getElementById('allCardsList'),
-  customCardsList: document.getElementById('customCardsList')
+  customCardsList: document.getElementById('customCardsList'),
+  brandGuideLink: document.getElementById('brandGuideLink'),
+  showAllPortalsBtn: document.getElementById('showAllPortalsBtn')
 };

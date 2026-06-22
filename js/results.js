@@ -4,10 +4,13 @@ import { cards, portals, brands, lastVerified } from './data.js';
 import { calculateTrueNetMetrics, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
-import { getBrandById, getPortalById, renderApplyBadge, renderMetricGrid } from './utils.js';
+import { getBrandById, getPortalById, renderApplyBadge, renderMetricGrid, hideBrandGuideLink, hidePortalResults  } from './utils.js';
 import { getActiveWalletIds } from './wallet.js';
 import { resetSearchState } from './search.js';
 import { clearCustomResults } from './customCalc.js';
+
+// Re-export from utils.js so callers importing hidePortalResults from results.js still work
+export { hidePortalResults } from './utils.js';
 
 export function isDiscountFlagged(brandId, portalId) {
   return localStorage.getItem(`flag:${brandId}:${portalId}`) === '1';
@@ -188,6 +191,12 @@ export function renderResults(groups, brand, shouldScroll, force = false) {
   document.getElementById('rewardValue').textContent = `${best.reward.toFixed(2)}% (₹${best.metrics.cashValue.toFixed(2)} back)`;
   document.getElementById('netValue').textContent = `${best.computedTrueNet.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
+  const guideLink = document.getElementById('brandGuideLink');
+  if (guideLink) {
+    guideLink.href = `./brands.html?brand=${encodeURIComponent(brand.id)}`;
+    guideLink.classList.remove('hidden');
+  }
+
   renderAllCardsList(groups, brand, force);
   dom.resultsSection.classList.remove('hidden');
   if (shouldScroll) dom.resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -206,10 +215,6 @@ export function refreshPortalResults({ scroll = false, force = false } = {}) {
     return;
   }
   renderResults(groupAndSortResults(rawResults), brand, scroll && state.isFirstCalculate, force);
-}
-
-export function hidePortalResults() {
-  dom.resultsSection.classList.add('hidden');
 }
 
 export function showWalletWarning(message = 'Select at least one card from your wallet to compare.') {
@@ -274,6 +279,7 @@ export function handleReset() {
   dom.allCardsList.innerHTML = '';
   clearCustomResults();
   hideWalletWarning();
+  hideBrandGuideLink();
   state.currentBrandId = null;
   state.isFirstCalculate = true;
   resetSearchState();

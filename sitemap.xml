@@ -1,14 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://vouchwise.in/</loc>
-    <lastmod>2026-06-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <!-- Add each brand page -->
-  <url><loc>https://vouchwise.in/amazon-voucher-discount-calculator.html</loc></url>
-  <url><loc>https://vouchwise.in/myntra-voucher-discount-calculator.html</loc></url>
-  <url><loc>https://vouchwise.in/swiggy-voucher-discount-calculator.html</loc></url>
-  <url><loc>https://vouchwise.in/flipkart-voucher-discount-calculator.html</loc></url>
-  <url><loc>https://vouchwise.in/bigbasket-voucher-discount-calculator.html</loc></url>
+
+  <!-- Core pages -->
+  <url><loc>https://vouchwise.in/</loc><lastmod>2026-06-21</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://vouchwise.in/brands.html</loc><lastmod>2026-06-21</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Per-brand portal discount guides -->
+  <url><loc>https://vouchwise.in/brands.html?brand=adidas</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=air_india</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=ajio</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=amazon</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=amazon_fresh</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=amazon_prime_membership</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=amazon_shopping</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=apollo_pharmacy</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=barbeque_nation</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=bath_&_body_works</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=bigbasket</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=blinkit</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=bookmyshow</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=cleartrip</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=cleartrip_hotel</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=costa_coffee</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=croma</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=decathlon</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=dominos</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=easemytrip</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=easemytrip_holiday</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=easemytrip_hotel</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=fabindia</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=ferns_n_petals</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=flipkart_gift_card</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=igp</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=ikea</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=itc_hotels</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=jiohotstar</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=kfc</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=klook</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=lakme_salon</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=lenskart</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=levis</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=lifestyle_offline</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=lifestyle_online</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=makemytrip</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=makemytrip_holiday</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=makemytrip_hotel</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=manyavar</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=marks_&_spencer</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=max_fashion_online</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=max_fashion</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=myntra</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=netmeds</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=nykaa</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=nykaa_fashion</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=nykaa_man</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=ola</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=pantaloons</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=pharmeasy</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=pizza_hut</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=puma</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=pvr</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=reliance_digital</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=reliance_smart</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=shoppers_stop</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=skechers</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=sonyliv</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=starbucks</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=subway</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=swiggy</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=taj_experiences</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=tanishq_gold_jewellery</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=tata_cliq</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=tata_cliq_luxury</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=uber</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=vijay_sales</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=westside</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=zepto</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vouchwise.in/brands.html?brand=zomato</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
 </urlset>

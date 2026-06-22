@@ -1,5 +1,5 @@
 // Brand autocomplete and brand selection. The event listeners live in events.js.
-import { brands } from './data.js';
+import { masterBrands as brands } from './data.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 
@@ -34,6 +34,13 @@ export function selectBrand(brandId) {
   state.currentBrandId = brand.id;
   state.isFirstCalculate = true;
   hideBrandSuggestions();
+
+  // Show inline portal discount preview via window globals (avoids circular import)
+  if (typeof window.__vw_showPortalPreview === 'function') {
+    window.__vw_showPortalPreview(brandId);
+  }
+  const previewLink = document.getElementById('portalPreviewLink');
+  if (previewLink) previewLink.href = `./brands.html?brand=${encodeURIComponent(brandId)}`;
 }
 
 export function resetSearchState() {
@@ -41,4 +48,7 @@ export function resetSearchState() {
   state.currentBrandId = null;
   state.isFirstCalculate = true;
   hideBrandSuggestions();
+  if (typeof window.__vw_hidePortalPreview === 'function') {
+    window.__vw_hidePortalPreview();
+  }
 }

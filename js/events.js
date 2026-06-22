@@ -17,6 +17,16 @@ export function initEvents() {
   });
 
   dom.resetBtn.addEventListener('click', handleReset);
+
+  if (dom.showAllPortalsBtn) {
+    dom.showAllPortalsBtn.addEventListener('click', () => {
+      if (!state.currentBrandId) {
+        alert('Please search and select a brand first.');
+        return;
+      }
+      window.open(`./brands.html?brand=${encodeURIComponent(state.currentBrandId)}`, '_blank');
+    });
+  }
   dom.toggleCustomCalcBtn.addEventListener('click', toggleCustomCalcPanel);
   dom.resetCustomBtn.addEventListener('click', resetCustomCalcForm);
   dom.calculateCustomBtn.addEventListener('click', handleCustomCalculate);

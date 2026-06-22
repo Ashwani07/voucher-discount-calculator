@@ -4192,3 +4192,10 @@ export function saveCustomBrand(newBrand) {
   }
   brands.push(newBrand); // Update live memory
 }
+
+export function deleteCustomBrand(brandId) {
+  const index = brands.findIndex(b => b.id === brandId);
+  if (index !== -1) brands.splice(index, 1);
+  const stored = JSON.parse(localStorage.getItem('customBrands') || '[]');
+  localStorage.setItem('customBrands', JSON.stringify(stored.filter(b => b.id !== brandId)));
+}

@@ -5,9 +5,8 @@
  */
 export function getRewardMultiplier(card, portal, portalEntry) {
   if (portalEntry?.overrideRewardMultiplier !== undefined) {
-    return 1;
+    return portalEntry.overrideRewardMultiplier;
   }
-
   return getCardPortalMultiplier(card, portal);
 }
 
@@ -22,7 +21,7 @@ export function getCardPortalMultiplier(card, portal) {
   if (multipliers.default !== undefined) {
     return multipliers.default;
   }
-  return 1;
+  return 0; // Safe: no multiplier = no reward. Prevents cross-issuer bleed.
 }
 
 export function getMultiplier(card, portal, portalConfig) {

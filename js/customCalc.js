@@ -4,9 +4,8 @@ import { cards, portals } from './data.js';
 import { calculateTrueNetMetrics, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
-import { getPortalById, renderMetricGrid } from './utils.js';
+import { getPortalById, renderMetricGrid, validateVoucherAmount, hidePortalResults } from './utils.js';
 import { getActiveWalletIds } from './wallet.js';
-import { validateVoucherAmount, hidePortalResults } from './results.js';
 
 function findPortal(portalId) {
   return getPortalById(portalId, portals);
@@ -64,7 +63,11 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
 
   const results = cardsToEvaluate.map(card => {
     const metrics = calculateTrueNetMetrics(card, mockPortal, mockPortalConfig, voucherAmount);
-    const multiplier = portal ? metrics.multiplier : getCardPortalMultiplier(card, null);
+    // metrics.multiplier is already correctly resolved by calculateTrueNetMetrics
+    // via getMultiplier's fallback chain (portal.id → group → default → 0).
+    // Never call getCardPortalMultiplier(card, null) — null portal causes
+    // undefined property lookups returning undefined instead of 0.
+    const multiplier = metrics.multiplier;
     const cardRewardRate = getCardRewardRate(card, multiplier);
     return { card, upfront: discountPercent, reward: cardRewardRate, net: metrics.computedTrueNet, metrics, multiplier };
   });
