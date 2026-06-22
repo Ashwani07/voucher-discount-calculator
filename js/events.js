@@ -1,10 +1,9 @@
 // All listener registration lives here. Feature modules expose handlers, and
 // this file wires them up once during startup.
-import { deleteCustomBrand } from './data.js';
+import { deleteCustomBrand, cards, brands, portals, lastVerified } from './data.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 import { debounce } from './utils.js';
-import { cards } from './data.js';
 import { handleBrandInput, hideBrandSuggestions, selectBrand } from './search.js';
 import { handleCalculate, handleReset, refreshPortalResults, toggleDiscountFlag, hideWalletWarning } from './results.js';
 import { handleCustomCalculate, resetCustomCalcForm, toggleCustomCalcPanel, recalcAfterCardDelete } from './customCalc.js';
@@ -23,6 +22,12 @@ export function initEvents() {
       document.getElementById('walletSummaryBar')?.classList.remove('hidden');
     }
     
+    // Hide the inline portal discount preview container
+    const portalPreview = document.getElementById('portalPreview');
+    if (portalPreview) {
+      portalPreview.classList.add('hidden');
+    }
+
     handleCalculate({ scroll: true });
   });
 
@@ -160,7 +165,34 @@ export function initEvents() {
     if (!flagBtn) return;
     event.preventDefault();
     event.stopPropagation();
-    toggleDiscountFlag(flagBtn.getAttribute('data-flag-brand'), flagBtn.getAttribute('data-flag-portal'));
+    
+    const brandId = flagBtn.getAttribute('data-flag-brand');
+    const portalId = flagBtn.getAttribute('data-flag-portal');
+    
+    // Toggle the flag state in local storage
+    toggleDiscountFlag(brandId, portalId);
+    
+    // If the flag was just turned ON, build and open the Google Form URL
+    if (localStorage.getItem(`flag:${brandId}:${portalId}`) === '1') {
+      const brandObj = brands.find(b => b.id === brandId);
+      const portalObj = portals.find(p => p.id === portalId);
+      const brandPortalData = brandObj?.portals?.find(p => p.portalId === portalId);
+
+      const bName = brandObj ? brandObj.name : brandId;
+      const pName = portalObj ? portalObj.name : portalId;
+      const discount = brandPortalData && brandPortalData.upfrontDiscountPercent !== null 
+        ? `${brandPortalData.upfrontDiscountPercent}%` : '—';
+      const lv = lastVerified || 'Unknown';
+
+      const reportURL = `https://docs.google.com/forms/d/e/1FAIpQLSeDeeY8MielvLxAvq9HCd7iyz9X473A7FwrjLgj-cb0sGAf4Q/viewform?usp=pp_url` +
+        `&entry.1760196418=${encodeURIComponent(bName)}` +
+        `&entry.251882125=${encodeURIComponent(pName)}` +
+        `&entry.17865828=${encodeURIComponent(discount)}` +
+        `&entry.49106349=${encodeURIComponent(lv)}`;
+
+      window.open(reportURL, '_blank');
+    }
+
     state.lastPortalRenderKey = '';
     refreshPortalResults({ scroll: false, force: true });
   });

@@ -511,16 +511,31 @@
       previewTitle.textContent = `${brand.name} — portal discounts`;
       previewBody.innerHTML = available.map(p => {
         const isBest = !allSame && p.upfrontDiscountPercent === max;
+        
+        // Read flag state from localStorage
+        const flagKey = `flag:${brand.id}:${p.portalId}`;
+        const isFlagged = localStorage.getItem(flagKey) === '1';
+        const flagClass = isFlagged ? 'text-red-500' : 'text-slate-300 hover:text-red-400';
+
         return `
           <tr class="border-b border-slate-100 last:border-0 ${isBest ? 'bg-emerald-50' : ''}">
-            <td class="px-3 py-1.5 text-xs ${isBest ? 'font-semibold text-emerald-800' : 'text-slate-700'}">
-              ${portalNameMap[p.portalId] || p.portalId}
-              ${isBest ? '<span class="ml-1 text-[10px] bg-emerald-100 text-emerald-700 px-1 rounded">Best</span>' : ''}
+            <td class="px-3 py-1.5 text-xs">
+              <div class="flex items-center gap-1.5">
+                <button data-flag-brand="${brand.id}" data-flag-portal="${p.portalId}" 
+                        class="preview-flag-btn ${flagClass} transition-colors focus:outline-none" 
+                        title="Report outdated discount">⚑</button>
+                <span class="${isBest ? 'font-semibold text-emerald-800' : 'text-slate-700'}">
+                  ${portalNameMap[p.portalId] || p.portalId}
+                </span>
+                ${isBest ? '<span class="ml-1 text-[10px] bg-emerald-100 text-emerald-700 px-1 rounded">Best</span>' : ''}
+              </div>
             </td>
             <td class="px-3 py-1.5 text-right text-xs font-medium ${isBest ? 'text-emerald-700' : 'text-slate-600'}">
               ${p.upfrontDiscountPercent > 0 ? p.upfrontDiscountPercent + '%' : '—'}
             </td>
-            <td class="px-3 py-1.5 text-[10px] text-slate-400">${p.disclaimer || ''}</td>
+            <td class="px-3 py-1.5 text-[10px] text-slate-500 leading-tight">
+              ${p.disclaimer || ''}
+            </td>
           </tr>`;
       }).join('');
 
@@ -531,6 +546,44 @@
       const preview = document.getElementById('portalPreview');
       if (preview) preview.classList.add('hidden');
     };
+  
+    // Listen for flag clicks inside the inline portal preview
+    document.getElementById('portalPreview').addEventListener('click', event => {
+      const btn = event.target.closest('.preview-flag-btn');
+      if (!btn) return;
+      
+      const bId = btn.getAttribute('data-flag-brand');
+      const pId = btn.getAttribute('data-flag-portal');
+      const key = `flag:${bId}:${pId}`;
+      
+      if (localStorage.getItem(key) === '1') {
+        localStorage.removeItem(key);
+        btn.classList.remove('text-red-500');
+        btn.classList.add('text-slate-300', 'hover:text-red-400');
+      } else {
+        localStorage.setItem(key, '1');
+        btn.classList.remove('text-slate-300', 'hover:text-red-400');
+        btn.classList.add('text-red-500');
+        
+        // Build the Google Form URL
+        const brandObj = brands.find(b => b.id === bId);
+        const portalObj = portals.find(p => p.id === pId);
+        const pName = portalObj ? portalObj.name : pId;
+        const brandPortalData = brandObj?.portals?.find(p => p.portalId === pId);
+        
+        const discount = brandPortalData && brandPortalData.upfrontDiscountPercent !== null 
+          ? `${brandPortalData.upfrontDiscountPercent}%` : '—';
+        const lv = lastVerified || 'Unknown';
+
+        const reportURL = `https://docs.google.com/forms/d/e/1FAIpQLSeDeeY8MielvLxAvq9HCd7iyz9X473A7FwrjLgj-cb0sGAf4Q/viewform?usp=pp_url` +
+          `&entry.1760196418=${encodeURIComponent(brandObj?.name || bId)}` +
+          `&entry.251882125=${encodeURIComponent(pName)}` +
+          `&entry.17865828=${encodeURIComponent(discount)}` +
+          `&entry.49106349=${encodeURIComponent(lv)}`;
+
+        window.open(reportURL, '_blank');
+      }
+    });
   </script>
 </body>
 </html>

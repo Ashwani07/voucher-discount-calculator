@@ -48,7 +48,7 @@
         </table>
       </div>
       <p class="px-4 py-3 text-xs text-slate-400 border-t border-slate-100">
-        Discounts change often. If something looks wrong, use the ⚑ flag on the calculator to report it.
+        Discounts change often. If something looks wrong, use the ⚑ flag next to the portal to report it.
       </p>
     </section>
 
@@ -130,13 +130,24 @@
         document.getElementById('portalTableBody').innerHTML = sorted.map(p => {
           const isBest = bestIds.includes(p.portalId);
           const hasCap = p.disclaimer && /(cap|limit|max)/i.test(p.disclaimer);
+          
+          // Read the current flag state from localStorage to sync with the main calculator
+          const flagKey = `flag:${brand.id}:${p.portalId}`;
+          const isFlagged = localStorage.getItem(flagKey) === '1';
+          const flagClass = isFlagged ? 'text-red-500' : 'text-slate-300 hover:text-red-400';
+
           return `
             <tr class="border-b border-slate-100 last:border-0 ${isBest ? 'bg-emerald-50' : ''}">
               <td class="px-4 py-2.5">
-                <span class="${isBest ? 'font-semibold text-emerald-800' : 'text-slate-700'}">
-                  ${portalNameMap[p.portalId] || p.portalId}
-                </span>
-                ${isBest ? '<span class="ml-2 text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full font-medium">Best</span>' : ''}
+                <div class="flex items-center gap-2">
+                  <button data-flag-brand="${brand.id}" data-flag-portal="${p.portalId}" 
+                          class="flag-btn ${flagClass} text-sm transition-colors focus:outline-none" 
+                          title="Report outdated discount">⚑</button>
+                  <span class="${isBest ? 'font-semibold text-emerald-800' : 'text-slate-700'}">
+                    ${portalNameMap[p.portalId] || p.portalId}
+                  </span>
+                  ${isBest ? '<span class="ml-2 text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full font-medium">Best</span>' : ''}
+                </div>
               </td>
               <td class="px-4 py-2.5 text-right font-medium ${isBest ? 'text-emerald-700' : 'text-slate-700'}">
                 ${p.upfrontDiscountPercent > 0 ? p.upfrontDiscountPercent + '%' : '—'}
@@ -149,6 +160,44 @@
         }).join('');
 
         document.getElementById('discountSection').classList.remove('hidden');
+
+        // Add event listener to handle flag clicks on this page
+        document.getElementById('portalTableBody').addEventListener('click', event => {
+          const btn = event.target.closest('.flag-btn');
+          if (!btn) return;
+          
+          const bId = btn.getAttribute('data-flag-brand');
+          const pId = btn.getAttribute('data-flag-portal');
+          const key = `flag:${bId}:${pId}`;
+          
+          // Toggle the local storage value and visual classes
+          if (localStorage.getItem(key) === '1') {
+            localStorage.removeItem(key);
+            btn.classList.remove('text-red-500');
+            btn.classList.add('text-slate-300', 'hover:text-red-400');
+          } else {
+            localStorage.setItem(key, '1');
+            btn.classList.remove('text-slate-300', 'hover:text-red-400');
+            btn.classList.add('text-red-500');
+            
+            // Build and open the dynamic Google Form URL
+            const portalObj = portals.find(p => p.id === pId);
+            const pName = portalObj ? portalObj.name : pId;
+            const brandPortalData = brand.portals.find(p => p.portalId === pId);
+            
+            const discount = brandPortalData && brandPortalData.upfrontDiscountPercent !== null 
+              ? `${brandPortalData.upfrontDiscountPercent}%` : '—';
+            const lv = lastVerified || 'Unknown';
+
+            const reportURL = `https://docs.google.com/forms/d/e/1FAIpQLSeDeeY8MielvLxAvq9HCd7iyz9X473A7FwrjLgj-cb0sGAf4Q/viewform?usp=pp_url` +
+              `&entry.1760196418=${encodeURIComponent(brand.name)}` +
+              `&entry.251882125=${encodeURIComponent(pName)}` +
+              `&entry.17865828=${encodeURIComponent(discount)}` +
+              `&entry.49106349=${encodeURIComponent(lv)}`;
+
+            window.open(reportURL, '_blank');
+          }
+        });
       }
     </script>
 
