@@ -24,7 +24,6 @@ function resetInputs(containerSelector) {
 export function openCustomCardModal() { dom.customCardModal.classList.remove('hidden'); }
 export function closeCustomCardModal() { dom.customCardModal.classList.add('hidden'); }
 export function openCustomBrandModal() { dom.customBrandModal.classList.remove('hidden'); }
-export function closeCustomBrandModal() { dom.customBrandModal.classList.add('hidden'); }
 
 export function applyBankDefaults() {
   const bank = dom.ccBank.value;
@@ -102,4 +101,19 @@ export function handleSaveBrand() {
   saveCustomBrand(newBrand);
   closeCustomBrandModal();
   resetInputs('#customBrandModal input');
+}
+
+// Hides the custom brand modal and resets all inputs back to their default (-1) state
+export function closeCustomBrandModal() { 
+  // Hide the modal from view
+  dom.customBrandModal.classList.add('hidden');
+  
+  // Clear the text input for the brand name
+  document.getElementById('cbName').value = '';
+  
+  // Loop through all portal input IDs and reset their values back to -1 (unavailable)
+  ['cbSmartbuy', 'cbGyftr', 'cbIshop', 'cbAmazon', 'cbEdgerewards', 'cbGrabdeals', 'cbShopwise'].forEach(elId => {
+    const el = document.getElementById(elId);
+    if (el) el.value = '-1';
+  });
 }

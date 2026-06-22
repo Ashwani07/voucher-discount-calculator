@@ -434,15 +434,37 @@
       <input id="cbName" type="text" placeholder="Brand Name" class="w-full border p-2 rounded mb-3 text-sm font-semibold">
       
       <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Upfront Discounts (%)</label>
-      <div class="grid grid-cols-2 gap-2 mb-4">
-        <input id="cbSmartbuy" type="number" step="0.1" placeholder="SmartBuy (e.g. 5)" class="border p-2 rounded text-sm w-full">
-        <input id="cbGyftr" type="number" step="0.1" placeholder="Gyftr (e.g. 2)" class="border p-2 rounded text-sm w-full">
-        <input id="cbIshop" type="number" step="0.1" placeholder="iShop" class="border p-2 rounded text-sm w-full">
-        <input id="cbAmazon" type="number" step="0.1" placeholder="Amazon" class="border p-2 rounded text-sm w-full">
-        <input id="cbEdgerewards" type="number" step="0.1" placeholder="EdgeRewards" class="border p-2 rounded text-sm w-full">
-        <input id="cbGrabdeals" type="number" step="0.1" placeholder="GrabDeals" class="border p-2 rounded text-sm w-full">
-        <input id="cbShopwise" type="number" step="0.1" placeholder="Shopwise" class="border p-2 rounded text-sm w-full">
+      <div class="grid grid-cols-2 gap-2 mb-2">
+        <div>
+          <label class="text-[10px] text-slate-400 block mb-0.5">SmartBuy</label>
+          <input id="cbSmartbuy" type="number" step="0.1" value="-1" class="border p-2 rounded text-sm w-full">
+        </div>
+        <div>
+          <label class="text-[10px] text-slate-400 block mb-0.5">Gyftr</label>
+          <input id="cbGyftr" type="number" step="0.1" value="-1" class="border p-2 rounded text-sm w-full">
+        </div>
+        <div>
+          <label class="text-[10px] text-slate-400 block mb-0.5">iShop</label>
+          <input id="cbIshop" type="number" step="0.1" value="-1" class="border p-2 rounded text-sm w-full">
+        </div>
+        <div>
+          <label class="text-[10px] text-slate-400 block mb-0.5">Amazon</label>
+          <input id="cbAmazon" type="number" step="0.1" value="-1" class="border p-2 rounded text-sm w-full">
+        </div>
+        <div>
+          <label class="text-[10px] text-slate-400 block mb-0.5">EdgeRewards</label>
+          <input id="cbEdgerewards" type="number" step="0.1" value="-1" class="border p-2 rounded text-sm w-full">
+        </div>
+        <div>
+          <label class="text-[10px] text-slate-400 block mb-0.5">GrabDeals</label>
+          <input id="cbGrabdeals" type="number" step="0.1" value="-1" class="border p-2 rounded text-sm w-full">
+        </div>
+        <div class="col-span-2">
+          <label class="text-[10px] text-slate-400 block mb-0.5">Shopwise</label>
+          <input id="cbShopwise" type="number" step="0.1" value="-1" class="border p-2 rounded text-sm w-full">
+        </div>
       </div>
+      <p class="text-[10px] text-slate-400 mb-4 italic">Note: Keep as -1 if the brand is not available on that portal.</p>
       <div class="flex gap-2">
         <button id="saveBrandBtn" class="flex-1 bg-sky-600 text-white py-2 rounded">Save Brand</button>
         <button id="closeBrandModalBtn" class="flex-1 bg-slate-200 text-slate-800 py-2 rounded">Cancel</button>
