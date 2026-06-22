@@ -1,3 +1,10 @@
 Structure.md
 tailwindcss.exe
 assets/style.css
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
