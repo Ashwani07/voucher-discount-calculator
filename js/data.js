@@ -4182,6 +4182,20 @@ export function saveCustomCard(newCard) {
   cards.push(newCard); // Update live memory
 }
 
+export function removeCustomCardFromStorage(cardId) {
+  // 1. Remove from live memory array
+  const index = cards.findIndex(c => c.id === cardId);
+  if (index !== -1) cards.splice(index, 1);
+  
+  // 2. Remove from local storage safely
+  try {
+    const stored = JSON.parse(localStorage.getItem('customCards') || '[]');
+    localStorage.setItem('customCards', JSON.stringify(stored.filter(c => c.id !== cardId)));
+  } catch (error) {
+    console.error("Failed to delete custom card from storage:", error);
+  }
+}
+
 export function saveCustomBrand(newBrand) {
   customBrands.push(newBrand);
   try {
@@ -4192,6 +4206,8 @@ export function saveCustomBrand(newBrand) {
   }
   brands.push(newBrand); // Update live memory
 }
+
+
 
 export function deleteCustomBrand(brandId) {
   const index = brands.findIndex(b => b.id === brandId);

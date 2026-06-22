@@ -4,13 +4,10 @@ import { cards, portals, brands, lastVerified } from './data.js';
 import { calculateTrueNetMetrics, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
-import { getBrandById, getPortalById, renderApplyBadge, renderMetricGrid, hideBrandGuideLink, hidePortalResults  } from './utils.js';
+import { getBrandById, getPortalById, renderApplyBadge, renderMetricGrid, validateVoucherAmount, hideBrandGuideLink, hidePortalResults } from './utils.js';
 import { getActiveWalletIds } from './wallet.js';
 import { resetSearchState } from './search.js';
 import { clearCustomResults } from './customCalc.js';
-
-// Re-export from utils.js so callers importing hidePortalResults from results.js still work
-export { hidePortalResults } from './utils.js';
 
 export function isDiscountFlagged(brandId, portalId) {
   return localStorage.getItem(`flag:${brandId}:${portalId}`) === '1';
@@ -19,17 +16,6 @@ export function isDiscountFlagged(brandId, portalId) {
 export function toggleDiscountFlag(brandId, portalId) {
   const key = `flag:${brandId}:${portalId}`;
   localStorage.getItem(key) === '1' ? localStorage.removeItem(key) : localStorage.setItem(key, '1');
-}
-
-export function validateVoucherAmount(rawValue) {
-  const amount = parseFloat(rawValue);
-  if (!amount || amount < 500) {
-    return { valid: false, error: 'Please enter a valid voucher amount (minimum ₹500).' };
-  }
-  if (amount % 500 !== 0) {
-    return { valid: false, error: `Voucher amount must be a multiple of ₹500 (e.g. ₹${Math.round(amount / 500) * 500 || 500}).` };
-  }
-  return { valid: true, amount };
 }
 
 function findPortal(portalId) {

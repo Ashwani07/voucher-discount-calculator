@@ -1,5 +1,6 @@
 // All listener registration lives here. Feature modules expose handlers, and
 // this file wires them up once during startup.
+import { deleteCustomBrand } from './data.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 import { debounce } from './utils.js';
@@ -19,14 +20,14 @@ export function initEvents() {
   dom.resetBtn.addEventListener('click', handleReset);
 
   if (dom.showAllPortalsBtn) {
-    dom.showAllPortalsBtn.addEventListener('click', () => {
+    dom.showAllPortalsBtn.addEventListener('click', (event) => {
       if (!state.currentBrandId) {
+        event.preventDefault(); // Stop the link from navigating to "#"
         alert('Please search and select a brand first.');
-        return;
       }
-      window.open(`./brands.html?brand=${encodeURIComponent(state.currentBrandId)}`, '_blank');
     });
   }
+  
   dom.toggleCustomCalcBtn.addEventListener('click', toggleCustomCalcPanel);
   dom.resetCustomBtn.addEventListener('click', resetCustomCalcForm);
   dom.calculateCustomBtn.addEventListener('click', handleCustomCalculate);
@@ -40,6 +41,20 @@ export function initEvents() {
 
   dom.brandSearch.addEventListener('input', debounce(handleBrandInput, 150));
   dom.brandSuggestions.addEventListener('click', event => {
+    // 1. Check if it's a delete button click
+    const deleteBtn = event.target.closest('[data-delete-brand]');
+    if (deleteBtn) {
+      event.stopPropagation(); // Stop the click from selecting the brand
+      const brandId = deleteBtn.getAttribute('data-delete-brand');
+      if (window.confirm('Delete this custom brand?')) {
+        deleteCustomBrand(brandId);
+        // Re-trigger the search input to refresh the dropdown without the deleted brand
+        dom.brandSearch.dispatchEvent(new Event('input')); 
+      }
+      return;
+    }
+
+    // 2. Standard brand selection logic
     const target = event.target.closest('div[data-id]');
     if (!target) return;
     selectBrand(target.getAttribute('data-id'));
@@ -64,7 +79,7 @@ export function initEvents() {
       saveWalletIds(selectedIds);
       renderWalletUI();
       hideWalletWarning();
-      if (state.currentBrandId && !document.getElementById('results').classList.contains('hidden')) {
+      if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
         handleCalculate({ scroll: false });
       }
     };
@@ -110,7 +125,7 @@ export function initEvents() {
       if (!window.confirm(`Remove "${card?.name || cardId}"?`)) return;
       deleteCustomCard(cardId);
       renderWalletUI();
-      if (state.currentBrandId && !document.getElementById('results').classList.contains('hidden')) {
+      if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
         handleCalculate({ scroll: false });
       }
       return;
@@ -118,7 +133,7 @@ export function initEvents() {
 
     if (checkbox) {
       if (checkbox.checked) hideWalletWarning();
-      if (state.currentBrandId && !document.getElementById('results').classList.contains('hidden')) {
+      if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
         handleCalculate({ scroll: false });
       }
     }

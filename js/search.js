@@ -1,5 +1,5 @@
 // Brand autocomplete and brand selection. The event listeners live in events.js.
-import { masterBrands as brands } from './data.js';
+import { brands } from './data.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 
@@ -22,11 +22,23 @@ export function handleBrandInput() {
   }
 
   dom.brandSuggestions.innerHTML = matches
-    .map(brand => `<div data-id="${brand.id}" class="hover:bg-slate-100 p-2 cursor-pointer border-b last:border-0 text-sm">${brand.name}</div>`)
+    .map(brand => {
+      const isCustom = brand.id.startsWith('custom_brand_');
+      const deleteHtml = isCustom 
+        ? `<span data-delete-brand="${brand.id}" class="text-[10px] text-red-400 hover:text-red-600 px-2 py-1" title="Delete custom brand">✕</span>` 
+        : '';
+        
+      return `
+        <div class="hover:bg-slate-100 p-2 border-b last:border-0 text-sm flex items-center justify-between group">
+          <div data-id="${brand.id}" class="flex-1 cursor-pointer">${brand.name}</div>
+          ${deleteHtml}
+        </div>`;
+    })
     .join('');
   dom.brandSuggestions.classList.remove('hidden');
 }
 
+// In search.js
 export function selectBrand(brandId) {
   const brand = brands.find(item => item.id === brandId);
   if (!brand) return;
@@ -39,8 +51,17 @@ export function selectBrand(brandId) {
   if (typeof window.__vw_showPortalPreview === 'function') {
     window.__vw_showPortalPreview(brandId);
   }
+  
+  const encodedBrand = encodeURIComponent(brandId);
+  
+  // Update the "Full guide" link
   const previewLink = document.getElementById('portalPreviewLink');
-  if (previewLink) previewLink.href = `./brands.html?brand=${encodeURIComponent(brandId)}`;
+  if (previewLink) previewLink.href = `./brands.html?brand=${encodedBrand}`;
+  
+  // ADD THIS: Update the "Show discount in all portals" link
+  if (dom.showAllPortalsBtn) {
+    dom.showAllPortalsBtn.href = `./brands.html?brand=${encodedBrand}`;
+  }
 }
 
 export function resetSearchState() {
@@ -51,4 +72,7 @@ export function resetSearchState() {
   if (typeof window.__vw_hidePortalPreview === 'function') {
     window.__vw_hidePortalPreview();
   }
+  
+  // ADD THIS: Reset the link if the search is cleared
+  if (dom.showAllPortalsBtn) dom.showAllPortalsBtn.href = '#';
 }

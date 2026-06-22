@@ -21,7 +21,7 @@ export function getCardPortalMultiplier(card, portal) {
   if (multipliers.default !== undefined) {
     return multipliers.default;
   }
-  return 0; // Safe: no multiplier = no reward. Prevents cross-issuer bleed.
+  return 0; // Safe: no multiplier = no reward on this portal. Prevents cross-issuer bleed.
 }
 
 export function getMultiplier(card, portal, portalConfig) {

@@ -1,6 +1,6 @@
 // Wallet persistence and rendering. This module owns saved card state and the
 // wallet panel HTML, but not the event wiring.
-import { cards } from './data.js';
+import { cards, removeCustomCardFromStorage} from './data.js';
 import { dom } from './dom.js';
 import { groupCardsByBank } from './utils.js';
 
@@ -25,10 +25,9 @@ export function getActiveWalletIds() {
 }
 
 export function deleteCustomCard(cardId) {
-  const index = cards.findIndex(card => card.id === cardId);
-  if (index !== -1) cards.splice(index, 1);
-  const stored = JSON.parse(localStorage.getItem('customCards') || '[]');
-  localStorage.setItem('customCards', JSON.stringify(stored.filter(card => card.id !== cardId)));
+  // Delegate the actual card data deletion to data.js
+  removeCustomCardFromStorage(cardId);
+  
   saveWalletIds(loadWalletIds().filter(id => id !== cardId));
 }
 

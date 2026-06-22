@@ -63,10 +63,9 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
 
   const results = cardsToEvaluate.map(card => {
     const metrics = calculateTrueNetMetrics(card, mockPortal, mockPortalConfig, voucherAmount);
-    // metrics.multiplier is already correctly resolved by calculateTrueNetMetrics
-    // via getMultiplier's fallback chain (portal.id → group → default → 0).
-    // Never call getCardPortalMultiplier(card, null) — null portal causes
-    // undefined property lookups returning undefined instead of 0.
+    // metrics.multiplier is already correctly resolved via getMultiplier's fallback chain.
+    // For "Other" (mockPortal.id='custom_portal'), this falls to card's default multiplier.
+    // Do NOT call getCardPortalMultiplier(card, null) — null portal causes undefined lookups.
     const multiplier = metrics.multiplier;
     const cardRewardRate = getCardRewardRate(card, multiplier);
     return { card, upfront: discountPercent, reward: cardRewardRate, net: metrics.computedTrueNet, metrics, multiplier };
