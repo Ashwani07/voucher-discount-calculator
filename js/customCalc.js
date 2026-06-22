@@ -47,6 +47,13 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
   if (!walletCards.length) walletCards = cards;
 
   const portal = portalId !== 'other' ? findPortal(portalId) : null;
+  
+  // Safety net: If the portal was marked completely unavailable for this brand, abort immediately
+  if (portal && portal.availability === 'unavailable') {
+    renderCustomResults([], brandName, discountPercent, voucherAmount, portal);
+    return;
+  }
+
   const cardsToEvaluate = portal
     ? walletCards.filter(card => getCardPortalMultiplier(card, portal) > 0)
     : walletCards;

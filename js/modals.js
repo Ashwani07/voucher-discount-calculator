@@ -84,11 +84,21 @@ export function handleSaveBrand() {
   const id = 'custom_brand_' + Date.now();
   const name = document.getElementById('cbName').value.trim() || 'Custom Brand';
   const newBrand = { id, name, category_name: 'Custom', portals: [] };
-  const push = (portalId, elId) => newBrand.portals.push({
-    portalId,
-    upfrontDiscountPercent: parseFloat(document.getElementById(elId).value) || 0,
-    site: ''
-  });
+  
+  // Custom helper: Blank means unavailable. Negative means convenience fee.
+  const push = (portalId, elId) => {
+    const rawString = document.getElementById(elId).value.trim();
+    
+    // If the user leaves the box entirely blank, it is unavailable
+    const isUnavailable = rawString === '';
+    
+    newBrand.portals.push({
+      portalId,
+      upfrontDiscountPercent: isUnavailable ? null : parseFloat(rawString),
+      availability: isUnavailable ? 'unavailable' : 'available',
+      site: ''
+    });
+  };
 
   push('hdfc_smartbuy', 'cbSmartbuy');
   push('gyftr', 'cbGyftr');
@@ -100,20 +110,17 @@ export function handleSaveBrand() {
 
   saveCustomBrand(newBrand);
   closeCustomBrandModal();
-  resetInputs('#customBrandModal input');
 }
 
-// Hides the custom brand modal and resets all inputs back to their default (-1) state
+// Hides the custom brand modal and resets all inputs to blank (unavailable state)
 export function closeCustomBrandModal() { 
-  // Hide the modal from view
   dom.customBrandModal.classList.add('hidden');
   
-  // Clear the text input for the brand name
   document.getElementById('cbName').value = '';
   
-  // Loop through all portal input IDs and reset their values back to -1 (unavailable)
+  // Reset all portal inputs to empty strings
   ['cbSmartbuy', 'cbGyftr', 'cbIshop', 'cbAmazon', 'cbEdgerewards', 'cbGrabdeals', 'cbShopwise'].forEach(elId => {
     const el = document.getElementById(elId);
-    if (el) el.value = '-1';
+    if (el) el.value = '';
   });
 }
