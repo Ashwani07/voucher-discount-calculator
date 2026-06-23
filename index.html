@@ -150,7 +150,7 @@
     <div class="w-full mt-6 mb-4">
       <h3 class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2 px-1">Browse by Category</h3>
       
-      <div class="flex items-center gap-2 overflow-x-auto hide-scrollbar pb-2 w-full px-1">
+      <div id="categoryScrollContainer" class="flex items-center gap-2 overflow-x-auto hide-scrollbar pb-2 w-full px-1 cursor-grab active:cursor-grabbing">
         
         <button class="px-4 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-sm font-medium rounded-full whitespace-nowrap shrink-0 border border-slate-200 transition-colors">
           All Brands
@@ -224,7 +224,6 @@
                 <tr class="text-[10px] uppercase tracking-wider text-slate-400 border-b border-slate-100">
                   <th class="px-3 py-1.5 text-left">Portal</th>
                   <th class="px-3 py-1.5 text-right">Upfront %</th>
-                  <th class="px-3 py-1.5 text-left">Note</th>
                 </tr>
               </thead>
               <tbody id="portalPreviewBody"></tbody>
@@ -527,17 +526,30 @@
 
       if (!available.length) { preview.classList.add('hidden'); return; }
 
-      const max     = available[0].upfrontDiscountPercent;
-      const allSame = available.every(p => p.upfrontDiscountPercent === max);
+      const max       = available[0].upfrontDiscountPercent;
+      const bestCount = available.filter(p => p.upfrontDiscountPercent === max).length;
+      
+      // Strict rule: Must be an actual discount (>0), and tied by no more than 2 portals
+      const showBest  = max > 0 && bestCount < 3 && bestCount < available.length;
 
       previewTitle.textContent = `${brand.name} — portal discounts`;
       previewBody.innerHTML = available.map(p => {
-        const isBest = !allSame && p.upfrontDiscountPercent === max;
+        const isBest = showBest && p.upfrontDiscountPercent === max;
         
-        // Read flag state from localStorage
         const flagKey = `flag:${brand.id}:${p.portalId}`;
         const isFlagged = localStorage.getItem(flagKey) === '1';
         const flagClass = isFlagged ? 'text-red-500' : 'text-slate-300 hover:text-red-400';
+
+        // Display logic for discounts, 0%, and fees
+        let discountText = '0%';
+        let textClass = 'text-slate-600 font-medium';
+        if (p.upfrontDiscountPercent > 0) {
+          discountText = p.upfrontDiscountPercent + '%';
+          if (isBest) textClass = 'text-emerald-700 font-semibold';
+        } else if (p.upfrontDiscountPercent < 0) {
+          discountText = Math.abs(p.upfrontDiscountPercent) + '% fee';
+          textClass = 'text-red-500 font-medium'; // Highlights fees in red
+        }
 
         return `
           <tr class="border-b border-slate-100 last:border-0 ${isBest ? 'bg-emerald-50' : ''}">
@@ -552,11 +564,8 @@
                 ${isBest ? '<span class="ml-1 text-[10px] bg-emerald-100 text-emerald-700 px-1 rounded">Best</span>' : ''}
               </div>
             </td>
-            <td class="px-3 py-1.5 text-right text-xs font-medium ${isBest ? 'text-emerald-700' : 'text-slate-600'}">
-              ${p.upfrontDiscountPercent > 0 ? p.upfrontDiscountPercent + '%' : '—'}
-            </td>
-            <td class="px-3 py-1.5 text-[10px] text-slate-500 leading-tight">
-              ${p.disclaimer || ''}
+            <td class="px-3 py-1.5 text-right text-xs ${textClass}">
+              ${discountText}
             </td>
           </tr>`;
       }).join('');
@@ -606,6 +615,37 @@
         window.open(reportURL, '_blank');
       }
     });
+
+    
+    // --- Desktop Drag-to-Scroll for Category Menu ---
+    const slider = document.getElementById('categoryScrollContainer');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    if (slider) {
+      slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+      
+      slider.addEventListener('mouseleave', () => {
+        isDown = false;
+      });
+      
+      slider.addEventListener('mouseup', () => {
+        isDown = false;
+      });
+      
+      slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault(); // Prevents text selection while dragging
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // Multiplier controls the scroll speed
+        slider.scrollLeft = scrollLeft - walk;
+      });
+    }
   </script>
 </body>
 </html>

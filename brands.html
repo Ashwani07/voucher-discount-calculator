@@ -123,18 +123,31 @@
         document.getElementById('noPortalsState').classList.remove('hidden');
       } else {
         const sorted  = [...available].sort((a, b) => (b.upfrontDiscountPercent ?? 0) - (a.upfrontDiscountPercent ?? 0));
-        const max     = sorted[0].upfrontDiscountPercent;
-        const allSame = sorted.every(p => p.upfrontDiscountPercent === max);
-        const bestIds = allSame ? [] : sorted.filter(p => p.upfrontDiscountPercent === max).map(p => p.portalId);
+        const max         = sorted[0].upfrontDiscountPercent;
+        const bestPortals = sorted.filter(p => p.upfrontDiscountPercent === max);
+        
+        // Strict rule: Must be an actual discount (>0), and tied by no more than 2 portals
+        const showBest    = max > 0 && bestPortals.length < 3 && bestPortals.length < sorted.length;
+        const bestIds     = showBest ? bestPortals.map(p => p.portalId) : [];
 
         document.getElementById('portalTableBody').innerHTML = sorted.map(p => {
           const isBest = bestIds.includes(p.portalId);
           const hasCap = p.disclaimer && /(cap|limit|max)/i.test(p.disclaimer);
           
-          // Read the current flag state from localStorage to sync with the main calculator
           const flagKey = `flag:${brand.id}:${p.portalId}`;
           const isFlagged = localStorage.getItem(flagKey) === '1';
           const flagClass = isFlagged ? 'text-red-500' : 'text-slate-300 hover:text-red-400';
+
+          // Display logic for discounts, 0%, and fees
+          let discountText = '0%';
+          let textClass = 'text-slate-700 font-medium';
+          if (p.upfrontDiscountPercent > 0) {
+            discountText = p.upfrontDiscountPercent + '%';
+            if (isBest) textClass = 'text-emerald-700 font-bold';
+          } else if (p.upfrontDiscountPercent < 0) {
+            discountText = Math.abs(p.upfrontDiscountPercent) + '% fee';
+            textClass = 'text-red-500 font-medium'; // Highlights fees in red
+          }
 
           return `
             <tr class="border-b border-slate-100 last:border-0 ${isBest ? 'bg-emerald-50' : ''}">
@@ -149,8 +162,8 @@
                   ${isBest ? '<span class="ml-2 text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full font-medium">Best</span>' : ''}
                 </div>
               </td>
-              <td class="px-4 py-2.5 text-right font-medium ${isBest ? 'text-emerald-700' : 'text-slate-700'}">
-                ${p.upfrontDiscountPercent > 0 ? p.upfrontDiscountPercent + '%' : '—'}
+              <td class="px-4 py-2.5 text-right text-sm ${textClass}">
+                ${discountText}
               </td>
               <td class="px-4 py-2.5 text-xs text-slate-500">
                 ${p.disclaimer || ''}
