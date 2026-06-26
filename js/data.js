@@ -4075,7 +4075,7 @@ export const masterCards = [
       "axis_grabdeals": 0,
       "gyftr": 0,
       "amazon": 5,
-      "default": 0
+      "default": 5
     },
     "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
     "applyStatus": "direct",
