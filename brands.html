@@ -13,6 +13,38 @@
   <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Footer Styling */
+    footer {
+      width: 100%;
+      clear: both; /* This forces the footer to drop below any floated sidebars */
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.85rem;
+      color: #666;
+      border-top: 1px solid #eaeaea;
+      margin-top: 50px;
+      display: block;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .disclaimer {
+      max-width: 800px;
+      margin: 0 auto 15px auto;
+      font-style: italic;
+    }
+
+    .feedback a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+  
 </head>
 
 <body class="min-h-screen bg-slate-50 text-slate-900 p-4 flex items-start justify-center">
@@ -68,6 +100,27 @@
         Calculate my best deal →
       </a>
     </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="disclaimer">
+          <p>
+              <strong>Affiliate Disclosure:</strong> As an Amazon Associate, I earn from qualifying purchases. 
+              This means that if you click on an Amazon link and make a purchase, I may receive a small commission at no extra cost to you.
+          </p>
+      </div>
+      
+      <div class="feedback">
+          <p>
+              Your feedback helps improve VouchWise. Please send your suggestions or report issues to 
+              <a href="mailto:VouchWise.feedback@gmail.com">VouchWise.feedback@gmail.com</a>.
+          </p>
+      </div>
+      
+      <div class="copyright">
+          <p>&copy; 2026 VouchWise. All rights reserved.</p>
+      </div>
+    </footer>
 
     <script type="module">
       import { brands, portals, lastVerified } from './js/data.js';

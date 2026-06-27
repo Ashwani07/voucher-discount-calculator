@@ -3872,6 +3872,27 @@ export const masterCards = [
     "assumption_note": "Direct statement cashback; no valuation assumption required."
   },
   {
+    id: 'hdfc_millennia',
+    name: 'HDFC Millennia',
+    rewardType: 'cashback',
+    pointValue: 1,
+    spendBlock: 100,
+    pointsPerBlock: 1,       // 1% base rate
+    portalMultipliers: {
+      hdfc_smartbuy: 5,
+      shopwise: 0,
+      icici_ishop: 0,
+      axis_edgerewards: 0,
+      axis_grabdeals: 0,
+      gyftr: 1,
+      amazon: 5,
+      default: 1
+    },
+    applyURL: 'https://vouchwise.in/out/apply-hdfc-millennia',
+    applyStatus: 'direct',
+    assumption_note: '5% CashPoints on SmartBuy & Amazon (named partners); 1% elsewhere. Cap: ₹1,000/month on 5% categories.'
+  },
+  {
     "id": "hsbc_premier",
     "name": "HSBC Premier",
     "rewardType": "points",
@@ -4061,6 +4082,27 @@ export const masterCards = [
     "assumption_note": "Direct Amazon Pay balance cashback; no valuation assumption required."
   },
   {
+    id: 'icici_coral',
+    name: 'ICICI Coral',
+    rewardType: 'points',
+    pointValue: 0.25,
+    spendBlock: 100,
+    pointsPerBlock: 2,       // 2 RP per ₹100 = 0.5% base
+    portalMultipliers: {
+      hdfc_smartbuy: 0,
+      shopwise: 0,
+      icici_ishop: 6,
+      axis_edgerewards: 0,
+      axis_grabdeals: 0,
+      gyftr: 1,
+      amazon: 1,
+      default: 1
+    },
+    applyURL: 'https://vouchwise.in/out/apply-icici-coral',
+    applyStatus: 'direct',
+    assumption_note: 'Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.'
+  },
+  {
     "id": "sbi_cashback",
     "name": "SBI Cashback",
     "rewardType": "cashback",
@@ -4080,6 +4122,72 @@ export const masterCards = [
     "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
     "applyStatus": "direct",
     "assumption_note": "Direct statement cashback; no valuation assumption required."
+  },
+  // Purple
+  {
+    id: 'sbi_phonepe_purple',
+    name: 'SBI PhonePe Purple',
+    rewardType: 'cashback',
+    pointValue: 1,
+    spendBlock: 100,
+    pointsPerBlock: 1,       // 2 RP/₹100 on online = 2%
+    portalMultipliers: {
+      hdfc_smartbuy: 0,
+      shopwise: 0,
+      icici_ishop: 0,
+      axis_edgerewards: 0,
+      axis_grabdeals: 0,
+      gyftr: 2,              // online rate applies
+      amazon: 2,
+      default: 1
+    },
+    applyURL: 'https://vouchwise.in/out/apply-sbi-phonepe-purple',
+    applyStatus: 'direct',
+    assumption_note: 'Online rate 2 RP/₹100 applied to portals. 1 RP = ₹1. Excludes fuel, rent, wallet top-ups.'
+  },
+
+  // Select Black
+  {
+    id: 'sbi_phonepe_black',
+    name: 'SBI PhonePe Select Black',
+    rewardType: 'cashback',
+    pointValue: 1,
+    spendBlock: 100,
+    pointsPerBlock: 1,       // 5 RP/₹100 on online = 5%
+    portalMultipliers: {
+      hdfc_smartbuy: 0,
+      shopwise: 0,
+      icici_ishop: 0,
+      axis_edgerewards: 0,
+      axis_grabdeals: 0,
+      gyftr: 5,              // confirmed 5% on Gyftr
+      amazon: 5,
+      default: 1
+    },
+    applyURL: 'https://vouchwise.in/out/apply-sbi-phonepe-black',
+    applyStatus: 'direct',
+    assumption_note: '5 RP/₹100 on online spends (including Gyftr, Amazon); 1 RP = ₹1. Monthly cap: 2,000 RP per category. Excludes fuel, rent, wallet top-ups.'
+  },
+  {
+    id: 'onecard',
+    name: 'OneCard',
+    rewardType: 'points',
+    pointValue: 0.10,
+    spendBlock: 50,
+    pointsPerBlock: 1,       // 1 RP per ₹50 = 0.2% base
+    portalMultipliers: {
+      hdfc_smartbuy: 0,
+      shopwise: 0,
+      icici_ishop: 0,
+      axis_edgerewards: 0,
+      axis_grabdeals: 0,
+      gyftr: 1,
+      amazon: 1,
+      default: 1
+    },
+    applyURL: 'https://vouchwise.in/out/apply-onecard',
+    applyStatus: 'direct',
+    assumption_note: 'Base rate only (0.2%). The 5X on top-2 categories is dynamic and unpredictable — not modelled here. 1 RP = ₹0.10.'
   },
   {
     "id": "scapia",

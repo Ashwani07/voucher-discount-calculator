@@ -262,8 +262,7 @@ was undefined because `data.js` only exports `brands` (the merged array).
 
 ### 6.3 My Wallet (wallet.js + modals.js)
 - First-visit: full card selection panel shown immediately
-- Return visit: collapsed summary bar ("11 cards: Amex MRCC, Axis Magnus...") +
-  Edit button
+- Return visit: collapsed summary bar showing saved card count and names + Edit button
 - Cards grouped by bank in the selection panel
 - Select All / Unselect All buttons
 - Live recalculate on checkbox change (if results are already showing)
@@ -275,7 +274,11 @@ was undefined because `data.js` only exports `brands` (the merged array).
 - Add a brand not in the catalog with per-portal upfront discount %
 - Saved to localStorage as `customBrands`
 - Appears in autocomplete and results immediately after save
-- **Deletion:** Custom brands feature a red "✕" button directly inside the search autocomplete dropdown. Clicking it permanently deletes the brand from `localStorage` and live memory.
+- **Deletion:** Custom brands have a red "✕" button inside the search autocomplete
+  dropdown. The click handler lives in `events.js`, listening on `dom.brandSuggestions`
+  for `[data-delete-brand]` elements. Clicking it permanently deletes the brand
+  from localStorage and live memory, then re-triggers the search input to refresh
+  the dropdown.
 
 ### 6.5 `brands.html` — per-brand portal guide
 - Loaded via `brands.html?brand=<brandId>`
@@ -289,10 +292,15 @@ was undefined because `data.js` only exports `brands` (the merged array).
 - Error states for missing `?brand=` param and unknown brand IDs
 
 ### 6.6 Category browse (index.html & search.js)
-- Gyftr-style horizontal scrollable "pill" menu (All Brands, Fashion, Travel, Food & Dining, etc.).
-- Starts collapsed. Clicking an inactive pill dynamically renders matching brands into an inline grid (`#brandGrid`) via `renderCategoryBrands` in `search.js`.
-- Clicking an active pill toggles the grid closed.
-- Clicking a brand card inside the grid instantly selects it, hides the grid, resets the pills, and smooth-scrolls the user to the active search bar.
+- Horizontal scrollable pill menu (All Brands, Fashion, Travel, Food & Dining, etc.)
+- The container element is `#categoryScrollContainer` (selected by ID in the
+  drag-scroll JS in `index.html`) and also matched by class `.overflow-x-auto.hide-scrollbar`
+  in `events.js` for click handling — both selectors refer to the same element
+- Starts collapsed. Clicking an inactive pill dynamically renders matching brands
+  into an inline grid (`#brandGrid`) via `renderCategoryBrands` in `search.js`
+- Clicking an active pill toggles the grid closed
+- Clicking a brand card inside the grid instantly selects it, hides the grid,
+  resets the pills, and smooth-scrolls the user to the active search bar
 
 ### 6.7 Hash-based brand preselection (main.js)
 - `index.html#amazon` → calls `selectBrand('amazon')` → auto-runs calculation
@@ -428,7 +436,10 @@ produce different numbers than what the user's bank actually credits.
 
 ## 12. Files the AI Should NOT Modify
 
-- `data.js` — the `masterBrands` and `masterCards` arrays are generated
+- `data.js` — only the `masterBrands` and `masterCards` arrays are generated
+  by the CSV pipeline and must not be hand-edited; all other exports in `data.js`
+  (`bankPortalDefaults`, `portals`, save/delete functions, etc.) are hand-maintained
+  and may be edited as needed
 - `sitemap.xml` — regenerate with the parse script if brands change
 - `assets/` — do not modify any image or icon files
 - `_redirects` — Cloudflare routing rules, touch only if adding a new page
@@ -441,10 +452,12 @@ produce different numbers than what the user's bank actually credits.
 1. Add to `portals` array in `data.js` (id, name, group)
 2. If bank-specific: add to `bankPortalDefaults` in `data.js`
 3. If bank-specific: add to `bankSpecificPortalIds` in `data.js`
-4. Add input field to custom brand modal in `index.html` (id: `cb<Name>`)
-5. Add corresponding `push()` call in `modals.js` → `handleSaveBrand`
-6. Add to `customPortal` select dropdown in `index.html`
-7. Add to category browse links if it's user-facing
+4. If bank-specific: add to `ccPortalFieldIds` in `modals.js` and add the
+   corresponding input field to the custom card modal in `index.html`
+5. Add input field to custom brand modal in `index.html` (id: `cb<Name>`)
+6. Add corresponding `push()` call in `modals.js` → `handleSaveBrand`
+7. Add to `customPortal` select dropdown in `index.html`
+8. Add to category browse links if it's user-facing
 
 ### New card
 1. Add row to `masterCards.csv`
