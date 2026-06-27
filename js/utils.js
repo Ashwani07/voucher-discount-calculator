@@ -49,6 +49,7 @@ export function groupCardsByBank(cards) {
     else if (card.id.startsWith('icici_')) bank = 'ICICI Bank';
     else if (card.id.startsWith('amex_')) bank = 'American Express';
     else if (card.id.startsWith('hsbc_')) bank = 'HSBC Bank';
+    else if (card.id.startsWith('kotak_')) bank = 'Kotak Bank';
     else if (card.id.startsWith('custom_')) bank = 'Custom Cards';
     if (!groups[bank]) groups[bank] = [];
     groups[bank].push(card);

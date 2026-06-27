@@ -7,7 +7,7 @@ import { debounce } from './utils.js';
 import { handleBrandInput, hideBrandSuggestions, selectBrand } from './search.js';
 import { handleCalculate, handleReset, refreshPortalResults, toggleDiscountFlag, hideWalletWarning } from './results.js';
 import { handleCustomCalculate, resetCustomCalcForm, toggleCustomCalcPanel, recalcAfterCardDelete } from './customCalc.js';
-import { renderWalletUI, saveWalletIds, deleteCustomCard } from './wallet.js';
+import { renderWalletUI, saveWalletIds, deleteCustomCard, WALLET_MAX_CARDS, checkAndEnforceWalletLimit } from './wallet.js';
 import { openCustomCardModal, closeCustomCardModal, openCustomBrandModal, closeCustomBrandModal, applyBankDefaults, handleSaveCard, handleSaveBrand } from './modals.js';
 import { renderCategoryBrands } from './search.js';
 
@@ -118,10 +118,24 @@ export function initEvents() {
 
     if (selectAllBtn) {
       const panel = document.getElementById('walletPanel');
-      // Just check the boxes in the UI, don't close the panel
-      panel.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+      
+      // Find the currently open bank section. If none is open, do nothing.
+      const visibleSection = panel.querySelector('.bank-section:not(.hidden)');
+      if (!visibleSection) return; 
+
+      const visibleCheckboxes = visibleSection.querySelectorAll('input[type="checkbox"]');
+      
+      // Only check boxes in the visible section, and stop if we hit the limit
+      visibleCheckboxes.forEach(cb => {
+        const currentTotal = document.querySelectorAll('.wallet-card-checkbox:checked').length;
+        if (!cb.checked && currentTotal < WALLET_MAX_CARDS) {
+          cb.checked = true;
+        }
+      });
+      
+      checkAndEnforceWalletLimit(); // Updates the live counter and disables the rest
       hideWalletWarning();
-      // Live update the calculator using the newly checked boxes
+      
       if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
         handleCalculate({ scroll: false });
       }
@@ -130,9 +144,9 @@ export function initEvents() {
 
     if (unselectAllBtn) {
       const panel = document.getElementById('walletPanel');
-      // Just uncheck the boxes in the UI, don't close the panel
       panel.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-      // Live update the calculator using the newly unchecked boxes
+      
+      checkAndEnforceWalletLimit(); // Lifts the disabled state
       if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
         handleCalculate({ scroll: false });
       }
@@ -153,6 +167,16 @@ export function initEvents() {
     }
 
     if (checkbox) {
+      // 1. Safety check BEFORE proceeding to prevent the 11th card from checking
+      const checkedBoxes = document.querySelectorAll('.wallet-card-checkbox:checked');
+      if (checkedBoxes.length > WALLET_MAX_CARDS && checkbox.checked) {
+        checkbox.checked = false; // Revert the browser's native check action
+        return;
+      }
+      
+      // 2. Enforce disabling other boxes if we hit 10
+      checkAndEnforceWalletLimit();
+
       if (checkbox.checked) hideWalletWarning();
       if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
         handleCalculate({ scroll: false });
