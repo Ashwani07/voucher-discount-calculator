@@ -1,4 +1,4 @@
-export const lastVerified = 'June 2026';
+export const lastVerified = 'July 2026';
 
 // Bank-specific "home portal" multiplier defaults for the Custom Card modal.
 // A card can only earn issuer-specific portal multipliers on its OWN bank's
