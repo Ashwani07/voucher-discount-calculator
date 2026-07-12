@@ -2322,14 +2322,6 @@ export const masterBrands = [
       {
         "compositeId": "max_fashion_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 8.5,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion-axis_grabdeals",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "max_fashion_axis_grabdeals",
-        "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 6.5,
         "site": "https://www.vouchwise.in/out/buy-max_fashion-axis_grabdeals",
         "availability": "available",
@@ -2379,6 +2371,14 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 8.5,
         "site": "https://www.vouchwise.in/out/buy-max_fashion_online-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "max_fashion_online_axis_grabdeals",
+        "portalId": "axis_grabdeals",
+        "upfrontDiscountPercent": 8.5,
+        "site": "https://www.vouchwise.in/out/buy-max_fashion_online-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
