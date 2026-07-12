@@ -59,7 +59,7 @@ export const portals = [
 
 // 1. Define Master Arrays
 // https://offers.smartbuy.hdfc.bank.in/v2/accelerated-earn-rules
-// https://www.ishoprewards.com/shopping-vouchers
+// https://ishoprewards.com/shopping-vouchers
 
 // <<BRANDS_START>>
 export const masterBrands = [
@@ -72,7 +72,7 @@ export const masterBrands = [
         "compositeId": "adidas_kids_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-adidas_kids-amazon",
+        "site": "https://vouchwise.in/out/buy-adidas_kids-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -80,7 +80,7 @@ export const masterBrands = [
         "compositeId": "adidas_kids_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-adidas_kids-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-adidas_kids-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -88,7 +88,7 @@ export const masterBrands = [
         "compositeId": "adidas_kids_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-adidas_kids-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-adidas_kids-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -96,7 +96,7 @@ export const masterBrands = [
         "compositeId": "adidas_kids_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-adidas_kids-gyftr",
+        "site": "https://vouchwise.in/out/buy-adidas_kids-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -104,7 +104,7 @@ export const masterBrands = [
         "compositeId": "adidas_kids_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-adidas_kids-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-adidas_kids-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -119,7 +119,7 @@ export const masterBrands = [
         "compositeId": "air_india_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-air_india-amazon",
+        "site": "https://vouchwise.in/out/buy-air_india-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -127,7 +127,7 @@ export const masterBrands = [
         "compositeId": "air_india_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-air_india-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-air_india-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -135,7 +135,7 @@ export const masterBrands = [
         "compositeId": "air_india_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-air_india-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-air_india-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -143,7 +143,7 @@ export const masterBrands = [
         "compositeId": "air_india_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-air_india-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-air_india-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -151,7 +151,7 @@ export const masterBrands = [
         "compositeId": "air_india_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-air_india-gyftr",
+        "site": "https://vouchwise.in/out/buy-air_india-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -159,7 +159,7 @@ export const masterBrands = [
         "compositeId": "air_india_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-air_india-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-air_india-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -167,7 +167,7 @@ export const masterBrands = [
         "compositeId": "air_india_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-air_india-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-air_india-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -182,7 +182,7 @@ export const masterBrands = [
         "compositeId": "ajio_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-ajio-amazon",
+        "site": "https://vouchwise.in/out/buy-ajio-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -190,7 +190,7 @@ export const masterBrands = [
         "compositeId": "ajio_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 3.25,
-        "site": "https://www.vouchwise.in/out/buy-ajio-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-ajio-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -198,7 +198,7 @@ export const masterBrands = [
         "compositeId": "ajio_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 4.5,
-        "site": "https://www.vouchwise.in/out/buy-ajio-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-ajio-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -206,7 +206,7 @@ export const masterBrands = [
         "compositeId": "ajio_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-ajio-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-ajio-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -214,7 +214,7 @@ export const masterBrands = [
         "compositeId": "ajio_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-ajio-gyftr",
+        "site": "https://vouchwise.in/out/buy-ajio-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -222,7 +222,7 @@ export const masterBrands = [
         "compositeId": "ajio_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-ajio-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-ajio-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -230,7 +230,7 @@ export const masterBrands = [
         "compositeId": "ajio_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-ajio-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-ajio-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -245,7 +245,7 @@ export const masterBrands = [
         "compositeId": "amazon_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon-amazon",
+        "site": "https://vouchwise.in/out/buy-amazon-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -253,7 +253,7 @@ export const masterBrands = [
         "compositeId": "amazon_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": -1.77,
-        "site": "https://www.vouchwise.in/out/buy-amazon-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-amazon-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -261,7 +261,7 @@ export const masterBrands = [
         "compositeId": "amazon_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-amazon-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -269,7 +269,7 @@ export const masterBrands = [
         "compositeId": "amazon_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon-gyftr",
+        "site": "https://vouchwise.in/out/buy-amazon-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -277,7 +277,7 @@ export const masterBrands = [
         "compositeId": "amazon_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": -4.13,
-        "site": "https://www.vouchwise.in/out/buy-amazon-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-amazon-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -285,7 +285,7 @@ export const masterBrands = [
         "compositeId": "amazon_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": -4.13,
-        "site": "https://www.vouchwise.in/out/buy-amazon-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-amazon-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -300,7 +300,7 @@ export const masterBrands = [
         "compositeId": "amazon_fresh_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_fresh-amazon",
+        "site": "https://vouchwise.in/out/buy-amazon_fresh-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -308,7 +308,7 @@ export const masterBrands = [
         "compositeId": "amazon_fresh_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_fresh-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-amazon_fresh-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -316,7 +316,7 @@ export const masterBrands = [
         "compositeId": "amazon_fresh_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 1.5,
-        "site": "https://www.vouchwise.in/out/buy-amazon_fresh-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-amazon_fresh-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -324,7 +324,7 @@ export const masterBrands = [
         "compositeId": "amazon_fresh_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_fresh-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-amazon_fresh-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -332,7 +332,7 @@ export const masterBrands = [
         "compositeId": "amazon_fresh_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_fresh-gyftr",
+        "site": "https://vouchwise.in/out/buy-amazon_fresh-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -340,7 +340,7 @@ export const masterBrands = [
         "compositeId": "amazon_fresh_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_fresh-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-amazon_fresh-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -348,7 +348,7 @@ export const masterBrands = [
         "compositeId": "amazon_fresh_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_fresh-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-amazon_fresh-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -363,7 +363,7 @@ export const masterBrands = [
         "compositeId": "amazon_prime_membership_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-amazon_prime_membership-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-amazon_prime_membership-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -371,7 +371,7 @@ export const masterBrands = [
         "compositeId": "amazon_prime_membership_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 17.5,
-        "site": "https://www.vouchwise.in/out/buy-amazon_prime_membership-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-amazon_prime_membership-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -379,7 +379,7 @@ export const masterBrands = [
         "compositeId": "amazon_prime_membership_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-amazon_prime_membership-gyftr",
+        "site": "https://vouchwise.in/out/buy-amazon_prime_membership-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -387,7 +387,7 @@ export const masterBrands = [
         "compositeId": "amazon_prime_membership_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-amazon_prime_membership-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-amazon_prime_membership-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -395,7 +395,7 @@ export const masterBrands = [
         "compositeId": "amazon_prime_membership_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_prime_membership-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-amazon_prime_membership-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -410,7 +410,7 @@ export const masterBrands = [
         "compositeId": "amazon_prime_membership-12_months_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 15,
-        "site": "https://www.vouchwise.in/out/buy-amazon_prime_membership-12_months-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-amazon_prime_membership-12_months-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       }
@@ -425,7 +425,7 @@ export const masterBrands = [
         "compositeId": "amazon_shopping_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_shopping-amazon",
+        "site": "https://vouchwise.in/out/buy-amazon_shopping-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -433,7 +433,7 @@ export const masterBrands = [
         "compositeId": "amazon_shopping_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": -1.77,
-        "site": "https://www.vouchwise.in/out/buy-amazon_shopping-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-amazon_shopping-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -441,7 +441,7 @@ export const masterBrands = [
         "compositeId": "amazon_shopping_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_shopping-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-amazon_shopping-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -449,7 +449,7 @@ export const masterBrands = [
         "compositeId": "amazon_shopping_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-amazon_shopping-gyftr",
+        "site": "https://vouchwise.in/out/buy-amazon_shopping-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -457,7 +457,7 @@ export const masterBrands = [
         "compositeId": "amazon_shopping_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": -4.13,
-        "site": "https://www.vouchwise.in/out/buy-amazon_shopping-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-amazon_shopping-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -465,7 +465,7 @@ export const masterBrands = [
         "compositeId": "amazon_shopping_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": -4.13,
-        "site": "https://www.vouchwise.in/out/buy-amazon_shopping-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-amazon_shopping-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -480,7 +480,7 @@ export const masterBrands = [
         "compositeId": "apollo_pharmacy_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-apollo_pharmacy-amazon",
+        "site": "https://vouchwise.in/out/buy-apollo_pharmacy-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -488,7 +488,7 @@ export const masterBrands = [
         "compositeId": "apollo_pharmacy_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-apollo_pharmacy-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-apollo_pharmacy-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -496,7 +496,7 @@ export const masterBrands = [
         "compositeId": "apollo_pharmacy_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 9.5,
-        "site": "https://www.vouchwise.in/out/buy-apollo_pharmacy-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-apollo_pharmacy-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -504,7 +504,7 @@ export const masterBrands = [
         "compositeId": "apollo_pharmacy_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 9.5,
-        "site": "https://www.vouchwise.in/out/buy-apollo_pharmacy-gyftr",
+        "site": "https://vouchwise.in/out/buy-apollo_pharmacy-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -512,7 +512,7 @@ export const masterBrands = [
         "compositeId": "apollo_pharmacy_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-apollo_pharmacy-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-apollo_pharmacy-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -527,7 +527,7 @@ export const masterBrands = [
         "compositeId": "barbeque_nation_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-barbeque_nation-amazon",
+        "site": "https://vouchwise.in/out/buy-barbeque_nation-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -535,7 +535,7 @@ export const masterBrands = [
         "compositeId": "barbeque_nation_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 3.75,
-        "site": "https://www.vouchwise.in/out/buy-barbeque_nation-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-barbeque_nation-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -543,7 +543,7 @@ export const masterBrands = [
         "compositeId": "barbeque_nation_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-barbeque_nation-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-barbeque_nation-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -551,7 +551,7 @@ export const masterBrands = [
         "compositeId": "barbeque_nation_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-barbeque_nation-gyftr",
+        "site": "https://vouchwise.in/out/buy-barbeque_nation-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -559,7 +559,7 @@ export const masterBrands = [
         "compositeId": "barbeque_nation_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-barbeque_nation-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-barbeque_nation-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -567,7 +567,7 @@ export const masterBrands = [
         "compositeId": "barbeque_nation_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-barbeque_nation-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-barbeque_nation-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -582,7 +582,7 @@ export const masterBrands = [
         "compositeId": "bath_and_body_works_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 14,
-        "site": "https://www.vouchwise.in/out/buy-bath_and_body_works-amazon",
+        "site": "https://vouchwise.in/out/buy-bath_and_body_works-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -590,7 +590,7 @@ export const masterBrands = [
         "compositeId": "bath_and_body_works_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 12.5,
-        "site": "https://www.vouchwise.in/out/buy-bath_and_body_works-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-bath_and_body_works-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -598,7 +598,7 @@ export const masterBrands = [
         "compositeId": "bath_and_body_works_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://www.vouchwise.in/out/buy-bath_and_body_works-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-bath_and_body_works-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -606,7 +606,7 @@ export const masterBrands = [
         "compositeId": "bath_and_body_works_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-bath_and_body_works-gyftr",
+        "site": "https://vouchwise.in/out/buy-bath_and_body_works-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -614,7 +614,7 @@ export const masterBrands = [
         "compositeId": "bath_and_body_works_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-bath_and_body_works-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-bath_and_body_works-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -622,7 +622,7 @@ export const masterBrands = [
         "compositeId": "bath_and_body_works_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-bath_and_body_works-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-bath_and_body_works-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -637,7 +637,7 @@ export const masterBrands = [
         "compositeId": "bigbasket_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-bigbasket-amazon",
+        "site": "https://vouchwise.in/out/buy-bigbasket-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -645,7 +645,7 @@ export const masterBrands = [
         "compositeId": "bigbasket_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-bigbasket-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-bigbasket-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -653,7 +653,7 @@ export const masterBrands = [
         "compositeId": "bigbasket_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 1.5,
-        "site": "https://www.vouchwise.in/out/buy-bigbasket-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-bigbasket-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -661,7 +661,7 @@ export const masterBrands = [
         "compositeId": "bigbasket_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 3.5,
-        "site": "https://www.vouchwise.in/out/buy-bigbasket-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-bigbasket-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -669,7 +669,7 @@ export const masterBrands = [
         "compositeId": "bigbasket_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-bigbasket-gyftr",
+        "site": "https://vouchwise.in/out/buy-bigbasket-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -677,7 +677,7 @@ export const masterBrands = [
         "compositeId": "bigbasket_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-bigbasket-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-bigbasket-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -685,7 +685,7 @@ export const masterBrands = [
         "compositeId": "bigbasket_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-bigbasket-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-bigbasket-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -700,7 +700,7 @@ export const masterBrands = [
         "compositeId": "blinkit_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.vouchwise.in/out/buy-blinkit-amazon",
+        "site": "https://vouchwise.in/out/buy-blinkit-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -708,7 +708,7 @@ export const masterBrands = [
         "compositeId": "blinkit_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0.5,
-        "site": "https://www.vouchwise.in/out/buy-blinkit-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-blinkit-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -716,7 +716,7 @@ export const masterBrands = [
         "compositeId": "blinkit_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-blinkit-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-blinkit-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -724,7 +724,7 @@ export const masterBrands = [
         "compositeId": "blinkit_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-blinkit-gyftr",
+        "site": "https://vouchwise.in/out/buy-blinkit-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -732,7 +732,7 @@ export const masterBrands = [
         "compositeId": "blinkit_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-blinkit-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-blinkit-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -740,7 +740,7 @@ export const masterBrands = [
         "compositeId": "blinkit_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-blinkit-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-blinkit-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -755,7 +755,7 @@ export const masterBrands = [
         "compositeId": "bookmyshow_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.vouchwise.in/out/buy-bookmyshow-amazon",
+        "site": "https://vouchwise.in/out/buy-bookmyshow-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -763,7 +763,7 @@ export const masterBrands = [
         "compositeId": "bookmyshow_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-bookmyshow-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-bookmyshow-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -771,7 +771,7 @@ export const masterBrands = [
         "compositeId": "bookmyshow_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-bookmyshow-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-bookmyshow-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -779,7 +779,7 @@ export const masterBrands = [
         "compositeId": "bookmyshow_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-bookmyshow-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-bookmyshow-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -794,7 +794,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip-amazon",
+        "site": "https://vouchwise.in/out/buy-cleartrip-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -802,7 +802,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 2.3,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-cleartrip-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -810,7 +810,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-cleartrip-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -818,7 +818,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-cleartrip-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -826,7 +826,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip-gyftr",
+        "site": "https://vouchwise.in/out/buy-cleartrip-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -834,7 +834,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-cleartrip-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -842,7 +842,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-cleartrip-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -857,7 +857,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_hotel_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 15,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip_hotel-amazon",
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -865,7 +865,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_hotel_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 11.9,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip_hotel-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -873,7 +873,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_hotel_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 16.5,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip_hotel-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -881,7 +881,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_hotel_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 16,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip_hotel-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -889,7 +889,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_hotel_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 15,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip_hotel-gyftr",
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -897,7 +897,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_hotel_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip_hotel-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -905,7 +905,7 @@ export const masterBrands = [
         "compositeId": "cleartrip_hotel_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-cleartrip_hotel-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -920,7 +920,7 @@ export const masterBrands = [
         "compositeId": "costa_coffee_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-costa_coffee-amazon",
+        "site": "https://vouchwise.in/out/buy-costa_coffee-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -928,7 +928,7 @@ export const masterBrands = [
         "compositeId": "costa_coffee_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-costa_coffee-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-costa_coffee-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -936,7 +936,7 @@ export const masterBrands = [
         "compositeId": "costa_coffee_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-costa_coffee-gyftr",
+        "site": "https://vouchwise.in/out/buy-costa_coffee-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -944,7 +944,7 @@ export const masterBrands = [
         "compositeId": "costa_coffee_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-costa_coffee-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-costa_coffee-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -952,7 +952,7 @@ export const masterBrands = [
         "compositeId": "costa_coffee_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-costa_coffee-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-costa_coffee-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -967,7 +967,7 @@ export const masterBrands = [
         "compositeId": "croma_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-croma-amazon",
+        "site": "https://vouchwise.in/out/buy-croma-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -975,7 +975,7 @@ export const masterBrands = [
         "compositeId": "croma_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-croma-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-croma-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -983,7 +983,7 @@ export const masterBrands = [
         "compositeId": "croma_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-croma-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-croma-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -991,7 +991,7 @@ export const masterBrands = [
         "compositeId": "croma_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-croma-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-croma-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -999,7 +999,7 @@ export const masterBrands = [
         "compositeId": "croma_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-croma-gyftr",
+        "site": "https://vouchwise.in/out/buy-croma-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1007,7 +1007,7 @@ export const masterBrands = [
         "compositeId": "croma_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-croma-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-croma-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1015,7 +1015,7 @@ export const masterBrands = [
         "compositeId": "croma_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-croma-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-croma-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1030,7 +1030,7 @@ export const masterBrands = [
         "compositeId": "decathlon_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.vouchwise.in/out/buy-decathlon-amazon",
+        "site": "https://vouchwise.in/out/buy-decathlon-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1038,7 +1038,7 @@ export const masterBrands = [
         "compositeId": "decathlon_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-decathlon-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-decathlon-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1046,7 +1046,7 @@ export const masterBrands = [
         "compositeId": "decathlon_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 3.5,
-        "site": "https://www.vouchwise.in/out/buy-decathlon-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-decathlon-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1054,7 +1054,7 @@ export const masterBrands = [
         "compositeId": "decathlon_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 3.5,
-        "site": "https://www.vouchwise.in/out/buy-decathlon-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-decathlon-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1062,7 +1062,7 @@ export const masterBrands = [
         "compositeId": "decathlon_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-decathlon-gyftr",
+        "site": "https://vouchwise.in/out/buy-decathlon-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1070,7 +1070,7 @@ export const masterBrands = [
         "compositeId": "decathlon_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-decathlon-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-decathlon-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1085,7 +1085,7 @@ export const masterBrands = [
         "compositeId": "dominos_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 14,
-        "site": "https://www.vouchwise.in/out/buy-dominos-amazon",
+        "site": "https://vouchwise.in/out/buy-dominos-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1093,7 +1093,7 @@ export const masterBrands = [
         "compositeId": "dominos_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 9,
-        "site": "https://www.vouchwise.in/out/buy-dominos-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-dominos-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1101,7 +1101,7 @@ export const masterBrands = [
         "compositeId": "dominos_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 17.5,
-        "site": "https://www.vouchwise.in/out/buy-dominos-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-dominos-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1109,7 +1109,7 @@ export const masterBrands = [
         "compositeId": "dominos_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://www.vouchwise.in/out/buy-dominos-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-dominos-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1117,7 +1117,7 @@ export const masterBrands = [
         "compositeId": "dominos_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 16,
-        "site": "https://www.vouchwise.in/out/buy-dominos-gyftr",
+        "site": "https://vouchwise.in/out/buy-dominos-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1125,7 +1125,7 @@ export const masterBrands = [
         "compositeId": "dominos_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-dominos-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-dominos-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1133,7 +1133,7 @@ export const masterBrands = [
         "compositeId": "dominos_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-dominos-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-dominos-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1148,7 +1148,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip-amazon",
+        "site": "https://vouchwise.in/out/buy-easemytrip-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1156,7 +1156,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-easemytrip-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1164,7 +1164,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-easemytrip-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1172,7 +1172,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-easemytrip-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1180,7 +1180,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-easemytrip-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1195,7 +1195,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_holiday_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip_holiday-amazon",
+        "site": "https://vouchwise.in/out/buy-easemytrip_holiday-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1203,7 +1203,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_holiday_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 2.8,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip_holiday-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-easemytrip_holiday-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1211,7 +1211,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_holiday_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip_holiday-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-easemytrip_holiday-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1219,7 +1219,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_holiday_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 10.5,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip_holiday-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-easemytrip_holiday-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1227,7 +1227,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_holiday_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip_holiday-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-easemytrip_holiday-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1242,7 +1242,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_hotel_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 9,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip_hotel-amazon",
+        "site": "https://vouchwise.in/out/buy-easemytrip_hotel-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1250,7 +1250,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_hotel_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 2.1,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip_hotel-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-easemytrip_hotel-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1258,7 +1258,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_hotel_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 13.5,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip_hotel-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-easemytrip_hotel-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1266,7 +1266,7 @@ export const masterBrands = [
         "compositeId": "easemytrip_hotel_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-easemytrip_hotel-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-easemytrip_hotel-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1281,7 +1281,7 @@ export const masterBrands = [
         "compositeId": "fabindia_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-fabindia-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-fabindia-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1289,7 +1289,7 @@ export const masterBrands = [
         "compositeId": "fabindia_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-fabindia-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-fabindia-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1304,7 +1304,7 @@ export const masterBrands = [
         "compositeId": "ferns_n_petals_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-ferns_n_petals-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-ferns_n_petals-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1312,7 +1312,7 @@ export const masterBrands = [
         "compositeId": "ferns_n_petals_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 17.5,
-        "site": "https://www.vouchwise.in/out/buy-ferns_n_petals-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-ferns_n_petals-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1320,7 +1320,7 @@ export const masterBrands = [
         "compositeId": "ferns_n_petals_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 16,
-        "site": "https://www.vouchwise.in/out/buy-ferns_n_petals-gyftr",
+        "site": "https://vouchwise.in/out/buy-ferns_n_petals-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1328,7 +1328,7 @@ export const masterBrands = [
         "compositeId": "ferns_n_petals_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-ferns_n_petals-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-ferns_n_petals-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1336,7 +1336,7 @@ export const masterBrands = [
         "compositeId": "ferns_n_petals_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-ferns_n_petals-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-ferns_n_petals-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1351,7 +1351,7 @@ export const masterBrands = [
         "compositeId": "flipkart_gift_card_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-flipkart_gift_card-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-flipkart_gift_card-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1359,7 +1359,7 @@ export const masterBrands = [
         "compositeId": "flipkart_gift_card_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-flipkart_gift_card-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-flipkart_gift_card-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1367,7 +1367,7 @@ export const masterBrands = [
         "compositeId": "flipkart_gift_card_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-flipkart_gift_card-gyftr",
+        "site": "https://vouchwise.in/out/buy-flipkart_gift_card-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1375,7 +1375,7 @@ export const masterBrands = [
         "compositeId": "flipkart_gift_card_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-flipkart_gift_card-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-flipkart_gift_card-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1383,7 +1383,7 @@ export const masterBrands = [
         "compositeId": "flipkart_gift_card_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-flipkart_gift_card-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-flipkart_gift_card-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1398,7 +1398,7 @@ export const masterBrands = [
         "compositeId": "igp_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 7.4,
-        "site": "https://www.vouchwise.in/out/buy-igp-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-igp-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1406,7 +1406,7 @@ export const masterBrands = [
         "compositeId": "igp_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 17.5,
-        "site": "https://www.vouchwise.in/out/buy-igp-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-igp-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1414,7 +1414,7 @@ export const masterBrands = [
         "compositeId": "igp_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 15,
-        "site": "https://www.vouchwise.in/out/buy-igp-gyftr",
+        "site": "https://vouchwise.in/out/buy-igp-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1422,7 +1422,7 @@ export const masterBrands = [
         "compositeId": "igp_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-igp-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-igp-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1430,7 +1430,7 @@ export const masterBrands = [
         "compositeId": "igp_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-igp-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-igp-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1445,7 +1445,7 @@ export const masterBrands = [
         "compositeId": "ikea_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-ikea-amazon",
+        "site": "https://vouchwise.in/out/buy-ikea-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1453,7 +1453,7 @@ export const masterBrands = [
         "compositeId": "ikea_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 1.65,
-        "site": "https://www.vouchwise.in/out/buy-ikea-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-ikea-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1461,7 +1461,7 @@ export const masterBrands = [
         "compositeId": "ikea_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-ikea-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-ikea-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1469,7 +1469,7 @@ export const masterBrands = [
         "compositeId": "ikea_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 3.5,
-        "site": "https://www.vouchwise.in/out/buy-ikea-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-ikea-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1477,7 +1477,7 @@ export const masterBrands = [
         "compositeId": "ikea_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-ikea-gyftr",
+        "site": "https://vouchwise.in/out/buy-ikea-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1485,7 +1485,7 @@ export const masterBrands = [
         "compositeId": "ikea_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-ikea-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-ikea-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1493,7 +1493,7 @@ export const masterBrands = [
         "compositeId": "ikea_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-ikea-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-ikea-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1508,7 +1508,7 @@ export const masterBrands = [
         "compositeId": "itc_hotels_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-itc_hotels-amazon",
+        "site": "https://vouchwise.in/out/buy-itc_hotels-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1516,7 +1516,7 @@ export const masterBrands = [
         "compositeId": "itc_hotels_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-itc_hotels-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-itc_hotels-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1524,7 +1524,7 @@ export const masterBrands = [
         "compositeId": "itc_hotels_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 7,
-        "site": "https://www.vouchwise.in/out/buy-itc_hotels-gyftr",
+        "site": "https://vouchwise.in/out/buy-itc_hotels-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1532,7 +1532,7 @@ export const masterBrands = [
         "compositeId": "itc_hotels_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-itc_hotels-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-itc_hotels-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1540,7 +1540,7 @@ export const masterBrands = [
         "compositeId": "itc_hotels_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-itc_hotels-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-itc_hotels-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1555,7 +1555,7 @@ export const masterBrands = [
         "compositeId": "jiohotstar_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-jiohotstar-amazon",
+        "site": "https://vouchwise.in/out/buy-jiohotstar-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1563,7 +1563,7 @@ export const masterBrands = [
         "compositeId": "jiohotstar_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-jiohotstar-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-jiohotstar-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1571,7 +1571,7 @@ export const masterBrands = [
         "compositeId": "jiohotstar_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-jiohotstar-gyftr",
+        "site": "https://vouchwise.in/out/buy-jiohotstar-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1579,7 +1579,7 @@ export const masterBrands = [
         "compositeId": "jiohotstar_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-jiohotstar-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-jiohotstar-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1594,7 +1594,7 @@ export const masterBrands = [
         "compositeId": "kfc_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-kfc-amazon",
+        "site": "https://vouchwise.in/out/buy-kfc-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1602,7 +1602,7 @@ export const masterBrands = [
         "compositeId": "kfc_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-kfc-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-kfc-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1610,7 +1610,7 @@ export const masterBrands = [
         "compositeId": "kfc_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-kfc-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-kfc-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1618,7 +1618,7 @@ export const masterBrands = [
         "compositeId": "kfc_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://www.vouchwise.in/out/buy-kfc-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-kfc-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1626,7 +1626,7 @@ export const masterBrands = [
         "compositeId": "kfc_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.vouchwise.in/out/buy-kfc-gyftr",
+        "site": "https://vouchwise.in/out/buy-kfc-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1634,7 +1634,7 @@ export const masterBrands = [
         "compositeId": "kfc_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-kfc-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-kfc-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1642,7 +1642,7 @@ export const masterBrands = [
         "compositeId": "kfc_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-kfc-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-kfc-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1657,7 +1657,7 @@ export const masterBrands = [
         "compositeId": "klook_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-klook-amazon",
+        "site": "https://vouchwise.in/out/buy-klook-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1665,7 +1665,7 @@ export const masterBrands = [
         "compositeId": "klook_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-klook-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-klook-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1673,7 +1673,7 @@ export const masterBrands = [
         "compositeId": "klook_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://www.vouchwise.in/out/buy-klook-gyftr",
+        "site": "https://vouchwise.in/out/buy-klook-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1681,7 +1681,7 @@ export const masterBrands = [
         "compositeId": "klook_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-klook-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-klook-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1696,7 +1696,7 @@ export const masterBrands = [
         "compositeId": "lakme_salon_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-lakme_salon-amazon",
+        "site": "https://vouchwise.in/out/buy-lakme_salon-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1704,7 +1704,7 @@ export const masterBrands = [
         "compositeId": "lakme_salon_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-lakme_salon-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-lakme_salon-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1712,7 +1712,7 @@ export const masterBrands = [
         "compositeId": "lakme_salon_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-lakme_salon-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-lakme_salon-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1720,7 +1720,7 @@ export const masterBrands = [
         "compositeId": "lakme_salon_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-lakme_salon-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-lakme_salon-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1735,7 +1735,7 @@ export const masterBrands = [
         "compositeId": "lenskart_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-lenskart-amazon",
+        "site": "https://vouchwise.in/out/buy-lenskart-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1743,7 +1743,7 @@ export const masterBrands = [
         "compositeId": "lenskart_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 6.3,
-        "site": "https://www.vouchwise.in/out/buy-lenskart-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-lenskart-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1751,7 +1751,7 @@ export const masterBrands = [
         "compositeId": "lenskart_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 9,
-        "site": "https://www.vouchwise.in/out/buy-lenskart-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-lenskart-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1759,7 +1759,7 @@ export const masterBrands = [
         "compositeId": "lenskart_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-lenskart-gyftr",
+        "site": "https://vouchwise.in/out/buy-lenskart-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1767,7 +1767,7 @@ export const masterBrands = [
         "compositeId": "lenskart_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-lenskart-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-lenskart-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1775,7 +1775,7 @@ export const masterBrands = [
         "compositeId": "lenskart_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-lenskart-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-lenskart-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1790,7 +1790,7 @@ export const masterBrands = [
         "compositeId": "levis_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-levis-amazon",
+        "site": "https://vouchwise.in/out/buy-levis-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1798,7 +1798,7 @@ export const masterBrands = [
         "compositeId": "levis_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-levis-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-levis-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1806,7 +1806,7 @@ export const masterBrands = [
         "compositeId": "levis_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-levis-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-levis-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1814,7 +1814,7 @@ export const masterBrands = [
         "compositeId": "levis_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-levis-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-levis-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1822,7 +1822,7 @@ export const masterBrands = [
         "compositeId": "levis_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-levis-gyftr",
+        "site": "https://vouchwise.in/out/buy-levis-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1830,7 +1830,7 @@ export const masterBrands = [
         "compositeId": "levis_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-levis-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-levis-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1838,7 +1838,7 @@ export const masterBrands = [
         "compositeId": "levis_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-levis-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-levis-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1853,7 +1853,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 7,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle-amazon",
+        "site": "https://vouchwise.in/out/buy-lifestyle-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1861,7 +1861,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 3.3,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-lifestyle-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1869,7 +1869,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 8.5,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-lifestyle-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1877,7 +1877,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-lifestyle-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1885,7 +1885,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle-gyftr",
+        "site": "https://vouchwise.in/out/buy-lifestyle-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1893,7 +1893,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-lifestyle-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1908,7 +1908,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_online_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 7,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle_online-amazon",
+        "site": "https://vouchwise.in/out/buy-lifestyle_online-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1916,7 +1916,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_online_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle_online-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-lifestyle_online-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1924,7 +1924,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_online_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 8.5,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle_online-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-lifestyle_online-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1932,7 +1932,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_online_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle_online-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-lifestyle_online-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1940,7 +1940,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_online_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle_online-gyftr",
+        "site": "https://vouchwise.in/out/buy-lifestyle_online-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1948,7 +1948,7 @@ export const masterBrands = [
         "compositeId": "lifestyle_online_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-lifestyle_online-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-lifestyle_online-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1963,7 +1963,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip-amazon",
+        "site": "https://vouchwise.in/out/buy-makemytrip-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1971,7 +1971,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-makemytrip-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -1979,7 +1979,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 5.5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-makemytrip-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1987,7 +1987,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 5.5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-makemytrip-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1995,7 +1995,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip-gyftr",
+        "site": "https://vouchwise.in/out/buy-makemytrip-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2003,7 +2003,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-makemytrip-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2011,7 +2011,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-makemytrip-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2026,7 +2026,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_bus_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_bus-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-makemytrip_bus-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2041,7 +2041,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_cab_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_cab-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-makemytrip_cab-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2056,7 +2056,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_holiday_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 14,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_holiday-amazon",
+        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2064,7 +2064,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_holiday_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 6.6,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_holiday-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2072,7 +2072,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_holiday_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_holiday-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2080,7 +2080,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_holiday_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 13.5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_holiday-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2088,7 +2088,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_holiday_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 11.5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_holiday-gyftr",
+        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2096,7 +2096,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_holiday_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_holiday-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2104,7 +2104,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_holiday_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_holiday-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2119,7 +2119,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_hotel_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 12,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_hotel-amazon",
+        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2127,7 +2127,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_hotel_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 6.6,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_hotel-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2135,7 +2135,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_hotel_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 12.5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_hotel-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2143,7 +2143,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_hotel_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 12,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_hotel-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2151,7 +2151,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_hotel_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 13,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_hotel-gyftr",
+        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2159,7 +2159,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_hotel_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_hotel-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2167,7 +2167,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_hotel_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_hotel-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2182,7 +2182,7 @@ export const masterBrands = [
         "compositeId": "makemytrip_rail_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-makemytrip_rail-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-makemytrip_rail-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2197,7 +2197,7 @@ export const masterBrands = [
         "compositeId": "manyavar_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-manyavar-amazon",
+        "site": "https://vouchwise.in/out/buy-manyavar-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2205,7 +2205,7 @@ export const masterBrands = [
         "compositeId": "manyavar_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-manyavar-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-manyavar-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2213,7 +2213,7 @@ export const masterBrands = [
         "compositeId": "manyavar_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-manyavar-gyftr",
+        "site": "https://vouchwise.in/out/buy-manyavar-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2221,7 +2221,7 @@ export const masterBrands = [
         "compositeId": "manyavar_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-manyavar-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-manyavar-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2236,7 +2236,7 @@ export const masterBrands = [
         "compositeId": "marks_&_spencer_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-marks_&_spencer-amazon",
+        "site": "https://vouchwise.in/out/buy-marks_&_spencer-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2244,7 +2244,7 @@ export const masterBrands = [
         "compositeId": "marks_&_spencer_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 8.25,
-        "site": "https://www.vouchwise.in/out/buy-marks_&_spencer-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-marks_&_spencer-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2252,7 +2252,7 @@ export const masterBrands = [
         "compositeId": "marks_&_spencer_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 12.5,
-        "site": "https://www.vouchwise.in/out/buy-marks_&_spencer-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-marks_&_spencer-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2260,7 +2260,7 @@ export const masterBrands = [
         "compositeId": "marks_&_spencer_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 10.5,
-        "site": "https://www.vouchwise.in/out/buy-marks_&_spencer-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-marks_&_spencer-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2268,7 +2268,7 @@ export const masterBrands = [
         "compositeId": "marks_&_spencer_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 9,
-        "site": "https://www.vouchwise.in/out/buy-marks_&_spencer-gyftr",
+        "site": "https://vouchwise.in/out/buy-marks_&_spencer-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2276,7 +2276,7 @@ export const masterBrands = [
         "compositeId": "marks_&_spencer_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-marks_&_spencer-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-marks_&_spencer-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2284,7 +2284,7 @@ export const masterBrands = [
         "compositeId": "marks_&_spencer_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-marks_&_spencer-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-marks_&_spencer-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2299,7 +2299,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion-amazon",
+        "site": "https://vouchwise.in/out/buy-max_fashion-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2307,7 +2307,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 3.75,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-max_fashion-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2315,7 +2315,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 8.5,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-max_fashion-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2323,7 +2323,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-max_fashion-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2331,7 +2331,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion-gyftr",
+        "site": "https://vouchwise.in/out/buy-max_fashion-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2339,7 +2339,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-max_fashion-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2354,7 +2354,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_online_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion_online-amazon",
+        "site": "https://vouchwise.in/out/buy-max_fashion_online-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2362,7 +2362,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_online_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 4.4,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion_online-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-max_fashion_online-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2370,7 +2370,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_online_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 8.5,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion_online-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-max_fashion_online-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2378,7 +2378,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_online_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 8.5,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion_online-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-max_fashion_online-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2386,7 +2386,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_online_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion_online-gyftr",
+        "site": "https://vouchwise.in/out/buy-max_fashion_online-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2394,7 +2394,7 @@ export const masterBrands = [
         "compositeId": "max_fashion_online_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-max_fashion_online-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-max_fashion_online-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2409,7 +2409,7 @@ export const masterBrands = [
         "compositeId": "myntra_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.vouchwise.in/out/buy-myntra-amazon",
+        "site": "https://vouchwise.in/out/buy-myntra-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2417,7 +2417,7 @@ export const masterBrands = [
         "compositeId": "myntra_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-myntra-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-myntra-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2425,7 +2425,7 @@ export const masterBrands = [
         "compositeId": "myntra_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.vouchwise.in/out/buy-myntra-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-myntra-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2433,7 +2433,7 @@ export const masterBrands = [
         "compositeId": "myntra_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-myntra-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-myntra-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2441,7 +2441,7 @@ export const masterBrands = [
         "compositeId": "myntra_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 2,
-        "site": "https://www.vouchwise.in/out/buy-myntra-gyftr",
+        "site": "https://vouchwise.in/out/buy-myntra-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2449,7 +2449,7 @@ export const masterBrands = [
         "compositeId": "myntra_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-myntra-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-myntra-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2457,7 +2457,7 @@ export const masterBrands = [
         "compositeId": "myntra_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-myntra-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-myntra-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2472,7 +2472,7 @@ export const masterBrands = [
         "compositeId": "netmeds_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 14.5,
-        "site": "https://www.vouchwise.in/out/buy-netmeds-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-netmeds-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2480,7 +2480,7 @@ export const masterBrands = [
         "compositeId": "netmeds_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-netmeds-gyftr",
+        "site": "https://vouchwise.in/out/buy-netmeds-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2488,7 +2488,7 @@ export const masterBrands = [
         "compositeId": "netmeds_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-netmeds-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-netmeds-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2503,7 +2503,7 @@ export const masterBrands = [
         "compositeId": "nykaa_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-nykaa-amazon",
+        "site": "https://vouchwise.in/out/buy-nykaa-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2511,7 +2511,7 @@ export const masterBrands = [
         "compositeId": "nykaa_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-nykaa-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-nykaa-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2519,7 +2519,7 @@ export const masterBrands = [
         "compositeId": "nykaa_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 3.5,
-        "site": "https://www.vouchwise.in/out/buy-nykaa-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-nykaa-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2527,7 +2527,7 @@ export const masterBrands = [
         "compositeId": "nykaa_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 4.5,
-        "site": "https://www.vouchwise.in/out/buy-nykaa-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-nykaa-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2535,7 +2535,7 @@ export const masterBrands = [
         "compositeId": "nykaa_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-nykaa-gyftr",
+        "site": "https://vouchwise.in/out/buy-nykaa-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2543,7 +2543,7 @@ export const masterBrands = [
         "compositeId": "nykaa_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-nykaa-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-nykaa-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2551,7 +2551,7 @@ export const masterBrands = [
         "compositeId": "nykaa_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-nykaa-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-nykaa-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2566,7 +2566,7 @@ export const masterBrands = [
         "compositeId": "nykaa_fashion_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_fashion-amazon",
+        "site": "https://vouchwise.in/out/buy-nykaa_fashion-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2574,7 +2574,7 @@ export const masterBrands = [
         "compositeId": "nykaa_fashion_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_fashion-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-nykaa_fashion-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2582,7 +2582,7 @@ export const masterBrands = [
         "compositeId": "nykaa_fashion_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 3.5,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_fashion-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-nykaa_fashion-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2590,7 +2590,7 @@ export const masterBrands = [
         "compositeId": "nykaa_fashion_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 4.5,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_fashion-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-nykaa_fashion-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2598,7 +2598,7 @@ export const masterBrands = [
         "compositeId": "nykaa_fashion_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_fashion-gyftr",
+        "site": "https://vouchwise.in/out/buy-nykaa_fashion-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2606,7 +2606,7 @@ export const masterBrands = [
         "compositeId": "nykaa_fashion_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_fashion-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-nykaa_fashion-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2621,7 +2621,7 @@ export const masterBrands = [
         "compositeId": "nykaa_man_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_man-amazon",
+        "site": "https://vouchwise.in/out/buy-nykaa_man-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2629,7 +2629,7 @@ export const masterBrands = [
         "compositeId": "nykaa_man_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_man-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-nykaa_man-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2637,7 +2637,7 @@ export const masterBrands = [
         "compositeId": "nykaa_man_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 3.5,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_man-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-nykaa_man-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2645,7 +2645,7 @@ export const masterBrands = [
         "compositeId": "nykaa_man_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_man-gyftr",
+        "site": "https://vouchwise.in/out/buy-nykaa_man-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2653,7 +2653,7 @@ export const masterBrands = [
         "compositeId": "nykaa_man_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_man-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-nykaa_man-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2661,7 +2661,7 @@ export const masterBrands = [
         "compositeId": "nykaa_man_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-nykaa_man-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-nykaa_man-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2676,7 +2676,7 @@ export const masterBrands = [
         "compositeId": "ola_cabs_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 8.8,
-        "site": "https://www.vouchwise.in/out/buy-ola_cabs-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-ola_cabs-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2684,7 +2684,7 @@ export const masterBrands = [
         "compositeId": "ola_cabs_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-ola_cabs-gyftr",
+        "site": "https://vouchwise.in/out/buy-ola_cabs-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2692,7 +2692,7 @@ export const masterBrands = [
         "compositeId": "ola_cabs_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-ola_cabs-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-ola_cabs-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2707,7 +2707,7 @@ export const masterBrands = [
         "compositeId": "pantaloons_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-pantaloons-amazon",
+        "site": "https://vouchwise.in/out/buy-pantaloons-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2715,7 +2715,7 @@ export const masterBrands = [
         "compositeId": "pantaloons_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-pantaloons-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-pantaloons-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2723,7 +2723,7 @@ export const masterBrands = [
         "compositeId": "pantaloons_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://www.vouchwise.in/out/buy-pantaloons-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-pantaloons-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2731,7 +2731,7 @@ export const masterBrands = [
         "compositeId": "pantaloons_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-pantaloons-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-pantaloons-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2739,7 +2739,7 @@ export const masterBrands = [
         "compositeId": "pantaloons_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-pantaloons-gyftr",
+        "site": "https://vouchwise.in/out/buy-pantaloons-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2747,7 +2747,7 @@ export const masterBrands = [
         "compositeId": "pantaloons_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-pantaloons-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-pantaloons-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2755,7 +2755,7 @@ export const masterBrands = [
         "compositeId": "pantaloons_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-pantaloons-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-pantaloons-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2770,7 +2770,7 @@ export const masterBrands = [
         "compositeId": "pharmeasy_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-pharmeasy-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-pharmeasy-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2785,7 +2785,7 @@ export const masterBrands = [
         "compositeId": "pizza_hut_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-pizza_hut-amazon",
+        "site": "https://vouchwise.in/out/buy-pizza_hut-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2793,7 +2793,7 @@ export const masterBrands = [
         "compositeId": "pizza_hut_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-pizza_hut-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-pizza_hut-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2801,7 +2801,7 @@ export const masterBrands = [
         "compositeId": "pizza_hut_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 9.5,
-        "site": "https://www.vouchwise.in/out/buy-pizza_hut-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-pizza_hut-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2809,7 +2809,7 @@ export const masterBrands = [
         "compositeId": "pizza_hut_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://www.vouchwise.in/out/buy-pizza_hut-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-pizza_hut-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2817,7 +2817,7 @@ export const masterBrands = [
         "compositeId": "pizza_hut_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 7,
-        "site": "https://www.vouchwise.in/out/buy-pizza_hut-gyftr",
+        "site": "https://vouchwise.in/out/buy-pizza_hut-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2825,7 +2825,7 @@ export const masterBrands = [
         "compositeId": "pizza_hut_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-pizza_hut-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-pizza_hut-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2833,7 +2833,7 @@ export const masterBrands = [
         "compositeId": "pizza_hut_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-pizza_hut-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-pizza_hut-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2848,7 +2848,7 @@ export const masterBrands = [
         "compositeId": "puma_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-puma-amazon",
+        "site": "https://vouchwise.in/out/buy-puma-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2856,7 +2856,7 @@ export const masterBrands = [
         "compositeId": "puma_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 7,
-        "site": "https://www.vouchwise.in/out/buy-puma-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-puma-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2864,7 +2864,7 @@ export const masterBrands = [
         "compositeId": "puma_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-puma-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-puma-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2872,7 +2872,7 @@ export const masterBrands = [
         "compositeId": "puma_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-puma-gyftr",
+        "site": "https://vouchwise.in/out/buy-puma-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2880,7 +2880,7 @@ export const masterBrands = [
         "compositeId": "puma_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-puma-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-puma-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2895,7 +2895,7 @@ export const masterBrands = [
         "compositeId": "pvr_cinemas_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 20,
-        "site": "https://www.vouchwise.in/out/buy-pvr_cinemas-amazon",
+        "site": "https://vouchwise.in/out/buy-pvr_cinemas-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2903,7 +2903,7 @@ export const masterBrands = [
         "compositeId": "pvr_cinemas_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-pvr_cinemas-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-pvr_cinemas-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2911,7 +2911,7 @@ export const masterBrands = [
         "compositeId": "pvr_cinemas_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 14.5,
-        "site": "https://www.vouchwise.in/out/buy-pvr_cinemas-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-pvr_cinemas-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2919,7 +2919,7 @@ export const masterBrands = [
         "compositeId": "pvr_cinemas_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://www.vouchwise.in/out/buy-pvr_cinemas-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-pvr_cinemas-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2927,7 +2927,7 @@ export const masterBrands = [
         "compositeId": "pvr_cinemas_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 16,
-        "site": "https://www.vouchwise.in/out/buy-pvr_cinemas-gyftr",
+        "site": "https://vouchwise.in/out/buy-pvr_cinemas-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2935,7 +2935,7 @@ export const masterBrands = [
         "compositeId": "pvr_cinemas_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-pvr_cinemas-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-pvr_cinemas-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2943,7 +2943,7 @@ export const masterBrands = [
         "compositeId": "pvr_cinemas_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-pvr_cinemas-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-pvr_cinemas-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2958,7 +2958,7 @@ export const masterBrands = [
         "compositeId": "reliance_digital_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-reliance_digital-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-reliance_digital-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2966,7 +2966,7 @@ export const masterBrands = [
         "compositeId": "reliance_digital_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-reliance_digital-gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_digital-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2974,7 +2974,7 @@ export const masterBrands = [
         "compositeId": "reliance_digital_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-reliance_digital-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-reliance_digital-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2989,7 +2989,7 @@ export const masterBrands = [
         "compositeId": "reliance_smart_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-reliance_smart-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-reliance_smart-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -2997,7 +2997,7 @@ export const masterBrands = [
         "compositeId": "reliance_smart_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-reliance_smart-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-reliance_smart-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3005,7 +3005,7 @@ export const masterBrands = [
         "compositeId": "reliance_smart_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-reliance_smart-gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_smart-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3013,7 +3013,7 @@ export const masterBrands = [
         "compositeId": "reliance_smart_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-reliance_smart-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-reliance_smart-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3028,7 +3028,7 @@ export const masterBrands = [
         "compositeId": "shoppers_stop_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 3,
-        "site": "https://www.vouchwise.in/out/buy-shoppers_stop-amazon",
+        "site": "https://vouchwise.in/out/buy-shoppers_stop-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3036,7 +3036,7 @@ export const masterBrands = [
         "compositeId": "shoppers_stop_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-shoppers_stop-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-shoppers_stop-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3044,7 +3044,7 @@ export const masterBrands = [
         "compositeId": "shoppers_stop_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-shoppers_stop-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-shoppers_stop-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3052,7 +3052,7 @@ export const masterBrands = [
         "compositeId": "shoppers_stop_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 7,
-        "site": "https://www.vouchwise.in/out/buy-shoppers_stop-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-shoppers_stop-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3060,7 +3060,7 @@ export const masterBrands = [
         "compositeId": "shoppers_stop_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-shoppers_stop-gyftr",
+        "site": "https://vouchwise.in/out/buy-shoppers_stop-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3068,7 +3068,7 @@ export const masterBrands = [
         "compositeId": "shoppers_stop_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-shoppers_stop-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-shoppers_stop-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3076,7 +3076,7 @@ export const masterBrands = [
         "compositeId": "shoppers_stop_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-shoppers_stop-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-shoppers_stop-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3091,7 +3091,7 @@ export const masterBrands = [
         "compositeId": "skechers_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 9,
-        "site": "https://www.vouchwise.in/out/buy-skechers-amazon",
+        "site": "https://vouchwise.in/out/buy-skechers-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3099,7 +3099,7 @@ export const masterBrands = [
         "compositeId": "skechers_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 7,
-        "site": "https://www.vouchwise.in/out/buy-skechers-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-skechers-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3107,7 +3107,7 @@ export const masterBrands = [
         "compositeId": "skechers_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-skechers-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-skechers-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3115,7 +3115,7 @@ export const masterBrands = [
         "compositeId": "skechers_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-skechers-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-skechers-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3123,7 +3123,7 @@ export const masterBrands = [
         "compositeId": "skechers_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-skechers-gyftr",
+        "site": "https://vouchwise.in/out/buy-skechers-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3131,7 +3131,7 @@ export const masterBrands = [
         "compositeId": "skechers_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-skechers-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-skechers-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3139,7 +3139,7 @@ export const masterBrands = [
         "compositeId": "skechers_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-skechers-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-skechers-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3154,7 +3154,7 @@ export const masterBrands = [
         "compositeId": "sonyliv_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 20,
-        "site": "https://www.vouchwise.in/out/buy-sonyliv-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-sonyliv-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3162,7 +3162,7 @@ export const masterBrands = [
         "compositeId": "sonyliv_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 20,
-        "site": "https://www.vouchwise.in/out/buy-sonyliv-gyftr",
+        "site": "https://vouchwise.in/out/buy-sonyliv-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3170,7 +3170,7 @@ export const masterBrands = [
         "compositeId": "sonyliv_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 20,
-        "site": "https://www.vouchwise.in/out/buy-sonyliv-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-sonyliv-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3185,7 +3185,7 @@ export const masterBrands = [
         "compositeId": "starbucks_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-starbucks-amazon",
+        "site": "https://vouchwise.in/out/buy-starbucks-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3193,7 +3193,7 @@ export const masterBrands = [
         "compositeId": "starbucks_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 4.2,
-        "site": "https://www.vouchwise.in/out/buy-starbucks-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-starbucks-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3201,7 +3201,7 @@ export const masterBrands = [
         "compositeId": "starbucks_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-starbucks-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-starbucks-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3209,7 +3209,7 @@ export const masterBrands = [
         "compositeId": "starbucks_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 5.5,
-        "site": "https://www.vouchwise.in/out/buy-starbucks-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-starbucks-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3217,7 +3217,7 @@ export const masterBrands = [
         "compositeId": "starbucks_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-starbucks-gyftr",
+        "site": "https://vouchwise.in/out/buy-starbucks-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3225,7 +3225,7 @@ export const masterBrands = [
         "compositeId": "starbucks_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-starbucks-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-starbucks-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3233,7 +3233,7 @@ export const masterBrands = [
         "compositeId": "starbucks_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-starbucks-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-starbucks-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3248,7 +3248,7 @@ export const masterBrands = [
         "compositeId": "subway_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-subway-amazon",
+        "site": "https://vouchwise.in/out/buy-subway-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3256,7 +3256,7 @@ export const masterBrands = [
         "compositeId": "subway_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 6,
-        "site": "https://www.vouchwise.in/out/buy-subway-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-subway-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3264,7 +3264,7 @@ export const masterBrands = [
         "compositeId": "subway_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-subway-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-subway-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3272,7 +3272,7 @@ export const masterBrands = [
         "compositeId": "subway_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 9.5,
-        "site": "https://www.vouchwise.in/out/buy-subway-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-subway-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3280,7 +3280,7 @@ export const masterBrands = [
         "compositeId": "subway_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-subway-gyftr",
+        "site": "https://vouchwise.in/out/buy-subway-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3288,7 +3288,7 @@ export const masterBrands = [
         "compositeId": "subway_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-subway-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-subway-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3296,7 +3296,7 @@ export const masterBrands = [
         "compositeId": "subway_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-subway-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-subway-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3311,7 +3311,7 @@ export const masterBrands = [
         "compositeId": "swiggy_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-swiggy-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-swiggy-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3319,7 +3319,7 @@ export const masterBrands = [
         "compositeId": "swiggy_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-swiggy-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-swiggy-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3334,7 +3334,7 @@ export const masterBrands = [
         "compositeId": "taj_experiences_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 11,
-        "site": "https://www.vouchwise.in/out/buy-taj_experiences-amazon",
+        "site": "https://vouchwise.in/out/buy-taj_experiences-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3342,7 +3342,7 @@ export const masterBrands = [
         "compositeId": "taj_experiences_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 2.4,
-        "site": "https://www.vouchwise.in/out/buy-taj_experiences-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-taj_experiences-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3350,7 +3350,7 @@ export const masterBrands = [
         "compositeId": "taj_experiences_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-taj_experiences-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-taj_experiences-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3358,7 +3358,7 @@ export const masterBrands = [
         "compositeId": "taj_experiences_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 8,
-        "site": "https://www.vouchwise.in/out/buy-taj_experiences-gyftr",
+        "site": "https://vouchwise.in/out/buy-taj_experiences-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3366,7 +3366,7 @@ export const masterBrands = [
         "compositeId": "taj_experiences_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-taj_experiences-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-taj_experiences-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3381,7 +3381,7 @@ export const masterBrands = [
         "compositeId": "tanishq_gold_jewellery_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-tanishq_gold_jewellery-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-tanishq_gold_jewellery-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3389,7 +3389,7 @@ export const masterBrands = [
         "compositeId": "tanishq_gold_jewellery_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-tanishq_gold_jewellery-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-tanishq_gold_jewellery-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3397,7 +3397,7 @@ export const masterBrands = [
         "compositeId": "tanishq_gold_jewellery_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-tanishq_gold_jewellery-gyftr",
+        "site": "https://vouchwise.in/out/buy-tanishq_gold_jewellery-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3405,7 +3405,7 @@ export const masterBrands = [
         "compositeId": "tanishq_gold_jewellery_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-tanishq_gold_jewellery-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-tanishq_gold_jewellery-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3420,7 +3420,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 10,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq-amazon",
+        "site": "https://vouchwise.in/out/buy-tata_cliq-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3428,7 +3428,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 5,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-tata_cliq-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3436,7 +3436,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-tata_cliq-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3444,7 +3444,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-tata_cliq-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3452,7 +3452,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 7,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq-gyftr",
+        "site": "https://vouchwise.in/out/buy-tata_cliq-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3460,7 +3460,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-tata_cliq-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3468,7 +3468,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-tata_cliq-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3483,7 +3483,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_luxury_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 7,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq_luxury-amazon",
+        "site": "https://vouchwise.in/out/buy-tata_cliq_luxury-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3491,7 +3491,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_luxury_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 1.2,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq_luxury-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-tata_cliq_luxury-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3499,7 +3499,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_luxury_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq_luxury-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-tata_cliq_luxury-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3507,7 +3507,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_luxury_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq_luxury-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-tata_cliq_luxury-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3515,7 +3515,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_luxury_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq_luxury-gyftr",
+        "site": "https://vouchwise.in/out/buy-tata_cliq_luxury-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3523,7 +3523,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_luxury_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq_luxury-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-tata_cliq_luxury-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3531,7 +3531,7 @@ export const masterBrands = [
         "compositeId": "tata_cliq_luxury_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-tata_cliq_luxury-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-tata_cliq_luxury-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3546,7 +3546,7 @@ export const masterBrands = [
         "compositeId": "uber_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 4,
-        "site": "https://www.vouchwise.in/out/buy-uber-amazon",
+        "site": "https://vouchwise.in/out/buy-uber-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3554,7 +3554,7 @@ export const masterBrands = [
         "compositeId": "uber_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-uber-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-uber-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3562,7 +3562,7 @@ export const masterBrands = [
         "compositeId": "uber_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 1.5,
-        "site": "https://www.vouchwise.in/out/buy-uber-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-uber-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3570,7 +3570,7 @@ export const masterBrands = [
         "compositeId": "uber_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://www.vouchwise.in/out/buy-uber-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-uber-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3578,7 +3578,7 @@ export const masterBrands = [
         "compositeId": "uber_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-uber-gyftr",
+        "site": "https://vouchwise.in/out/buy-uber-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3586,7 +3586,7 @@ export const masterBrands = [
         "compositeId": "uber_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-uber-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-uber-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3594,7 +3594,7 @@ export const masterBrands = [
         "compositeId": "uber_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-uber-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-uber-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3609,7 +3609,7 @@ export const masterBrands = [
         "compositeId": "vijay_sales_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-vijay_sales-amazon",
+        "site": "https://vouchwise.in/out/buy-vijay_sales-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3617,7 +3617,7 @@ export const masterBrands = [
         "compositeId": "vijay_sales_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-vijay_sales-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-vijay_sales-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3625,7 +3625,7 @@ export const masterBrands = [
         "compositeId": "vijay_sales_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-vijay_sales-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-vijay_sales-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3633,7 +3633,7 @@ export const masterBrands = [
         "compositeId": "vijay_sales_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-vijay_sales-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-vijay_sales-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3641,7 +3641,7 @@ export const masterBrands = [
         "compositeId": "vijay_sales_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 1,
-        "site": "https://www.vouchwise.in/out/buy-vijay_sales-gyftr",
+        "site": "https://vouchwise.in/out/buy-vijay_sales-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3649,7 +3649,7 @@ export const masterBrands = [
         "compositeId": "vijay_sales_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-vijay_sales-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-vijay_sales-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3657,7 +3657,7 @@ export const masterBrands = [
         "compositeId": "vijay_sales_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-vijay_sales-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-vijay_sales-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3672,7 +3672,7 @@ export const masterBrands = [
         "compositeId": "westside_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-westside-amazon",
+        "site": "https://vouchwise.in/out/buy-westside-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3680,7 +3680,7 @@ export const masterBrands = [
         "compositeId": "westside_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-westside-amex_shopwise",
+        "site": "https://vouchwise.in/out/buy-westside-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
@@ -3688,7 +3688,7 @@ export const masterBrands = [
         "compositeId": "westside_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-westside-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-westside-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3696,7 +3696,7 @@ export const masterBrands = [
         "compositeId": "westside_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-westside-gyftr",
+        "site": "https://vouchwise.in/out/buy-westside-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3704,7 +3704,7 @@ export const masterBrands = [
         "compositeId": "westside_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-westside-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-westside-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3712,7 +3712,7 @@ export const masterBrands = [
         "compositeId": "westside_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-westside-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-westside-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3727,7 +3727,7 @@ export const masterBrands = [
         "compositeId": "zepto_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-zepto-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-zepto-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3742,7 +3742,7 @@ export const masterBrands = [
         "compositeId": "zomato_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-zomato-amazon",
+        "site": "https://vouchwise.in/out/buy-zomato-amazon",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3750,7 +3750,7 @@ export const masterBrands = [
         "compositeId": "zomato_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 0.5,
-        "site": "https://www.vouchwise.in/out/buy-zomato-axis_edgerewards",
+        "site": "https://vouchwise.in/out/buy-zomato-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3758,7 +3758,7 @@ export const masterBrands = [
         "compositeId": "zomato_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0,
-        "site": "https://www.vouchwise.in/out/buy-zomato-hdfc_smartbuy",
+        "site": "https://vouchwise.in/out/buy-zomato-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
