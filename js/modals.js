@@ -9,7 +9,7 @@ const ccPortalFieldIds = {
   icici_ishop: 'ccIshop',
   axis_edgerewards: 'ccEdgerewards',
   axis_grabdeals: 'ccGrabdeals',
-  shopwise: 'ccShopwise'
+  amex_shopwise: 'ccShopwise'
 };
 
 const ccBankNotes = {
@@ -60,7 +60,7 @@ export function handleSaveCard() {
       icici_ishop: parseFloat(document.getElementById('ccIshop').value) || 0,
       axis_edgerewards: parseFloat(document.getElementById('ccEdgerewards').value) || 0,
       axis_grabdeals: parseFloat(document.getElementById('ccGrabdeals').value) || 0,
-      shopwise: parseFloat(document.getElementById('ccShopwise').value) || 0,
+      amex_shopwise: parseFloat(document.getElementById('ccShopwise').value) || 0,
       default: parseFloat(document.getElementById('ccDefault').value) || 0
     },
     assumption_note: 'Custom user-defined card.'
@@ -106,7 +106,7 @@ export function handleSaveBrand() {
   push('amazon', 'cbAmazon');
   push('axis_edgerewards', 'cbEdgerewards');
   push('axis_grabdeals', 'cbGrabdeals');
-  push('shopwise', 'cbShopwise');
+  push('amex_shopwise', 'cbShopwise');
 
   saveCustomBrand(newBrand);
   closeCustomBrandModal();
