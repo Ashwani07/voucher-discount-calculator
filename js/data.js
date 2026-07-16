@@ -276,7 +276,7 @@ export const masterBrands = [
       {
         "compositeId": "amazon_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": -1.77,
         "site": "https://vouchwise.in/out/buy-amazon-gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -454,9 +454,17 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "amazon_shopping_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": -1.77,
+        "site": "https://vouchwise.in/out/buy-amazon_shopping-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": "Earn 0.5% via GyFTR Coins"
+      },
+      {
         "compositeId": "amazon_shopping_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": -1.77,
         "site": "https://vouchwise.in/out/buy-amazon_shopping-gyftr",
         "availability": "available",
         "disclaimer": ""
