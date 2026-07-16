@@ -258,6 +258,14 @@ export const masterBrands = [
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
       {
+        "compositeId": "amazon_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-amazon-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": "Earn 0.5% via GyFTR Coins"
+      },
+      {
         "compositeId": "amazon_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
