@@ -456,7 +456,7 @@ export const masterBrands = [
       {
         "compositeId": "amazon_shopping_axis_edgerewards",
         "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": -1.77,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon_shopping-axis_edgerewards",
         "availability": "available",
         "disclaimer": "Earn 0.5% via GyFTR Coins"
