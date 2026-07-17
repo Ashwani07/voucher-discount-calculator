@@ -4220,7 +4220,7 @@ export const masterCards = [
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "0",
-      "amazon": "5",
+      "amazon": "2",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-amazon",
