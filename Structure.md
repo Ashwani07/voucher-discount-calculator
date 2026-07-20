@@ -126,11 +126,16 @@ This must happen as the **first filter**, before `findPortal()` is called.
 Checking `availability` only on the Buy button (what the old code did) is not
 sufficient — it allows an unavailable portal to appear as "Best."
 
-### 4.4 Voucher amounts must be multiples of ₹500
-`validateVoucherAmount()` in `utils.js` enforces: amount ≥ 500, amount % 500 === 0.
-This reflects real-world voucher denomination constraints. Do not remove or
-weaken this validation. Applied in both `handleCalculate` (results.js) and
-`handleCustomCalculate` (customCalc.js).
+### 4.4 Amount validation (updated July 2026 — supersedes the old ₹500 rule)
+`validateVoucherAmount()` in `utils.js` now only requires a positive number.
+The ₹500-minimum, multiple-of-500 hard block was removed at the project
+owner's explicit request: many brands accept custom voucher denominations,
+and the Coupon/Discount Calculator is also used for non-voucher spends
+(offline purchases, direct checkout) where no denomination rule applies.
+The main calculator instead shows an informational note near the input
+("assuming a custom amount is accepted; else use multiples of ₹100").
+Applied in both `handleCalculate` (results.js) and `handleCustomCalculate`
+(customCalc.js).
 
 ### 4.5 The `default` multiplier fallback must be 0, not 1
 `getCardPortalMultiplier` returns `0` when no multiplier is defined. Returning
@@ -167,8 +172,15 @@ which portals a bank's cards can earn on, and what multiplier they get:
 - Amex → Shopwise: 1 (editable — varies per card)
 - Other → all bank-specific portals: 0 (frozen)
 
-Update these values in `data.js` if banks change rates. Never hardcode them
-in `modals.js` or anywhere else.
+As of July 2026, HDFC/ICICI/Axis entries are `frozen: false` — they're
+starting defaults for that bank's typical premium card, not universal
+constants (e.g. HDFC Diners Black Metal earns 3x on SmartBuy vs Infinia's
+5x — this was already true in masterCards.csv before the freeze was
+removed). `Other` stays `frozen: true` at 0 — that one IS architecturally
+absolute: a card from an unlisted bank cannot earn a multiplier on another
+bank's own portal, regardless of card tier. Update default values in
+`data.js` if banks change their rates. Never hardcode them in `modals.js`
+or anywhere else.
 
 ### 4.10 localStorage keys are fixed contracts
 Changing these keys will silently destroy all users' saved data:

@@ -78,16 +78,21 @@ export function renderApplyBadge(card) {
   return '';
 }
 // ---------------------------------------------------------------------------
-// Voucher amount validation — single source of truth, used by both calculators
+// Amount validation — single source of truth, used by both calculators.
+//
+// UPDATE (July 2026): the previous ₹500-minimum, multiple-of-500 rule was
+// removed at the project owner's explicit request. Rationale: many brands
+// accept custom voucher denominations, and the Coupon/Discount Calculator
+// is also used for non-voucher spends (offline purchases, direct checkout)
+// where no denomination constraint applies at all. The main calculator's
+// UI instead carries the denomination caveat as an informational note near
+// the input ("assuming a custom amount is accepted; else use multiples of
+// ₹100").
 // ---------------------------------------------------------------------------
 export function validateVoucherAmount(rawValue) {
   const amount = parseFloat(rawValue);
-  if (!amount || amount < 500) {
-    return { valid: false, error: 'Please enter a valid voucher amount (minimum ₹500).' };
-  }
-  if (amount % 500 !== 0) {
-    const nearest = Math.round(amount / 500) * 500 || 500;
-    return { valid: false, error: `Voucher amount must be a multiple of ₹500 (e.g. ₹${nearest}).` };
+  if (!amount || amount <= 0) {
+    return { valid: false, error: 'Please enter a valid amount.' };
   }
   return { valid: true, amount };
 }

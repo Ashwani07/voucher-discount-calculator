@@ -10,14 +10,14 @@ export const lastVerified = 'July 2026';
 // Update these values here if banks change their rates — nothing else needs editing.
 export const bankPortalDefaults = {
   HDFC: {
-    hdfc_smartbuy:    { value: 5, frozen: true }
+    hdfc_smartbuy:    { value: 5, frozen: false }
   },
   ICICI: {
-    icici_ishop:      { value: 6, frozen: true }
+    icici_ishop:      { value: 6, frozen: false }
   },
   Axis: {
-    axis_edgerewards: { value: 1, frozen: true },
-    axis_grabdeals:   { value: 1, frozen: true }
+    axis_edgerewards: { value: 1, frozen: false },
+    axis_grabdeals:   { value: 1, frozen: false }
   },
   Amex: {
     amex_shopwise:    { value: 1, frozen: false }
