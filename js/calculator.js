@@ -56,6 +56,8 @@ const HOME_PORTAL_IDS_BY_PREFIX = [
   { prefix: 'hdfc_', portalIds: ['hdfc_smartbuy'] },
   { prefix: 'icici_', portalIds: ['icici_ishop'] },
   { prefix: 'axis_', portalIds: ['axis_edgerewards', 'axis_grabdeals'] },
+  { prefix: 'sbi_', portalIds: ['sbi_gyftr'] },
+  { prefix: 'hsbc_', portalIds: ['hsbc_gyftr'] },
   { prefix: 'amex_', portalIds: ['amex_shopwise'] }
 ];
 

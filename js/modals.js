@@ -9,6 +9,8 @@ const ccPortalFieldIds = {
   icici_ishop: 'ccIshop',
   axis_edgerewards: 'ccEdgerewards',
   axis_grabdeals: 'ccGrabdeals',
+  sbi_gyftr: 'ccSbiGyftr',
+  hsbc_gyftr: 'ccHsbcGyftr',
   amex_shopwise: 'ccShopwise'
 };
 
@@ -24,6 +26,8 @@ const BANK_OWN_PORTAL_IDS = {
   HDFC: ['hdfc_smartbuy'],
   ICICI: ['icici_ishop'],
   Axis: ['axis_edgerewards', 'axis_grabdeals'],
+  SBI: ['sbi_gyftr'],
+  HSBC: ['hsbc_gyftr'],
   Amex: ['amex_shopwise'],
   Other: []
 };
@@ -32,6 +36,8 @@ const ccBankNotes = {
   HDFC: 'SmartBuy shows 5x as a starting default (Infinia/Regalia Gold rate). Edit it if your card differs — e.g. Diners Black Metal earns only 3x.',
   ICICI: 'iShop shows 6x as a starting default. Edit it if your specific card\'s rate differs.',
   Axis: 'EdgeRewards / GrabDeals show 1x as a starting default. Edit if your card\'s rate differs.',
+  SBI: 'SBI Gyftr shows 1x as a starting default. Edit if your card\'s rate differs.',
+  HSBC: 'HSBC Gyftr shows 1x as a starting default. Edit if your card\'s rate differs.',
   Amex: "Amex multipliers vary by specific card — check your card's T&Cs for Shopwise reward rate.",
   Other: 'No bank-specific portal applies to this card — it can only earn on the Default field below (Amazon, Gyftr & other general portals).'
 };
@@ -88,7 +94,10 @@ export function handleSaveCard() {
       icici_ishop: parseFloat(document.getElementById('ccIshop').value) || 0,
       axis_edgerewards: parseFloat(document.getElementById('ccEdgerewards').value) || 0,
       axis_grabdeals: parseFloat(document.getElementById('ccGrabdeals').value) || 0,
+      sbi_gyftr: parseFloat(document.getElementById('ccSbiGyftr').value) || 0,
+      hsbc_gyftr: parseFloat(document.getElementById('ccHsbcGyftr').value) || 0,
       amex_shopwise: parseFloat(document.getElementById('ccShopwise').value) || 0,
+      maximize_money: parseFloat(document.getElementById('ccMaximizeMoney').value) || 0,
       default: parseFloat(document.getElementById('ccDefault').value) || 0
     },
     assumption_note: 'Custom user-defined card.'
@@ -134,7 +143,10 @@ export function handleSaveBrand() {
   push('amazon', 'cbAmazon');
   push('axis_edgerewards', 'cbEdgerewards');
   push('axis_grabdeals', 'cbGrabdeals');
+  push('sbi_gyftr', 'cbSbiGyftr');
+  push('hsbc_gyftr', 'cbHsbcGyftr');
   push('amex_shopwise', 'cbShopwise');
+  push('maximize_money', 'cbMaximizeMoney');
 
   saveCustomBrand(newBrand);
   closeCustomBrandModal();
@@ -147,7 +159,7 @@ export function closeCustomBrandModal() {
   document.getElementById('cbName').value = '';
   
   // Reset all portal inputs to empty strings
-  ['cbSmartbuy', 'cbGyftr', 'cbIshop', 'cbAmazon', 'cbEdgerewards', 'cbGrabdeals', 'cbShopwise'].forEach(elId => {
+  ['cbSmartbuy', 'cbGyftr', 'cbIshop', 'cbAmazon', 'cbEdgerewards', 'cbGrabdeals', 'cbSbiGyftr', 'cbHsbcGyftr', 'cbShopwise', 'cbMaximizeMoney'].forEach(elId => {
     const el = document.getElementById(elId);
     if (el) el.value = '';
   });
