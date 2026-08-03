@@ -1050,7 +1050,7 @@ export const masterBrands = [
       {
         "compositeId": "amazon_pay_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon_pay-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -1060,14 +1060,6 @@ export const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon_pay-gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "amazon_pay_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": null,
-        "site": "https://vouchwise.in/out/buy-amazon_pay-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1324,7 +1316,7 @@ export const masterBrands = [
       {
         "compositeId": "amazon_shopping_voucher_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon_shopping_voucher-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -1340,7 +1332,7 @@ export const masterBrands = [
       {
         "compositeId": "amazon_shopping_voucher_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": -4.13,
         "site": "https://vouchwise.in/out/buy-amazon_shopping_voucher-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -3903,14 +3895,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "bookmyshow_amex_shopwise",
-        "portalId": "amex_shopwise",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-bookmyshow-amex_shopwise",
-        "availability": "available",
-        "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
-      },
-      {
         "compositeId": "bookmyshow_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 2.5,
@@ -6193,14 +6177,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "decathlon_sports_icici_ishop",
-        "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-icici_ishop",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "decathlon_sports_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 2.01,
@@ -7481,14 +7457,6 @@ export const masterBrands = [
     "category_name": "Miscellaneous",
     "portals": [
       {
-        "compositeId": "euphoria_diamond_jewellery_maximize_money",
-        "portalId": "maximize_money",
-        "upfrontDiscountPercent": 4.26,
-        "site": "https://vouchwise.in/out/buy-euphoria_diamond_jewellery-maximize_money",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "euphoria_diamond_jewellery_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 5,
@@ -7511,6 +7479,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-euphoria_diamond_jewellery-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "euphoria_diamond_jewellery_maximize_money",
+        "portalId": "maximize_money",
+        "upfrontDiscountPercent": 4.26,
+        "site": "https://vouchwise.in/out/buy-euphoria_diamond_jewellery-maximize_money",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -7526,22 +7502,6 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
-      },
-      {
-        "compositeId": "euphoria_gold_coin_icici_ishop",
-        "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-icici_ishop",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "euphoria_gold_coin_maximize_money",
-        "portalId": "maximize_money",
-        "upfrontDiscountPercent": 3.01,
-        "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-maximize_money",
-        "availability": "available",
-        "disclaimer": ""
       },
       {
         "compositeId": "euphoria_gold_coin_axis_edgerewards",
@@ -7564,6 +7524,22 @@ export const masterBrands = [
         "portalId": "hsbc_gyftr",
         "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-hsbc_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "euphoria_gold_coin_icici_ishop",
+        "portalId": "icici_ishop",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "euphoria_gold_coin_maximize_money",
+        "portalId": "maximize_money",
+        "upfrontDiscountPercent": 3.01,
+        "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-maximize_money",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8508,7 +8484,7 @@ export const masterBrands = [
       {
         "compositeId": "flipkart_icici_ishop",
         "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": -4.13,
         "site": "https://vouchwise.in/out/buy-flipkart-icici_ishop",
         "availability": "available",
         "disclaimer": ""
@@ -14662,36 +14638,6 @@ export const masterBrands = [
     ]
   },
   {
-    "id": "makemytrip_12m",
-    "name": "MakeMyTrip_12M",
-    "category_name": "Travel & Leisure",
-    "portals": [
-      {
-        "compositeId": "makemytrip_12m_maximize_money",
-        "portalId": "maximize_money",
-        "upfrontDiscountPercent": 4.51,
-        "site": "https://vouchwise.in/out/buy-makemytrip_12m-maximize_money",
-        "availability": "available",
-        "disclaimer": ""
-      }
-    ]
-  },
-  {
-    "id": "makemytrip_6m",
-    "name": "MakeMyTrip_6M",
-    "category_name": "Travel & Leisure",
-    "portals": [
-      {
-        "compositeId": "makemytrip_6m_maximize_money",
-        "portalId": "maximize_money",
-        "upfrontDiscountPercent": 5.01,
-        "site": "https://vouchwise.in/out/buy-makemytrip_6m-maximize_money",
-        "availability": "available",
-        "disclaimer": ""
-      }
-    ]
-  },
-  {
     "id": "makemytrip_bus",
     "name": "MakeMyTrip Bus",
     "category_name": "Travel & Leisure",
@@ -14984,6 +14930,36 @@ export const masterBrands = [
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 1.26,
         "site": "https://vouchwise.in/out/buy-makemytrip_rail-maximize_money",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "makemytrip_12m",
+    "name": "MakeMyTrip_12M",
+    "category_name": "Travel & Leisure",
+    "portals": [
+      {
+        "compositeId": "makemytrip_12m_maximize_money",
+        "portalId": "maximize_money",
+        "upfrontDiscountPercent": 4.51,
+        "site": "https://vouchwise.in/out/buy-makemytrip_12m-maximize_money",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "makemytrip_6m",
+    "name": "MakeMyTrip_6M",
+    "category_name": "Travel & Leisure",
+    "portals": [
+      {
+        "compositeId": "makemytrip_6m_maximize_money",
+        "portalId": "maximize_money",
+        "upfrontDiscountPercent": 5.01,
+        "site": "https://vouchwise.in/out/buy-makemytrip_6m-maximize_money",
         "availability": "available",
         "disclaimer": ""
       }
@@ -18580,6 +18556,21 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "pepperfry",
+    "name": "Pepperfry",
+    "category_name": "Fashion & Accessories",
+    "portals": [
+      {
+        "compositeId": "pepperfry_axis_grabdeals",
+        "portalId": "axis_grabdeals",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-pepperfry-axis_grabdeals",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "pepperfry_luxury",
     "name": "Pepperfry Luxury",
     "category_name": "Electronics",
@@ -18621,21 +18612,6 @@ export const masterBrands = [
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 4.76,
         "site": "https://vouchwise.in/out/buy-pepperfry_luxury-maximize_money",
-        "availability": "available",
-        "disclaimer": ""
-      }
-    ]
-  },
-  {
-    "id": "pepperfry",
-    "name": "Pepperfry",
-    "category_name": "Fashion & Accessories",
-    "portals": [
-      {
-        "compositeId": "pepperfry_axis_grabdeals",
-        "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-pepperfry-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       }
@@ -19726,14 +19702,6 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-pvr_cinemas-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
-      },
-      {
-        "compositeId": "pvr_cinemas_icici_ishop",
-        "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-pvr_cinemas-icici_ishop",
-        "availability": "available",
-        "disclaimer": ""
       },
       {
         "compositeId": "pvr_cinemas_maximize_money",
@@ -21520,14 +21488,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "shoppers_stop_icici_ishop",
-        "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-shoppers_stop-icici_ishop",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "shoppers_stop_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 0,
@@ -22619,6 +22579,21 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "steam",
+    "name": "Steam",
+    "category_name": "Entertainment & OTT",
+    "portals": [
+      {
+        "compositeId": "steam_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 1.5,
+        "site": "https://vouchwise.in/out/buy-steam-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "steam_wallet",
     "name": "Steam Wallet",
     "category_name": "Entertainment & OTT",
@@ -22652,21 +22627,6 @@ export const masterBrands = [
         "portalId": "hsbc_gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-steam_wallet-hsbc_gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      }
-    ]
-  },
-  {
-    "id": "steam",
-    "name": "Steam",
-    "category_name": "Entertainment & OTT",
-    "portals": [
-      {
-        "compositeId": "steam_gyftr",
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 1.5,
-        "site": "https://vouchwise.in/out/buy-steam-gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -29141,6 +29101,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-zomato-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "zomato_icici_ishop",
+        "portalId": "icici_ishop",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-zomato-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -29274,17 +29242,21 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "3",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "3",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-platinum-reserve",
@@ -29299,17 +29271,21 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "3",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "3",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-platinum-travel",
@@ -29324,17 +29300,21 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "2",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "2",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
@@ -29349,17 +29329,21 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "5",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "5",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-gold",
@@ -29374,17 +29358,21 @@ export const masterCards = [
     "pointValue": "0.8",
     "spendBlock": "200",
     "pointsPerBlock": "12",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "1",
       "axis_grabdeals": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
@@ -29399,17 +29387,21 @@ export const masterCards = [
     "pointValue": "0.4",
     "spendBlock": "200",
     "pointsPerBlock": "12",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "1",
       "axis_grabdeals": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-magnus",
@@ -29424,17 +29416,21 @@ export const masterCards = [
     "pointValue": "2",
     "spendBlock": "100",
     "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "1",
       "axis_grabdeals": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-atlas",
@@ -29449,17 +29445,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "1",
       "axis_grabdeals": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-horizon",
@@ -29474,17 +29474,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "150",
     "pointsPerBlock": "5",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
@@ -29499,17 +29503,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "150",
     "pointsPerBlock": "5",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "3",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-dbm",
@@ -29524,17 +29532,21 @@ export const masterCards = [
     "pointValue": "0.5",
     "spendBlock": "200",
     "pointsPerBlock": "5",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-regalia-gold",
@@ -29549,17 +29561,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "5",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "1",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "0",
       "amazon": "0",
       "maximize_money": "0",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "0"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-swiggy",
@@ -29574,17 +29590,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "3",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "1",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "1",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-premier",
@@ -29599,17 +29619,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "1",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "1",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-travelone",
@@ -29624,17 +29648,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1.5",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "1",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "1",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-liveplus",
@@ -29649,17 +29677,21 @@ export const masterCards = [
     "pointValue": "0.5",
     "spendBlock": "150",
     "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "1",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "1",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-visaplatinum",
@@ -29674,17 +29706,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "200",
     "pointsPerBlock": "6",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-epm",
@@ -29699,17 +29735,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "50",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-times",
@@ -29724,17 +29764,21 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "4",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-emeralde",
@@ -29749,17 +29793,21 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-sapphiro",
@@ -29774,17 +29822,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "4",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "0",
       "amazon": "2",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-amazon",
@@ -29799,18 +29851,22 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "5",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "0",
       "amazon": "5",
-      "maximize_money": "5",
-      "default": "5"
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
+      "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
     "applyStatus": "direct",
@@ -29824,17 +29880,21 @@ export const masterCards = [
     "pointValue": "0.2",
     "spendBlock": "20",
     "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-scapia",
@@ -29849,17 +29909,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-kotak-airplus",
@@ -29874,17 +29938,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "3",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-kotak-solitare",
@@ -29899,17 +29967,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "5",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-millennia",
@@ -29924,17 +29996,21 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-coral",
@@ -29949,17 +30025,21 @@ export const masterCards = [
     "pointValue": "0.1",
     "spendBlock": "50",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-onecard",
@@ -29974,17 +30054,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "2",
       "amazon": "2",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-purple",
@@ -29999,17 +30083,21 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_gyftr": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
       "gyftr": "5",
       "amazon": "5",
       "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_gyftr": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-black",
@@ -30021,7 +30109,6 @@ export const masterCards = [
 // <<CARDS_END>>
 
 
-// 2. Load Custom Data from LocalStorage
 // 2. Load Custom Data from LocalStorage (HARDENED)
 let customCards = [];
 try {
