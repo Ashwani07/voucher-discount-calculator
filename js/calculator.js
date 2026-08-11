@@ -126,3 +126,37 @@ export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmoun
     multiplier
   };
 }
+
+// ---------------------------------------------------------------------------
+// Amount flooring — most portals only sell vouchers in multiples of ₹100.
+// ---------------------------------------------------------------------------
+// If someone types a non-round amount (e.g. ₹4598), the portal transaction
+// itself can only go through for the floored amount (₹4500) — discount and
+// card multiplier only apply to that ₹4500. The leftover ₹98 has to be paid
+// some other way with zero discount and zero reward on it. This wrapper runs
+// the core calc against the floored amount, then folds the un-rewarded
+// remainder back into netPaid/finalNetCost so computedTrueNet is measured
+// against what the person actually spends in total (₹4598), not just the
+// portal-eligible slice — otherwise the headline % overstates the deal.
+export function calculateTrueNetMetricsWithFlooring(card, portal, portalConfig, voucherAmount = 1000) {
+  const flooredAmount = Math.floor(voucherAmount / 100) * 100;
+  const extraAmount = voucherAmount - flooredAmount;
+
+  // Amounts under ₹100 can't be meaningfully floored — skip the adjustment.
+  if (flooredAmount <= 0) {
+    const metrics = calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount);
+    return { ...metrics, flooredAmount: voucherAmount, extraAmount: 0 };
+  }
+
+  const metrics = calculateTrueNetMetrics(card, portal, portalConfig, flooredAmount);
+
+  if (extraAmount > 0) {
+    metrics.netPaid += extraAmount;
+    metrics.finalNetCost += extraAmount;
+    metrics.computedTrueNet = ((voucherAmount - metrics.finalNetCost) / voucherAmount) * 100;
+  }
+
+  metrics.flooredAmount = flooredAmount;
+  metrics.extraAmount = extraAmount;
+  return metrics;
+}

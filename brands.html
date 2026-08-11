@@ -74,6 +74,7 @@
               <th class="px-4 py-2 text-left">Portal</th>
               <th class="px-4 py-2 text-right">Upfront %</th>
               <th class="px-4 py-2 text-left">Notes</th>
+              <th class="px-4 py-2 text-right">Buy</th>
             </tr>
           </thead>
           <tbody id="portalTableBody"></tbody>
@@ -83,7 +84,7 @@
         Discounts change often. If something looks wrong, use the ⚑ flag next to the portal to report it.
       </p>
       <p class="px-4 py-2 pb-3 text-xs text-amber-800 bg-amber-50 border-t border-amber-100">
-        ⚠ <strong>Check minimum denomination before buying.</strong> Portals have different minimums — Amazon typically requires ₹1,000, Axis GrabDeals accepts ₹500. If your bill is below a portal's minimum, that portal may not be usable even if it shows the highest discount.
+        ⚠ <strong>Check minimum denomination before buying.</strong> Portals have different minimums starting from ₹250. If your bill is less than a portal's minimum, that portal may not be usable even if ranked highest here.
       </p>
     </section>
 
@@ -205,6 +206,7 @@
           const flagKey = `flag:${brand.id}:${p.portalId}`;
           const isFlagged = localStorage.getItem(flagKey) === '1';
           const flagClass = isFlagged ? 'text-red-500' : 'text-slate-300 hover:text-red-400';
+          const notAvailable = (p.disclaimer || '').toLowerCase().includes('not available');
 
           // Display logic for discounts, 0%, and fees
           let discountText = '0%';
@@ -216,6 +218,10 @@
             discountText = Math.abs(p.upfrontDiscountPercent) + '% fee';
             textClass = 'text-red-500 font-medium'; // Highlights fees in red
           }
+
+          const siteBtn = p.site && !notAvailable
+            ? `<a href="${p.site}" target="_blank" rel="noopener noreferrer" class="inline-block text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Go to site ↗</a>`
+            : '<span class="text-[10px] text-slate-300">—</span>';
 
           return `
             <tr class="border-b border-slate-100 last:border-0 ${isBest ? 'bg-emerald-50' : ''}">
@@ -236,6 +242,9 @@
               <td class="px-4 py-2.5 text-xs text-slate-500">
                 ${p.disclaimer || ''}
                 ${hasCap ? '<span class="text-amber-600 ml-1">⚠ Cap applies</span>' : ''}
+              </td>
+              <td class="px-4 py-2.5 text-right">
+                ${siteBtn}
               </td>
             </tr>`;
         }).join('');

@@ -160,6 +160,39 @@ export function renderWalletUI() {
 
   // Enforce limits immediately upon render
   checkAndEnforceWalletLimit();
+  renderWalletChipBar();
+}
+
+// ---------------------------------------------------------------------------
+// Sticky chip bar — surfaces which cards are currently selected without
+// making the person open the bank-tab panel. Renders from the same saved
+// walletCardIds as everything else, so it's always in sync by construction.
+// ---------------------------------------------------------------------------
+export function renderWalletChipBar() {
+  if (!dom.walletChipBar) return;
+
+  const savedIds = loadWalletIds();
+  const savedCards = cards.filter(card => savedIds.includes(card.id));
+
+  if (!savedCards.length) {
+    dom.walletChipBar.classList.add('hidden');
+    dom.walletChipBar.innerHTML = '';
+    return;
+  }
+
+  const chips = savedCards.map(card => `
+    <span data-chip-card="${card.id}" class="inline-flex items-center gap-1 shrink-0 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium pl-2.5 pr-1.5 py-1 rounded-full whitespace-nowrap">
+      ${card.name}
+      <button data-chip-remove="${card.id}" class="text-emerald-500 hover:text-emerald-800 text-[13px] leading-none w-3.5 h-3.5 flex items-center justify-center" title="Remove from wallet">✕</button>
+    </span>`).join('');
+
+  dom.walletChipBar.innerHTML = `
+    <div class="flex items-center gap-2 px-2 py-2 overflow-x-auto hide-scrollbar">
+      <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 shrink-0 pr-0.5">Wallet</span>
+      ${chips}
+      <button id="chipBarEditBtn" type="button" class="shrink-0 text-xs font-semibold text-sky-600 hover:underline ml-1 whitespace-nowrap">Edit</button>
+    </div>`;
+  dom.walletChipBar.classList.remove('hidden');
 }
 
 export function checkAndEnforceWalletLimit() {

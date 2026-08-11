@@ -1,7 +1,7 @@
 // Custom coupon / sale calculator. This module mirrors the portal flow but
 // lets the user evaluate a standalone discount against the wallet.
 import { cards, portals } from './data.js';
-import { calculateTrueNetMetrics, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
+import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 import { getPortalById, renderMetricGrid, validateVoucherAmount, hidePortalResults } from './utils.js';
@@ -69,7 +69,7 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
   const mockPortalConfig = { portalId: mockPortal.id, upfrontDiscountPercent: discountPercent, site: '' };
 
   const results = cardsToEvaluate.map(card => {
-    const metrics = calculateTrueNetMetrics(card, mockPortal, mockPortalConfig, voucherAmount);
+    const metrics = calculateTrueNetMetricsWithFlooring(card, mockPortal, mockPortalConfig, voucherAmount);
     // metrics.multiplier is already correctly resolved via getMultiplier's fallback chain.
     // For "Other" (mockPortal.id='custom_portal'), this falls to card's default multiplier.
     // Do NOT call getCardPortalMultiplier(card, null) — null portal causes undefined lookups.
@@ -146,6 +146,9 @@ export function renderCustomCardsList(results, voucherAmount) {
     const isCustomCard = card.id.startsWith('custom_');
     const customTag = isCustomCard ? '<span class="text-[10px] bg-slate-200 px-1 rounded text-slate-500 ml-1">Custom</span>' : '';
     const deleteBtn = isCustomCard ? `<button data-delete-card="${card.id}" class="text-[10px] text-red-300 hover:text-red-500 transition-colors ml-1" title="Remove custom card">✕</button>` : '';
+    const flooringNote = metrics.extraAmount > 0
+      ? `<div class="text-[10px] text-slate-500 bg-slate-50 border border-slate-100 rounded px-1.5 py-0.5 mt-1">Rounded to ₹${metrics.flooredAmount}: ₹${metrics.extraAmount} extra is paid separately with no discount or rewards on it.</div>`
+      : '';
     const exampleHTML = renderMetricGrid([
       { label: 'Pay', value: `<span class="text-right">₹${metrics.netPaid.toFixed(0)}</span>` },
       { label: 'Reward', value: `<span class="text-right">${card.rewardType === 'points' && card.spendBlock ? `${metrics.rpEarned} ${currencyLabel} = ₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)` : `₹${metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)`}</span>` },
@@ -163,6 +166,7 @@ export function renderCustomCardsList(results, voucherAmount) {
             <span class="font-semibold ${rank <= 3 ? 'text-emerald-600' : 'text-slate-600'} text-sm whitespace-nowrap shrink-0">${result.net.toFixed(2)}%</span>
           </div>
           ${exampleHTML}
+          ${flooringNote}
           ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-1">💡 ${card.assumption_note}</div>` : ''}
         </div>
       </div>`;

@@ -7,9 +7,10 @@ import { debounce } from './utils.js';
 import { handleBrandInput, hideBrandSuggestions, selectBrand } from './search.js';
 import { handleCalculate, handleReset, refreshPortalResults, toggleDiscountFlag, hideWalletWarning } from './results.js';
 import { handleCustomCalculate, resetCustomCalcForm, toggleCustomCalcPanel, recalcAfterCardDelete } from './customCalc.js';
-import { renderWalletUI, saveWalletIds, deleteCustomCard, WALLET_MAX_CARDS, checkAndEnforceWalletLimit } from './wallet.js';
+import { renderWalletUI, saveWalletIds, loadWalletIds, deleteCustomCard, WALLET_MAX_CARDS, checkAndEnforceWalletLimit } from './wallet.js';
 import { openCustomCardModal, closeCustomCardModal, openCustomBrandModal, closeCustomBrandModal, applyBankDefaults, handleSaveCard, handleSaveBrand } from './modals.js';
 import { renderCategoryBrands } from './search.js';
+import { renderFlaggedDiscounts, removeFlag } from './flags.js';
 
 export function initEvents() {
   dom.calculateBtn.addEventListener('click', () => {
@@ -184,6 +185,28 @@ export function initEvents() {
     }
   });
 
+  if (dom.walletChipBar) {
+    dom.walletChipBar.addEventListener('click', event => {
+      const editBtn = event.target.closest('#chipBarEditBtn');
+      if (editBtn) {
+        document.getElementById('walletPanel')?.classList.remove('hidden');
+        document.getElementById('walletSummaryBar')?.classList.add('hidden');
+        document.getElementById('walletPanel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      const removeBtn = event.target.closest('[data-chip-remove]');
+      if (removeBtn) {
+        const cardId = removeBtn.getAttribute('data-chip-remove');
+        saveWalletIds(loadWalletIds().filter(id => id !== cardId));
+        renderWalletUI();
+        if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
+          handleCalculate({ scroll: false });
+        }
+      }
+    });
+  }
+
   dom.allCardsList.addEventListener('click', event => {
     const flagBtn = event.target.closest('.flag-btn');
     if (!flagBtn) return;
@@ -219,7 +242,23 @@ export function initEvents() {
 
     state.lastPortalRenderKey = '';
     refreshPortalResults({ scroll: false, force: true });
+    renderFlaggedDiscounts();
   });
+
+  const flaggedDiscountsList = document.getElementById('flaggedDiscountsList');
+  if (flaggedDiscountsList) {
+    flaggedDiscountsList.addEventListener('click', event => {
+      const unflagBtn = event.target.closest('[data-unflag-key]');
+      if (!unflagBtn) return;
+      removeFlag(unflagBtn.getAttribute('data-unflag-key'));
+      renderFlaggedDiscounts();
+      // The flag icon in the currently-open results (if any) needs to catch up too.
+      if (state.currentBrandId && !dom.resultsSection.classList.contains('hidden')) {
+        state.lastPortalRenderKey = '';
+        refreshPortalResults({ scroll: false, force: true });
+      }
+    });
+  }
 
   dom.customCardsList.addEventListener('click', event => {
     const deleteBtn = event.target.closest('[data-delete-card]');

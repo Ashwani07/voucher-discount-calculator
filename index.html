@@ -177,6 +177,15 @@
         <p>Spotted a discount that looks wrong or outdated? Click the small <span class="text-amber-500">⚑</span> next to it to report it to us — portal offers change often and we'd rather fix it than show stale info.</p>
       </div>
     </details>
+
+    <details id="flaggedDiscountsSection" class="hidden mb-4 bg-white border border-amber-200 rounded-md group">
+      <summary class="cursor-pointer text-sm font-semibold text-amber-700 px-4 py-2.5 flex justify-between items-center list-none">
+        <span>🚩 Flagged Discounts (<span id="flaggedCount">0</span>)</span>
+        <span class="transform group-open:rotate-180 transition-transform duration-200 text-xs text-amber-400">▼</span>
+      </summary>
+      <div class="px-4 pb-2 text-xs text-slate-500 border-t border-amber-100 pt-2">Discounts you've reported as outdated. Once you've confirmed it's fixed (or if you flagged it by mistake), clear it here so it doesn't stay marked forever.</div>
+      <div id="flaggedDiscountsList" class="px-4 pb-3 text-sm text-slate-600"></div>
+    </details>
     <div class="w-full mt-6 mb-4">
       <h3 class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2 px-1">Browse by Category</h3>
       
@@ -361,6 +370,8 @@
         </div>
       </section>
 
+      <div id="walletChipBar" class="hidden sticky top-0 z-20 bg-white border border-slate-200 rounded-md mt-4 shadow-sm"></div>
+
       <section id="results" class="mt-6 hidden">
         <div class="rounded-lg border border-slate-200 bg-slate-50 p-4">
           <div class="flex items-start justify-between">
@@ -393,7 +404,7 @@
 
           <div id="allCardsList" class="mt-4 text-sm text-slate-700"></div>
           <div class="mt-3 px-3 py-2 bg-amber-50 border border-amber-200 rounded-md text-xs text-amber-800">
-            ⚠ <strong>Check minimum denomination before buying.</strong> Portals have different minimums starting from ₹500. If your bill is less than a portal's minimum, that portal may not be usable even if ranked highest here.
+            ⚠ <strong>Check minimum denomination before buying.</strong> Portals have different minimums starting from ₹250. If your bill is less than a portal's minimum, that portal may not be usable even if ranked highest here.
           </div>
           <div id="verifiedStamp" class="mt-3 text-xs text-slate-500 opacity-70">
             Discounts last verified: <span id="verifiedDate"></span>
@@ -614,7 +625,8 @@
   <script type="module">
     // Portal preview logic — inline here to avoid circular imports with search.js.
     // Exposed via window.__vw_ globals so search.js can call without importing.
-    import { brands, portals } from './js/data.js';
+    import { brands, portals, lastVerified } from './js/data.js';
+    import { renderFlaggedDiscounts } from './js/flags.js';
 
     const portalNameMap = Object.fromEntries(portals.map(p => [p.id, p.name]));
 
@@ -719,6 +731,7 @@
 
         window.open(reportURL, '_blank');
       }
+      renderFlaggedDiscounts();
     });
 
     

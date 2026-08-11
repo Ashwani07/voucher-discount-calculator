@@ -8,6 +8,7 @@ export const dom = {
   brandSuggestions: document.getElementById('brandSuggestions'),
   walletWarning: document.getElementById('walletWarning'),
   walletControls: document.getElementById('walletControls'),
+  walletChipBar: document.getElementById('walletChipBar'),
   calcError: document.getElementById('calcError'),
   toggleCustomCalcBtn: document.getElementById('toggleCustomCalcBtn'),
   customCalcPanel: document.getElementById('customCalcPanel'),

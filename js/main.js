@@ -8,6 +8,7 @@ import { initEvents } from './events.js';
 import { selectBrand } from './search.js';
 import { handleCalculate } from './results.js';
 import { renderCategoryBrands } from './search.js';
+import { renderFlaggedDiscounts } from './flags.js';
 
 function applyBrandPreselectFromHash() {
   const hash = decodeURIComponent(window.location.hash.replace('#', '')).trim().toLowerCase();
@@ -31,6 +32,7 @@ function bootstrap() {
   renderWalletUI();
   applyBankDefaults();
   initEvents();
+  renderFlaggedDiscounts();
   applyBrandPreselectFromHash();
 }
 

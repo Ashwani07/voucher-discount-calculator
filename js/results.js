@@ -1,7 +1,7 @@
 // Portal comparison calculations and result rendering. This module owns the
 // main voucher comparison flow and the portal result markup.
 import { cards, portals, brands, lastVerified } from './data.js';
-import { calculateTrueNetMetrics, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
+import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 import { getBrandById, getPortalById, renderApplyBadge, renderMetricGrid, validateVoucherAmount, hideBrandGuideLink, hidePortalResults } from './utils.js';
@@ -39,7 +39,7 @@ export function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
     allowedCards = allowedCards.filter(card => walletSelectedIds.includes(card.id));
 
     for (const card of allowedCards) {
-      const metrics = calculateTrueNetMetrics(
+      const metrics = calculateTrueNetMetricsWithFlooring(
         card,
         { ...portal, upfrontDiscountPercent: portalConfig.upfrontDiscountPercent },
         portalConfig,
@@ -107,6 +107,9 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
     const buyBtn = buyURL && !notAvailable
       ? `<a href="${buyURL}" target="_blank" rel="noopener noreferrer" class="text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Buy ↗</a>`
       : '<span class="text-[10px] text-slate-300">—</span>';
+    const flooringNote = entry.metrics.extraAmount > 0
+      ? `<div class="text-[10px] text-slate-500 bg-slate-50 border border-slate-100 rounded px-1.5 py-0.5 mt-1">Portal sells in ₹100 steps: ₹${entry.metrics.flooredAmount} goes through the portal, ₹${entry.metrics.extraAmount} extra is paid separately with no discount or rewards on it.</div>`
+      : '';
 
     return `
       <div class="py-2.5 border-b border-slate-100 last:border-0">
@@ -118,6 +121,7 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
           </div>
         </div>
         ${disclaimer ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : ''}
+        ${flooringNote}
         ${renderMetricGrid([
           { label: upfrontLabel, value: `<span class="text-right">${upfrontValueStr}</span>` },
           { label: 'Pay', value: `<span class="text-right">₹${entry.metrics.netPaid.toFixed(0)}</span>` },
