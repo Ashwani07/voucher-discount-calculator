@@ -328,7 +328,8 @@
                 <option value="axis_edgerewards">Axis Portals</option>
                 <option value="amex_shopwise">Amex Shopwise</option>
                 <option value="sbi_gyftr">SBI Gyftr</option>
-                <option value="hsbc_gyftr">HSBC Gyftr</option>
+                <option value="hsbc_instabenefits">hsbc instabenefits</option>
+                <option value="indusind_instavouchers">IndusInd InstaVouchers</option>
                 <option value="maximize_money">Maximize Money</option>
             </select>
           </div>
@@ -481,6 +482,7 @@
         <option value="Axis">Axis</option>
         <option value="SBI">SBI</option>
         <option value="HSBC">HSBC</option>
+        <option value="IndusInd">IndusInd</option>
         <option value="Amex">Amex</option>
         <option value="Other" selected>Other</option>
       </select>
@@ -509,9 +511,13 @@
           <label class="text-[10px] text-slate-400 block mb-0.5">SBI Gyftr</label>
           <input id="ccSbiGyftr" type="number" step="0.1" placeholder="e.g. 1" class="border p-2 rounded text-sm w-full disabled:bg-slate-100 disabled:text-slate-400">
         </div>
-        <div data-portal-row="hsbc_gyftr">
-          <label class="text-[10px] text-slate-400 block mb-0.5">HSBC Gyftr</label>
+        <div data-portal-row="hsbc_instabenefits">
+          <label class="text-[10px] text-slate-400 block mb-0.5">hsbc instabenefits</label>
           <input id="ccHsbcGyftr" type="number" step="0.1" placeholder="e.g. 1" class="border p-2 rounded text-sm w-full disabled:bg-slate-100 disabled:text-slate-400">
+        </div>
+        <div data-portal-row="indusind_instavouchers">
+          <label class="text-[10px] text-slate-400 block mb-0.5">IndusInd InstaVouchers</label>
+          <input id="ccIndusindInstavouchers" type="number" step="0.1" placeholder="e.g. 1" class="border p-2 rounded text-sm w-full disabled:bg-slate-100 disabled:text-slate-400">
         </div>
         <div class="col-span-2" data-portal-row="amex_shopwise">
           <label class="text-[10px] text-slate-400 block mb-0.5">Amex Shopwise</label>
@@ -571,8 +577,12 @@
           <input id="cbSbiGyftr" type="number" step="0.1" class="border p-2 rounded text-sm w-full">
         </div>
         <div>
-          <label class="text-[10px] text-slate-400 block mb-0.5">HSBC Gyftr</label>
+          <label class="text-[10px] text-slate-400 block mb-0.5">hsbc instabenefits</label>
           <input id="cbHsbcGyftr" type="number" step="0.1" class="border p-2 rounded text-sm w-full">
+        </div>
+        <div>
+          <label class="text-[10px] text-slate-400 block mb-0.5">InstaVouchers</label>
+          <input id="cbInstaVouchers" type="number" step="0.1" class="border p-2 rounded text-sm w-full">
         </div>
         <div>
           <label class="text-[10px] text-slate-400 block mb-0.5">Maximize Money</label>

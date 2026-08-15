@@ -10,8 +10,9 @@ const ccPortalFieldIds = {
   axis_edgerewards: 'ccEdgerewards',
   axis_grabdeals: 'ccGrabdeals',
   sbi_gyftr: 'ccSbiGyftr',
-  hsbc_gyftr: 'ccHsbcGyftr',
-  amex_shopwise: 'ccShopwise'
+  hsbc_instabenefits: 'ccHsbcGyftr',
+  amex_shopwise: 'ccShopwise',
+  indusind_instavouchers: 'ccIndusindInstavouchers'
 };
 
 // UPDATE (July 2026): which bank-specific portal ROWS are shown in the modal
@@ -27,8 +28,9 @@ const BANK_OWN_PORTAL_IDS = {
   ICICI: ['icici_ishop'],
   Axis: ['axis_edgerewards', 'axis_grabdeals'],
   SBI: ['sbi_gyftr'],
-  HSBC: ['hsbc_gyftr'],
+  HSBC: ['hsbc_instabenefits'],
   Amex: ['amex_shopwise'],
+  IndusInd: ['indusind_instavouchers'],
   Other: []
 };
 
@@ -37,7 +39,8 @@ const ccBankNotes = {
   ICICI: 'iShop shows 6x as a starting default. Edit it if your specific card\'s rate differs.',
   Axis: 'EdgeRewards / GrabDeals show 1x as a starting default. Edit if your card\'s rate differs.',
   SBI: 'SBI Gyftr shows 1x as a starting default. Edit if your card\'s rate differs.',
-  HSBC: 'HSBC Gyftr shows 1x as a starting default. Edit if your card\'s rate differs.',
+  HSBC: 'hsbc instabenefits shows 1x as a starting default. Edit if your card\'s rate differs.',
+  IndusInd: 'InstaVouchers shows 1x as a starting default. Edit if your card\'s rate differs.',
   Amex: "Amex multipliers vary by specific card — check your card's T&Cs for Shopwise reward rate.",
   Other: 'No bank-specific portal applies to this card — it can only earn on the Default field below (Amazon, Gyftr & other general portals).'
 };
@@ -95,7 +98,8 @@ export function handleSaveCard() {
       axis_edgerewards: parseFloat(document.getElementById('ccEdgerewards').value) || 0,
       axis_grabdeals: parseFloat(document.getElementById('ccGrabdeals').value) || 0,
       sbi_gyftr: parseFloat(document.getElementById('ccSbiGyftr').value) || 0,
-      hsbc_gyftr: parseFloat(document.getElementById('ccHsbcGyftr').value) || 0,
+      hsbc_instabenefits: parseFloat(document.getElementById('ccHsbcGyftr').value) || 0,
+      indusind_instavouchers: parseFloat(document.getElementById('ccIndusindInstavouchers').value) || 0,
       amex_shopwise: parseFloat(document.getElementById('ccShopwise').value) || 0,
       maximize_money: parseFloat(document.getElementById('ccMaximizeMoney').value) || 0,
       default: parseFloat(document.getElementById('ccDefault').value) || 0
@@ -144,7 +148,8 @@ export function handleSaveBrand() {
   push('axis_edgerewards', 'cbEdgerewards');
   push('axis_grabdeals', 'cbGrabdeals');
   push('sbi_gyftr', 'cbSbiGyftr');
-  push('hsbc_gyftr', 'cbHsbcGyftr');
+  push('hsbc_instabenefits', 'cbHsbcGyftr');
+  push('indusind_instavouchers', 'cbIndusindInstavouchers');
   push('amex_shopwise', 'cbShopwise');
   push('maximize_money', 'cbMaximizeMoney');
 
@@ -159,7 +164,12 @@ export function closeCustomBrandModal() {
   document.getElementById('cbName').value = '';
   
   // Reset all portal inputs to empty strings
-  ['cbSmartbuy', 'cbGyftr', 'cbIshop', 'cbAmazon', 'cbEdgerewards', 'cbGrabdeals', 'cbSbiGyftr', 'cbHsbcGyftr', 'cbShopwise', 'cbMaximizeMoney'].forEach(elId => {
+  ['cbSmartbuy', 'cbGyftr', 
+    'cbIshop', 'cbAmazon', 
+    'cbEdgerewards', 'cbGrabdeals', 
+    'cbSbiGyftr', 'cbHsbcGyftr', 
+    'cbShopwise', 'cbMaximizeMoney', 
+    'cbIndusindInstavouchers'].forEach(elId => {
     const el = document.getElementById(elId);
     if (el) el.value = '';
   });

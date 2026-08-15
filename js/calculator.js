@@ -57,8 +57,9 @@ const HOME_PORTAL_IDS_BY_PREFIX = [
   { prefix: 'icici_', portalIds: ['icici_ishop'] },
   { prefix: 'axis_', portalIds: ['axis_edgerewards', 'axis_grabdeals'] },
   { prefix: 'sbi_', portalIds: ['sbi_gyftr'] },
-  { prefix: 'hsbc_', portalIds: ['hsbc_gyftr'] },
-  { prefix: 'amex_', portalIds: ['amex_shopwise'] }
+  { prefix: 'hsbc_', portalIds: ['hsbc_instabenefits'] },
+  { prefix: 'amex_', portalIds: ['amex_shopwise'] },
+  { prefix: 'indusind_', portalIds: ['indusind_instavouchers'] }
 ];
 
 // Per-card exceptions where a portal outside the bank-prefix rule still has

@@ -1,4 +1,4 @@
-export const lastVerified = 'July 2026';
+export const lastVerified = 'August 2026';
 
 // Bank-specific "home portal" multiplier defaults for the Custom Card modal.
 // A card can only earn issuer-specific portal multipliers on its OWN bank's
@@ -20,16 +20,14 @@ export const bankPortalDefaults = {
     axis_grabdeals:   { value: 1, frozen: false }
   },
   SBI: {
-    // No established base rate yet (unlike HDFC/ICICI/Axis, which had real
-    // prior data) — 1x is a placeholder starting point, same treatment as
-    // Amex's "varies per card" default. Verify against an actual SBI card's
-    // T&Cs before trusting this number in a calculation.
     sbi_gyftr:        { value: 1, frozen: false }
   },
   HSBC: {
-    // Same caveat as SBI above — placeholder, not a verified rate.
-    hsbc_gyftr:       { value: 1, frozen: false }
+    hsbc_instabenefits:       { value: 1, frozen: false }
   },
+  IndusInd: {
+    indusind_instavouchers: { value: 1, frozen: false }
+  },  
   Amex: {
     amex_shopwise:    { value: 1, frozen: false }
   },
@@ -41,7 +39,8 @@ export const bankPortalDefaults = {
     axis_edgerewards: { value: 0, frozen: true },
     axis_grabdeals:   { value: 0, frozen: true },
     sbi_gyftr:        { value: 0, frozen: true },
-    hsbc_gyftr:       { value: 0, frozen: true },
+    hsbc_instabenefits:       { value: 0, frozen: true },
+    indusind_instavouchers: { value: 0, frozen: true },
     amex_shopwise:    { value: 0, frozen: true }
   }
 };
@@ -49,7 +48,13 @@ export const bankPortalDefaults = {
 // All bank-specific portal IDs (used to know which fields to freeze/unfreeze
 // when a bank is NOT explicitly covered above, e.g. Other freezes all of these).
 export const bankSpecificPortalIds = [
-  'hdfc_smartbuy', 'icici_ishop', 'axis_edgerewards', 'axis_grabdeals', 'sbi_gyftr', 'hsbc_gyftr', 'amex_shopwise'
+  'hdfc_smartbuy', 
+  'icici_ishop', 
+  'axis_edgerewards', 'axis_grabdeals', 
+  'sbi_gyftr', 
+  'hsbc_instabenefits', 
+  'indusind_instavouchers', 
+  'amex_shopwise'
 ];
 
 export const portals = [
@@ -59,7 +64,8 @@ export const portals = [
   { id: "axis_edgerewards", name: "Axis EdgeRewards", group: "axis_portal" },
   { id: "axis_grabdeals", name: "Axis GrabDeals Woohoo", group: "axis_portal" },
   { id: "sbi_gyftr", name: "SBI Gyftr", group: "sbi_gyftr" },
-  { id: "hsbc_gyftr", name: "HSBC Gyftr", group: "hsbc_gyftr" },
+  { id: "hsbc_instabenefits", name: "hsbc instabenefits", group: "hsbc_instabenefits" },
+  { id: "indusind_instavouchers", name: "IndusInd InstaVouchers", group: "indusind_instavouchers" },
   { id: "maximize_money", name: "Maximize Money", group: "maximize_money" },
   { id: "gyftr", name: "Gyftr", group: "gyftr" },
   { id: "amazon", name: "Amazon", group: "amazon" },
@@ -187,10 +193,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "absolute_barbeque_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "absolute_barbeque_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-absolute_barbeque-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-absolute_barbeque-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -199,6 +205,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-absolute_barbeque-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "absolute_barbeque_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-absolute_barbeque-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -226,10 +240,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "adani_meet_and_greet_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "adani_meet_and_greet_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-adani_meet_and_greet-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-adani_meet_and_greet-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -281,6 +295,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "adidas_kids_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-adidas_kids-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "adidas_kids_sbi_gyftr",
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
@@ -320,10 +342,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "adventra_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "adventra_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 18,
-        "site": "https://vouchwise.in/out/buy-adventra-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-adventra-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "adventra_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 17,
+        "site": "https://vouchwise.in/out/buy-adventra-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -414,10 +444,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "air_india_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "air_india_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-air_india-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-air_india-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -426,6 +456,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-air_india-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "air_india_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-air_india-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -474,6 +512,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-air_india_addons-gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "air_india_addons_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 17,
+        "site": "https://vouchwise.in/out/buy-air_india_addons-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -512,6 +558,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-air_india_domestic_gift_card-gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "air_india_domestic_gift_card_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-air_india_domestic_gift_card-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -525,6 +579,14 @@ export const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-air_india_fly_rajasthan-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "air_india_fly_rajasthan_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-air_india_fly_rajasthan-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -567,6 +629,14 @@ export const masterBrands = [
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
       {
+        "compositeId": "ajio_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 4.5,
+        "site": "https://vouchwise.in/out/buy-ajio-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "ajio_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 6,
@@ -591,10 +661,26 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "ajio_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-ajio-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "ajio_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ajio-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ajio_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-ajio-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -670,10 +756,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "ajio_luxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ajio_luxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 6.5,
-        "site": "https://vouchwise.in/out/buy-ajio_luxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ajio_luxe-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ajio_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-ajio_luxe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -756,10 +850,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "aldo_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "aldo_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-aldo-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-aldo-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -768,6 +862,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-aldo-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "aldo_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-aldo-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -811,14 +913,6 @@ export const masterBrands = [
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
       {
-        "compositeId": "aliste_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 32.5,
-        "site": "https://vouchwise.in/out/buy-aliste-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "aliste_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
@@ -835,10 +929,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "aliste_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "aliste_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-aliste-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-aliste-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -922,6 +1016,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "allen_solly_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-allen_solly-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "allen_solly_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 1.01,
@@ -971,7 +1073,7 @@ export const masterBrands = [
       {
         "compositeId": "amazon_fresh_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon_fresh-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -993,10 +1095,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "amazon_fresh_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "amazon_fresh_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-amazon_fresh-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-amazon_fresh-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1005,6 +1107,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon_fresh-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "amazon_fresh_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 0.25,
+        "site": "https://vouchwise.in/out/buy-amazon_fresh-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1031,6 +1141,22 @@ export const masterBrands = [
     "name": "Amazon Pay",
     "category_name": "Electronics",
     "portals": [
+      {
+        "compositeId": "amazon_pay_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-amazon_pay-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "amazon_pay_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 0.25,
+        "site": "https://vouchwise.in/out/buy-amazon_pay-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "amazon_pay_amazon",
         "portalId": "amazon",
@@ -1064,10 +1190,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "amazon_pay_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "amazon_pay_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-amazon_pay-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-amazon_pay-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1166,10 +1292,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "amazon_prime_membership_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "amazon_prime_membership_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15,
-        "site": "https://vouchwise.in/out/buy-amazon_prime_membership-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-amazon_prime_membership-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1178,6 +1304,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-amazon_prime_membership-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "amazon_prime_membership_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-amazon_prime_membership-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1314,6 +1448,14 @@ export const masterBrands = [
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
       {
+        "compositeId": "amazon_shopping_voucher_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-amazon_shopping_voucher-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "amazon_shopping_voucher_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 0,
@@ -1338,10 +1480,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "amazon_shopping_voucher_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "amazon_shopping_voucher_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-amazon_shopping_voucher-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-amazon_shopping_voucher-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1433,6 +1575,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "american_eagle_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-american_eagle-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "american_eagle_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 1.01,
@@ -1496,10 +1646,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "american_tourister_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "american_tourister_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 5,
-        "site": "https://vouchwise.in/out/buy-american_tourister-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-american_tourister-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1508,6 +1658,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-american_tourister-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "american_tourister_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-american_tourister-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1551,10 +1709,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "apollo_diagnostics_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "apollo_diagnostics_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-apollo_diagnostics-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-apollo_diagnostics-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "apollo_diagnostics_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-apollo_diagnostics-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1614,10 +1780,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "apollo_pharmacy_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "apollo_pharmacy_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-apollo_pharmacy-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-apollo_pharmacy-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "apollo_pharmacy_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-apollo_pharmacy-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1721,10 +1895,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "apparel_group_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "apparel_group_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-apparel_group-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-apparel_group-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1814,10 +1988,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "archies_gallery_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "archies_gallery_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-archies_gallery-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-archies_gallery-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1826,6 +2000,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-archies_gallery-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "archies_gallery_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 14,
+        "site": "https://vouchwise.in/out/buy-archies_gallery-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1893,10 +2075,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "armani_exchange_luxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "armani_exchange_luxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-armani_exchange_luxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-armani_exchange_luxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -1921,6 +2103,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-armani_exchange_luxe-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "armani_exchange_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-armani_exchange_luxe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2033,10 +2223,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "assembly_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "assembly_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12.5,
-        "site": "https://vouchwise.in/out/buy-assembly-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-assembly-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2104,10 +2294,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "aurelia_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "aurelia_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-aurelia-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-aurelia-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2116,6 +2306,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-aurelia-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "aurelia_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-aurelia-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2175,10 +2373,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "auric_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "auric_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 35,
-        "site": "https://vouchwise.in/out/buy-auric-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-auric-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2187,6 +2385,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-auric-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "auric_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 30,
+        "site": "https://vouchwise.in/out/buy-auric-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2214,10 +2420,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "avast_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "avast_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-avast-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-avast-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2276,10 +2482,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "bakingo_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "bakingo_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 20,
-        "site": "https://vouchwise.in/out/buy-bakingo-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-bakingo-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2288,6 +2494,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bakingo-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "bakingo_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 16,
+        "site": "https://vouchwise.in/out/buy-bakingo-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2333,7 +2547,7 @@ export const masterBrands = [
       {
         "compositeId": "ballyluxe_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-ballyluxe-gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -2410,10 +2624,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "barbeque_nation_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "barbeque_nation_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 5,
-        "site": "https://vouchwise.in/out/buy-barbeque_nation-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-barbeque_nation-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2422,6 +2636,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-barbeque_nation-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "barbeque_nation_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-barbeque_nation-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2449,42 +2671,10 @@ export const masterBrands = [
     "category_name": "Fashion & Accessories",
     "portals": [
       {
-        "compositeId": "bare_anatomy_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 22.5,
-        "site": "https://vouchwise.in/out/buy-bare_anatomy-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "bare_anatomy_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 15,
-        "site": "https://vouchwise.in/out/buy-bare_anatomy-hdfc_smartbuy",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "bare_anatomy_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
-        "upfrontDiscountPercent": 22,
-        "site": "https://vouchwise.in/out/buy-bare_anatomy-hsbc_gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "bare_anatomy_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bare_anatomy-icici_ishop",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "bare_anatomy_sbi_gyftr",
-        "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-bare_anatomy-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -2536,10 +2726,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "baskin_robbins_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "baskin_robbins_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 17,
-        "site": "https://vouchwise.in/out/buy-baskin_robbins-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-baskin_robbins-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2548,6 +2738,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-baskin_robbins-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "baskin_robbins_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-baskin_robbins-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2623,10 +2821,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "bata_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "bata_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-bata-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-bata-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2635,6 +2833,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bata-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "bata_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-bata-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2649,7 +2855,7 @@ export const masterBrands = [
       {
         "compositeId": "bata_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 8,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-bata-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -2661,6 +2867,14 @@ export const masterBrands = [
     "name": "Bath and Body Works",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "bath_and_body_works_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-bath_and_body_works-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "bath_and_body_works_amazon",
         "portalId": "amazon",
@@ -2702,10 +2916,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "bath_and_body_works_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "bath_and_body_works_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-bath_and_body_works-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-bath_and_body_works-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2788,10 +3002,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "beer_cafe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "beer_cafe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-beer_cafe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-beer_cafe-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "beer_cafe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-beer_cafe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2859,10 +3081,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "behrouz_biryani_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "behrouz_biryani_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-behrouz_biryani-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-behrouz_biryani-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "behrouz_biryani_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-behrouz_biryani-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2930,10 +3160,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "beverly_hills_polo_club_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "beverly_hills_polo_club_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-beverly_hills_polo_club-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-beverly_hills_polo_club-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -2942,6 +3172,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-beverly_hills_polo_club-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "beverly_hills_polo_club_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-beverly_hills_polo_club-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3001,10 +3239,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "beyoung_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "beyoung_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 22,
-        "site": "https://vouchwise.in/out/buy-beyoung-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-beyoung-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3013,6 +3251,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-beyoung-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "beyoung_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 16,
+        "site": "https://vouchwise.in/out/buy-beyoung-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3060,6 +3306,22 @@ export const masterBrands = [
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 8.01,
         "site": "https://vouchwise.in/out/buy-bgmi_uc-maximize_money",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "bgmi_uc_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-bgmi_uc-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "bgmi_uc_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-bgmi_uc-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3164,10 +3426,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "biba_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "biba_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-biba-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-biba-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3176,6 +3438,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-biba-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "biba_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-biba-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3243,10 +3513,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "bigbasket_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "bigbasket_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-bigbasket-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-bigbasket-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3255,6 +3525,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-bigbasket-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "bigbasket_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-bigbasket-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3375,10 +3653,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "black__decker_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "black__decker_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-black__decker-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-black__decker-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3461,10 +3739,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "blinkit_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "blinkit_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 1,
-        "site": "https://vouchwise.in/out/buy-blinkit-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-blinkit-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3489,6 +3767,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-blinkit-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "blinkit_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-blinkit-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3534,16 +3820,24 @@ export const masterBrands = [
       {
         "compositeId": "blissclub_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 7.5,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-blissclub-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "blissclub_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "blissclub_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15,
-        "site": "https://vouchwise.in/out/buy-blissclub-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-blissclub-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "blissclub_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 14,
+        "site": "https://vouchwise.in/out/buy-blissclub-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3625,10 +3919,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "bluestone_diamond_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "bluestone_diamond_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-bluestone_diamond-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-bluestone_diamond-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "bluestone_diamond_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-bluestone_diamond-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3664,10 +3966,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "bluestone_gold_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "bluestone_gold_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 1,
-        "site": "https://vouchwise.in/out/buy-bluestone_gold-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-bluestone_gold-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "bluestone_gold_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-bluestone_gold-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3703,10 +4013,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "bluestone_gold_jewellery_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "bluestone_gold_jewellery_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-bluestone_gold_jewellery-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-bluestone_gold_jewellery-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -3715,6 +4025,21 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-bluestone_gold_jewellery-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "bo_tai",
+    "name": "Bo TAi",
+    "category_name": "Miscellaneous",
+    "portals": [
+      {
+        "compositeId": "bo_tai_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-bo_tai-gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3872,10 +4197,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "bombay_shaving_company_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "bombay_shaving_company_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-bombay_shaving_company-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-bombay_shaving_company-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -3895,18 +4220,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "bookmyshow_amex_shopwise",
+        "portalId": "amex_shopwise",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-bookmyshow-amex_shopwise",
+        "availability": "available",
+        "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
+      },
+      {
         "compositeId": "bookmyshow_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-bookmyshow-axis_grabdeals",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "bookmyshow_icici_ishop",
-        "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-bookmyshow-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4028,6 +4353,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "braingymjr_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-braingymjr-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "braingymjr_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 11.76,
@@ -4050,6 +4383,14 @@ export const masterBrands = [
     "name": "Brooks Brothers-Luxe",
     "category_name": "Electronics",
     "portals": [
+      {
+        "compositeId": "brooks_brothersluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-brooks_brothersluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "brooks_brothersluxe_amex_shopwise",
         "portalId": "amex_shopwise",
@@ -4083,10 +4424,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "brooks_brothersluxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "brooks_brothersluxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-brooks_brothersluxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-brooks_brothersluxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4208,10 +4549,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "cafe_delhi_heights_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "cafe_delhi_heights_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-cafe_delhi_heights-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-cafe_delhi_heights-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4220,6 +4561,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-cafe_delhi_heights-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "cafe_delhi_heights_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-cafe_delhi_heights-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4312,16 +4661,16 @@ export const masterBrands = [
       {
         "compositeId": "call_it_spring_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 7.5,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-call_it_spring-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "call_it_spring_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "call_it_spring_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-call_it_spring-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-call_it_spring-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4330,6 +4679,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-call_it_spring-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "call_it_spring_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-call_it_spring-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4389,10 +4746,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "campus_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "campus_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-campus-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-campus-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4401,6 +4758,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-campus-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "campus_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-campus-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4442,6 +4807,14 @@ export const masterBrands = [
     "name": "Canali-Luxe",
     "category_name": "Electronics",
     "portals": [
+      {
+        "compositeId": "canaliluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-canaliluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "canaliluxe_amex_shopwise",
         "portalId": "amex_shopwise",
@@ -4522,10 +4895,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "candere_diamond_jewellery_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "candere_diamond_jewellery_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-candere_diamond_jewellery-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-candere_diamond_jewellery-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "candere_diamond_jewellery_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-candere_diamond_jewellery-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4561,10 +4942,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "candere_gold_coin_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "candere_gold_coin_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-candere_gold_coin-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-candere_gold_coin-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4616,10 +4997,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "candere_gold_jewellery_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "candere_gold_jewellery_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-candere_gold_jewellery-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-candere_gold_jewellery-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "candere_gold_jewellery_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-candere_gold_jewellery-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4687,10 +5076,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "cello_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "cello_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-cello-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-cello-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4699,6 +5088,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-cello-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "cello_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-cello-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4741,6 +5138,14 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
+        "compositeId": "charles__keith_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-charles__keith-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "charles__keith_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 14,
@@ -4781,10 +5186,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "charles__keith_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "charles__keith_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-charles__keith-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-charles__keith-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -4867,42 +5272,10 @@ export const masterBrands = [
     "category_name": "Fashion & Accessories",
     "portals": [
       {
-        "compositeId": "chemist_at_play_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 22.5,
-        "site": "https://vouchwise.in/out/buy-chemist_at_play-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "chemist_at_play_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 15,
-        "site": "https://vouchwise.in/out/buy-chemist_at_play-hdfc_smartbuy",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "chemist_at_play_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
-        "upfrontDiscountPercent": 22,
-        "site": "https://vouchwise.in/out/buy-chemist_at_play-hsbc_gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "chemist_at_play_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-chemist_at_play-icici_ishop",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "chemist_at_play_sbi_gyftr",
-        "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-chemist_at_play-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -4992,10 +5365,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "chumbak_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "chumbak_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12.5,
-        "site": "https://vouchwise.in/out/buy-chumbak-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-chumbak-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5004,6 +5377,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-chumbak-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "chumbak_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 11,
+        "site": "https://vouchwise.in/out/buy-chumbak-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5047,10 +5428,26 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "cinepolis_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "cinepolis_hdfc_smartbuy",
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-cinepolis-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "cinepolis_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 13,
-        "site": "https://vouchwise.in/out/buy-cinepolis-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-cinepolis-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "cinepolis_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 14,
+        "site": "https://vouchwise.in/out/buy-cinepolis-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5110,10 +5507,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "citizen_watches_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "citizen_watches_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 14,
-        "site": "https://vouchwise.in/out/buy-citizen_watches-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-citizen_watches-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "citizen_watches_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-citizen_watches-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5181,6 +5586,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "clayco_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 18,
+        "site": "https://vouchwise.in/out/buy-clayco-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "clayco_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 17.01,
@@ -5204,14 +5617,6 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "cleartax_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 72.5,
-        "site": "https://vouchwise.in/out/buy-cleartax-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "cleartax_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 70,
@@ -5220,10 +5625,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "cleartax_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "cleartax_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-cleartax-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-cleartax-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "cleartax_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 60,
+        "site": "https://vouchwise.in/out/buy-cleartax-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5250,6 +5663,14 @@ export const masterBrands = [
     "name": "Cleartrip Generic",
     "category_name": "Travel & Leisure",
     "portals": [
+      {
+        "compositeId": "cleartrip_generic_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-cleartrip_generic-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "cleartrip_generic_amazon",
         "portalId": "amazon",
@@ -5299,10 +5720,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "cleartrip_generic_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "cleartrip_generic_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 5,
-        "site": "https://vouchwise.in/out/buy-cleartrip_generic-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-cleartrip_generic-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5346,18 +5767,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "cleartrip_hotel_amex_shopwise",
-        "portalId": "amex_shopwise",
-        "upfrontDiscountPercent": 11.9,
-        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-amex_shopwise",
-        "availability": "available",
-        "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
-      },
-      {
-        "compositeId": "cleartrip_hotel_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 16.5,
-        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-axis_edgerewards",
+        "compositeId": "cleartrip_hotel_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5370,10 +5783,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "cleartrip_hotel_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "cleartrip_hotel_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5386,9 +5799,17 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "cleartrip_hotel_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 16,
+        "site": "https://vouchwise.in/out/buy-cleartrip_hotel-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "cleartrip_hotel_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-cleartrip_hotel-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -5455,10 +5876,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "coachluxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "coachluxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-coachluxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-coachluxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5518,10 +5939,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "colorplus_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "colorplus_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-colorplus-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-colorplus-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5530,6 +5951,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-colorplus-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "colorplus_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-colorplus-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5589,10 +6018,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "columbia_sportswear_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "columbia_sportswear_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-columbia_sportswear-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-columbia_sportswear-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "columbia_sportswear_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-columbia_sportswear-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5620,6 +6057,14 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
+        "compositeId": "cordelia_cruises_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-cordelia_cruises-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "cordelia_cruises_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 12,
@@ -5644,10 +6089,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "cordelia_cruises_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "cordelia_cruises_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-cordelia_cruises-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-cordelia_cruises-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5730,10 +6175,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "costa_coffee_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "costa_coffee_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-costa_coffee-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-costa_coffee-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5742,6 +6187,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-costa_coffee-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "costa_coffee_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-costa_coffee-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5817,10 +6270,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "croma_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "croma_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 1,
-        "site": "https://vouchwise.in/out/buy-croma-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-croma-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5845,6 +6298,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-croma-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "croma_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-croma-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -5919,10 +6380,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "crossword_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "crossword_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-crossword-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-crossword-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "crossword_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-crossword-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -5989,10 +6458,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "cult_fit_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "cult_fit_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-cult_fit-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-cult_fit-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -6022,7 +6491,7 @@ export const masterBrands = [
       {
         "compositeId": "daily_objects_axis_edgerewards",
         "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 12.5,
+        "upfrontDiscountPercent": 15,
         "site": "https://vouchwise.in/out/buy-daily_objects-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
@@ -6046,16 +6515,16 @@ export const masterBrands = [
       {
         "compositeId": "daily_objects_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 5,
+        "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-daily_objects-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "daily_objects_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "daily_objects_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-daily_objects-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-daily_objects-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -6064,6 +6533,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-daily_objects-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "daily_objects_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-daily_objects-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -6080,6 +6557,101 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 14,
         "site": "https://vouchwise.in/out/buy-daily_objects-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "decathlon_sports",
+    "name": "Decathlon Sports",
+    "category_name": "Health & Wellness",
+    "portals": [
+      {
+        "compositeId": "decathlon_sports_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "decathlon_sports_amazon",
+        "portalId": "amazon",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-amazon",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "decathlon_sports_amex_shopwise",
+        "portalId": "amex_shopwise",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-amex_shopwise",
+        "availability": "available",
+        "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
+      },
+      {
+        "compositeId": "decathlon_sports_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 3.5,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "decathlon_sports_axis_grabdeals",
+        "portalId": "axis_grabdeals",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-axis_grabdeals",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "decathlon_sports_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "decathlon_sports_hdfc_smartbuy",
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": null,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "decathlon_sports_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "decathlon_sports_icici_ishop",
+        "portalId": "icici_ishop",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "decathlon_sports_maximize_money",
+        "portalId": "maximize_money",
+        "upfrontDiscountPercent": 2.01,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-maximize_money",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "decathlon_sports_sbi_gyftr",
+        "portalId": "sbi_gyftr",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-decathlon_sports-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -6116,79 +6688,15 @@ export const masterBrands = [
     ]
   },
   {
-    "id": "decathlon_sports",
-    "name": "Decathlon Sports",
-    "category_name": "Health & Wellness",
+    "id": "diesel_luxe_gift_card",
+    "name": "Diesel-Luxe",
+    "category_name": "Fashion & Accessories",
     "portals": [
       {
-        "compositeId": "decathlon_sports_amazon",
-        "portalId": "amazon",
-        "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-amazon",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "decathlon_sports_amex_shopwise",
-        "portalId": "amex_shopwise",
-        "upfrontDiscountPercent": 1,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-amex_shopwise",
-        "availability": "available",
-        "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
-      },
-      {
-        "compositeId": "decathlon_sports_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 3.5,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "decathlon_sports_axis_grabdeals",
-        "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 3.5,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-axis_grabdeals",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "decathlon_sports_gyftr",
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "decathlon_sports_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": null,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-hdfc_smartbuy",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "decathlon_sports_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
-        "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-hsbc_gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "decathlon_sports_maximize_money",
-        "portalId": "maximize_money",
-        "upfrontDiscountPercent": 2.01,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-maximize_money",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "decathlon_sports_sbi_gyftr",
-        "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-sbi_gyftr",
+        "compositeId": "diesel_luxe_gift_card_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-diesel_luxe_gift_card-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -6239,10 +6747,26 @@ export const masterBrands = [
     "category_name": "Entertainment & OTT",
     "portals": [
       {
+        "compositeId": "discord_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0.5,
+        "site": "https://vouchwise.in/out/buy-discord-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "discord_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-discord-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "discord_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-discord-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -6286,10 +6810,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "discovery_plus_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "discovery_plus_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 17.5,
-        "site": "https://vouchwise.in/out/buy-discovery_plus-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-discovery_plus-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -6298,6 +6822,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-discovery_plus-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "discovery_plus_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 20,
+        "site": "https://vouchwise.in/out/buy-discovery_plus-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -6379,6 +6911,14 @@ export const masterBrands = [
     "category_name": "Dining & Food",
     "portals": [
       {
+        "compositeId": "dominos_pizza_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 17,
+        "site": "https://vouchwise.in/out/buy-dominos_pizza-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "dominos_pizza_amazon",
         "portalId": "amazon",
         "upfrontDiscountPercent": 14,
@@ -6427,10 +6967,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "dominos_pizza_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "dominos_pizza_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 16.5,
-        "site": "https://vouchwise.in/out/buy-dominos_pizza-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-dominos_pizza-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -6453,7 +6993,7 @@ export const masterBrands = [
       {
         "compositeId": "dominos_pizza_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12,
+        "upfrontDiscountPercent": 16,
         "site": "https://vouchwise.in/out/buy-dominos_pizza-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -6552,6 +7092,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "dpauls_travel__tours_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-dpauls_travel__tours-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "dpauls_travel__tours_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 6.51,
@@ -6623,10 +7171,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "dune_londonluxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "dune_londonluxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-dune_londonluxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-dune_londonluxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -6651,6 +7199,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-dune_londonluxe-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "dune_londonluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-dune_londonluxe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -6694,6 +7250,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "duroflex_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-duroflex-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "duroflex_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 8.26,
@@ -6732,10 +7296,26 @@ export const masterBrands = [
     "category_name": "Entertainment & OTT",
     "portals": [
       {
+        "compositeId": "ea_sports_fc_26_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-ea_sports_fc_26-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "ea_sports_fc_26_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 1.5,
         "site": "https://vouchwise.in/out/buy-ea_sports_fc_26-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ea_sports_fc_26_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-ea_sports_fc_26-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -6775,6 +7355,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-ea7_luxe-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ea7_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-ea7_luxe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -6938,7 +7526,7 @@ export const masterBrands = [
       {
         "compositeId": "easemytrip_hotels_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-easemytrip_hotels-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -6991,10 +7579,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "easybuy_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "easybuy_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-easybuy-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-easybuy-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "easybuy_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-easybuy-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7046,10 +7642,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "eatsure_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "eatsure_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-eatsure-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-eatsure-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "eatsure_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-eatsure-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7147,10 +7751,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "elivaas_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "elivaas_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-elivaas-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-elivaas-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "elivaas_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-elivaas-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7202,6 +7814,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "elleven_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-elleven-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "elleven_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 7.01,
@@ -7239,6 +7859,14 @@ export const masterBrands = [
     "name": "Emporio Armani-Luxe",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "emporio_armaniluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-emporio_armaniluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "emporio_armaniluxe_amex_shopwise",
         "portalId": "amex_shopwise",
@@ -7419,6 +8047,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "estele_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-estele-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "estele_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 18.01,
@@ -7520,10 +8156,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "euphoria_gold_coin_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "euphoria_gold_coin_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7548,6 +8184,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "euphoria_gold_coin_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-euphoria_gold_coin-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -7598,10 +8242,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "euphoria_jewellery_silver_coin_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "euphoria_jewellery_silver_coin_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-euphoria_jewellery_silver_coin-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-euphoria_jewellery_silver_coin-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "euphoria_jewellery_silver_coin_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-euphoria_jewellery_silver_coin-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7633,6 +8285,14 @@ export const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-exitlag-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "exitlag_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-exitlag-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -7676,10 +8336,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "faasos_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "faasos_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-faasos-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-faasos-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "faasos_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-faasos-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7739,10 +8407,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "fab_hotels_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "fab_hotels_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-fab_hotels-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-fab_hotels-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7751,6 +8419,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fab_hotels-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "fab_hotels_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-fab_hotels-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7770,6 +8446,14 @@ export const masterBrands = [
     "category_name": "Fashion & Accessories",
     "portals": [
       {
+        "compositeId": "fabindia_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-fabindia-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "fabindia_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": null,
@@ -7778,10 +8462,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "fabindia_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "fabindia_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-fabindia-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-fabindia-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7798,6 +8482,21 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fabindia-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "farzi_cafe",
+    "name": "Farzi Cafe",
+    "category_name": "Dining & Food",
+    "portals": [
+      {
+        "compositeId": "farzi_cafe_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-farzi_cafe-gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -7833,10 +8532,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "fashion_factory_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "fashion_factory_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://vouchwise.in/out/buy-fashion_factory-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-fashion_factory-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "fashion_factory_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-fashion_factory-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7919,10 +8626,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "fastrack_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "fastrack_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-fastrack-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-fastrack-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7931,6 +8638,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fastrack-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "fastrack_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-fastrack-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -7976,16 +8691,24 @@ export const masterBrands = [
       {
         "compositeId": "fastrack_bags_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 2.5,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fastrack_bags-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "fastrack_bags_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "fastrack_bags_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-fastrack_bags-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-fastrack_bags-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "fastrack_bags_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-fastrack_bags-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8082,10 +8805,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "fastrack_smartwatches_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "fastrack_smartwatches_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-fastrack_smartwatches-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-fastrack_smartwatches-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8145,10 +8868,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "femmella_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "femmella_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 14,
-        "site": "https://vouchwise.in/out/buy-femmella-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-femmella-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "femmella_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-femmella-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8208,10 +8939,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "ferns_n_petals_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ferns_n_petals_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 17,
-        "site": "https://vouchwise.in/out/buy-ferns_n_petals-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ferns_n_petals-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8220,6 +8951,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ferns_n_petals-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ferns_n_petals_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-ferns_n_petals-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8324,6 +9063,14 @@ export const masterBrands = [
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
       {
+        "compositeId": "firstcry_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 4.5,
+        "site": "https://vouchwise.in/out/buy-firstcry-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "firstcry_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 5,
@@ -8340,10 +9087,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "firstcry_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "firstcry_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 4,
-        "site": "https://vouchwise.in/out/buy-firstcry-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-firstcry-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "firstcry_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-firstcry-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8352,6 +9107,14 @@ export const masterBrands = [
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 4.76,
         "site": "https://vouchwise.in/out/buy-firstcry-maximize_money",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "firstcry_sbi_gyftr",
+        "portalId": "sbi_gyftr",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-firstcry-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -8403,10 +9166,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "fitpass_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "fitpass_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 22,
-        "site": "https://vouchwise.in/out/buy-fitpass-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-fitpass-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8415,6 +9178,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-fitpass-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "fitpass_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-fitpass-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8452,7 +9223,7 @@ export const masterBrands = [
       {
         "compositeId": "flipkart_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-flipkart-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -8474,10 +9245,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "flipkart_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "flipkart_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-flipkart-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-flipkart-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8502,6 +9273,22 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-flipkart-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "flipkart_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-flipkart-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "flipkart_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-flipkart-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -8583,10 +9370,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "flower_aura_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "flower_aura_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 18,
-        "site": "https://vouchwise.in/out/buy-flower_aura-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-flower_aura-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8595,6 +9382,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-flower_aura-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "flower_aura_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 13,
+        "site": "https://vouchwise.in/out/buy-flower_aura-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8739,10 +9534,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "foxtale_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "foxtale_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 21,
-        "site": "https://vouchwise.in/out/buy-foxtale-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-foxtale-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8751,6 +9546,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-foxtale-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "foxtale_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-foxtale-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8818,10 +9621,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "freecultr_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "freecultr_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 22,
-        "site": "https://vouchwise.in/out/buy-freecultr-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-freecultr-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8830,6 +9633,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-freecultr-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "freecultr_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-freecultr-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -8877,6 +9688,14 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-french_accent-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "french_accent_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 13,
+        "site": "https://vouchwise.in/out/buy-french_accent-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -8975,10 +9794,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "frido_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "frido_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15,
-        "site": "https://vouchwise.in/out/buy-frido-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-frido-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "frido_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 14,
+        "site": "https://vouchwise.in/out/buy-frido-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9077,10 +9904,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "future_world__apple_reseller_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "future_world__apple_reseller_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-future_world__apple_reseller-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-future_world__apple_reseller-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9089,6 +9916,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-future_world__apple_reseller-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "future_world__apple_reseller_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-future_world__apple_reseller-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9140,10 +9975,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "gaana_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "gaana_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15,
-        "site": "https://vouchwise.in/out/buy-gaana-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-gaana-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9152,6 +9987,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-gaana-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "gaana_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 14,
+        "site": "https://vouchwise.in/out/buy-gaana-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9181,7 +10024,7 @@ export const masterBrands = [
       {
         "compositeId": "gaana_egift_12m_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-gaana_egift_12m-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -9196,7 +10039,7 @@ export const masterBrands = [
       {
         "compositeId": "gaana_egift_1m_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-gaana_egift_1m-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -9264,10 +10107,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "gasluxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "gasluxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-gasluxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-gasluxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9292,6 +10135,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-gasluxe-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "gasluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-gasluxe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -9358,10 +10209,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "giva_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "giva_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-giva-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-giva-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -9417,6 +10268,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-giva_gold_jewellery-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "giva_gold_jewellery_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3.5,
+        "site": "https://vouchwise.in/out/buy-giva_gold_jewellery-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -9488,6 +10347,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-giva_silver_coin-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "giva_silver_coin_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-giva_silver_coin-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -9548,6 +10415,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-giva_silver_jewellery-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "giva_silver_jewellery_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-giva_silver_jewellery-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -9646,7 +10521,7 @@ export const masterBrands = [
       {
         "compositeId": "google_play_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-google_play-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -9669,7 +10544,7 @@ export const masterBrands = [
       {
         "compositeId": "grt_jewellers_axis_edgerewards",
         "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 1,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-grt_jewellers-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
@@ -9691,10 +10566,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "grt_jewellers_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "grt_jewellers_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-grt_jewellers-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-grt_jewellers-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9722,10 +10597,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "gstarluxe_gift_card_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "gstarluxe_gift_card_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-gstarluxe_gift_card-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-gstarluxe_gift_card-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -9782,6 +10657,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-h_by_hamleys_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "h_by_hamleys_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-h_by_hamleys_luxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -9831,10 +10714,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "hamleys_luxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
-        "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-hamleys_luxe-hsbc_gyftr",
+        "compositeId": "hamleys_luxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-hamleys_luxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9886,10 +10769,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "hammer_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "hammer_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-hammer-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-hammer-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9898,6 +10781,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-hammer-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "hammer_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 20,
+        "site": "https://vouchwise.in/out/buy-hammer-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9925,10 +10816,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "harpers_bazaar_india_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "harpers_bazaar_india_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-harpers_bazaar_india-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-harpers_bazaar_india-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -9970,6 +10861,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-haute_sauce-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "haute_sauce_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 13,
+        "site": "https://vouchwise.in/out/buy-haute_sauce-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -9993,6 +10892,14 @@ export const masterBrands = [
     "name": "Health and Glow",
     "category_name": "Health & Wellness",
     "portals": [
+      {
+        "compositeId": "health_and_glow_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-health_and_glow-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "health_and_glow_amazon",
         "portalId": "amazon",
@@ -10026,10 +10933,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "health_and_glow_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "health_and_glow_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-health_and_glow-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-health_and_glow-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10081,10 +10988,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "healthians_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "healthians_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 17,
-        "site": "https://vouchwise.in/out/buy-healthians-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-healthians-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "healthians_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 17,
+        "site": "https://vouchwise.in/out/buy-healthians-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10175,10 +11090,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "healthkart_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "healthkart_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-healthkart-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-healthkart-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "healthkart_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-healthkart-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10214,6 +11137,14 @@ export const masterBrands = [
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
       {
+        "compositeId": "helios_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-helios-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "helios_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 6.5,
@@ -10238,10 +11169,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "helios_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "helios_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-helios-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-helios-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10250,6 +11181,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-helios-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "helios_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-helios-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10325,10 +11264,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "hidesign_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "hidesign_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 13,
-        "site": "https://vouchwise.in/out/buy-hidesign-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-hidesign-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10337,6 +11276,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-hidesign-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "hidesign_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-hidesign-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10427,10 +11374,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "himalaya_wellness_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "himalaya_wellness_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 14,
-        "site": "https://vouchwise.in/out/buy-himalaya_wellness-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-himalaya_wellness-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "himalaya_wellness_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-himalaya_wellness-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10482,10 +11437,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "hindustan_times_premium_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "hindustan_times_premium_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 30,
-        "site": "https://vouchwise.in/out/buy-hindustan_times_premium-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-hindustan_times_premium-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10494,6 +11449,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-hindustan_times_premium-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "hindustan_times_premium_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 25,
+        "site": "https://vouchwise.in/out/buy-hindustan_times_premium-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -10537,6 +11500,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "hoichoi_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 20,
+        "site": "https://vouchwise.in/out/buy-hoichoi-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "hoichoi_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 15.26,
@@ -10570,25 +11541,18 @@ export const masterBrands = [
     ]
   },
   {
-    "id": "home_stop",
-    "name": "Home Stop",
-    "category_name": "Electronics",
-    "portals": [
-      {
-        "compositeId": "home_stop_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 2.5,
-        "site": "https://vouchwise.in/out/buy-home_stop-hdfc_smartbuy",
-        "availability": "available",
-        "disclaimer": ""
-      }
-    ]
-  },
-  {
     "id": "homecentre_offline",
     "name": "Homecentre Offline",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "homecentre_offline_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-homecentre_offline-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "homecentre_offline_amazon",
         "portalId": "amazon",
@@ -10638,10 +11602,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "homecentre_offline_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "homecentre_offline_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-homecentre_offline-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-homecentre_offline-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -10658,6 +11622,44 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 8,
         "site": "https://vouchwise.in/out/buy-homecentre_offline-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "home_centre_online",
+    "name": "Home Centre Online",
+    "category_name": "Fashion & Accessories",
+    "portals": [
+      {
+        "compositeId": "home_centre_online_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 8.5,
+        "site": "https://vouchwise.in/out/buy-home_centre_online-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "home_centre_online_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-home_centre_online-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "home_stop",
+    "name": "Home Stop",
+    "category_name": "Electronics",
+    "portals": [
+      {
+        "compositeId": "home_stop_hdfc_smartbuy",
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 2.5,
+        "site": "https://vouchwise.in/out/buy-home_stop-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       }
@@ -10732,10 +11734,26 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "hoora_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "hoora_hdfc_smartbuy",
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-hoora-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "hoora_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 17,
-        "site": "https://vouchwise.in/out/buy-hoora-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-hoora-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "hoora_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 16,
+        "site": "https://vouchwise.in/out/buy-hoora-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -10757,7 +11775,7 @@ export const masterBrands = [
       {
         "compositeId": "hopscotch_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-hopscotch-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -10908,6 +11926,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-hugo_bossluxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "hugo_bossluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-hugo_bossluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -10945,6 +11971,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-hunkemoller_luxe-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "hunkemoller_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-hunkemoller_luxe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -10996,10 +12030,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "hush_puppies_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "hush_puppies_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-hush_puppies-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-hush_puppies-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11008,6 +12042,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-hush_puppies-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "hush_puppies_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-hush_puppies-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11022,7 +12064,7 @@ export const masterBrands = [
       {
         "compositeId": "hush_puppies_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 8,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-hush_puppies-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -11082,10 +12124,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "igp_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "igp_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 18,
-        "site": "https://vouchwise.in/out/buy-igp-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-igp-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11094,6 +12136,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-igp-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "igp_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 13,
+        "site": "https://vouchwise.in/out/buy-igp-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11161,10 +12211,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "ikea_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ikea_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-ikea-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ikea-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11173,6 +12223,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ikea-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ikea_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-ikea-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11223,10 +12281,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "india_today_english_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "india_today_english_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-india_today_english-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-india_today_english-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -11378,10 +12436,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "inglot_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "inglot_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-inglot-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-inglot-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11390,6 +12448,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-inglot-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "inglot_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-inglot-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11452,6 +12518,14 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-instafab_plus-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "instafab_plus_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 13,
+        "site": "https://vouchwise.in/out/buy-instafab_plus-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -11557,10 +12631,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "itc_hotels_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "itc_hotels_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-itc_hotels-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-itc_hotels-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11569,6 +12643,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-itc_hotels-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "itc_hotels_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-itc_hotels-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11620,10 +12702,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "ixigo_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ixigo_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 5,
-        "site": "https://vouchwise.in/out/buy-ixigo-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ixigo-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11632,6 +12714,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ixigo-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ixigo_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-ixigo-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11675,10 +12765,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "ixigo_hotel_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ixigo_hotel_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15,
-        "site": "https://vouchwise.in/out/buy-ixigo_hotel-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ixigo_hotel-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ixigo_hotel_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-ixigo_hotel-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11736,6 +12834,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-jimmy_chooluxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "jimmy_chooluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-jimmy_chooluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -11777,10 +12883,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "jiohotstar_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "jiohotstar_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-jiohotstar-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-jiohotstar-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "jiohotstar_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-jiohotstar-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11856,10 +12970,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "jockey_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "jockey_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-jockey-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-jockey-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -11868,6 +12982,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-jockey-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "jockey_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-jockey-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12248,10 +13370,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "kalki_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "kalki_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-kalki-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-kalki-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "kalki_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-kalki-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12318,10 +13448,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "kalyan_diamond_jewellery_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "kalyan_diamond_jewellery_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://vouchwise.in/out/buy-kalyan_diamond_jewellery-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-kalyan_diamond_jewellery-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "kalyan_diamond_jewellery_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-kalyan_diamond_jewellery-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12364,10 +13502,10 @@ export const masterBrands = [
     "category_name": "Miscellaneous",
     "portals": [
       {
-        "compositeId": "kalyan_gold_coins_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "kalyan_gold_coins_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-kalyan_gold_coins-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-kalyan_gold_coins-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12435,10 +13573,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "kalyan_gold_jewellery_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "kalyan_gold_jewellery_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-kalyan_gold_jewellery-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-kalyan_gold_jewellery-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12447,6 +13585,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-kalyan_gold_jewellery-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "kalyan_gold_jewellery_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-kalyan_gold_jewellery-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12551,10 +13697,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "kama_ayurveda_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "kama_ayurveda_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-kama_ayurveda-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-kama_ayurveda-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12563,6 +13709,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-kama_ayurveda-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "kama_ayurveda_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-kama_ayurveda-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12581,6 +13735,14 @@ export const masterBrands = [
     "name": "Kate Spade-Luxe",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "kate_spade_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-kate_spade_luxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "kate_spade_luxe_amex_shopwise",
         "portalId": "amex_shopwise",
@@ -12714,10 +13876,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "ketan_diamonds_diamond_only_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ketan_diamonds_diamond_only_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 17,
-        "site": "https://vouchwise.in/out/buy-ketan_diamonds_diamond_only-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ketan_diamonds_diamond_only-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ketan_diamonds_diamond_only_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-ketan_diamonds_diamond_only-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12753,10 +13923,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "ketan_diamonds_gold_coin_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ketan_diamonds_gold_coin_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-ketan_diamonds_gold_coin-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ketan_diamonds_gold_coin-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12808,10 +13978,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "ketan_diamonds_gold_jewellery_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ketan_diamonds_gold_jewellery_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-ketan_diamonds_gold_jewellery-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ketan_diamonds_gold_jewellery-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ketan_diamonds_gold_jewellery_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-ketan_diamonds_gold_jewellery-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12879,10 +14057,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "kfc_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "kfc_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 1.5,
-        "site": "https://vouchwise.in/out/buy-kfc-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-kfc-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12891,6 +14069,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-kfc-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "kfc_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-kfc-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12918,10 +14104,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "kiehls_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "kiehls_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-kiehls-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-kiehls-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -12981,10 +14167,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "kimirica_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "kimirica_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-kimirica-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-kimirica-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "kimirica_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 14,
+        "site": "https://vouchwise.in/out/buy-kimirica-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13044,10 +14238,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "klook_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "klook_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-klook-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-klook-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "klook_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-klook-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13181,7 +14383,7 @@ export const masterBrands = [
   {
     "id": "landline_bill_payment",
     "name": "Landline Bill Payment",
-    "category_name": "Electronics",
+    "category_name": "Miscellaneous",
     "portals": [
       {
         "compositeId": "landline_bill_payment_gyftr",
@@ -13379,10 +14581,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "lenskart_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "lenskart_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-lenskart-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-lenskart-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13391,6 +14593,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lenskart-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "lenskart_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-lenskart-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13405,7 +14615,7 @@ export const masterBrands = [
       {
         "compositeId": "lenskart_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 7,
+        "upfrontDiscountPercent": 10,
         "site": "https://vouchwise.in/out/buy-lenskart-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -13444,7 +14654,7 @@ export const masterBrands = [
       {
         "compositeId": "levis_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-levis-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -13466,10 +14676,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "levis_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "levis_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 4,
-        "site": "https://vouchwise.in/out/buy-levis-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-levis-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13478,6 +14688,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-levis-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "levis_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-levis-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13515,10 +14733,41 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "libas",
+    "name": "Libas",
+    "category_name": "Fashion & Accessories",
+    "portals": [
+      {
+        "compositeId": "libas_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-libas-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "libas_sbi_gyftr",
+        "portalId": "sbi_gyftr",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-libas-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "liberty_offline",
     "name": "Liberty Offline",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "liberty_offline_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-liberty_offline-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "liberty_offline_amazon",
         "portalId": "amazon",
@@ -13552,10 +14801,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "liberty_offline_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "liberty_offline_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-liberty_offline-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-liberty_offline-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13615,10 +14864,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "liberty_online_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "liberty_online_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-liberty_online-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-liberty_online-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "liberty_online_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-liberty_online-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13645,6 +14902,14 @@ export const masterBrands = [
     "name": "Lifestyle Offline",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "lifestyle_offline_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-lifestyle_offline-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "lifestyle_offline_amazon",
         "portalId": "amazon",
@@ -13688,16 +14953,16 @@ export const masterBrands = [
       {
         "compositeId": "lifestyle_offline_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 1,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-lifestyle_offline-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "lifestyle_offline_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "lifestyle_offline_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8.5,
-        "site": "https://vouchwise.in/out/buy-lifestyle_offline-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-lifestyle_offline-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13773,10 +15038,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "lifestyle_online_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "lifestyle_online_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8.5,
-        "site": "https://vouchwise.in/out/buy-lifestyle_online-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-lifestyle_online-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "lifestyle_online_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-lifestyle_online-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13851,6 +15124,14 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
+        "compositeId": "lionsgate_play_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 22.5,
+        "site": "https://vouchwise.in/out/buy-lionsgate_play-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "lionsgate_play_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 22,
@@ -13867,10 +15148,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "lionsgate_play_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "lionsgate_play_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 21,
-        "site": "https://vouchwise.in/out/buy-lionsgate_play-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-lionsgate_play-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "lionsgate_play_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 18,
+        "site": "https://vouchwise.in/out/buy-lionsgate_play-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13953,10 +15242,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "live_hindustan_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "live_hindustan_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 30,
-        "site": "https://vouchwise.in/out/buy-live_hindustan-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-live_hindustan-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -13965,6 +15254,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-live_hindustan-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "live_hindustan_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 25,
+        "site": "https://vouchwise.in/out/buy-live_hindustan-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -13988,6 +15285,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-live_mint-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "live_mint_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 40,
+        "site": "https://vouchwise.in/out/buy-live_mint-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14047,10 +15352,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "lohono_stays_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "lohono_stays_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-lohono_stays-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-lohono_stays-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "lohono_stays_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 11,
+        "site": "https://vouchwise.in/out/buy-lohono_stays-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14134,6 +15447,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "louis_philippe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-louis_philippe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "louis_philippe_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 0.01,
@@ -14144,7 +15465,7 @@ export const masterBrands = [
       {
         "compositeId": "louis_philippe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 5,
+        "upfrontDiscountPercent": 6,
         "site": "https://vouchwise.in/out/buy-louis_philippe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -14212,10 +15533,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "lunch_box_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "lunch_box_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-lunch_box-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-lunch_box-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "lunch_box_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-lunch_box-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14275,10 +15604,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "luxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "luxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-luxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-luxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14295,6 +15624,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-luxe-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-luxe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -14314,10 +15651,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "luzo_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "luzo_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-luzo-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-luzo-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14326,6 +15663,14 @@ export const masterBrands = [
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 7.76,
         "site": "https://vouchwise.in/out/buy-luzo-maximize_money",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "luzo_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-luzo-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -14399,10 +15744,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "machaan_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "machaan_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-machaan-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-machaan-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14411,6 +15756,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-machaan-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "machaan_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-machaan-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14427,6 +15780,36 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 18,
         "site": "https://vouchwise.in/out/buy-machaan-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "made_in_punjab",
+    "name": "Made In Punjab",
+    "category_name": "Fashion & Accessories",
+    "portals": [
+      {
+        "compositeId": "made_in_punjab_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-made_in_punjab-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "mage_ai",
+    "name": "Mage AI",
+    "category_name": "Miscellaneous",
+    "portals": [
+      {
+        "compositeId": "mage_ai_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 16,
+        "site": "https://vouchwise.in/out/buy-mage_ai-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -14478,10 +15861,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "mainland_china_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "mainland_china_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-mainland_china-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-mainland_china-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14490,6 +15873,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-mainland_china-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "mainland_china_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-mainland_china-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14612,10 +16003,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "makemytrip_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "makemytrip_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 5,
-        "site": "https://vouchwise.in/out/buy-makemytrip-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-makemytrip-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14632,6 +16023,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-makemytrip-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "makemytrip_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-makemytrip-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -14769,10 +16168,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "makemytrip_holiday_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "makemytrip_holiday_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14797,6 +16196,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 11,
         "site": "https://vouchwise.in/out/buy-makemytrip_holiday-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "makemytrip_holiday_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-makemytrip_holiday-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -14856,10 +16263,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "makemytrip_hotel_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "makemytrip_hotel_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -14884,6 +16291,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 11,
         "site": "https://vouchwise.in/out/buy-makemytrip_hotel-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "makemytrip_hotel_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-makemytrip_hotel-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -15032,10 +16447,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "malabar_diamonds_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "malabar_diamonds_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-malabar_diamonds-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-malabar_diamonds-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "malabar_diamonds_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-malabar_diamonds-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15079,10 +16502,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "malabar_gold_coin_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "malabar_gold_coin_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 1,
-        "site": "https://vouchwise.in/out/buy-malabar_gold_coin-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-malabar_gold_coin-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15149,10 +16572,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "malabar_jewellery_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "malabar_jewellery_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-malabar_jewellery-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-malabar_jewellery-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "malabar_jewellery_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-malabar_jewellery-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15204,10 +16635,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "mango_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "mango_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 4.5,
-        "site": "https://vouchwise.in/out/buy-mango-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-mango-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "mango_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-mango-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15253,7 +16692,7 @@ export const masterBrands = [
       {
         "compositeId": "manyavar_axis_edgerewards",
         "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 1,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-manyavar-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
@@ -15271,6 +16710,14 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": null,
         "site": "https://vouchwise.in/out/buy-manyavar-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "manyavar_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-manyavar-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15338,10 +16785,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "marks__spencer_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "marks__spencer_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-marks__spencer-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-marks__spencer-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15350,6 +16797,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-marks__spencer-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "marks__spencer_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-marks__spencer-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15501,6 +16956,21 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "masala_library",
+    "name": "Masala Library",
+    "category_name": "Miscellaneous",
+    "portals": [
+      {
+        "compositeId": "masala_library_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-masala_library-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "matrix",
     "name": "Matrix",
     "category_name": "Electronics",
@@ -15530,10 +17000,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "matrix_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "matrix_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-matrix-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-matrix-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -15544,6 +17014,14 @@ export const masterBrands = [
     "name": "Max Fashion Offline",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "max_fashion_offline_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-max_fashion_offline-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "max_fashion_offline_amazon",
         "portalId": "amazon",
@@ -15593,10 +17071,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "max_fashion_offline_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "max_fashion_offline_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-max_fashion_offline-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-max_fashion_offline-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15672,10 +17150,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "max_fashion_online_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "max_fashion_online_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-max_fashion_online-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-max_fashion_online-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "max_fashion_online_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-max_fashion_online-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15735,10 +17221,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "me_n_moms_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "me_n_moms_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-me_n_moms-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-me_n_moms-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "me_n_moms_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-me_n_moms-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15805,10 +17299,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "mediwheel_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "mediwheel_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 22,
-        "site": "https://vouchwise.in/out/buy-mediwheel-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-mediwheel-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -15862,7 +17356,7 @@ export const masterBrands = [
       {
         "compositeId": "mia_by_tanishq_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 1.5,
         "site": "https://vouchwise.in/out/buy-mia_by_tanishq-gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -15953,6 +17447,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-michael_korsluxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "michael_korsluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-michael_korsluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -15964,7 +17466,7 @@ export const masterBrands = [
       {
         "compositeId": "microsoft_office_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-microsoft_office-gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -15987,16 +17489,16 @@ export const masterBrands = [
       {
         "compositeId": "microsoft_xbox_game_pass_core_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-microsoft_xbox_game_pass_core-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "microsoft_xbox_game_pass_core_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "microsoft_xbox_game_pass_core_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-microsoft_xbox_game_pass_core-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-microsoft_xbox_game_pass_core-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16016,10 +17518,10 @@ export const masterBrands = [
     "category_name": "Entertainment & OTT",
     "portals": [
       {
-        "compositeId": "microsoft_xbox_pc_game_pass_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "microsoft_xbox_pc_game_pass_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-microsoft_xbox_pc_game_pass-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-microsoft_xbox_pc_game_pass-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16039,14 +17541,6 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "milkbasket_amex_shopwise",
-        "portalId": "amex_shopwise",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-milkbasket-amex_shopwise",
-        "availability": "available",
-        "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
-      },
-      {
         "compositeId": "milkbasket_axis_edgerewards",
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 2.5,
@@ -16057,16 +17551,24 @@ export const masterBrands = [
       {
         "compositeId": "milkbasket_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-milkbasket-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "milkbasket_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "milkbasket_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-milkbasket-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-milkbasket-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "milkbasket_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-milkbasket-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16188,10 +17690,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "minus30_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "minus30_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 17,
-        "site": "https://vouchwise.in/out/buy-minus30-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-minus30-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "minus30_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-minus30-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16273,6 +17783,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "moba_legends_5v5_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-moba_legends_5v5-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "moba_legends_5v5_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 7.5,
@@ -16285,6 +17803,14 @@ export const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 5,
         "site": "https://vouchwise.in/out/buy-moba_legends_5v5-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "moba_legends_5v5_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-moba_legends_5v5-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16428,10 +17954,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "mother_care_luxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "mother_care_luxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-mother_care_luxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-mother_care_luxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16456,6 +17982,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-mother_care_luxe-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "mother_care_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-mother_care_luxe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -16515,16 +18049,16 @@ export const masterBrands = [
       {
         "compositeId": "ms_xbox_game_pass_ultimate_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 4,
         "site": "https://vouchwise.in/out/buy-ms_xbox_game_pass_ultimate-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "ms_xbox_game_pass_ultimate_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ms_xbox_game_pass_ultimate_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-ms_xbox_game_pass_ultimate-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ms_xbox_game_pass_ultimate-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16613,6 +18147,14 @@ export const masterBrands = [
     "category_name": "Health & Wellness",
     "portals": [
       {
+        "compositeId": "muscle_blaze_axis_grabdeals",
+        "portalId": "axis_grabdeals",
+        "upfrontDiscountPercent": 11,
+        "site": "https://vouchwise.in/out/buy-muscle_blaze-axis_grabdeals",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "muscle_blaze_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 10.01,
@@ -16644,10 +18186,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "muthoot_gold_voucher_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "muthoot_gold_voucher_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-muthoot_gold_voucher-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-muthoot_gold_voucher-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16677,7 +18219,7 @@ export const masterBrands = [
       {
         "compositeId": "my_jio_store_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-my_jio_store-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -16716,7 +18258,7 @@ export const masterBrands = [
       {
         "compositeId": "myntra_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 3,
+        "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-myntra-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -16724,7 +18266,7 @@ export const masterBrands = [
       {
         "compositeId": "myntra_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 2,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-myntra-gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -16738,10 +18280,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "myntra_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "myntra_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-myntra-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-myntra-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16750,6 +18292,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-myntra-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "myntra_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-myntra-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16839,10 +18389,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "nat_habit_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "nat_habit_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 25,
-        "site": "https://vouchwise.in/out/buy-nat_habit-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-nat_habit-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -16864,7 +18414,7 @@ export const masterBrands = [
       {
         "compositeId": "natural_salon_10k_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-natural_salon_10k-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -16887,7 +18437,7 @@ export const masterBrands = [
       {
         "compositeId": "natural_salon_20k_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-natural_salon_20k-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -16910,7 +18460,7 @@ export const masterBrands = [
       {
         "compositeId": "natural_salon_4k_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-natural_salon_4k-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -16993,10 +18543,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "nautica_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "nautica_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 4.5,
-        "site": "https://vouchwise.in/out/buy-nautica-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-nautica-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "nautica_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-nautica-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17064,10 +18622,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "neemans_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "neemans_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-neemans-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-neemans-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "neemans_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-neemans-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17126,10 +18692,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "nestasia_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "nestasia_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-nestasia-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-nestasia-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "nestasia_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-nestasia-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17181,10 +18755,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "netmeds_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "netmeds_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-netmeds-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-netmeds-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "netmeds_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-netmeds-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17244,10 +18826,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "next_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "next_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 4.5,
-        "site": "https://vouchwise.in/out/buy-next-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-next-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "next_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-next-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17305,6 +18895,22 @@ export const masterBrands = [
     "name": "Nintendo Shop",
     "category_name": "Entertainment & OTT",
     "portals": [
+      {
+        "compositeId": "nintendo_shop_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-nintendo_shop-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "nintendo_shop_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-nintendo_shop-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "nintendo_shop_axis_grabdeals",
         "portalId": "axis_grabdeals",
@@ -17369,10 +18975,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "nua_woman_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "nua_woman_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 25,
-        "site": "https://vouchwise.in/out/buy-nua_woman-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-nua_woman-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "nua_woman_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 24,
+        "site": "https://vouchwise.in/out/buy-nua_woman-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17448,10 +19062,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "nykaa_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "nykaa_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-nykaa-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-nykaa-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17460,6 +19074,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-nykaa-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "nykaa_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-nykaa-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17598,10 +19220,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "nykaa_man_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "nykaa_man_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-nykaa_man-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-nykaa_man-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17714,10 +19336,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "oh_calcutta_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "oh_calcutta_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-oh_calcutta-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-oh_calcutta-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17726,6 +19348,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-oh_calcutta-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "oh_calcutta_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-oh_calcutta-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17777,10 +19407,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "ola_cabs_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ola_cabs_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 14,
-        "site": "https://vouchwise.in/out/buy-ola_cabs-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ola_cabs-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ola_cabs_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-ola_cabs-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17808,10 +19446,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "only_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "only_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-only-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-only-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -17847,6 +19485,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "organic_india_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-organic_india-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "organic_india_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
@@ -17855,10 +19501,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "organic_india_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "organic_india_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-organic_india-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-organic_india-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17867,6 +19513,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-organic_india-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "organic_india_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-organic_india-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -17957,10 +19611,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "oven_story_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "oven_story_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-oven_story-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-oven_story-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "oven_story_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-oven_story-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18020,10 +19682,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "palmonas_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "palmonas_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-palmonas-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-palmonas-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "palmonas_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-palmonas-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18099,10 +19769,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "pantaloons_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "pantaloons_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 6,
-        "site": "https://vouchwise.in/out/buy-pantaloons-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-pantaloons-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18111,6 +19781,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pantaloons-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "pantaloons_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-pantaloons-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18162,10 +19840,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "park_avenue_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "park_avenue_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-park_avenue-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-park_avenue-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18174,6 +19852,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-park_avenue-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "park_avenue_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-park_avenue-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18225,10 +19911,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "parx_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "parx_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-parx-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-parx-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18237,6 +19923,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-parx-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "parx_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-parx-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18399,16 +20093,16 @@ export const masterBrands = [
       {
         "compositeId": "pc_jeweller_diamond_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0,
+        "upfrontDiscountPercent": 1,
         "site": "https://vouchwise.in/out/buy-pc_jeweller_diamond-gyftr",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "pc_jeweller_diamond_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "pc_jeweller_diamond_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-pc_jeweller_diamond-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-pc_jeweller_diamond-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18460,10 +20154,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "pc_jeweller_gold_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "pc_jeweller_gold_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 1,
-        "site": "https://vouchwise.in/out/buy-pc_jeweller_gold-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-pc_jeweller_gold-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18499,10 +20193,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "pc_jeweller_gold_coin_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "pc_jeweller_gold_coin_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-pc_jeweller_gold_coin-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-pc_jeweller_gold_coin-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18679,6 +20373,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "peter_england_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-peter_england-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "peter_england_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 1.01,
@@ -18741,10 +20443,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "philips_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "philips_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-philips-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-philips-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "philips_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-philips-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18834,10 +20544,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "pigeon_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "pigeon_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-pigeon-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-pigeon-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "pigeon_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-pigeon-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18879,6 +20597,14 @@ export const masterBrands = [
     "name": "Pixel Go",
     "category_name": "Electronics",
     "portals": [
+      {
+        "compositeId": "pixel_go_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 16,
+        "site": "https://vouchwise.in/out/buy-pixel_go-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "pixel_go_maximize_money",
         "portalId": "maximize_money",
@@ -18943,10 +20669,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "pizza_hut_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "pizza_hut_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-pizza_hut-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-pizza_hut-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -18955,6 +20681,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-pizza_hut-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "pizza_hut_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-pizza_hut-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19101,6 +20835,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "points_for_good_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-points_for_good-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "points_for_good_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 0.26,
@@ -19210,10 +20952,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "porter_packers_and_movers_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "porter_packers_and_movers_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-porter_packers_and_movers-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-porter_packers_and_movers-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "porter_packers_and_movers_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-porter_packers_and_movers-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19335,10 +21085,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "prestige_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "prestige_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-prestige-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-prestige-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "prestige_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-prestige-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19435,6 +21193,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-pret_a_manger_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "pret_a_manger_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-pret_a_manger_luxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -19484,10 +21250,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "pronto_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "pronto_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-pronto-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-pronto-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "pronto_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-pronto-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19555,10 +21329,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "puma_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "puma_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-puma-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-puma-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "puma_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-puma-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19573,7 +21355,7 @@ export const masterBrands = [
       {
         "compositeId": "puma_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 9,
+        "upfrontDiscountPercent": 11,
         "site": "https://vouchwise.in/out/buy-puma-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -19657,10 +21439,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "pure_home_living_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "pure_home_living_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-pure_home_living-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-pure_home_living-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19679,6 +21461,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-pure_home_living-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "pure_home_living_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-pure_home_living-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -19694,14 +21484,6 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-pvr_cinemas-amazon",
         "availability": "available",
         "disclaimer": ""
-      },
-      {
-        "compositeId": "pvr_cinemas_amex_shopwise",
-        "portalId": "amex_shopwise",
-        "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-pvr_cinemas-amex_shopwise",
-        "availability": "available",
-        "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
       {
         "compositeId": "pvr_cinemas_maximize_money",
@@ -19727,14 +21509,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "pvr_inox_axis_grabdeals",
-        "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 23.5,
-        "site": "https://vouchwise.in/out/buy-pvr_inox-axis_grabdeals",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "pvr_inox_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 14,
@@ -19751,10 +21525,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "pvr_inox_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "pvr_inox_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 11,
-        "site": "https://vouchwise.in/out/buy-pvr_inox-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-pvr_inox-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "pvr_inox_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 18,
+        "site": "https://vouchwise.in/out/buy-pvr_inox-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19769,7 +21551,7 @@ export const masterBrands = [
       {
         "compositeId": "pvr_inox_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 10,
+        "upfrontDiscountPercent": 13,
         "site": "https://vouchwise.in/out/buy-pvr_inox-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -19814,10 +21596,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "rb_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "rb_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-rb-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-rb-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19826,6 +21608,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-rb-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "rb_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-rb-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19853,10 +21643,26 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
+        "compositeId": "rainbow_six_mobile_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 11,
+        "site": "https://vouchwise.in/out/buy-rainbow_six_mobile-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "rainbow_six_mobile_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 9,
         "site": "https://vouchwise.in/out/buy-rainbow_six_mobile-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "rainbow_six_mobile_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-rainbow_six_mobile-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19916,10 +21722,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "rangriti_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "rangriti_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-rangriti-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-rangriti-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -19928,6 +21734,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-rangriti-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "rangriti_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-rangriti-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20065,10 +21879,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "raymond__ready_to_wear_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "raymond__ready_to_wear_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-raymond__ready_to_wear-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-raymond__ready_to_wear-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "raymond__ready_to_wear_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-raymond__ready_to_wear-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20149,10 +21971,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "readers_digest_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "readers_digest_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-readers_digest-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-readers_digest-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -20196,10 +22018,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "relaxo_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "relaxo_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-relaxo-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-relaxo-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20208,6 +22030,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-relaxo-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "relaxo_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-relaxo-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20237,7 +22067,7 @@ export const masterBrands = [
       {
         "compositeId": "reliance_digital_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance_digital-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -20259,10 +22089,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "reliance_digital_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "reliance_digital_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-reliance_digital-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_digital-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20284,7 +22114,7 @@ export const masterBrands = [
       {
         "compositeId": "reliance_jewels_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance_jewels-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -20298,10 +22128,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "reliance_jewels_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "reliance_jewels_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-reliance_jewels-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_jewels-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20323,7 +22153,7 @@ export const masterBrands = [
       {
         "compositeId": "reliance_jio_mart_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-reliance_jio_mart-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -20384,10 +22214,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "reliance_my_jio_store_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "reliance_my_jio_store_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-reliance_my_jio_store-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_my_jio_store-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20406,14 +22236,6 @@ export const masterBrands = [
     "name": "Reliance Smart",
     "category_name": "Electronics",
     "portals": [
-      {
-        "compositeId": "reliance_smart_amex_shopwise",
-        "portalId": "amex_shopwise",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-reliance_smart-amex_shopwise",
-        "availability": "available",
-        "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
-      },
       {
         "compositeId": "reliance_smart_axis_edgerewards",
         "portalId": "axis_edgerewards",
@@ -20439,17 +22261,25 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "reliance_smart_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "reliance_smart_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-reliance_smart-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_smart-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "reliance_smart_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2.25,
+        "site": "https://vouchwise.in/out/buy-reliance_smart-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
       {
         "compositeId": "reliance_smart_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 1,
+        "upfrontDiscountPercent": 2,
         "site": "https://vouchwise.in/out/buy-reliance_smart-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -20494,10 +22324,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "reliance_smart_bazaar_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "reliance_smart_bazaar_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-reliance_smart_bazaar-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_smart_bazaar-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -20533,10 +22363,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "reliance_smart_point_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "reliance_smart_point_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-reliance_smart_point-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_smart_point-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "reliance_smart_point_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2.25,
+        "site": "https://vouchwise.in/out/buy-reliance_smart_point-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20596,10 +22434,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "reliance_trends_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "reliance_trends_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 4,
-        "site": "https://vouchwise.in/out/buy-reliance_trends-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_trends-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "reliance_trends_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-reliance_trends-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20651,10 +22497,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "reliance_trends_footwear_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "reliance_trends_footwear_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 4,
-        "site": "https://vouchwise.in/out/buy-reliance_trends_footwear-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-reliance_trends_footwear-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "reliance_trends_footwear_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-reliance_trends_footwear-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -20674,10 +22528,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "replay_luxe_gift_card_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "replay_luxe_gift_card_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-replay_luxe_gift_card-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-replay_luxe_gift_card-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -20825,6 +22679,14 @@ export const masterBrands = [
     "category_name": "Fashion & Accessories",
     "portals": [
       {
+        "compositeId": "ritu_kumarluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-ritu_kumarluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "ritu_kumarluxe_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 8,
@@ -20871,14 +22733,6 @@ export const masterBrands = [
     "name": "Roblox",
     "category_name": "Entertainment & OTT",
     "portals": [
-      {
-        "compositeId": "roblox_axis_grabdeals",
-        "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": 3.5,
-        "site": "https://vouchwise.in/out/buy-roblox-axis_grabdeals",
-        "availability": "available",
-        "disclaimer": ""
-      },
       {
         "compositeId": "roblox_gyftr",
         "portalId": "gyftr",
@@ -20937,6 +22791,14 @@ export const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": 3,
         "site": "https://vouchwise.in/out/buy-roblox_gift_card-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "roblox_gift_card_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-roblox_gift_card-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -21034,10 +22896,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "samsonite_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "samsonite_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 5,
-        "site": "https://vouchwise.in/out/buy-samsonite-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-samsonite-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21046,6 +22908,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-samsonite-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "samsonite_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-samsonite-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21175,10 +23045,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "satya_paul_luxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "satya_paul_luxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-satya_paul_luxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-satya_paul_luxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21213,6 +23083,14 @@ export const masterBrands = [
     "name": "Scotch & Soda-Luxe",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "scotch__soda_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-scotch__soda_luxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "scotch__soda_luxe_amazon",
         "portalId": "amazon",
@@ -21262,10 +23140,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "scotch__soda_luxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "scotch__soda_luxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-scotch__soda_luxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-scotch__soda_luxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21339,14 +23217,6 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "shemaroome_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 32.5,
-        "site": "https://vouchwise.in/out/buy-shemaroome-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "shemaroome_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 28,
@@ -21363,10 +23233,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "shemaroome_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "shemaroome_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 30,
-        "site": "https://vouchwise.in/out/buy-shemaroome-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-shemaroome-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "shemaroome_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 26,
+        "site": "https://vouchwise.in/out/buy-shemaroome-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21423,6 +23301,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-shiva_organic-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "shiva_organic_icici_ishop",
+        "portalId": "icici_ishop",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-shiva_organic-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -21474,16 +23360,24 @@ export const masterBrands = [
       {
         "compositeId": "shoppers_stop_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 1,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-shoppers_stop-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "shoppers_stop_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "shoppers_stop_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-shoppers_stop-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-shoppers_stop-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "shoppers_stop_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-shoppers_stop-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21543,10 +23437,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "shopy_vision_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "shopy_vision_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-shopy_vision-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-shopy_vision-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "shopy_vision_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-shopy_vision-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -21637,6 +23539,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "simon_carter_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-simon_carter-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "simon_carter_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 0.91,
@@ -21660,10 +23570,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "simple_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "simple_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-simple-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-simple-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21731,10 +23641,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "skechers_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "skechers_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-skechers-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-skechers-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21743,6 +23653,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-skechers-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "skechers_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-skechers-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21794,10 +23712,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "skinn_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "skinn_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-skinn-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-skinn-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "skinn_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4,
+        "site": "https://vouchwise.in/out/buy-skinn-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21865,10 +23791,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "skullcandy_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "skullcandy_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-skullcandy-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-skullcandy-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21877,6 +23803,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-skullcandy-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "skullcandy_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-skullcandy-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -21936,6 +23870,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "smile_foundation_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-smile_foundation-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "smile_foundation_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 12.76,
@@ -21983,6 +23925,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "snitch_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-snitch-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "snitch_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2,
@@ -21991,10 +23941,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "snitch_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "snitch_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-snitch-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-snitch-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "snitch_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-snitch-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22061,10 +24019,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "soch_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "soch_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-soch-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-soch-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "soch_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-soch-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22127,6 +24093,22 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 20,
         "site": "https://vouchwise.in/out/buy-sonyliv-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "sonyliv_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
+        "upfrontDiscountPercent": 20,
+        "site": "https://vouchwise.in/out/buy-sonyliv-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "sonyliv_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 20,
+        "site": "https://vouchwise.in/out/buy-sonyliv-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22209,10 +24191,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "soulflower_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "soulflower_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 17,
-        "site": "https://vouchwise.in/out/buy-soulflower-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-soulflower-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "soulflower_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 13,
+        "site": "https://vouchwise.in/out/buy-soulflower-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22303,10 +24293,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "speedo_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "speedo_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-speedo-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-speedo-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22315,6 +24305,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-speedo-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "speedo_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-speedo-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22350,14 +24348,6 @@ export const masterBrands = [
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
       },
       {
-        "compositeId": "spencers_retail_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 3.5,
-        "site": "https://vouchwise.in/out/buy-spencers_retail-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "spencers_retail_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": null,
@@ -22366,10 +24356,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "spencers_retail_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "spencers_retail_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 4,
-        "site": "https://vouchwise.in/out/buy-spencers_retail-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-spencers_retail-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "spencers_retail_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-spencers_retail-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22430,16 +24428,24 @@ export const masterBrands = [
       {
         "compositeId": "ssunsu_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 5,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-ssunsu-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "ssunsu_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "ssunsu_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-ssunsu-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-ssunsu-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "ssunsu_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-ssunsu-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22459,10 +24465,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "star_bazaar_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "star_bazaar_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-star_bazaar-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-star_bazaar-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -22522,10 +24528,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "starbucks_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "starbucks_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 6,
-        "site": "https://vouchwise.in/out/buy-starbucks-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-starbucks-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22534,6 +24540,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-starbucks-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "starbucks_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-starbucks-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22579,25 +24593,34 @@ export const masterBrands = [
     ]
   },
   {
-    "id": "steam",
-    "name": "Steam",
-    "category_name": "Entertainment & OTT",
-    "portals": [
-      {
-        "compositeId": "steam_gyftr",
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 1.5,
-        "site": "https://vouchwise.in/out/buy-steam-gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      }
-    ]
-  },
-  {
     "id": "steam_wallet",
     "name": "Steam Wallet",
     "category_name": "Entertainment & OTT",
     "portals": [
+      {
+        "compositeId": "steam_wallet_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 1.5,
+        "site": "https://vouchwise.in/out/buy-steam_wallet-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "steam_wallet_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-steam_wallet-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "steam_wallet_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2.25,
+        "site": "https://vouchwise.in/out/buy-steam_wallet-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "steam_wallet_amazon",
         "portalId": "amazon",
@@ -22615,18 +24638,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "steam_wallet_gyftr",
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 1.5,
-        "site": "https://vouchwise.in/out/buy-steam_wallet-gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "steam_wallet_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "steam_wallet_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-steam_wallet-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-steam_wallet-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -22785,10 +24800,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "steve_maddenluxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "steve_maddenluxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-steve_maddenluxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-steve_maddenluxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22887,10 +24902,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "style_baazar_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "style_baazar_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 5,
-        "site": "https://vouchwise.in/out/buy-style_baazar-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-style_baazar-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "style_baazar_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-style_baazar-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22966,10 +24989,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "subway_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "subway_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9.5,
-        "site": "https://vouchwise.in/out/buy-subway-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-subway-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -22978,6 +25001,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-subway-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "subway_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-subway-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -23019,6 +25050,14 @@ export const masterBrands = [
     "name": "Sunglass Hut-Luxe",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "sunglass_hut_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-sunglass_hut_luxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "sunglass_hut_luxe_amex_shopwise",
         "portalId": "amex_shopwise",
@@ -23067,42 +25106,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "sunscoop_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 22.5,
-        "site": "https://vouchwise.in/out/buy-sunscoop-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "sunscoop_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 15,
-        "site": "https://vouchwise.in/out/buy-sunscoop-hdfc_smartbuy",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "sunscoop_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
-        "upfrontDiscountPercent": 22,
-        "site": "https://vouchwise.in/out/buy-sunscoop-hsbc_gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "sunscoop_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-sunscoop-icici_ishop",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "sunscoop_sbi_gyftr",
-        "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-sunscoop-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -23206,6 +25213,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-superdry_sport_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "superdry_sport_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-superdry_sport_luxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -23255,10 +25270,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "superdry_luxe_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "superdry_luxe_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-superdry_luxe-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-superdry_luxe-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -23283,6 +25298,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-superdry_luxe-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "superdry_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-superdry_luxe-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -23333,10 +25356,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "surat_diamonds_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "surat_diamonds_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-surat_diamonds-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-surat_diamonds-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "surat_diamonds_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 13,
+        "site": "https://vouchwise.in/out/buy-surat_diamonds-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -23429,6 +25460,21 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "swan",
+    "name": "Swan",
+    "category_name": "Miscellaneous",
+    "portals": [
+      {
+        "compositeId": "swan_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-swan-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "swathi_hospitality",
     "name": "Swathi Hospitality",
     "category_name": "Health & Wellness",
@@ -23481,10 +25527,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "sweet_bengal_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "sweet_bengal_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-sweet_bengal-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-sweet_bengal-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -23493,6 +25539,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-sweet_bengal-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "sweet_bengal_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-sweet_bengal-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -23552,10 +25606,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "sweet_truth_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "sweet_truth_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-sweet_truth-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-sweet_truth-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "sweet_truth_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-sweet_truth-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -23653,10 +25715,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "swiggy_money_voucher_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "swiggy_money_voucher_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 3,
-        "site": "https://vouchwise.in/out/buy-swiggy_money_voucher-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-swiggy_money_voucher-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -23665,6 +25727,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-swiggy_money_voucher-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "swiggy_money_voucher_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1.5,
+        "site": "https://vouchwise.in/out/buy-swiggy_money_voucher-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -23883,10 +25953,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "taj_experiences_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "taj_experiences_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-taj_experiences-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-taj_experiences-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "taj_experiences_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-taj_experiences-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -23937,14 +26015,6 @@ export const masterBrands = [
     "category_name": "Travel & Leisure",
     "portals": [
       {
-        "compositeId": "taj_hotels_j_wellness_circle_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-taj_hotels_j_wellness_circle-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "taj_hotels_j_wellness_circle_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 7,
@@ -23961,10 +26031,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "taj_hotels_j_wellness_circle_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "taj_hotels_j_wellness_circle_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-taj_hotels_j_wellness_circle-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-taj_hotels_j_wellness_circle-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "taj_hotels_j_wellness_circle_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-taj_hotels_j_wellness_circle-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24100,6 +26178,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "taneira_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-taneira-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "taneira_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 6.01,
@@ -24185,10 +26271,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "tanishq_gold_coin_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "tanishq_gold_coin_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-tanishq_gold_coin-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-tanishq_gold_coin-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24240,10 +26326,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "tanishq_gold_jewellery_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "tanishq_gold_jewellery_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 1,
-        "site": "https://vouchwise.in/out/buy-tanishq_gold_jewellery-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-tanishq_gold_jewellery-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24332,10 +26418,26 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "tasva_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "tasva_hdfc_smartbuy",
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": null,
+        "site": "https://vouchwise.in/out/buy-tasva-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "tasva_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 6,
-        "site": "https://vouchwise.in/out/buy-tasva-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-tasva-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "tasva_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-tasva-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24395,10 +26497,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "tata_cliq_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "tata_cliq_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 6,
-        "site": "https://vouchwise.in/out/buy-tata_cliq-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-tata_cliq-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24407,6 +26509,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tata_cliq-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "tata_cliq_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-tata_cliq-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24513,6 +26623,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "tata_cliq_luxury_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-tata_cliq_luxury-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "tata_cliq_luxury_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 6.51,
@@ -24560,10 +26678,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "tattva_spa_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "tattva_spa_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-tattva_spa-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-tattva_spa-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "tattva_spa_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 14,
+        "site": "https://vouchwise.in/out/buy-tattva_spa-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24653,10 +26779,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "tego_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "tego_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 16,
-        "site": "https://vouchwise.in/out/buy-tego-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-tego-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24665,6 +26791,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tego-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "tego_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 16,
+        "site": "https://vouchwise.in/out/buy-tego-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24716,10 +26850,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "tgif_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "tgif_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-tgif-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-tgif-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24728,6 +26862,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-tgif-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "tgif_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-tgif-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24802,10 +26944,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "the_body_shop_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "the_body_shop_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 4,
-        "site": "https://vouchwise.in/out/buy-the_body_shop-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-the_body_shop-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24814,6 +26956,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-the_body_shop-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "the_body_shop_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 2,
+        "site": "https://vouchwise.in/out/buy-the_body_shop-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24904,10 +27054,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "the_good_bowl_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "the_good_bowl_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-the_good_bowl-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-the_good_bowl-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "the_good_bowl_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-the_good_bowl-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -24998,10 +27156,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "the_man_company_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "the_man_company_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-the_man_company-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-the_man_company-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "the_man_company_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-the_man_company-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25084,10 +27250,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "the_raymond_shop_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
-        "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-the_raymond_shop-hsbc_gyftr",
+        "compositeId": "the_raymond_shop_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-the_raymond_shop-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25096,6 +27262,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-the_raymond_shop-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "the_raymond_shop_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-the_raymond_shop-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25138,10 +27312,10 @@ export const masterBrands = [
     "category_name": "Fashion & Accessories",
     "portals": [
       {
-        "compositeId": "the_skin_story_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "the_skin_story_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-the_skin_story-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-the_skin_story-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -25153,10 +27327,10 @@ export const masterBrands = [
     "category_name": "Electronics",
     "portals": [
       {
-        "compositeId": "the_sleep_company_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "the_sleep_company_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-the_sleep_company-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-the_sleep_company-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -25293,10 +27467,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "tim_hortons_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "tim_hortons_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 6,
-        "site": "https://vouchwise.in/out/buy-tim_hortons-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-tim_hortons-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "tim_hortons_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-tim_hortons-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25348,10 +27530,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "timezone_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "timezone_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://vouchwise.in/out/buy-timezone-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-timezone-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25360,6 +27542,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-timezone-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "timezone_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 15,
+        "site": "https://vouchwise.in/out/buy-timezone-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25403,10 +27593,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "tinder_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "tinder_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 6,
-        "site": "https://vouchwise.in/out/buy-tinder-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-tinder-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "tinder_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-tinder-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25497,10 +27695,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "titan_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "titan_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-titan-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-titan-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25509,6 +27707,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-titan-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "titan_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-titan-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25576,6 +27782,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "titan_eye_plus_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-titan_eye_plus-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "titan_eye_plus_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 4.51,
@@ -25615,10 +27829,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "titan_minimals_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "titan_minimals_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-titan_minimals-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-titan_minimals-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "titan_minimals_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-titan_minimals-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -25670,10 +27892,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "titan_smartwatches_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "titan_smartwatches_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7,
-        "site": "https://vouchwise.in/out/buy-titan_smartwatches-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-titan_smartwatches-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -25754,6 +27976,14 @@ export const masterBrands = [
     "name": "TORY BURCH-Luxe",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "tory_burch_luxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-tory_burch_luxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "tory_burch_luxe_amex_shopwise",
         "portalId": "amex_shopwise",
@@ -26054,16 +28284,16 @@ export const masterBrands = [
       {
         "compositeId": "truefitt__hill_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 15,
         "site": "https://vouchwise.in/out/buy-truefitt__hill-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "truefitt__hill_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "truefitt__hill_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-truefitt__hill-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-truefitt__hill-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26072,6 +28302,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-truefitt__hill-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "truefitt__hill_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 20,
+        "site": "https://vouchwise.in/out/buy-truefitt__hill-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26153,6 +28391,14 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-tumiluxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
+      },
+      {
+        "compositeId": "tumiluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-tumiluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
       }
     ]
   },
@@ -26194,10 +28440,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "typsy_beauty_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "typsy_beauty_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 22,
-        "site": "https://vouchwise.in/out/buy-typsy_beauty-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-typsy_beauty-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "typsy_beauty_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 18,
+        "site": "https://vouchwise.in/out/buy-typsy_beauty-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26265,10 +28519,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "uber_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "uber_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 1,
-        "site": "https://vouchwise.in/out/buy-uber-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-uber-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26277,6 +28531,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-uber-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "uber_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-uber-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26335,10 +28597,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "unipin_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "unipin_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-unipin-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-unipin-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26366,6 +28628,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "unipin_bgmi_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 2.5,
+        "site": "https://vouchwise.in/out/buy-unipin_bgmi-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "unipin_bgmi_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 5.5,
@@ -26382,10 +28652,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "unipin_bgmi_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "unipin_bgmi_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-unipin_bgmi-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-unipin_bgmi-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26538,6 +28808,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "urban_space_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-urban_space-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "urban_space_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 5.76,
@@ -26600,10 +28878,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "v_mart_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "v_mart_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-v_mart-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-v_mart-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "v_mart_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-v_mart-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26661,6 +28947,14 @@ export const masterBrands = [
     "category_name": "Fashion & Accessories",
     "portals": [
       {
+        "compositeId": "valentinoluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-valentinoluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "valentinoluxe_amex_shopwise",
         "portalId": "amex_shopwise",
         "upfrontDiscountPercent": 8,
@@ -26703,10 +28997,33 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "valorant",
+    "name": "Valorant",
+    "category_name": "Electronics",
+    "portals": [
+      {
+        "compositeId": "valorant_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-valorant-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "valorant_points",
     "name": "Valorant Points",
     "category_name": "Electronics",
     "portals": [
+      {
+        "compositeId": "valorant_points_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 4.5,
+        "site": "https://vouchwise.in/out/buy-valorant_points-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "valorant_points_axis_edgerewards",
         "portalId": "axis_edgerewards",
@@ -26732,10 +29049,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "valorant_points_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "valorant_points_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2.5,
-        "site": "https://vouchwise.in/out/buy-valorant_points-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-valorant_points-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26827,6 +29144,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "van_heusen_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 5,
+        "site": "https://vouchwise.in/out/buy-van_heusen-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "van_heusen_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 1.01,
@@ -26864,6 +29189,14 @@ export const masterBrands = [
     "name": "VERSACE-Luxe",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "versaceluxe_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-versaceluxe-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "versaceluxe_amex_shopwise",
         "portalId": "amex_shopwise",
@@ -26952,10 +29285,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "victorias_secret_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "victorias_secret_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-victorias_secret-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-victorias_secret-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -26964,6 +29297,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-victorias_secret-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "victorias_secret_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-victorias_secret-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27023,10 +29364,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "victorias_secret_beauty_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "victorias_secret_beauty_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15.5,
-        "site": "https://vouchwise.in/out/buy-victorias_secret_beauty-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-victorias_secret_beauty-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "victorias_secret_beauty_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-victorias_secret_beauty-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27102,10 +29451,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "vijay_sales_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "vijay_sales_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 2,
-        "site": "https://vouchwise.in/out/buy-vijay_sales-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-vijay_sales-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27114,6 +29463,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-vijay_sales-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "vijay_sales_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-vijay_sales-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27130,6 +29487,21 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-vijay_sales-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
+    "id": "vinzberry",
+    "name": "Vinzberry",
+    "category_name": "Electronics",
+    "portals": [
+      {
+        "compositeId": "vinzberry_gyftr",
+        "portalId": "gyftr",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-vinzberry-gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -27194,38 +29566,6 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-vinci_botanicals-amex_shopwise",
         "availability": "available",
         "disclaimer": "You can earn up to 25000 bonus Membership Reward® points in a month"
-      },
-      {
-        "compositeId": "vinci_botanicals_axis_edgerewards",
-        "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 37.5,
-        "site": "https://vouchwise.in/out/buy-vinci_botanicals-axis_edgerewards",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "vinci_botanicals_gyftr",
-        "portalId": "gyftr",
-        "upfrontDiscountPercent": 33,
-        "site": "https://vouchwise.in/out/buy-vinci_botanicals-gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "vinci_botanicals_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 30,
-        "site": "https://vouchwise.in/out/buy-vinci_botanicals-hdfc_smartbuy",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "vinci_botanicals_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
-        "upfrontDiscountPercent": 35,
-        "site": "https://vouchwise.in/out/buy-vinci_botanicals-hsbc_gyftr",
-        "availability": "available",
-        "disclaimer": ""
       }
     ]
   },
@@ -27305,10 +29645,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "vrott_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "vrott_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 40,
-        "site": "https://vouchwise.in/out/buy-vrott-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-vrott-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27335,6 +29675,14 @@ export const masterBrands = [
     "name": "W for Women",
     "category_name": "Fashion & Accessories",
     "portals": [
+      {
+        "compositeId": "w_for_women_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-w_for_women-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "w_for_women_amazon",
         "portalId": "amazon",
@@ -27376,10 +29724,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "w_for_women_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "w_for_women_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-w_for_women-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-w_for_women-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27425,7 +29773,7 @@ export const masterBrands = [
       {
         "compositeId": "wakefit_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-wakefit-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -27493,10 +29841,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "wellbeing_nutrition_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "wellbeing_nutrition_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 13,
-        "site": "https://vouchwise.in/out/buy-wellbeing_nutrition-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-wellbeing_nutrition-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "wellbeing_nutrition_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 12,
+        "site": "https://vouchwise.in/out/buy-wellbeing_nutrition-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27564,10 +29920,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "wendys_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "wendys_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-wendys-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-wendys-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "wendys_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-wendys-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27660,7 +30024,7 @@ export const masterBrands = [
       {
         "compositeId": "westside_axis_edgerewards",
         "portalId": "axis_edgerewards",
-        "upfrontDiscountPercent": 1,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-westside-axis_edgerewards",
         "availability": "available",
         "disclaimer": ""
@@ -27668,7 +30032,7 @@ export const masterBrands = [
       {
         "compositeId": "westside_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-westside-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -27690,10 +30054,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "westside_icici_ishop",
-        "portalId": "icici_ishop",
+        "compositeId": "westside_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-westside-icici_ishop",
+        "site": "https://vouchwise.in/out/buy-westside-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27744,10 +30108,26 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "whats_up_wellness_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "whats_up_wellness_hdfc_smartbuy",
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 7.5,
+        "site": "https://vouchwise.in/out/buy-whats_up_wellness-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "whats_up_wellness_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 15,
-        "site": "https://vouchwise.in/out/buy-whats_up_wellness-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-whats_up_wellness-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "whats_up_wellness_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 14,
+        "site": "https://vouchwise.in/out/buy-whats_up_wellness-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -27799,10 +30179,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "wildcraft_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "wildcraft_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-wildcraft-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-wildcraft-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27811,6 +30191,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-wildcraft-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "wildcraft_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 6,
+        "site": "https://vouchwise.in/out/buy-wildcraft-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27870,10 +30258,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "william_penn_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "william_penn_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 5,
-        "site": "https://vouchwise.in/out/buy-william_penn-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-william_penn-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27882,6 +30270,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-william_penn-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "william_penn_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 3,
+        "site": "https://vouchwise.in/out/buy-william_penn-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27909,10 +30305,10 @@ export const masterBrands = [
     "category_name": "Fashion & Accessories",
     "portals": [
       {
-        "compositeId": "woggles_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "woggles_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-woggles-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-woggles-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27972,10 +30368,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "wonderchef_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "wonderchef_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 12,
-        "site": "https://vouchwise.in/out/buy-wonderchef-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-wonderchef-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -27984,6 +30380,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-wonderchef-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "wonderchef_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 10,
+        "site": "https://vouchwise.in/out/buy-wonderchef-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28043,10 +30447,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "woodland_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "woodland_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-woodland-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-woodland-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28055,6 +30459,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-woodland-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "woodland_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 8,
+        "site": "https://vouchwise.in/out/buy-woodland-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28088,27 +30500,20 @@ export const masterBrands = [
         "site": "https://vouchwise.in/out/buy-world_of_titan-maximize_money",
         "availability": "available",
         "disclaimer": ""
-      }
-    ]
-  },
-  {
-    "id": "world_of_titan_smartwatch",
-    "name": "World of Titan SmartWatch",
-    "category_name": "Fashion & Accessories",
-    "portals": [
+      },
       {
-        "compositeId": "world_of_titan_smartwatch_axis_grabdeals",
+        "compositeId": "world_of_titan_axis_grabdeals",
         "portalId": "axis_grabdeals",
         "upfrontDiscountPercent": 7.5,
-        "site": "https://vouchwise.in/out/buy-world_of_titan_smartwatch-axis_grabdeals",
+        "site": "https://vouchwise.in/out/buy-world_of_titan-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
       },
       {
-        "compositeId": "world_of_titan_smartwatch_maximize_money",
+        "compositeId": "world_of_titan_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 6.26,
-        "site": "https://vouchwise.in/out/buy-world_of_titan_smartwatch-maximize_money",
+        "site": "https://vouchwise.in/out/buy-world_of_titan-maximize_money",
         "availability": "available",
         "disclaimer": ""
       }
@@ -28117,7 +30522,7 @@ export const masterBrands = [
   {
     "id": "wowchicken",
     "name": "Wow!Chicken",
-    "category_name": "Electronics",
+    "category_name": "Dining & Food",
     "portals": [
       {
         "compositeId": "wowchicken_axis_edgerewards",
@@ -28144,10 +30549,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "wowchicken_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "wowchicken_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-wowchicken-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-wowchicken-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28156,6 +30561,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-wowchicken-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "wowchicken_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-wowchicken-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28199,10 +30612,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "wowchina_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "wowchina_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-wowchina-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-wowchina-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28211,6 +30624,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-wowchina-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "wowchina_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-wowchina-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28235,7 +30656,7 @@ export const masterBrands = [
   {
     "id": "wowmomo",
     "name": "Wow!Momo",
-    "category_name": "Electronics",
+    "category_name": "Dining & Food",
     "portals": [
       {
         "compositeId": "wowmomo_axis_edgerewards",
@@ -28262,10 +30683,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "wowmomo_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "wowmomo_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-wowmomo-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-wowmomo-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28274,6 +30695,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-wowmomo-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "wowmomo_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-wowmomo-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28415,10 +30844,26 @@ export const masterBrands = [
     "category_name": "Entertainment & OTT",
     "portals": [
       {
+        "compositeId": "yalla_ludo_axis_edgerewards",
+        "portalId": "axis_edgerewards",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-yalla_ludo-axis_edgerewards",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "yalla_ludo_gyftr",
         "portalId": "gyftr",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-yalla_ludo-gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "yalla_ludo_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-yalla_ludo-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28472,7 +30917,7 @@ export const masterBrands = [
       {
         "compositeId": "yatra_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 70,
+        "upfrontDiscountPercent": 50,
         "site": "https://vouchwise.in/out/buy-yatra-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -28496,8 +30941,16 @@ export const masterBrands = [
       {
         "compositeId": "yatra_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 7,
+        "upfrontDiscountPercent": 11,
         "site": "https://vouchwise.in/out/buy-yatra-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "yatra_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 7,
+        "site": "https://vouchwise.in/out/buy-yatra-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -28593,10 +31046,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "yatra_hotel_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "yatra_hotel_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 13,
-        "site": "https://vouchwise.in/out/buy-yatra_hotel-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-yatra_hotel-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28613,6 +31066,14 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 12,
         "site": "https://vouchwise.in/out/buy-yatra_hotel-sbi_gyftr",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "yatra_hotel_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 11,
+        "site": "https://vouchwise.in/out/buy-yatra_hotel-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -28680,6 +31141,21 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "yatra_voucher",
+    "name": "Yatra Voucher",
+    "category_name": "Travel & Leisure",
+    "portals": [
+      {
+        "compositeId": "yatra_voucher_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 90,
+        "site": "https://vouchwise.in/out/buy-yatra_voucher-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "yatracom",
     "name": "Yatra.com",
     "category_name": "Travel & Leisure",
@@ -28701,10 +31177,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "yatracom_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "yatracom_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 8,
-        "site": "https://vouchwise.in/out/buy-yatracom-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-yatracom-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       }
@@ -28818,10 +31294,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "zee5_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "zee5_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 17,
-        "site": "https://vouchwise.in/out/buy-zee5-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-zee5-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28830,6 +31306,14 @@ export const masterBrands = [
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zee5-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "zee5_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 18,
+        "site": "https://vouchwise.in/out/buy-zee5-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -28974,6 +31458,21 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "zee5_fifa_wc",
+    "name": "Zee5 FIFA WC",
+    "category_name": "Entertainment & OTT",
+    "portals": [
+      {
+        "compositeId": "zee5_fifa_wc_icici_ishop",
+        "portalId": "icici_ishop",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-zee5_fifa_wc-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "zee5_fifa_wc26",
     "name": "Zee5 FIFA WC26",
     "category_name": "Entertainment & OTT",
@@ -28996,7 +31495,7 @@ export const masterBrands = [
       {
         "compositeId": "zee5_fifa_wc26_12m_4k_annual_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zee5_fifa_wc26_12m_4k_annual-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -29011,7 +31510,7 @@ export const masterBrands = [
       {
         "compositeId": "zee5_fifa_wc26_3m_4k_quarter_axis_grabdeals",
         "portalId": "axis_grabdeals",
-        "upfrontDiscountPercent": null,
+        "upfrontDiscountPercent": 0,
         "site": "https://vouchwise.in/out/buy-zee5_fifa_wc26_3m_4k_quarter-axis_grabdeals",
         "availability": "available",
         "disclaimer": ""
@@ -29028,6 +31527,14 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": null,
         "site": "https://vouchwise.in/out/buy-zepto-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "zepto_icici_ishop",
+        "portalId": "icici_ishop",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-zepto-icici_ishop",
         "availability": "available",
         "disclaimer": ""
       },
@@ -29087,6 +31594,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "zomato_icici_ishop",
+        "portalId": "icici_ishop",
+        "upfrontDiscountPercent": 0,
+        "site": "https://vouchwise.in/out/buy-zomato-icici_ishop",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "zomato_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 0,
@@ -29103,10 +31618,10 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "zomato_icici_ishop",
-        "portalId": "icici_ishop",
-        "upfrontDiscountPercent": 0,
-        "site": "https://vouchwise.in/out/buy-zomato-icici_ishop",
+        "compositeId": "zomato_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 1,
+        "site": "https://vouchwise.in/out/buy-zomato-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       }
@@ -29150,10 +31665,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "zoomcar_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "zoomcar_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 9,
-        "site": "https://vouchwise.in/out/buy-zoomcar-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-zoomcar-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "zoomcar_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-zoomcar-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -29205,10 +31728,18 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "zouk_hsbc_gyftr",
-        "portalId": "hsbc_gyftr",
+        "compositeId": "zouk_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 10,
-        "site": "https://vouchwise.in/out/buy-zouk-hsbc_gyftr",
+        "site": "https://vouchwise.in/out/buy-zouk-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "zouk_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 9,
+        "site": "https://vouchwise.in/out/buy-zouk-indusind_instavouchers",
         "availability": "available",
         "disclaimer": ""
       },
@@ -29236,6 +31767,64 @@ export const masterBrands = [
 // <<CARDS_START>>
 export const masterCards = [
   {
+    "id": "amex_gold",
+    "name": "Amex Gold",
+    "rewardType": "points",
+    "pointValue": "0.33",
+    "spendBlock": "50",
+    "pointsPerBlock": "1",
+    "mult_amex_shopwise": "5",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "5",
+      "icici_ishop": "0",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-gold",
+    "applyStatus": "closed",
+    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption.",
+    "direct_reward_note": ""
+  },
+  {
+    "id": "amex_mrcc",
+    "name": "Amex MRCC",
+    "rewardType": "points",
+    "pointValue": "0.33",
+    "spendBlock": "50",
+    "pointsPerBlock": "1",
+    "mult_amex_shopwise": "2",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "2",
+      "icici_ishop": "0",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
+    "applyStatus": "closed",
+    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption.",
+    "direct_reward_note": ""
+  },
+  {
     "id": "amex_platinum_reserve",
     "name": "Amex Platinum Reserve",
     "rewardType": "points",
@@ -29244,7 +31833,7 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "3",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29256,7 +31845,7 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-platinum-reserve",
@@ -29273,7 +31862,7 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "3",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29285,128 +31874,12 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-platinum-travel",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 MR Point = ₹0.33; optimal value unlocked at milestone spends.",
-    "direct_reward_note": ""
-  },
-  {
-    "id": "amex_mrcc",
-    "name": "Amex MRCC",
-    "rewardType": "points",
-    "pointValue": "0.33",
-    "spendBlock": "50",
-    "pointsPerBlock": "1",
-    "mult_amex_shopwise": "2",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "2",
-      "icici_ishop": "0",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
-    "applyStatus": "closed",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption.",
-    "direct_reward_note": ""
-  },
-  {
-    "id": "amex_gold",
-    "name": "Amex Gold",
-    "rewardType": "points",
-    "pointValue": "0.33",
-    "spendBlock": "50",
-    "pointsPerBlock": "1",
-    "mult_amex_shopwise": "5",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "5",
-      "icici_ishop": "0",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-amex-gold",
-    "applyStatus": "closed",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption.",
-    "direct_reward_note": ""
-  },
-  {
-    "id": "axis_magnus_burgundy",
-    "name": "Axis Magnus Burgundy",
-    "rewardType": "points",
-    "pointValue": "0.8",
-    "spendBlock": "200",
-    "pointsPerBlock": "12",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "0",
-      "icici_ishop": "0",
-      "axis_edgerewards": "1",
-      "axis_grabdeals": "1",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
-    "applyStatus": "referral",
-    "assumption_note": "Assuming 5 Edge Rewards = 4 Air Miles = ₹4.00 (₹0.80 per point).",
-    "direct_reward_note": ""
-  },
-  {
-    "id": "axis_magnus",
-    "name": "Axis Magnus",
-    "rewardType": "points",
-    "pointValue": "0.4",
-    "spendBlock": "200",
-    "pointsPerBlock": "12",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "0",
-      "icici_ishop": "0",
-      "axis_edgerewards": "1",
-      "axis_grabdeals": "1",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-axis-magnus",
-    "applyStatus": "referral",
-    "assumption_note": "Assuming 5 Edge Rewards = 2 Air Miles = ₹2.00 (₹0.40 per point).",
     "direct_reward_note": ""
   },
   {
@@ -29418,7 +31891,7 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29430,12 +31903,41 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-atlas",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 Edge Mile = 2 Partner Miles = ₹2.00.",
+    "direct_reward_note": ""
+  },
+  {
+    "id": "axis_flipkart",
+    "name": "Axis Flipkart",
+    "rewardType": "cashback",
+    "pointValue": "1",
+    "spendBlock": "100",
+    "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "1",
+      "axis_grabdeals": "1",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-flipkart",
+    "applyStatus": "direct",
+    "assumption_note": "",
     "direct_reward_note": ""
   },
   {
@@ -29447,7 +31949,7 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29459,7 +31961,7 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-horizon",
@@ -29468,33 +31970,91 @@ export const masterCards = [
     "direct_reward_note": ""
   },
   {
-    "id": "hdfc_infinia",
-    "name": "HDFC Infinia",
+    "id": "axis_magnus",
+    "name": "Axis Magnus",
     "rewardType": "points",
-    "pointValue": "1",
-    "spendBlock": "150",
-    "pointsPerBlock": "5",
+    "pointValue": "0.4",
+    "spendBlock": "200",
+    "pointsPerBlock": "12",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
-      "hdfc_smartbuy": "5",
+      "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
+      "axis_edgerewards": "1",
+      "axis_grabdeals": "1",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
-    "applyStatus": "invite_only",
-    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via SmartBuy travel redemption.",
-    "direct_reward_note": "5x on SmartBuy capped at ₹22,500/month voucher spend (3,000 RP)"
+    "applyURL": "https://vouchwise.in/out/apply-axis-magnus",
+    "applyStatus": "referral",
+    "assumption_note": "Assuming 5 Edge Rewards = 2 Air Miles = ₹2.00 (₹0.40 per point).",
+    "direct_reward_note": ""
+  },
+  {
+    "id": "axis_magnus_burgundy",
+    "name": "Axis Magnus Burgundy",
+    "rewardType": "points",
+    "pointValue": "0.8",
+    "spendBlock": "200",
+    "pointsPerBlock": "12",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "1",
+      "axis_grabdeals": "1",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
+    "applyStatus": "referral",
+    "assumption_note": "Assuming 5 Edge Rewards = 4 Air Miles = ₹4.00 (₹0.80 per point).",
+    "direct_reward_note": ""
+  },
+  {
+    "id": "axis_myzone",
+    "name": "Axis MYZONE",
+    "rewardType": "points",
+    "pointValue": "0.2",
+    "spendBlock": "100",
+    "pointsPerBlock": "4",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "1",
+      "axis_grabdeals": "1",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-axis-myzone",
+    "applyStatus": "direct",
+    "assumption_note": "",
+    "direct_reward_note": ""
   },
   {
     "id": "hdfc_dbm",
@@ -29505,7 +32065,7 @@ export const masterCards = [
     "pointsPerBlock": "5",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "3",
@@ -29517,7 +32077,7 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-dbm",
@@ -29526,15 +32086,15 @@ export const masterCards = [
     "direct_reward_note": "5x on SmartBuy capped at ₹45,000/month voucher spend (3,000 RP)"
   },
   {
-    "id": "hdfc_regalia_gold",
-    "name": "HDFC Regalia Gold",
+    "id": "hdfc_infinia",
+    "name": "HDFC Infinia",
     "rewardType": "points",
-    "pointValue": "0.5",
-    "spendBlock": "200",
+    "pointValue": "1",
+    "spendBlock": "150",
     "pointsPerBlock": "5",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
@@ -29546,7 +32106,65 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
+    "applyStatus": "invite_only",
+    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via SmartBuy travel redemption.",
+    "direct_reward_note": "5x on SmartBuy capped at ₹22,500/month voucher spend (3,000 RP)"
+  },
+  {
+    "id": "hdfc_millennia",
+    "name": "HDFC Millennia",
+    "rewardType": "cashback",
+    "pointValue": "1",
+    "spendBlock": "100",
+    "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "5",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "5",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-millennia",
+    "applyStatus": "direct",
+    "assumption_note": "5% CashPoints on SmartBuy & Amazon (named partners); 1% elsewhere. Cap: ₹1,000/month on 5% categories.",
+    "direct_reward_note": "Earns 5% CashPoints directly on Amazon, Flipkart, Myntra, Swiggy, Zomato, Uber, BookMyShow, SonyLiv, Tata CLiQ, Cult.fit — buying vouchers for these brands via any portal may not add incremental value. Cap: ₹1,000/month on 5% categories."
+  },
+  {
+    "id": "hdfc_regalia_gold",
+    "name": "HDFC Regalia Gold",
+    "rewardType": "points",
+    "pointValue": "0.5",
+    "spendBlock": "200",
+    "pointsPerBlock": "5",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "5",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-regalia-gold",
@@ -29560,23 +32178,23 @@ export const masterCards = [
     "rewardType": "cashback",
     "pointValue": "1",
     "spendBlock": "100",
-    "pointsPerBlock": "5",
+    "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
     "portalMultipliers": {
-      "hdfc_smartbuy": "1",
+      "hdfc_smartbuy": "5",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "0",
-      "amazon": "0",
-      "maximize_money": "0",
+      "amazon": "1",
+      "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "0"
+      "hsbc_instabenefits": "0",
+      "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-swiggy",
     "applyStatus": "direct",
@@ -29584,15 +32202,44 @@ export const masterCards = [
     "direct_reward_note": "Earns 10% cashback directly on Swiggy app orders (up to ₹1,500/month) and 5% on Amazon, Flipkart, Myntra, Nykaa (up to ₹1,500/month). Buying vouchers for these brands via a portal is likely suboptimal compared to direct spend on this card."
   },
   {
-    "id": "hsbc_premier",
-    "name": "HSBC Premier",
-    "rewardType": "points",
+    "id": "hdfc_tata_neu_infinity",
+    "name": "HDFC Tata Neu Infinity",
+    "rewardType": "cashback",
     "pointValue": "1",
     "spendBlock": "100",
-    "pointsPerBlock": "3",
+    "pointsPerBlock": "1.5",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "1",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "3.333333333",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "0",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-tata-neu-infinity",
+    "applyStatus": "direct",
+    "assumption_note": "",
+    "direct_reward_note": ""
+  },
+  {
+    "id": "hsbc_liveplus",
+    "name": "HSBC Live+",
+    "rewardType": "cashback",
+    "pointValue": "1",
+    "spendBlock": "100",
+    "pointsPerBlock": "1.5",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "1",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29604,7 +32251,36 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
+      "hsbc_instabenefits": "1",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-hsbc-liveplus",
+    "applyStatus": "direct",
+    "assumption_note": "Direct statement cashback; no valuation assumption required.",
+    "direct_reward_note": ""
+  },
+  {
+    "id": "hsbc_premier",
+    "name": "HSBC Premier",
+    "rewardType": "points",
+    "pointValue": "1",
+    "spendBlock": "100",
+    "pointsPerBlock": "3",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "1",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "1",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-premier",
@@ -29621,7 +32297,7 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "1",
+    "mult_hsbc_instabenefits": "1",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29633,41 +32309,12 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
+      "hsbc_instabenefits": "1",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-travelone",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Reward Point = 1 Air Mile = ₹1.00.",
-    "direct_reward_note": ""
-  },
-  {
-    "id": "hsbc_liveplus",
-    "name": "HSBC Live+",
-    "rewardType": "cashback",
-    "pointValue": "1",
-    "spendBlock": "100",
-    "pointsPerBlock": "1.5",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "1",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "0",
-      "icici_ishop": "0",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-hsbc-liveplus",
-    "applyStatus": "direct",
-    "assumption_note": "Direct statement cashback; no valuation assumption required.",
     "direct_reward_note": ""
   },
   {
@@ -29679,7 +32326,7 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "1",
+    "mult_hsbc_instabenefits": "1",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29691,129 +32338,13 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
+      "hsbc_instabenefits": "1",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-visaplatinum",
     "applyStatus": "direct",
     "assumption_note": "Assuming 2 Reward Point = 1 Air Mile = ₹0.50.",
     "direct_reward_note": ""
-  },
-  {
-    "id": "icici_epm",
-    "name": "ICICI Emeralde Private Metal",
-    "rewardType": "points",
-    "pointValue": "1",
-    "spendBlock": "200",
-    "pointsPerBlock": "6",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "0",
-      "icici_ishop": "6",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-icici-epm",
-    "applyStatus": "invite_only",
-    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via in-app redemption.",
-    "direct_reward_note": "6x on iShop capped at ₹120,000/month spend (18,000 RP)"
-  },
-  {
-    "id": "icici_times",
-    "name": "ICICI Times Black",
-    "rewardType": "points",
-    "pointValue": "1",
-    "spendBlock": "50",
-    "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "0",
-      "icici_ishop": "6",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-icici-times",
-    "applyStatus": "direct",
-    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via in-app redemption.",
-    "direct_reward_note": "6x on iShop capped at ₹150,000/month spend (15,000 RP)"
-  },
-  {
-    "id": "icici_emeralde",
-    "name": "ICICI Emeralde",
-    "rewardType": "points",
-    "pointValue": "0.25",
-    "spendBlock": "100",
-    "pointsPerBlock": "4",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "0",
-      "icici_ishop": "6",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-icici-emeralde",
-    "applyStatus": "direct",
-    "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
-    "direct_reward_note": "6x on iShop capped at ₹60,000/month spend (12,000 RP)"
-  },
-  {
-    "id": "icici_sapphiro",
-    "name": "ICICI Sapphiro",
-    "rewardType": "points",
-    "pointValue": "0.25",
-    "spendBlock": "100",
-    "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "0",
-      "icici_ishop": "6",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-icici-sapphiro",
-    "applyStatus": "direct",
-    "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
-    "direct_reward_note": "6x on iShop capped at ₹90,000/month spend (9,000 RP)"
   },
   {
     "id": "icici_amazon",
@@ -29824,7 +32355,7 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29836,7 +32367,7 @@ export const masterCards = [
       "amazon": "2",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-amazon",
@@ -29845,62 +32376,149 @@ export const masterCards = [
     "direct_reward_note": "Earns 5% cashback directly on Amazon.in purchases — buying an Amazon voucher via iShop adds a 4x multiplier but the net math rarely beats direct spend. Use this card directly on Amazon; reserve iShop for non-Amazon brands."
   },
   {
-    "id": "sbi_cashback",
-    "name": "SBI Cashback",
-    "rewardType": "cashback",
-    "pointValue": "1",
-    "spendBlock": "100",
-    "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "5",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "0",
-      "icici_ishop": "0",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "0",
-      "amazon": "5",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
-    "applyStatus": "direct",
-    "assumption_note": "Direct statement cashback; no valuation assumption required.",
-    "direct_reward_note": "Earns 5% cashback on all eligible online spends — not restricted to specific merchants. Buying vouchers via portals stacks on top only where the portal gives an upfront discount. For brands with 0% portal discount, direct online payment on this card gives the same 5% with less friction."
-  },
-  {
-    "id": "scapia",
-    "name": "Scapia",
+    "id": "icici_coral",
+    "name": "ICICI Coral",
     "rewardType": "points",
-    "pointValue": "0.2",
-    "spendBlock": "20",
+    "pointValue": "0.25",
+    "spendBlock": "100",
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
-      "icici_ishop": "0",
+      "icici_ishop": "6",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "1",
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-scapia",
-    "applyStatus": "referral",
-    "assumption_note": "Assuming 5 Scapia coins = ₹1.00 (₹0.20 per coin) via in-app travel booking.",
+    "applyURL": "https://vouchwise.in/out/apply-icici-coral",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
     "direct_reward_note": ""
+  },
+  {
+    "id": "icici_emeralde",
+    "name": "ICICI Emeralde",
+    "rewardType": "points",
+    "pointValue": "0.25",
+    "spendBlock": "100",
+    "pointsPerBlock": "4",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "6",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-emeralde",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
+    "direct_reward_note": "6x on iShop capped at ₹60,000/month spend (12,000 RP)"
+  },
+  {
+    "id": "icici_epm",
+    "name": "ICICI Emeralde Private Metal",
+    "rewardType": "points",
+    "pointValue": "1",
+    "spendBlock": "200",
+    "pointsPerBlock": "6",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "6",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-epm",
+    "applyStatus": "invite_only",
+    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via in-app redemption.",
+    "direct_reward_note": "6x on iShop capped at ₹120,000/month spend (18,000 RP)"
+  },
+  {
+    "id": "icici_sapphiro",
+    "name": "ICICI Sapphiro",
+    "rewardType": "points",
+    "pointValue": "0.25",
+    "spendBlock": "100",
+    "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "6",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-sapphiro",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
+    "direct_reward_note": "6x on iShop capped at ₹90,000/month spend (9,000 RP)"
+  },
+  {
+    "id": "icici_times",
+    "name": "ICICI Times Black",
+    "rewardType": "points",
+    "pointValue": "1",
+    "spendBlock": "50",
+    "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "6",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-icici-times",
+    "applyStatus": "direct",
+    "assumption_note": "Assuming 1 Reward Point = ₹1.00 via in-app redemption.",
+    "direct_reward_note": "6x on iShop capped at ₹150,000/month spend (15,000 RP)"
   },
   {
     "id": "kotak_airplus",
@@ -29911,7 +32529,7 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29923,7 +32541,7 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-kotak-airplus",
@@ -29940,7 +32558,7 @@ export const masterCards = [
     "pointsPerBlock": "3",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -29952,70 +32570,12 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-kotak-solitare",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Mile = ₹1 (Kotak Unbox) or 1:1 Air India",
-    "direct_reward_note": ""
-  },
-  {
-    "id": "hdfc_millennia",
-    "name": "HDFC Millennia",
-    "rewardType": "cashback",
-    "pointValue": "1",
-    "spendBlock": "100",
-    "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "5",
-      "amex_shopwise": "0",
-      "icici_ishop": "0",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "1",
-      "amazon": "5",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-hdfc-millennia",
-    "applyStatus": "direct",
-    "assumption_note": "5% CashPoints on SmartBuy & Amazon (named partners); 1% elsewhere. Cap: ₹1,000/month on 5% categories.",
-    "direct_reward_note": "Earns 5% CashPoints directly on Amazon, Flipkart, Myntra, Swiggy, Zomato, Uber, BookMyShow, SonyLiv, Tata CLiQ, Cult.fit — buying vouchers for these brands via any portal may not add incremental value. Cap: ₹1,000/month on 5% categories."
-  },
-  {
-    "id": "icici_coral",
-    "name": "ICICI Coral",
-    "rewardType": "points",
-    "pointValue": "0.25",
-    "spendBlock": "100",
-    "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
-    "mult_maximize_money": "1",
-    "portalMultipliers": {
-      "hdfc_smartbuy": "0",
-      "amex_shopwise": "0",
-      "icici_ishop": "6",
-      "axis_edgerewards": "0",
-      "axis_grabdeals": "0",
-      "gyftr": "1",
-      "amazon": "1",
-      "maximize_money": "1",
-      "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
-      "default": "1"
-    },
-    "applyURL": "https://vouchwise.in/out/apply-icici-coral",
-    "applyStatus": "direct",
-    "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
     "direct_reward_note": ""
   },
   {
@@ -30027,7 +32587,7 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -30039,7 +32599,7 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-onecard",
@@ -30048,15 +32608,15 @@ export const masterCards = [
     "direct_reward_note": ""
   },
   {
-    "id": "sbi_phonepe_purple",
-    "name": "SBI PhonePe Purple",
-    "rewardType": "cashback",
-    "pointValue": "1",
+    "id": "sbi_bpcl",
+    "name": "SBI BPCL",
+    "rewardType": "points",
+    "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -30064,17 +32624,46 @@ export const masterCards = [
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
-      "gyftr": "2",
-      "amazon": "2",
+      "gyftr": "0",
+      "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-purple",
+    "applyURL": "https://vouchwise.in/out/apply-sbi-bpcl",
     "applyStatus": "direct",
-    "assumption_note": "Online rate 2 RP/₹100 applied to portals. 1 RP = ₹1. Excludes fuel, rent, wallet top-ups.",
+    "assumption_note": "",
     "direct_reward_note": ""
+  },
+  {
+    "id": "sbi_cashback",
+    "name": "SBI Cashback",
+    "rewardType": "cashback",
+    "pointValue": "1",
+    "spendBlock": "100",
+    "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "0",
+      "amazon": "5",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
+    "applyStatus": "direct",
+    "assumption_note": "Direct statement cashback; no valuation assumption required.",
+    "direct_reward_note": "Earns 5% cashback on all eligible online spends — not restricted to specific merchants. Buying vouchers via portals stacks on top only where the portal gives an upfront discount. For brands with 0% portal discount, direct online payment on this card gives the same 5% with less friction."
   },
   {
     "id": "sbi_phonepe_black",
@@ -30085,7 +32674,7 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -30097,12 +32686,70 @@ export const masterCards = [
       "amazon": "5",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-black",
     "applyStatus": "direct",
     "assumption_note": "5 RP/₹100 on online spends (including Gyftr, Amazon); 1 RP = ₹1. Monthly cap: 2,000 RP per category. Excludes fuel, rent, wallet top-ups.",
+    "direct_reward_note": ""
+  },
+  {
+    "id": "sbi_phonepe_purple",
+    "name": "SBI PhonePe Purple",
+    "rewardType": "cashback",
+    "pointValue": "1",
+    "spendBlock": "100",
+    "pointsPerBlock": "1",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "2",
+      "amazon": "2",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-purple",
+    "applyStatus": "direct",
+    "assumption_note": "Online rate 2 RP/₹100 applied to portals. 1 RP = ₹1. Excludes fuel, rent, wallet top-ups.",
+    "direct_reward_note": ""
+  },
+  {
+    "id": "scapia",
+    "name": "Scapia",
+    "rewardType": "points",
+    "pointValue": "0.2",
+    "spendBlock": "20",
+    "pointsPerBlock": "2",
+    "mult_amex_shopwise": "0",
+    "mult_sbi_gyftr": "0",
+    "mult_hsbc_instabenefits": "0",
+    "mult_maximize_money": "1",
+    "portalMultipliers": {
+      "hdfc_smartbuy": "0",
+      "amex_shopwise": "0",
+      "icici_ishop": "0",
+      "axis_edgerewards": "0",
+      "axis_grabdeals": "0",
+      "gyftr": "1",
+      "amazon": "1",
+      "maximize_money": "1",
+      "sbi_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "default": "1"
+    },
+    "applyURL": "https://vouchwise.in/out/apply-scapia",
+    "applyStatus": "referral",
+    "assumption_note": "Assuming 5 Scapia coins = ₹1.00 (₹0.20 per coin) via in-app travel booking.",
     "direct_reward_note": ""
   }
 ];
