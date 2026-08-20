@@ -10,9 +10,11 @@
 export const cardProfiles = [
   {
     id: 'icici_times_black',
+    slug: 'icici-times-black',
     name: 'Times Black ICICI Bank Credit Card',
     issuer: 'ICICI Bank',
     bucket: 'high-tier',
+    eligibility_notes: 'Salaried: ₹2,00,000/month income. Self-employed: ₹24,00,000/year. Genuinely high bar, not a soft one — this isn\'t the kind of card an RM typically bends much on, since it\'s tied to underwriting income bands rather than a relationship/balance threshold.',
     tags: ['travel', 'lifestyle', 'lounge-access', 'shopping'],
     joining_fee: 23600,
     annual_fee: 23600,
@@ -29,9 +31,11 @@ export const cardProfiles = [
   },
   {
     id: 'hsbc_premier',
+    slug: 'hsbc-premier',
     name: 'HSBC Premier Credit Card',
     issuer: 'HSBC',
     bucket: 'premier-gated',
+    eligibility_notes: 'Requires an existing HSBC Premier banking relationship: ₹50L+ average quarterly balance, OR ₹3L+/month salary credit, OR a ₹1.15cr+ mortgage with HSBC. This is a relationship-tier gate, not a hard product-level lock — an RM can sometimes help structure balances/salary routing to qualify, which is common practice for relationship-banking products generally. State the condition; the workaround path is the reader\'s call, not something to imply is guaranteed.',
     tags: ['travel', 'lounge-access', 'forex'],
     joining_fee: 14160,
     annual_fee: 0,                       // always waived for qualifying Premier customers — see notes
@@ -50,9 +54,11 @@ export const cardProfiles = [
   },
   {
     id: 'federal_scapia',
+    slug: 'federal-scapia',
     name: 'Scapia Federal Credit Card',
     issuer: 'Federal Bank (co-brand: Scapia)',
     bucket: 'entry',
+    eligibility_notes: 'No published income/eligibility threshold found in any source gathered so far — appears to be a genuinely open, low-bar application (consistent with its lifetime-free positioning). Worth confirming directly if this matters for the comparison, since "no stated criteria" and "confirmed no criteria" aren\'t the same claim.',
     tags: ['travel', 'forex', 'lounge-access', 'shopping'],
     joining_fee: 0,
     annual_fee: 0,
@@ -84,9 +90,11 @@ export const cardProfiles = [
   },
   {
     id: 'au_ixigo',
+    slug: 'au-ixigo',
     name: 'ixigo AU Bank Credit Card',
     issuer: 'AU Small Finance Bank (co-brand: ixigo)',
     bucket: 'entry',
+    eligibility_notes: 'No published income/eligibility threshold found in any source gathered so far. Same caveat as Scapia — absence of a stated criterion isn\'t confirmation there is none, just that we haven\'t found it yet.',
     tags: ['travel', 'forex', 'lounge-access'],
     joining_fee: 0,
     annual_fee: 0,
@@ -103,9 +111,11 @@ export const cardProfiles = [
   },
   {
     id: 'hdfc_millennia',
+    slug: 'hdfc-millennia',
     name: 'HDFC Millennia Credit Card',
     issuer: 'HDFC Bank',
     bucket: 'entry',
+    eligibility_notes: 'No published income/age threshold sourced yet for this specific card — HDFC\'s general credit card eligibility criteria likely apply (typically salaried/self-employed income bands set per-application, not published per-card), but that hasn\'t been confirmed against an actual HDFC eligibility page for Millennia specifically.',
     tags: ['cashback', 'shopping'],
     joining_fee: 1000,
     annual_fee: 1000,
@@ -123,9 +133,11 @@ export const cardProfiles = [
   },
   {
     id: 'hdfc_regalia_gold',
+    slug: 'hdfc-regalia-gold',
     name: 'HDFC Regalia Gold Credit Card',
     issuer: 'HDFC Bank',
     bucket: 'mid-tier',
+    eligibility_notes: 'No published income/age threshold sourced yet for this specific card — same gap as Millennia. Given the fee tier and lounge/travel benefits, likely has a meaningfully higher income bar than Millennia in practice, but that\'s an inference, not a sourced fact — don\'t publish a number without confirming it.',
     tags: ['travel', 'lounge-access', 'lifestyle'],
     joining_fee: 2500,
     annual_fee: 2500,
@@ -151,9 +163,11 @@ export const cardProfiles = [
   },
   {
     id: 'hdfc_swiggy',
+    slug: 'hdfc-swiggy',
     name: 'Swiggy HDFC Bank Credit Card',
     issuer: 'HDFC Bank (co-brand: Swiggy)',
     bucket: 'entry',
+    eligibility_notes: 'No published income/age threshold sourced yet — same gap as the other entry-tier HDFC cards in this dataset.',
     tags: ['cashback', 'dining'],
     joining_fee: 500,
     annual_fee: 500,
@@ -170,9 +184,11 @@ export const cardProfiles = [
   },
   {
     id: 'hdfc_infinia_metal',
+    slug: 'hdfc-infinia',
     name: 'HDFC Infinia Credit Card (Metal Edition)',
     issuer: 'HDFC Bank',
     bucket: 'premier-gated',
+    eligibility_notes: '"By Invite Only" — no published income or spend threshold at all, unlike HSBC Premier which at least states a criterion. In practice, relationship managers can sometimes facilitate an invite for high-value existing HDFC customers, but there\'s no public path to apply for or work toward — state this plainly rather than implying it\'s reachable through a stated number.',
     tags: ['travel', 'lounge-access', 'lifestyle', 'forex', 'dining'],
     joining_fee: 12500,
     annual_fee: 12500,
@@ -187,6 +203,28 @@ export const cardProfiles = [
     source_url: 'https://www.hdfc.bank.in/credit-cards/infinia-credit-card',
     last_verified: '2026-08-15',
     notes: 'Invite-only card — "By Invite Only" stated directly on the page, meaning this isn\'t even an open-application premier-gated card the way HSBC Premier is (which at least has stated eligibility criteria you could work toward) — Infinia is discretionary invitation, no published path to qualify. Forex markup: 2% CONFIRMED, explicitly stated as "lowest markup fee." Fuel surcharge waiver: 1%, unusually wide ₹400–₹1,00,000 range (other cards cap around ₹5,000) — CONFIRMED. POSITIVE DIFFERENTIATOR, explicitly confirmed: insurance, utilities, and education ALL earn the full base rate normally — Infinia does NOT apply the exclusions/caps/reduced-rates seen on Times Black, Millennia, ixigo AU, or Scapia for these categories. This is a genuine standout worth surfacing in any comparison. Cross-referenced against the general master MITC (already on file) for Infinia-specific rules not repeated on this page: reward point validity 3 years (not the standard 2); FUP cap 2,00,000 points/statement cycle (highest of any card in the dataset); insurance-specific monthly cap 10,000 points (higher than the 2,000 general-card cap, consistent with "earns normally" claim above); flight/hotel redemption cap 1,50,000 points/month; up to 70% of booking value redeemable via points; Infinia is EXCLUDED from both the ₹99 points-redemption fee and ₹50 cashback-redemption fee that apply to nearly every other card in this dataset — a real, confirmed cost advantage. Tanishq voucher redemption capped 50,000 points/quarter; Apple product redemption capped to 1 unit/quarter — both Infinia-specific caps from the general MITC.'
+  },
+  {
+    id: 'hsbc_visa_platinum',
+    slug: 'hsbc-visa-platinum',
+    name: 'HSBC Visa Platinum Credit Card',
+    issuer: 'HSBC',
+    bucket: 'entry',
+    eligibility_notes: 'Age 18-65 (salaried) or 25-65 (self-employed). Income: ₹6L/year salaried or ₹12L/year self-employed. Must be an Indian resident in one of 20 named cities. The city check is address-on-file, not necessarily where someone actually lives day-to-day — worth noting factually rather than as encouragement, since that\'s the kind of detail readers already know to work with via office addresses etc.',
+    tags: ['travel', 'fuel', 'dining', 'shopping'],
+    joining_fee: 0,
+    annual_fee: 0,
+    waiver_spend_threshold: null,
+    waiver_condition: 'Always ₹0 — no joining or annual fee at all, no spend threshold needed. Genuinely fee-free, not a promotional waiver like ixigo AU\'s.',
+    base_reward_multiplier: 1.33,        // 2 points per ₹150 spent = 1.33 points per ₹100, normalized to match this schema's convention
+    base_point_value_inr: null,          // GENUINE GAP: same pattern as HSBC Premier — no rupee value per point is stated anywhere on this page
+    base_is_estimate: 1,
+    accelerated_category_rate: null,     // "up to 6X on Travel with Points (hotels/flights/car rentals)" — vague multiplier again, same open gap as the Premier card's version of this feature
+    fees_mitc_url: null,                 // no MITC found/sourced yet for this specific card
+    rewards_mitc_url: null,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/platinum/', // inferred standard HSBC URL pattern, not directly confirmed — verify before publishing
+    last_verified: '2026-08-15',
+    notes: 'Open-market card, unlike HSBC Premier — but NOT unrestricted: eligibility requires being an Indian resident specifically in one of 20 named cities (Chennai, Gurgaon, Delhi NCR, Pune, Noida, Hyderabad, Mumbai, Bengaluru, Kochi, Coimbatore, Jaipur, Chandigarh, Ahmedabad, Kolkata, Amritsar, Baroda, Indore, Lucknow, Nagpur, Surat, Trivandrum) — most cards in this dataset have no such geographic restriction, worth its own taxonomy consideration (income/relationship gating vs geographic gating are different kinds of "can I even get this card"). Income requirement: ₹6L/year salaried (age 18-65) or ₹12L/year self-employed (age 25-65) — much lower bar than HSBC Premier or Times Black. Forex markup: NOT stated on this page, genuine gap — HSBC Premier\'s own page had this conflict issue (0.99% vs 1.99%), so don\'t assume Platinum shares either number without checking its own MITC once found. Air miles conversion: direct partnerships with Air India, Etihad Airways, British Airways, and Singapore Airlines specifically named — narrower airline list than a typical points marketplace, worth noting as a real constraint on travel redemption value.'
   }
 ];
 
@@ -627,6 +665,83 @@ export const exclusions = [
 // Long-format, one row per recurring offer — matches cardOffers.csv shape.
 export const offers = [
   {
+    card_id: 'hsbc_visa_platinum',
+    offer_type: 'other',
+    condition_type: 'with_spend',
+    spend_threshold: 5000,
+    frequency: 'per_booking',
+    cap_count: 1,
+    value_description: 'Welcome offer 1: 2,000 reward points for downloading + logging into the HSBC India Mobile Banking app and spending ₹5,000 within the first 30 days of having the card',
+    estimated_value_inr: null,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/platinum/'
+  },
+  {
+    card_id: 'hsbc_visa_platinum',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'per_booking',
+    cap_count: 1,
+    value_description: 'Welcome offer 2: complimentary 3-month Swiggy One membership on card activation',
+    estimated_value_inr: null,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/platinum/'
+  },
+  {
+    card_id: 'hsbc_visa_platinum',
+    offer_type: 'other',
+    condition_type: 'with_spend',
+    spend_threshold: 300,
+    frequency: 'per_booking',
+    cap_count: 1,
+    value_description: 'Welcome offer 3: voucher worth up to ₹500 (Amazon Pay / Zomato / Swiggy) on activating the card with a single transaction of ₹300 or more',
+    estimated_value_inr: 500,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/platinum/'
+  },
+  {
+    card_id: 'hsbc_visa_platinum',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'per_booking',
+    cap_count: 1,
+    value_description: 'Welcome offer 4: ₹250 Amazon eGift Card for applying online and completing Video KYC',
+    estimated_value_inr: 250,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/platinum/'
+  },
+  {
+    card_id: 'hsbc_visa_platinum',
+    offer_type: 'other',
+    condition_type: 'with_spend',
+    spend_threshold: 10000,
+    frequency: 'quarterly',
+    cap_count: null,
+    value_description: '₹250 cashback on contactless (tap-and-pay) fuel purchases when spending ₹10,000/quarter on fuel, PLUS a separate fuel surcharge waiver up to ₹250/month on transactions between ₹400 and ₹4,000 — two distinct fuel benefits stacked, not one',
+    estimated_value_inr: 250,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/platinum/'
+  },
+  {
+    card_id: 'hsbc_visa_platinum',
+    offer_type: 'dining',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'monthly',
+    cap_count: null,
+    value_description: 'District by Zomato: 10% off dining, activities, and shopping; buy-one-get-one cinema tickets',
+    estimated_value_inr: null,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/platinum/'
+  },
+  {
+    card_id: 'hsbc_visa_platinum',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'yearly',
+    cap_count: null,
+    value_description: 'Visa Signature perks: complimentary 12-month Times Prime subscription (bundles Spotify Premium, Uber One, Discovery+, Moneycontrol Pro, Lenskart Gold); 2x/year complimentary flight seat selection on domestic MakeMyTrip bookings; 15% cashback to MakeMyTrip Wallet for India hotel stays booked with promo code VISASIGNATURE',
+    estimated_value_inr: null,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/platinum/'
+  },
+  {
     card_id: 'hdfc_infinia_metal',
     offer_type: 'other',
     condition_type: 'flat',
@@ -859,6 +974,39 @@ export const offers = [
     source_url: 'https://www.hsbc.co.in/credit-cards/products/premier/'
   },
   {
+    card_id: 'hsbc_premier',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'per_booking',
+    cap_count: 1,
+    value_description: 'Welcome benefit: 20,000 reward points on card issuance',
+    estimated_value_inr: 5000, // 20,000 pts x ₹0.25 (conservative point-value floor already used elsewhere for this card, not the ₹1.00 Apple ceiling)
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/premier/'
+  },
+  {
+    card_id: 'hsbc_premier',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'monthly',
+    cap_count: null,
+    value_description: 'Travel with Points: up to 12X reward points on hotel, flight, and car rental bookings — layered on top of the 3-points/₹100 base rate, exact rupee value depends on the point-value used for this accelerated category, not yet separately priced',
+    estimated_value_inr: null,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/premier/'
+  },
+  {
+    card_id: 'hsbc_premier',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'yearly',
+    cap_count: null,
+    value_description: 'Online fraud protection, and lost-card liability cover up to ₹3,00,000',
+    estimated_value_inr: null,
+    source_url: 'https://www.hsbc.co.in/credit-cards/products/premier/'
+  },
+  {
     card_id: 'icici_times_black',
     offer_type: 'lounge',
     condition_type: 'flat',
@@ -866,6 +1014,83 @@ export const offers = [
     frequency: 'yearly',
     cap_count: null,
     value_description: 'Unlimited lounge access, 1,300+ lounges across 600+ cities, primary + add-on cardholders',
+    estimated_value_inr: null,
+    source_url: 'https://www.timesblack.com/'
+  },
+  {
+    card_id: 'icici_times_black',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'per_booking',
+    cap_count: 1,
+    value_description: 'Welcome benefit: choice of ₹12,000 Lohono voucher OR ₹10,000 EaseMyTrip voucher, plus Atlys visa fee waiver, 6 CribLife concierge requests, ₹3,000 Tony&Guy voucher, and Zomato Gold membership',
+    estimated_value_inr: 12000,
+    source_url: 'https://www.timesblack.com/'
+  },
+  {
+    card_id: 'icici_times_black',
+    offer_type: 'shopping',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'monthly',
+    cap_count: null,
+    value_description: '6X reward points on flights/shopping via iShop, 12X reward points on hotel bookings via iShop — layered on top of the 2% base rate, exact rupee value depends on the point-value used for these accelerated categories, not yet separately priced',
+    estimated_value_inr: null,
+    source_url: 'https://www.timesblack.com/'
+  },
+  {
+    card_id: 'icici_times_black',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'yearly',
+    cap_count: null,
+    value_description: '2.5% reward points on forex/international spend (higher than the 2% domestic base rate) — see cardProfile notes for the international-rate detail',
+    estimated_value_inr: null,
+    source_url: 'https://www.timesblack.com/'
+  },
+  {
+    card_id: 'icici_times_black',
+    offer_type: 'other',
+    condition_type: 'with_spend',
+    spend_threshold: null,
+    frequency: 'yearly',
+    cap_count: null,
+    value_description: 'Tiered milestone benefits at spend thresholds — gift cards, mobility perks, luxury hotel stays. Exact thresholds and values not sourced in detail yet, flagged as a real gap rather than guessed.',
+    estimated_value_inr: null,
+    source_url: 'https://www.timesblack.com/'
+  },
+  {
+    card_id: 'icici_times_black',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'yearly',
+    cap_count: null,
+    value_description: 'Travel insurance: trip cancellation cover, lost baggage cover, travel document protection',
+    estimated_value_inr: null,
+    source_url: 'https://www.timesblack.com/'
+  },
+  {
+    card_id: 'icici_times_black',
+    offer_type: 'dining',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'yearly',
+    cap_count: null,
+    value_description: 'Lifestyle perks: Encalm Privé airport lounges, Truefitt & Hill grooming session (₹3,100 value), AAYNA Privé aesthetic clinic session (₹23,000 value), The Quorum Club member events',
+    estimated_value_inr: 26100,
+    source_url: 'https://www.timesblack.com/'
+  },
+  {
+    card_id: 'icici_times_black',
+    offer_type: 'other',
+    condition_type: 'flat',
+    spend_threshold: null,
+    frequency: 'yearly',
+    cap_count: null,
+    value_description: '24x7 domestic and international concierge service for bookings and assistance',
     estimated_value_inr: null,
     source_url: 'https://www.timesblack.com/'
   }

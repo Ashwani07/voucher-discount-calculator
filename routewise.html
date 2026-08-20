@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RouteWise — Know What You're Really Paying</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased min-h-screen pb-16">
+
+    <!-- Top Header Banner -->
+    <header class="bg-white border-b border-slate-200 pt-8 pb-6 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <span class="inline-block bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-2 border border-emerald-100">
+                    Flight & Hotel Optimizer
+                </span>
+                <h1 class="text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight">RouteWise</h1>
+                <p class="text-slate-600 text-sm mt-1">Know what you're really paying — net of fees, discounts, and reward value, across every route.</p>
+            </div>
+            <!-- Live Counter Card -->
+            <div class="bg-slate-50 border border-slate-200 px-5 py-3 rounded-xl flex items-center gap-6">
+                <div>
+                    <p class="text-xs text-slate-500 font-medium">Saved Options</p>
+                    <p id="totalDealsCount" class="text-2xl font-bold text-slate-900">0</p>
+                </div>
+                <div class="border-l border-slate-200 pl-6">
+                    <p class="text-xs text-slate-500 font-medium">Top Net Rate</p>
+                    <p id="topDealRate" class="text-2xl font-bold text-emerald-600">₹0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 md:px-8 mt-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Column: Input Form (5 cols) -->
+            <div class="lg:col-span-5">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 sticky top-6">
+                    <div class="flex items-center justify-between mb-5">
+                        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span>➕</span> Add Booking Option
+                        </h2>
+                        <span class="text-xs text-slate-500">Auto-calculated</span>
+                    </div>
+
+                    <form id="dealForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Trip / Project Name</label>
+                            <input type="text" id="tripName" required placeholder="e.g., Switzerland Vacation 2026"
+                                class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                        </div>
+                        <!-- Booking Type Toggle -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wider">Booking Type</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button type="button" id="typeFlight" onclick="setBookingType('Flight')" 
+                                    class="py-2 px-3 text-xs font-bold rounded-xl border transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white border-emerald-600 shadow-sm">
+                                    <span>✈️</span> Flight
+                                </button>
+                                <button type="button" id="typeHotel" onclick="setBookingType('Hotel')" 
+                                    class="py-2 px-3 text-xs font-bold rounded-xl border transition flex items-center justify-center gap-1.5 bg-slate-50 text-slate-700 border-slate-300 hover:bg-slate-100">
+                                    <span>🏨</span> Hotel
+                                </button>
+                            </div>
+                            <input type="hidden" id="bookingCategory" value="Flight">
+                        </div>
+                        
+                        <!-- Date Fields Container -->
+                        <div id="dateFields" class="grid grid-cols-1 gap-3 pt-1">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Travel Date</label>
+                                <input type="date" id="dateStart" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                            </div>
+                        </div>
+
+                        <!-- Platform & Item Name Fields -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Booking Platform</label>
+                                <input type="text" id="sourceName" required placeholder="e.g., SmartBuy / MMT"
+                                    class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                            </div>
+                            <div>
+                                <label id="itemNameLabel" class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Flight / Hotel Name</label>
+                                <input type="text" id="itemName" required placeholder="e.g., IndiGo 6E-123"
+                                    class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                            </div>
+                        </div>
+
+                        <!-- Source & Booking URL -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Direct Checkout Link</label>
+                            <input type="url" id="bookingUrl" placeholder="https://..."
+                                class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                        </div>
+
+                        <!-- Paste & Extract Helper -->
+                        <div class="bg-sky-50 border border-sky-100 rounded-xl p-3">
+                            <button type="button" id="togglePasteBox" class="text-xs font-bold text-emerald-700 flex items-center gap-1.5 w-full">
+                                📋 Paste page text to auto-detect price
+                                <span id="pasteBoxArrow" class="ml-auto">▾</span>
+                            </button>
+                            <div id="pasteBoxBody" class="hidden mt-2 space-y-2">
+                                <textarea id="pastePriceText" rows="3" placeholder="Select and copy the price section from the booking page, then paste it here (Ctrl+V)"
+                                    class="w-full px-3 py-2 bg-white border border-sky-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                                <div class="flex items-center justify-between gap-2">
+                                    <div id="pasteResults" class="flex flex-wrap gap-1.5"></div>
+                                    <button type="button" id="autoFillBtn" class="shrink-0 text-[11px] font-bold bg-emerald-600 text-white px-3 py-1.5 rounded-full hover:bg-emerald-700 transition">
+                                        ⚡ Auto-fill all fields
+                                    </button>
+                                </div>
+                                <p id="autoFillStatus" class="text-[11px] text-emerald-700 font-medium hidden"></p>
+                                <p class="text-[11px] text-slate-500">Tap a detected amount to fill "Base Price" manually, or use Auto-fill for dates/taxes/discount too. Always double-check against the page — this only reads pasted text, it doesn't fetch anything.</p>
+                            </div>
+                        </div>
+
+                        <!-- Price & Quantity (Passengers or Nights) -->
+                        <div class="grid grid-cols-2 gap-3 pt-1">
+                            <div>
+                                <label id="rateLabel" class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Base Price / Ticket (₹)</label>
+                                <input type="number" id="baseRate" required min="0" step="any" placeholder="5500"
+                                    class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                            </div>
+                            <div>
+                                <label id="qtyLabel" class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Passengers</label>
+                                <input type="number" id="quantity" required min="1" value="1"
+                                    class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                            </div>
+                        </div>
+
+                        <!-- Taxes / Convenience Fees & Instant Discounts -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Fees / Taxes (Total ₹)</label>
+                                <input type="number" id="fees" min="0" step="any" value="0" placeholder="300"
+                                    class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Instant Discount (₹)</label>
+                                <input type="number" id="discount" min="0" step="any" value="0" placeholder="500"
+                                    class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                            </div>
+                        </div>
+                        
+                        <!-- Card Name Input Field -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Credit Card Used</label>
+                            <input type="text" id="cardName" placeholder="e.g., Axis Atlas / HDFC Regalia Gold"
+                                class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                        </div>
+
+                        <!-- Rewards / Points Section -->
+                        <div class="bg-sky-50/60 p-3.5 rounded-xl border border-sky-100 space-y-3 pt-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-semibold text-emerald-900 mb-1">Points / Cashback</label>
+                                    <input type="number" id="pointsEarned" min="0" step="any" value="0" placeholder="800"
+                                        class="w-full px-3 py-2 bg-white border border-sky-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-emerald-900 mb-1">Point Value (₹)</label>
+                                    <input type="number" id="pointValue" min="0" step="0.01" value="0.50" placeholder="0.50"
+                                        class="w-full px-3 py-2 bg-white border border-sky-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                </div>
+                            </div>
+                            <!-- Point Value Preset Buttons -->
+                            <div class="flex items-center gap-1.5 pt-1">
+                                <span class="text-[11px] text-emerald-700 font-medium mr-1">Presets:</span>
+                                <button type="button" onclick="setPointVal(0.25)" class="px-2 py-0.5 bg-white border border-sky-200 rounded text-[11px] text-slate-700 hover:bg-sky-100">₹0.25</button>
+                                <button type="button" onclick="setPointVal(0.50)" class="px-2 py-0.5 bg-white border border-sky-200 rounded text-[11px] text-slate-700 hover:bg-sky-100">₹0.50</button>
+                                <button type="button" onclick="setPointVal(1.00)" class="px-2 py-0.5 bg-white border border-sky-200 rounded text-[11px] text-slate-700 hover:bg-sky-100">₹1.00</button>
+                                <button type="button" onclick="setPointVal(1.80)" class="px-2 py-0.5 bg-white border border-sky-200 rounded text-[11px] text-slate-700 hover:bg-sky-100">₹1.80 (Accor)</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-100 p-3 rounded-xl flex justify-between items-center text-xs font-semibold text-slate-700">
+                            <span>Estimated Cash Outflow:</span>
+                            <span id="liveTotalPreview" class="text-sm font-black text-slate-900">₹0</span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" 
+                            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl shadow-sm hover:shadow transition duration-150 flex items-center justify-center gap-2">
+                            <span>Add to Comparison</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Ranked Results (7 cols) -->
+            <div class="lg:col-span-7 space-y-4">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-1">
+                    <h2 class="text-lg font-bold text-slate-900">Ranked Options (Lowest Net Cost)</h2>
+                    <div class="flex items-center gap-2">
+                        <!-- Filter Tabs -->
+                        <div class="bg-white p-1 rounded-xl border border-slate-200 flex text-xs font-semibold">
+                            <button onclick="setFilter('All')" id="filterAll" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white transition">All</button>
+                            <button onclick="setFilter('Flight')" id="filterFlight" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">Flights</button>
+                            <button onclick="setFilter('Hotel')" id="filterHotel" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">Hotels</button>
+                        </div>
+                        <button id="exportBtn" class="text-xs font-semibold text-slate-600 hover:text-slate-900 transition px-2 py-1">
+                            Export
+                        </button>
+                        <label class="text-xs font-semibold text-slate-600 hover:text-slate-900 transition px-2 py-1 cursor-pointer">
+                            Import
+                            <input type="file" id="importInput" accept="application/json" class="hidden">
+                        </label>
+                        <button id="clearAllBtn" class="text-xs font-semibold text-rose-600 hover:text-rose-800 transition px-2 py-1">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cards Container -->
+                <div id="resultsContainer" class="space-y-4">
+                    <!-- Dynamic cards will be rendered here -->
+                </div>
+
+                <div id="grandTotalSummary" class="bg-slate-900 text-white p-5 rounded-2xl flex justify-between items-center shadow-md mt-6">
+                    <div>
+                        <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Overall Itinerary Summary</p>
+                        <p id="summaryCounts" class="text-sm font-bold mt-0.5">0 items tracked</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-2xl font-black text-emerald-400" id="grandTotalAmount">₹0</p>
+                        <p class="text-[10px] text-slate-400 uppercase">Combined Net Effective</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        const STORAGE_KEY = 'UNIVERSAL_TRAVEL_PLANNER_V2';
+        let deals = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        let currentFilter = 'All';
+
+        const dealForm = document.getElementById('dealForm');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const totalDealsCount = document.getElementById('totalDealsCount');
+        const topDealRate = document.getElementById('topDealRate');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const bookingCategoryInput = document.getElementById('bookingCategory');
+        const rateLabel = document.getElementById('rateLabel');
+        const qtyLabel = document.getElementById('qtyLabel');
+
+        /**
+         * Handle toggle between Flight and Hotel types in the form
+         */
+        function setBookingType(type) {
+            bookingCategoryInput.value = type;
+            const btnFlight = document.getElementById('typeFlight');
+            const btnHotel = document.getElementById('typeHotel');
+            const dateFields = document.getElementById('dateFields');
+            const itemNameLabel = document.getElementById('itemNameLabel');
+            const itemNameInput = document.getElementById('itemName');
+
+            if (type === 'Flight') {
+                btnFlight.className = "py-2 px-3 text-xs font-bold rounded-xl border transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white border-emerald-600 shadow-sm";
+                btnHotel.className = "py-2 px-3 text-xs font-bold rounded-xl border transition flex items-center justify-center gap-1.5 bg-slate-50 text-slate-700 border-slate-300 hover:bg-slate-100";
+                rateLabel.textContent = "Base Price / Ticket (₹)";
+                qtyLabel.textContent = "Passengers";
+                itemNameLabel.textContent = "Flight Name / Number";
+                itemNameInput.placeholder = "e.g., IndiGo 6E-241";
+                dateFields.innerHTML = `
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Travel Date</label>
+                        <input type="date" id="dateStart" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                    </div>`;
+            } else {
+                btnHotel.className = "py-2 px-3 text-xs font-bold rounded-xl border transition flex items-center justify-center gap-1.5 bg-emerald-600 text-white border-emerald-600 shadow-sm";
+                btnFlight.className = "py-2 px-3 text-xs font-bold rounded-xl border transition flex items-center justify-center gap-1.5 bg-slate-50 text-slate-700 border-slate-300 hover:bg-slate-100";
+                rateLabel.textContent = "Base Rate / Night (₹)";
+                qtyLabel.textContent = "Nights";
+                itemNameLabel.textContent = "Hotel / Property Name";
+                itemNameInput.placeholder = "e.g., Marriott Suites";
+                dateFields.innerHTML = `
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Check-in</label>
+                            <input type="date" id="dateStart" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1 uppercase tracking-wider">Check-out</label>
+                            <input type="date" id="dateEnd" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition">
+                        </div>
+                    </div>`;
+            }
+        }
+
+        function setPointVal(val) {
+            document.getElementById('pointValue').value = val;
+        }
+
+        function formatUrl(url) {
+            if (!url) return null;
+            let clean = url.trim();
+            if (!/^https?:\/\//i.test(clean)) {
+                clean = 'https://' + clean;
+            }
+            return clean;
+        }
+
+        function setFilter(filter) {
+            currentFilter = filter;
+            ['All', 'Flight', 'Hotel'].forEach(f => {
+                const btn = document.getElementById(`filter${f}`);
+                if (f === filter) {
+                    btn.className = "px-3 py-1.5 rounded-lg bg-emerald-600 text-white transition";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition";
+                }
+            });
+            render();
+        }
+
+        function saveToStorage() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(deals));
+        }
+
+        let editingId = null;
+
+        // Form Submit Handler (Supports both Add and Update)
+        dealForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const tripName = document.getElementById('tripName').value.trim() || 'General Trip';
+            const category = bookingCategoryInput.value;
+            const sourceName = document.getElementById('sourceName').value.trim();
+            const itemName = document.getElementById('itemName').value.trim();
+            const cardName = document.getElementById('cardName').value.trim() || 'Standard Card'; // <-- Captured here
+            const bookingUrl = formatUrl(document.getElementById('bookingUrl').value);
+            const baseRate = parseFloat(document.getElementById('baseRate').value) || 0;
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const fees = parseFloat(document.getElementById('fees').value) || 0;
+            const discount = parseFloat(document.getElementById('discount').value) || 0;
+            const pointsEarned = parseFloat(document.getElementById('pointsEarned').value) || 0;
+            const pointValue = parseFloat(document.getElementById('pointValue').value) || 0;
+            
+            const startDate = document.getElementById('dateStart').value;
+            const endDate = category === 'Hotel' ? document.getElementById('dateEnd').value : startDate;
+
+            if (category === 'Hotel' && endDate && startDate && new Date(endDate) <= new Date(startDate)) {
+                alert('Check-out date must be after check-in date.');
+                return;
+            }
+
+            const grossBase = baseRate * quantity;
+            const cashOutflow = (grossBase + fees) - discount;
+            const rewardsValuation = pointsEarned * pointValue;
+            const netEffectiveCost = cashOutflow - rewardsValuation;
+            const effectivePerUnit = netEffectiveCost / quantity;
+
+            if (editingId) {
+                // Update existing record
+                deals = deals.map(deal => deal.id === editingId ? {
+                    ...deal,
+                    tripName, category, sourceName, itemName, cardName, bookingUrl,
+                    startDate, endDate, baseRate, quantity, fees, discount,
+                    pointsEarned, pointValue, cashOutflow, rewardsValuation,
+                    netEffectiveCost, effectivePerUnit
+                } : deal);
+                editingId = null;
+                dealForm.querySelector('button[type="submit"]').innerHTML = '<span>Add to Comparison</span>';
+            } else {
+                // Create new record
+                const newDeal = {
+                    id: Date.now(),
+                    tripName,
+                    category,
+                    sourceName,
+                    itemName,
+                    cardName, // <-- Saved here
+                    bookingUrl,
+                    startDate,
+                    endDate,
+                    baseRate,
+                    quantity,
+                    fees,
+                    discount,
+                    pointsEarned,
+                    pointValue,
+                    cashOutflow,
+                    rewardsValuation,
+                    netEffectiveCost,
+                    effectivePerUnit
+                };
+                deals.push(newDeal);
+            }
+
+            saveToStorage();
+            render();
+
+            // Reset inputs
+            document.getElementById('tripName').value = '';
+            document.getElementById('sourceName').value = '';
+            document.getElementById('itemName').value = '';
+            document.getElementById('cardName').value = '';
+            document.getElementById('bookingUrl').value = '';
+            document.getElementById('baseRate').value = '';
+            document.getElementById('fees').value = '0';
+            document.getElementById('discount').value = '0';
+            document.getElementById('pointsEarned').value = '0';
+        });
+
+        // Edit Function to load data back into the form
+        function editDeal(id) {
+            const deal = deals.find(d => d.id === id);
+            if (!deal) return;
+
+            setBookingType(deal.category);
+            document.getElementById('tripName').value = deal.tripName || '';
+            document.getElementById('sourceName').value = deal.sourceName || '';
+            document.getElementById('itemName').value = deal.itemName || '';
+            document.getElementById('cardName').value = deal.cardName || '';
+            document.getElementById('bookingUrl').value = deal.bookingUrl || '';
+            document.getElementById('dateStart').value = deal.startDate || '';
+            if (deal.category === 'Hotel' && document.getElementById('dateEnd')) {
+                document.getElementById('dateEnd').value = deal.endDate || '';
+            }
+            document.getElementById('baseRate').value = deal.baseRate || '';
+            document.getElementById('quantity').value = deal.quantity || 1;
+            document.getElementById('fees').value = deal.fees || 0;
+            document.getElementById('discount').value = deal.discount || 0;
+            document.getElementById('pointsEarned').value = deal.pointsEarned || 0;
+            document.getElementById('pointValue').value = deal.pointValue || 0.5;
+
+            editingId = id;
+            dealForm.querySelector('button[type="submit"]').innerHTML = '<span>Update Booking Option</span>';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function deleteDeal(id) {
+            deals = deals.filter(item => item.id !== id);
+            saveToStorage();
+            render();
+        }
+
+        function render() {
+            resultsContainer.innerHTML = '';
+            totalDealsCount.textContent = deals.length;
+
+            const filteredDeals = deals.filter(d => currentFilter === 'All' || d.category === currentFilter);
+
+            if (deals.length === 0) {
+                topDealRate.textContent = '₹0';
+                resultsContainer.innerHTML = `
+                    <div class="bg-white rounded-2xl p-10 text-center border border-dashed border-slate-300">
+                        <div class="w-12 h-12 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                            ✈️🏨
+                        </div>
+                        <h3 class="font-bold text-slate-700">No Booking Options Added</h3>
+                        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+                            Add offers organized by trip name to evaluate your net cost.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            const sortedAll = [...deals].sort((a, b) => a.netEffectiveCost - b.netEffectiveCost);
+            if (sortedAll.length > 0) {
+                topDealRate.textContent = `₹${Math.round(sortedAll[0].netEffectiveCost).toLocaleString('en-IN')}`;
+            }
+
+            if (filteredDeals.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="bg-white rounded-2xl p-8 text-center border border-slate-200">
+                        <p class="text-xs text-slate-500">No ${currentFilter.toLowerCase()} options found.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Group filtered deals by Trip Name
+            const groupedByTrip = filteredDeals.reduce((acc, deal) => {
+                (acc[deal.tripName] = acc[deal.tripName] || []).push(deal);
+                return acc;
+            }, {});
+
+            // Loop through each trip group
+            Object.keys(groupedByTrip).forEach(trip => {
+                const tripDeals = groupedByTrip[trip];
+                // Sort items inside the trip by date, then net cost
+                tripDeals.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+                
+                const tripTotalNet = tripDeals.reduce((sum, d) => sum + d.netEffectiveCost, 0);
+                const cheapestInTrip = Math.min(...tripDeals.map(d => d.netEffectiveCost));
+                const costliestInTrip = Math.max(...tripDeals.map(d => d.netEffectiveCost));
+
+                const groupWrapper = document.createElement('div');
+                groupWrapper.className = "bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3 mb-4";
+                
+                let groupHtml = `
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                        <h3 class="font-extrabold text-slate-900 text-base">✈️ ${trip}</h3>
+                        <span class="text-xs font-bold bg-sky-50 text-emerald-700 px-3 py-1 rounded-full border border-sky-100">
+                            Trip Total Net: ₹${Math.round(tripTotalNet).toLocaleString('en-IN')}
+                        </span>
+                    </div>
+                    <div class="space-y-3">
+                `;
+
+                tripDeals.forEach((deal) => {
+                    const unitLabel = deal.category === 'Flight' ? 'Pax' : 'Nights';
+                    const isBest = deal.netEffectiveCost === cheapestInTrip && tripDeals.length > 1;
+                    const savingsVsWorst = costliestInTrip - deal.netEffectiveCost;
+                    groupHtml += `
+                        <div class="p-4 ${isBest ? 'bg-emerald-50 border-emerald-200' : 'bg-slate-50 border-slate-100'} rounded-xl border flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="bg-white text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-200">
+                                        ${deal.category === 'Flight' ? '✈️ Flight' : '🏨 Hotel'}
+                                    </span>
+                                    <h4 class="font-bold text-slate-900 text-sm">${deal.itemName}</h4>
+                                    <span class="text-xs text-slate-500 bg-slate-200/60 px-2 py-0.5 rounded-md font-medium">via ${deal.sourceName}</span>
+                                    ${deal.cardName ? `<span class="text-[10px] bg-purple-50 text-purple-700 px-2 py-0.5 rounded-full font-semibold border border-purple-100">💳 ${deal.cardName}</span>` : ''}
+                                    ${isBest ? `<span class="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold">✓ BEST · saves ₹${Math.round(savingsVsWorst).toLocaleString('en-IN')}</span>` : ''}
+                                </div>
+                                <p class="text-xs text-slate-500">
+                                    📅 ${deal.startDate} ${deal.category === 'Hotel' && deal.endDate ? '➔ ' + deal.endDate : ''} • ${deal.quantity} ${unitLabel} • Base: ₹${deal.baseRate.toLocaleString('en-IN')}/${unitLabel.toLowerCase()}
+                                </p>
+                                <div class="flex flex-wrap gap-2 text-xs pt-1">
+                                    <span class="text-slate-600">Cash: <strong>₹${deal.cashOutflow.toLocaleString('en-IN')}</strong></span>
+                                    ${deal.rewardsValuation > 0 ? `<span class="text-emerald-600">Rewards: <strong>+₹${deal.rewardsValuation.toLocaleString('en-IN')}</strong></span>` : ''}
+                                </div>
+                            </div>
+                            <div class="flex md:flex-col items-end justify-between w-full md:w-auto border-t md:border-t-0 pt-2 md:pt-0 border-slate-200">
+                                <div class="text-left md:text-right">
+                                    <p class="text-xl font-black text-emerald-900">₹${Math.round(deal.netEffectiveCost).toLocaleString('en-IN')}</p>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase">Net Effective</p>
+                                </div>
+                                <div class="flex items-center gap-2 mt-2">
+                                    ${deal.bookingUrl ? `<a href="${deal.bookingUrl}" target="_blank" class="text-xs font-semibold bg-sky-100 text-emerald-700 px-2.5 py-1 rounded-lg">Link ↗</a>` : ''}
+                                    <button onclick="editDeal(${deal.id})" class="text-xs font-semibold text-emerald-600 hover:text-emerald-800 p-1">Edit</button>
+                                    <button onclick="deleteDeal(${deal.id})" class="text-xs text-rose-500 hover:text-rose-700 p-1">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                groupHtml += `</div>`;
+                groupWrapper.innerHTML = groupHtml;
+                resultsContainer.appendChild(groupWrapper);
+            });
+        }
+
+        clearAllBtn.addEventListener('click', function() {
+            if (deals.length === 0) return;
+            if (confirm('Are you sure you want to clear all comparisons?')) {
+                deals = [];
+                saveToStorage();
+                render();
+            }
+        });
+
+        // Paste & Extract: toggle box open/closed
+        document.getElementById('togglePasteBox').addEventListener('click', function() {
+            const body = document.getElementById('pasteBoxBody');
+            const arrow = document.getElementById('pasteBoxArrow');
+            body.classList.toggle('hidden');
+            arrow.textContent = body.classList.contains('hidden') ? '▾' : '▴';
+        });
+
+        // Paste & Extract: scan pasted text for currency-like amounts
+        function extractAmounts(text) {
+            // Matches ₹1,234 / Rs. 1234 / Rs 1,234.50 / INR 1234 / bare 4-6 digit numbers with commas
+            const pattern = /(?:₹|Rs\.?|INR)\s?([\d]{1,3}(?:,\d{2,3})*(?:\.\d{1,2})?)|(?<![\d.])(\d{1,3}(?:,\d{2,3})+(?:\.\d{1,2})?)(?![\d])/gi;
+            const found = new Map(); // value -> count
+            let match;
+            while ((match = pattern.exec(text)) !== null) {
+                const raw = match[1] || match[2];
+                const num = parseFloat(raw.replace(/,/g, ''));
+                if (!isNaN(num) && num >= 100 && num <= 10000000) {
+                    found.set(num, (found.get(num) || 0) + 1);
+                }
+            }
+            // Sort by frequency desc, then value desc — most-repeated/likely "total" style prices float up
+            return [...found.entries()].sort((a, b) => b[1] - a[1] || b[0] - a[0]).slice(0, 8);
+        }
+
+        // Structured extraction: recognizes common OTA labels (Base Price, Hotel Taxes,
+        // Total Amount, CHECK IN / CHECK OUT dates) and pulls a full set of fields at once.
+        const MONTH_MAP = { Jan:'01', Feb:'02', Mar:'03', Apr:'04', May:'05', Jun:'06', Jul:'07', Aug:'08', Sep:'09', Oct:'10', Nov:'11', Dec:'12' };
+
+        function parseOtaDate(str) {
+            const m = str.match(/(\d{1,2})\s+([A-Za-z]{3})\s+(\d{4})/);
+            if (!m) return null;
+            const mon = MONTH_MAP[m[2]];
+            if (!mon) return null;
+            return `${m[3]}-${mon}-${m[1].padStart(2, '0')}`;
+        }
+
+        function extractStructuredFields(text) {
+            const result = {};
+
+            const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+            const skipLines = /^review your booking$|^couple friendly$|^family friendly$/i;
+            for (const line of lines) {
+                if (!skipLines.test(line) && line.length > 3 && line.length < 80 && !/^₹|^\d/.test(line)) {
+                    result.itemName = line;
+                    break;
+                }
+            }
+
+            const checkInMatch = text.match(/CHECK\s*[- ]?IN[\s\S]{0,30}?(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})/i);
+            if (checkInMatch) result.dateStart = parseOtaDate(checkInMatch[1]);
+
+            const checkOutMatch = text.match(/CHECK\s*[- ]?OUT[\s\S]{0,30}?(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})/i);
+            if (checkOutMatch) result.dateEnd = parseOtaDate(checkOutMatch[1]);
+
+            const nightsMatch = text.match(/(\d+)\s*Nights?/i);
+            if (nightsMatch) result.nights = parseInt(nightsMatch[1], 10);
+
+            const baseMatch = text.match(/Base Price[\s\S]{0,60}?₹\s?([\d,]+)/i);
+            if (baseMatch) result.baseTotal = parseFloat(baseMatch[1].replace(/,/g, ''));
+
+            const taxMatch = text.match(/Hotel Taxes[\s\S]{0,30}?₹\s?([\d,]+)/i) || text.match(/(?:^|\n)Taxes[\s\S]{0,30}?₹\s?([\d,]+)/i);
+            if (taxMatch) result.taxes = parseFloat(taxMatch[1].replace(/,/g, ''));
+
+            const saveMatch = text.match(/Save\s?₹\s?([\d,]+)/i);
+            if (saveMatch) result.discount = parseFloat(saveMatch[1].replace(/,/g, ''));
+
+            if (result.baseTotal && result.nights) {
+                result.baseRatePerNight = Math.round(result.baseTotal / result.nights);
+            }
+
+            return result;
+        }
+
+        document.getElementById('autoFillBtn').addEventListener('click', function() {
+            const text = document.getElementById('pastePriceText').value;
+            if (!text.trim()) {
+                alert('Paste the booking page text first.');
+                return;
+            }
+            const fields = extractStructuredFields(text);
+            const filled = [];
+
+            if (fields.itemName) { document.getElementById('itemName').value = fields.itemName; filled.push('Item name'); }
+            if (fields.dateStart) { document.getElementById('dateStart').value = fields.dateStart; filled.push('Check-in'); }
+            if (fields.dateEnd) { document.getElementById('dateEnd').value = fields.dateEnd; filled.push('Check-out'); }
+            if (fields.nights) { document.getElementById('quantity').value = fields.nights; filled.push('Nights'); }
+            if (fields.baseRatePerNight) { document.getElementById('baseRate').value = fields.baseRatePerNight; filled.push('Base rate/night'); }
+            else if (fields.baseTotal) { document.getElementById('baseRate').value = fields.baseTotal; filled.push('Base price'); }
+            if (fields.taxes) { document.getElementById('fees').value = fields.taxes; filled.push('Taxes/fees'); }
+            if (fields.discount) { document.getElementById('discount').value = fields.discount; filled.push('Discount'); }
+
+            const status = document.getElementById('autoFillStatus');
+            if (filled.length > 0) {
+                status.textContent = `✓ Auto-filled: ${filled.join(', ')}. Please verify against the page before saving.`;
+                status.classList.remove('hidden');
+            } else {
+                status.textContent = `Couldn't confidently detect fields in this text — try pasting the price breakup section specifically, or fill manually.`;
+                status.classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('pastePriceText').addEventListener('input', function(e) {
+            const results = extractAmounts(e.target.value);
+            const container = document.getElementById('pasteResults');
+            container.innerHTML = '';
+            if (results.length === 0 && e.target.value.trim().length > 0) {
+                container.innerHTML = `<span class="text-[11px] text-slate-400 italic">No amounts detected yet — keep pasting or paste the price block specifically.</span>`;
+                return;
+            }
+            results.forEach(([value, count]) => {
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'text-xs font-semibold bg-white border border-sky-300 text-emerald-700 px-2.5 py-1 rounded-full hover:bg-emerald-600 hover:text-white transition';
+                chip.textContent = `₹${value.toLocaleString('en-IN')}${count > 1 ? ` (×${count})` : ''}`;
+                chip.addEventListener('click', function() {
+                    document.getElementById('baseRate').value = value;
+                    document.getElementById('baseRate').focus();
+                });
+                container.appendChild(chip);
+            });
+        });
+
+        // Export all logged deals to a downloadable JSON file
+        document.getElementById('exportBtn').addEventListener('click', function() {
+            if (deals.length === 0) {
+                alert('Nothing to export yet.');
+                return;
+            }
+            const blob = new Blob([JSON.stringify(deals, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const stamp = new Date().toISOString().slice(0, 10);
+            a.href = url;
+            a.download = `travel-optimizer-backup-${stamp}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        // Import deals from a previously exported JSON file (merges, skips duplicate ids)
+        document.getElementById('importInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                try {
+                    const imported = JSON.parse(evt.target.result);
+                    if (!Array.isArray(imported)) throw new Error('Invalid format');
+                    const existingIds = new Set(deals.map(d => d.id));
+                    const newOnes = imported.filter(d => d && d.id && !existingIds.has(d.id));
+                    deals = deals.concat(newOnes);
+                    saveToStorage();
+                    render();
+                    alert(`Imported ${newOnes.length} new entr${newOnes.length === 1 ? 'y' : 'ies'} (${imported.length - newOnes.length} duplicates skipped).`);
+                } catch (err) {
+                    alert('Could not read this file — make sure it\'s a JSON export from this tool.');
+                }
+            };
+            reader.readAsText(file);
+            e.target.value = '';
+        });
+
+        // Initialize App on Load
+        render();
+
+        // Function to auto-calculate cash total live
+        function updateLiveTotal() {
+            const baseRate = parseFloat(document.getElementById('baseRate').value) || 0;
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const fees = parseFloat(document.getElementById('fees').value) || 0;
+            const discount = parseFloat(document.getElementById('discount').value) || 0;
+
+            const total = (baseRate * quantity) + fees - discount;
+            document.getElementById('liveTotalPreview').textContent = `₹${Math.max(0, total).toLocaleString('en-IN')}`;
+        }
+
+        // Attach listeners to trigger auto-calculation on input change
+        ['baseRate', 'quantity', 'fees', 'discount'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', updateLiveTotal);
+            }
+        });
+
+    </script>
+</body>
+</html>

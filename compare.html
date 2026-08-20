@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare Cards — The Real Rate | VouchWise</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --paper:#eef0f3;
+    --ink:#161a22;
+    --ink-soft:#4b5262;
+    --line:#c9cdd6;
+    --good:#1e6b3e;
+    --bad:#a3271e;
+    --paper-card:#ffffff;
+    --warn-bg:#fff8e6;
+    --warn-border:#e6cf8a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    padding:32px 20px 60px;
+  }
+  .wrap{max-width:960px;margin:0 auto;}
+
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:28px;
+    font-weight:700;
+    margin:0 0 4px;
+    letter-spacing:-0.01em;
+  }
+  .subtitle{
+    color:var(--ink-soft);
+    font-size:14px;
+    margin:0 0 24px;
+    line-height:1.5;
+  }
+  .section-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:28px 0 10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    border-top:1px dashed var(--line);
+  }
+  .section-label:first-of-type{ margin-top: 0; }
+
+  .selector-panel{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:18px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media(max-width:640px){.selector-panel{grid-template-columns:1fr;}}
+
+  select, input[type=number]{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:8px 10px;
+    background:#fafafa;
+    width:100%;
+  }
+  .field-group{ margin-bottom: 10px; }
+  .field-group label{
+    display:block;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-bottom:4px;
+  }
+  .variant-row{ display:none; }
+
+  .spend-panel{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:18px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:14px;
+  }
+  @media(max-width:640px){.spend-panel{grid-template-columns:1fr 1fr;}}
+
+  .two-col-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    align-items:start;
+  }
+  @media(max-width:640px){.two-col-grid{grid-template-columns:1fr;}}
+
+  .col-cell{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:14px 16px;
+  }
+  .result-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:8px;
+  }
+  .variant-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    font-weight:400;
+  }
+  .badge{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    background:var(--ink);
+    color:#fff;
+    padding:2px 6px;
+    border-radius:3px;
+    letter-spacing:0.04em;
+    white-space:nowrap;
+  }
+  .warning{
+    background:var(--warn-bg);
+    border:1px solid var(--warn-border);
+    border-left:3px solid #b8862b;
+    padding:8px 10px;
+    font-size:12px;
+    line-height:1.5;
+    margin-bottom:12px;
+    border-radius:2px;
+    color:#5c4813;
+  }
+  .mini-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:14px 0 6px;
+  }
+  .mini-label:first-of-type{ margin-top: 0; }
+
+  .eligibility-note{
+    font-size:12px;
+    color:var(--ink-soft);
+    background:#f4f5f7;
+    border-radius:3px;
+    padding:6px 8px;
+    margin-bottom:10px;
+    line-height:1.4;
+  }
+
+  .benefit-group{ margin-bottom:8px; }
+  .benefit-group-label{
+    font-size:11px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:3px;
+  }
+  .benefit-item{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    font-size:12.5px;
+    line-height:1.5;
+    padding:3px 0;
+    border-bottom:1px dotted #eceef1;
+  }
+  .benefit-item:last-child{ border-bottom:none; }
+  .benefit-text{ color:var(--ink); }
+  .benefit-value{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:var(--good);
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
+  .exclusion-line{
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .exclusion-line.neg{ color:var(--bad); }
+  .exclusion-label{ font-weight:600; }
+
+  .empty-note{
+    font-size:12px;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin:0 0 8px;
+  }
+
+  .ledger-line{
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    padding:4px 0;
+    border-bottom:1px dotted var(--line);
+  }
+  .ledger-line.total{
+    border-top:1px solid var(--ink);
+    border-bottom:none;
+    margin-top:4px;
+    padding-top:8px;
+    font-weight:600;
+    font-size:14px;
+  }
+  .neg{color:var(--bad);}
+  .pos{color:var(--good);}
+
+  .offers-list{ margin-top:10px; }
+  .offer-line{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--ink-soft);
+    padding:3px 0;
+  }
+  .uncounted-note{
+    margin-top:10px;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    font-size:13px;
+  }
+  th,td{
+    padding:9px 10px;
+    text-align:right;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  th:first-child,td:first-child{text-align:left;font-family:'Inter',sans-serif;}
+  thead th{
+    background:#f4f5f7;
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
+  }
+  tbody tr{border-bottom:1px solid #eceef1;}
+  tbody tr:last-child{border-bottom:none;}
+  .better{font-weight:600;}
+  .better::before{content:"● ";font-size:9px;color:var(--good);}
+
+  .foot-note{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:14px;
+    line-height:1.5;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Compare Cards — The Real Rate</h1>
+  <p class="subtitle">Pick two cards, enter your spend by category, see Year 1 vs Year 2+ net value — including exclusions and category-level fees, not just the headline reward rate.</p>
+
+  <div class="section-label">Cards</div>
+  <div class="selector-panel">
+    <div>
+      <div class="field-group">
+        <label for="cardSelectA">Card A</label>
+        <select id="cardSelectA"></select>
+      </div>
+      <div class="field-group variant-row" id="variantRowA">
+        <label for="variantSelectA">Network variant</label>
+        <select id="variantSelectA"></select>
+      </div>
+    </div>
+    <div>
+      <div class="field-group">
+        <label for="cardSelectB">Card B</label>
+        <select id="cardSelectB"></select>
+      </div>
+      <div class="field-group variant-row" id="variantRowB">
+        <label for="variantSelectB">Network variant</label>
+        <select id="variantSelectB"></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Your annual spend, by category</div>
+  <div class="spend-panel">
+    <div class="field-group"><label for="spendGeneral">General spend (₹)</label><input type="number" id="spendGeneral" value="500000" step="10000"></div>
+    <div class="field-group"><label for="spendRent">Rent (₹)</label><input type="number" id="spendRent" value="0" step="5000"></div>
+    <div class="field-group"><label for="spendFuel">Fuel (₹)</label><input type="number" id="spendFuel" value="0" step="1000"></div>
+    <div class="field-group"><label for="spendUtility">Utility bills (₹)</label><input type="number" id="spendUtility" value="0" step="5000"></div>
+    <div class="field-group"><label for="spendInsurance">Insurance (₹)</label><input type="number" id="spendInsurance" value="0" step="5000"></div>
+    <div class="field-group"><label for="spendInternational">International spend (₹)</label><input type="number" id="spendInternational" value="0" step="5000"></div>
+  </div>
+
+  <div class="section-label">Cards</div>
+  <div class="two-col-grid" id="headerRow"></div>
+
+  <div class="section-label">What you get</div>
+  <div class="two-col-grid" id="benefitsRow"></div>
+
+  <div class="section-label">What doesn't earn rewards</div>
+  <div class="two-col-grid" id="exclusionsRow"></div>
+
+  <div class="section-label">Net value ledger</div>
+  <div class="two-col-grid" id="ledgerRow"></div>
+
+  <div class="section-label">Net value at preset spend levels (general spend only)</div>
+  <table>
+    <thead>
+      <tr><th>Annual spend</th><th>Card A — Yr 1</th><th>Card A — Yr 2+</th><th>Card B — Yr 1</th><th>Card B — Yr 2+</th></tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <p class="foot-note">
+    "n/a" means the card's base reward rate or point value hasn't been sourced yet — not that it earns zero. Estimates use the most conservative confirmed value where a range exists (e.g. HSBC's ₹0.25–₹1.00 redemption range uses ₹0.25). Accelerated categories, per-transaction caps, and shared statement-cycle caps aren't modeled yet — real value with active category optimization is higher than shown for most cards.
+  </p>
+
+</div>
+
+<script type="module" src="/js/cardCompareMain.js"></script>
+</body>
+</html>

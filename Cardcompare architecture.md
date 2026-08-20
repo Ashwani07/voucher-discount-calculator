@@ -55,17 +55,17 @@ vouchwise/
 │                                    as not overloading masterCards.csv)
 │
 └── js/
-    ├── cardData.js                 GENERATED — exports cardProfiles[],
+    ├── cardCompareData.js                 GENERATED — exports cardProfiles[],
     │                                exclusions[], offers[], tags[].
     │                                DO NOT hand-edit (same rule as data.js
     │                                §4.8) — edit the CSVs, re-run the parser.
-    ├── compareCalc.js               Pure net-value math. No DOM. No imports
+    ├── cardCompareCalc.js               Pure net-value math. No DOM. No imports
     │                                from other app modules. Mirrors calculator.js.
-    ├── compareState.js              Shared mutable state, this page only.
+    ├── cardCompareState.js              Shared mutable state, this page only.
     │                                No imports. Mirrors state.js.
-    ├── compareDom.js                Cached DOM refs. No logic. Mirrors dom.js.
-    ├── compareEvents.js             All addEventListener calls. No business logic.
-    └── compareMain.js               Entry point.
+    ├── cardCompareDom.js                Cached DOM refs. No logic. Mirrors dom.js.
+    ├── cardCompareEvents.js             All addEventListener calls. No business logic.
+    └── cardCompareMain.js               Entry point.
 ```
 
 Also required per your own "New page" checklist (Structure.md §13):
@@ -79,27 +79,27 @@ you want a clean `/compare` URL, and add a link from `index.html`'s nav
 
 ```mermaid
 graph LR
-    cardData[cardData.js]
-    compareCalc[compareCalc.js]
-    compareState[compareState.js]
-    compareDom[compareDom.js]
-    compareEvents[compareEvents.js]
-    compareMain[compareMain.js]
+    cardCompareData[cardCompareData.js]
+    cardCompareCalc[cardCompareCalc.js]
+    cardCompareState[cardCompareState.js]
+    cardCompareDom[cardCompareDom.js]
+    cardCompareEvents[cardCompareEvents.js]
+    cardCompareMain[cardCompareMain.js]
 
-    compareEvents --> cardData & compareCalc & compareState & compareDom
-    compareMain --> compareDom & cardData & compareEvents
+    cardCompareEvents --> cardCompareData & cardCompareCalc & cardCompareState & cardCompareDom
+    cardCompareMain --> cardCompareDom & cardCompareData & cardCompareEvents
 
     classDef noImports fill:#e6f4ea,stroke:#34a853;
-    class compareCalc,compareState,compareDom noImports
+    class cardCompareCalc,cardCompareState,cardCompareDom noImports
 
     classDef generated fill:#fff3cd,stroke:#c9a227;
-    class cardData generated
+    class cardCompareData generated
 ```
 
-Same isolation rule as your existing graph: **`compareCalc.js` takes
+Same isolation rule as your existing graph: **`cardCompareCalc.js` takes
 numbers in, returns numbers out — no DOM, no imports.** This is what let
 you trust `calculator.js`'s math independent of UI bugs; same payoff
-applies here, and it means `compareCalc.js` is unit-testable in isolation
+applies here, and it means `cardCompareCalc.js` is unit-testable in isolation
 if you ever add tests.
 
 No `customCalc.js`-style second calculator is needed here — there's only
@@ -115,7 +115,7 @@ flowchart LR
     csv1[masterCardProfiles.csv] --> parser[parse-card-profiles.js<br/>Node.js]
     csv2[cardExclusions.csv] --> parser
     csv3[cardOffers.csv] --> parser
-    parser --> cardDataJs["js/cardData.js<br/>(cardProfiles / exclusions / offers arrays)"]
+    parser --> cardDataJs["js/cardCompareData.js<br/>(cardProfiles / exclusions / offers arrays)"]
 
     style cardDataJs fill:#fff3cd,stroke:#c9a227
 ```
@@ -161,10 +161,10 @@ Matches the earlier LDD shape directly — this one translates cleanly since it 
 
 ---
 
-## 5. compareCalc.js — Function Signature
+## 5. cardCompareCalc.js — Function Signature
 
 ```js
-// compareCalc.js — no imports, pure functions only
+// cardCompareCalc.js — no imports, pure functions only
 
 export function calculateNetValue(cardProfile, exclusionsForCard, spendByCategory, year) {
   let rewardValue = 0;
@@ -200,14 +200,14 @@ Deliberately simpler than the earlier Python sketch — no milestone/welcome-ben
 ```mermaid
 sequenceDiagram
     actor User
-    participant Filter as bucket/tag filter (compareMain.js)
-    participant Select as card selector (compareEvents.js)
+    participant Filter as bucket/tag filter (cardCompareMain.js)
+    participant Select as card selector (cardCompareEvents.js)
     participant Spend as spend-by-category inputs
-    participant Calc as compareCalc.js
-    participant Render as results render (compareEvents.js)
+    participant Calc as cardCompareCalc.js
+    participant Render as results render (cardCompareEvents.js)
 
     User->>Filter: picks bucket / tags
-    Filter->>Select: narrows card list from cardData.js
+    Filter->>Select: narrows card list from cardCompareData.js
     User->>Select: picks 2 cards
     User->>Spend: enters annual spend per category
     User->>Render: clicks "Compare"
@@ -254,4 +254,4 @@ worth explicitly choosing one before writing code:
 
 Not picking one now, since it's your call — but the architecture above
 supports either; the lean version is just a subset (skip `tags` filtering
-logic in `compareMain.js`, skip `cardOffers.csv` for now).
+logic in `cardCompareMain.js`, skip `cardOffers.csv` for now).
