@@ -6,6 +6,8 @@ export const state = {
   cardBId: 'hdfc_millennia',
   variantA: null, // 'visa' | 'rupay' — only used if the selected card has a `variants` array
   variantB: null,
+  bucketFilter: 'all',
+  activeTags: [], // OR logic: card matches if it has ANY selected tag
   spend: {
     general: 500000,
     rent: 0,
@@ -15,6 +17,16 @@ export const state = {
     international_spend: 0
   }
 };
+
+export function setBucketFilter(value) {
+  state.bucketFilter = value;
+}
+
+export function toggleTag(tag) {
+  const idx = state.activeTags.indexOf(tag);
+  if (idx === -1) state.activeTags.push(tag);
+  else state.activeTags.splice(idx, 1);
+}
 
 export function setCard(slot, cardId) {
   if (slot === 'A') { state.cardAId = cardId; state.variantA = null; }

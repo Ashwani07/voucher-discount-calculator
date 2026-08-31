@@ -2,6 +2,10 @@
 // Cached DOM refs only. No logic. No imports.
 
 export const dom = {
+  scenarioRow: document.getElementById('scenarioRow'),
+  bucketFilterRow: document.getElementById('bucketFilterRow'),
+  tagFilterRow: document.getElementById('tagFilterRow'),
+
   cardSelectA: document.getElementById('cardSelectA'),
   cardSelectB: document.getElementById('cardSelectB'),
   variantRowA: document.getElementById('variantRowA'),
@@ -20,5 +24,6 @@ export const dom = {
   benefitsRow: document.getElementById('benefitsRow'),
   exclusionsRow: document.getElementById('exclusionsRow'),
   ledgerRow: document.getElementById('ledgerRow'),
+  presetTable: document.getElementById('presetTable'),
   tableBody: document.getElementById('tableBody')
 };

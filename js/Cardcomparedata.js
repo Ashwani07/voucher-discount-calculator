@@ -242,6 +242,26 @@ export const exclusions = [
     source_url: 'https://www.hdfc.bank.in/credit-cards/infinia-credit-card'
   },
   {
+    card_id: 'hdfc_infinia_metal',
+    category: 'rent',
+    reward_factor: 0,
+    extra_fee_percent: null,
+    extra_fee_cap_inr: null,
+    notes: 'CONFIRMED: this was already sourced (the general master MITC states rent earns zero rewards "on all the cards," with no exception for Infinia) but was never added as its own row for this card — a data-entry gap, not a research gap, same pattern as the earlier Regalia Gold fuel miss. Independently corroborated by a third-party comparison (CardExpress) explicitly listing "no reward points on rent" as an Infinia limitation.',
+    source_clause: 'HDFC master MITC, Reward Points section, item (l) — applies universally, no Infinia exception listed',
+    source_url: 'https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf'
+  },
+  {
+    card_id: 'hdfc_infinia_metal',
+    category: 'government_payment',
+    reward_factor: 0,
+    extra_fee_percent: null,
+    extra_fee_cap_inr: null,
+    notes: 'CONFIRMED: same gap-close as rent above — the general MITC\'s government-transaction exclusion applies to all cards except a named list of business/co-brand cards, and Infinia is not on that exception list. Independently corroborated by CardExpress.',
+    source_clause: 'HDFC master MITC, Reward Points section, item (l) — by omission from the exception list',
+    source_url: 'https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf'
+  },
+  {
     card_id: 'hdfc_millennia',
     category: 'rent',
     reward_factor: 0,
@@ -664,6 +684,78 @@ export const exclusions = [
 
 // Long-format, one row per recurring offer — matches cardOffers.csv shape.
 export const offers = [
+  // --- Schema note on offer_source / valid_from / valid_until ---
+  // Every offer implicitly has offer_source: 'card_benefit' unless stated
+  // otherwise — a core, stable part of the card's own T&C, not expected
+  // to churn on a fixed schedule (still re-verified periodically, but not
+  // DATED the way a vendor promo is). Entries explicitly marked
+  // offer_source: 'vendor_offer' are bank/portal-run promotions layered
+  // on top of the card (SmartBuy deals, EazyDiner-style tie-ins) — these
+  // ALWAYS need valid_from/valid_until, since unlike fee structures or
+  // exclusions, vendor offers are expected to lapse or renew on a fixed
+  // cycle. See cardCompareCalc.js's isOfferExpired()/isOfferExpiringSoon()
+  // for how these dates get used, and admin-offer-status.html for the
+  // maintenance view built specifically to surface stale ones.
+  {
+    card_id: 'hdfc_infinia_metal',
+    offer_type: 'dining',
+    condition_type: 'with_spend',
+    spend_threshold: 3500,
+    frequency: 'monthly',
+    cap_count: 2,
+    offer_source: 'vendor_offer',
+    valid_from: '2026-01-01',
+    valid_until: '2026-12-31',
+    value_description: 'VENDOR OFFER (via SmartBuy, not a direct card benefit): 10% off, up to ₹500/transaction, on Swiggy Dineout bookings ≥₹3,500 (post restaurant discount), using coupon HDFCINFINIA. Up to twice/month. This is layered on top of whatever base reward rate applies to the spend, not a substitute for it.',
+    value_type: 'voucher', // conditional discount mechanism (spend-gated, merchant-specific), not guaranteed cash — excluded from the ledger total
+    estimated_value_inr: 1000, // 2 x ₹500 max monthly, conservative (assumes both redemptions hit the cap)
+    source_url: 'https://offers.smartbuy.hdfc.bank.in/offer_details/swiggy-dineout/26020'
+  },
+  {
+    card_id: 'hdfc_millennia',
+    offer_type: 'dining',
+    condition_type: 'with_spend',
+    spend_threshold: 2000,
+    frequency: 'monthly',
+    cap_count: 2,
+    offer_source: 'vendor_offer',
+    valid_from: '2026-01-01',
+    valid_until: '2026-12-31',
+    value_description: 'VENDOR OFFER (via SmartBuy, not a direct card benefit): 10% off, up to ₹200/transaction, on Swiggy Dineout bookings ≥₹2,000 (post restaurant discount), using coupon HDFCCARDS — the "other cards" tier, lower than Infinia\'s. Up to twice/month.',
+    value_type: 'voucher', // conditional discount mechanism (spend-gated, merchant-specific), not guaranteed cash — excluded from the ledger total
+    estimated_value_inr: 400,
+    source_url: 'https://offers.smartbuy.hdfc.bank.in/offer_details/swiggy-dineout/26020'
+  },
+  {
+    card_id: 'hdfc_regalia_gold',
+    offer_type: 'dining',
+    condition_type: 'with_spend',
+    spend_threshold: 2000,
+    frequency: 'monthly',
+    cap_count: 2,
+    offer_source: 'vendor_offer',
+    valid_from: '2026-01-01',
+    valid_until: '2026-12-31',
+    value_description: 'VENDOR OFFER (via SmartBuy, not a direct card benefit): 10% off, up to ₹200/transaction, on Swiggy Dineout bookings ≥₹2,000 (post restaurant discount), using coupon HDFCCARDS — the "other cards" tier, lower than Infinia\'s. Up to twice/month.',
+    value_type: 'voucher', // conditional discount mechanism (spend-gated, merchant-specific), not guaranteed cash — excluded from the ledger total
+    estimated_value_inr: 400,
+    source_url: 'https://offers.smartbuy.hdfc.bank.in/offer_details/swiggy-dineout/26020'
+  },
+  {
+    card_id: 'hdfc_swiggy',
+    offer_type: 'dining',
+    condition_type: 'with_spend',
+    spend_threshold: 2000,
+    frequency: 'monthly',
+    cap_count: 2,
+    offer_source: 'vendor_offer',
+    valid_from: '2026-01-01',
+    valid_until: '2026-12-31',
+    value_description: 'VENDOR OFFER (via SmartBuy, not a direct card benefit): 10% off, up to ₹200/transaction, on Swiggy Dineout bookings ≥₹2,000, coupon HDFCCARDS. Distinct from this card\'s own Swiggy cashback structure — this is a separate, stackable SmartBuy discount layered on top, not a substitute for the card\'s core cashback. Worth double-checking whether Swiggy HDFC cardholders can combine both, since "cannot be combined with any other offer" appears in the general T&Cs — that clause likely refers to OTHER SmartBuy offers, not the card\'s own base cashback, but this is inference, not confirmed.',
+    value_type: 'voucher', // conditional discount mechanism (spend-gated, merchant-specific), not guaranteed cash — excluded from the ledger total
+    estimated_value_inr: 400,
+    source_url: 'https://offers.smartbuy.hdfc.bank.in/offer_details/swiggy-dineout/26020'
+  },
   {
     card_id: 'hsbc_visa_platinum',
     offer_type: 'other',
@@ -826,7 +918,19 @@ export const offers = [
     frequency: 'quarterly',
     cap_count: 1,
     value_description: 'Quarterly milestone: ₹1,000 gift voucher choice (Big Basket / BookMyShow / Pizza Hut / PVR / Uber), unlocked on ₹1 Lakh net spend in a calendar quarter. Voucher must be claimed within 120 days of the SMS/email trigger, or it lapses unreissued.',
+    value_type: 'voucher', // conditional/merchant-specific value, not counted toward the net-value ledger — see calc logic
     estimated_value_inr: 1000,
+    source_url: 'https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/millennia-credit-card/pdf/millennia-tnc-20th-jul26.pdf'
+  },
+  {
+    card_id: 'hdfc_millennia',
+    offer_type: 'lounge',
+    condition_type: 'with_spend',
+    spend_threshold: null,
+    frequency: 'quarterly',
+    cap_count: null,
+    value_description: 'CONFLICTING SOURCES — NOT confirmed either way: the card\'s own dedicated rewards T&C (millennia-tnc-20th-jul26.pdf, the same document used for every other Millennia figure in this dataset) explicitly states lounge access was REMOVED effective 1 Dec 2023. But HDFC\'s general Millennia-family marketing page still lists "complimentary domestic airport lounge access" as a current benefit "with certain cards such as Millennia Credit Card," and a third-party review (CardMaven, ~1 month old) describes lounge access as "no longer complimentary simply by presenting the card" — implying it still exists, just spend-gated now. The Millennia DEBIT card (a different product) has a confirmed, dated rule: 1 free visit/quarter on ₹10,000+ spend, effective 10 Jan 2026 — possibly the credit card follows an identical pattern, but this is inference, not confirmation. Given the dedicated T&C is the more specific and more authoritative source for THIS card, the honest default is to treat lounge access as likely NOT available — but this is genuinely unresolved, not settled either direction.',
+    estimated_value_inr: null,
     source_url: 'https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/millennia-credit-card/pdf/millennia-tnc-20th-jul26.pdf'
   },
   {
@@ -859,6 +963,7 @@ export const offers = [
     frequency: 'quarterly',
     cap_count: 1,
     value_description: 'Quarterly milestone: choice of ₹1,500 voucher (Marriott Experience / Myntra / MMT Hotels / Marks & Spencer / Reliance Digital), unlocked on ₹1,50,000 net retail spend in a calendar quarter',
+    value_type: 'voucher', // conditional/merchant-specific value, not counted toward the net-value ledger — see calc logic
     estimated_value_inr: 1500,
     source_url: 'https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/regalia-gold-credit-card/fees-and-charges/rgc2.pdf'
   },
@@ -870,6 +975,7 @@ export const offers = [
     frequency: 'yearly',
     cap_count: 1,
     value_description: 'Annual milestone, tier 1: ₹5,000 worth flight vouchers on ₹5 Lakh net retail spend in a card year — CORRECTED: previously only the ₹7.5L tier was captured, missed this lower tier entirely. Both tiers are cumulative (a ₹7.5L spender gets ₹10,000 total across both), not one-or-the-other.',
+    value_type: 'voucher', // conditional/merchant-specific value, not counted toward the net-value ledger — see calc logic
     estimated_value_inr: 5000,
     source_url: 'https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card'
   },
@@ -881,6 +987,7 @@ export const offers = [
     frequency: 'yearly',
     cap_count: 1,
     value_description: 'Annual milestone, tier 2: another ₹5,000 worth flight vouchers on ₹7.5 Lakh net retail spend in a card year — stacks with the ₹5L tier above, both unlocked in the same year would total ₹10,000',
+    value_type: 'voucher', // conditional/merchant-specific value, not counted toward the net-value ledger — see calc logic
     estimated_value_inr: 5000,
     source_url: 'https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card'
   },
@@ -1025,6 +1132,7 @@ export const offers = [
     frequency: 'per_booking',
     cap_count: 1,
     value_description: 'Welcome benefit: choice of ₹12,000 Lohono voucher OR ₹10,000 EaseMyTrip voucher, plus Atlys visa fee waiver, 6 CribLife concierge requests, ₹3,000 Tony&Guy voucher, and Zomato Gold membership',
+    value_type: 'voucher', // conditional/merchant-specific value, not counted toward the net-value ledger — see calc logic
     estimated_value_inr: 12000,
     source_url: 'https://www.timesblack.com/'
   },
@@ -1080,6 +1188,7 @@ export const offers = [
     frequency: 'yearly',
     cap_count: null,
     value_description: 'Lifestyle perks: Encalm Privé airport lounges, Truefitt & Hill grooming session (₹3,100 value), AAYNA Privé aesthetic clinic session (₹23,000 value), The Quorum Club member events',
+    value_type: 'voucher', // conditional/merchant-specific value, not counted toward the net-value ledger — see calc logic
     estimated_value_inr: 26100,
     source_url: 'https://www.timesblack.com/'
   },
@@ -1106,3 +1215,68 @@ export function getExclusionsForCard(cardId) {
 export function getOffersForCard(cardId) {
   return offers.filter(o => o.card_id === cardId);
 }
+
+// --- Bucket display labels + tier grouping ---
+// 'premium' groups high-tier AND premier-gated together for filtering
+// purposes — a reader browsing "premium cards" wants to see Infinia and
+// HSBC Premier alongside Times Black, even though their eligibility gates
+// differ (see each card's eligibility_notes for the real distinction).
+export const BUCKET_FILTER_LABELS = {
+  all: 'All',
+  entry: 'Beginner',
+  'mid-tier': 'Mid-level',
+  premium: 'Premium'
+};
+
+export function cardMatchesBucketFilter(card, filterValue) {
+  if (filterValue === 'all') return true;
+  if (filterValue === 'premium') return card.bucket === 'high-tier' || card.bucket === 'premier-gated';
+  return card.bucket === filterValue;
+}
+
+// --- Scenario presets ---
+// Deliberately NOT "best card" badges — see project notes on why a crowned
+// winner is a credibility risk while several cards still have unresolved
+// base rates. Each scenario auto-fills a spend profile and suggests a
+// reasonable starting pair; the actual comparison still runs through the
+// same transparent ledger, so any data gap on the suggested cards surfaces
+// normally rather than being hidden behind a declared "best" claim.
+export const scenarios = [
+  {
+    id: 'frequent-flyer',
+    label: 'Frequent flyer',
+    description: 'Heavy travel spend, lounge access matters most',
+    tagFilter: ['travel', 'lounge-access'],
+    spend: { general: 400000, rent: 0, fuel: 0, utility_bill_via_app: 0, insurance_premium: 0, international_spend: 200000 },
+    suggestedCardA: 'hdfc_regalia_gold',
+    suggestedCardB: 'icici_times_black'
+  },
+  {
+    id: 'everyday-shopper',
+    label: 'Everyday shopper',
+    description: 'Cashback on regular monthly spend, no travel focus',
+    tagFilter: ['cashback', 'shopping'],
+    spend: { general: 150000, rent: 0, fuel: 0, utility_bill_via_app: 0, insurance_premium: 0, international_spend: 0 },
+    suggestedCardA: 'hdfc_millennia',
+    suggestedCardB: 'federal_scapia'
+  },
+  {
+    id: 'lifetime-free-starter',
+    label: 'Lifetime-free starter',
+    description: 'First card, low/no fees, modest spend',
+    tagFilter: [],
+    bucketFilter: 'entry',
+    spend: { general: 100000, rent: 0, fuel: 0, utility_bill_via_app: 0, insurance_premium: 0, international_spend: 0 },
+    suggestedCardA: 'federal_scapia',
+    suggestedCardB: 'au_ixigo'
+  },
+  {
+    id: 'dining-lifestyle',
+    label: 'Dining & lifestyle',
+    description: 'Concierge, dining perks, lifestyle memberships over pure cashback',
+    tagFilter: ['dining', 'lifestyle'],
+    spend: { general: 300000, rent: 0, fuel: 0, utility_bill_via_app: 0, insurance_premium: 0, international_spend: 0 },
+    suggestedCardA: 'icici_times_black',
+    suggestedCardB: 'hdfc_infinia_metal'
+  }
+];

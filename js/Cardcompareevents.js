@@ -1,9 +1,9 @@
 // js/cardCompareEvents.js
 // Imports data, calc, state, and dom. Wires events and renders results.
 
-import { cardProfiles, getExclusionsForCard, getOffersForCard } from './cardCompareData.js';
-import { calculateNetValue } from './cardCompareCalc.js';
-import { state, setCard, setVariant, setSpend } from './cardCompareState.js';
+import { cardProfiles, getExclusionsForCard, getOffersForCard, scenarios, BUCKET_FILTER_LABELS, cardMatchesBucketFilter } from './cardCompareData.js';
+import { calculateNetValue, isOfferExpired, isOfferExpiringSoon } from './cardCompareCalc.js';
+import { state, setCard, setVariant, setSpend, setBucketFilter, toggleTag } from './cardCompareState.js';
 import { dom } from './cardCompareDom.js';
 
 function fmt(n) {
@@ -101,12 +101,22 @@ function renderBenefitsList(cardId) {
   return Object.entries(grouped).map(([label, items]) => `
     <div class="benefit-group">
       <div class="benefit-group-label">${label}</div>
-      ${items.map(o => `
-        <div class="benefit-item">
-          <span class="benefit-text">${o.value_description}</span>
-          ${o.estimated_value_inr ? `<span class="benefit-value">${fmt(o.estimated_value_inr)}</span>` : ''}
+      ${items.map(o => {
+        const expired = isOfferExpired(o);
+        const expiringSoon = !expired && isOfferExpiringSoon(o);
+        const isVendor = o.offer_source === 'vendor_offer';
+        const isVoucher = o.value_type === 'voucher';
+        let vendorBadge = '';
+        if (expired) vendorBadge = '<span class="vendor-badge expired">EXPIRED — needs update</span>';
+        else if (isVendor) vendorBadge = `<span class="vendor-badge${expiringSoon ? ' expiring' : ''}">Vendor offer · valid until ${o.valid_until}</span>`;
+        if (!expired && isVoucher) vendorBadge += '<span class="vendor-badge voucher-tag">Voucher/conditional — not in net total</span>';
+        return `
+        <div class="benefit-item${expired ? ' expired-item' : ''}">
+          <span class="benefit-text">${vendorBadge}${o.value_description}</span>
+          ${o.estimated_value_inr && !expired ? `<span class="benefit-value${isVoucher ? ' voucher-value' : ''}">${fmt(o.estimated_value_inr)}</span>` : ''}
         </div>
-      `).join('')}
+      `;
+      }).join('')}
     </div>
   `).join('');
 }
@@ -154,6 +164,21 @@ function renderExclusionsCell(cardId) {
   return `<div class="col-cell">${summary || '<p class="empty-note">No exclusions logged for this card yet — verify before assuming none exist.</p>'}</div>`;
 }
 
+function renderRewardFormula(card, y1) {
+  if (y1.dataInsufficient || !y1.categoryBreakdown.length) return '';
+  const rate = card.base_reward_multiplier;
+  const pointValue = card.base_point_value_inr;
+  const lines = y1.categoryBreakdown
+    .filter(c => c.amount > 0)
+    .map(c => {
+      if (c.value === null) return `<div class="formula-line">${c.category.replace(/_/g, ' ')}: ${fmt(c.amount)} — reward status unconfirmed for this category</div>`;
+      if (c.factor === 0) return `<div class="formula-line">${c.category.replace(/_/g, ' ')}: ${fmt(c.amount)} × 0% (excluded) = ₹0</div>`;
+      const factorNote = c.factor !== 1 ? ` × ${c.factor} (partial rate)` : '';
+      return `<div class="formula-line">${c.category.replace(/_/g, ' ')}: ${fmt(c.amount)} × ${rate}%${factorNote} × ₹${pointValue}/pt = ${fmt(c.value)}</div>`;
+    });
+  return lines.length ? `<div class="formula-box">${lines.join('')}</div>` : '';
+}
+
 function renderLedgerCell(cardId, variant) {
   const card = getCard(cardId);
   const ex = getExclusionsForCard(cardId);
@@ -168,12 +193,15 @@ function renderLedgerCell(cardId, variant) {
   return `
     <div class="col-cell">
       <div class="ledger-line"><span>Reward value</span><span>${fmt(y1.rewardValue)}</span></div>
-      <div class="ledger-line"><span>Welcome/milestone offers (priced only)</span><span>${fmt(y1.offerValue)}</span></div>
+      ${renderRewardFormula(card, y1)}
+      <div class="ledger-line"><span>Cash-equivalent welcome/milestone offers</span><span>${fmt(y1.offerValue)}</span></div>
       <div class="ledger-line"><span>Joining + annual fee</span><span class="neg">-${fmt(y1.fees.totalFees).slice(1)}</span></div>
       ${y1.extraCategoryFees > 0 ? `<div class="ledger-line"><span>Category convenience fees</span><span class="neg">-${fmt(y1.extraCategoryFees).slice(1)}</span></div>` : ''}
       <div class="ledger-line total"><span>Net, Year 1</span><span class="${y1.netValue >= 0 ? 'pos' : 'neg'}">${fmt(y1.netValue)}</span></div>
       <div class="ledger-line total"><span>Net, Year 2+</span><span class="${y2.netValue >= 0 ? 'pos' : 'neg'}">${fmt(y2.netValue)}</span></div>
       ${appliedOffersList}
+      ${y1.voucherOfferCount > 0 ? `<div class="uncounted-note">+ ${y1.voucherOfferCount} voucher/conditional benefit${y1.voucherOfferCount > 1 ? 's' : ''} shown in "What you get" below, NOT counted here — face value isn't guaranteed cash.</div>` : ''}
+      ${y1.expiredOfferCount > 0 ? `<div class="uncounted-note">${y1.expiredOfferCount} vendor offer${y1.expiredOfferCount > 1 ? 's' : ''} shown above ${y1.expiredOfferCount > 1 ? 'are' : 'is'} marked EXPIRED and excluded from this total — check the "what you get" list for details.</div>` : ''}
     </div>
   `;
 }
@@ -193,7 +221,7 @@ function renderSpendTable() {
     const aY2 = calculateNetValue(cardA, exA, offA, spendByCategory, 2, state.variantA);
     const bY1 = calculateNetValue(cardB, exB, offB, spendByCategory, 1, state.variantB);
     const bY2 = calculateNetValue(cardB, exB, offB, spendByCategory, 2, state.variantB);
-    return `<tr>
+    return `<tr class="clickable-row" data-spend="${spend}" title="Click to load ₹${spend.toLocaleString('en-IN')} into the spend inputs and ledger above">
       <td>₹${spend.toLocaleString('en-IN')}</td>
       <td class="${aY1.netValue > bY1.netValue ? 'better' : ''}">${aY1.dataInsufficient ? 'n/a' : fmt(aY1.netValue)}</td>
       <td class="${aY2.netValue > bY2.netValue ? 'better' : ''}">${aY2.dataInsufficient ? 'n/a' : fmt(aY2.netValue)}</td>
@@ -256,15 +284,72 @@ function syncSpendInputsFromState() {
   dom.spendInternational.value = state.spend.international_spend;
 }
 
+function getFilteredCards() {
+  return cardProfiles.filter(c =>
+    cardMatchesBucketFilter(c, state.bucketFilter) &&
+    (state.activeTags.length === 0 || state.activeTags.some(tag => c.tags.includes(tag)))
+  );
+}
+
 export function populateCardSelects() {
-  const options = cardProfiles.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+  const filtered = getFilteredCards();
+  // Never allow an empty dropdown — if a filter combination matches nothing,
+  // fall back to the full list rather than showing a broken empty select.
+  const listForOptions = filtered.length ? filtered : cardProfiles;
+  const options = listForOptions.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
   dom.cardSelectA.innerHTML = options;
   dom.cardSelectB.innerHTML = options;
+
+  // If the current selection got filtered out, fall back to the first
+  // (and second, if available) matching cards instead of showing a stale
+  // selection that no longer matches the active filter.
+  const idsInList = listForOptions.map(c => c.id);
+  if (!idsInList.includes(state.cardAId)) setCard('A', listForOptions[0].id);
+  if (!idsInList.includes(state.cardBId) || state.cardBId === state.cardAId) {
+    setCard('B', listForOptions[1] ? listForOptions[1].id : listForOptions[0].id);
+  }
+
   dom.cardSelectA.value = state.cardAId;
   dom.cardSelectB.value = state.cardBId;
   updateVariantVisibility('A');
   updateVariantVisibility('B');
   syncSpendInputsFromState();
+}
+
+const ALL_TAGS = ['travel', 'lifestyle', 'lounge-access', 'shopping', 'forex', 'cashback', 'dining', 'fuel'];
+
+export function renderFilters() {
+  dom.bucketFilterRow.innerHTML = Object.entries(BUCKET_FILTER_LABELS).map(([value, label]) =>
+    `<span class="filter-chip${state.bucketFilter === value ? ' active' : ''}" data-bucket="${value}">${label}</span>`
+  ).join('');
+
+  dom.tagFilterRow.innerHTML = ALL_TAGS.map(tag =>
+    `<span class="filter-chip${state.activeTags.includes(tag) ? ' active' : ''}" data-tag="${tag}">${tag.replace(/-/g, ' ')}</span>`
+  ).join('');
+}
+
+export function renderScenarios() {
+  dom.scenarioRow.innerHTML = scenarios.map(s =>
+    `<div class="scenario-card" data-scenario="${s.id}">
+      <div class="scenario-card-label">${s.label}</div>
+      <div class="scenario-card-desc">${s.description}</div>
+    </div>`
+  ).join('');
+}
+
+function applyScenario(scenarioId) {
+  const scenario = scenarios.find(s => s.id === scenarioId);
+  if (!scenario) return;
+
+  state.bucketFilter = scenario.bucketFilter || 'all';
+  state.activeTags = [...(scenario.tagFilter || [])];
+  Object.entries(scenario.spend).forEach(([category, amount]) => setSpend(category, amount));
+  setCard('A', scenario.suggestedCardA);
+  setCard('B', scenario.suggestedCardB);
+
+  renderFilters();
+  populateCardSelects();
+  render();
 }
 
 export function attachEvents() {
@@ -283,5 +368,46 @@ export function attachEvents() {
   ];
   spendFields.forEach(([domKey, category]) => {
     dom[domKey].addEventListener('input', e => { setSpend(category, e.target.value); render(); });
+  });
+
+  dom.scenarioRow.addEventListener('click', e => {
+    const card = e.target.closest('[data-scenario]');
+    if (card) applyScenario(card.dataset.scenario);
+  });
+
+  dom.bucketFilterRow.addEventListener('click', e => {
+    const chip = e.target.closest('[data-bucket]');
+    if (!chip) return;
+    setBucketFilter(chip.dataset.bucket);
+    renderFilters();
+    populateCardSelects();
+    render();
+  });
+
+  dom.tagFilterRow.addEventListener('click', e => {
+    const chip = e.target.closest('[data-tag]');
+    if (!chip) return;
+    toggleTag(chip.dataset.tag);
+    renderFilters();
+    populateCardSelects();
+    render();
+  });
+
+  dom.presetTable.addEventListener('click', e => {
+    const row = e.target.closest('[data-spend]');
+    if (!row) return;
+    // Matches the preset table's own stated assumption ("general spend
+    // only") — clicking a row sets General to that amount and clears every
+    // other category, so what's shown above always matches what produced
+    // the row's numbers. Partial category spend from before the click is
+    // intentionally discarded, not merged.
+    setSpend('general', row.dataset.spend);
+    setSpend('rent', 0);
+    setSpend('fuel', 0);
+    setSpend('utility_bill_via_app', 0);
+    setSpend('insurance_premium', 0);
+    setSpend('international_spend', 0);
+    syncSpendInputsFromState();
+    render();
   });
 }

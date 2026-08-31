@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Credit Cards by Spend Category | The Real Rate — VouchWise</title>
+<meta name="description" content="Compare real, sourced reward rates for Indian credit cards by spend category — education, insurance, rent, fuel, and more.">
+<!-- Absolute paths only, per the known /compare/ routing bug (relative
+     paths resolve against the DISPLAYED url and silently 404 at
+     /best-for/education — see CardComparisonHDD.md §10). -->
+<link rel="stylesheet" href="/css/cardCompareDiscover.css">
+</head>
+<body>
+<main class="wrap">
+  <h1 id="pageTitle">Loading…</h1>
+  <p id="pageIntro"></p>
+  <div id="unsupportedNotice"></div>
+
+  <section>
+    <h2>Top picks</h2>
+    <div id="topPicksRow" class="discover-grid"></div>
+  </section>
+
+  <section>
+    <h2>Excluded or unverified for this category</h2>
+    <div id="flaggedRow" class="discover-grid"></div>
+  </section>
+</main>
+
+<script type="module" src="/js/cardCompareDiscoverMain.js"></script>
+</body>
+</html>

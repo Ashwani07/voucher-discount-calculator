@@ -19,6 +19,30 @@ function findExclusion(exclusionsForCard, category) {
 }
 
 /**
+ * Vendor offers (offer_source: 'vendor_offer') carry valid_from/valid_until
+ * dates and are expected to lapse — unlike card_benefit offers, which have
+ * no expiry concept at all. A card_benefit offer is never "expired" by
+ * this function; only vendor_offer entries with a valid_until can be.
+ */
+export function isOfferExpired(offer, today = new Date()) {
+  if (offer.offer_source !== 'vendor_offer' || !offer.valid_until) return false;
+  return new Date(offer.valid_until) < today;
+}
+
+/**
+ * "Expiring soon" is a maintenance signal, not a reader-facing warning by
+ * default — used by the admin view to surface offers that need re-checking
+ * before they lapse. daysAhead defaults to 30.
+ */
+export function isOfferExpiringSoon(offer, daysAhead = 30, today = new Date()) {
+  if (offer.offer_source !== 'vendor_offer' || !offer.valid_until) return false;
+  const until = new Date(offer.valid_until);
+  if (until < today) return false; // already expired, not "expiring"
+  const msAhead = daysAhead * 24 * 60 * 60 * 1000;
+  return (until - today) <= msAhead;
+}
+
+/**
  * Resolve the base reward multiplier for a card, accounting for
  * network variants (e.g. Scapia Visa vs RuPay have different rates).
  */
@@ -108,9 +132,21 @@ export function calculateFees(cardProfile, annualSpend, year) {
 export function calculateOfferValue(offersForCard, annualSpend, year) {
   let value = 0;
   let uncountedOfferCount = 0; // offers with no numeric value, e.g. "unlimited lounge access"
+  let expiredOfferCount = 0; // vendor offers past valid_until — excluded from value, tracked separately
+  let voucherOfferCount = 0; // conditional/merchant-specific value (vouchers, discounts) — shown in "What you get" with their figure, but NOT summed into the net ledger, since face value isn't guaranteed cash-equivalent the way a points-to-statement-credit redemption is
   const applied = [];
 
   for (const offer of offersForCard) {
+    if (isOfferExpired(offer)) {
+      expiredOfferCount++;
+      continue; // expired vendor offers contribute zero — never count stale value as if current
+    }
+
+    if (offer.value_type === 'voucher') {
+      voucherOfferCount++;
+      continue; // conditional/voucher value — descriptive only, never added to the ledger total
+    }
+
     if (offer.estimated_value_inr === null || offer.estimated_value_inr === undefined) {
       uncountedOfferCount++;
       continue;
@@ -140,7 +176,7 @@ export function calculateOfferValue(offersForCard, annualSpend, year) {
     applied.push({ description: offer.value_description, value: offerValue });
   }
 
-  return { value, applied, uncountedOfferCount };
+  return { value, applied, uncountedOfferCount, expiredOfferCount, voucherOfferCount };
 }
 
 /**
@@ -162,6 +198,8 @@ export function calculateNetValue(cardProfile, exclusionsForCard, offersForCard,
     offerValue: offerResult.value,
     appliedOffers: offerResult.applied,
     uncountedOfferCount: offerResult.uncountedOfferCount,
+    expiredOfferCount: offerResult.expiredOfferCount,
+    voucherOfferCount: offerResult.voucherOfferCount,
     fees,
     extraCategoryFees: rewards.extraFees,
     netValue,

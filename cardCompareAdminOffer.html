@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Offer Status — Admin | VouchWise</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:#eef0f3;
+    color:#161a22;
+    font-family:'Inter',sans-serif;
+    padding:28px 20px 60px;
+  }
+  .wrap{max-width:900px;margin:0 auto;}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:22px;margin:0 0 4px;}
+  .subtitle{color:#4b5262;font-size:13px;margin:0 0 24px;line-height:1.5;}
+  .subtitle b{color:#a3271e;}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border:1px solid #c9cdd6;
+    border-radius:6px;
+    overflow:hidden;
+    font-size:13px;
+  }
+  th,td{ padding:10px 12px; text-align:left; vertical-align:top; }
+  th{
+    background:#f4f5f7;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:#4b5262;
+    border-bottom:1px solid #c9cdd6;
+  }
+  tbody tr{ border-bottom:1px solid #eceef1; }
+  tbody tr:last-child{ border-bottom:none; }
+  .desc{ max-width:340px; color:#4b5262; font-size:12px; line-height:1.4; }
+
+  .status{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    padding:3px 8px;
+    border-radius:3px;
+    white-space:nowrap;
+    display:inline-block;
+  }
+  .status.expired{ background:#fbeaea; color:#a3271e; }
+  .status.expiring{ background:#fff3cd; color:#7a5a10; }
+  .status.live{ background:#e6f4ea; color:#1e6b3e; }
+
+  .empty{
+    background:#fff;
+    border:1px solid #c9cdd6;
+    border-radius:6px;
+    padding:24px;
+    text-align:center;
+    color:#4b5262;
+    font-size:13px;
+  }
+
+  .summary-row{
+    display:flex;
+    gap:12px;
+    margin-bottom:16px;
+  }
+  .summary-chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:8px 14px;
+    border-radius:6px;
+    border:1px solid #c9cdd6;
+    background:#fff;
+  }
+  .summary-chip.expired{ border-color:#e6b3b0; color:#a3271e; }
+  .summary-chip.expiring{ border-color:#e6cf8a; color:#7a5a10; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Vendor Offer Status</h1>
+  <p class="subtitle">Internal maintenance view — not part of the public site (no nav link, <code>noindex</code>). Lists every offer with an <code>offer_source: 'vendor_offer'</code> tag, sorted by urgency, so dated promos don't silently go stale. <b>This reads the same cardCompareData.js as the live compare page — there's no separate database to keep in sync.</b></p>
+
+  <div class="summary-row" id="summaryRow"></div>
+  <div id="tableContainer"></div>
+</div>
+
+<script type="module">
+import { cardProfiles, offers } from '/js/cardCompareData.js';
+import { isOfferExpired, isOfferExpiringSoon } from '/js/cardCompareCalc.js';
+
+function cardName(id) {
+  const c = cardProfiles.find(c => c.id === id);
+  return c ? c.name : id;
+}
+
+const vendorOffers = offers.filter(o => o.offer_source === 'vendor_offer');
+
+function status(o) {
+  if (isOfferExpired(o)) return { label: 'EXPIRED', cls: 'expired', sortRank: 0 };
+  if (isOfferExpiringSoon(o)) return { label: 'Expiring soon', cls: 'expiring', sortRank: 1 };
+  return { label: 'Live', cls: 'live', sortRank: 2 };
+}
+
+const rows = vendorOffers
+  .map(o => ({ offer: o, status: status(o) }))
+  .sort((a, b) => a.status.sortRank - b.status.sortRank);
+
+const expiredCount = rows.filter(r => r.status.cls === 'expired').length;
+const expiringCount = rows.filter(r => r.status.cls === 'expiring').length;
+const liveCount = rows.filter(r => r.status.cls === 'live').length;
+
+document.getElementById('summaryRow').innerHTML = `
+  <div class="summary-chip expired">${expiredCount} expired</div>
+  <div class="summary-chip expiring">${expiringCount} expiring within 30 days</div>
+  <div class="summary-chip">${liveCount} live</div>
+`;
+
+if (!rows.length) {
+  document.getElementById('tableContainer').innerHTML = '<div class="empty">No vendor offers logged yet.</div>';
+} else {
+  document.getElementById('tableContainer').innerHTML = `
+    <table>
+      <thead>
+        <tr><th>Status</th><th>Card</th><th>Valid until</th><th>Offer</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        ${rows.map(({ offer, status: s }) => `
+          <tr>
+            <td><span class="status ${s.cls}">${s.label}</span></td>
+            <td>${cardName(offer.card_id)}</td>
+            <td>${offer.valid_until}</td>
+            <td class="desc">${offer.value_description}</td>
+            <td><a href="${offer.source_url}" target="_blank" rel="noopener">source ↗</a></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+</script>
+</body>
+</html>
