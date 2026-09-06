@@ -1,0 +1,386 @@
+# VouchWise - Repository Architecture
+
+This document describes the implemented repository as of 2026-09-06. The JavaScript import graph is documented separately in [JavaScriptDependencyMap.md](JavaScriptDependencyMap.md).
+
+## 1. Project Understanding
+
+### Stack
+
+- Static HTML pages with browser-native ES modules.
+- Vanilla JavaScript; no frontend framework and no backend application server.
+- Tailwind CSS 3.4.4, loaded from the CDN by the main pages. [src/input.css](src/input.css) contains the local Tailwind source directives.
+- Cloudflare Pages static assets behind [_worker.js](_worker.js), configured by [wrangler.jsonc](wrangler.jsonc).
+- Browser `localStorage` for wallet selections, custom cards, custom brands, and flagged discounts.
+- Node.js build utilities for assembling card comparison data from per-card source modules.
+- External affiliate destinations represented in [routes.json](routes.json).
+
+### Architecture style
+
+VouchWise is a multi-page static monolith with isolated feature module graphs. It is not a microservice or event-driven backend. Each HTML page owns a browser entry point; calculation and rendering execute in the browser. Browser persistence is the only user-specific data layer.
+
+The main runtime families are:
+
+1. **Voucher calculator**: [index.html](index.html) plus `main.js`, `events.js`, `results.js`, `customCalc.js`, wallet, search, modal, and data modules.
+2. **Card comparison**: [compare.html](compare.html) plus the `cardCompare*` state, DOM, events, calculation, and data modules.
+3. **Category discovery**: [cardCompareDiscover.html](cardCompareDiscover.html) plus the `cardCompareDiscover*` modules.
+
+[brands.html](brands.html) is a separate brand/portal guide with inline behavior. [cardCompareAdminOffer.html](cardCompareAdminOffer.html) is an administrative offer-entry page. The remaining HTML pages are standalone/static views.
+
+## 2. High-Level Architecture
+
+```mermaid
+flowchart TB
+    Visitor[Visitor browser]
+    Worker[Cloudflare Worker _worker.js]
+    Assets[Cloudflare Pages assets]
+    Pages[Static HTML pages]
+    Core[Voucher calculator graph]
+    Compare[Card comparison graph]
+    Discover[Category discovery graph]
+    Storage[(Browser localStorage)]
+    Affiliate[External affiliate portals]
+
+    Visitor --> Worker
+    Worker -->|redirect /out/*| Affiliate
+    Worker -->|asset request| Assets
+    Assets --> Pages
+    Pages --> Core
+    Pages --> Compare
+    Pages --> Discover
+    Core --> Storage
+    Compare --> Data[Generated card data]
+    Discover --> Data
+```
+
+The worker is a routing boundary, not a business-service boundary. It redirects known affiliate paths from [routes.json](routes.json) and delegates other requests to Pages assets.
+
+## 3. Folder-Structure Map
+
+```mermaid
+flowchart TD
+    Root[vouchwise/]
+    Root --> Pages[HTML pages\nindex, brands, compare, discovery]
+    Root --> JS[js/]
+    Root --> Assets[assets/\nicons and brand assets]
+    Root --> Functions[functions/\nedge/serverless helpers]
+    Root --> CSS[src/\nTailwind input]
+    Root --> Config[Deployment/config\n_worker.js, routes.json, wrangler.jsonc]
+    Root --> Docs[Architecture and product notes\n*.md]
+
+    JS --> CoreJS[Core calculator modules\ndata, state, dom, utils, calculator]
+    JS --> FeatureJS[Feature modules\nsearch, wallet, modals, results, customCalc, flags, events]
+    JS --> CompareJS[Card comparison modules\ncardCompare*]
+    JS --> GeneratedJS[Generated data\ncardCompareGeneratedData.js]
+    JS --> BuildJS[Node build utilities\ncardCompareBuildData.js, migration script]
+```
+
+At the repository root, the HTML files are page templates, `js/` contains browser and Node modules, `assets/` contains static media, `src/` contains Tailwind input directives, and the worker/configuration files define deployment and redirect behavior.
+
+## 4. Page and Entry-Point Map
+
+```mermaid
+graph LR
+    Index[index.html\nmain calculator] --> Main[js/main.js]
+    Brands[brands.html?brand=id\nbrand guide] --> BrandInline[inline module]
+    Compare[compare.html\ncard comparison] --> CompareMain[js/cardCompareMain.js]
+    Discover[cardCompareDiscover.html\n/best-for/slug] --> DiscoverMain[js/cardCompareDiscoverMain.js]
+    Admin[cardCompareAdminOffer.html\nadmin offer editor] --> AdminInline[inline module]
+    Worker[_worker.js] --> Routes[routes.json]
+    Worker --> Assets[Pages assets]
+    Main --> Core[core calculator graph]
+    CompareMain --> CompareGraph[card comparison graph]
+    DiscoverMain --> DiscoverGraph[discovery graph]
+```
+
+## 5. Core Voucher Calculator
+
+```mermaid
+graph TD
+    Main[main.js\nbootstrap + hash preselect]
+    Events[events.js\nlistener wiring]
+    Data[data.js\nstatic data + localStorage merge]
+    State[state.js\nshared mutable state]
+    Dom[dom.js\nDOM cache]
+    Utils[utils.js\nshared helpers]
+    Search[search.js\nautocomplete + selection]
+    Wallet[wallet.js\nwallet persistence + rendering]
+    Modals[modals.js\ncustom card/brand saves]
+    Results[results.js\nportal comparison + rendering]
+    Custom[customCalc.js\ndiscount calculator]
+    Calc[calculator.js\npure financial math]
+    Flags[flags.js\nflagged discount panel]
+
+    Main --> Dom & Data & Wallet & Modals & Events & Search & Results & Flags
+    Events --> Data & Dom & State & Utils & Search & Results & Custom & Wallet & Modals & Flags
+    Search --> Data & Dom & State
+    Wallet --> Data & Dom & Utils
+    Modals --> Data & Dom & Wallet
+    Flags --> Data & Utils
+    Results --> Data & Calc & Dom & State & Utils & Wallet & Search & Custom
+    Custom --> Data & Calc & Dom & State & Utils & Wallet
+    Utils --> Dom
+
+    classDef pure fill:#e8f5e9,stroke:#2e7d32;
+    classDef entry fill:#fff3cd,stroke:#b8860b;
+    class Calc,State,Dom pure;
+    class Main,Events entry;
+```
+
+`events.js` is the composition root for user interaction. `results.js` owns portal eligibility, calculation orchestration, ranking, and rendering. `customCalc.js` owns the standalone discount flow. `calculator.js` is pure and imports no application modules.
+
+## 6. Card Comparison and Discovery
+
+```mermaid
+graph TD
+    CompareMain[cardCompareMain.js] --> CompareEvents[cardCompareEvents.js]
+    CompareEvents --> CompareData[cardCompareData.js]
+    CompareEvents --> CompareCalc[cardCompareCalc.js]
+    CompareEvents --> CompareState[cardCompareState.js]
+    CompareEvents --> CompareDom[cardCompareDom.js]
+    CompareData --> Generated[cardCompareGeneratedData.js]
+
+    DiscoverMain[cardCompareDiscoverMain.js] --> DiscoverEvents[cardCompareDiscoverEvents.js]
+    DiscoverEvents --> DiscoverCalc[cardCompareDiscoverCalc.js]
+    DiscoverEvents --> DiscoverData[cardCompareDiscoverData.js]
+    DiscoverEvents --> DiscoverState[cardCompareDiscoverState.js]
+    DiscoverEvents --> DiscoverDom[cardCompareDiscoverDom.js]
+    DiscoverEvents --> CompareData
+    DiscoverCalc --> CompareCalc
+```
+
+Card comparison is a separate page graph, but discovery reuses the comparison data facade and reward calculation. Both consume generated data; neither imports the main voucher calculator state or DOM cache.
+
+## 7. Data Pipeline
+
+```mermaid
+flowchart LR
+    Entries[cardCompareEntry*.js] --> Build[cardCompareBuildData.js\nNode utility]
+    Build --> Generated[cardCompareGeneratedData.js]
+    Generated --> CompareData[cardCompareData.js]
+    CompareData --> CompareUI[compare.html]
+    CompareData --> DiscoverUI[cardCompareDiscover.html]
+
+    BuiltInBrands[masterBrands in data.js] --> Runtime[data.js runtime arrays]
+    BuiltInCards[masterCards in data.js] --> Runtime
+    LocalStorage[(customCards / customBrands)] --> Runtime
+    Runtime --> MainUI[index.html]
+    MainUI --> Calc[calculator.js]
+    Calc --> MainUI
+```
+
+The main calculator merges built-in data with custom records at runtime. Card comparison uses the generated aggregate module, whose editable source is the per-card entry set. `cardCompareMigrateToEntries.js` is a one-time migration utility, not a browser dependency.
+
+## 8. Data Flow and Control Flow
+
+The main calculation path is:
+
+```text
+Page load
+  -> main.bootstrap()
+  -> renderWalletUI(), applyBankDefaults(), initEvents(), renderFlaggedDiscounts()
+  -> user selects brand through search.selectBrand()
+  -> user saves card IDs through wallet.saveWalletIds()
+  -> events click handler calls results.handleCalculate()
+  -> results.getEligibleResults()
+  -> calculator.calculateTrueNetMetricsWithFlooring() per eligible card/portal
+  -> results.groupAndSortResults()
+  -> results.renderResults()
+  -> optional /out/* request is redirected by _worker.js using routes.json
+```
+
+```mermaid
+flowchart TD
+    Load[Load index.html] --> Bootstrap[main.bootstrap]
+    Bootstrap --> Ready[Search and wallet ready]
+    Ready --> Brand[selectBrand]
+    Brand --> Wallet[save wallet card IDs]
+    Wallet --> Calculate[handleCalculate]
+    Calculate --> Validate[validateVoucherAmount]
+    Validate --> Filter[Filter unavailable portals and ineligible cards]
+    Filter --> Math[calculateTrueNetMetricsWithFlooring]
+    Math --> Rank[groupAndSortResults]
+    Rank --> Render[renderResults]
+    Render --> Affiliate[Optional affiliate redirect]
+```
+
+## 9. Key Workflow Sequences
+
+### Find the best voucher deal
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Search as search.js
+    participant Wallet as wallet.js
+    participant Results as results.js
+    participant Calc as calculator.js
+    participant Store as localStorage
+
+    User->>Search: type and select brand
+    Search->>Search: handleBrandInput(), selectBrand()
+    User->>Wallet: select cards and save wallet
+    Wallet->>Store: save walletCardIds
+    User->>Results: click Find Best Deal
+    Results->>Results: validate amount and getEligibleResults()
+    loop each eligible card and portal
+        Results->>Calc: calculateTrueNetMetricsWithFlooring()
+        Calc-->>Results: net paid, reward, net cost, rate
+    end
+    Results->>Results: groupAndSortResults()
+    Results-->>User: ranked deal cards
+```
+
+### Run the custom discount calculator
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Events as events.js
+    participant Custom as customCalc.js
+    participant Wallet as wallet.js
+    participant Calc as calculator.js
+    participant DOM as index.html DOM
+
+    User->>Events: click custom calculator
+    Events->>Custom: handleCustomCalculate()
+    Custom->>Wallet: getActiveWalletIds()
+    Custom->>Custom: filter eligible cards
+    loop each card
+        Custom->>Calc: calculateTrueNetMetricsWithFlooring()
+        Calc-->>Custom: metrics
+    end
+    Custom->>Custom: sort by effective net rate
+    Custom-->>DOM: renderCustomResults()
+```
+
+### Compare two cards
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Main as cardCompareMain.js
+    participant Events as cardCompareEvents.js
+    participant Data as cardCompareData.js
+    participant Calc as cardCompareCalc.js
+    participant State as cardCompareState.js
+
+    Main->>Events: parseUrlIntoState(), populateCardSelects()
+    Events->>Data: read profiles, exclusions, offers, scenarios
+    User->>Events: select filters, cards, variants, spend
+    Events->>State: setCard(), setSpend(), setBucketFilter()
+    User->>Events: click Compare
+    loop selected card and year
+        Events->>Data: getExclusionsForCard(), getOffersForCard()
+        Events->>Calc: calculateNetValue()
+        Calc-->>Events: reward, fees, offers, net value
+    end
+    Events-->>User: comparison table and assumptions
+```
+
+## 10. UML Views
+
+### Module/class view
+
+The code is function-oriented rather than class-oriented, so this UML view models modules and public responsibilities.
+
+```mermaid
+classDiagram
+    class Main { +bootstrap() +applyBrandPreselectFromHash() }
+    class Events { +initEvents() }
+    class Data { +brands +cards +portals +saveCustomCard() +saveCustomBrand() }
+    class State { +currentBrandId +lastCustomCalc }
+    class Calculator { +getCardPortalMultiplier() +calculateTrueNetMetrics() +calculateTrueNetMetricsWithFlooring() }
+    class Results { +getEligibleResults() +groupAndSortResults() +handleCalculate() +renderResults() }
+    class CustomCalculator { +runCustomCalculation() +handleCustomCalculate() +renderCustomResults() }
+    class Wallet { +loadWalletIds() +saveWalletIds() +renderWalletUI() +getActiveWalletIds() }
+
+    Main --> Events
+    Main --> Wallet
+    Events --> Results
+    Events --> CustomCalculator
+    Results --> Calculator
+    CustomCalculator --> Calculator
+    Results --> Data
+    Wallet --> Data
+    Results --> State
+```
+
+### Use cases
+
+```mermaid
+flowchart LR
+    User((Visitor))
+    Admin((Maintainer))
+    User --> Find[Find best voucher deal]
+    User --> Custom[Evaluate custom discount]
+    User --> Wallet[Manage card wallet]
+    User --> Flag[Flag outdated discount]
+    User --> Browse[Browse brand guide]
+    User --> Compare[Compare cards]
+    User --> Discover[Browse category rankings]
+    Admin --> Generate[Regenerate card comparison data]
+```
+
+### Main activity
+
+```mermaid
+flowchart TD
+    Start([Page load]) --> Bootstrap[Bootstrap DOM, wallet, events, flags]
+    Bootstrap --> Brand{Brand selected?}
+    Brand -->|No| Error[Show selection error]
+    Brand -->|Yes| Amount{Amount positive?}
+    Amount -->|No| AmountError[Show validation error]
+    Amount -->|Yes| Wallet{Cards selected?}
+    Wallet -->|No| WalletError[Show wallet warning]
+    Wallet -->|Yes| Filter[Filter unavailable portals and ineligible cards]
+    Filter --> Calculate[Calculate each card/portal]
+    Calculate --> Sort[Group and sort]
+    Sort --> Render[Render result]
+    Render --> Buy[Optional affiliate redirect]
+```
+
+### Main state diagram
+
+```mermaid
+stateDiagram-v2
+    [*] --> Ready
+    Ready --> BrandSelected: selectBrand()
+    BrandSelected --> WalletEditing: edit wallet
+    WalletEditing --> Ready: save or cancel
+    BrandSelected --> ResultsVisible: calculate valid amount
+    ResultsVisible --> ResultsVisible: refresh amount or wallet
+    ResultsVisible --> Ready: reset
+    BrandSelected --> CustomResultsVisible: custom calculation
+    CustomResultsVisible --> ResultsVisible: main calculation
+    CustomResultsVisible --> Ready: reset
+```
+
+## 11. Feature-to-File Mapping
+
+| Feature | Files and symbols |
+|---|---|
+| Bootstrap | [js/main.js](js/main.js#L1), `bootstrap`, `applyBrandPreselectFromHash` |
+| DOM cache | [js/dom.js](js/dom.js#L1), `dom` |
+| Static/custom data | [js/data.js](js/data.js#L1), `brands`, `cards`, `portals`, `saveCustomCard`, `saveCustomBrand` |
+| Brand search | [js/search.js](js/search.js#L1), `handleBrandInput`, `selectBrand`, `renderCategoryBrands` |
+| Wallet | [js/wallet.js](js/wallet.js#L1), `loadWalletIds`, `saveWalletIds`, `renderWalletUI`, `renderWalletChipBar` |
+| Custom card/brand UI | [js/modals.js](js/modals.js#L1), `applyBankDefaults`, `handleSaveCard`, `handleSaveBrand` |
+| Portal comparison | [js/results.js](js/results.js#L1), `getEligibleResults`, `groupAndSortResults`, `handleCalculate`, `renderResults` |
+| Financial math | [js/calculator.js](js/calculator.js#L1), `getCardPortalMultiplier`, `calculateTrueNetMetricsWithFlooring` |
+| Custom discount flow | [js/customCalc.js](js/customCalc.js#L1), `runCustomCalculation`, `handleCustomCalculate` |
+| Shared helpers | [js/utils.js](js/utils.js#L1), `validateVoucherAmount`, `getBrandById`, `getPortalById` |
+| Flags | [js/flags.js](js/flags.js#L1), `getAllFlags`, `renderFlaggedDiscounts`, `removeFlag` |
+| Event wiring | [js/events.js](js/events.js#L1), `initEvents` |
+| Card comparison | [js/cardCompareEvents.js](js/cardCompareEvents.js#L1), [js/cardCompareCalc.js](js/cardCompareCalc.js#L1), [js/cardCompareState.js](js/cardCompareState.js#L1) |
+| Card data generation | [js/cardCompareBuildData.js](js/cardCompareBuildData.js#L1), `cardCompareEntry*.js`, `cardCompareGeneratedData.js` |
+| Category discovery | [js/cardCompareDiscoverEvents.js](js/cardCompareDiscoverEvents.js#L1), [js/cardCompareDiscoverCalc.js](js/cardCompareDiscoverCalc.js#L1) |
+| Affiliate routing | [_worker.js](_worker.js#L1), [routes.json](routes.json#L1) |
+
+## 12. Important Invariants
+
+- Portal eligibility is determined by `getCardPortalMultiplier(card, portal) > 0`.
+- Unavailable brand portals must be filtered before calculation.
+- UI-facing flows use `calculateTrueNetMetricsWithFlooring`, not the raw calculation function.
+- `localStorage` keys such as `walletCardIds`, `customCards`, `customBrands`, and `flag:<brandId>:<portalId>` are compatibility contracts.
+- `customCalc.js` must not import `results.js`; shared behavior belongs in `utils.js` or `calculator.js`.
+- The inline preview modules in [index.html](index.html) and [brands.html](brands.html) are separate module roots and do not inherit `events.js` behavior.

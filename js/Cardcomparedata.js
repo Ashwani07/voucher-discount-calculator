@@ -3,7 +3,8 @@
 // — do not hand-edit here. To change a card, edit its file in
 // cardCompareEntries/ and run: node cardCompareBuildData.js
 
-export { cardProfiles, exclusions, offers } from './cardCompareGeneratedData.js';
+import { cardProfiles, exclusions, offers } from './cardCompareGeneratedData.js';
+export { cardProfiles, exclusions, offers };
 
 export function getExclusionsForCard(cardId) {
   return exclusions.filter(e => e.card_id === cardId);
