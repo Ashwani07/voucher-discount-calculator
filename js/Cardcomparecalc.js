@@ -1,4 +1,4 @@
-// js/compareCalc.js
+// js/cardCompareCalc.js
 // Pure functions only. No DOM. No imports from other app modules.
 // Mirrors calculator.js's isolation rule from the existing VouchWise codebase.
 //
@@ -116,7 +116,7 @@ export function calculateFees(cardProfile, annualSpend, year) {
     : cardProfile.annual_fee === 0; // structurally free cards (no threshold, always 0)
 
   const joiningFee = year === 1 ? (cardProfile.joining_fee || 0) : 0;
-  const annualFee = feeWaived ? 0 : (cardProfile.annual_fee || 0);
+  const annualFee = year === 1 ? 0 : (feeWaived ? 0 : (cardProfile.annual_fee || 0));
 
   return { joiningFee, annualFee, totalFees: joiningFee + annualFee, feeWaived };
 }

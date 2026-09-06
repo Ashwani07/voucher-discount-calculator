@@ -19,6 +19,7 @@ export const cardProfile = {
   ],
   "joining_fee": 23600,
   "annual_fee": 23600,
+  "fees_gst_inclusive": null,
   "waiver_spend_threshold": 2500000,
   "waiver_condition": "Waived if annual spend >= ₹25,00,000",
   "base_reward_multiplier": 2,

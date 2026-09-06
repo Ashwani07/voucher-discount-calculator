@@ -20,6 +20,7 @@ export const cardProfile = {
   ],
   "joining_fee": 12500,
   "annual_fee": 12500,
+  "fees_gst_inclusive": null,
   "waiver_spend_threshold": 1000000,
   "waiver_condition": "Renewal fee waived on ₹10 Lakh/year spend, for cards sourced after 18 Oct 2021 (current tier). Cards sourced BEFORE that date have a lower fee/threshold: ₹10,000 fee, ₹8 Lakh waiver — a real legacy-tier split, not a typo. This profile uses the current (post-2021) tier as default since that's what new applicants get.",
   "base_reward_multiplier": 3.33,

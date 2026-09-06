@@ -19,6 +19,7 @@ export const cardProfile = {
   ],
   "joining_fee": 0,
   "annual_fee": 0,
+  "fees_gst_inclusive": null,
   "waiver_spend_threshold": null,
   "waiver_condition": "Always ₹0 — no joining or annual fee at all, no spend threshold needed. Genuinely fee-free, not a promotional waiver like ixigo AU's.",
   "base_reward_multiplier": 1.33,

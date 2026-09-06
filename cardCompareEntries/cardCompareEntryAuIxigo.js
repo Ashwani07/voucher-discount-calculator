@@ -18,6 +18,7 @@ export const cardProfile = {
   ],
   "joining_fee": 0,
   "annual_fee": 0,
+  "fees_gst_inclusive": null,
   "waiver_spend_threshold": null,
   "waiver_condition": "Officially ₹999+GST joining/annual fee, currently Lifetime Free as a PROMOTIONAL waiver — unlike Scapia this is not structurally guaranteed, could revert. Flag this distinction in UI.",
   "base_reward_multiplier": 2.5,

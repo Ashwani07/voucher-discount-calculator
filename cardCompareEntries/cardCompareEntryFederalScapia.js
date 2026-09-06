@@ -19,6 +19,7 @@ export const cardProfile = {
   ],
   "joining_fee": 0,
   "annual_fee": 0,
+  "fees_gst_inclusive": null,
   "waiver_spend_threshold": null,
   "waiver_condition": "Lifetime free — CONFIRMED via MITC v11 (30.04.2026), no threshold needed",
   "base_reward_multiplier": 10,

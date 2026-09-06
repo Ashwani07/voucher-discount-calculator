@@ -18,6 +18,7 @@ export const cardProfile = {
   ],
   "joining_fee": 14160,
   "annual_fee": 0,
+  "fees_gst_inclusive": null,
   "waiver_spend_threshold": null,
   "waiver_condition": "Always waived for HSBC Premier banking customers (eligibility itself requires the Premier relationship, so this is functionally permanent for anyone who can get the card)",
   "base_reward_multiplier": 3,

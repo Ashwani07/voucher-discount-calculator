@@ -17,6 +17,7 @@ export const cardProfile = {
   ],
   "joining_fee": 1000,
   "annual_fee": 1000,
+  "fees_gst_inclusive": null,
   "waiver_spend_threshold": 100000,
   "waiver_condition": "Renewal fee waived on ₹1 Lakh/year spend — CONFIRMED via master MITC fee table",
   "base_reward_multiplier": 1,

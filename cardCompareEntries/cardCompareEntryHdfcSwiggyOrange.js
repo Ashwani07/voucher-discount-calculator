@@ -1,4 +1,4 @@
-// cardCompareEntryHdfcSwiggy.js
+// cardCompareEntryHdfcSwiggyOrange.js
 // One card, one file. Edit this file to update Swiggy HDFC Bank Credit Card.
 // After editing, regenerate js/cardCompareGeneratedData.js by running:
 //   node cardCompareBuildData.js
@@ -17,6 +17,7 @@ export const cardProfile = {
   ],
   "joining_fee": 500,
   "annual_fee": 500,
+  "fees_gst_inclusive": null,
   "waiver_spend_threshold": 200000,
   "waiver_condition": "Renewal fee waived on ₹2 Lakh/year spend — CONFIRMED via master MITC fee table. No joining-fee waiver mentioned (unlike most other variants), joining fee appears to always apply.",
   "base_reward_multiplier": null,
