@@ -89,11 +89,26 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
     const notAvailable = disclaimer.toLowerCase().includes('not available');
     const currencyLabel = entry.card.id === 'axis_atlas' ? 'Miles' : 'RP';
     const cardYieldPercent = (entry.metrics.cashValue / voucherAmount * 100).toFixed(2);
+    // Either/or portals (currently HDFC SmartBuy): calculator.js already picks
+    // the winning leg and zeroes the other one out numerically, but a raw
+    // ₹0 / 0% next to a real ₹150 / 15% still reads as "no reward available"
+    // rather than "you didn't take this one" — so we label it explicitly
+    // instead of leaving it ambiguous. See calculator.js's isEitherOrPortal.
+    const eitherOrChoice = entry.metrics.eitherOrChoice; // 'discount' | 'reward' | undefined
+    const notTakenTag = '<span class="text-[10px] text-slate-400 font-normal ml-1">(not taken)</span>';
+
     const upfrontLabel = entry.upfront > 0 ? 'Upfront Discount' : entry.upfront < 0 ? 'Convenience Charge' : 'Upfront Discount';
-    const upfrontValueStr = entry.upfront !== 0 ? `${Math.abs(entry.upfront).toFixed(2)}%` : '—';
-    const rewardValue = entry.card.rewardType === 'points' && entry.card.spendBlock
+    const discountNotTaken = eitherOrChoice === 'reward';
+    const upfrontValueStr = entry.upfront !== 0
+      ? `${Math.abs(entry.upfront).toFixed(2)}%${discountNotTaken ? notTakenTag : ''}`
+      : '—';
+    const rewardNotTaken = eitherOrChoice === 'discount';
+    const rewardValue = (entry.card.rewardType === 'points' && entry.card.spendBlock
       ? `${entry.metrics.rpEarned} ${currencyLabel} = ₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)`
-      : `₹${entry.metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)`;
+      : `₹${entry.metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)`) + (rewardNotTaken ? notTakenTag : '');
+    const eitherOrNote = eitherOrChoice
+      ? `<div class="text-[10px] text-indigo-700 bg-indigo-50 border border-indigo-100 rounded px-1.5 py-0.5 mt-1">${entry.portal.name} makes you choose one at checkout — this pick uses <strong>${eitherOrChoice === 'reward' ? 'Accelerated Rewards' : 'the Insta Deal discount'}</strong> because it's worth more here.</div>`
+      : '';
     const shownDiscountStr = entry.upfront > 0 ? entry.upfront.toFixed(1) + '%' : 'N/A';
     const reportURL =
       `https://docs.google.com/forms/d/e/1FAIpQLSeDeeY8MielvLxAvq9HCd7iyz9X473A7FwrjLgj-cb0sGAf4Q/viewform?usp=pp_url` +
@@ -121,6 +136,7 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
           </div>
         </div>
         ${disclaimer ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : ''}
+        ${eitherOrNote}
         ${flooringNote}
         ${renderMetricGrid([
           { label: upfrontLabel, value: `<span class="text-right">${upfrontValueStr}</span>` },
@@ -177,8 +193,24 @@ export function renderResults(groups, brand, shouldScroll, force = false) {
   document.getElementById('resultTitle').textContent = brand.name;
   document.getElementById('resultSubtitle').textContent = `${best.card.name} via ${best.portal.name}`;
   document.getElementById('timestamp').textContent = new Date().toLocaleTimeString();
-  document.getElementById('upfrontValue').textContent = `${best.upfront.toFixed(2)}% (₹${best.metrics.netPaid.toFixed(0)} to pay)`;
-  document.getElementById('rewardValue').textContent = `${best.reward.toFixed(2)}% (₹${best.metrics.cashValue.toFixed(2)} back)`;
+  // Same either/or awareness as buildCardBlock — see calculator.js's
+  // isEitherOrPortal. best.upfront is untouched by which leg won (it's the
+  // raw portal discount), but best.reward IS zeroed on the losing leg, so we
+  // pull the true forgone reward % from eitherOrLegs rather than best.reward.
+  // Either way, "available, not taken" only applies when something nonzero
+  // was actually on the table — a genuine 0% shouldn't be framed as a choice.
+  const eitherOrChoice = best.metrics.eitherOrChoice;
+  const legs = best.metrics.eitherOrLegs;
+  const voucherAmount = best.metrics.flooredAmount + best.metrics.extraAmount;
+  const forgoneRewardPct = legs ? (legs.reward.cashValue / voucherAmount * 100) : best.reward;
+  const bestDiscountNotTaken = eitherOrChoice === 'reward' && best.upfront !== 0;
+  const bestRewardNotTaken = eitherOrChoice === 'discount' && forgoneRewardPct !== 0;
+  document.getElementById('upfrontValue').textContent = bestDiscountNotTaken
+    ? `${best.upfront.toFixed(2)}% available, not taken (₹${best.metrics.netPaid.toFixed(0)} to pay)`
+    : `${best.upfront.toFixed(2)}% (₹${best.metrics.netPaid.toFixed(0)} to pay)`;
+  document.getElementById('rewardValue').textContent = bestRewardNotTaken
+    ? `${forgoneRewardPct.toFixed(2)}% available, not taken (₹${best.metrics.cashValue.toFixed(2)} back)`
+    : `${best.reward.toFixed(2)}% (₹${best.metrics.cashValue.toFixed(2)} back)`;
   document.getElementById('netValue').textContent = `${best.computedTrueNet.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
   const guideLink = document.getElementById('brandGuideLink');

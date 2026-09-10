@@ -80,10 +80,34 @@ export function isHomePortal(card, portal) {
   return match ? match.portalIds.includes(portal.id) : false;
 }
 
+// ---------------------------------------------------------------------------
+// Either/or reward portals
+// ---------------------------------------------------------------------------
+// Historically every portal's upfront discount and card reward multiplier
+// stacked — take the discount at checkout AND still earn accelerated points
+// on the swipe. That assumption broke on HDFC SmartBuy: HDFC's own terms
+// now state Insta Deals (the upfront discount) is explicitly NOT eligible
+// for accelerated reward earn — it's a fork the cardholder must choose at
+// checkout, not a combo (confirmed against HDFC SmartBuy T&Cs, Sept 2026).
+//
+// Add new portal ids here as other issuers roll out the same either/or
+// mechanic — do not assume additive stacking is the default forever, and
+// do not assume every future fork works identically to this one without
+// re-verifying against that issuer's own terms first.
+const EITHER_OR_PORTAL_IDS = ['hdfc_smartbuy'];
+
+export function isEitherOrPortal(portal) {
+  return EITHER_OR_PORTAL_IDS.includes(portal?.id);
+}
+
 /**
- * Core Operational Engine - The single source of truth for financial metrics
+ * The original additive math: upfront discount AND card reward both apply
+ * to the same transaction. Still correct for every portal NOT in
+ * EITHER_OR_PORTAL_IDS. Factored out so both the normal path and each leg
+ * of the either/or comparison (below) share one implementation — no
+ * duplicated arithmetic to drift out of sync.
  */
-export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount = 1000) {
+function computeStackedMetrics(card, portal, portalConfig, voucherAmount) {
   // Upfront savings (surcharges pass as negative numbers, e.g., -4.13)
   const upfrontSavings = voucherAmount * (portal.upfrontDiscountPercent / 100);
   const netPaid = voucherAmount - upfrontSavings; // Actual amount debited — unaffected by the fix below.
@@ -126,6 +150,53 @@ export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmoun
     computedTrueNet,
     multiplier
   };
+}
+
+/**
+ * For either/or portals: compute BOTH legs the cardholder is forced to pick
+ * between, then return whichever leaves the lower true cost — that's what a
+ * rational user would actually choose at checkout. Also tags which leg won
+ * so the UI can be honest about it (e.g. "via Insta Deal" vs "via Accelerated
+ * Rewards") rather than presenting one blended number that implies both.
+ */
+function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount) {
+  // Discount-only leg: take the Insta Deal, earn zero reward on this
+  // transaction — that's the actual choice HDFC presents at checkout.
+  const discountOnlyMetrics = (() => {
+    const upfrontSavings = voucherAmount * (portal.upfrontDiscountPercent / 100);
+    const netPaid = voucherAmount - upfrontSavings;
+    const finalNetCost = netPaid; // no reward earned on this leg, by definition
+    const computedTrueNet = ((voucherAmount - finalNetCost) / voucherAmount) * 100;
+    return { netPaid, rpEarned: 0, cashValue: 0, finalNetCost, computedTrueNet, multiplier: 0 };
+  })();
+
+  const rewardOnlyLeg = computeStackedMetrics(
+    card,
+    { ...portal, upfrontDiscountPercent: 0 },
+    portalConfig,
+    voucherAmount
+  );
+
+  const rewardWins = rewardOnlyLeg.finalNetCost <= discountOnlyMetrics.finalNetCost;
+  const winner = rewardWins ? rewardOnlyLeg : discountOnlyMetrics;
+
+  return {
+    ...winner,
+    eitherOrChoice: rewardWins ? 'reward' : 'discount',
+    // Kept for transparency/debugging and for a future UI that shows both
+    // legs side by side instead of just the winner.
+    eitherOrLegs: { discount: discountOnlyMetrics, reward: rewardOnlyLeg }
+  };
+}
+
+/**
+ * Core Operational Engine - The single source of truth for financial metrics
+ */
+export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount = 1000) {
+  if (isEitherOrPortal(portal)) {
+    return computeEitherOrMetrics(card, portal, portalConfig, voucherAmount);
+  }
+  return computeStackedMetrics(card, portal, portalConfig, voucherAmount);
 }
 
 // ---------------------------------------------------------------------------

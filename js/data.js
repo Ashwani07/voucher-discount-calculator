@@ -32277,7 +32277,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "5",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32289,7 +32288,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-gold",
@@ -32306,7 +32306,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "2",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32318,7 +32317,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
@@ -32335,7 +32335,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "3",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32347,7 +32346,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-platinum-reserve",
@@ -32364,7 +32364,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "3",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32376,7 +32375,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-platinum-travel",
@@ -32393,7 +32393,6 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32405,7 +32404,8 @@ export const masterCards = [
       "amazon": "0",
       "maximize_money": "0",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "0"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-atlas",
@@ -32422,7 +32422,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32434,7 +32433,8 @@ export const masterCards = [
       "amazon": "0",
       "maximize_money": "0",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "0"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-flipkart",
@@ -32451,7 +32451,6 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32463,7 +32462,8 @@ export const masterCards = [
       "amazon": "0",
       "maximize_money": "0",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "0"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-horizon",
@@ -32480,7 +32480,6 @@ export const masterCards = [
     "pointsPerBlock": "12",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32492,7 +32491,8 @@ export const masterCards = [
       "amazon": "0",
       "maximize_money": "0",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "0"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-magnus",
@@ -32509,7 +32509,6 @@ export const masterCards = [
     "pointsPerBlock": "12",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32521,7 +32520,8 @@ export const masterCards = [
       "amazon": "0",
       "maximize_money": "0",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "0"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
@@ -32538,7 +32538,6 @@ export const masterCards = [
     "pointsPerBlock": "4",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32550,7 +32549,8 @@ export const masterCards = [
       "amazon": "0",
       "maximize_money": "0",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "0"
     },
     "applyURL": "https://vouchwise.in/out/apply-axis-myzone",
@@ -32567,7 +32567,6 @@ export const masterCards = [
     "pointsPerBlock": "5",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "3",
@@ -32579,7 +32578,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-dbm",
@@ -32596,7 +32596,6 @@ export const masterCards = [
     "pointsPerBlock": "5",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
@@ -32608,7 +32607,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
@@ -32625,7 +32625,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
@@ -32637,7 +32636,8 @@ export const masterCards = [
       "amazon": "5",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-millennia",
@@ -32654,7 +32654,6 @@ export const masterCards = [
     "pointsPerBlock": "5",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
@@ -32666,7 +32665,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-regalia-gold",
@@ -32683,7 +32683,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
@@ -32695,7 +32694,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-swiggy",
@@ -32712,7 +32712,6 @@ export const masterCards = [
     "pointsPerBlock": "1.5",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "3.333333333",
@@ -32724,7 +32723,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hdfc-tata-neu-infinity",
@@ -32741,7 +32741,6 @@ export const masterCards = [
     "pointsPerBlock": "1.5",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "1",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32753,7 +32752,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
+      "hsbc_instabenefits": "1",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-liveplus",
@@ -32770,7 +32770,6 @@ export const masterCards = [
     "pointsPerBlock": "3",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "1",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32782,7 +32781,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
+      "hsbc_instabenefits": "1",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-premier",
@@ -32799,7 +32799,6 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "1",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32811,7 +32810,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
+      "hsbc_instabenefits": "1",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-travelone",
@@ -32828,7 +32828,6 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "1",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32840,7 +32839,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "1",
+      "hsbc_instabenefits": "1",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-hsbc-visaplatinum",
@@ -32857,7 +32857,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32869,7 +32868,8 @@ export const masterCards = [
       "amazon": "2",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-amazon",
@@ -32886,7 +32886,6 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32898,7 +32897,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-coral",
@@ -32915,7 +32915,6 @@ export const masterCards = [
     "pointsPerBlock": "4",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32927,7 +32926,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-emeralde",
@@ -32944,7 +32944,6 @@ export const masterCards = [
     "pointsPerBlock": "6",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32956,7 +32955,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-epm",
@@ -32973,7 +32973,6 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -32985,7 +32984,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-sapphiro",
@@ -33002,7 +33002,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -33014,7 +33013,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-icici-times",
@@ -33031,7 +33031,6 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -33043,7 +33042,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-kotak-airplus",
@@ -33060,7 +33060,6 @@ export const masterCards = [
     "pointsPerBlock": "3",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -33072,7 +33071,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-kotak-solitare",
@@ -33089,7 +33089,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -33101,7 +33100,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-onecard",
@@ -33118,7 +33118,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -33130,7 +33129,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-sbi-bpcl",
@@ -33147,7 +33147,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -33159,7 +33158,8 @@ export const masterCards = [
       "amazon": "5",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-sbi-cashback",
@@ -33176,7 +33176,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -33188,7 +33187,8 @@ export const masterCards = [
       "amazon": "5",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-black",
@@ -33205,7 +33205,6 @@ export const masterCards = [
     "pointsPerBlock": "1",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -33217,7 +33216,8 @@ export const masterCards = [
       "amazon": "2",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-purple",
@@ -33234,7 +33234,6 @@ export const masterCards = [
     "pointsPerBlock": "2",
     "mult_amex_shopwise": "0",
     "mult_sbi_gyftr": "0",
-    "mult_hsbc_gyftr": "0",
     "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
@@ -33246,7 +33245,8 @@ export const masterCards = [
       "amazon": "1",
       "maximize_money": "1",
       "sbi_gyftr": "0",
-      "hsbc_gyftr": "0",
+      "hsbc_instabenefits": "0",
+      "indusind_instavouchers": "0",
       "default": "1"
     },
     "applyURL": "https://vouchwise.in/out/apply-scapia",
