@@ -67,14 +67,20 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
     ? { id: portal.id, name: portal.name, group: portal.group, upfrontDiscountPercent: discountPercent }
     : { id: 'custom_portal', name: 'Custom', group: 'custom', upfrontDiscountPercent: discountPercent };
   const mockPortalConfig = { portalId: mockPortal.id, upfrontDiscountPercent: discountPercent, site: '' };
+  const normalizedBrandName = brandName.trim().toLowerCase();
+  const matchedBrand = brands.find(brand =>
+    brand.id === normalizedBrandName ||
+    brand.id.replace(/[_-]/g, ' ') === normalizedBrandName ||
+    brand.name.trim().toLowerCase() === normalizedBrandName
+  ) || null;
 
   const results = cardsToEvaluate.map(card => {
-    const metrics = calculateTrueNetMetricsWithFlooring(card, mockPortal, mockPortalConfig, voucherAmount);
+    const metrics = calculateTrueNetMetricsWithFlooring(card, mockPortal, mockPortalConfig, voucherAmount, matchedBrand);
     // metrics.multiplier is already correctly resolved via getMultiplier's fallback chain.
     // For "Other" (mockPortal.id='custom_portal'), this falls to card's default multiplier.
     // Do NOT call getCardPortalMultiplier(card, null) — null portal causes undefined lookups.
     const multiplier = metrics.multiplier;
-    const cardRewardRate = getCardRewardRate(card, multiplier, mockPortal);
+    const cardRewardRate = getCardRewardRate(card, multiplier, mockPortal, matchedBrand);
     return { card, upfront: discountPercent, reward: cardRewardRate, net: metrics.computedTrueNet, metrics, multiplier };
   });
 

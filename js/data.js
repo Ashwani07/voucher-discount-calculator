@@ -32275,9 +32275,6 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "5",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "5",
@@ -32304,9 +32301,6 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "2",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "2",
@@ -32333,9 +32327,6 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "3",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "3",
@@ -32362,9 +32353,6 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "3",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "3",
@@ -32391,9 +32379,6 @@ export const masterCards = [
     "pointValue": "2",
     "spendBlock": "100",
     "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32420,9 +32405,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32449,9 +32431,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32478,9 +32457,6 @@ export const masterCards = [
     "pointValue": "0.4",
     "spendBlock": "200",
     "pointsPerBlock": "12",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32507,9 +32483,6 @@ export const masterCards = [
     "pointValue": "0.8",
     "spendBlock": "200",
     "pointsPerBlock": "12",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32536,9 +32509,6 @@ export const masterCards = [
     "pointValue": "0.2",
     "spendBlock": "100",
     "pointsPerBlock": "4",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "0",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32565,9 +32535,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "150",
     "pointsPerBlock": "5",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "3",
       "amex_shopwise": "0",
@@ -32594,9 +32561,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "150",
     "pointsPerBlock": "5",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
       "amex_shopwise": "0",
@@ -32623,9 +32587,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
       "amex_shopwise": "0",
@@ -32652,9 +32613,6 @@ export const masterCards = [
     "pointValue": "0.5",
     "spendBlock": "200",
     "pointsPerBlock": "5",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
       "amex_shopwise": "0",
@@ -32681,9 +32639,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "5",
       "amex_shopwise": "0",
@@ -32710,9 +32665,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1.5",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "3.333333333",
       "amex_shopwise": "0",
@@ -32739,9 +32691,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1.5",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32768,9 +32717,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "3",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32797,9 +32743,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32826,9 +32769,6 @@ export const masterCards = [
     "pointValue": "0.5",
     "spendBlock": "150",
     "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32855,9 +32795,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32884,9 +32821,6 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32913,9 +32847,6 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "4",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32942,9 +32873,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "200",
     "pointsPerBlock": "6",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -32971,9 +32899,6 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -33000,9 +32925,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "50",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -33029,9 +32951,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -33058,9 +32977,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "3",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -33087,9 +33003,6 @@ export const masterCards = [
     "pointValue": "0.1",
     "spendBlock": "50",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -33116,9 +33029,6 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -33145,9 +33055,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -33174,9 +33081,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -33203,9 +33107,6 @@ export const masterCards = [
     "pointValue": "1",
     "spendBlock": "100",
     "pointsPerBlock": "1",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",
@@ -33232,9 +33133,6 @@ export const masterCards = [
     "pointValue": "0.2",
     "spendBlock": "20",
     "pointsPerBlock": "2",
-    "mult_amex_shopwise": "0",
-    "mult_sbi_gyftr": "0",
-    "mult_maximize_money": "1",
     "portalMultipliers": {
       "hdfc_smartbuy": "0",
       "amex_shopwise": "0",

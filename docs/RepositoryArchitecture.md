@@ -14,7 +14,6 @@ This document describes the implemented repository as of November 2026. The Java
 - Tailwind CSS 3.4.4, loaded from the CDN by the main pages. [src/input.css](src/input.css) contains the local Tailwind source directives.
 - Cloudflare Pages static assets behind [_worker.js](_worker.js), configured by [wrangler.jsonc](wrangler.jsonc).
 - Browser `localStorage` for wallet selections, custom cards, custom brands, and flagged discounts.
-- Node.js build utilities for assembling card comparison data from per-card source modules.
 - External affiliate destinations represented in [routes.json](routes.json).
 
 ### Architecture style
@@ -64,9 +63,6 @@ flowchart TD
 
     JS --> CoreJS[Core calculator modules\ndata, state, dom, utils, calculator]
     JS --> FeatureJS[Feature modules\nsearch, wallet, modals, results, customCalc, flags, events]
-    JS --> CompareJS[Card comparison modules\ncardCompare*]
-    JS --> GeneratedJS[Generated data\ncardCompareGeneratedData.js]
-    JS --> BuildJS[Node build utilities\ncardCompareBuildData.js, migration script]
 ```
 
 At the repository root, the HTML files are page templates, `js/` contains browser and Node modules, `assets/` contains static media, `src/` contains Tailwind input directives, and the worker/configuration files define deployment and redirect behavior.
@@ -77,14 +73,9 @@ At the repository root, the HTML files are page templates, `js/` contains browse
 graph LR
     Index[index.html\nmain calculator] --> Main[js/main.js]
     Brands[brands.html?brand=id\nbrand guide] --> BrandInline[inline module]
-    Compare[compare.html\ncard comparison] --> CompareMain[js/cardCompareMain.js]
-    Discover[cardCompareDiscover.html\n/best-for/slug] --> DiscoverMain[js/cardCompareDiscoverMain.js]
-    Admin[cardCompareAdminOffer.html\nadmin offer editor] --> AdminInline[inline module]
     Worker[_worker.js] --> Routes[routes.json]
     Worker --> Assets[Pages assets]
     Main --> Core[core calculator graph]
-    CompareMain --> CompareGraph[card comparison graph]
-    DiscoverMain --> DiscoverGraph[discovery graph]
 ```
 
 ## 5. Core Voucher Calculator
@@ -123,47 +114,23 @@ graph TD
 
 `events.js` is the composition root for user interaction. `results.js` owns portal eligibility, calculation orchestration, ranking, and rendering. `customCalc.js` owns the standalone discount flow. `calculator.js` is pure and imports no application modules.
 
-## 6. Card Comparison and Discovery
-
-```mermaid
-graph TD
-    CompareMain[cardCompareMain.js] --> CompareEvents[cardCompareEvents.js]
-    CompareEvents --> CompareData[cardCompareData.js]
-    CompareEvents --> CompareCalc[cardCompareCalc.js]
-    CompareEvents --> CompareState[cardCompareState.js]
-    CompareEvents --> CompareDom[cardCompareDom.js]
-    CompareData --> Generated[cardCompareGeneratedData.js]
-
-    DiscoverMain[cardCompareDiscoverMain.js] --> DiscoverEvents[cardCompareDiscoverEvents.js]
-    DiscoverEvents --> DiscoverCalc[cardCompareDiscoverCalc.js]
-    DiscoverEvents --> DiscoverData[cardCompareDiscoverData.js]
-    DiscoverEvents --> DiscoverState[cardCompareDiscoverState.js]
-    DiscoverEvents --> DiscoverDom[cardCompareDiscoverDom.js]
-    DiscoverEvents --> CompareData
-    DiscoverCalc --> CompareCalc
-```
-
-Card comparison is a separate page graph, but discovery reuses the comparison data facade and reward calculation. Both consume generated data; neither imports the main voucher calculator state or DOM cache.
-
-## 7. Data Pipeline
+## 6. Data Pipeline
 
 ```mermaid
 flowchart LR
-    Entries[cardCompareEntry*.js] --> Build[cardCompareBuildData.js\nNode utility]
-    Build --> Generated[cardCompareGeneratedData.js]
-    Generated --> CompareData[cardCompareData.js]
-    CompareData --> CompareUI[compare.html]
-    CompareData --> DiscoverUI[cardCompareDiscover.html]
-
-    BuiltInBrands[masterBrands in data.js] --> Runtime[data.js runtime arrays]
-    BuiltInCards[masterCards in data.js] --> Runtime
+    Scrapers[vouchwise-admin extractor CSVs] --> Adapter[generate_payment_optimizer_data.py]
+    Adapter --> Catalog[scrapedDiscounts.json]
+    Master[masterbrands.xlsx] --> Catalog
+    StaticCards[data.js card profiles] --> Runtime[data.js runtime arrays]
+    Rules[cardRules.js] --> Runtime
     LocalStorage[(customCards / customBrands)] --> Runtime
+    Catalog --> Runtime
     Runtime --> MainUI[index.html]
     MainUI --> Calc[calculator.js]
     Calc --> MainUI
 ```
 
-The main calculator merges built-in data with custom records at runtime. Card comparison uses the generated aggregate module, whose editable source is the per-card entry set. `cardCompareMigrateToEntries.js` is a one-time migration utility, not a browser dependency.
+The main calculator merges built-in card and brand data with custom records in browser storage. Live portal discounts and fees are loaded from `scrapedDiscounts.json`. Card-comparison and discovery models are not part of this pipeline and remain WIP under `docs/WIP/`.
 
 ## 8. Data Flow and Control Flow
 
@@ -248,30 +215,6 @@ sequenceDiagram
     Custom-->>DOM: renderCustomResults()
 ```
 
-### Compare two cards
-
-```mermaid
-sequenceDiagram
-    actor User
-    participant Main as cardCompareMain.js
-    participant Events as cardCompareEvents.js
-    participant Data as cardCompareData.js
-    participant Calc as cardCompareCalc.js
-    participant State as cardCompareState.js
-
-    Main->>Events: parseUrlIntoState(), populateCardSelects()
-    Events->>Data: read profiles, exclusions, offers, scenarios
-    User->>Events: select filters, cards, variants, spend
-    Events->>State: setCard(), setSpend(), setBucketFilter()
-    User->>Events: click Compare
-    loop selected card and year
-        Events->>Data: getExclusionsForCard(), getOffersForCard()
-        Events->>Calc: calculateNetValue()
-        Calc-->>Events: reward, fees, offers, net value
-    end
-    Events-->>User: comparison table and assumptions
-```
-
 ## 10. UML Views
 
 ### Module/class view
@@ -311,9 +254,8 @@ flowchart LR
     User --> Wallet[Manage card wallet]
     User --> Flag[Flag outdated discount]
     User --> Browse[Browse brand guide]
-    User --> Compare[Compare cards]
-    User --> Discover[Browse category rankings]
-    Admin --> Generate[Regenerate card comparison data]
+    Admin --> Recompile[Recompile scraped catalog]
+    Admin --> Verify[Run pre-flight verification]
 ```
 
 ### Main activity
@@ -366,14 +308,11 @@ stateDiagram-v2
 | Shared helpers | [js/utils.js](js/utils.js#L1), `validateVoucherAmount`, `getBrandById`, `getPortalById` |
 | Flags | [js/flags.js](js/flags.js#L1), `getAllFlags`, `renderFlaggedDiscounts`, `removeFlag` |
 | Event wiring | [js/events.js](js/events.js#L1), `initEvents` |
-| Card comparison | [js/cardCompareEvents.js](js/cardCompareEvents.js#L1), [js/cardCompareCalc.js](js/cardCompareCalc.js#L1), [js/cardCompareState.js](js/cardCompareState.js#L1) |
-| Card data generation | [js/cardCompareBuildData.js](js/cardCompareBuildData.js#L1), `cardCompareEntry*.js`, `cardCompareGeneratedData.js` |
-| Category discovery | [js/cardCompareDiscoverEvents.js](js/cardCompareDiscoverEvents.js#L1), [js/cardCompareDiscoverCalc.js](js/cardCompareDiscoverCalc.js#L1) |
 | Affiliate routing | [_worker.js](_worker.js#L1), [routes.json](routes.json#L1) |
 
 ## 12. Important Invariants
 
-- Portal eligibility is determined by `getCardPortalMultiplier(card, portal) > 0`.
+- Portal eligibility is determined by `isCardPortalEligible(card, portal)`; discount-only issuer portals remain eligible even when accelerated rewards are zero.
 - Unavailable brand portals must be filtered before calculation.
 - UI-facing flows use `calculateTrueNetMetricsWithFlooring`, not the raw calculation function.
 - `localStorage` keys such as `walletCardIds`, `customCards`, `customBrands`, and `flag:<brandId>:<portalId>` are compatibility contracts.
