@@ -1,12 +1,13 @@
 // App bootstrapper for VouchWise. This is the only runtime entrypoint the page
 // loads; it initializes the cached DOM, renders the wallet, and wires events.
 import { dom } from './dom.js';
-import { brands, lastVerified } from './data.js';
+import { brands, lastVerified, loadScrapedDiscounts } from './data.js';
 import { renderWalletUI, getActiveWalletIds } from './wallet.js';
 import { applyBankDefaults } from './modals.js';
 import { initEvents } from './events.js';
 import { selectBrand } from './search.js';
-import { handleCalculate } from './results.js';
+import { handleCalculate, refreshPortalResults } from './results.js';
+import { state } from './state.js';
 import { renderCategoryBrands } from './search.js';
 import { renderFlaggedDiscounts } from './flags.js';
 
@@ -24,17 +25,26 @@ function applyBrandPreselectFromHash() {
   }
 }
 
-function bootstrap() {
+async function bootstrap() {
   if (dom.verifiedDate && lastVerified) {
     dom.verifiedDate.textContent = lastVerified;
   }
 
   renderWalletUI();
+  await loadScrapedDiscounts();
   applyBankDefaults();
   initEvents();
   renderFlaggedDiscounts();
   applyBrandPreselectFromHash();
 }
+
+// React whenever scraped catalog updates dynamically (e.g. background fetch / periodic reload)
+window.addEventListener('vouchwise:catalog-updated', () => {
+  renderFlaggedDiscounts();
+  if (state.currentBrandId && getActiveWalletIds().length && dom.resultsSection && !dom.resultsSection.classList.contains('hidden')) {
+    refreshPortalResults({ scroll: false, force: true });
+  }
+});
 
 window.addEventListener("hashchange", () => {
   applyBrandPreselectFromHash();

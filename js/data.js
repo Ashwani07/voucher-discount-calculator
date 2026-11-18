@@ -33276,6 +33276,57 @@ try {
 }
 
 // 3. Export the Merged Live Arrays
+import { cardRules } from './cardRules.js';
+export { cardRules };
+
+export let scrapedCatalog = null;
+
+export function enrichBrandsWithScrapedData(catalog) {
+  if (!catalog?.brands) return;
+  for (const brand of brands) {
+    const scrapedBrand = catalog.brands[brand.id];
+    if (!scrapedBrand?.portals) continue;
+    for (const scrapedPortal of scrapedBrand.portals) {
+      const existingPortal = brand.portals.find(p => p.portalId === scrapedPortal.portalId);
+      if (existingPortal) {
+        existingPortal.upfrontDiscountPercent = scrapedPortal.upfrontDiscountPercent;
+        existingPortal.convenienceFee = scrapedPortal.convenienceFee;
+        existingPortal.denominations = scrapedPortal.denominations;
+        existingPortal.discountsByMethod = scrapedPortal.discountsByMethod;
+        existingPortal.redemptionType = scrapedPortal.redemptionType;
+        if (scrapedPortal.termsSnippet) existingPortal.termsSnippet = scrapedPortal.termsSnippet;
+      } else {
+        brand.portals.push({
+          compositeId: `${brand.id}_${scrapedPortal.portalId}`,
+          portalId: scrapedPortal.portalId,
+          upfrontDiscountPercent: scrapedPortal.upfrontDiscountPercent,
+          convenienceFee: scrapedPortal.convenienceFee,
+          denominations: scrapedPortal.denominations,
+          discountsByMethod: scrapedPortal.discountsByMethod,
+          site: scrapedPortal.buyUrl || `https://vouchwise.in/out/buy-${brand.id}-${scrapedPortal.portalId}`,
+          availability: 'available',
+          disclaimer: scrapedPortal.disclaimer || ""
+        });
+      }
+    }
+  }
+}
+
+export async function loadScrapedDiscounts() {
+  if (scrapedCatalog) return scrapedCatalog;
+  try {
+    const res = await fetch('./js/scrapedDiscounts.json');
+    if (res.ok) {
+      scrapedCatalog = await res.json();
+      enrichBrandsWithScrapedData(scrapedCatalog);
+      window.dispatchEvent(new CustomEvent('vouchwise:catalog-updated', { detail: scrapedCatalog }));
+    }
+  } catch (e) {
+    console.warn("Using offline masterBrands default.", e);
+  }
+  return scrapedCatalog;
+}
+
 export const cards = [...masterCards, ...customCards];
 export const brands = [...masterBrands, ...customBrands];
 

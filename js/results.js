@@ -1,6 +1,6 @@
 // Portal comparison calculations and result rendering. This module owns the
 // main voucher comparison flow and the portal result markup.
-import { cards, portals, brands, lastVerified } from './data.js';
+import { cards, portals, brands, lastVerified, cardRules } from './data.js';
 import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
@@ -43,7 +43,8 @@ export function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
         card,
         { ...portal, upfrontDiscountPercent: portalConfig.upfrontDiscountPercent },
         portalConfig,
-        voucherAmount
+        voucherAmount,
+        brand
       );
       const cardRewardRate = getCardRewardRate(card, metrics.multiplier);
 
@@ -84,7 +85,11 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
 
   const tableRows = group.entries.map(entry => {
     const flagged = isDiscountFlagged(activeBrandObj.id, entry.portalId);
-    const buyURL = entry.portalConfig?.site || '';
+    let buyURL = entry.portalConfig?.site || '';
+    const amountStr = String(voucherAmount);
+    if (entry.portalConfig?.variants?.[amountStr]?.buyUrl) {
+      buyURL = entry.portalConfig.variants[amountStr].buyUrl;
+    }
     const disclaimer = entry.portalConfig?.disclaimer || '';
     const notAvailable = disclaimer.toLowerCase().includes('not available');
     const currencyLabel = entry.card.id === 'axis_atlas' ? 'Miles' : 'RP';
@@ -103,9 +108,12 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
       ? `${Math.abs(entry.upfront).toFixed(2)}%${discountNotTaken ? notTakenTag : ''}`
       : '—';
     const rewardNotTaken = eitherOrChoice === 'discount';
+    const cappedBadge = entry.metrics.isCapped
+      ? '<span class="text-[9px] font-semibold text-amber-700 bg-amber-100 border border-amber-300 px-1 py-0.5 rounded ml-1" title="Reward is capped by issuer limits">Capped</span>'
+      : '';
     const rewardValue = (entry.card.rewardType === 'points' && entry.card.spendBlock
-      ? `${entry.metrics.rpEarned} ${currencyLabel} = ₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)`
-      : `₹${entry.metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)`) + (rewardNotTaken ? notTakenTag : '');
+      ? `${entry.metrics.rpEarned} ${currencyLabel} = ₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)${cappedBadge}`
+      : `₹${entry.metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)${cappedBadge}`) + (rewardNotTaken ? notTakenTag : '');
     const eitherOrNote = eitherOrChoice
       ? `<div class="text-[10px] text-indigo-700 bg-indigo-50 border border-indigo-100 rounded px-1.5 py-0.5 mt-1">${entry.portal.name} makes you choose one at checkout — this pick uses <strong>${eitherOrChoice === 'reward' ? 'Accelerated Rewards' : 'the Insta Deal discount'}</strong> because it's worth more here.</div>`
       : '';
@@ -122,6 +130,27 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
     const buyBtn = buyURL && !notAvailable
       ? `<a href="${buyURL}" target="_blank" rel="noopener noreferrer" class="text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Buy ↗</a>`
       : '<span class="text-[10px] text-slate-300">—</span>';
+    const portalNotice = cardRules?.portalOverrides?.[entry.portalId]?.notice
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${cardRules.portalOverrides[entry.portalId].notice}</div>`
+      : '';
+
+    const capNoticeHtml = entry.metrics.isCapped && entry.metrics.capNotice
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Cap Applied:</strong> ${entry.metrics.capNotice}. <span class="text-amber-700 italic">Calculation does not track your prior spend this cycle.</span></div>`
+      : (entry.metrics.hasCapRule && entry.metrics.cardCapNotice
+        ? `<div class="text-[10px] text-slate-600 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 mt-1">ℹ️ <strong>Card Limit:</strong> ${entry.metrics.cardCapNotice}. <span class="text-slate-500 italic">Assumes ₹0 prior spend this billing cycle.</span></div>`
+        : '');
+
+    const brandCapNoticeHtml = entry.metrics.isBrandCapExceeded && entry.metrics.brandCapNotice
+      ? `<div class="text-[10px] text-rose-800 bg-rose-50 border border-rose-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Purchase Limit:</strong> ${entry.metrics.brandCapNotice}</div>`
+      : '';
+
+    const denomChips = entry.portalConfig?.denominations?.length
+      ? `<div class="flex items-center gap-1 flex-wrap mt-1">
+          <span class="text-[10px] text-slate-400">Values:</span>
+          ${entry.portalConfig.denominations.slice(0, 6).map(d => `<span class="text-[10px] bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-600 px-1.5 py-0.5 rounded cursor-pointer transition-colors" title="Calculate for ₹${d}" onclick="const inp=document.getElementById('voucherAmount'); if(inp){ inp.value=${d}; inp.dispatchEvent(new Event('input', {bubbles:true})); }">₹${d}</span>`).join('')}
+        </div>`
+      : '';
+
     const flooringNote = entry.metrics.extraAmount > 0
       ? `<div class="text-[10px] text-slate-500 bg-slate-50 border border-slate-100 rounded px-1.5 py-0.5 mt-1">Portal sells in ₹100 steps: ₹${entry.metrics.flooredAmount} goes through the portal, ₹${entry.metrics.extraAmount} extra is paid separately with no discount or rewards on it.</div>`
       : '';
@@ -136,14 +165,24 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
           </div>
         </div>
         ${disclaimer ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : ''}
+        ${portalNotice}
         ${eitherOrNote}
+        ${capNoticeHtml}
+        ${brandCapNoticeHtml}
         ${flooringNote}
+        ${denomChips}
         ${renderMetricGrid([
           { label: upfrontLabel, value: `<span class="text-right">${upfrontValueStr}</span>` },
           { label: 'Pay', value: `<span class="text-right">₹${entry.metrics.netPaid.toFixed(0)}</span>` },
           { label: 'Reward', value: `<span class="text-right">${rewardValue}</span>` },
           { label: 'Net', value: `<span class="text-right font-medium text-slate-600">₹${entry.metrics.finalNetCost.toFixed(0)}</span>`, labelClass: 'font-medium text-slate-600' }
         ])}
+        <div class="mt-1.5 flex items-center justify-between text-[11px] pt-1 border-t border-slate-50">
+          <span class="text-slate-400">Buying this voucher?</span>
+          <a href="https://in.vouchwise.app" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 font-medium hover:underline inline-flex items-center gap-1">
+            <span>📲 Track in VouchWise Vault</span>
+          </a>
+        </div>
       </div>`;
   }).join('');
 
@@ -202,15 +241,27 @@ export function renderResults(groups, brand, shouldScroll, force = false) {
   const eitherOrChoice = best.metrics.eitherOrChoice;
   const legs = best.metrics.eitherOrLegs;
   const voucherAmount = best.metrics.flooredAmount + best.metrics.extraAmount;
-  const forgoneRewardPct = legs ? (legs.reward.cashValue / voucherAmount * 100) : best.reward;
+  // best.reward was the card's theoretical continuous rate (points per block
+  // as a smooth %), independent of voucherAmount — but spendBlock rarely
+  // divides voucherAmount evenly, so the RP actually earned is lower than
+  // that ceiling implies. Showing the theoretical rate next to the real ₹
+  // amount produces a contradiction a reader can catch by doing the math
+  // themselves (e.g. "0.67% (₹5.00 back)" on a ₹1000 voucher doesn't add
+  // up — 0.67% of ₹1000 is ₹6.70). Use the realized yield instead, so the
+  // header always agrees with the row directly below it.
+  const realizedRewardPct = best.metrics.cashValue / voucherAmount * 100;
+  const forgoneRewardPct = legs ? (legs.reward.cashValue / voucherAmount * 100) : realizedRewardPct;
   const bestDiscountNotTaken = eitherOrChoice === 'reward' && best.upfront !== 0;
   const bestRewardNotTaken = eitherOrChoice === 'discount' && forgoneRewardPct !== 0;
+  const topCappedTag = best.metrics.isCapped
+    ? ' (Capped)'
+    : (best.metrics.hasCapRule ? ' (Subject to Monthly Cap)' : '');
   document.getElementById('upfrontValue').textContent = bestDiscountNotTaken
     ? `${best.upfront.toFixed(2)}% available, not taken (₹${best.metrics.netPaid.toFixed(0)} to pay)`
     : `${best.upfront.toFixed(2)}% (₹${best.metrics.netPaid.toFixed(0)} to pay)`;
   document.getElementById('rewardValue').textContent = bestRewardNotTaken
     ? `${forgoneRewardPct.toFixed(2)}% available, not taken (₹${best.metrics.cashValue.toFixed(2)} back)`
-    : `${best.reward.toFixed(2)}% (₹${best.metrics.cashValue.toFixed(2)} back)`;
+    : `${realizedRewardPct.toFixed(2)}% (₹${best.metrics.cashValue.toFixed(2)} back)${topCappedTag}`;
   document.getElementById('netValue').textContent = `${best.computedTrueNet.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
   const guideLink = document.getElementById('brandGuideLink');

@@ -139,7 +139,10 @@
     </footer>
 
     <script type="module">
-      import { brands, portals, lastVerified } from './js/data.js';
+      import { brands, portals, lastVerified, loadScrapedDiscounts } from './js/data.js';
+
+      // Ensure latest dynamic catalog is loaded before rendering
+      await loadScrapedDiscounts();
 
       const params  = new URLSearchParams(window.location.search);
       const brandId = params.get('brand');

@@ -149,9 +149,17 @@ export function renderCustomCardsList(results, voucherAmount) {
     const flooringNote = metrics.extraAmount > 0
       ? `<div class="text-[10px] text-slate-500 bg-slate-50 border border-slate-100 rounded px-1.5 py-0.5 mt-1">Rounded to ₹${metrics.flooredAmount}: ₹${metrics.extraAmount} extra is paid separately with no discount or rewards on it.</div>`
       : '';
+    const cappedBadge = metrics.isCapped
+      ? '<span class="text-[9px] font-semibold text-amber-700 bg-amber-100 border border-amber-300 px-1 py-0.5 rounded ml-1" title="Reward is capped by issuer limits">Capped</span>'
+      : '';
+    const capNoticeHtml = metrics.isCapped && metrics.capNotice
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Cap Applied:</strong> ${metrics.capNotice}. <span class="text-amber-700 italic">Calculation does not track your prior spend this cycle.</span></div>`
+      : (metrics.hasCapRule && metrics.cardCapNotice
+        ? `<div class="text-[10px] text-slate-600 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 mt-1">ℹ️ <strong>Card Limit:</strong> ${metrics.cardCapNotice}. <span class="text-slate-500 italic">Assumes ₹0 prior spend this billing cycle.</span></div>`
+        : '');
     const exampleHTML = renderMetricGrid([
       { label: 'Pay', value: `<span class="text-right">₹${metrics.netPaid.toFixed(0)}</span>` },
-      { label: 'Reward', value: `<span class="text-right">${card.rewardType === 'points' && card.spendBlock ? `${metrics.rpEarned} ${currencyLabel} = ₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)` : `₹${metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)`}</span>` },
+      { label: 'Reward', value: `<span class="text-right">${card.rewardType === 'points' && card.spendBlock ? `${metrics.rpEarned} ${currencyLabel} = ₹${metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)${cappedBadge}` : `₹${metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)${cappedBadge}`}</span>` },
       { label: 'Net', value: `<span class="text-right font-medium text-slate-600">₹${metrics.finalNetCost.toFixed(0)}</span>`, labelClass: 'font-medium text-slate-600' }
     ]);
     const rowClass = rank <= 2 ? 'bg-slate-50' : '';
@@ -167,6 +175,7 @@ export function renderCustomCardsList(results, voucherAmount) {
           </div>
           ${exampleHTML}
           ${flooringNote}
+          ${capNoticeHtml}
           ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-1">💡 ${card.assumption_note}</div>` : ''}
         </div>
       </div>`;

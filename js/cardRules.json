@@ -1,0 +1,55 @@
+{
+  "version": "2026.11",
+  "lastUpdated": "2026-11-03",
+  "description": "Declarative card reward policies, MCC exclusions, and devaluation overrides for VouchWise",
+  "portalOverrides": {
+    "axis_edgerewards": {
+      "acceleratedMultiplier": 0,
+      "isDiscountOnly": true,
+      "notice": "Axis Bank removed bonus points on voucher purchases. Net savings reflect upfront discount only."
+    },
+    "axis_grabdeals": {
+      "acceleratedMultiplier": 0,
+      "isDiscountOnly": true,
+      "notice": "GrabDeals accelerated rewards no longer apply to gift vouchers. Net savings reflect upfront discount only."
+    }
+  },
+  "amazonPortalOverrides": {
+    "brand_voucher": {
+      "sbi_cashback": {
+        "rewardRate": 0,
+        "reason": "SBI Cashback excludes all gift card / voucher purchases on Amazon."
+      },
+      "icici_amazon": {
+        "rewardRate": 2.0,
+        "reason": "Amazon Pay ICICI card earns 2% on gift cards (physical retail shopping is 5%)."
+      }
+    },
+    "amazon_pay_gift_card": {
+      "sbi_cashback": {
+        "rewardRate": 0,
+        "reason": "Wallet load / gift voucher exclusion."
+      },
+      "hdfc_infinia": {
+        "rewardRate": 0,
+        "reason": "Codes as MCC 6540 (Prepaid card / wallet load), ineligible for accelerated reward points."
+      }
+    }
+  },
+  "issuerMonthlyCaps": {
+    "hdfc_smartbuy": {
+      "hdfc_infinia": { "maxPointsPerMonth": 10000 },
+      "hdfc_diners_black": { "maxPointsPerMonth": 7500 },
+      "hdfc_regalia_gold": { "maxPointsPerMonth": 4000 },
+      "hdfc_millennia": { "maxCashbackPerMonth": 1000 }
+    }
+  },
+  "standardMCCExclusions": {
+    "6540": "Prepaid cards, stored value, wallet loading",
+    "5947": "Gift, novelty, and souvenir shops",
+    "4814": "Telecommunication and utility services",
+    "4900": "Electric, gas, and water utilities",
+    "5541": "Fuel and service stations",
+    "6211": "Securities and investment brokers"
+  }
+}

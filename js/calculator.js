@@ -1,4 +1,5 @@
 // calculator.js
+import { cardRules } from './cardRules.js';
 
 /**
  * Extracts the correct multiplier for a card/portal path
@@ -11,6 +12,14 @@ export function getRewardMultiplier(card, portal, portalEntry) {
 }
 
 export function getCardPortalMultiplier(card, portal) {
+  // Check declarative portal overrides (e.g. Axis EdgeRewards/GrabDeals devalued to 0)
+  if (portal?.id && cardRules?.portalOverrides?.[portal.id]) {
+    const override = cardRules.portalOverrides[portal.id];
+    if (override.acceleratedMultiplier !== undefined && card?.id?.startsWith('axis_')) {
+      return override.acceleratedMultiplier;
+    }
+  }
+
   const multipliers = card.portalMultipliers || {};
   if (portal?.id !== undefined && multipliers[portal.id] !== undefined) {
     return multipliers[portal.id];
@@ -33,7 +42,10 @@ export function getMultiplier(card, portal, portalConfig) {
  * voucher amount. This is the "X% back" figure shown in result tables.
  * Single source of truth: previously duplicated in 3 places in app.js.
  */
-export function getCardRewardRate(card, multiplier) {
+export function getCardRewardRate(card, multiplier, portal = null) {
+  if (portal?.id === 'amazon' && cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id]) {
+    return cardRules.amazonPortalOverrides.brand_voucher[card.id].rewardRate;
+  }
   if (!card.spendBlock) return 0;
   const baseRate = (card.pointsPerBlock / card.spendBlock) * multiplier * 100;
   return card.rewardType === 'points' ? baseRate * (card.pointValue ?? 1) : baseRate;
@@ -107,10 +119,12 @@ export function isEitherOrPortal(portal) {
  * of the either/or comparison (below) share one implementation — no
  * duplicated arithmetic to drift out of sync.
  */
-function computeStackedMetrics(card, portal, portalConfig, voucherAmount) {
+function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand = null) {
   // Upfront savings (surcharges pass as negative numbers, e.g., -4.13)
   const upfrontSavings = voucherAmount * (portal.upfrontDiscountPercent / 100);
-  const netPaid = voucherAmount - upfrontSavings; // Actual amount debited — unaffected by the fix below.
+  const ccFeePercent = portalConfig?.convenienceFee?.effectiveCcFeePercent || 0;
+  const ccFeeAmount = voucherAmount * (ccFeePercent / 100);
+  const netPaid = voucherAmount - upfrontSavings + ccFeeAmount;
 
   const multiplier = getMultiplier(card, portal, portalConfig);
 
@@ -123,20 +137,89 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount) {
 
   let rpEarned = 0;
   let cashValue = 0;
+  let isCapped = false;
+  let uncappedCashValue = 0;
+  let capLossAmount = 0;
+  let capNotice = '';
+
+  const cardCapRule = (cardRules?.cardCaps?.[card.id]?.[portal.id]) || (cardRules?.cardCaps?.[card.id]?.default);
 
   if (card.rewardType === "points" && card.spendBlock) {
     const completedBlocks = Math.floor(rewardBasis / card.spendBlock);
     const basePoints = completedBlocks * card.pointsPerBlock;
-    rpEarned = Math.floor(basePoints * multiplier);
-    cashValue = rpEarned * (card.pointValue ?? 1);
+    const uncappedRp = Math.floor(basePoints * multiplier);
+    uncappedCashValue = uncappedRp * (card.pointValue ?? 1);
+
+    if (cardCapRule && (cardCapRule.maxAcceleratedPoints || cardCapRule.maxBonusPoints)) {
+      const maxBonus = cardCapRule.maxAcceleratedPoints || cardCapRule.maxBonusPoints;
+      // Bonus points are the points earned above base 1X
+      const uncappedBonus = multiplier > 1 ? basePoints * (multiplier - 1) : 0;
+      if (uncappedBonus > maxBonus) {
+        isCapped = true;
+        const awardedBonus = maxBonus;
+        rpEarned = Math.floor(basePoints + awardedBonus);
+        cashValue = rpEarned * (card.pointValue ?? 1);
+        capLossAmount = uncappedCashValue - cashValue;
+        capNotice = cardCapRule.notice || `Accelerated points capped at ${maxBonus.toLocaleString('en-IN')} RP/month`;
+      } else {
+        rpEarned = uncappedRp;
+        cashValue = uncappedCashValue;
+      }
+    } else if (cardCapRule && cardCapRule.maxTotalPoints) {
+      if (uncappedRp > cardCapRule.maxTotalPoints) {
+        isCapped = true;
+        rpEarned = cardCapRule.maxTotalPoints;
+        cashValue = rpEarned * (card.pointValue ?? 1);
+        capLossAmount = uncappedCashValue - cashValue;
+        capNotice = cardCapRule.notice || `Points capped at ${cardCapRule.maxTotalPoints.toLocaleString('en-IN')} RP/month`;
+      } else {
+        rpEarned = uncappedRp;
+        cashValue = uncappedCashValue;
+      }
+    } else {
+      rpEarned = uncappedRp;
+      cashValue = uncappedCashValue;
+    }
   } else {
     // Continuous math for cashback cards using normalized block data
     // This dynamically calculates 5% from (5 / 100) * 100
     const dynamicBasePercent = (card.pointsPerBlock / card.spendBlock) * 100;
     const effectiveCashbackPercent = dynamicBasePercent * multiplier;
+    uncappedCashValue = rewardBasis * (effectiveCashbackPercent / 100);
 
-    // Calculates exact decimal value without Math.floor truncation
-    cashValue = rewardBasis * (effectiveCashbackPercent / 100);
+    if (cardCapRule && cardCapRule.maxCashback !== undefined) {
+      if (uncappedCashValue > cardCapRule.maxCashback) {
+        isCapped = true;
+        if (cardCapRule.overflowRule === 'base_rate') {
+          const spendToCap = cardCapRule.maxCashback / (effectiveCashbackPercent / 100);
+          const overflowSpend = Math.max(0, rewardBasis - spendToCap);
+          cashValue = cardCapRule.maxCashback + overflowSpend * (dynamicBasePercent / 100);
+        } else {
+          // 'zero' rule: no cashback earned beyond cap (e.g. SBI Cashback)
+          cashValue = cardCapRule.maxCashback;
+        }
+        capLossAmount = uncappedCashValue - cashValue;
+        capNotice = cardCapRule.notice || `Cashback capped at ₹${cardCapRule.maxCashback.toLocaleString('en-IN')}/month`;
+      } else {
+        cashValue = uncappedCashValue;
+      }
+    } else {
+      cashValue = uncappedCashValue;
+    }
+  }
+
+  // Check Brand Velocity / Purchase Limit (e.g. Amazon / Swiggy on GyFTR / SmartBuy)
+  let isBrandCapExceeded = false;
+  let brandCapLimit = null;
+  let brandCapNotice = '';
+
+  if (brand?.id && portal?.id) {
+    const brandCap = cardRules?.brandPurchaseCaps?.[brand.id]?.[portal.id];
+    if (brandCap && voucherAmount > brandCap) {
+      isBrandCapExceeded = true;
+      brandCapLimit = brandCap;
+      brandCapNotice = `${portal.name} limits ${brand.name || 'this brand'} to ₹${brandCap.toLocaleString('en-IN')}/month per user. Purchase may be split or rejected.`;
+    }
   }
 
   const finalNetCost = netPaid - cashValue;
@@ -148,7 +231,17 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount) {
     cashValue,
     finalNetCost,
     computedTrueNet,
-    multiplier
+    multiplier,
+    isCapped,
+    uncappedCashValue,
+    capLossAmount,
+    capNotice,
+    hasCapRule: !!cardCapRule,
+    cardCapNotice: cardCapRule?.notice || '',
+    cardCapPeriod: cardCapRule?.period || '',
+    isBrandCapExceeded,
+    brandCapLimit,
+    brandCapNotice
   };
 }
 
@@ -159,7 +252,7 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount) {
  * so the UI can be honest about it (e.g. "via Insta Deal" vs "via Accelerated
  * Rewards") rather than presenting one blended number that implies both.
  */
-function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount) {
+function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount, brand = null) {
   // Discount-only leg: take the Insta Deal, earn zero reward on this
   // transaction — that's the actual choice HDFC presents at checkout.
   const discountOnlyMetrics = (() => {
@@ -167,14 +260,29 @@ function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount) {
     const netPaid = voucherAmount - upfrontSavings;
     const finalNetCost = netPaid; // no reward earned on this leg, by definition
     const computedTrueNet = ((voucherAmount - finalNetCost) / voucherAmount) * 100;
-    return { netPaid, rpEarned: 0, cashValue: 0, finalNetCost, computedTrueNet, multiplier: 0 };
+    return {
+      netPaid,
+      rpEarned: 0,
+      cashValue: 0,
+      finalNetCost,
+      computedTrueNet,
+      multiplier: 0,
+      isCapped: false,
+      uncappedCashValue: 0,
+      capLossAmount: 0,
+      capNotice: '',
+      isBrandCapExceeded: false,
+      brandCapLimit: null,
+      brandCapNotice: ''
+    };
   })();
 
   const rewardOnlyLeg = computeStackedMetrics(
     card,
     { ...portal, upfrontDiscountPercent: 0 },
     portalConfig,
-    voucherAmount
+    voucherAmount,
+    brand
   );
 
   const rewardWins = rewardOnlyLeg.finalNetCost <= discountOnlyMetrics.finalNetCost;
@@ -182,6 +290,9 @@ function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount) {
 
   return {
     ...winner,
+    hasCapRule: rewardOnlyLeg.hasCapRule,
+    cardCapNotice: rewardOnlyLeg.cardCapNotice,
+    cardCapPeriod: rewardOnlyLeg.cardCapPeriod,
     eitherOrChoice: rewardWins ? 'reward' : 'discount',
     // Kept for transparency/debugging and for a future UI that shows both
     // legs side by side instead of just the winner.
@@ -192,11 +303,11 @@ function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount) {
 /**
  * Core Operational Engine - The single source of truth for financial metrics
  */
-export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount = 1000) {
+export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount = 1000, brand = null) {
   if (isEitherOrPortal(portal)) {
-    return computeEitherOrMetrics(card, portal, portalConfig, voucherAmount);
+    return computeEitherOrMetrics(card, portal, portalConfig, voucherAmount, brand);
   }
-  return computeStackedMetrics(card, portal, portalConfig, voucherAmount);
+  return computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand);
 }
 
 // ---------------------------------------------------------------------------
@@ -210,17 +321,17 @@ export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmoun
 // remainder back into netPaid/finalNetCost so computedTrueNet is measured
 // against what the person actually spends in total (₹4598), not just the
 // portal-eligible slice — otherwise the headline % overstates the deal.
-export function calculateTrueNetMetricsWithFlooring(card, portal, portalConfig, voucherAmount = 1000) {
+export function calculateTrueNetMetricsWithFlooring(card, portal, portalConfig, voucherAmount = 1000, brand = null) {
   const flooredAmount = Math.floor(voucherAmount / 100) * 100;
   const extraAmount = voucherAmount - flooredAmount;
 
   // Amounts under ₹100 can't be meaningfully floored — skip the adjustment.
   if (flooredAmount <= 0) {
-    const metrics = calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount);
+    const metrics = calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount, brand);
     return { ...metrics, flooredAmount: voucherAmount, extraAmount: 0 };
   }
 
-  const metrics = calculateTrueNetMetrics(card, portal, portalConfig, flooredAmount);
+  const metrics = calculateTrueNetMetrics(card, portal, portalConfig, flooredAmount, brand);
 
   if (extraAmount > 0) {
     metrics.netPaid += extraAmount;
@@ -231,4 +342,59 @@ export function calculateTrueNetMetricsWithFlooring(card, portal, portalConfig, 
   metrics.flooredAmount = flooredAmount;
   metrics.extraAmount = extraAmount;
   return metrics;
+}
+
+/**
+ * Three-Way Payment Route Optimizer: Compares Voucher vs. Direct Card Swipe vs. UPI
+ */
+export function calculatePaymentRoutes(card, brand, portal, portalConfig, billAmount = 1000) {
+  const voucherMetrics = calculateTrueNetMetricsWithFlooring(card, portal, portalConfig, billAmount, brand);
+
+  // Direct swipe: Check MCC exclusions
+  const isMccExcluded = brand?.mcc && cardRules?.standardMCCExclusions?.[brand.mcc];
+  const directRewardRate = isMccExcluded ? 0 : getCardRewardRate(card, 1);
+  const directCashValue = billAmount * (directRewardRate / 100);
+  const directNetCost = billAmount - directCashValue;
+  const directNetSavingsPercent = (directCashValue / billAmount) * 100;
+
+  // UPI direct route (using portal discountsByMethod.UPI or 0-fee rail)
+  const upiDiscountPercent = portalConfig?.discountsByMethod?.UPI || 0;
+  const upiSavings = billAmount * (upiDiscountPercent / 100);
+  const upiNetCost = billAmount - upiSavings;
+
+  let bestRoute = 'voucher';
+  let minCost = voucherMetrics.finalNetCost;
+
+  if (directNetCost < minCost) {
+    bestRoute = 'directSwipe';
+    minCost = directNetCost;
+  }
+  if (upiNetCost < minCost) {
+    bestRoute = 'upi';
+    minCost = upiNetCost;
+  }
+
+  return {
+    bestRoute,
+    voucher: {
+      netCost: voucherMetrics.finalNetCost,
+      netSavingsPercent: voucherMetrics.computedTrueNet,
+      rpEarned: voucherMetrics.rpEarned,
+      cashValue: voucherMetrics.cashValue,
+      convenienceFee: voucherMetrics.extraAmount || 0,
+      metrics: voucherMetrics
+    },
+    directSwipe: {
+      netCost: directNetCost,
+      netSavingsPercent: directNetSavingsPercent,
+      rewardRate: directRewardRate,
+      isMccExcluded: Boolean(isMccExcluded),
+      cashValue: directCashValue
+    },
+    upi: {
+      netCost: upiNetCost,
+      netSavingsPercent: upiDiscountPercent,
+      cashValue: upiSavings
+    }
+  };
 }
