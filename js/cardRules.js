@@ -63,41 +63,42 @@ export const cardRules = {
       }
     },
 
-    // HDFC SmartBuy Instant Brand Vouchers (GyFTR): Revised sub-cap of 3,000 accelerated Reward Points / calendar month
+    // HDFC SmartBuy Instant Brand Vouchers (GyFTR): Single-day transaction limit of 2,000 RP/day (Regalia Gold)
+    // and 2,500 RP/day (Infinia/DBM), within the overall 3,000 accelerated Reward Points / calendar month voucher sub-cap.
     // Exceeding spend drops to 1X base rate (3.33% on Infinia/DBM, 1.33% on Regalia Gold).
     hdfc_infinia: {
       hdfc_smartbuy: {
-        maxAcceleratedPoints: 3000,
-        period: "calendar_month",
+        maxAcceleratedPoints: 2500,
+        period: "day_and_month",
         overflowRule: "base_rate",
-        notice: "SmartBuy voucher sub-cap: 3,000 accelerated RP/month (reached at ₹22,500 spend). Excess spend earns 1X base rate (3.33%).",
+        notice: "SmartBuy daily limit: 2,500 accelerated RP/day (reached at ₹18,750 spend). Excess spend earns 1X base rate (3.33%). Pro-tip: Split over 2+ days to unlock up to 3,000 RP/month.",
         sourceUrl: "https://offers.smartbuy.hdfcbank.com/v2/accelerated-earn-rules"
       }
     },
     hdfc_dbm: {
       hdfc_smartbuy: {
-        maxAcceleratedPoints: 3000,
-        period: "calendar_month",
+        maxAcceleratedPoints: 2500,
+        period: "day_and_month",
         overflowRule: "base_rate",
-        notice: "SmartBuy voucher sub-cap: 3,000 accelerated RP/month (reached at ₹22,500 spend). Excess spend earns 1X base rate (3.33%).",
+        notice: "SmartBuy daily limit: 2,500 accelerated RP/day (reached at ₹18,750 spend). Excess spend earns 1X base rate (3.33%). Pro-tip: Split over 2+ days to unlock up to 3,000 RP/month.",
         sourceUrl: "https://offers.smartbuy.hdfcbank.com/v2/accelerated-earn-rules"
       }
     },
     hdfc_diners_black: {
       hdfc_smartbuy: {
-        maxAcceleratedPoints: 3000,
-        period: "calendar_month",
+        maxAcceleratedPoints: 2500,
+        period: "day_and_month",
         overflowRule: "base_rate",
-        notice: "SmartBuy voucher sub-cap: 3,000 accelerated RP/month (reached at ₹22,500 spend). Excess spend earns 1X base rate (3.33%).",
+        notice: "SmartBuy daily limit: 2,500 accelerated RP/day (reached at ₹18,750 spend). Excess spend earns 1X base rate (3.33%). Pro-tip: Split over 2+ days to unlock up to 3,000 RP/month.",
         sourceUrl: "https://offers.smartbuy.hdfcbank.com/v2/accelerated-earn-rules"
       }
     },
     hdfc_regalia_gold: {
       hdfc_smartbuy: {
-        maxAcceleratedPoints: 3000,
-        period: "calendar_month",
+        maxAcceleratedPoints: 2000,
+        period: "day_and_month",
         overflowRule: "base_rate",
-        notice: "SmartBuy voucher sub-cap: 3,000 accelerated RP/month (reached at ₹30,000 spend). Excess spend earns 1X base rate (1.33%).",
+        notice: "SmartBuy daily limit: 2,000 accelerated RP/day (reached at ₹18,750 spend). Excess spend earns 1X base rate (1.33%). Pro-tip: Split over 2+ days to unlock up to 3,000 RP/month.",
         sourceUrl: "https://offers.smartbuy.hdfcbank.com/v2/accelerated-earn-rules"
       }
     },
