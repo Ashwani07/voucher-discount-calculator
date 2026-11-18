@@ -1,6 +1,6 @@
 // Custom coupon / sale calculator. This module mirrors the portal flow but
 // lets the user evaluate a standalone discount against the wallet.
-import { cards, portals, cardRules } from './data.js';
+import { cards, portals, brands, cardRules } from './data.js';
 import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier, isCardPortalEligible } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
@@ -130,12 +130,12 @@ export function renderCustomResults(results, brandName, discountPercent, voucher
   document.getElementById('customUpfrontValue').textContent = `${discountPercent.toFixed(2)}% (₹${best.metrics.netPaid.toFixed(0)} to pay)`;
   document.getElementById('customNetValue').textContent = `${best.net.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
-  renderCustomCardsList(results, voucherAmount);
+  renderCustomCardsList(results, voucherAmount, portal);
   dom.customResults.classList.remove('hidden');
   dom.customResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-export function renderCustomCardsList(results, voucherAmount) {
+export function renderCustomCardsList(results, voucherAmount, portal = null) {
   const generateCardRow = (result, rank) => {
     const card = result.card;
     const metrics = result.metrics;

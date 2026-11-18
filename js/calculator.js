@@ -154,7 +154,8 @@ export function isEitherOrPortal(portal) {
  */
 function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand = null) {
   // Upfront savings (surcharges pass as negative numbers, e.g., -4.13)
-  const upfrontSavings = voucherAmount * (portal.upfrontDiscountPercent / 100);
+  const discountPercent = portal?.upfrontDiscountPercent ?? portalConfig?.upfrontDiscountPercent ?? 0;
+  const upfrontSavings = voucherAmount * (discountPercent / 100);
   const ccFeePercent = portalConfig?.convenienceFee?.effectiveCcFeePercent || 0;
   const ccFeeAmount = voucherAmount * (ccFeePercent / 100);
   const netPaid = voucherAmount - upfrontSavings + ccFeeAmount;
@@ -165,7 +166,7 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
   // itemised line the bank can see and excludes from reward calculation.
   // Everywhere else, the bank only sees the total swiped amount, so the fee
   // (if any) stays folded into what earns rewards.
-  const feeIsExcludedFromRewards = portal.upfrontDiscountPercent < 0 && isHomePortal(card, portal);
+  const feeIsExcludedFromRewards = discountPercent < 0 && isHomePortal(card, portal);
   const rewardBasis = feeIsExcludedFromRewards ? voucherAmount : netPaid;
 
   let rpEarned = 0;
@@ -196,11 +197,35 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
       }
     } else {
       const dynamicRate = amazonOverride.rewardRate;
-      cashValue = uncappedCashValue = rewardBasis * (dynamicRate / 100);
-      if (card.rewardType === 'points' && (card.pointValue ?? 1) > 0) {
-        rpEarned = Math.floor(cashValue / (card.pointValue ?? 1));
+      uncappedCashValue = rewardBasis * (dynamicRate / 100);
+
+      // Apply card capping rules if configured (e.g. SBI Cashback ₹2,000 maxCashback limit)
+      if (cardCapRule && cardCapRule.maxCashback !== undefined && uncappedCashValue > cardCapRule.maxCashback) {
+        isCapped = true;
+        cashValue = cardCapRule.maxCashback;
+        capLossAmount = uncappedCashValue - cashValue;
+        capNotice = cardCapRule.notice || `Cashback capped at ₹${cardCapRule.maxCashback.toLocaleString('en-IN')}/month`;
+      } else if (cardCapRule && (cardCapRule.maxAcceleratedPoints || cardCapRule.maxBonusPoints || cardCapRule.maxTotalPoints)) {
+        const pointVal = card.pointValue ?? 1;
+        const maxPts = cardCapRule.maxTotalPoints || cardCapRule.maxAcceleratedPoints || cardCapRule.maxBonusPoints;
+        const potentialPoints = Math.floor(uncappedCashValue / pointVal);
+        if (potentialPoints > maxPts) {
+          isCapped = true;
+          rpEarned = maxPts;
+          cashValue = rpEarned * pointVal;
+          capLossAmount = uncappedCashValue - cashValue;
+          capNotice = cardCapRule.notice || `Points capped at ${maxPts.toLocaleString('en-IN')} RP/month`;
+        } else {
+          rpEarned = potentialPoints;
+          cashValue = uncappedCashValue;
+        }
+      } else {
+        cashValue = uncappedCashValue;
+        if (card.rewardType === 'points' && (card.pointValue ?? 1) > 0) {
+          rpEarned = Math.floor(cashValue / (card.pointValue ?? 1));
+        }
       }
-      if (amazonOverride.notice) {
+      if (amazonOverride.notice && !capNotice) {
         capNotice = amazonOverride.notice;
       }
     }
@@ -316,7 +341,8 @@ function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount, brand
   // Discount-only leg: take the Insta Deal, earn zero reward on this
   // transaction — that's the actual choice HDFC presents at checkout.
   const discountOnlyMetrics = (() => {
-    const upfrontSavings = voucherAmount * (portal.upfrontDiscountPercent / 100);
+    const discountPercent = portal?.upfrontDiscountPercent ?? portalConfig?.upfrontDiscountPercent ?? 0;
+    const upfrontSavings = voucherAmount * (discountPercent / 100);
     const netPaid = voucherAmount - upfrontSavings;
     const finalNetCost = netPaid; // no reward earned on this leg, by definition
     const computedTrueNet = ((voucherAmount - finalNetCost) / voucherAmount) * 100;
