@@ -1,6 +1,9 @@
 # VouchWise - Repository Architecture
 
-This document describes the implemented repository as of 2026-09-06. The JavaScript import graph is documented separately in [JavaScriptDependencyMap.md](JavaScriptDependencyMap.md).
+This document describes the implemented repository as of November 2026. The JavaScript import graph is documented separately in [JavaScriptDependencyMap.md](JavaScriptDependencyMap.md).
+
+> **Core Project Scope:** This document defines the **Voucher Discount & Card Reward Optimizer** (Voucher price, portal discount, convenience fee, denomination flooring, card reward calculation, card and portal eligibility, wallet selections, ranking, custom cards, custom brands, standalone discount calculator, scraped catalog generation, live catalog refresh, and HITL/pre-flight pipeline).
+> Unfinished card-comparison and category-discovery models are maintained in `docs/WIP/` (Work In Progress) and are excluded from active voucher optimizer scope.
 
 ## 1. Project Understanding
 
@@ -16,15 +19,13 @@ This document describes the implemented repository as of 2026-09-06. The JavaScr
 
 ### Architecture style
 
-VouchWise is a multi-page static monolith with isolated feature module graphs. It is not a microservice or event-driven backend. Each HTML page owns a browser entry point; calculation and rendering execute in the browser. Browser persistence is the only user-specific data layer.
+VouchWise is a static web application with native browser ES modules. It is not a microservice or event-driven backend. Each HTML page owns a browser entry point; calculation and rendering execute in the browser. Browser persistence (`localStorage`) is the only user-specific data layer.
 
-The main runtime families are:
+The active runtime is the **Voucher Discount & Card Reward Optimizer**:
+- **Main Calculator**: [index.html](index.html) plus `main.js`, `events.js`, `results.js`, `customCalc.js`, `calculator.js`, `cardRules.js`, `wallet.js`, `search.js`, `modals.js`, `flags.js`, and `data.js`.
+- **Brand Guide & Direct Route Routing**: [brands.html](brands.html) with native module integration.
 
-1. **Voucher calculator**: [index.html](index.html) plus `main.js`, `events.js`, `results.js`, `customCalc.js`, wallet, search, modal, and data modules.
-2. **Card comparison**: [compare.html](compare.html) plus the `cardCompare*` state, DOM, events, calculation, and data modules.
-3. **Category discovery**: [cardCompareDiscover.html](cardCompareDiscover.html) plus the `cardCompareDiscover*` modules.
-
-[brands.html](brands.html) is a separate brand/portal guide with inline behavior. [cardCompareAdminOffer.html](cardCompareAdminOffer.html) is an administrative offer-entry page. The remaining HTML pages are standalone/static views.
+*(Note: Unfinished card comparison and discovery models are preserved under `docs/WIP/` for future reference).*
 
 ## 2. High-Level Architecture
 
@@ -33,23 +34,17 @@ flowchart TB
     Visitor[Visitor browser]
     Worker[Cloudflare Worker _worker.js]
     Assets[Cloudflare Pages assets]
-    Pages[Static HTML pages]
-    Core[Voucher calculator graph]
-    Compare[Card comparison graph]
-    Discover[Category discovery graph]
-    Storage[(Browser localStorage)]
-    Affiliate[External affiliate portals]
+    Pages[Static HTML pages: index.html, brands.html]
+    Core[Voucher calculator & reward optimizer graph]
+    Storage[(Browser localStorage: wallet, custom cards, flags)]
+    Affiliate[External affiliate & portal destinations]
 
     Visitor --> Worker
     Worker -->|redirect /out/*| Affiliate
     Worker -->|asset request| Assets
     Assets --> Pages
     Pages --> Core
-    Pages --> Compare
-    Pages --> Discover
     Core --> Storage
-    Compare --> Data[Generated card data]
-    Discover --> Data
 ```
 
 The worker is a routing boundary, not a business-service boundary. It redirects known affiliate paths from [routes.json](routes.json) and delegates other requests to Pages assets.
@@ -59,7 +54,7 @@ The worker is a routing boundary, not a business-service boundary. It redirects 
 ```mermaid
 flowchart TD
     Root[vouchwise/]
-    Root --> Pages[HTML pages\nindex, brands, compare, discovery]
+    Root --> Pages[HTML pages\nindex.html, brands.html]
     Root --> JS[js/]
     Root --> Assets[assets/\nicons and brand assets]
     Root --> Functions[functions/\nedge/serverless helpers]

@@ -33,6 +33,33 @@ export function getCardPortalMultiplier(card, portal) {
   return 0; // Safe: no multiplier = no reward on this portal. Prevents cross-issuer bleed.
 }
 
+export function isCardPortalEligible(card, portal) {
+  if (!card || !portal) return false;
+
+  // If the portal is an issuer-specific portal that is marked as discount-only (e.g. Axis EdgeRewards / GrabDeals)
+  if (portal.id && cardRules?.portalOverrides?.[portal.id]?.isDiscountOnly) {
+    // Eligible if the card belongs to the portal's issuing bank
+    if (portal.id.startsWith('axis_') && card.id?.startsWith('axis_')) return true;
+    if (portal.id.startsWith('hdfc_') && card.id?.startsWith('hdfc_')) return true;
+    if (portal.id.startsWith('icici_') && card.id?.startsWith('icici_')) return true;
+    if (portal.id.startsWith('sbi_') && card.id?.startsWith('sbi_')) return true;
+    if (portal.id.startsWith('amex_') && card.id?.startsWith('amex_')) return true;
+  }
+
+  // Base eligibility: check whether the unoverridden multiplier configured on the card is > 0
+  const multipliers = card.portalMultipliers || {};
+  if (portal.id !== undefined && multipliers[portal.id] !== undefined) {
+    return Number(multipliers[portal.id]) > 0;
+  }
+  if (portal.group !== undefined && multipliers[portal.group] !== undefined) {
+    return Number(multipliers[portal.group]) > 0;
+  }
+  if (multipliers.default !== undefined) {
+    return Number(multipliers.default) > 0;
+  }
+  return false;
+}
+
 export function getMultiplier(card, portal, portalConfig) {
   return getRewardMultiplier(card, portal, portalConfig);
 }
@@ -42,9 +69,15 @@ export function getMultiplier(card, portal, portalConfig) {
  * voucher amount. This is the "X% back" figure shown in result tables.
  * Single source of truth: previously duplicated in 3 places in app.js.
  */
-export function getCardRewardRate(card, multiplier, portal = null) {
-  if (portal?.id === 'amazon' && cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id]) {
-    return cardRules.amazonPortalOverrides.brand_voucher[card.id].rewardRate;
+export function getCardRewardRate(card, multiplier, portal = null, brand = null) {
+  if (portal?.id === 'amazon') {
+    const isAmazonPay = brand?.id === 'amazon_pay' || brand?.id === 'amazon_pay_gift_card';
+    const override = isAmazonPay
+      ? cardRules?.amazonPortalOverrides?.amazon_pay_gift_card?.[card.id]
+      : cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id];
+    if (override && override.rewardRate !== undefined) {
+      return override.rewardRate;
+    }
   }
   if (!card.spendBlock) return 0;
   const baseRate = (card.pointsPerBlock / card.spendBlock) * multiplier * 100;
@@ -144,7 +177,34 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
 
   const cardCapRule = (cardRules?.cardCaps?.[card.id]?.[portal.id]) || (cardRules?.cardCaps?.[card.id]?.default);
 
-  if (card.rewardType === "points" && card.spendBlock) {
+  // Check portal-specific brand overrides (e.g. Amazon Pay Gift Card MCC 6540 exclusions)
+  const isAmazonPortal = portal?.id === 'amazon';
+  const isAmazonPayGiftCard = brand?.id === 'amazon_pay' || brand?.id === 'amazon_pay_gift_card';
+  const amazonOverride = isAmazonPortal
+    ? (isAmazonPayGiftCard
+        ? cardRules?.amazonPortalOverrides?.amazon_pay_gift_card?.[card.id]
+        : cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id])
+    : null;
+
+  if (amazonOverride && amazonOverride.rewardRate !== undefined) {
+    if (amazonOverride.rewardRate === 0) {
+      rpEarned = 0;
+      cashValue = 0;
+      uncappedCashValue = 0;
+      if (amazonOverride.reason || amazonOverride.notice) {
+        capNotice = amazonOverride.notice || amazonOverride.reason;
+      }
+    } else {
+      const dynamicRate = amazonOverride.rewardRate;
+      cashValue = uncappedCashValue = rewardBasis * (dynamicRate / 100);
+      if (card.rewardType === 'points' && (card.pointValue ?? 1) > 0) {
+        rpEarned = Math.floor(cashValue / (card.pointValue ?? 1));
+      }
+      if (amazonOverride.notice) {
+        capNotice = amazonOverride.notice;
+      }
+    }
+  } else if (card.rewardType === "points" && card.spendBlock) {
     const completedBlocks = Math.floor(rewardBasis / card.spendBlock);
     const basePoints = completedBlocks * card.pointsPerBlock;
     const uncappedRp = Math.floor(basePoints * multiplier);
@@ -342,59 +402,4 @@ export function calculateTrueNetMetricsWithFlooring(card, portal, portalConfig, 
   metrics.flooredAmount = flooredAmount;
   metrics.extraAmount = extraAmount;
   return metrics;
-}
-
-/**
- * Three-Way Payment Route Optimizer: Compares Voucher vs. Direct Card Swipe vs. UPI
- */
-export function calculatePaymentRoutes(card, brand, portal, portalConfig, billAmount = 1000) {
-  const voucherMetrics = calculateTrueNetMetricsWithFlooring(card, portal, portalConfig, billAmount, brand);
-
-  // Direct swipe: Check MCC exclusions
-  const isMccExcluded = brand?.mcc && cardRules?.standardMCCExclusions?.[brand.mcc];
-  const directRewardRate = isMccExcluded ? 0 : getCardRewardRate(card, 1);
-  const directCashValue = billAmount * (directRewardRate / 100);
-  const directNetCost = billAmount - directCashValue;
-  const directNetSavingsPercent = (directCashValue / billAmount) * 100;
-
-  // UPI direct route (using portal discountsByMethod.UPI or 0-fee rail)
-  const upiDiscountPercent = portalConfig?.discountsByMethod?.UPI || 0;
-  const upiSavings = billAmount * (upiDiscountPercent / 100);
-  const upiNetCost = billAmount - upiSavings;
-
-  let bestRoute = 'voucher';
-  let minCost = voucherMetrics.finalNetCost;
-
-  if (directNetCost < minCost) {
-    bestRoute = 'directSwipe';
-    minCost = directNetCost;
-  }
-  if (upiNetCost < minCost) {
-    bestRoute = 'upi';
-    minCost = upiNetCost;
-  }
-
-  return {
-    bestRoute,
-    voucher: {
-      netCost: voucherMetrics.finalNetCost,
-      netSavingsPercent: voucherMetrics.computedTrueNet,
-      rpEarned: voucherMetrics.rpEarned,
-      cashValue: voucherMetrics.cashValue,
-      convenienceFee: voucherMetrics.extraAmount || 0,
-      metrics: voucherMetrics
-    },
-    directSwipe: {
-      netCost: directNetCost,
-      netSavingsPercent: directNetSavingsPercent,
-      rewardRate: directRewardRate,
-      isMccExcluded: Boolean(isMccExcluded),
-      cashValue: directCashValue
-    },
-    upi: {
-      netCost: upiNetCost,
-      netSavingsPercent: upiDiscountPercent,
-      cashValue: upiSavings
-    }
-  };
 }

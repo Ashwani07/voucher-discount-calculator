@@ -1,5 +1,7 @@
 # VouchWise - JavaScript Dependency Map
 
+> **Core Project Scope:** This dependency map defines the active **Voucher Discount & Card Reward Optimizer** module graph. Unfinished card comparison and discovery models are maintained in `docs/WIP/` (Work In Progress).
+
 Solid arrows represent static ES-module imports. Build-time relationships are separate from browser runtime relationships.
 
 ## Runtime Entry Points
@@ -7,10 +9,7 @@ Solid arrows represent static ES-module imports. Build-time relationships are se
 ```mermaid
 graph TD
     Index[index.html] --> Main[js/main.js]
-    Compare[compare.html] --> CompareMain[js/cardCompareMain.js]
-    Discover[cardCompareDiscover.html] --> DiscoverMain[js/cardCompareDiscoverMain.js]
     Brands[brands.html] --> BrandsInline[inline module]
-    Admin[cardCompareAdminOffer.html] --> AdminInline[inline module]
 ```
 
 ## Complete Import Graph

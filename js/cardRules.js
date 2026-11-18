@@ -25,8 +25,9 @@ export const cardRules = {
   amazonPortalOverrides: {
     brand_voucher: {
       sbi_cashback: {
-        rewardRate: 0,
-        reason: "SBI Cashback excludes all gift card / voucher purchases on Amazon.",
+        rewardRate: 5.0,
+        notice: "MCC Dependent: SBI Card officially excludes gift card MCCs (0%). However, Amazon transactions often code under general retail (earning 5%). Cashback is not guaranteed and depends on Amazon's payment gateway MCC.",
+        reason: "Variable MCC at Amazon checkout; earns 5% on retail MCC, 0% if coded under financial/prepaid MCC.",
         sourceUrl: "https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page"
       },
       icici_amazon: {

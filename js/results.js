@@ -1,7 +1,7 @@
 // Portal comparison calculations and result rendering. This module owns the
 // main voucher comparison flow and the portal result markup.
 import { cards, portals, brands, lastVerified, cardRules } from './data.js';
-import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
+import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier, isCardPortalEligible } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 import { getBrandById, getPortalById, renderApplyBadge, renderMetricGrid, validateVoucherAmount, hideBrandGuideLink, hidePortalResults } from './utils.js';
@@ -32,9 +32,7 @@ export function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
     const portal = findPortal(portalConfig.portalId);
     if (!portal) continue;
 
-    let allowedCards = cards.filter(card => {
-      return getCardPortalMultiplier(card, portal) > 0;
-    });
+    let allowedCards = cards.filter(card => isCardPortalEligible(card, portal));
 
     allowedCards = allowedCards.filter(card => walletSelectedIds.includes(card.id));
 
@@ -46,7 +44,7 @@ export function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
         voucherAmount,
         brand
       );
-      const cardRewardRate = getCardRewardRate(card, metrics.multiplier);
+      const cardRewardRate = getCardRewardRate(card, metrics.multiplier, portal, brand);
 
       results.push({
         portal,
@@ -134,6 +132,16 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
       ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${cardRules.portalOverrides[entry.portalId].notice}</div>`
       : '';
 
+    const isAmazonPayGiftCard = activeBrandObj?.id === 'amazon_pay' || activeBrandObj?.id === 'amazon_pay_gift_card';
+    const amazonOverride = entry.portalId === 'amazon'
+      ? (isAmazonPayGiftCard
+          ? cardRules?.amazonPortalOverrides?.amazon_pay_gift_card?.[entry.card.id]
+          : cardRules?.amazonPortalOverrides?.brand_voucher?.[entry.card.id])
+      : null;
+    const cardPortalNotice = amazonOverride?.notice || amazonOverride?.reason
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${amazonOverride.notice || amazonOverride.reason}</div>`
+      : '';
+
     const capNoticeHtml = entry.metrics.isCapped && entry.metrics.capNotice
       ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Cap Applied:</strong> ${entry.metrics.capNotice}. <span class="text-amber-700 italic">Calculation does not track your prior spend this cycle.</span></div>`
       : (entry.metrics.hasCapRule && entry.metrics.cardCapNotice
@@ -166,6 +174,7 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
         </div>
         ${disclaimer ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : ''}
         ${portalNotice}
+        ${cardPortalNotice}
         ${eitherOrNote}
         ${capNoticeHtml}
         ${brandCapNoticeHtml}

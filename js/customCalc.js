@@ -1,7 +1,7 @@
 // Custom coupon / sale calculator. This module mirrors the portal flow but
 // lets the user evaluate a standalone discount against the wallet.
-import { cards, portals } from './data.js';
-import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier } from './calculator.js';
+import { cards, portals, cardRules } from './data.js';
+import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier, isCardPortalEligible } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
 import { getPortalById, renderMetricGrid, validateVoucherAmount, hidePortalResults } from './utils.js';
@@ -55,7 +55,7 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
   }
 
   const cardsToEvaluate = portal
-    ? walletCards.filter(card => getCardPortalMultiplier(card, portal) > 0)
+    ? walletCards.filter(card => isCardPortalEligible(card, portal))
     : walletCards;
 
   if (!cardsToEvaluate.length) {
@@ -74,7 +74,7 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
     // For "Other" (mockPortal.id='custom_portal'), this falls to card's default multiplier.
     // Do NOT call getCardPortalMultiplier(card, null) — null portal causes undefined lookups.
     const multiplier = metrics.multiplier;
-    const cardRewardRate = getCardRewardRate(card, multiplier);
+    const cardRewardRate = getCardRewardRate(card, multiplier, mockPortal);
     return { card, upfront: discountPercent, reward: cardRewardRate, net: metrics.computedTrueNet, metrics, multiplier };
   });
 
@@ -152,6 +152,9 @@ export function renderCustomCardsList(results, voucherAmount) {
     const cappedBadge = metrics.isCapped
       ? '<span class="text-[9px] font-semibold text-amber-700 bg-amber-100 border border-amber-300 px-1 py-0.5 rounded ml-1" title="Reward is capped by issuer limits">Capped</span>'
       : '';
+    const cardPortalNotice = (portal?.id === 'amazon' && cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id]?.notice)
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${cardRules.amazonPortalOverrides.brand_voucher[card.id].notice}</div>`
+      : '';
     const capNoticeHtml = metrics.isCapped && metrics.capNotice
       ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Cap Applied:</strong> ${metrics.capNotice}. <span class="text-amber-700 italic">Calculation does not track your prior spend this cycle.</span></div>`
       : (metrics.hasCapRule && metrics.cardCapNotice
@@ -175,6 +178,7 @@ export function renderCustomCardsList(results, voucherAmount) {
           </div>
           ${exampleHTML}
           ${flooringNote}
+          ${cardPortalNotice}
           ${capNoticeHtml}
           ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-1">💡 ${card.assumption_note}</div>` : ''}
         </div>
