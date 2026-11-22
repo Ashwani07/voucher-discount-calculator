@@ -48,28 +48,28 @@ graph LR
 
 | File | Imports | Responsibility |
 |---|---|---|
-| [js/main.js](../) | `dom`, `data`, `wallet`, `modals`, `events`, `search`, `results`, `flags` | Browser bootstrap and hash preselection |
-| [js/events.js](../) | `data`, `dom`, `state`, `utils`, `search`, `results`, `customCalc`, `wallet`, `modals`, `flags` | Listener registration and event coordination |
-| [js/results.js](../) | `data`, `calculator`, `dom`, `state`, `utils`, `wallet`, `search`, `customCalc` | Eligibility, ranking, result rendering |
-| [js/customCalc.js](../) | `data`, `calculator`, `dom`, `state`, `utils`, `wallet` | Standalone discount calculations |
-| [js/wallet.js](../) | `data`, `dom`, `utils` | Wallet persistence and UI |
-| [js/search.js](../) | `data`, `dom`, `state` | Brand autocomplete and selection |
-| [js/modals.js](../) | `data`, `dom`, `wallet` | Custom card/brand persistence UI |
-| [js/flags.js](../) | `data`, `utils` | Flag discovery, rendering, removal |
-| [js/utils.js](../) | `dom` | Shared lookup, validation, rendering, visibility helpers |
-| [js/calculator.js](../) | None | Pure multiplier and net-cost calculations |
-| [js/data.js](../) | None | Static datasets and localStorage persistence |
-| [js/state.js](../) | None | Shared mutable calculator state |
-| [js/dom.js](../) | None | Cached DOM references only |
+| [js/main.js](../js/main.js) | `dom`, `data`, `wallet`, `modals`, `events`, `search`, `results`, `flags` | Browser bootstrap and hash preselection |
+| [js/events.js](../js/events.js) | `data`, `dom`, `state`, `utils`, `search`, `results`, `customCalc`, `wallet`, `modals`, `flags` | Listener registration and event coordination |
+| [js/results.js](../js/results.js) | `data`, `calculator`, `dom`, `state`, `utils`, `wallet`, `search`, `customCalc` | Eligibility, ranking, result rendering |
+| [js/customCalc.js](../js/customCalc.js) | `data`, `calculator`, `dom`, `state`, `utils`, `wallet` | Standalone discount calculations |
+| [js/wallet.js](../js/wallet.js) | `data`, `dom`, `utils` | Wallet persistence and UI |
+| [js/search.js](../js/search.js) | `data`, `dom`, `state` | Brand autocomplete and selection |
+| [js/modals.js](../js/modals.js) | `data`, `dom`, `wallet` | Custom card/brand persistence UI |
+| [js/flags.js](../js/flags.js) | `data`, `utils` | Flag discovery, rendering, removal |
+| [js/utils.js](../js/utils.js) | `dom` | Shared lookup, validation, rendering, visibility helpers |
+| [js/calculator.js](../js/calculator.js) | None | Pure multiplier and net-cost calculations |
+| [js/data.js](../js/data.js) | None | Static datasets and localStorage persistence |
+| [js/state.js](../js/state.js) | None | Shared mutable calculator state |
+| [js/dom.js](../js/dom.js) | None | Cached DOM references only |
 
 ## WIP Modules
 
-The card-comparison and discovery implementation is not part of the active voucher optimizer. Its archived design notes are retained under [docs/WIP](../). Do not include those modules in the active dependency or deployment graph.
+The card-comparison and discovery implementation is not part of the active voucher optimizer. Its archived design notes are retained under [docs/WIP](WIP/). Do not include those modules in the active dependency or deployment graph.
 
 ## Inline HTML Module Roots
 
-- [index.html](../) has a standalone inline module for the brand-search portal preview and flag handling. It imports data directly and does not inherit `events.js` behavior.
-- [brands.html](../) contains its own inline module for the brand guide.
+- [index.html](../index.html) has a standalone inline module for the brand-search portal preview and flag handling. It imports data directly and does not inherit `events.js` behavior.
+- [brands.html](../brands.html) contains its own inline module for the brand guide.
 
 ## Dependency Constraints
 

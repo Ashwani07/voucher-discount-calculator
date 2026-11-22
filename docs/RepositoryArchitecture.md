@@ -1,6 +1,6 @@
 # VouchWise - Repository Architecture
 
-This document describes the implemented repository as of November 2026. The JavaScript import graph is documented separately in [JavaScriptDependencyMap.md](../).
+This document describes the implemented repository as of November 2026. The JavaScript import graph is documented separately in [JavaScriptDependencyMap.md](JavaScriptDependencyMap.md).
 
 > **Core Project Scope:** This document defines the **Voucher Discount & Card Reward Optimizer** (Voucher price, portal discount, convenience fee, denomination flooring, card reward calculation, card and portal eligibility, wallet selections, ranking, custom cards, custom brands, standalone discount calculator, scraped catalog generation, live catalog refresh, and HITL/pre-flight pipeline).
 > Unfinished card-comparison and category-discovery models are maintained in `docs/WIP/` (Work In Progress) and are excluded from active voucher optimizer scope.
@@ -11,18 +11,18 @@ This document describes the implemented repository as of November 2026. The Java
 
 - Static HTML pages with browser-native ES modules.
 - Vanilla JavaScript; no frontend framework and no backend application server.
-- Tailwind CSS 3.4.4, loaded from the CDN by the main pages. [src/input.css](../) contains the local Tailwind source directives.
-- Cloudflare Pages static assets behind [_worker.js](../), configured by [wrangler.jsonc](../).
+- Tailwind CSS 3.4.4, loaded from the CDN by the main pages. [src/input.css](../src/input.css) contains the local Tailwind source directives.
+- Cloudflare Pages static assets behind [_worker.js](../_worker.js), configured by [wrangler.jsonc](../wrangler.jsonc).
 - Browser `localStorage` for wallet selections, custom cards, custom brands, and flagged discounts.
-- External affiliate destinations represented in [routes.json](../).
+- External affiliate destinations represented in [routes.json](../routes.json).
 
 ### Architecture style
 
 VouchWise is a static web application with native browser ES modules. It is not a microservice or event-driven backend. Each HTML page owns a browser entry point; calculation and rendering execute in the browser. Browser persistence (`localStorage`) is the only user-specific data layer.
 
 The active runtime is the **Voucher Discount & Card Reward Optimizer**:
-- **Main Calculator**: [index.html](../) plus `main.js`, `events.js`, `results.js`, `customCalc.js`, `calculator.js`, `cardRules.js`, `wallet.js`, `search.js`, `modals.js`, `flags.js`, and `data.js`.
-- **Brand Guide & Direct Route Routing**: [brands.html](../) with native module integration.
+- **Main Calculator**: [index.html](../index.html) plus `main.js`, `events.js`, `results.js`, `customCalc.js`, `calculator.js`, `cardRules.js`, `wallet.js`, `search.js`, `modals.js`, `flags.js`, and `data.js`.
+- **Brand Guide & Direct Route Routing**: [brands.html](../brands.html) with native module integration.
 
 *(Note: Unfinished card comparison and discovery models are preserved under `docs/WIP/` for future reference).*
 
@@ -46,7 +46,7 @@ flowchart TB
     Core --> Storage
 ```
 
-The worker is a routing boundary, not a business-service boundary. It redirects known affiliate paths from [routes.json](../) and delegates other requests to Pages assets.
+The worker is a routing boundary, not a business-service boundary. It redirects known affiliate paths from [routes.json](../routes.json) and delegates other requests to Pages assets.
 
 ## 3. Folder-Structure Map
 
@@ -296,19 +296,19 @@ stateDiagram-v2
 
 | Feature | Files and symbols |
 |---|---|
-| Bootstrap | [js/main.js](../), `bootstrap`, `applyBrandPreselectFromHash` |
-| DOM cache | [js/dom.js](../), `dom` |
-| Static/custom data | [js/data.js](../), `brands`, `cards`, `portals`, `saveCustomCard`, `saveCustomBrand` |
-| Brand search | [js/search.js](../), `handleBrandInput`, `selectBrand`, `renderCategoryBrands` |
-| Wallet | [js/wallet.js](../), `loadWalletIds`, `saveWalletIds`, `renderWalletUI`, `renderWalletChipBar` |
-| Custom card/brand UI | [js/modals.js](../), `applyBankDefaults`, `handleSaveCard`, `handleSaveBrand` |
-| Portal comparison | [js/results.js](../), `getEligibleResults`, `groupAndSortResults`, `handleCalculate`, `renderResults` |
-| Financial math | [js/calculator.js](../), `getCardPortalMultiplier`, `calculateTrueNetMetricsWithFlooring` |
-| Custom discount flow | [js/customCalc.js](../), `runCustomCalculation`, `handleCustomCalculate` |
-| Shared helpers | [js/utils.js](../), `validateVoucherAmount`, `getBrandById`, `getPortalById` |
-| Flags | [js/flags.js](../), `getAllFlags`, `renderFlaggedDiscounts`, `removeFlag` |
-| Event wiring | [js/events.js](../), `initEvents` |
-| Affiliate routing | [_worker.js](../), [routes.json](../) |
+| Bootstrap | [js/main.js](../js/main.js), `bootstrap`, `applyBrandPreselectFromHash` |
+| DOM cache | [js/dom.js](../js/dom.js), `dom` |
+| Static/custom data | [js/data.js](../js/data.js), `brands`, `cards`, `portals`, `saveCustomCard`, `saveCustomBrand` |
+| Brand search | [js/search.js](../js/search.js), `handleBrandInput`, `selectBrand`, `renderCategoryBrands` |
+| Wallet | [js/wallet.js](../js/wallet.js), `loadWalletIds`, `saveWalletIds`, `renderWalletUI`, `renderWalletChipBar` |
+| Custom card/brand UI | [js/modals.js](../js/modals.js), `applyBankDefaults`, `handleSaveCard`, `handleSaveBrand` |
+| Portal comparison | [js/results.js](../js/results.js), `getEligibleResults`, `groupAndSortResults`, `handleCalculate`, `renderResults` |
+| Financial math | [js/calculator.js](../js/calculator.js), `getCardPortalMultiplier`, `calculateTrueNetMetricsWithFlooring` |
+| Custom discount flow | [js/customCalc.js](../js/customCalc.js), `runCustomCalculation`, `handleCustomCalculate` |
+| Shared helpers | [js/utils.js](../js/utils.js), `validateVoucherAmount`, `getBrandById`, `getPortalById` |
+| Flags | [js/flags.js](../js/flags.js), `getAllFlags`, `renderFlaggedDiscounts`, `removeFlag` |
+| Event wiring | [js/events.js](../js/events.js), `initEvents` |
+| Affiliate routing | [_worker.js](../_worker.js), [routes.json](../routes.json) |
 
 ## 12. Important Invariants
 
@@ -317,4 +317,4 @@ stateDiagram-v2
 - UI-facing flows use `calculateTrueNetMetricsWithFlooring`, not the raw calculation function.
 - `localStorage` keys such as `walletCardIds`, `customCards`, `customBrands`, and `flag:<brandId>:<portalId>` are compatibility contracts.
 - `customCalc.js` must not import `results.js`; shared behavior belongs in `utils.js` or `calculator.js`.
-- The inline preview modules in [index.html](../) and [brands.html](../) are separate module roots and do not inherit `events.js` behavior.
+- The inline preview modules in [index.html](../index.html) and [brands.html](../brands.html) are separate module roots and do not inherit `events.js` behavior.
