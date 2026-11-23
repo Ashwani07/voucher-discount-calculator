@@ -153,10 +153,14 @@ export function isEitherOrPortal(portal) {
  * duplicated arithmetic to drift out of sync.
  */
 function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand = null) {
-  // Upfront savings (surcharges pass as negative numbers, e.g., -4.13)
+  // Upfront savings (surcharges pass as negative numbers or via convenienceFee)
   const discountPercent = portal?.upfrontDiscountPercent ?? portalConfig?.upfrontDiscountPercent ?? 0;
-  const upfrontSavings = voucherAmount * (discountPercent / 100);
-  const ccFeePercent = portalConfig?.convenienceFee?.effectiveCcFeePercent || 0;
+  const positiveDiscountPercent = discountPercent > 0 ? discountPercent : 0;
+  const upfrontSavings = voucherAmount * (positiveDiscountPercent / 100);
+  const rawCcFee = portalConfig?.convenienceFee?.effectiveCcFeePercent;
+  const ccFeePercent = (rawCcFee !== undefined && rawCcFee !== null && rawCcFee > 0)
+    ? rawCcFee
+    : (discountPercent < 0 ? Math.abs(discountPercent) : 0);
   const ccFeeAmount = voucherAmount * (ccFeePercent / 100);
   const netPaid = voucherAmount - upfrontSavings + ccFeeAmount;
 

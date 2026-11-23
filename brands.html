@@ -212,13 +212,17 @@
           const notAvailable = (p.disclaimer || '').toLowerCase().includes('not available');
 
           // Display logic for discounts, 0%, and fees
+          const feePct = (p.upfrontDiscountPercent < 0) 
+            ? Math.abs(p.upfrontDiscountPercent) 
+            : (p.convenienceFee?.effectiveCcFeePercent || 0);
+
           let discountText = '0%';
           let textClass = 'text-slate-700 font-medium';
           if (p.upfrontDiscountPercent > 0) {
             discountText = p.upfrontDiscountPercent + '%';
             if (isBest) textClass = 'text-emerald-700 font-bold';
-          } else if (p.upfrontDiscountPercent < 0) {
-            discountText = Math.abs(p.upfrontDiscountPercent) + '% fee';
+          } else if (feePct > 0) {
+            discountText = feePct + '% fee';
             textClass = 'text-red-500 font-medium'; // Highlights fees in red
           }
 
