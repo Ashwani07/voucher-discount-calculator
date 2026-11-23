@@ -646,7 +646,7 @@
       if (!brand || !preview) return;
 
       const available = (brand.portals || [])
-        .filter(p => p.availability !== 'unavailable' && p.upfrontDiscountPercent !== null)
+        .filter(p => p && p.availability === 'available' && p.upfrontDiscountPercent !== null)
         .sort((a, b) => (b.upfrontDiscountPercent ?? 0) - (a.upfrontDiscountPercent ?? 0));
 
       if (!available.length) { preview.classList.add('hidden'); return; }

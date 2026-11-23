@@ -27,7 +27,7 @@ export function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
 
   for (const portalConfig of brand.portals) {
     if (portalConfig.upfrontDiscountPercent === null) continue;
-    if (portalConfig.availability === 'unavailable') continue;
+    if (portalConfig.availability !== 'available') continue;
 
     const portal = findPortal(portalConfig.portalId);
     if (!portal) continue;

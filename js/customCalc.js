@@ -49,7 +49,7 @@ export function runCustomCalculation({ discountPercent, brandName, voucherAmount
   const portal = portalId !== 'other' ? findPortal(portalId) : null;
   
   // Safety net: If the portal was marked completely unavailable for this brand, abort immediately
-  if (portal && portal.availability === 'unavailable') {
+  if (portal && portal.availability && portal.availability !== 'available') {
     renderCustomResults([], brandName, discountPercent, voucherAmount, portal);
     return;
   }

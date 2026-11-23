@@ -186,9 +186,9 @@
       // Portal name map
       const portalNameMap = Object.fromEntries(portals.map(p => [p.id, p.name]));
 
-      // Filter available portals
+      // Filter available portals (strictly requires 'available')
       const available = (brand.portals || []).filter(
-        p => p.availability !== 'unavailable' && p.upfrontDiscountPercent !== null
+        p => p && p.availability === 'available' && p.upfrontDiscountPercent !== null
       );
 
       if (!available.length) {
