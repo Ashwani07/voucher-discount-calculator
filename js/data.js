@@ -95,7 +95,7 @@ export const masterBrands = [
   {
     "id": "abraham_thakore_luxe",
     "name": "Abraham & Thakore - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "abraham_thakore_luxe_amex_shopwise",
@@ -132,7 +132,7 @@ export const masterBrands = [
       {
         "compositeId": "abraham_thakore_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-abraham_thakore_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -142,7 +142,7 @@ export const masterBrands = [
   {
     "id": "absolute_barbecues",
     "name": "Absolute Barbecues",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "absolute_barbecues_amex_shopwise",
@@ -170,7 +170,7 @@ export const masterBrands = [
       {
         "compositeId": "absolute_barbeque_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-absolute_barbeque-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -314,13 +314,13 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-adidas_kids_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
         "compositeId": "adidas_kids_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-adidas_kids_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -377,7 +377,7 @@ export const masterBrands = [
   {
     "id": "aeropostale_bagline",
     "name": "Aeropostale - Bagline",
-    "category_name": "Electronics",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "aeropostale_bagline_amex_shopwise",
@@ -408,7 +408,7 @@ export const masterBrands = [
   {
     "id": "affinity",
     "name": "Affinity",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "affinity_amex_shopwise",
@@ -475,7 +475,7 @@ export const masterBrands = [
       {
         "compositeId": "air_india_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-air_india-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -507,7 +507,7 @@ export const masterBrands = [
       {
         "compositeId": "air_india_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 4.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-air_india-gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -680,7 +680,7 @@ export const masterBrands = [
   {
     "id": "airport_sim",
     "name": "Airport Sim",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "airport_sim_maximize_money",
@@ -715,7 +715,7 @@ export const masterBrands = [
       {
         "compositeId": "ajio_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-ajio-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -733,7 +733,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-ajio-axis_edgerewards",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -747,23 +747,23 @@ export const masterBrands = [
       {
         "compositeId": "ajio_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-ajio-gyftr",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
         "compositeId": "ajio_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 4.5,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ajio-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
         "compositeId": "ajio_hsbc_instabenefits",
         "portalId": "hsbc_instabenefits",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-ajio-hsbc_instabenefits",
         "availability": "available",
         "disclaimer": ""
@@ -781,7 +781,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-ajio-indusind_instavouchers",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -795,7 +795,7 @@ export const masterBrands = [
       {
         "compositeId": "ajio_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-ajio-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -810,9 +810,9 @@ export const masterBrands = [
       {
         "compositeId": "ajio_luxe_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-ajio_luxe-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -892,7 +892,7 @@ export const masterBrands = [
   {
     "id": "akok_luxe",
     "name": "Akok - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "akok_luxe_amex_shopwise",
@@ -912,7 +912,7 @@ export const masterBrands = [
       {
         "compositeId": "aldo_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-aldo-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -999,7 +999,7 @@ export const masterBrands = [
       {
         "compositeId": "aliste_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 25.0,
         "site": "https://vouchwise.in/out/buy-aliste-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -1070,7 +1070,7 @@ export const masterBrands = [
       {
         "compositeId": "allen_solly_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 1.0,
         "site": "https://vouchwise.in/out/buy-allen_solly-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -1334,7 +1334,7 @@ export const masterBrands = [
   {
     "id": "amazon_prime",
     "name": "Amazon Prime",
-    "category_name": "Entertainment & OTT",
+    "category_name": "[\"Entertainment & OTT\"]",
     "portals": [
       {
         "compositeId": "amazon_prime_maximize_money",
@@ -1349,7 +1349,7 @@ export const masterBrands = [
   {
     "id": "amazon_prime_12_months",
     "name": "Amazon Prime - 12 months",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others,E-Commerce",
     "portals": [
       {
         "compositeId": "amazon_prime_12_months_amex_shopwise",
@@ -1364,7 +1364,7 @@ export const masterBrands = [
   {
     "id": "amazon_prime_3_months",
     "name": "Amazon Prime - 3 months",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others,E-Commerce",
     "portals": [
       {
         "compositeId": "amazon_prime_3_months_amex_shopwise",
@@ -1379,7 +1379,7 @@ export const masterBrands = [
   {
     "id": "amazon_prime_lite_edition",
     "name": "Amazon Prime Lite Edition",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others,E-Commerce",
     "portals": [
       {
         "compositeId": "amazon_prime_lite_edition_amex_shopwise",
@@ -1527,7 +1527,7 @@ export const masterBrands = [
   {
     "id": "amazon_prime_shopping_edition",
     "name": "Amazon Prime Shopping Edition",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others,E-Commerce,Electronics,Fashion,Home needs",
     "portals": [
       {
         "compositeId": "amazon_prime_shopping_edition_amex_shopwise",
@@ -1650,7 +1650,7 @@ export const masterBrands = [
       {
         "compositeId": "american_eagle_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 1.0,
         "site": "https://vouchwise.in/out/buy-american_eagle-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -1737,7 +1737,7 @@ export const masterBrands = [
       {
         "compositeId": "american_tourister_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-american_tourister-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -1819,7 +1819,7 @@ export const masterBrands = [
   {
     "id": "apollo_diagnostics",
     "name": "Apollo Diagnostics",
-    "category_name": "Health & Wellness",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "apollo_diagnostics_gyftr",
@@ -1879,9 +1879,9 @@ export const masterBrands = [
       {
         "compositeId": "apollo_pharmacy_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-apollo_pharmacy-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -1960,7 +1960,7 @@ export const masterBrands = [
   {
     "id": "apollo_pharmacy_apl",
     "name": "Apollo Pharmacy APL",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "apollo_pharmacy_apl_amex_shopwise",
@@ -1983,7 +1983,7 @@ export const masterBrands = [
   {
     "id": "apollo_pharmacy_in_store",
     "name": "Apollo Pharmacy In Store",
-    "category_name": "Health & Wellness",
+    "category_name": "[\"Health & Wellness\"]",
     "portals": [
       {
         "compositeId": "apollo_pharmacy_in_store_maximize_money",
@@ -2013,7 +2013,7 @@ export const masterBrands = [
   {
     "id": "apparel_group",
     "name": "Apparel Group",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "apparel_group_gyftr",
@@ -2049,7 +2049,7 @@ export const masterBrands = [
       {
         "compositeId": "apple_premium_reseller_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-apple_premium_reseller-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -2075,7 +2075,7 @@ export const masterBrands = [
   {
     "id": "appy_high_prime",
     "name": "Appy High Prime",
-    "category_name": "Electronics",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "appy_high_prime_maximize_money",
@@ -2095,7 +2095,7 @@ export const masterBrands = [
       {
         "compositeId": "archies_gallery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 20.0,
         "site": "https://vouchwise.in/out/buy-archies_gallery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -2177,7 +2177,7 @@ export const masterBrands = [
   {
     "id": "armani_exchange_luxe",
     "name": "Armani Exchange - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "armani_exchange_luxe_amex_shopwise",
@@ -2254,7 +2254,7 @@ export const masterBrands = [
       {
         "compositeId": "armani_exchange_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-armani_exchange_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -2302,7 +2302,7 @@ export const masterBrands = [
   {
     "id": "asia_seven_express",
     "name": "Asia Seven Express",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "asia_seven_express_amex_shopwise",
@@ -2341,7 +2341,7 @@ export const masterBrands = [
   {
     "id": "assembly",
     "name": "Assembly",
-    "category_name": "Electronics",
+    "category_name": "Travel,Fashion",
     "portals": [
       {
         "compositeId": "assembly_amex_shopwise",
@@ -2412,7 +2412,7 @@ export const masterBrands = [
   {
     "id": "ather",
     "name": "Ather",
-    "category_name": "Travel & Leisure",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "ather_gyftr",
@@ -2514,7 +2514,7 @@ export const masterBrands = [
   {
     "id": "auric",
     "name": "Auric",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "auric_amex_shopwise",
@@ -2608,7 +2608,7 @@ export const masterBrands = [
   {
     "id": "axora_life_silver_jewellery",
     "name": "Axora Life Silver Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\"]",
     "portals": [
       {
         "compositeId": "axora_life_silver_jewellery_maximize_money",
@@ -2623,7 +2623,7 @@ export const masterBrands = [
   {
     "id": "bagline",
     "name": "Bagline",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "bagline_amex_shopwise",
@@ -2717,7 +2717,7 @@ export const masterBrands = [
   {
     "id": "bally_luxe",
     "name": "Bally - Luxe",
-    "category_name": "Electronics",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "bally_luxe_amex_shopwise",
@@ -2769,7 +2769,7 @@ export const masterBrands = [
       {
         "compositeId": "barbeque_nation_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-barbeque_nation-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -2859,7 +2859,7 @@ export const masterBrands = [
   {
     "id": "bare_anatomy",
     "name": "Bare Anatomy",
-    "category_name": "Fashion & Accessories",
+    "category_name": "BuzzingNow",
     "portals": [
       {
         "compositeId": "bare_anatomy_axis_edgerewards",
@@ -2921,7 +2921,7 @@ export const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-baskin_robbins-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -3086,7 +3086,7 @@ export const masterBrands = [
       {
         "compositeId": "bata_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 9.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-bata-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -3101,7 +3101,7 @@ export const masterBrands = [
       {
         "compositeId": "bath_and_body_works_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-bath_and_body_works-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -3175,7 +3175,7 @@ export const masterBrands = [
   {
     "id": "bath_body_works",
     "name": "Bath & Body Works",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "bath_body_works_amex_shopwise",
@@ -3198,7 +3198,7 @@ export const masterBrands = [
   {
     "id": "bblunt",
     "name": "Bblunt",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "bblunt_amex_shopwise",
@@ -3275,7 +3275,7 @@ export const masterBrands = [
   {
     "id": "beat_slayer",
     "name": "Beat Slayer",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "beat_slayer_maximize_money",
@@ -3290,7 +3290,7 @@ export const masterBrands = [
   {
     "id": "beer_cafe",
     "name": "Beer Cafe",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "beer_cafe_amex_shopwise",
@@ -3366,7 +3366,7 @@ export const masterBrands = [
       {
         "compositeId": "behrouz_biryani_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-behrouz_biryani-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -3445,9 +3445,9 @@ export const masterBrands = [
       {
         "compositeId": "beverly_hills_polo_club_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-beverly_hills_polo_club-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -3527,7 +3527,7 @@ export const masterBrands = [
   {
     "id": "beyoung",
     "name": "Beyoung",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "beyoung_amex_shopwise",
@@ -3611,7 +3611,7 @@ export const masterBrands = [
       {
         "compositeId": "bgmi_uc_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-bgmi_uc-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -3661,7 +3661,7 @@ export const masterBrands = [
   {
     "id": "bgmi_uc_official",
     "name": "BGMI UC Official",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Gaming",
     "portals": [
       {
         "compositeId": "bgmi_uc_official_hdfc_smartbuy",
@@ -3684,7 +3684,7 @@ export const masterBrands = [
   {
     "id": "bhima_jewellers_coin",
     "name": "Bhima Jewellers - Coin",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\",\"Luxury & Permium Brands\"]",
     "portals": [
       {
         "compositeId": "bhima_jewellers_coin_maximize_money",
@@ -3699,7 +3699,7 @@ export const masterBrands = [
   {
     "id": "bhima_jewellers_gold_jewellery",
     "name": "Bhima Jewellers - Gold Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "bhima_jewellers_gold_jewellery_icici_ishop",
@@ -3742,7 +3742,7 @@ export const masterBrands = [
       {
         "compositeId": "biba_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-biba-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -3918,7 +3918,7 @@ export const masterBrands = [
   {
     "id": "bikanervala",
     "name": "Bikanervala",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "bikanervala_amex_shopwise",
@@ -3954,7 +3954,7 @@ export const masterBrands = [
       {
         "compositeId": "birkenstock_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-birkenstock-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -4019,7 +4019,7 @@ export const masterBrands = [
   {
     "id": "blaupunkt",
     "name": "Blaupunkt",
-    "category_name": "Electronics",
+    "category_name": "Digital Electronics",
     "portals": [
       {
         "compositeId": "blaupunkt_icici_ishop",
@@ -4042,7 +4042,7 @@ export const masterBrands = [
   {
     "id": "blazing_sails",
     "name": "Blazing Sails",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "blazing_sails_maximize_money",
@@ -4062,7 +4062,7 @@ export const masterBrands = [
       {
         "compositeId": "blinkit_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-blinkit-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -4149,7 +4149,7 @@ export const masterBrands = [
       {
         "compositeId": "blissclub_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.0,
         "site": "https://vouchwise.in/out/buy-blissclub-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -4223,7 +4223,7 @@ export const masterBrands = [
   {
     "id": "blue_stone_diamond",
     "name": "Blue Stone Diamond",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "blue_stone_diamond_amex_shopwise",
@@ -4325,7 +4325,7 @@ export const masterBrands = [
   {
     "id": "blue_stone_gold_jewellery",
     "name": "Blue Stone Gold Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "blue_stone_gold_jewellery_amex_shopwise",
@@ -4385,7 +4385,7 @@ export const masterBrands = [
       {
         "compositeId": "blue_tokai_coffe_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-blue_tokai_coffe-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -4403,7 +4403,7 @@ export const masterBrands = [
   {
     "id": "blue_tokai_coffee",
     "name": "Blue Tokai Coffee",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "blue_tokai_coffee_amex_shopwise",
@@ -4433,7 +4433,7 @@ export const masterBrands = [
   {
     "id": "bo_tai",
     "name": "Bo TAi",
-    "category_name": "Miscellaneous",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "bo_tai_gyftr",
@@ -4480,7 +4480,7 @@ export const masterBrands = [
   {
     "id": "boat",
     "name": "Boat",
-    "category_name": "Electronics",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "boat_maximize_money",
@@ -4534,7 +4534,7 @@ export const masterBrands = [
   {
     "id": "boditive",
     "name": "Boditive",
-    "category_name": "Electronics",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "boditive_maximize_money",
@@ -4549,7 +4549,7 @@ export const masterBrands = [
   {
     "id": "body_craft",
     "name": "Body Craft",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "body_craft_amex_shopwise",
@@ -4585,7 +4585,7 @@ export const masterBrands = [
       {
         "compositeId": "body_craft_clinic_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-body_craft_clinic-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -4608,7 +4608,7 @@ export const masterBrands = [
       {
         "compositeId": "body_craft_salon_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-body_craft_salon-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -4646,7 +4646,7 @@ export const masterBrands = [
       {
         "compositeId": "book_my_show_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-book_my_show-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -4688,7 +4688,7 @@ export const masterBrands = [
   {
     "id": "bose",
     "name": "Bose",
-    "category_name": "Electronics",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "bose_gyftr",
@@ -4711,7 +4711,7 @@ export const masterBrands = [
   {
     "id": "bottega_veneta_luxe",
     "name": "Bottega Veneta - Luxe",
-    "category_name": "Electronics",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "bottega_veneta_luxe_amex_shopwise",
@@ -4748,7 +4748,7 @@ export const masterBrands = [
       {
         "compositeId": "bottega_veneta_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-bottega_veneta_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -4758,7 +4758,7 @@ export const masterBrands = [
   {
     "id": "bounce",
     "name": "Bounce",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "bounce_amex_shopwise",
@@ -4820,14 +4820,14 @@ export const masterBrands = [
   {
     "id": "bpcl_smart_drive_fuel",
     "name": "BPCL Smart Drive Fuel",
-    "category_name": "Travel & Leisure",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "bpcl_smart_drive_fuel_gyftr",
         "portalId": "gyftr",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": -2.36,
         "site": "https://vouchwise.in/out/buy-bpcl_smart_drive_fuel-gyftr",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -4849,6 +4849,21 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "bpcl_smart_drive_fuel_e",
+    "name": "BPCL Smart Drive Fuel e",
+    "category_name": "Gifting",
+    "portals": [
+      {
+        "compositeId": "bpcl_smart_drive_fuel_e_hdfc_smartbuy",
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0.0,
+        "site": "https://vouchwise.in/out/buy-bpcl_smart_drive_fuel_e-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "brain_gym_jr",
     "name": "Brain Gym Jr",
     "category_name": "Electronics",
@@ -4856,7 +4871,7 @@ export const masterBrands = [
       {
         "compositeId": "brain_gym_jr_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-brain_gym_jr-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -4906,7 +4921,7 @@ export const masterBrands = [
   {
     "id": "brain_gym_jr_gift",
     "name": "Brain Gym Jr Gift",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "brain_gym_jr_gift_maximize_money",
@@ -4921,7 +4936,7 @@ export const masterBrands = [
   {
     "id": "brooks_brothers_luxe",
     "name": "Brooks Brothers - Luxe",
-    "category_name": "Electronics",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "brooks_brothers_luxe_amex_shopwise",
@@ -4936,7 +4951,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-brooks_brothers_luxe-axis_edgerewards",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -5000,7 +5015,7 @@ export const masterBrands = [
   {
     "id": "bubbles",
     "name": "Bubbles",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "bubbles_amex_shopwise",
@@ -5062,7 +5077,7 @@ export const masterBrands = [
   {
     "id": "buy_with_emi",
     "name": "Buy With EMI",
-    "category_name": "Electronics",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "buy_with_emi_maximize_money",
@@ -5077,7 +5092,7 @@ export const masterBrands = [
   {
     "id": "cafe_coffee_day",
     "name": "Cafe Coffee Day",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "cafe_coffee_day_amex_shopwise",
@@ -5116,7 +5131,7 @@ export const masterBrands = [
   {
     "id": "cafe_delhi_heights",
     "name": "Cafe Delhi Heights",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "cafe_delhi_heights_amex_shopwise",
@@ -5195,7 +5210,7 @@ export const masterBrands = [
   {
     "id": "cahoot",
     "name": "Cahoot",
-    "category_name": "Fashion & Accessories",
+    "category_name": "BuzzingNow",
     "portals": [
       {
         "compositeId": "cahoot_axis_edgerewards",
@@ -5239,7 +5254,7 @@ export const masterBrands = [
       {
         "compositeId": "call_it_spring_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-call_it_spring-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -5326,7 +5341,7 @@ export const masterBrands = [
       {
         "compositeId": "campus_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-campus-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -5400,7 +5415,7 @@ export const masterBrands = [
   {
     "id": "campus_sutra",
     "name": "Campus Sutra",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "campus_sutra_icici_ishop",
@@ -5415,7 +5430,7 @@ export const masterBrands = [
   {
     "id": "canali_luxe",
     "name": "Canali - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "canali_luxe_amex_shopwise",
@@ -5475,7 +5490,7 @@ export const masterBrands = [
       {
         "compositeId": "candere_diamond_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-candere_diamond_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -5549,7 +5564,7 @@ export const masterBrands = [
   {
     "id": "candere_gold_coin",
     "name": "Candere Gold Coin",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "candere_gold_coin_gyftr",
@@ -5601,7 +5616,7 @@ export const masterBrands = [
       {
         "compositeId": "candere_gold_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-candere_gold_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -5672,7 +5687,7 @@ export const masterBrands = [
       {
         "compositeId": "cello_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-cello-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -5754,7 +5769,7 @@ export const masterBrands = [
   {
     "id": "cgh_earth",
     "name": "CGH Earth",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "cgh_earth_maximize_money",
@@ -5774,7 +5789,7 @@ export const masterBrands = [
       {
         "compositeId": "charles_and_keith_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-charles_and_keith-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -5848,7 +5863,7 @@ export const masterBrands = [
   {
     "id": "charles_keith",
     "name": "Charles & Keith",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "charles_keith_amex_shopwise",
@@ -5871,7 +5886,7 @@ export const masterBrands = [
   {
     "id": "charles_tyrwhitt_luxe",
     "name": "Charles Tyrwhitt - Luxe",
-    "category_name": "Electronics",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "charles_tyrwhitt_luxe_amex_shopwise",
@@ -5908,7 +5923,7 @@ export const masterBrands = [
       {
         "compositeId": "charles_tyrwhitt_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-charles_tyrwhitt_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -5918,7 +5933,7 @@ export const masterBrands = [
   {
     "id": "chemist_at_play",
     "name": "Chemist At Play",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "chemist_at_play_axis_edgerewards",
@@ -6016,7 +6031,7 @@ export const masterBrands = [
       {
         "compositeId": "chumbak_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-chumbak-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -6169,7 +6184,7 @@ export const masterBrands = [
   {
     "id": "circle_empires_2",
     "name": "Circle Empires 2",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "circle_empires_2_maximize_money",
@@ -6189,7 +6204,7 @@ export const masterBrands = [
       {
         "compositeId": "citizen_watches_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-citizen_watches-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -6268,7 +6283,7 @@ export const masterBrands = [
       {
         "compositeId": "clayco_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 20.0,
         "site": "https://vouchwise.in/out/buy-clayco-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -6389,7 +6404,7 @@ export const masterBrands = [
   {
     "id": "cleartrip",
     "name": "Cleartrip",
-    "category_name": "Travel & Leisure",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "cleartrip_hdfc_smartbuy",
@@ -6417,7 +6432,7 @@ export const masterBrands = [
       {
         "compositeId": "cleartrip_generic_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-cleartrip_generic-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -6512,7 +6527,7 @@ export const masterBrands = [
       {
         "compositeId": "cleartrip_hotel_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-cleartrip_hotel-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -6578,7 +6593,7 @@ export const masterBrands = [
   {
     "id": "cleartrip_hotels",
     "name": "Cleartrip Hotels",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "cleartrip_hotels_amex_shopwise",
@@ -6624,7 +6639,7 @@ export const masterBrands = [
   {
     "id": "coach_luxe",
     "name": "Coach - Luxe",
-    "category_name": "Electronics",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "coach_luxe_amex_shopwise",
@@ -6758,7 +6773,7 @@ export const masterBrands = [
   {
     "id": "columbia_sportswear",
     "name": "Columbia Sportswear",
-    "category_name": "Health & Wellness",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "columbia_sportswear_amex_shopwise",
@@ -6829,7 +6844,7 @@ export const masterBrands = [
   {
     "id": "cordelia",
     "name": "Cordelia",
-    "category_name": "Travel & Leisure",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "cordelia_hdfc_smartbuy",
@@ -6935,7 +6950,7 @@ export const masterBrands = [
       {
         "compositeId": "costa_coffee_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-costa_coffee-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -7014,7 +7029,7 @@ export const masterBrands = [
       {
         "compositeId": "croma_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-croma-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -7109,7 +7124,7 @@ export const masterBrands = [
       {
         "compositeId": "crossword_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-crossword-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -7188,7 +7203,7 @@ export const masterBrands = [
       {
         "compositeId": "crosswords_online_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-crosswords_online-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -7198,7 +7213,7 @@ export const masterBrands = [
   {
     "id": "cult",
     "name": "Cult",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "cult_amex_shopwise",
@@ -7226,7 +7241,7 @@ export const masterBrands = [
       {
         "compositeId": "cult_fit_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-cult_fit-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -7276,7 +7291,7 @@ export const masterBrands = [
   {
     "id": "cut_and_style",
     "name": "Cut And Style",
-    "category_name": "Health & Wellness",
+    "category_name": "[\"Beauty & Personal Care\"]",
     "portals": [
       {
         "compositeId": "cut_and_style_maximize_money",
@@ -7291,7 +7306,7 @@ export const masterBrands = [
   {
     "id": "cut_style",
     "name": "Cut & Style",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "cut_style_amex_shopwise",
@@ -7424,7 +7439,7 @@ export const masterBrands = [
   {
     "id": "dark_fairy_tale",
     "name": "Dark Fairy Tale",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "dark_fairy_tale_maximize_money",
@@ -7439,7 +7454,7 @@ export const masterBrands = [
   {
     "id": "decathlon",
     "name": "Decathlon",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Wellness,Fashion",
     "portals": [
       {
         "compositeId": "decathlon_amex_shopwise",
@@ -7470,7 +7485,7 @@ export const masterBrands = [
   {
     "id": "decathlon_omni",
     "name": "Decathlon Omni",
-    "category_name": "Health & Wellness",
+    "category_name": "Sports & Accessories",
     "portals": [
       {
         "compositeId": "decathlon_omni_icici_ishop",
@@ -7572,7 +7587,7 @@ export const masterBrands = [
   {
     "id": "diesel_luxe",
     "name": "Diesel - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "diesel_luxe_amex_shopwise",
@@ -7603,7 +7618,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-diesel_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -7734,7 +7749,7 @@ export const masterBrands = [
       {
         "compositeId": "district_by_zomato_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-district_by_zomato-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -7783,7 +7798,7 @@ export const masterBrands = [
   {
     "id": "dog_man:_mission_impawsible",
     "name": "Dog Man: Mission Impawsible",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "dog_man:_mission_impawsible_maximize_money",
@@ -7798,7 +7813,7 @@ export const masterBrands = [
   {
     "id": "dominos",
     "name": "Dominos",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "dominos_amex_shopwise",
@@ -7834,7 +7849,7 @@ export const masterBrands = [
       {
         "compositeId": "dominos_pizza_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-dominos_pizza-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -7916,7 +7931,7 @@ export const masterBrands = [
   {
     "id": "donatekart",
     "name": "Donatekart",
-    "category_name": "Miscellaneous",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "donatekart_amex_shopwise",
@@ -7947,7 +7962,7 @@ export const masterBrands = [
   {
     "id": "dpauls",
     "name": "Dpauls",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "dpauls_amex_shopwise",
@@ -8025,7 +8040,7 @@ export const masterBrands = [
   {
     "id": "dream_folks_club_membership",
     "name": "Dream Folks Club Membership",
-    "category_name": "Dining & Food",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "dream_folks_club_membership_gyftr",
@@ -8069,7 +8084,7 @@ export const masterBrands = [
       {
         "compositeId": "dune_london_luxe_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-dune_london_luxe-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -8087,7 +8102,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-dune_london_luxe-axis_edgerewards",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -8159,7 +8174,7 @@ export const masterBrands = [
   {
     "id": "dune_luxe",
     "name": "Dune - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "dune_luxe_hdfc_smartbuy",
@@ -8174,7 +8189,7 @@ export const masterBrands = [
   {
     "id": "duroflex",
     "name": "Duroflex",
-    "category_name": "Miscellaneous",
+    "category_name": "Home needs,Wellness",
     "portals": [
       {
         "compositeId": "duroflex_amex_shopwise",
@@ -8237,7 +8252,7 @@ export const masterBrands = [
   {
     "id": "ea_7_luxe",
     "name": "EA - 7 - Luxe",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "ea_7_luxe_amex_shopwise",
@@ -8268,13 +8283,13 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-ea_7_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
         "compositeId": "ea_7_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ea_7_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -8361,7 +8376,7 @@ export const masterBrands = [
   {
     "id": "ease_my_trip",
     "name": "Ease My Trip",
-    "category_name": "Miscellaneous",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "ease_my_trip_amex_shopwise",
@@ -8381,7 +8396,7 @@ export const masterBrands = [
       {
         "compositeId": "ease_my_trip_generic_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-ease_my_trip_generic-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -8436,7 +8451,7 @@ export const masterBrands = [
       {
         "compositeId": "ease_my_trip_holiday_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-ease_my_trip_holiday-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -8494,7 +8509,7 @@ export const masterBrands = [
   {
     "id": "ease_my_trip_hotel",
     "name": "Ease My Trip Hotel",
-    "category_name": "Miscellaneous",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "ease_my_trip_hotel_amex_shopwise",
@@ -8548,7 +8563,7 @@ export const masterBrands = [
   {
     "id": "easy_buy",
     "name": "Easy Buy",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "easy_buy_amex_shopwise",
@@ -8616,7 +8631,7 @@ export const masterBrands = [
       {
         "compositeId": "easybuy_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-easybuy-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -8694,7 +8709,7 @@ export const masterBrands = [
       {
         "compositeId": "eatsure_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-eatsure-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -8704,7 +8719,7 @@ export const masterBrands = [
   {
     "id": "eazy_diner",
     "name": "Eazy Diner",
-    "category_name": "Electronics",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "eazy_diner_gyftr",
@@ -8735,7 +8750,7 @@ export const masterBrands = [
   {
     "id": "eazydiner_prime_membership",
     "name": "Eazydiner Prime Membership",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Dining & Food\"]",
     "portals": [
       {
         "compositeId": "eazydiner_prime_membership_maximize_money",
@@ -8750,7 +8765,7 @@ export const masterBrands = [
   {
     "id": "electricity_bill_payment",
     "name": "Electricity Bill Payment",
-    "category_name": "Electronics",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "electricity_bill_payment_gyftr",
@@ -8786,7 +8801,7 @@ export const masterBrands = [
       {
         "compositeId": "elivaas_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-elivaas-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -8865,7 +8880,7 @@ export const masterBrands = [
       {
         "compositeId": "elleven_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-elleven-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -8923,7 +8938,7 @@ export const masterBrands = [
   {
     "id": "elver",
     "name": "Elver",
-    "category_name": "Electronics",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "elver_maximize_money",
@@ -8938,7 +8953,7 @@ export const masterBrands = [
   {
     "id": "emporio_armani_luxe",
     "name": "Emporio Armani - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "emporio_armani_luxe_amex_shopwise",
@@ -8993,7 +9008,7 @@ export const masterBrands = [
   {
     "id": "enrich",
     "name": "Enrich",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "enrich_amex_shopwise",
@@ -9055,7 +9070,7 @@ export const masterBrands = [
   {
     "id": "epic_on_12_month_plan",
     "name": "Epic On - 12 month plan",
-    "category_name": "Miscellaneous",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "epic_on_12_month_plan_amex_shopwise",
@@ -9070,7 +9085,7 @@ export const masterBrands = [
   {
     "id": "epic_on_1_month_plan",
     "name": "Epic On - 1 month plan",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "epic_on_1_month_plan_amex_shopwise",
@@ -9093,7 +9108,7 @@ export const masterBrands = [
   {
     "id": "epic_on_1_year_plan",
     "name": "Epic On 1 Year Plan",
-    "category_name": "Entertainment & OTT",
+    "category_name": "[\"Entertainment & OTT\"]",
     "portals": [
       {
         "compositeId": "epic_on_1_year_plan_maximize_money",
@@ -9108,7 +9123,7 @@ export const masterBrands = [
   {
     "id": "epic_on_3_month_plan",
     "name": "Epic On - 3 month plan",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "epic_on_3_month_plan_amex_shopwise",
@@ -9131,7 +9146,7 @@ export const masterBrands = [
   {
     "id": "epic_on_6_month_plan",
     "name": "Epic On - 6 month plan",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "epic_on_6_month_plan_amex_shopwise",
@@ -9154,7 +9169,7 @@ export const masterBrands = [
   {
     "id": "estele",
     "name": "Estele",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Jewellery,Fashion",
     "portals": [
       {
         "compositeId": "estele_amex_shopwise",
@@ -9225,7 +9240,7 @@ export const masterBrands = [
   {
     "id": "estuary_world",
     "name": "Estuary World",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"New\"]",
     "portals": [
       {
         "compositeId": "estuary_world_maximize_money",
@@ -9245,7 +9260,7 @@ export const masterBrands = [
       {
         "compositeId": "euphoria_diamond_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-euphoria_diamond_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -9279,7 +9294,7 @@ export const masterBrands = [
   {
     "id": "euphoria_gold_coin",
     "name": "Euphoria Gold Coin",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "euphoria_gold_coin_amex_shopwise",
@@ -9365,7 +9380,7 @@ export const masterBrands = [
   {
     "id": "euphoria_jewellery_gold_coin",
     "name": "Euphoria Jewellery Gold Coin",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "euphoria_jewellery_gold_coin_hdfc_smartbuy",
@@ -9380,7 +9395,7 @@ export const masterBrands = [
   {
     "id": "euphoria_jewellery_silver_coin",
     "name": "Euphoria Jewellery Silver Coin",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "euphoria_jewellery_silver_coin_amex_shopwise",
@@ -9474,7 +9489,7 @@ export const masterBrands = [
   {
     "id": "faasos",
     "name": "Faasos",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "faasos_amex_shopwise",
@@ -9545,7 +9560,7 @@ export const masterBrands = [
   {
     "id": "fab_hotels",
     "name": "Fab Hotels",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "fab_hotels_amex_shopwise",
@@ -9663,7 +9678,7 @@ export const masterBrands = [
   {
     "id": "farzi_cafe",
     "name": "Farzi Cafe",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "farzi_cafe_gyftr",
@@ -9773,7 +9788,7 @@ export const masterBrands = [
   {
     "id": "fastag_recharge",
     "name": "Fastag Recharge",
-    "category_name": "Electronics",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "fastag_recharge_gyftr",
@@ -10006,7 +10021,7 @@ export const masterBrands = [
       {
         "compositeId": "femmella_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-femmella-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -10080,7 +10095,7 @@ export const masterBrands = [
   {
     "id": "ferns_n_petals",
     "name": "Ferns N Petals",
-    "category_name": "Electronics",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "ferns_n_petals_amex_shopwise",
@@ -10188,7 +10203,7 @@ export const masterBrands = [
       {
         "compositeId": "ferragamo_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ferragamo_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -10228,7 +10243,7 @@ export const masterBrands = [
   {
     "id": "first_club",
     "name": "First Club",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Groceries & Essentials\"]",
     "portals": [
       {
         "compositeId": "first_club_maximize_money",
@@ -10243,7 +10258,7 @@ export const masterBrands = [
   {
     "id": "first_cry",
     "name": "First Cry",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "first_cry_amex_shopwise",
@@ -10327,7 +10342,7 @@ export const masterBrands = [
       {
         "compositeId": "fitpass_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 20.0,
         "site": "https://vouchwise.in/out/buy-fitpass-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -10409,7 +10424,7 @@ export const masterBrands = [
   {
     "id": "flipkart",
     "name": "Flipkart",
-    "category_name": "Electronics",
+    "category_name": "Electronics,E-Commerce,Fashion,Home needs",
     "portals": [
       {
         "compositeId": "flipkart_amex_shopwise",
@@ -10496,7 +10511,7 @@ export const masterBrands = [
   {
     "id": "flipkart_online",
     "name": "Flipkart (Online)",
-    "category_name": "Electronics",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "flipkart_online_maximize_money",
@@ -10531,9 +10546,9 @@ export const masterBrands = [
       {
         "compositeId": "flix_bus_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-flix_bus-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -10554,7 +10569,7 @@ export const masterBrands = [
       {
         "compositeId": "flower_aura_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-flower_aura-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -10651,7 +10666,7 @@ export const masterBrands = [
   {
     "id": "for_the_king_ii",
     "name": "For The King II",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "for_the_king_ii_maximize_money",
@@ -10666,7 +10681,7 @@ export const masterBrands = [
   {
     "id": "forever21",
     "name": "Forever21",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "forever21_maximize_money",
@@ -10686,7 +10701,7 @@ export const masterBrands = [
       {
         "compositeId": "forever_new_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-forever_new-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -10733,7 +10748,7 @@ export const masterBrands = [
       {
         "compositeId": "foxtale_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 20.0,
         "site": "https://vouchwise.in/out/buy-foxtale-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -10820,9 +10835,9 @@ export const masterBrands = [
       {
         "compositeId": "freecultr_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 20.0,
         "site": "https://vouchwise.in/out/buy-freecultr-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -10993,7 +11008,7 @@ export const masterBrands = [
       {
         "compositeId": "frido_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-frido-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -11090,7 +11105,7 @@ export const masterBrands = [
   {
     "id": "future_world_apple",
     "name": "Future World - Apple",
-    "category_name": "Miscellaneous",
+    "category_name": "Electronics",
     "portals": [
       {
         "compositeId": "future_world_apple_amex_shopwise",
@@ -11110,7 +11125,7 @@ export const masterBrands = [
       {
         "compositeId": "future_world_apple_reseller_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-future_world_apple_reseller-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -11300,7 +11315,7 @@ export const masterBrands = [
   {
     "id": "gas_bill_payment",
     "name": "Gas Bill Payment",
-    "category_name": "Electronics",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "gas_bill_payment_gyftr",
@@ -11331,7 +11346,7 @@ export const masterBrands = [
   {
     "id": "gas_luxe",
     "name": "Gas - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "gas_luxe_amex_shopwise",
@@ -11394,7 +11409,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-gas_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -11418,7 +11433,7 @@ export const masterBrands = [
   {
     "id": "geetanjali",
     "name": "Geetanjali",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "geetanjali_amex_shopwise",
@@ -11495,7 +11510,7 @@ export const masterBrands = [
   {
     "id": "giorgio_armani_luxe",
     "name": "Giorgio Armani - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "giorgio_armani_luxe_amex_shopwise",
@@ -11510,7 +11525,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-giorgio_armani_luxe-axis_edgerewards",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -11532,7 +11547,7 @@ export const masterBrands = [
       {
         "compositeId": "giorgio_armani_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-giorgio_armani_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -11547,9 +11562,9 @@ export const masterBrands = [
       {
         "compositeId": "giva_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 13.0,
         "site": "https://vouchwise.in/out/buy-giva-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -11570,7 +11585,7 @@ export const masterBrands = [
       {
         "compositeId": "giva_gold_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-giva_gold_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -11652,7 +11667,7 @@ export const masterBrands = [
   {
     "id": "giva_jewellery",
     "name": "Giva Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery,Fashion",
     "portals": [
       {
         "compositeId": "giva_jewellery_amex_shopwise",
@@ -11687,7 +11702,7 @@ export const masterBrands = [
       {
         "compositeId": "giva_silver_coin_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-giva_silver_coin-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -11824,7 +11839,7 @@ export const masterBrands = [
   {
     "id": "glam_studios",
     "name": "Glam Studios",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Beauty & Personal Care\"]",
     "portals": [
       {
         "compositeId": "glam_studios_maximize_money",
@@ -11839,7 +11854,7 @@ export const masterBrands = [
   {
     "id": "go_ibibo_hotel",
     "name": "Go Ibibo Hotel",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "go_ibibo_hotel_maximize_money",
@@ -11882,9 +11897,9 @@ export const masterBrands = [
       {
         "compositeId": "goibibo_hotel_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-goibibo_hotel-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -12018,7 +12033,7 @@ export const masterBrands = [
   {
     "id": "gy_ftr_pay",
     "name": "Gy FTR PAY",
-    "category_name": "Electronics",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "gy_ftr_pay_gyftr",
@@ -12072,13 +12087,13 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-h_by_hamleys_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
         "compositeId": "h_by_hamleys_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-h_by_hamleys_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -12088,7 +12103,7 @@ export const masterBrands = [
   {
     "id": "hamleys_luxe",
     "name": "Hamleys - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "hamleys_luxe_amex_shopwise",
@@ -12292,7 +12307,7 @@ export const masterBrands = [
   {
     "id": "headout",
     "name": "Headout",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\",\"Travel\"]",
     "portals": [
       {
         "compositeId": "headout_maximize_money",
@@ -12312,7 +12327,7 @@ export const masterBrands = [
       {
         "compositeId": "health_and_glow_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-health_and_glow-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -12378,7 +12393,7 @@ export const masterBrands = [
   {
     "id": "health_glow",
     "name": "Health & Glow",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "health_glow_hdfc_smartbuy",
@@ -12406,7 +12421,7 @@ export const masterBrands = [
       {
         "compositeId": "health_kart_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-health_kart-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -12480,7 +12495,7 @@ export const masterBrands = [
   {
     "id": "healthians",
     "name": "Healthians",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "healthians_amex_shopwise",
@@ -12551,7 +12566,7 @@ export const masterBrands = [
   {
     "id": "healthify_me_smart_plan",
     "name": "Healthify Me Smart Plan",
-    "category_name": "Health & Wellness",
+    "category_name": "[\"Health & Wellness\"]",
     "portals": [
       {
         "compositeId": "healthify_me_smart_plan_maximize_money",
@@ -12566,7 +12581,7 @@ export const masterBrands = [
   {
     "id": "heer_by_giva_9kt_gold_jewellery",
     "name": "Heer by Giva 9kt Gold Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\"]",
     "portals": [
       {
         "compositeId": "heer_by_giva_9kt_gold_jewellery_maximize_money",
@@ -12581,7 +12596,7 @@ export const masterBrands = [
   {
     "id": "helios",
     "name": "Helios",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "helios_amex_shopwise",
@@ -12668,7 +12683,7 @@ export const masterBrands = [
   {
     "id": "hero_moto",
     "name": "Hero Moto",
-    "category_name": "Miscellaneous",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "hero_moto_gyftr",
@@ -12691,7 +12706,7 @@ export const masterBrands = [
   {
     "id": "hi_design",
     "name": "Hi Design",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "hi_design_icici_ishop",
@@ -12711,7 +12726,7 @@ export const masterBrands = [
       {
         "compositeId": "hidesign_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-hidesign-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -12806,7 +12821,7 @@ export const masterBrands = [
       {
         "compositeId": "himalaya_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-himalaya-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -12837,7 +12852,7 @@ export const masterBrands = [
       {
         "compositeId": "himalaya_wellness_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-himalaya_wellness-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -13021,7 +13036,7 @@ export const masterBrands = [
   {
     "id": "holiday_tribe",
     "name": "Holiday Tribe",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "holiday_tribe_maximize_money",
@@ -13036,7 +13051,7 @@ export const masterBrands = [
   {
     "id": "home_centre",
     "name": "Home Centre",
-    "category_name": "Miscellaneous",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "home_centre_hdfc_smartbuy",
@@ -13105,7 +13120,7 @@ export const masterBrands = [
   {
     "id": "homecentre",
     "name": "Homecentre",
-    "category_name": "Miscellaneous",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "homecentre_amex_shopwise",
@@ -13125,7 +13140,7 @@ export const masterBrands = [
       {
         "compositeId": "homecentre_offline_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-homecentre_offline-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -13204,7 +13219,7 @@ export const masterBrands = [
       {
         "compositeId": "homecentre_online_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-homecentre_online-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -13262,7 +13277,7 @@ export const masterBrands = [
   {
     "id": "hoora",
     "name": "Hoora",
-    "category_name": "Miscellaneous",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "hoora_gyftr",
@@ -13306,7 +13321,7 @@ export const masterBrands = [
       {
         "compositeId": "hopscotch_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-hopscotch-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -13332,7 +13347,7 @@ export const masterBrands = [
   {
     "id": "hp_pay",
     "name": "HP Pay",
-    "category_name": "Electronics",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "hp_pay_gyftr",
@@ -13371,7 +13386,7 @@ export const masterBrands = [
   {
     "id": "hp_pay_in_app",
     "name": "HP Pay (In - App)",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "hp_pay_in_app_maximize_money",
@@ -13386,7 +13401,7 @@ export const masterBrands = [
   {
     "id": "hp_pay_inr_5000",
     "name": "HP Pay (INR 5000)",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "hp_pay_inr_5000_maximize_money",
@@ -13416,7 +13431,7 @@ export const masterBrands = [
   {
     "id": "hugo_boss_luxe",
     "name": "Hugo Boss - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "hugo_boss_luxe_amex_shopwise",
@@ -13463,7 +13478,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-hugo_boss_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -13487,7 +13502,7 @@ export const masterBrands = [
   {
     "id": "human_fall_flat",
     "name": "Human Fall Flat",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "human_fall_flat_maximize_money",
@@ -13502,7 +13517,7 @@ export const masterBrands = [
   {
     "id": "hunkemoller_luxe",
     "name": "Hunkemoller - Luxe",
-    "category_name": "Electronics",
+    "category_name": "Fashion,Wellness",
     "portals": [
       {
         "compositeId": "hunkemoller_luxe_amex_shopwise",
@@ -13517,7 +13532,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-hunkemoller_luxe-axis_edgerewards",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -13547,7 +13562,7 @@ export const masterBrands = [
       {
         "compositeId": "hunkemoller_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-hunkemoller_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -13557,7 +13572,7 @@ export const masterBrands = [
   {
     "id": "hush_puppies",
     "name": "Hush Puppies",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "hush_puppies_amex_shopwise",
@@ -13634,7 +13649,7 @@ export const masterBrands = [
       {
         "compositeId": "hush_puppies_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 9.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-hush_puppies-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -13659,7 +13674,7 @@ export const masterBrands = [
   {
     "id": "igp",
     "name": "IGP",
-    "category_name": "Electronics",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "igp_amex_shopwise",
@@ -13743,9 +13758,9 @@ export const masterBrands = [
       {
         "compositeId": "ikea_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-ikea-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -13907,7 +13922,7 @@ export const masterBrands = [
       {
         "compositeId": "indian_terrain_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-indian_terrain-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -14018,7 +14033,7 @@ export const masterBrands = [
   {
     "id": "indriya_gold_jewellery",
     "name": "Indriya Gold Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery,Fashion",
     "portals": [
       {
         "compositeId": "indriya_gold_jewellery_amex_shopwise",
@@ -14033,7 +14048,7 @@ export const masterBrands = [
   {
     "id": "indriya_studded",
     "name": "Indriya Studded",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Jewellery,Fashion",
     "portals": [
       {
         "compositeId": "indriya_studded_amex_shopwise",
@@ -14053,7 +14068,7 @@ export const masterBrands = [
       {
         "compositeId": "inglot_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-inglot-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -14189,7 +14204,7 @@ export const masterBrands = [
   {
     "id": "iocl",
     "name": "Iocl",
-    "category_name": "Travel & Leisure",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "iocl_gyftr",
@@ -14220,7 +14235,7 @@ export const masterBrands = [
   {
     "id": "irctc",
     "name": "Irctc",
-    "category_name": "Electronics",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "irctc_gyftr",
@@ -14279,7 +14294,7 @@ export const masterBrands = [
       {
         "compositeId": "itc_hotels_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-itc_hotels-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -14432,7 +14447,7 @@ export const masterBrands = [
   {
     "id": "ixigo_hotel",
     "name": "Ixigo Hotel",
-    "category_name": "Travel & Leisure",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "ixigo_hotel_gyftr",
@@ -14479,7 +14494,7 @@ export const masterBrands = [
   {
     "id": "jawed_habib",
     "name": "Jawed Habib",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "jawed_habib_amex_shopwise",
@@ -14541,7 +14556,7 @@ export const masterBrands = [
   {
     "id": "jcb",
     "name": "JCB",
-    "category_name": "Health & Wellness",
+    "category_name": "[\"Beauty & Personal Care\"]",
     "portals": [
       {
         "compositeId": "jcb_maximize_money",
@@ -14595,7 +14610,7 @@ export const masterBrands = [
   {
     "id": "jean_claude_biguine",
     "name": "Jean - Claude Biguine",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "jean_claude_biguine_amex_shopwise",
@@ -14610,7 +14625,7 @@ export const masterBrands = [
   {
     "id": "jimmy_choo_luxe",
     "name": "Jimmy Choo - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "jimmy_choo_luxe_amex_shopwise",
@@ -14625,7 +14640,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-jimmy_choo_luxe-axis_edgerewards",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -14685,7 +14700,7 @@ export const masterBrands = [
       {
         "compositeId": "jio_hotstar_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-jio_hotstar-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -14751,7 +14766,7 @@ export const masterBrands = [
   {
     "id": "jio_starter_pack",
     "name": "Jio Starter Pack",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Miscellaneous\"]",
     "portals": [
       {
         "compositeId": "jio_starter_pack_maximize_money",
@@ -14866,7 +14881,7 @@ export const masterBrands = [
       {
         "compositeId": "jos_alukkas_diamond_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-jos_alukkas_diamond-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -14900,7 +14915,7 @@ export const masterBrands = [
   {
     "id": "jos_alukkas_gold_coin",
     "name": "Jos Alukkas Gold Coin",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\"]",
     "portals": [
       {
         "compositeId": "jos_alukkas_gold_coin_maximize_money",
@@ -14920,7 +14935,7 @@ export const masterBrands = [
       {
         "compositeId": "jos_alukkas_gold_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-jos_alukkas_gold_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -14954,7 +14969,7 @@ export const masterBrands = [
   {
     "id": "jos_alukkas_jewellery",
     "name": "Jos Alukkas Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "jos_alukkas_jewellery_amex_shopwise",
@@ -14989,7 +15004,7 @@ export const masterBrands = [
       {
         "compositeId": "joyalukas_gold_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-joyalukas_gold_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -15015,7 +15030,7 @@ export const masterBrands = [
   {
     "id": "joyalukkas_diamond",
     "name": "Joyalukkas Diamond",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "joyalukkas_diamond_amex_shopwise",
@@ -15043,7 +15058,7 @@ export const masterBrands = [
       {
         "compositeId": "joyalukkas_diamond_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-joyalukkas_diamond_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -15053,7 +15068,7 @@ export const masterBrands = [
   {
     "id": "joyalukkas_diamond_platinum",
     "name": "Joyalukkas Diamond & Platinum",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "joyalukkas_diamond_platinum_icici_ishop",
@@ -15068,7 +15083,7 @@ export const masterBrands = [
   {
     "id": "joyalukkas_gold_and_diamond",
     "name": "Joyalukkas Gold and Diamond",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\"]",
     "portals": [
       {
         "compositeId": "joyalukkas_gold_and_diamond_maximize_money",
@@ -15098,7 +15113,7 @@ export const masterBrands = [
   {
     "id": "joyalukkas_pure_gold",
     "name": "Joyalukkas Pure Gold",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\"]",
     "portals": [
       {
         "compositeId": "joyalukkas_pure_gold_maximize_money",
@@ -15113,7 +15128,7 @@ export const masterBrands = [
   {
     "id": "juicy_couture_bagline",
     "name": "Juicy Couture - Bagline",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "juicy_couture_bagline_amex_shopwise",
@@ -15144,7 +15159,7 @@ export const masterBrands = [
   {
     "id": "just_lil_things",
     "name": "Just Lil Things",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Jewellery,Fashion",
     "portals": [
       {
         "compositeId": "just_lil_things_amex_shopwise",
@@ -15175,7 +15190,7 @@ export const masterBrands = [
   {
     "id": "kaku:_ancient_seal",
     "name": "KAKU: Ancient Seal",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "kaku:_ancient_seal_maximize_money",
@@ -15190,7 +15205,7 @@ export const masterBrands = [
   {
     "id": "kalki",
     "name": "Kalki",
-    "category_name": "Electronics",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "kalki_amex_shopwise",
@@ -15261,7 +15276,7 @@ export const masterBrands = [
   {
     "id": "kalyan_diamond",
     "name": "Kalyan Diamond",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "kalyan_diamond_amex_shopwise",
@@ -15281,7 +15296,7 @@ export const masterBrands = [
       {
         "compositeId": "kalyan_diamond_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-kalyan_diamond_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -15339,7 +15354,7 @@ export const masterBrands = [
   {
     "id": "kalyan_gold_and_silver_coins",
     "name": "Kalyan Gold and Silver coins",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\"]",
     "portals": [
       {
         "compositeId": "kalyan_gold_and_silver_coins_maximize_money",
@@ -15385,7 +15400,7 @@ export const masterBrands = [
   {
     "id": "kalyan_gold_jewellers",
     "name": "Kalyan Gold Jewellers",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "kalyan_gold_jewellers_amex_shopwise",
@@ -15405,7 +15420,7 @@ export const masterBrands = [
       {
         "compositeId": "kalyan_gold_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-kalyan_gold_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -15487,7 +15502,7 @@ export const masterBrands = [
   {
     "id": "kalyan_jewellers_diamond_jewellery",
     "name": "Kalyan Jewellers Diamond Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "kalyan_jewellers_diamond_jewellery_icici_ishop",
@@ -15522,7 +15537,7 @@ export const masterBrands = [
       {
         "compositeId": "kalyan_jewellers_gold_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-kalyan_jewellers_gold_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -15532,7 +15547,7 @@ export const masterBrands = [
   {
     "id": "kalyan_jewellery",
     "name": "Kalyan Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\"]",
     "portals": [
       {
         "compositeId": "kalyan_jewellery_maximize_money",
@@ -15547,7 +15562,7 @@ export const masterBrands = [
   {
     "id": "kama_ayurveda",
     "name": "Kama Ayurveda",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "kama_ayurveda_amex_shopwise",
@@ -15618,7 +15633,7 @@ export const masterBrands = [
   {
     "id": "kate_spade_luxe",
     "name": "Kate Spade - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "kate_spade_luxe_amex_shopwise",
@@ -15689,7 +15704,7 @@ export const masterBrands = [
   {
     "id": "ketan_diamonds_diamond_only",
     "name": "Ketan Diamonds Diamond Only",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "ketan_diamonds_diamond_only_amex_shopwise",
@@ -15820,7 +15835,7 @@ export const masterBrands = [
       {
         "compositeId": "ketan_diamonds_gold_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-ketan_diamonds_gold_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -15899,7 +15914,7 @@ export const masterBrands = [
       {
         "compositeId": "kfc_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-kfc-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -16017,7 +16032,7 @@ export const masterBrands = [
       {
         "compositeId": "kimirica_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-kimirica-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -16091,7 +16106,7 @@ export const masterBrands = [
   {
     "id": "king_of_retail",
     "name": "King of Retail",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "king_of_retail_maximize_money",
@@ -16111,9 +16126,9 @@ export const masterBrands = [
       {
         "compositeId": "klook_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-klook-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -16185,7 +16200,7 @@ export const masterBrands = [
   {
     "id": "koskii",
     "name": "Koskii",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "koskii_gyftr",
@@ -16224,7 +16239,7 @@ export const masterBrands = [
   {
     "id": "la_martina_luxe",
     "name": "La Martina - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "la_martina_luxe_amex_shopwise",
@@ -16261,7 +16276,7 @@ export const masterBrands = [
       {
         "compositeId": "la_martina_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-la_martina_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -16338,7 +16353,7 @@ export const masterBrands = [
       {
         "compositeId": "lakme_salon_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-lakme_salon-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -16372,7 +16387,7 @@ export const masterBrands = [
   {
     "id": "lakme_salons",
     "name": "Lakme Salons",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Beauty & Personal Care\"]",
     "portals": [
       {
         "compositeId": "lakme_salons_maximize_money",
@@ -16387,7 +16402,7 @@ export const masterBrands = [
   {
     "id": "landline_bill_payment",
     "name": "Landline Bill Payment",
-    "category_name": "Miscellaneous",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "landline_bill_payment_gyftr",
@@ -16418,7 +16433,7 @@ export const masterBrands = [
   {
     "id": "landmark_group",
     "name": "Landmark Group",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Groceries & Essentials\"]",
     "portals": [
       {
         "compositeId": "landmark_group_maximize_money",
@@ -16438,7 +16453,7 @@ export const masterBrands = [
       {
         "compositeId": "lawrence_and_mayo_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-lawrence_and_mayo-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -16477,7 +16492,7 @@ export const masterBrands = [
       {
         "compositeId": "le_creuset_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-le_creuset-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -16503,7 +16518,7 @@ export const masterBrands = [
   {
     "id": "leaf",
     "name": "Leaf",
-    "category_name": "Electronics",
+    "category_name": "Digital Electronics",
     "portals": [
       {
         "compositeId": "leaf_icici_ishop",
@@ -16523,9 +16538,9 @@ export const masterBrands = [
       {
         "compositeId": "lee_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-lee-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -16557,7 +16572,7 @@ export const masterBrands = [
   {
     "id": "lego",
     "name": "Lego",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "lego_gyftr",
@@ -16617,7 +16632,7 @@ export const masterBrands = [
       {
         "compositeId": "lenskart_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-lenskart-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -16712,7 +16727,7 @@ export const masterBrands = [
       {
         "compositeId": "levis_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-levis-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -16802,7 +16817,7 @@ export const masterBrands = [
   {
     "id": "levis_offline",
     "name": "Levis Offline",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "levis_offline_maximize_money",
@@ -16880,7 +16895,7 @@ export const masterBrands = [
   {
     "id": "liberty",
     "name": "Liberty",
-    "category_name": "Fashion & Accessories",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "liberty_hdfc_smartbuy",
@@ -16900,7 +16915,7 @@ export const masterBrands = [
       {
         "compositeId": "liberty_offline_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-liberty_offline-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -16966,7 +16981,7 @@ export const masterBrands = [
   {
     "id": "liberty_online",
     "name": "Liberty Online",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "liberty_online_amex_shopwise",
@@ -17037,7 +17052,7 @@ export const masterBrands = [
   {
     "id": "lifestyle",
     "name": "Lifestyle",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "lifestyle_amex_shopwise",
@@ -17065,7 +17080,7 @@ export const masterBrands = [
       {
         "compositeId": "lifestyle_offline_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-lifestyle_offline-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -17144,7 +17159,7 @@ export const masterBrands = [
       {
         "compositeId": "lifestyle_online_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-lifestyle_online-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -17231,7 +17246,7 @@ export const masterBrands = [
       {
         "compositeId": "linen_club_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-linen_club-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -17336,7 +17351,7 @@ export const masterBrands = [
   {
     "id": "lite_bite_food",
     "name": "Lite Bite Food",
-    "category_name": "Miscellaneous",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "lite_bite_food_amex_shopwise",
@@ -17481,7 +17496,7 @@ export const masterBrands = [
       {
         "compositeId": "lohono_stays_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-lohono_stays-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -17555,7 +17570,7 @@ export const masterBrands = [
   {
     "id": "looks",
     "name": "Looks",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "looks_amex_shopwise",
@@ -17609,7 +17624,7 @@ export const masterBrands = [
   {
     "id": "looks_salons",
     "name": "Looks Salons",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Beauty & Personal Care\"]",
     "portals": [
       {
         "compositeId": "looks_salons_maximize_money",
@@ -17726,7 +17741,7 @@ export const masterBrands = [
   {
     "id": "lulu_hypermarket",
     "name": "Lulu Hypermarket",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Groceries & Essentials\"]",
     "portals": [
       {
         "compositeId": "lulu_hypermarket_maximize_money",
@@ -17796,7 +17811,7 @@ export const masterBrands = [
   {
     "id": "lunchbox_meals",
     "name": "Lunchbox Meals",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "lunchbox_meals_amex_shopwise",
@@ -17811,7 +17826,7 @@ export const masterBrands = [
   {
     "id": "luxe",
     "name": "Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "luxe_amex_shopwise",
@@ -17890,7 +17905,7 @@ export const masterBrands = [
   {
     "id": "luzo",
     "name": "Luzo",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "luzo_amex_shopwise",
@@ -17937,7 +17952,7 @@ export const masterBrands = [
   {
     "id": "luzo_salon_spa_and_clinics",
     "name": "Luzo salon Spa And Clinics",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Beauty & Personal Care\"]",
     "portals": [
       {
         "compositeId": "luzo_salon_spa_and_clinics_maximize_money",
@@ -17952,7 +17967,7 @@ export const masterBrands = [
   {
     "id": "luzo_salons",
     "name": "LUZO - Salons",
-    "category_name": "Miscellaneous",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "luzo_salons_hdfc_smartbuy",
@@ -17990,7 +18005,7 @@ export const masterBrands = [
   {
     "id": "mac",
     "name": "Mac",
-    "category_name": "Electronics",
+    "category_name": "Fashion,Wellness",
     "portals": [
       {
         "compositeId": "mac_amex_shopwise",
@@ -18029,7 +18044,7 @@ export const masterBrands = [
   {
     "id": "machaan",
     "name": "Machaan",
-    "category_name": "Electronics",
+    "category_name": "Grocery and F&B",
     "portals": [
       {
         "compositeId": "machaan_axis_edgerewards",
@@ -18092,7 +18107,7 @@ export const masterBrands = [
   {
     "id": "made_in_punjab",
     "name": "Made In Punjab",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "made_in_punjab_gyftr",
@@ -18159,7 +18174,7 @@ export const masterBrands = [
       {
         "compositeId": "mainland_china_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 20.0,
         "site": "https://vouchwise.in/out/buy-mainland_china-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -18241,7 +18256,7 @@ export const masterBrands = [
   {
     "id": "maje_luxe",
     "name": "Maje - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "maje_luxe_amex_shopwise",
@@ -18293,7 +18308,7 @@ export const masterBrands = [
       {
         "compositeId": "make_my_trip_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 5.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -18418,7 +18433,7 @@ export const masterBrands = [
       {
         "compositeId": "make_my_trip_bus_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip_bus-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -18457,7 +18472,7 @@ export const masterBrands = [
       {
         "compositeId": "make_my_trip_cab_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip_cab-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -18491,7 +18506,7 @@ export const masterBrands = [
   {
     "id": "make_my_trip_e_pay",
     "name": "Make My Trip e - Pay",
-    "category_name": "Miscellaneous",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "make_my_trip_e_pay_hdfc_smartbuy",
@@ -18519,7 +18534,7 @@ export const masterBrands = [
       {
         "compositeId": "make_my_trip_holiday_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip_holiday-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -18609,7 +18624,7 @@ export const masterBrands = [
   {
     "id": "make_my_trip_holiday_e_pay",
     "name": "Make My Trip Holiday e - Pay",
-    "category_name": "Miscellaneous",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "make_my_trip_holiday_e_pay_hdfc_smartbuy",
@@ -18637,7 +18652,7 @@ export const masterBrands = [
       {
         "compositeId": "make_my_trip_hotel_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip_hotel-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -18719,7 +18734,7 @@ export const masterBrands = [
   {
     "id": "make_my_trip_hotel_e_pay",
     "name": "Make My Trip Hotel e - Pay",
-    "category_name": "Miscellaneous",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "make_my_trip_hotel_e_pay_hdfc_smartbuy",
@@ -18757,7 +18772,7 @@ export const masterBrands = [
   {
     "id": "make_my_trip_international",
     "name": "Make My Trip International",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\",\"Travel\"]",
     "portals": [
       {
         "compositeId": "make_my_trip_international_maximize_money",
@@ -18777,7 +18792,7 @@ export const masterBrands = [
       {
         "compositeId": "make_my_trip_rail_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip_rail-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -18818,7 +18833,7 @@ export const masterBrands = [
   {
     "id": "malabar_diamond",
     "name": "Malabar Diamond",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "malabar_diamond_amex_shopwise",
@@ -18846,9 +18861,9 @@ export const masterBrands = [
       {
         "compositeId": "malabar_diamond_jewllery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-malabar_diamond_jewllery-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -18981,7 +18996,7 @@ export const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-malabar_gold_jewellery-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -19059,7 +19074,7 @@ export const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-mango-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -19202,7 +19217,7 @@ export const masterBrands = [
   {
     "id": "manyavar_mohey",
     "name": "Manyavar Mohey",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "manyavar_mohey_amex_shopwise",
@@ -19319,7 +19334,7 @@ export const masterBrands = [
   {
     "id": "marriott_hotels_india",
     "name": "Marriott Hotels India",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "marriott_hotels_india_amex_shopwise",
@@ -19358,7 +19373,7 @@ export const masterBrands = [
   {
     "id": "marriott_india_dining",
     "name": "Marriott India - Dining",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Dining & Food\"]",
     "portals": [
       {
         "compositeId": "marriott_india_dining_maximize_money",
@@ -19373,7 +19388,7 @@ export const masterBrands = [
   {
     "id": "marriott_india_dining_variant_1_b2b",
     "name": "Marriott India - Dining Variant 1 - B2B",
-    "category_name": "Miscellaneous",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "marriott_india_dining_variant_1_b2b_amex_shopwise",
@@ -19388,7 +19403,7 @@ export const masterBrands = [
   {
     "id": "marriott_india_spa",
     "name": "Marriott India - Spa",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Luxury & Permium Brands\",\"Beauty & Personal Care\"]",
     "portals": [
       {
         "compositeId": "marriott_india_spa_maximize_money",
@@ -19403,7 +19418,7 @@ export const masterBrands = [
   {
     "id": "marriott_india_spa_variant",
     "name": "Marriott India - Spa Variant",
-    "category_name": "Miscellaneous",
+    "category_name": "Wellness,Travel",
     "portals": [
       {
         "compositeId": "marriott_india_spa_variant_amex_shopwise",
@@ -19418,7 +19433,7 @@ export const masterBrands = [
   {
     "id": "marriott_spa",
     "name": "Marriott Spa",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel & Hospitality",
     "portals": [
       {
         "compositeId": "marriott_spa_icici_ishop",
@@ -19433,7 +19448,7 @@ export const masterBrands = [
   {
     "id": "masala_library",
     "name": "Masala Library",
-    "category_name": "Miscellaneous",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "masala_library_gyftr",
@@ -19519,7 +19534,7 @@ export const masterBrands = [
   {
     "id": "max",
     "name": "MAX",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "max_hdfc_smartbuy",
@@ -19534,7 +19549,7 @@ export const masterBrands = [
   {
     "id": "max_fashion",
     "name": "Max Fashion",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "max_fashion_amex_shopwise",
@@ -19554,7 +19569,7 @@ export const masterBrands = [
       {
         "compositeId": "max_fashion_offline_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-max_fashion_offline-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -19633,7 +19648,7 @@ export const masterBrands = [
       {
         "compositeId": "max_fashion_online_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-max_fashion_online-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -19720,7 +19735,7 @@ export const masterBrands = [
       {
         "compositeId": "me_n_moms_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-me_n_moms-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -19809,7 +19824,7 @@ export const masterBrands = [
   {
     "id": "mediwheel",
     "name": "Mediwheel",
-    "category_name": "Electronics",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "mediwheel_amex_shopwise",
@@ -19872,7 +19887,7 @@ export const masterBrands = [
   {
     "id": "mia",
     "name": "Mia",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "mia_hdfc_smartbuy",
@@ -19894,7 +19909,7 @@ export const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-mia_by_tanishq-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -19950,7 +19965,7 @@ export const masterBrands = [
   {
     "id": "michael_kors_luxe",
     "name": "Michael Kors - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "michael_kors_luxe_amex_shopwise",
@@ -19965,7 +19980,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-michael_kors_luxe-axis_edgerewards",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -19997,7 +20012,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-michael_kors_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20011,7 +20026,7 @@ export const masterBrands = [
       {
         "compositeId": "michael_kors_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-michael_kors_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -20021,7 +20036,7 @@ export const masterBrands = [
   {
     "id": "microsoft_office",
     "name": "Microsoft Office",
-    "category_name": "Miscellaneous",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "microsoft_office_gyftr",
@@ -20044,7 +20059,7 @@ export const masterBrands = [
   {
     "id": "microsoft_xbox_game_pass_core",
     "name": "Microsoft Xbox Game Pass Core",
-    "category_name": "Entertainment & OTT",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "microsoft_xbox_game_pass_core_gyftr",
@@ -20106,7 +20121,7 @@ export const masterBrands = [
   {
     "id": "milkbasket",
     "name": "Milkbasket",
-    "category_name": "Electronics",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "milkbasket_amex_shopwise",
@@ -20182,7 +20197,7 @@ export const masterBrands = [
       {
         "compositeId": "milton_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-milton-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -20208,7 +20223,7 @@ export const masterBrands = [
   {
     "id": "mini_klub",
     "name": "Mini Klub",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion,Others",
     "portals": [
       {
         "compositeId": "mini_klub_amex_shopwise",
@@ -20247,7 +20262,7 @@ export const masterBrands = [
   {
     "id": "minus30",
     "name": "Minus30",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "minus30_amex_shopwise",
@@ -20323,7 +20338,7 @@ export const masterBrands = [
       {
         "compositeId": "miraggio_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-miraggio-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -20349,7 +20364,7 @@ export const masterBrands = [
   {
     "id": "mmt_wedding",
     "name": "MMT Wedding",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "mmt_wedding_amex_shopwise",
@@ -20423,9 +20438,9 @@ export const masterBrands = [
       {
         "compositeId": "moba_legends_5v5_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-moba_legends_5v5-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20481,7 +20496,7 @@ export const masterBrands = [
   {
     "id": "mobile_postpaid_bill_payment",
     "name": "Mobile Postpaid - Bill Payment",
-    "category_name": "Electronics",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "mobile_postpaid_bill_payment_gyftr",
@@ -20512,7 +20527,7 @@ export const masterBrands = [
   {
     "id": "mobile_prepaid_recharge",
     "name": "Mobile Prepaid - Recharge",
-    "category_name": "Electronics",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "mobile_prepaid_recharge_gyftr",
@@ -20563,7 +20578,7 @@ export const masterBrands = [
       {
         "compositeId": "mokobara_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-mokobara-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -20597,7 +20612,7 @@ export const masterBrands = [
   {
     "id": "mother_care_luxe",
     "name": "Mother Care - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "mother_care_luxe_amex_shopwise",
@@ -20612,7 +20627,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-mother_care_luxe-axis_edgerewards",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20660,7 +20675,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-mother_care_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20684,7 +20699,7 @@ export const masterBrands = [
   {
     "id": "mothercare_luxe",
     "name": "Mothercare - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "mothercare_luxe_hdfc_smartbuy",
@@ -20745,7 +20760,7 @@ export const masterBrands = [
   {
     "id": "ms_xbox_game_pass_ultimate",
     "name": "MS Xbox Game Pass Ultimate",
-    "category_name": "Entertainment & OTT",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "ms_xbox_game_pass_ultimate_gyftr",
@@ -20799,7 +20814,7 @@ export const masterBrands = [
   {
     "id": "muji_luxe",
     "name": "MUJI - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Home needs,Fashion",
     "portals": [
       {
         "compositeId": "muji_luxe_amex_shopwise",
@@ -20828,7 +20843,7 @@ export const masterBrands = [
       {
         "compositeId": "muji_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-muji_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -21076,7 +21091,7 @@ export const masterBrands = [
       {
         "compositeId": "nat_habit_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 25.0,
         "site": "https://vouchwise.in/out/buy-nat_habit-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -21203,7 +21218,7 @@ export const masterBrands = [
   {
     "id": "naturals",
     "name": "Naturals",
-    "category_name": "Health & Wellness",
+    "category_name": "[\"Beauty & Personal Care\"]",
     "portals": [
       {
         "compositeId": "naturals_maximize_money",
@@ -21257,7 +21272,7 @@ export const masterBrands = [
   {
     "id": "naturals_salon",
     "name": "Naturals Salon",
-    "category_name": "Miscellaneous",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "naturals_salon_amex_shopwise",
@@ -21277,7 +21292,7 @@ export const masterBrands = [
       {
         "compositeId": "naturals_salons_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.0,
         "site": "https://vouchwise.in/out/buy-naturals_salons-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -21378,7 +21393,7 @@ export const masterBrands = [
       {
         "compositeId": "neemans_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-neemans-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -21452,7 +21467,7 @@ export const masterBrands = [
   {
     "id": "neerus",
     "name": "Neerus",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "neerus_maximize_money",
@@ -21467,7 +21482,7 @@ export const masterBrands = [
   {
     "id": "nestasia",
     "name": "Nestasia",
-    "category_name": "Electronics",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "nestasia_amex_shopwise",
@@ -21600,7 +21615,7 @@ export const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-next-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -21664,7 +21679,7 @@ export const masterBrands = [
   {
     "id": "nilkamal_homes",
     "name": "Nilkamal Homes",
-    "category_name": "Miscellaneous",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "nilkamal_homes_amex_shopwise",
@@ -21749,7 +21764,7 @@ export const masterBrands = [
   {
     "id": "noise",
     "name": "Noise",
-    "category_name": "Miscellaneous",
+    "category_name": "BuzzingNow",
     "portals": [
       {
         "compositeId": "noise_gyftr",
@@ -21801,7 +21816,7 @@ export const masterBrands = [
       {
         "compositeId": "nua_woman_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 25.0,
         "site": "https://vouchwise.in/out/buy-nua_woman-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -21880,7 +21895,7 @@ export const masterBrands = [
       {
         "compositeId": "nykaa_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-nykaa-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -21975,7 +21990,7 @@ export const masterBrands = [
       {
         "compositeId": "nykaa_fashion_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-nykaa_fashion-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -22038,7 +22053,7 @@ export const masterBrands = [
       {
         "compositeId": "nykaa_man_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-nykaa_man-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -22132,7 +22147,7 @@ export const masterBrands = [
       {
         "compositeId": "ode_spa_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-ode_spa-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -22142,7 +22157,7 @@ export const masterBrands = [
   {
     "id": "ode_spa_salon",
     "name": "Ode Spa Salon",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "ode_spa_salon_amex_shopwise",
@@ -22165,7 +22180,7 @@ export const masterBrands = [
   {
     "id": "oh_calcutta",
     "name": "Oh! Calcutta",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "oh_calcutta_amex_shopwise",
@@ -22244,7 +22259,7 @@ export const masterBrands = [
   {
     "id": "ola_cabs",
     "name": "Ola Cabs",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "ola_cabs_amex_shopwise",
@@ -22330,7 +22345,7 @@ export const masterBrands = [
   {
     "id": "organic_india",
     "name": "Organic India",
-    "category_name": "Electronics",
+    "category_name": "Home needs,Wellness",
     "portals": [
       {
         "compositeId": "organic_india_amex_shopwise",
@@ -22437,7 +22452,7 @@ export const masterBrands = [
       {
         "compositeId": "oven_story_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-oven_story-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -22503,7 +22518,7 @@ export const masterBrands = [
   {
     "id": "ovenstory",
     "name": "Ovenstory",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "ovenstory_amex_shopwise",
@@ -22518,7 +22533,7 @@ export const masterBrands = [
   {
     "id": "pa_pa_ya",
     "name": "Pa Pa Ya",
-    "category_name": "Electronics",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "pa_pa_ya_gyftr",
@@ -22570,7 +22585,7 @@ export const masterBrands = [
       {
         "compositeId": "palmonas_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-palmonas-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -22649,7 +22664,7 @@ export const masterBrands = [
       {
         "compositeId": "pantaloons_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-pantaloons-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -22918,7 +22933,7 @@ export const masterBrands = [
       {
         "compositeId": "paul_and_shark_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-paul_and_shark_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -22928,7 +22943,7 @@ export const masterBrands = [
   {
     "id": "paul_shark_luxe",
     "name": "PAUL SHARK - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "paul_shark_luxe_amex_shopwise",
@@ -22951,7 +22966,7 @@ export const masterBrands = [
   {
     "id": "paul_smith_luxe",
     "name": "Paul Smith - Luxe",
-    "category_name": "Electronics",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "paul_smith_luxe_gyftr",
@@ -22982,7 +22997,7 @@ export const masterBrands = [
   {
     "id": "pc_chandra_gold_coin",
     "name": "PC Chandra Gold Coin",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\",\"Luxury & Permium Brands\"]",
     "portals": [
       {
         "compositeId": "pc_chandra_gold_coin_maximize_money",
@@ -23131,7 +23146,7 @@ export const masterBrands = [
   {
     "id": "pc_jeweller_gold_coin",
     "name": "PC Jeweller Gold Coin",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "pc_jeweller_gold_coin_gyftr",
@@ -23178,7 +23193,7 @@ export const masterBrands = [
   {
     "id": "pcj_diamond_jewellery",
     "name": "PCJ Diamond Jewellery",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "pcj_diamond_jewellery_amex_shopwise",
@@ -23193,7 +23208,7 @@ export const masterBrands = [
   {
     "id": "peora_fashions",
     "name": "Peora Fashions",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "peora_fashions_amex_shopwise",
@@ -23224,7 +23239,7 @@ export const masterBrands = [
   {
     "id": "pepperfry",
     "name": "Pepperfry",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "pepperfry_amex_shopwise",
@@ -23252,7 +23267,7 @@ export const masterBrands = [
       {
         "compositeId": "pepperfry_luxury_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-pepperfry_luxury-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -23466,7 +23481,7 @@ export const masterBrands = [
   {
     "id": "phone_pe_fixed",
     "name": "Phone Pe (Fixed)",
-    "category_name": "Electronics",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "phone_pe_fixed_maximize_money",
@@ -23486,7 +23501,7 @@ export const masterBrands = [
       {
         "compositeId": "pigeon_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-pigeon-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -23567,7 +23582,7 @@ export const masterBrands = [
   {
     "id": "pine_perks_rupay_prime_wh",
     "name": "Pine Perks Rupay Prime - WH",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"E-commerce & Technology\",\"Miscellaneous\"]",
     "portals": [
       {
         "compositeId": "pine_perks_rupay_prime_wh_maximize_money",
@@ -23610,9 +23625,9 @@ export const masterBrands = [
       {
         "compositeId": "pizza_hut_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-pizza_hut-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -23705,7 +23720,7 @@ export const masterBrands = [
       {
         "compositeId": "planet_fashion_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-planet_fashion-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -23802,7 +23817,7 @@ export const masterBrands = [
   {
     "id": "pmj_jewellers",
     "name": "PMJ Jewellers",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\"]",
     "portals": [
       {
         "compositeId": "pmj_jewellers_maximize_money",
@@ -23896,7 +23911,7 @@ export const masterBrands = [
   {
     "id": "polar_bear",
     "name": "Polar Bear",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "polar_bear_amex_shopwise",
@@ -23935,7 +23950,7 @@ export const masterBrands = [
   {
     "id": "porter",
     "name": "Porter",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\",\"Travel\",\"Miscellaneous\"]",
     "portals": [
       {
         "compositeId": "porter_maximize_money",
@@ -23950,7 +23965,7 @@ export const masterBrands = [
   {
     "id": "porter_packers_and_movers",
     "name": "Porter Packers and Movers",
-    "category_name": "Electronics",
+    "category_name": "Others,Travel",
     "portals": [
       {
         "compositeId": "porter_packers_and_movers_amex_shopwise",
@@ -24013,7 +24028,7 @@ export const masterBrands = [
   {
     "id": "pottery_barn_luxe",
     "name": "Pottery Barn - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "pottery_barn_luxe_amex_shopwise",
@@ -24060,7 +24075,7 @@ export const masterBrands = [
   {
     "id": "power_sutra",
     "name": "Power Sutra",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "power_sutra_amex_shopwise",
@@ -24177,7 +24192,7 @@ export const masterBrands = [
   {
     "id": "prestige_smart_kitchen",
     "name": "Prestige Smart Kitchen",
-    "category_name": "Electronics",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "prestige_smart_kitchen_amex_shopwise",
@@ -24208,7 +24223,7 @@ export const masterBrands = [
   {
     "id": "pret_a_manger_luxe",
     "name": "Pret A Manger - Luxe",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "pret_a_manger_luxe_amex_shopwise",
@@ -24253,7 +24268,7 @@ export const masterBrands = [
       {
         "compositeId": "pret_a_manger_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-pret_a_manger_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -24268,9 +24283,9 @@ export const masterBrands = [
       {
         "compositeId": "pronto_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 16.0,
         "site": "https://vouchwise.in/out/buy-pronto-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -24347,7 +24362,7 @@ export const masterBrands = [
       {
         "compositeId": "puma_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-puma-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -24421,7 +24436,7 @@ export const masterBrands = [
   {
     "id": "punjab_grill",
     "name": "Punjab Grill",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "punjab_grill_amex_shopwise",
@@ -24465,7 +24480,7 @@ export const masterBrands = [
       {
         "compositeId": "pure_home_living_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-pure_home_living-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -24539,7 +24554,7 @@ export const masterBrands = [
   {
     "id": "pvr_cinemas",
     "name": "PVR Cinemas",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Entertainment",
     "portals": [
       {
         "compositeId": "pvr_cinemas_amazon",
@@ -24641,7 +24656,7 @@ export const masterBrands = [
   {
     "id": "pvr_inox_cinemas_gyftr",
     "name": "PVR INOX Cinemas - GYFTR",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Entertainment & OTT\"]",
     "portals": [
       {
         "compositeId": "pvr_inox_cinemas_gyftr_maximize_money",
@@ -24656,7 +24671,7 @@ export const masterBrands = [
   {
     "id": "r_b",
     "name": "R&B",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "r_b_amex_shopwise",
@@ -24787,7 +24802,7 @@ export const masterBrands = [
       {
         "compositeId": "rangriti_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-rangriti-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -25025,7 +25040,7 @@ export const masterBrands = [
   {
     "id": "ratnadeep_retail",
     "name": "Ratnadeep Retail",
-    "category_name": "Dining & Food",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "ratnadeep_retail_amex_shopwise",
@@ -25076,7 +25091,7 @@ export const masterBrands = [
       {
         "compositeId": "ray_ban_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-ray_ban-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -25196,7 +25211,7 @@ export const masterBrands = [
   {
     "id": "razorpay_money_bill",
     "name": "Razorpay Money Bill",
-    "category_name": "Electronics",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "razorpay_money_bill_maximize_money",
@@ -25272,7 +25287,7 @@ export const masterBrands = [
   {
     "id": "relaxo",
     "name": "Relaxo",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "relaxo_amex_shopwise",
@@ -25633,7 +25648,7 @@ export const masterBrands = [
         "portalId": "amazon",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-reliance_smart_bazaar-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -25744,7 +25759,7 @@ export const masterBrands = [
   {
     "id": "reliance_smart_super_store",
     "name": "Reliance Smart Super Store",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Groceries & Essentials\"]",
     "portals": [
       {
         "compositeId": "reliance_smart_super_store_maximize_money",
@@ -25764,7 +25779,7 @@ export const masterBrands = [
       {
         "compositeId": "reliance_trends_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-reliance_trends-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -25954,7 +25969,7 @@ export const masterBrands = [
   {
     "id": "resonate_router_ups",
     "name": "Resonate Router UPS",
-    "category_name": "Miscellaneous",
+    "category_name": "Electronics",
     "portals": [
       {
         "compositeId": "resonate_router_ups_amex_shopwise",
@@ -25982,7 +25997,7 @@ export const masterBrands = [
       {
         "compositeId": "rhythm_and_blues_r_b_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-rhythm_and_blues_r_b-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -25992,7 +26007,7 @@ export const masterBrands = [
   {
     "id": "riot_league_of_legends_1660",
     "name": "Riot League of Legends 1660",
-    "category_name": "Entertainment & OTT",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "riot_league_of_legends_1660_maximize_money",
@@ -26007,7 +26022,7 @@ export const masterBrands = [
   {
     "id": "riot_league_of_legends_2900",
     "name": "Riot League of Legends 2900",
-    "category_name": "Entertainment & OTT",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "riot_league_of_legends_2900_maximize_money",
@@ -26022,7 +26037,7 @@ export const masterBrands = [
   {
     "id": "riot_league_of_legends_415",
     "name": "Riot League of Legends 415",
-    "category_name": "Entertainment & OTT",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "riot_league_of_legends_415_maximize_money",
@@ -26037,7 +26052,7 @@ export const masterBrands = [
   {
     "id": "riot_league_of_legends_4150",
     "name": "Riot League of Legends 4150",
-    "category_name": "Entertainment & OTT",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "riot_league_of_legends_4150_maximize_money",
@@ -26052,7 +26067,7 @@ export const masterBrands = [
   {
     "id": "riot_league_of_legends_830",
     "name": "Riot League of Legends 830",
-    "category_name": "Entertainment & OTT",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "riot_league_of_legends_830_maximize_money",
@@ -26067,7 +26082,7 @@ export const masterBrands = [
   {
     "id": "ritu_kumar_luxe",
     "name": "RITU KUMAR - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "ritu_kumar_luxe_amex_shopwise",
@@ -26106,13 +26121,13 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-ritu_kumar_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
         "compositeId": "ritu_kumar_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ritu_kumar_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -26122,7 +26137,7 @@ export const masterBrands = [
   {
     "id": "roblox",
     "name": "Roblox",
-    "category_name": "Entertainment & OTT",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "roblox_axis_edgerewards",
@@ -26182,9 +26197,9 @@ export const masterBrands = [
       {
         "compositeId": "roblox_20_credit_1600_robux_bonus_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-roblox_20_credit_1600_robux_bonus-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -26197,9 +26212,9 @@ export const masterBrands = [
       {
         "compositeId": "roblox_50_credit_4000_robux_bonus_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-roblox_50_credit_4000_robux_bonus-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -26207,7 +26222,7 @@ export const masterBrands = [
   {
     "id": "rowan_luxe",
     "name": "ROWAN - Luxe",
-    "category_name": "Electronics",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "rowan_luxe_amex_shopwise",
@@ -26244,7 +26259,7 @@ export const masterBrands = [
       {
         "compositeId": "rowan_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-rowan_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -26305,7 +26320,7 @@ export const masterBrands = [
       {
         "compositeId": "samsonite_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-samsonite-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -26379,7 +26394,7 @@ export const masterBrands = [
   {
     "id": "sandro_luxe",
     "name": "Sandro - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "sandro_luxe_amex_shopwise",
@@ -26441,7 +26456,7 @@ export const masterBrands = [
   {
     "id": "satya_paul_luxe",
     "name": "Satya Paul - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "satya_paul_luxe_amex_shopwise",
@@ -26550,7 +26565,7 @@ export const masterBrands = [
   {
     "id": "scotch_and_soda_luxe",
     "name": "Scotch and Soda - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "scotch_and_soda_luxe_maximize_money",
@@ -26570,7 +26585,7 @@ export const masterBrands = [
       {
         "compositeId": "scotch_soda_luxe_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-scotch_soda_luxe-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -26636,7 +26651,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-scotch_soda_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -26827,9 +26842,9 @@ export const masterBrands = [
       {
         "compositeId": "shoppers_stop_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-shoppers_stop-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -26980,7 +26995,7 @@ export const masterBrands = [
   {
     "id": "sigree",
     "name": "Sigree",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Dining & Food\"]",
     "portals": [
       {
         "compositeId": "sigree_icici_ishop",
@@ -27008,7 +27023,7 @@ export const masterBrands = [
       {
         "compositeId": "simon_carter_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 1.0,
         "site": "https://vouchwise.in/out/buy-simon_carter-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -27090,7 +27105,7 @@ export const masterBrands = [
   {
     "id": "simple",
     "name": "Simple",
-    "category_name": "Electronics",
+    "category_name": "Beauty",
     "portals": [
       {
         "compositeId": "simple_hsbc_instabenefits",
@@ -27118,7 +27133,7 @@ export const masterBrands = [
       {
         "compositeId": "skechers_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-skechers-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -27208,7 +27223,7 @@ export const masterBrands = [
   {
     "id": "skinn",
     "name": "Skinn",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "skinn_amex_shopwise",
@@ -27292,7 +27307,7 @@ export const masterBrands = [
       {
         "compositeId": "skullcandy_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-skullcandy-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -27374,7 +27389,7 @@ export const masterBrands = [
   {
     "id": "skullcandy_uproar_anc",
     "name": "Skullcandy Uproar ANC",
-    "category_name": "Electronics",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "skullcandy_uproar_anc_hdfc_smartbuy",
@@ -27457,7 +27472,7 @@ export const masterBrands = [
       {
         "compositeId": "snitch_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-snitch-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -27523,7 +27538,7 @@ export const masterBrands = [
   {
     "id": "soch",
     "name": "Soch",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "soch_amex_shopwise",
@@ -27711,7 +27726,7 @@ export const masterBrands = [
         "portalId": "gyftr",
         "upfrontDiscountPercent": -20.0,
         "site": "https://vouchwise.in/out/buy-sony_playstation-gyftr",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -27719,7 +27734,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-sony_playstation-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -27740,7 +27755,7 @@ export const masterBrands = [
       {
         "compositeId": "sotc_travel_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-sotc_travel-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -27872,7 +27887,7 @@ export const masterBrands = [
       {
         "compositeId": "speedo_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-speedo-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -28014,7 +28029,7 @@ export const masterBrands = [
       {
         "compositeId": "spice_jet_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-spice_jet-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -28115,9 +28130,9 @@ export const masterBrands = [
       {
         "compositeId": "starbucks_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-starbucks-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -28210,7 +28225,7 @@ export const masterBrands = [
       {
         "compositeId": "stay_vista_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-stay_vista-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -28228,7 +28243,7 @@ export const masterBrands = [
   {
     "id": "steam",
     "name": "Steam",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Entertainment",
     "portals": [
       {
         "compositeId": "steam_gyftr",
@@ -28274,7 +28289,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-steam_wallet-axis_edgerewards",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -28306,7 +28321,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 2.25,
         "site": "https://vouchwise.in/out/buy-steam_wallet-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -28374,7 +28389,7 @@ export const masterBrands = [
   {
     "id": "sterling_holidays",
     "name": "Sterling Holidays",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "sterling_holidays_amex_shopwise",
@@ -28413,7 +28428,7 @@ export const masterBrands = [
   {
     "id": "steve_madde_luxe",
     "name": "Steve Madde - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "steve_madde_luxe_maximize_money",
@@ -28433,7 +28448,7 @@ export const masterBrands = [
       {
         "compositeId": "steve_madden_luxe_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-steve_madden_luxe-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -28451,7 +28466,7 @@ export const masterBrands = [
         "portalId": "axis_edgerewards",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-steve_madden_luxe-axis_edgerewards",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -28515,7 +28530,7 @@ export const masterBrands = [
   {
     "id": "street_foods_by_punjab_grill",
     "name": "Street Foods By Punjab Grill",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "street_foods_by_punjab_grill_amex_shopwise",
@@ -28622,7 +28637,7 @@ export const masterBrands = [
       {
         "compositeId": "subway_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-subway-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -28712,7 +28727,7 @@ export const masterBrands = [
   {
     "id": "sunglass_hut_luxe",
     "name": "Sunglass Hut - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "sunglass_hut_luxe_amex_shopwise",
@@ -28751,7 +28766,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-sunglass_hut_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -28814,7 +28829,7 @@ export const masterBrands = [
   {
     "id": "supa",
     "name": "Supa",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "supa_icici_ishop",
@@ -28829,7 +28844,7 @@ export const masterBrands = [
   {
     "id": "super_bottoms",
     "name": "Super Bottoms",
-    "category_name": "Electronics",
+    "category_name": "[\"New\"]",
     "portals": [
       {
         "compositeId": "super_bottoms_maximize_money",
@@ -28891,7 +28906,7 @@ export const masterBrands = [
   {
     "id": "superdry_luxe",
     "name": "Superdry - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "superdry_luxe_amex_shopwise",
@@ -28954,7 +28969,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-superdry_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -28968,7 +28983,7 @@ export const masterBrands = [
       {
         "compositeId": "superdry_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-superdry_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -29009,13 +29024,13 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-superdry_sport_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
         "compositeId": "superdry_sport_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-superdry_sport_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -29040,7 +29055,7 @@ export const masterBrands = [
   {
     "id": "surat_diamond_solitaire",
     "name": "Surat Diamond Solitaire",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Jewellery\"]",
     "portals": [
       {
         "compositeId": "surat_diamond_solitaire_maximize_money",
@@ -29060,7 +29075,7 @@ export const masterBrands = [
       {
         "compositeId": "surat_diamonds_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-surat_diamonds-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -29196,7 +29211,7 @@ export const masterBrands = [
   {
     "id": "swan",
     "name": "Swan",
-    "category_name": "Miscellaneous",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "swan_gyftr",
@@ -29258,7 +29273,7 @@ export const masterBrands = [
   {
     "id": "sweet_bengal",
     "name": "Sweet Bengal",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "sweet_bengal_amex_shopwise",
@@ -29342,7 +29357,7 @@ export const masterBrands = [
       {
         "compositeId": "sweet_truth_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-sweet_truth-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -29408,7 +29423,7 @@ export const masterBrands = [
   {
     "id": "sweet_truth_dessert",
     "name": "Sweet Truth Dessert",
-    "category_name": "Miscellaneous",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "sweet_truth_dessert_amex_shopwise",
@@ -29423,7 +29438,7 @@ export const masterBrands = [
   {
     "id": "swiggy",
     "name": "Swiggy",
-    "category_name": "Miscellaneous",
+    "category_name": "Grocery and F&B",
     "portals": [
       {
         "compositeId": "swiggy_icici_ishop",
@@ -29484,7 +29499,7 @@ export const masterBrands = [
   {
     "id": "swiggy_money",
     "name": "Swiggy Money",
-    "category_name": "Dining & Food",
+    "category_name": "Home needs,Dining",
     "portals": [
       {
         "compositeId": "swiggy_money_amex_shopwise",
@@ -29586,7 +29601,7 @@ export const masterBrands = [
   {
     "id": "ta_i_serve_u",
     "name": "TA i Serve U",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"E-commerce & Technology\"]",
     "portals": [
       {
         "compositeId": "ta_i_serve_u_maximize_money",
@@ -29606,7 +29621,7 @@ export const masterBrands = [
       {
         "compositeId": "taco_bell_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-taco_bell-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -29660,7 +29675,7 @@ export const masterBrands = [
       {
         "compositeId": "taj_experiences_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-taj_experiences-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -29812,7 +29827,7 @@ export const masterBrands = [
   {
     "id": "taj_hotels_j_wellness_circle_bliss_duo",
     "name": "Taj Hotels J Wellness Circle Bliss Duo",
-    "category_name": "Health & Wellness",
+    "category_name": "[\"Health & Wellness\"]",
     "portals": [
       {
         "compositeId": "taj_hotels_j_wellness_circle_bliss_duo_maximize_money",
@@ -29827,7 +29842,7 @@ export const masterBrands = [
   {
     "id": "taj_hotels_j_wellness_circle_bliss_solo",
     "name": "Taj Hotels J Wellness Circle Bliss Solo",
-    "category_name": "Health & Wellness",
+    "category_name": "[\"Health & Wellness\"]",
     "portals": [
       {
         "compositeId": "taj_hotels_j_wellness_circle_bliss_solo_maximize_money",
@@ -29877,7 +29892,7 @@ export const masterBrands = [
       {
         "compositeId": "taneira_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-taneira-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -29959,7 +29974,7 @@ export const masterBrands = [
   {
     "id": "tanishq",
     "name": "Tanishq",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "tanishq_gyftr",
@@ -29995,7 +30010,7 @@ export const masterBrands = [
       {
         "compositeId": "tanishq_diamond_jewellery_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-tanishq_diamond_jewellery-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -30029,7 +30044,7 @@ export const masterBrands = [
   {
     "id": "tanishq_gold_coin",
     "name": "Tanishq Gold Coin",
-    "category_name": "Miscellaneous",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "tanishq_gold_coin_gyftr",
@@ -30146,7 +30161,7 @@ export const masterBrands = [
   {
     "id": "tanishq_studded",
     "name": "Tanishq Studded",
-    "category_name": "Miscellaneous",
+    "category_name": "Jewellery",
     "portals": [
       {
         "compositeId": "tanishq_studded_amex_shopwise",
@@ -30192,7 +30207,7 @@ export const masterBrands = [
   {
     "id": "tasva",
     "name": "Tasva",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "tasva_amex_shopwise",
@@ -30252,7 +30267,7 @@ export const masterBrands = [
       {
         "compositeId": "tata_cli_q_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-tata_cli_q-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -30318,7 +30333,7 @@ export const masterBrands = [
   {
     "id": "tata_cli_q_fashion",
     "name": "TATA CLi Q Fashion",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion,E-Commerce",
     "portals": [
       {
         "compositeId": "tata_cli_q_fashion_amex_shopwise",
@@ -30354,7 +30369,7 @@ export const masterBrands = [
       {
         "compositeId": "tata_cli_q_luxury_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-tata_cli_q_luxury-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -30420,7 +30435,7 @@ export const masterBrands = [
   {
     "id": "tata_cliq",
     "name": "Tata Cliq",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "tata_cliq_maximize_money",
@@ -30435,7 +30450,7 @@ export const masterBrands = [
   {
     "id": "tata_cliq_luxury",
     "name": "Tata Cliq Luxury",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "tata_cliq_luxury_maximize_money",
@@ -30450,7 +30465,7 @@ export const masterBrands = [
   {
     "id": "tattva_spa",
     "name": "Tattva Spa",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "tattva_spa_amex_shopwise",
@@ -30521,7 +30536,7 @@ export const masterBrands = [
   {
     "id": "tcns_aurelia",
     "name": "TCNS Aurelia",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "tcns_aurelia_amex_shopwise",
@@ -30536,7 +30551,7 @@ export const masterBrands = [
   {
     "id": "tcns_w",
     "name": "Tcns W",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "tcns_w_amex_shopwise",
@@ -30551,7 +30566,7 @@ export const masterBrands = [
   {
     "id": "tego",
     "name": "Tego",
-    "category_name": "Electronics",
+    "category_name": "Others,Wellness",
     "portals": [
       {
         "compositeId": "tego_amex_shopwise",
@@ -30630,7 +30645,7 @@ export const masterBrands = [
   {
     "id": "tekne",
     "name": "Tekne",
-    "category_name": "Miscellaneous",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "tekne_hdfc_smartbuy",
@@ -30676,7 +30691,7 @@ export const masterBrands = [
         "portalId": "hsbc_instabenefits",
         "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-tgif-hsbc_instabenefits",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -30716,7 +30731,7 @@ export const masterBrands = [
   {
     "id": "the_bear_house",
     "name": "The Bear House",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "the_bear_house_maximize_money",
@@ -30731,7 +30746,7 @@ export const masterBrands = [
   {
     "id": "the_body_shop",
     "name": "The Body Shop",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "the_body_shop_amex_shopwise",
@@ -30810,7 +30825,7 @@ export const masterBrands = [
   {
     "id": "the_collective",
     "name": "The Collective",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "the_collective_amex_shopwise",
@@ -30846,7 +30861,7 @@ export const masterBrands = [
       {
         "compositeId": "the_good_bowl_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-the_good_bowl-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -30975,7 +30990,7 @@ export const masterBrands = [
   {
     "id": "the_leela",
     "name": "The Leela",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "the_leela_amex_shopwise",
@@ -31006,7 +31021,7 @@ export const masterBrands = [
   {
     "id": "the_man_company",
     "name": "The Man Company",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion,Wellness",
     "portals": [
       {
         "compositeId": "the_man_company_amex_shopwise",
@@ -31077,7 +31092,7 @@ export const masterBrands = [
   {
     "id": "the_post_hotels",
     "name": "The Post Hotels",
-    "category_name": "Miscellaneous",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "the_post_hotels_amex_shopwise",
@@ -31092,7 +31107,7 @@ export const masterBrands = [
   {
     "id": "the_postcard_hotels",
     "name": "The Postcard Hotels",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "the_postcard_hotels_maximize_money",
@@ -31107,7 +31122,7 @@ export const masterBrands = [
   {
     "id": "the_raymond_shop",
     "name": "The Raymond Shop",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "the_raymond_shop_amex_shopwise",
@@ -31231,7 +31246,7 @@ export const masterBrands = [
   {
     "id": "the_wellness_co",
     "name": "The Wellness Co",
-    "category_name": "Miscellaneous",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "the_wellness_co_amex_shopwise",
@@ -31246,7 +31261,7 @@ export const masterBrands = [
   {
     "id": "the_white_crow_luxe",
     "name": "The White Crow - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "the_white_crow_luxe_amex_shopwise",
@@ -31313,7 +31328,7 @@ export const masterBrands = [
       {
         "compositeId": "third_wave_coffee_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-third_wave_coffee-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -31344,7 +31359,7 @@ export const masterBrands = [
       {
         "compositeId": "tim_hortons_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-tim_hortons-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -31541,7 +31556,7 @@ export const masterBrands = [
       {
         "compositeId": "tira_beauty_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-tira_beauty-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -31567,7 +31582,7 @@ export const masterBrands = [
   {
     "id": "titan",
     "name": "Titan",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "titan_amex_shopwise",
@@ -31654,7 +31669,7 @@ export const masterBrands = [
   {
     "id": "titan_eye",
     "name": "Titan Eye+",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "titan_eye_amex_shopwise",
@@ -31826,7 +31841,7 @@ export const masterBrands = [
   {
     "id": "tods_luxe",
     "name": "TODS - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "tods_luxe_amex_shopwise",
@@ -31863,7 +31878,7 @@ export const masterBrands = [
       {
         "compositeId": "tods_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-tods_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -31873,7 +31888,7 @@ export const masterBrands = [
   {
     "id": "tommy_hilfiger_bagline",
     "name": "Tommy Hilfiger - Bagline",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "tommy_hilfiger_bagline_amex_shopwise",
@@ -31896,7 +31911,7 @@ export const masterBrands = [
   {
     "id": "toni_and_guy",
     "name": "Toni And Guy",
-    "category_name": "Health & Wellness",
+    "category_name": "[\"Beauty & Personal Care\"]",
     "portals": [
       {
         "compositeId": "toni_and_guy_maximize_money",
@@ -31911,7 +31926,7 @@ export const masterBrands = [
   {
     "id": "toni_guy",
     "name": "Toni & Guy",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "toni_guy_amex_shopwise",
@@ -31965,7 +31980,7 @@ export const masterBrands = [
   {
     "id": "tory_burch_luxe",
     "name": "TORY BURCH - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "tory_burch_luxe_amex_shopwise",
@@ -32004,13 +32019,13 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-tory_burch_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
         "compositeId": "tory_burch_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-tory_burch_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -32025,7 +32040,7 @@ export const masterBrands = [
       {
         "compositeId": "toscano_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-toscano-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -32067,7 +32082,7 @@ export const masterBrands = [
   {
     "id": "trends_footwear",
     "name": "Trends Footwear",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "trends_footwear_amex_shopwise",
@@ -32106,7 +32121,7 @@ export const masterBrands = [
   {
     "id": "trends_junior",
     "name": "Trends Junior",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "trends_junior_amex_shopwise",
@@ -32145,7 +32160,7 @@ export const masterBrands = [
   {
     "id": "trends_man",
     "name": "Trends Man",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "trends_man_amex_shopwise",
@@ -32184,7 +32199,7 @@ export const masterBrands = [
   {
     "id": "trends_woman",
     "name": "Trends Woman",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "trends_woman_amex_shopwise",
@@ -32230,7 +32245,7 @@ export const masterBrands = [
   {
     "id": "trip_xoxo",
     "name": "Trip XOXO",
-    "category_name": "Travel & Leisure",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "trip_xoxo_maximize_money",
@@ -32250,7 +32265,7 @@ export const masterBrands = [
       {
         "compositeId": "truefitt_hill_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.0,
         "site": "https://vouchwise.in/out/buy-truefitt_hill-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -32332,7 +32347,7 @@ export const masterBrands = [
   {
     "id": "tumi_luxe",
     "name": "Tumi - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion,Travel",
     "portals": [
       {
         "compositeId": "tumi_luxe_amex_shopwise",
@@ -32379,7 +32394,7 @@ export const masterBrands = [
         "portalId": "indusind_instavouchers",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-tumi_luxe-indusind_instavouchers",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -32393,7 +32408,7 @@ export const masterBrands = [
       {
         "compositeId": "tumi_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-tumi_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -32403,7 +32418,7 @@ export const masterBrands = [
   {
     "id": "tvs_motor",
     "name": "Tvs Motor",
-    "category_name": "Miscellaneous",
+    "category_name": "Gifting",
     "portals": [
       {
         "compositeId": "tvs_motor_hdfc_smartbuy",
@@ -32418,7 +32433,7 @@ export const masterBrands = [
   {
     "id": "typsy_beauty",
     "name": "Typsy Beauty",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "typsy_beauty_amex_shopwise",
@@ -32486,7 +32501,7 @@ export const masterBrands = [
       {
         "compositeId": "uber_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-uber-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -32677,7 +32692,7 @@ export const masterBrands = [
   {
     "id": "unipin",
     "name": "Unipin",
-    "category_name": "Electronics",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "unipin_maximize_money",
@@ -32697,7 +32712,7 @@ export const masterBrands = [
       {
         "compositeId": "unipin_bgmi_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-unipin_bgmi-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -32723,7 +32738,7 @@ export const masterBrands = [
   {
     "id": "united_colors_of_benetton_bagline",
     "name": "United Colors of Benetton - Bagline",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "united_colors_of_benetton_bagline_amex_shopwise",
@@ -32754,7 +32769,7 @@ export const masterBrands = [
   {
     "id": "unlimited",
     "name": "Unlimited",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "unlimited_amex_shopwise",
@@ -32785,7 +32800,7 @@ export const masterBrands = [
   {
     "id": "urban_company",
     "name": "Urban Company",
-    "category_name": "Health & Wellness",
+    "category_name": "[\"Home & Living\"]",
     "portals": [
       {
         "compositeId": "urban_company_maximize_money",
@@ -32800,7 +32815,7 @@ export const masterBrands = [
   {
     "id": "urban_ladder",
     "name": "Urban Ladder",
-    "category_name": "Electronics",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "urban_ladder_amex_shopwise",
@@ -32844,7 +32859,7 @@ export const masterBrands = [
       {
         "compositeId": "urban_space_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-urban_space-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -32925,7 +32940,7 @@ export const masterBrands = [
   {
     "id": "v_mart",
     "name": "V - Mart",
-    "category_name": "Electronics",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "v_mart_amex_shopwise",
@@ -33012,7 +33027,7 @@ export const masterBrands = [
   {
     "id": "vaango",
     "name": "Vaango",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Dining & Food\"]",
     "portals": [
       {
         "compositeId": "vaango_maximize_money",
@@ -33027,7 +33042,7 @@ export const masterBrands = [
   {
     "id": "valentino_luxe",
     "name": "Valentino - Luxe",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "valentino_luxe_amex_shopwise",
@@ -33072,7 +33087,7 @@ export const masterBrands = [
       {
         "compositeId": "valentino_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-valentino_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -33082,7 +33097,7 @@ export const masterBrands = [
   {
     "id": "valorant",
     "name": "Valorant",
-    "category_name": "Electronics",
+    "category_name": "Entertainment",
     "portals": [
       {
         "compositeId": "valorant_gyftr",
@@ -33113,7 +33128,7 @@ export const masterBrands = [
   {
     "id": "valorant_kgen_e_gift",
     "name": "Valorant KGEN E Gift",
-    "category_name": "Entertainment & OTT",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "valorant_kgen_e_gift_maximize_money",
@@ -33204,7 +33219,7 @@ export const masterBrands = [
       {
         "compositeId": "van_heusen_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 1.0,
         "site": "https://vouchwise.in/out/buy-van_heusen-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -33301,7 +33316,7 @@ export const masterBrands = [
   {
     "id": "versace_luxe",
     "name": "VERSACE - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "versace_luxe_amex_shopwise",
@@ -33346,7 +33361,7 @@ export const masterBrands = [
       {
         "compositeId": "versace_luxe_sbi_gyftr",
         "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 12.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-versace_luxe-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
@@ -33361,7 +33376,7 @@ export const masterBrands = [
       {
         "compositeId": "victorias_secret_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-victorias_secret-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -33448,7 +33463,7 @@ export const masterBrands = [
       {
         "compositeId": "victorias_secret_beauty_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 14.0,
         "site": "https://vouchwise.in/out/buy-victorias_secret_beauty-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -33519,7 +33534,7 @@ export const masterBrands = [
       {
         "compositeId": "vijay_sales_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-vijay_sales-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -33609,7 +33624,7 @@ export const masterBrands = [
   {
     "id": "villeroy_and_boch_luxe",
     "name": "VILLEROY AND BOCH - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "villeroy_and_boch_luxe_amex_shopwise",
@@ -33656,7 +33671,7 @@ export const masterBrands = [
   {
     "id": "vinci_botanicals",
     "name": "Vinci Botanicals",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "vinci_botanicals_amex_shopwise",
@@ -33812,7 +33827,7 @@ export const masterBrands = [
   {
     "id": "w",
     "name": "W",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "w_hdfc_smartbuy",
@@ -33914,7 +33929,7 @@ export const masterBrands = [
   {
     "id": "wakefit",
     "name": "Wakefit",
-    "category_name": "Electronics",
+    "category_name": "Home needs,Wellness",
     "portals": [
       {
         "compositeId": "wakefit_amex_shopwise",
@@ -33953,7 +33968,7 @@ export const masterBrands = [
   {
     "id": "water_bill_payment",
     "name": "Water Bill Payment",
-    "category_name": "Fashion & Accessories",
+    "category_name": "E-Commerce",
     "portals": [
       {
         "compositeId": "water_bill_payment_gyftr",
@@ -33984,7 +33999,7 @@ export const masterBrands = [
   {
     "id": "wellbeing_nutrition",
     "name": "Wellbeing Nutrition",
-    "category_name": "Electronics",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "wellbeing_nutrition_amex_shopwise",
@@ -34060,7 +34075,7 @@ export const masterBrands = [
       {
         "compositeId": "wendys_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.0,
         "site": "https://vouchwise.in/out/buy-wendys-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -34134,7 +34149,7 @@ export const masterBrands = [
   {
     "id": "west_elm_luxe",
     "name": "WEST ELM - Luxe",
-    "category_name": "Miscellaneous",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "west_elm_luxe_amex_shopwise",
@@ -34268,7 +34283,7 @@ export const masterBrands = [
   {
     "id": "westside_no_cooling_period",
     "name": "Westside [No Cooling Period]",
-    "category_name": "Fashion & Accessories",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "westside_no_cooling_period_maximize_money",
@@ -34283,7 +34298,7 @@ export const masterBrands = [
   {
     "id": "whats_up_wellness",
     "name": "What's Up Wellness",
-    "category_name": "Health & Wellness",
+    "category_name": "Wellness",
     "portals": [
       {
         "compositeId": "whats_up_wellness_amex_shopwise",
@@ -34330,7 +34345,7 @@ export const masterBrands = [
   {
     "id": "wildcraft",
     "name": "Wildcraft",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion,Travel",
     "portals": [
       {
         "compositeId": "wildcraft_amex_shopwise",
@@ -34417,7 +34432,7 @@ export const masterBrands = [
   {
     "id": "william_penn",
     "name": "William Penn",
-    "category_name": "Electronics",
+    "category_name": "Others,Fashion",
     "portals": [
       {
         "compositeId": "william_penn_amex_shopwise",
@@ -34496,7 +34511,7 @@ export const masterBrands = [
   {
     "id": "woggles",
     "name": "Woggles",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "woggles_hsbc_instabenefits",
@@ -34519,7 +34534,7 @@ export const masterBrands = [
   {
     "id": "wonderchef",
     "name": "Wonderchef",
-    "category_name": "Electronics",
+    "category_name": "Home needs",
     "portals": [
       {
         "compositeId": "wonderchef_amex_shopwise",
@@ -34606,7 +34621,7 @@ export const masterBrands = [
   {
     "id": "woodland",
     "name": "Woodland",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "woodland_amex_shopwise",
@@ -34708,7 +34723,7 @@ export const masterBrands = [
   {
     "id": "world_of_titan_smart_watch",
     "name": "World of Titan Smart Watch",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Fashion & Accessories\"]",
     "portals": [
       {
         "compositeId": "world_of_titan_smart_watch_maximize_money",
@@ -34723,7 +34738,7 @@ export const masterBrands = [
   {
     "id": "wow_china",
     "name": "Wow! China",
-    "category_name": "Dining & Food",
+    "category_name": "[\"Dining & Food\"]",
     "portals": [
       {
         "compositeId": "wow_china_maximize_money",
@@ -34940,9 +34955,9 @@ export const masterBrands = [
       {
         "compositeId": "wrangler_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-wrangler-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -34979,7 +34994,7 @@ export const masterBrands = [
       {
         "compositeId": "xbox_game_pass_ultimate_1_month_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-xbox_game_pass_ultimate_1_month-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -35024,7 +35039,7 @@ export const masterBrands = [
       {
         "compositeId": "xbox_microsoft_game_pass_core_1_month_esd_in_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-xbox_microsoft_game_pass_core_1_month_esd_in-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -35101,7 +35116,7 @@ export const masterBrands = [
       {
         "compositeId": "yatra_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-yatra-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -35243,7 +35258,7 @@ export const masterBrands = [
   {
     "id": "yatra_flight_1000",
     "name": "Yatra Flight – 1000",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "yatra_flight_1000_maximize_money",
@@ -35258,7 +35273,7 @@ export const masterBrands = [
   {
     "id": "yatra_flight_500",
     "name": "Yatra Flight – 500",
-    "category_name": "Miscellaneous",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "yatra_flight_500_maximize_money",
@@ -35278,7 +35293,7 @@ export const masterBrands = [
       {
         "compositeId": "yatra_hotel_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 13.0,
         "site": "https://vouchwise.in/out/buy-yatra_hotel-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -35349,7 +35364,7 @@ export const masterBrands = [
       {
         "compositeId": "yatra_hotels_holidays_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-yatra_hotels_holidays-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -35436,7 +35451,7 @@ export const masterBrands = [
   {
     "id": "you_mee",
     "name": "You Mee",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "you_mee_amex_shopwise",
@@ -35475,7 +35490,7 @@ export const masterBrands = [
   {
     "id": "zambar",
     "name": "Zambar",
-    "category_name": "Dining & Food",
+    "category_name": "Dining",
     "portals": [
       {
         "compositeId": "zambar_amex_shopwise",
@@ -35511,7 +35526,7 @@ export const masterBrands = [
       {
         "compositeId": "zee5_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.0,
         "site": "https://vouchwise.in/out/buy-zee5-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -35585,7 +35600,7 @@ export const masterBrands = [
   {
     "id": "zee5_12m_4k",
     "name": "Zee5 12M 4K",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_12m_4k_amex_shopwise",
@@ -35608,7 +35623,7 @@ export const masterBrands = [
   {
     "id": "zee5_12m_hd",
     "name": "Zee5 12M HD",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_12m_hd_amex_shopwise",
@@ -35646,7 +35661,7 @@ export const masterBrands = [
   {
     "id": "zee5_3m_hd",
     "name": "Zee5 3M HD",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_3m_hd_amex_shopwise",
@@ -35669,7 +35684,7 @@ export const masterBrands = [
   {
     "id": "zee5_6m_hd",
     "name": "Zee5 6M HD",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_6m_hd_amex_shopwise",
@@ -35692,7 +35707,7 @@ export const masterBrands = [
   {
     "id": "zee5_bangla_odia_annual_pack",
     "name": "Zee5 Bangla & Odia Annual Pack",
-    "category_name": "Miscellaneous",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_bangla_odia_annual_pack_amex_shopwise",
@@ -35712,9 +35727,9 @@ export const masterBrands = [
       {
         "compositeId": "zee5_fifa_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 18.0,
         "site": "https://vouchwise.in/out/buy-zee5_fifa-amazon",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -35722,7 +35737,7 @@ export const masterBrands = [
   {
     "id": "zee5_fifa_wc",
     "name": "Zee5 FIFA WC",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Entertainment",
     "portals": [
       {
         "compositeId": "zee5_fifa_wc_icici_ishop",
@@ -35752,7 +35767,7 @@ export const masterBrands = [
   {
     "id": "zee5_fifa_wc26_12m_4k_annual",
     "name": "Zee5 FIFA WC26 12M 4K Annual",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_fifa_wc26_12m_4k_annual_amex_shopwise",
@@ -35775,7 +35790,7 @@ export const masterBrands = [
   {
     "id": "zee5_fifa_wc26_3m_4k_quarter",
     "name": "Zee5 FIFA WC26 3M 4K Quarter",
-    "category_name": "Entertainment & OTT",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_fifa_wc26_3m_4k_quarter_amex_shopwise",
@@ -35798,7 +35813,7 @@ export const masterBrands = [
   {
     "id": "zee5_kannada_annual_pack",
     "name": "Zee5 Kannada Annual Pack",
-    "category_name": "Miscellaneous",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_kannada_annual_pack_amex_shopwise",
@@ -35813,7 +35828,7 @@ export const masterBrands = [
   {
     "id": "zee5_malayalam_annual_pack",
     "name": "Zee5 Malayalam Annual Pack",
-    "category_name": "Miscellaneous",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_malayalam_annual_pack_amex_shopwise",
@@ -35828,7 +35843,7 @@ export const masterBrands = [
   {
     "id": "zee5_marathi_annual_pack",
     "name": "Zee5 Marathi Annual Pack",
-    "category_name": "Miscellaneous",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_marathi_annual_pack_amex_shopwise",
@@ -35843,7 +35858,7 @@ export const masterBrands = [
   {
     "id": "zee5_tamil_annual_pack",
     "name": "Zee5 Tamil Annual Pack",
-    "category_name": "Miscellaneous",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_tamil_annual_pack_amex_shopwise",
@@ -35858,7 +35873,7 @@ export const masterBrands = [
   {
     "id": "zee5_telugu_annual_pack",
     "name": "Zee5 Telugu Annual Pack",
-    "category_name": "Miscellaneous",
+    "category_name": "Others",
     "portals": [
       {
         "compositeId": "zee5_telugu_annual_pack_amex_shopwise",
@@ -35948,7 +35963,7 @@ export const masterBrands = [
       {
         "compositeId": "zomato_amazon",
         "portalId": "amazon",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-zomato-amazon",
         "availability": "available",
         "disclaimer": ""
@@ -36022,7 +36037,7 @@ export const masterBrands = [
   {
     "id": "zomato_special",
     "name": "Zomato Special",
-    "category_name": "Miscellaneous",
+    "category_name": "Home needs,Dining",
     "portals": [
       {
         "compositeId": "zomato_special_amex_shopwise",
@@ -36037,7 +36052,7 @@ export const masterBrands = [
   {
     "id": "zoomcar",
     "name": "Zoomcar",
-    "category_name": "Travel & Leisure",
+    "category_name": "Travel",
     "portals": [
       {
         "compositeId": "zoomcar_amex_shopwise",
@@ -36171,7 +36186,7 @@ export const masterBrands = [
   {
     "id": "zudio",
     "name": "Zudio",
-    "category_name": "Fashion & Accessories",
+    "category_name": "Fashion",
     "portals": [
       {
         "compositeId": "zudio_amex_shopwise",
@@ -37133,6 +37148,7 @@ export function enrichBrandsWithScrapedData(catalog) {
         existingPortal.redemptionType = scrapedPortal.redemptionType;
         if (scrapedPortal.termsSnippet) existingPortal.termsSnippet = scrapedPortal.termsSnippet;
         if (scrapedPortal.disclaimer) existingPortal.disclaimer = scrapedPortal.disclaimer;
+        if (scrapedPortal.availability) existingPortal.availability = scrapedPortal.availability;
       } else {
         brand.portals.push({
           compositeId: `${brand.id}_${scrapedPortal.portalId}`,
@@ -37142,7 +37158,7 @@ export function enrichBrandsWithScrapedData(catalog) {
           denominations: scrapedPortal.denominations,
           discountsByMethod: scrapedPortal.discountsByMethod,
           site: scrapedPortal.buyUrl || `https://vouchwise.in/out/buy-${brand.id}-${scrapedPortal.portalId}`,
-          availability: 'available',
+          availability: scrapedPortal.availability || 'available',
           disclaimer: scrapedPortal.disclaimer || ""
         });
       }
