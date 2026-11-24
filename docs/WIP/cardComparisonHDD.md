@@ -1,9 +1,9 @@
 # High-Level Design (HDD)
 ## VouchWise — Card Comparison & Rewards Calculator
 
-**Status**: Draft v1
+**Status**: Historical Draft (Superseded by cardCompareArchitecture.md — CardCompare is currently an Unlinked Preview / Deferred Launch)
 **Owner**: Ashwani
-**Last updated**: 2026-08-05
+**Last updated**: 2026-08-05 (Status updated 2026-11-24)
 
 ---
 

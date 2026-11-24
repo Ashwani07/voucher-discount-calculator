@@ -1,8 +1,8 @@
 # Low-Level Design (LDD)
 ## VouchWise — Card Comparison & Rewards Calculator
 
-**Status**: Draft v1
-**Companion to**: HDD-card-comparison.md
+**Status**: Historical Draft (Superseded by cardCompareArchitecture.md — CardCompare is currently an Unlinked Preview / Deferred Launch)
+**Companion to**: cardComparisonHDD.md
 
 ---
 

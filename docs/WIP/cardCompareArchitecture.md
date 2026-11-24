@@ -1,77 +1,72 @@
 # VouchWise — Card Comparison ("The Real Rate") — Architecture
 
-> New-page addendum, follows the same conventions as `Structure.md` /
-> `ARCHITECTURE.md`. This is a companion doc for `compare.html` — the
-> existing calculator (`index.html`) and brand guide (`brands.html`) are
-> untouched and this page does not share their module graph, same as
-> `brands.html` doesn't share `index.html`'s.
+> **Current Status**: **Deferred / Unlinked Preview**
+> 
+> CardCompare (`compare.html`) is deployed as an unlinked preview. It is directly accessible via its static URL (`/compare.html`) through Cloudflare Pages / Worker asset fallback, but it is **deliberately NOT linked from main navigation (`index.html`)** and **NOT listed in `sitemap.xml`**.
+>
+> **Core Strategic Decision**:
+> - Keep CardCompare as an unlinked preview for now.
+> - Do not delete it, do not add it to main navigation, and do not promote it publicly.
+> - Treat catalog expansion beyond the current 9 cards and any public launch as backlog work until the calculation model and source-verification workflows are mature and sustainable to maintain.
 
 ---
 
-## 0. Why this isn't a database
+## 0. Architectural Reality: Modular Entry Files vs Legacy CSV/DB Drafts
 
-The earlier design draft assumed SQL tables (`cards`, `fees`,
-`reward_rules`, `exclusions`, `offers`). VouchWise has **no backend and no
-database** — everything is a static Cloudflare Pages deploy. This doc
-translates that design into the CSV → generated-JS pipeline you already
-use for `masterBrands.csv` / `masterCards.csv`:
+Earlier planning drafts considered relational SQL databases (`cards`, `fees`, `reward_rules`, `exclusions`) or monolithic CSV files (`masterCardProfiles.csv`, `cardExclusions.csv`, `cardOffers.csv`).
 
-| SQL draft concept | VouchWise reality |
-|---|---|
-| `cards` table | `masterCardProfiles.csv` row |
-| `fees`, `reward_rules` tables | columns on the same CSV row (1:1 with card) |
-| `exclusions` table (1:many) | `cardExclusions.csv`, one row per exclusion, `card_id` column |
-| `offers` table (1:many) | `cardOffers.csv`, one row per offer, `card_id` column |
-| SQL `JOIN` | `Array.filter(e => e.card_id === id)` in JS at render time |
-| DB engine | `parse-card-profiles.js` (Node, run manually, like `parse-brands.js`) |
+In the actual implementation, VouchWise uses **modular ES module card profile files**:
+- Each credit card is defined in its own file under `vouchwise/cardCompareEntries/` (e.g., `cardCompareEntryHdfcRegaliaGold.js`).
+- Each entry file exports three objects: `cardProfile`, `exclusions` array, and `offers` array.
+- An assembly script `vouchwise/js/cardCompareBuildData.js` (`node cardCompareBuildData.js`) compiles all entry files into a single static generated file: `vouchwise/js/cardCompareGeneratedData.js`.
+- `vouchwise/js/cardCompareData.js` imports and re-exports the generated data while providing runtime helpers (`getExclusionsForCard`, `getOffersForCard`, `BUCKET_FILTER_LABELS`, `cardMatchesBucketFilter`, `scenarios`).
 
-**Important distinction from `masterCards.csv`**: your existing
-`masterCards.csv` answers "how much does this card earn via this voucher
-portal" (`rewardType`, `pointValue`, `spendBlock`, `portalMultipliers`).
-The new CSVs answer a different question entirely — "what does this card
-cost and return over a year, independent of any voucher portal." Same
-physical card can appear in both files, linked only by sharing the same
-`id` string (e.g. `icici_times_black`) — the two datasets stay decoupled,
-same philosophy as `calculator.js` / `customCalc.js` not importing each
-other. Don't try to merge them into one CSV; the column shapes don't fit
-the same row.
+### Why Modular Entry Files Over CSVs
+1. **Isolated maintenance**: Editing exclusions or offers for one card touches exactly one file, eliminating merge conflicts and accidental changes to other cards.
+2. **Schema flexibility**: Offers and exclusions have variable structures (e.g. network variants, caps, fee clauses) that fit JavaScript objects far better than wide or sparsely populated CSV tables.
+3. **Diff readability**: Git diffs clearly highlight specific bank policy changes per card.
 
 ---
 
-## 1. File additions
+## 1. File Structure & Catalog
 
 ```
 vouchwise/
-├── compare.html                    New page — card comparison / true-rate calc
+├── compare.html                         Unlinked preview page (The Real Rate comparison calculator)
 │
-├── data/
-│   ├── masterCardProfiles.csv      1 row per card: fees, bucket, tags, base rates
-│   ├── cardExclusions.csv          1 row per exclusion, card_id FK
-│   └── cardOffers.csv              1 row per recurring offer, card_id FK
+├── cardCompareEntries/                  Hand-maintained source of truth (1 file per card)
+│   ├── cardCompareEntryAuIxigo.js
+│   ├── cardCompareEntryFederalScapia.js
+│   ├── cardCompareEntryHdfcInfiniaMetal.js
+│   ├── cardCompareEntryHdfcMillennia.js
+│   ├── cardCompareEntryHdfcRegaliaGold.js
+│   ├── cardCompareEntryHdfcSwiggyOrange.js
+│   ├── cardCompareEntryHsbcPremier.js
+│   ├── cardCompareEntryHsbcVisaPlatinum.js
+│   └── cardCompareEntryIciciTimesBlack.js
 │
-├── parse-card-profiles.js          New Node parser — separate script from
-│                                    parse-brands.js (different shape, keep
-│                                    the pipelines independent, same reasoning
-│                                    as not overloading masterCards.csv)
-│
-└── js/
-    ├── cardCompareData.js                 GENERATED — exports cardProfiles[],
-    │                                exclusions[], offers[], tags[].
-    │                                DO NOT hand-edit (same rule as data.js
-    │                                §4.8) — edit the CSVs, re-run the parser.
-    ├── cardCompareCalc.js               Pure net-value math. No DOM. No imports
-    │                                from other app modules. Mirrors calculator.js.
-    ├── cardCompareState.js              Shared mutable state, this page only.
-    │                                No imports. Mirrors state.js.
-    ├── cardCompareDom.js                Cached DOM refs. No logic. Mirrors dom.js.
-    ├── cardCompareEvents.js             All addEventListener calls. No business logic.
-    └── cardCompareMain.js               Entry point.
+├── js/
+│   ├── cardCompareBuildData.js          Node builder: reads cardCompareEntries/*.js -> cardCompareGeneratedData.js
+│   ├── cardCompareGeneratedData.js      GENERATED file — aggregated cardProfiles[], exclusions[], offers[]
+│   ├── cardCompareData.js               Re-exports generated data + scenario presets & bucket filters
+│   ├── cardCompareCalc.js               Pure net-value financial math. No DOM, no external dependencies
+│   ├── cardCompareState.js              Shared mutable state for compare.html
+│   ├── cardCompareDom.js                Cached DOM references
+│   ├── cardCompareEvents.js             Event handling, URL syncing, and UI rendering
+│   └── cardCompareMain.js               compare.html entry point
 ```
 
-Also required per your own "New page" checklist (Structure.md §13):
-add `compare.html` to `sitemap.xml`, add a rewrite rule to `_redirects` if
-you want a clean `/compare` URL, and add a link from `index.html`'s nav
-(and ideally from each relevant `brands.html` page, once cards cross-link).
+### Current Catalog (9 Cards)
+The catalog currently contains exactly 9 card profiles across different tiers:
+1. **AU ixigo** (`au_ixigo`): Zero-forex, travel-oriented entry.
+2. **Federal Scapia** (`federal_scapia`): Zero-forex, travel reward card (supports Visa / RuPay variants).
+3. **HDFC Infinia Metal** (`hdfc_infinia_metal`): Super-premium rewards card.
+4. **HDFC Millennia** (`hdfc_millennia`): Mid-tier cashback card.
+5. **HDFC Regalia Gold** (`hdfc_regalia_gold`): Premium travel/lifestyle card.
+6. **HDFC Swiggy** (`hdfc_swiggy_orange`): Co-branded dining/grocery card.
+7. **HSBC Premier** (`hsbc_premier`): Premier relationship banking card.
+8. **HSBC Visa Platinum** (`hsbc_visa_platinum`): Entry-level cashback/points card.
+9. **ICICI Times Black** (`icici_times_black`): Premium lifestyle/dining card.
 
 ---
 
@@ -79,179 +74,142 @@ you want a clean `/compare` URL, and add a link from `index.html`'s nav
 
 ```mermaid
 graph LR
-    cardCompareData[cardCompareData.js]
-    cardCompareCalc[cardCompareCalc.js]
-    cardCompareState[cardCompareState.js]
-    cardCompareDom[cardCompareDom.js]
-    cardCompareEvents[cardCompareEvents.js]
-    cardCompareMain[cardCompareMain.js]
+    subgraph Build Time
+        entries[cardCompareEntries/*.js] --> builder[cardCompareBuildData.js]
+        builder --> genData[cardCompareGeneratedData.js]
+    end
 
-    cardCompareEvents --> cardCompareData & cardCompareCalc & cardCompareState & cardCompareDom
-    cardCompareMain --> cardCompareDom & cardCompareData & cardCompareEvents
+    subgraph Runtime Static Page
+        genData --> cardCompareData[cardCompareData.js]
+        cardCompareData --> cardCompareEvents[cardCompareEvents.js]
+        cardCompareCalc[cardCompareCalc.js] --> cardCompareEvents
+        cardCompareState[cardCompareState.js] --> cardCompareEvents
+        cardCompareDom[cardCompareDom.js] --> cardCompareEvents
+        cardCompareEvents --> cardCompareMain[cardCompareMain.js]
+    end
 
     classDef noImports fill:#e6f4ea,stroke:#34a853;
-    class cardCompareCalc,cardCompareState,cardCompareDom noImports
+    class cardCompareCalc,cardCompareState,cardCompareDom noImports;
 
     classDef generated fill:#fff3cd,stroke:#c9a227;
-    class cardCompareData generated
+    class genData generated;
 ```
 
-Same isolation rule as your existing graph: **`cardCompareCalc.js` takes
-numbers in, returns numbers out — no DOM, no imports.** This is what let
-you trust `calculator.js`'s math independent of UI bugs; same payoff
-applies here, and it means `cardCompareCalc.js` is unit-testable in isolation
-if you ever add tests.
-
-No `customCalc.js`-style second calculator is needed here — there's only
-one calculation mode on this page (unlike index.html's portal-compare vs.
-coupon-calc split), so no circular-import risk to guard against.
+**Architectural Principle**: Like `calculator.js` in the main voucher application, `cardCompareCalc.js` is strictly isolated:
+- Pure mathematical functions with no DOM manipulation and no module imports.
+- Takes plain numbers and profile objects as input, returns immutable calculation objects.
+- Completely unit-testable in isolation.
 
 ---
 
-## 3. Data Pipeline
+## 3. Maintenance Model: Verified Sources & Manual Review
 
-```mermaid
-flowchart LR
-    csv1[masterCardProfiles.csv] --> parser[parse-card-profiles.js<br/>Node.js]
-    csv2[cardExclusions.csv] --> parser
-    csv3[cardOffers.csv] --> parser
-    parser --> cardDataJs["js/cardCompareData.js<br/>(cardProfiles / exclusions / offers arrays)"]
-
-    style cardDataJs fill:#fff3cd,stroke:#c9a227
-```
-
-No `localStorage` merge step here, unlike `data.js`'s `customBrands` /
-`customCards` runtime merge — this feature has no user-added-card concept
-(you maintain the card catalog, visitors don't). If that ever changes,
-add the merge step then, don't build it speculatively now.
+1. **Source-Backed Facts Only**:
+   - Every card profile stores official citation links: `fees_mitc_url` (Most Important Terms & Conditions / Key Fact Statement) and `rewards_mitc_url` (Rewards Program Terms).
+   - If a benefit, rate, or waiver condition cannot be traced directly to an official bank document or schedule of charges, it must not be added as a confirmed fact.
+2. **Explicit Verification Date**:
+   - Each card profile tracks a `last_verified` date (ISO 8601 string) indicating when the MITC was last inspected.
+3. **Manual Review Over Loose Scraping**:
+   - Bank terms, exclusion lists, and MCC penalty fee policies are published in complex legal PDFs with frequent mid-year revisions.
+   - Scraping bank websites introduces severe risk of hallucinated terms or missed caveats. Changes are reviewed manually by inspecting official bank notifications.
 
 ---
 
-## 4. CSV Column Shapes
+## 4. Calculation Scope & Known Limitations
 
-**`masterCardProfiles.csv`** — one row per card:
+`cardCompareCalc.js` evaluates a transparent, spend-based net ledger:
 
-```
-id, name, issuer, bucket, tags,
-joining_fee, annual_fee, waiver_spend_threshold, waiver_condition,
-base_reward_multiplier, base_point_value_inr, base_is_estimate,
-fees_mitc_url, rewards_mitc_url, last_verified
-```
+$$\text{Net Value} = \text{Base Reward Value} + \text{Eligible Cash Offers} - \text{Total Fees} - \text{Category Surcharges}$$
 
-- `tags` — pipe-delimited string (`travel|forex|lounge-access`), split at parse time. Same pattern you'd use if `masterBrands.csv` had multi-category brands.
-- `bucket` — one of `entry|mid-tier|high-tier|premier-gated`, validated in the parser (reject unknown values loudly, don't silently pass through — a typo'd bucket should fail the build, not ship silently).
-- `*_is_estimate` — `0`/`1`. Rendered in the UI as a badge — non-negotiable per the earlier design decision. **New Inviolable Rule candidate**: any field with a paired `is_estimate` flag must render its badge in every context it appears (card detail page AND comparison table) — a badge only on one is worse than no badge, since it implies the other context is confirmed when it isn't.
+### What IS Modeled
+1. **Base Reward Rate**:
+   - Rate calculated as: $\text{Spend} \times \left(\frac{\text{base\_reward\_multiplier}}{100}\right) \times \text{base\_point\_value\_inr} \times \text{category\_factor}$.
+   - Handles network variants (e.g. Scapia Visa vs RuPay rates) via `resolveBaseRate()`.
+2. **Category Exclusions & Extra Surcharges**:
+   - Zero-reward categories (e.g. rent, fuel, wallet loads) where `reward_factor = 0`.
+   - Category-specific penalty fees (e.g. 1% + GST on rent or wallet loads) capped at `extra_fee_cap_inr` where applicable.
+3. **Card Fees & Waivers**:
+   - Year 1 includes `joining_fee`.
+   - Year 2+ applies `annual_fee` unless total annual spend meets or exceeds `waiver_spend_threshold`.
+   - Handles structurally zero-fee cards (`annual_fee: 0`).
+4. **Cash-Equivalent Milestone & Welcome Offers**:
+   - Welcome benefits (Year 1 flat benefits).
+   - Annual or periodic spend milestones (e.g. bonus points or statement credit upon clearing spend threshold).
 
-**`cardExclusions.csv`** — one row per exclusion:
-
-```
-card_id, category, reward_factor, extra_fee_percent, extra_fee_cap_inr, notes, source_clause
-```
-
-- `reward_factor` — 0 to 1. Blank means "unconfirmed," not "zero" — the parser should treat empty string differently from `0` (this bit us on the Scapia fuel/utility exclusions, where the real answer was "unknown below threshold," not "excluded").
-- `extra_fee_percent` / `extra_fee_cap_inr` — new columns not in the original SQL draft, added because Scapia's MITC revealed exclusions can carry an actual penalty fee, not just a missed reward (rent/wallet-load 1%+GST). Leave blank when not applicable.
-
-**`cardOffers.csv`** — one row per recurring offer:
-
-```
-card_id, offer_type, condition_type, spend_threshold, frequency, cap_count, value_description, estimated_value_inr, notes
-```
-
-Matches the earlier LDD shape directly — this one translates cleanly since it was already "row-shaped" in the original design.
-
----
-
-## 5. cardCompareCalc.js — Function Signature
-
-```js
-// cardCompareCalc.js — no imports, pure functions only
-
-export function calculateNetValue(cardProfile, exclusionsForCard, spendByCategory, year) {
-  let rewardValue = 0;
-  for (const [category, amount] of Object.entries(spendByCategory)) {
-    const exclusion = exclusionsForCard.find(e => e.category === category);
-    const factor = exclusion?.reward_factor ?? 1;
-    rewardValue += amount * (factor) * (cardProfile.base_reward_multiplier / 100) * cardProfile.base_point_value_inr;
-  }
-
-  const fee = year === 1
-    ? cardProfile.joining_fee + (annualSpend(spendByCategory) < cardProfile.waiver_spend_threshold ? cardProfile.annual_fee : 0)
-    : (annualSpend(spendByCategory) < cardProfile.waiver_spend_threshold ? cardProfile.annual_fee : 0);
-
-  return {
-    rewardValue,
-    fee,
-    net: rewardValue - fee,
-    hasEstimate: cardProfile.base_is_estimate === 1,
-  };
-}
-
-function annualSpend(spendByCategory) {
-  return Object.values(spendByCategory).reduce((a, b) => a + b, 0);
-}
-```
-
-Deliberately simpler than the earlier Python sketch — no milestone/welcome-benefit handling yet, since that needs its own CSV (`cardMilestones.csv`, `cardWelcomeBenefits.csv`) not yet built. Flagging as a known v1 gap rather than half-building it now.
+### What IS NOT Modeled (Crucial Code Limitations)
+The calculator output is strictly a **conservative base-rate floor**, NOT a true ceiling:
+1. **Accelerated Multiplier Categories**:
+   - Does NOT model category accelerators or 5X/10X portal multipliers (e.g. HDFC SmartBuy 5X/10X on Regalia Gold/Infinia, Scapia 20% travel portal rewards, Millennia 5% cashback on partner merchants).
+2. **Issuer Caps**:
+   - Does NOT model per-transaction caps (e.g. AU ixigo complimentary insurance transaction caps) or multi-category shared statement-cycle caps (e.g. Times Black 5,000 points monthly pool).
+3. **Real Per-Period Spend History**:
+   - The calculator takes annual category totals. It does not track actual monthly or billing-cycle spend variance.
+   - For quarterly or monthly milestones, it approximates occurrences assuming perfectly even spend across periods: $\text{impliedPeriodSpend} = \frac{\text{annualSpend}}{\text{periodsPerYear}}$. If that average meets the threshold, all periods are counted; otherwise zero.
+4. **Voucher Face Value Excluded from Ledger**:
+   - Merchant gift cards, dining discount coupons, and conditional vouchers (`value_type: 'voucher'`) are displayed in the "What you get" breakdown but **excluded** from the numeric ledger total because their face value is not guaranteed cash-equivalent.
 
 ---
 
-## 6. User Flow
+## 5. UI Disclosure of Uncertainty & Transparency
 
-```mermaid
-sequenceDiagram
-    actor User
-    participant Filter as bucket/tag filter (cardCompareMain.js)
-    participant Select as card selector (cardCompareEvents.js)
-    participant Spend as spend-by-category inputs
-    participant Calc as cardCompareCalc.js
-    participant Render as results render (cardCompareEvents.js)
+CardCompare enforces strict honesty in its presentation (`cardCompareEvents.js` and `compare.html`):
 
-    User->>Filter: picks bucket / tags
-    Filter->>Select: narrows card list from cardCompareData.js
-    User->>Select: picks 2 cards
-    User->>Spend: enters annual spend per category
-    User->>Render: clicks "Compare"
-    loop each selected card
-        Render->>Calc: calculateNetValue(profile, exclusions, spend, year=1)
-        Render->>Calc: calculateNetValue(profile, exclusions, spend, year=2)
-    end
-    Render-->>User: Year 1 / Year 2+ net value table,<br/>estimate badges,<br/>exclusion + offer list per card
-```
+1. **`ESTIMATE` Badges**:
+   - Rendered visibly alongside card names whenever `cardProfile.base_is_estimate === 1` or when base rates/point values are approximations.
+2. **Prominent Warning Banners**:
+   - `dataInsufficient`: When a card's base rate or point value has not yet been sourced (e.g. Infinia or Swiggy base points without portal context), the UI displays: *"Base reward rate or point value not yet sourced for this card — reward figures below are incomplete, not zero-value."*
+   - `hasUnknownCategoryFactor`: Warns if any spend category has an unconfirmed reward factor.
+   - Point Valuation Warning: Warns user when redemption values represent an estimate (e.g. HSBC ₹0.25 conservative floor).
+3. **"n/a" Output**:
+   - In the spend comparison table, cards with incomplete data render `"n/a"` rather than displaying an inaccurate `₹0` or fabricated total.
+4. **Line-by-Line Formula Transparency**:
+   - Renders the exact math for each category: $\text{Spend} \times \text{Rate}\% \times \text{Factor} \times \text{Point Value} = \text{Rupee Total}$.
+5. **Categorized Exclusions Display**:
+   - Explicitly partitions exclusions into:
+     - **Zero rewards on**: Categories confirmed to earn 0%.
+     - **Unconfirmed**: Categories where bank terms are ambiguous.
+     - **Extra fee applies**: Categories subject to bank surcharges.
 
 ---
 
-## 7. Page Map Update
+## 6. Vendor Offers vs Enduring Card Benefits
 
-```mermaid
-graph LR
-    idx[index.html]
-    brd["brands.html?brand=X"]
-    cmp["compare.html<br/>(new)"]
+The data model and calculator maintain an explicit separation between enduring card features and third-party promotions:
 
-    idx -->|nav link| cmp
-    cmp -->|"card detail<br/>(same page, anchor)"| cmp
-    brd -.->|possible future:<br/>same-card cross-link| cmp
-```
-
-The `brands.html` link is dotted/possible, not built — cross-linking a
-voucher-portal brand page to this page's card detail only makes sense
-once both datasets share enough `id`s to make the link reliably useful,
-not before.
+| Attribute | Enduring Card Benefits (`card_benefit`) | Third-Party Vendor Offers (`vendor_offer`) |
+|---|---|---|
+| **Nature** | Structural features of the card (e.g. lounge access, base milestones) | Promotional merchant partnerships (e.g. EazyDiner, BookMyShow discounts) |
+| **Expiry Date** | None (`valid_until: null`) | Mandatory `valid_from` and `valid_until` |
+| **Lapse Handling** | Never marked expired | Automatically flagged by `isOfferExpired()` |
+| **Ledger Contribution** | Counted if cash-equivalent and spend threshold met | **₹0 if expired**; excluded immediately upon passing `valid_until` |
+| **UI Presentation** | Displayed in standard benefit list | Badged with expiry date (`Vendor offer · valid until YYYY-MM-DD`) or `<span class="vendor-badge expired">EXPIRED — needs update</span>` |
+| **Maintenance Signal** | Reviewed during annual MITC audit | `isOfferExpiringSoon()` flags offers within 30 days of lapsing |
 
 ---
 
-## 8. Open Decision Before Building
+## 7. Deliberate Avoidance of a Crowned "Best Card" Badge
 
-Given `Structure.md §1`'s stated priority (distribution over features),
-worth explicitly choosing one before writing code:
+`compare.html` intentionally refuses to declare a "Winner" or award a "Best Card" badge:
 
-- **Lean v1**: 4 cards, no bucket/tag filter UI, no offers/exclusions
-  display beyond a plain list — just the calculator table. Ships fast,
-  tests whether anyone actually uses it.
-- **Full v1**: everything in this doc, buckets, tags, exclusion penalties,
-  offers — more complete but real build time against a stated priority
-  of distribution, not features.
+1. **Credibility Hazard**: With several cards lacking confirmed point redemption values, and with accelerated 5X/10X categories unmodeled, crowning a single "winner" would mislead visitors and destroy user trust.
+2. **Subjective Value Weights**: A cardholder spending heavily on rent or forex will have radically different outcomes than an everyday grocery shopper; net value depends entirely on individual spend breakdowns.
+3. **Scenario Presets as Starting Points, Not Endorsements**:
+   - Scenarios (`frequent-flyer`, `everyday-shopper`, etc.) populate realistic category inputs and suggest a relevant starting pair.
+   - The comparison itself always executes through the transparent net ledger so all caveats and exclusions remain completely visible.
 
-Not picking one now, since it's your call — but the architecture above
-supports either; the lean version is just a subset (skip `tags` filtering
-logic in `cardCompareMain.js`, skip `cardOffers.csv` for now).
+---
+
+## 8. Deployment & Access Status
+
+- **URL**: `https://vouchwise.in/compare.html`
+- **Routing**: Static asset served via Cloudflare Pages / Worker `env.ASSETS` fallback.
+- **Navigation**: Deliberately omitted from `index.html` navigation and footer.
+- **Sitemap**: Deliberately omitted from `sitemap.xml`.
+- **Search Engines**: Unlinked and unpromoted. Serves as an internal preview and testing surface.
+
+---
+
+## 9. Backlog & Launch Gates
+
+For the roadmap, launch gates, acceptance criteria, and next steps, see the companion backlog document:
+[vouchwise-admin/docs/backlog/CARD_COMPARE_BACKLOG.md](../../../vouchwise-admin/docs/backlog/CARD_COMPARE_BACKLOG.md).
