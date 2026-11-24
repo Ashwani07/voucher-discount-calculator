@@ -4,7 +4,7 @@ import { cards, portals, brands, lastVerified, cardRules } from './data.js';
 import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier, isCardPortalEligible } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
-import { getBrandById, getPortalById, renderApplyBadge, renderMetricGrid, validateVoucherAmount, hideBrandGuideLink, hidePortalResults } from './utils.js';
+import { getBrandById, getPortalById, renderApplyBadge, renderMetricGrid, validateVoucherAmount, hideBrandGuideLink, hidePortalResults, escapeHtml } from './utils.js';
 import { getActiveWalletIds } from './wallet.js';
 import { resetSearchState } from './search.js';
 import { clearCustomResults } from './customCalc.js';
@@ -125,8 +125,10 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
 
     const flagHTML = `<a href="${reportURL}" target="_blank" rel="noopener noreferrer" data-flag-brand="${activeBrandObj.id}" data-flag-portal="${entry.portalId}" class="flag-btn text-[10px] ${flagged ? 'text-amber-500' : 'text-slate-300 hover:text-slate-400'} ml-1 transition-colors" title="${flagged ? 'Marked as possibly outdated — click to unmark' : 'Report this discount as outdated or incorrect'}">⚑</a>`;
     const flaggedBadge = flagged ? '<span class="text-[10px] text-amber-600 bg-amber-50 border border-amber-200 px-1 py-0.5 rounded ml-1">Reported</span>' : '';
-    const buyBtn = buyURL && !notAvailable
-      ? `<a href="${buyURL}" target="_blank" rel="noopener noreferrer" class="text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Buy ↗</a>`
+    const isAllowedBuyUrl = Boolean(buyURL && (buyURL.startsWith('https://') || buyURL.startsWith('/out/')));
+    const safeBuyURL = isAllowedBuyUrl ? escapeHtml(buyURL) : '';
+    const buyBtn = safeBuyURL && !notAvailable
+      ? `<a href="${safeBuyURL}" target="_blank" rel="noopener noreferrer" class="text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Buy ↗</a>`
       : '<span class="text-[10px] text-slate-300">—</span>';
     const portalNotice = cardRules?.portalOverrides?.[entry.portalId]?.notice
       ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${cardRules.portalOverrides[entry.portalId].notice}</div>`
@@ -172,7 +174,7 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
             ${buyBtn}
           </div>
         </div>
-        ${disclaimer ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${disclaimer}</div>` : ''}
+        ${disclaimer ? `<div class="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5 mt-1">${escapeHtml(disclaimer)}</div>` : ''}
         ${portalNotice}
         ${cardPortalNotice}
         ${eitherOrNote}

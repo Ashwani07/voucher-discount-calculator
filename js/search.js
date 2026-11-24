@@ -2,22 +2,48 @@
 import { brands } from './data.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
+import { escapeHtml } from './utils.js';
 
 export function hideBrandSuggestions() {
   dom.brandSuggestions.classList.add('hidden');
 }
 
 export function handleBrandInput() {
-  const query = dom.brandSearch.value.trim().toLowerCase();
+  const rawValue = dom.brandSearch.value.trim();
+  const query = rawValue.toLowerCase();
+
+  // If the user modified the search box text away from the selected brand name, clear selection
+  if (state.currentBrandId) {
+    const selectedBrand = brands.find(b => b.id === state.currentBrandId);
+    if (!selectedBrand || selectedBrand.name.trim().toLowerCase() !== query) {
+      state.currentBrandId = null;
+      if (typeof window.__vw_hidePortalPreview === 'function') {
+        window.__vw_hidePortalPreview();
+      }
+      if (dom.showAllPortalsBtn) {
+        dom.showAllPortalsBtn.href = '#';
+      }
+    }
+  }
+
   if (!query) {
     hideBrandSuggestions();
     state.currentBrandId = null;
     return;
   }
 
-  const matches = brands.filter(brand => brand.name.toLowerCase().includes(query)).slice(0, 10);
+  // Multi-field search: match brand name, slug/id, and category
+  const normalizedQuery = query.replace(/[_-]+/g, ' ');
+  const matches = brands.filter(brand => {
+    const nameMatch = brand.name.toLowerCase().includes(query);
+    const idMatch = brand.id.toLowerCase().replace(/_/g, ' ').includes(normalizedQuery);
+    const catMatch = brand.category_name && brand.category_name.toLowerCase().includes(query);
+    return nameMatch || idMatch || catMatch;
+  }).slice(0, 10);
+
   if (!matches.length) {
     hideBrandSuggestions();
+    state.currentBrandId = null;
     return;
   }
 
@@ -27,10 +53,15 @@ export function handleBrandInput() {
       const deleteHtml = isCustom 
         ? `<span data-delete-brand="${brand.id}" class="text-[10px] text-red-400 hover:text-red-600 px-2 py-1" title="Delete custom brand">✕</span>` 
         : '';
+      const catBadge = brand.category_name && brand.category_name.toLowerCase() !== 'general'
+        ? `<span class="text-[10px] text-slate-400 ml-1.5 uppercase tracking-wider">(${escapeHtml(brand.category_name)})</span>`
+        : '';
         
       return `
         <div class="hover:bg-slate-100 p-2 border-b last:border-0 text-sm flex items-center justify-between group">
-          <div data-id="${brand.id}" class="flex-1 cursor-pointer">${brand.name}</div>
+          <div data-id="${brand.id}" class="flex-1 cursor-pointer">
+            <span class="font-medium text-slate-800">${escapeHtml(brand.name)}</span>${catBadge}
+          </div>
           ${deleteHtml}
         </div>`;
     })

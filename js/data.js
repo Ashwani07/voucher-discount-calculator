@@ -134,7 +134,7 @@ export const masterBrands = [
   },
   {
     "id": "absolute_barbecues",
-    "name": "Absolute Barbecues (Custom)",
+    "name": "Absolute Barbecues",
     "category_name": "Dining & Food",
     "portals": [
       {
@@ -1550,7 +1550,7 @@ export const masterBrands = [
   },
   {
     "id": "amazon_shopping_voucher",
-    "name": "Amazon Shopping Voucher",
+    "name": "Amazon Shopping",
     "category_name": "Electronics",
     "portals": [
       {
@@ -3895,7 +3895,7 @@ export const masterBrands = [
   },
   {
     "id": "bigbasket",
-    "name": "Bigbasket (Custom)",
+    "name": "Bigbasket",
     "category_name": "Dining & Food",
     "portals": [
       {
@@ -6570,7 +6570,7 @@ export const masterBrands = [
   },
   {
     "id": "cleartrip_hotels",
-    "name": "Cleartrip Hotels (Custom)",
+    "name": "Cleartrip Hotels",
     "category_name": "Travel & Leisure",
     "portals": [
       {
@@ -7001,7 +7001,7 @@ export const masterBrands = [
   },
   {
     "id": "croma",
-    "name": "Croma (Custom)",
+    "name": "Croma",
     "category_name": "Electronics",
     "portals": [
       {
@@ -7431,7 +7431,7 @@ export const masterBrands = [
   },
   {
     "id": "decathlon",
-    "name": "Decathlon (Custom)",
+    "name": "Decathlon",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -7790,7 +7790,7 @@ export const masterBrands = [
   },
   {
     "id": "dominos",
-    "name": "Domino'S",
+    "name": "Dominos",
     "category_name": "Dining & Food",
     "portals": [
       {
@@ -7821,7 +7821,7 @@ export const masterBrands = [
   },
   {
     "id": "dominos_pizza",
-    "name": "Dominos Pizza (Custom)",
+    "name": "Domino's Pizza",
     "category_name": "Dining & Food",
     "portals": [
       {
@@ -11557,7 +11557,7 @@ export const masterBrands = [
   },
   {
     "id": "giva_gold_jewellery",
-    "name": "GIVA Gold Jewellery (Custom)",
+    "name": "Giva Gold Jewellery",
     "category_name": "Miscellaneous",
     "portals": [
       {
@@ -11674,7 +11674,7 @@ export const masterBrands = [
   },
   {
     "id": "giva_silver_coin",
-    "name": "GIVA Silver Coin (Custom)",
+    "name": "Giva Silver Coin",
     "category_name": "Miscellaneous",
     "portals": [
       {
@@ -14758,7 +14758,7 @@ export const masterBrands = [
   },
   {
     "id": "jockey",
-    "name": "Jockey (Custom)",
+    "name": "Jockey",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -15681,7 +15681,7 @@ export const masterBrands = [
   },
   {
     "id": "ketan_diamonds_diamond_only",
-    "name": "Ketan Diamonds - Diamond Only",
+    "name": "Ketan Diamonds Diamond Only",
     "category_name": "Miscellaneous",
     "portals": [
       {
@@ -15752,7 +15752,7 @@ export const masterBrands = [
   },
   {
     "id": "ketan_diamonds_gold_coin",
-    "name": "Ketan Diamonds - Gold Coin",
+    "name": "Ketan Diamonds Gold Coin",
     "category_name": "Miscellaneous",
     "portals": [
       {
@@ -15807,7 +15807,7 @@ export const masterBrands = [
   },
   {
     "id": "ketan_diamonds_gold_jewellery",
-    "name": "Ketan Diamonds - Gold Jewellery",
+    "name": "Ketan Diamonds Gold Jewellery",
     "category_name": "Miscellaneous",
     "portals": [
       {
@@ -16699,7 +16699,7 @@ export const masterBrands = [
   },
   {
     "id": "levis",
-    "name": "Levi's",
+    "name": "Levis",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -17131,7 +17131,7 @@ export const masterBrands = [
   },
   {
     "id": "lifestyle_online",
-    "name": "Lifestyle - Online",
+    "name": "Lifestyle Online",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -17803,7 +17803,7 @@ export const masterBrands = [
   },
   {
     "id": "luxe",
-    "name": "Luxe Gift Card",
+    "name": "Luxe",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -18810,7 +18810,7 @@ export const masterBrands = [
   },
   {
     "id": "malabar_diamond",
-    "name": "Malabar Diamond (Custom)",
+    "name": "Malabar Diamond",
     "category_name": "Miscellaneous",
     "portals": [
       {
@@ -19541,7 +19541,7 @@ export const masterBrands = [
   },
   {
     "id": "max_fashion_offline",
-    "name": "Max Fashion (Offline)",
+    "name": "Max Fashion Offline",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -19620,7 +19620,7 @@ export const masterBrands = [
   },
   {
     "id": "max_fashion_online",
-    "name": "Max Fashion (Online)",
+    "name": "Max Fashion Online",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -20868,7 +20868,7 @@ export const masterBrands = [
   },
   {
     "id": "muthoot_gold",
-    "name": "Muthoot Gold Voucher",
+    "name": "Muthoot Gold",
     "category_name": "Miscellaneous",
     "portals": [
       {
@@ -20953,7 +20953,7 @@ export const masterBrands = [
   },
   {
     "id": "myntra",
-    "name": "Myntra (Custom)",
+    "name": "Myntra",
     "category_name": "Electronics",
     "portals": [
       {
@@ -21365,7 +21365,7 @@ export const masterBrands = [
   },
   {
     "id": "neemans",
-    "name": "Neeman's",
+    "name": "Neemans",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -21867,7 +21867,7 @@ export const masterBrands = [
   },
   {
     "id": "nykaa",
-    "name": "Nykaa (Custom)",
+    "name": "Nykaa",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -25063,7 +25063,7 @@ export const masterBrands = [
   },
   {
     "id": "ray_ban",
-    "name": "Ray - Ban",
+    "name": "Ray Ban",
     "category_name": "Fashion & Accessories",
     "portals": [
       {
@@ -27444,7 +27444,7 @@ export const masterBrands = [
   },
   {
     "id": "snitch",
-    "name": "Snitch (Custom)",
+    "name": "Snitch",
     "category_name": "Electronics",
     "portals": [
       {
@@ -28609,7 +28609,7 @@ export const masterBrands = [
   },
   {
     "id": "subway",
-    "name": "Subway (Custom)",
+    "name": "Subway",
     "category_name": "Dining & Food",
     "portals": [
       {
@@ -29445,7 +29445,7 @@ export const masterBrands = [
   },
   {
     "id": "swiggy_instamart_money",
-    "name": "Swiggy Instamart - Money Voucher",
+    "name": "Swiggy Instamart - Money",
     "category_name": "Miscellaneous",
     "portals": [
       {
@@ -29476,7 +29476,7 @@ export const masterBrands = [
   },
   {
     "id": "swiggy_money",
-    "name": "Swiggy Money Voucher",
+    "name": "Swiggy Money",
     "category_name": "Dining & Food",
     "portals": [
       {
@@ -32684,7 +32684,7 @@ export const masterBrands = [
   },
   {
     "id": "unipin_bgmi",
-    "name": "Unipin - BGMI",
+    "name": "Unipin BGMI",
     "category_name": "Entertainment & OTT",
     "portals": [
       {
@@ -32917,7 +32917,7 @@ export const masterBrands = [
   },
   {
     "id": "v_mart",
-    "name": "V Mart (Custom)",
+    "name": "V - Mart",
     "category_name": "Electronics",
     "portals": [
       {
@@ -36210,7 +36210,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-amex-gold",
+    "applyURL": "",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption.",
     "direct_reward_note": ""
@@ -36236,7 +36236,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
+    "applyURL": "",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption.",
     "direct_reward_note": ""
@@ -36288,7 +36288,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-amex-platinum-travel",
+    "applyURL": "",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 MR Point = ₹0.33; optimal value unlocked at milestone spends.",
     "direct_reward_note": ""
@@ -36314,7 +36314,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "0"
     },
-    "applyURL": "https://vouchwise.in/out/apply-axis-atlas",
+    "applyURL": "",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 Edge Mile = 2 Partner Miles = ₹2.00.",
     "direct_reward_note": ""
@@ -36340,7 +36340,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "0"
     },
-    "applyURL": "https://vouchwise.in/out/apply-axis-flipkart",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "",
     "direct_reward_note": ""
@@ -36418,7 +36418,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "0"
     },
-    "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
+    "applyURL": "",
     "applyStatus": "referral",
     "assumption_note": "Assuming 5 Edge Rewards = 4 Air Miles = ₹4.00 (₹0.80 per point).",
     "direct_reward_note": ""
@@ -36444,7 +36444,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "0"
     },
-    "applyURL": "https://vouchwise.in/out/apply-axis-myzone",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "",
     "direct_reward_note": ""
@@ -36496,7 +36496,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
+    "applyURL": "",
     "applyStatus": "invite_only",
     "assumption_note": "Assuming 1 Reward Point = ₹1.00 via SmartBuy travel redemption.",
     "direct_reward_note": "5x on SmartBuy capped at ₹22,500/month voucher spend (3,000 RP)"
@@ -36522,7 +36522,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-hdfc-millennia",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "5% CashPoints on SmartBuy & Amazon (named partners); 1% elsewhere. Cap: ₹1,000/month on 5% categories.",
     "direct_reward_note": "Earns 5% CashPoints directly on Amazon, Flipkart, Myntra, Swiggy, Zomato, Uber, BookMyShow, SonyLiv, Tata CLiQ, Cult.fit — buying vouchers for these brands via any portal may not add incremental value. Cap: ₹1,000/month on 5% categories."
@@ -36600,7 +36600,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-hdfc-tata-neu-infinity",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "",
     "direct_reward_note": ""
@@ -36704,7 +36704,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-hsbc-visaplatinum",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "Assuming 2 Reward Point = 1 Air Mile = ₹0.50.",
     "direct_reward_note": ""
@@ -36756,7 +36756,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-icici-coral",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
     "direct_reward_note": ""
@@ -36808,7 +36808,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-icici-epm",
+    "applyURL": "",
     "applyStatus": "invite_only",
     "assumption_note": "Assuming 1 Reward Point = ₹1.00 via in-app redemption.",
     "direct_reward_note": "6x on iShop capped at ₹120,000/month spend (18,000 RP)"
@@ -36834,7 +36834,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-icici-sapphiro",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
     "direct_reward_note": "6x on iShop capped at ₹90,000/month spend (9,000 RP)"
@@ -36886,7 +36886,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-kotak-airplus",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Mile = ₹1 (Kotak Unbox) or 1:1 Air India",
     "direct_reward_note": ""
@@ -36912,7 +36912,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-kotak-solitare",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Mile = ₹1 (Kotak Unbox) or 1:1 Air India",
     "direct_reward_note": ""
@@ -36938,7 +36938,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-onecard",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "Base rate only (0.2%). The 5X on top-2 categories is dynamic and unpredictable — not modelled here. 1 RP = ₹0.10.",
     "direct_reward_note": ""
@@ -36964,7 +36964,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-sbi-bpcl",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "",
     "direct_reward_note": ""
@@ -37016,7 +37016,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-black",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "5 RP/₹100 on online spends (including Gyftr, Amazon); 1 RP = ₹1. Monthly cap: 2,000 RP per category. Excludes fuel, rent, wallet top-ups.",
     "direct_reward_note": ""
@@ -37042,7 +37042,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-purple",
+    "applyURL": "",
     "applyStatus": "direct",
     "assumption_note": "Online rate 2 RP/₹100 applied to portals. 1 RP = ₹1. Excludes fuel, rent, wallet top-ups.",
     "direct_reward_note": ""

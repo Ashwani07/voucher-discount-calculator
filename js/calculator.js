@@ -170,7 +170,7 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
   // itemised line the bank can see and excludes from reward calculation.
   // Everywhere else, the bank only sees the total swiped amount, so the fee
   // (if any) stays folded into what earns rewards.
-  const feeIsExcludedFromRewards = discountPercent < 0 && isHomePortal(card, portal);
+  const feeIsExcludedFromRewards = (discountPercent < 0 || ccFeePercent > 0) && isHomePortal(card, portal);
   const rewardBasis = feeIsExcludedFromRewards ? voucherAmount : netPaid;
 
   let rpEarned = 0;
@@ -342,12 +342,21 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
  * Rewards") rather than presenting one blended number that implies both.
  */
 function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount, brand = null) {
+  // Surcharge/convenience fee must be preserved even in either-or choices:
+  // Promo discounts are waived on the reward leg, but portal fees/surcharges still apply!
+  const rawDiscount = portal?.upfrontDiscountPercent ?? portalConfig?.upfrontDiscountPercent ?? 0;
+  const rawCcFee = portalConfig?.convenienceFee?.effectiveCcFeePercent;
+  const feePercent = (rawCcFee !== undefined && rawCcFee !== null && rawCcFee > 0)
+    ? rawCcFee
+    : (rawDiscount < 0 ? Math.abs(rawDiscount) : 0);
+  const feeAmount = voucherAmount * (feePercent / 100);
+
   // Discount-only leg: take the Insta Deal, earn zero reward on this
   // transaction — that's the actual choice HDFC presents at checkout.
   const discountOnlyMetrics = (() => {
-    const discountPercent = portal?.upfrontDiscountPercent ?? portalConfig?.upfrontDiscountPercent ?? 0;
-    const upfrontSavings = voucherAmount * (discountPercent / 100);
-    const netPaid = voucherAmount - upfrontSavings;
+    const positiveDiscount = rawDiscount > 0 ? rawDiscount : 0;
+    const upfrontSavings = voucherAmount * (positiveDiscount / 100);
+    const netPaid = voucherAmount - upfrontSavings + feeAmount;
     const finalNetCost = netPaid; // no reward earned on this leg, by definition
     const computedTrueNet = ((voucherAmount - finalNetCost) / voucherAmount) * 100;
     return {
@@ -367,10 +376,26 @@ function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount, brand
     };
   })();
 
+  const rewardPortal = {
+    ...portal,
+    upfrontDiscountPercent: 0
+  };
+  const rewardPortalConfig = {
+    ...portalConfig,
+    upfrontDiscountPercent: 0,
+    convenienceFee: {
+      ...(portalConfig?.convenienceFee || {}),
+      baseFeePercent: portalConfig?.convenienceFee?.baseFeePercent !== undefined && portalConfig?.convenienceFee?.baseFeePercent !== null && portalConfig?.convenienceFee?.baseFeePercent > 0
+        ? portalConfig.convenienceFee.baseFeePercent
+        : (feePercent > 0 ? Number((feePercent / 1.18).toFixed(2)) : 0),
+      effectiveCcFeePercent: feePercent
+    }
+  };
+
   const rewardOnlyLeg = computeStackedMetrics(
     card,
-    { ...portal, upfrontDiscountPercent: 0 },
-    portalConfig,
+    rewardPortal,
+    rewardPortalConfig,
     voucherAmount,
     brand
   );

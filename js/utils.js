@@ -68,23 +68,6 @@ export function renderMetricGrid(rows) {
     </div>`;
 }
 
-const ACTIVE_APPLY_PATHS = new Set([
-  '/out/apply-amex-platinum-reserve',
-  '/out/apply-axis-horizon',
-  '/out/apply-axis-magnus',
-  '/out/apply-hdfc-dbm',
-  '/out/apply-hdfc-regalia-gold',
-  '/out/apply-hdfc-swiggy',
-  '/out/apply-hsbc-liveplus',
-  '/out/apply-hsbc-premier',
-  '/out/apply-hsbc-travelone',
-  '/out/apply-icici-amazon',
-  '/out/apply-icici-emeralde',
-  '/out/apply-icici-times',
-  '/out/apply-sbi-cashback',
-  '/out/apply-scapia'
-]);
-
 export function renderApplyBadge(card) {
   if (card.applyStatus === 'invite_only') {
     return `<span class="text-[10px] text-slate-400 border border-slate-200 px-2 py-0.5 rounded">Invite Only</span>`;
@@ -92,15 +75,10 @@ export function renderApplyBadge(card) {
   if (card.applyStatus === 'closed') {
     return `<span class="text-[10px] text-red-400 border border-red-200 px-2 py-0.5 rounded">Closed</span>`;
   }
-  let applyPath = '';
-  try {
-    applyPath = card.applyURL ? new URL(card.applyURL, 'https://vouchwise.in').pathname : '';
-  } catch {
-    applyPath = card.applyURL || '';
-  }
-  const canApply = card.applyURL && ACTIVE_APPLY_PATHS.has(applyPath);
+  const canApply = Boolean(card.applyURL && (card.applyStatus === 'direct' || card.applyStatus === 'referral'));
   if (canApply) {
-    return `<a href="${card.applyURL}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-[10px] uppercase font-bold tracking-wider text-blue-600 border border-blue-200 hover:bg-blue-50 px-2 py-0.5 rounded transition-colors">Apply Now</a>`;
+    const safeUrl = escapeHtml(card.applyURL);
+    return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-[10px] uppercase font-bold tracking-wider text-blue-600 border border-blue-200 hover:bg-blue-50 px-2 py-0.5 rounded transition-colors">Apply Now</a>`;
   }
   return '';
 }
