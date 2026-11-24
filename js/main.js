@@ -32,6 +32,9 @@ async function bootstrap() {
 
   renderWalletUI();
   await loadScrapedDiscounts();
+  if (dom.verifiedDate && lastVerified) {
+    dom.verifiedDate.textContent = lastVerified;
+  }
   applyBankDefaults();
   initEvents();
   renderFlaggedDiscounts();
@@ -40,6 +43,9 @@ async function bootstrap() {
 
 // React whenever scraped catalog updates dynamically (e.g. background fetch / periodic reload)
 window.addEventListener('vouchwise:catalog-updated', () => {
+  if (dom.verifiedDate && lastVerified) {
+    dom.verifiedDate.textContent = lastVerified;
+  }
   renderFlaggedDiscounts();
   if (state.currentBrandId && getActiveWalletIds().length && dom.resultsSection && !dom.resultsSection.classList.contains('hidden')) {
     refreshPortalResults({ scroll: false, force: true });

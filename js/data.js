@@ -1,4 +1,11 @@
-export const lastVerified = 'September 2026';
+export let lastVerified = 'November 2026';
+
+export function formatGeneratedDate(isoString) {
+  if (!isoString) return null;
+  const d = new Date(isoString);
+  if (isNaN(d.getTime())) return null;
+  return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
 
 // Bank-specific "home portal" multiplier defaults for the Custom Card modal.
 // A card can only earn issuer-specific portal multipliers on its OWN bank's
@@ -37149,6 +37156,12 @@ export async function loadScrapedDiscounts() {
     const res = await fetch('./js/scrapedDiscounts.json');
     if (res.ok) {
       scrapedCatalog = await res.json();
+      if (scrapedCatalog.generatedAt) {
+        const formatted = formatGeneratedDate(scrapedCatalog.generatedAt);
+        if (formatted) {
+          lastVerified = formatted;
+        }
+      }
       enrichBrandsWithScrapedData(scrapedCatalog);
       window.dispatchEvent(new CustomEvent('vouchwise:catalog-updated', { detail: scrapedCatalog }));
     }
