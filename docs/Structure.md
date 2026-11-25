@@ -476,6 +476,10 @@ see only the winning Insta Deal row.
 **Cause**: The notice was stored as a single blended string on the portal level in `cardRules.portalOverrides.maximize_money.notice`.
 **Fix**: Added `cardNotices` mapping to `cardRules.portalOverrides.maximize_money` and updated `results.js` to resolve `portalRule.cardNotices?.[card.id] || portalRule.notice`. SBI Cashback sees only its 5% vs 0% gateway advice; Axis cards see their clawback warning; other cards see a neutral gateway recommendation.
 
+### Bug #29: Hardcoded RP in cap notice fallbacks & custom calculator portal notice parity
+**Symptom**: In `calculator.js`, points cap fallback notices (when `cardCapRule.notice` was omitted) hardcoded `RP/month`, which would display "RP" even for cards earning Miles or other currencies. In `customCalc.js`, only Amazon brand vouchers were evaluated for notices, ignoring portal-level overrides (`maximize_money`, Axis GrabDeals/EdgeRewards) and Amazon Pay gift card overrides.
+**Fix**: In `calculator.js`, points cap fallback notices now derive the currency dynamically from `${card.reward_currency || 'RP'}/month`. In `customCalc.js`, added support for `portalOverrides` (with `cardNotices` per-card resolution), distinguished Amazon Pay vouchers from general brand vouchers, and applied `escapeHtml` to all notice interpolations.
+
 
 ---
 
