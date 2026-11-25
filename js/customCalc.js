@@ -139,7 +139,7 @@ export function renderCustomCardsList(results, voucherAmount, portal = null) {
   const generateCardRow = (result, rank) => {
     const card = result.card;
     const metrics = result.metrics;
-    const currencyLabel = card.id === 'axis_atlas' ? 'Miles' : 'RP';
+    const currencyLabel = card.reward_currency || 'RP';
     const cardYieldPercent = (metrics.cashValue / voucherAmount * 100).toFixed(2);
 
     let statusBadge = '';
