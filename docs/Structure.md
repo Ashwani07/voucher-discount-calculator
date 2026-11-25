@@ -269,6 +269,13 @@ the single canonical source of truth is `data/input/masterCards.csv`. Do not cre
 maintain parallel `masterCards.xlsx` spreadsheets; editing two formats invites silent data drift.
 `masterCards.csv` opens directly in Microsoft Excel and generates clean line-by-line Git diffs.
 
+### 4.20 Results and calculator rendering must remain data-driven without hardcoded card IDs
+Do not re-introduce `if (card.id === '...')` checks into `results.js` or `calculator.js` to customize
+reward formatting, partner multipliers, or currency labels. All card reward behaviors must be declared
+via metadata in `masterCards.csv` (`reward_nature`, `reward_currency`, `transfer_multiplier`,
+`partner_currency`, `redemption_context`) so any new card added to `masterCards.csv` is automatically
+supported without frontend code edits.
+
 ---
 
 ## 5. Known Bugs (Fixed — Do Not Reintroduce)
