@@ -239,8 +239,10 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
     const buyBtn = safeBuyURL && !notAvailable
       ? `<a href="${safeBuyURL}" target="_blank" rel="noopener noreferrer" class="text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Buy ↗</a>`
       : '<span class="text-[10px] text-slate-300">—</span>';
-    const portalNotice = cardRules?.portalOverrides?.[entry.portalId]?.notice
-      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(cardRules.portalOverrides[entry.portalId].notice)}</div>`
+    const portalRule = cardRules?.portalOverrides?.[entry.portalId];
+    const resolvedPortalNotice = portalRule?.cardNotices?.[entry.card.id] || portalRule?.notice;
+    const portalNotice = resolvedPortalNotice
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(resolvedPortalNotice)}</div>`
       : '';
 
     const isAmazonPayGiftCard = activeBrandObj?.id === 'amazon_pay' || activeBrandObj?.id === 'amazon_pay_gift_card';

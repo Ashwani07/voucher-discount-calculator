@@ -471,6 +471,11 @@ see only the winning Insta Deal row.
 **Symptom**: In `renderResults()`, the top KPI summary box hardcoded `(₹… back)`, claiming cash back even for points/miles cards (Atlas, Infinia). Furthermore, in the either/or "reward not taken" case, it printed `₹0.00 back` because `best.metrics.cashValue` is zeroed out on the losing leg.
 **Fix**: Updated `renderResults()` to use data-driven reward currency formatting. When the reward leg is not taken, it now pulls the true forgone reward points and cash value from `legs.reward` (`legs.reward.rpEarned` and `legs.reward.cashValue`).
 
+### Bug #28: Maximize Money blended portal notice mentioning multiple cards
+**Symptom**: When viewing SBI Cashback on Maximize Money, the advisory note warned about Axis Atlas earning 2 Miles/₹100 and Axis clawbacks. When viewing non-Axis cards (Infinia, Amex), the note still referenced SBI Cashback and Axis Atlas.
+**Cause**: The notice was stored as a single blended string on the portal level in `cardRules.portalOverrides.maximize_money.notice`.
+**Fix**: Added `cardNotices` mapping to `cardRules.portalOverrides.maximize_money` and updated `results.js` to resolve `portalRule.cardNotices?.[card.id] || portalRule.notice`. SBI Cashback sees only its 5% vs 0% gateway advice; Axis cards see their clawback warning; other cards see a neutral gateway recommendation.
+
 
 ---
 
@@ -849,7 +854,7 @@ All fixed card rules, caps, overrides, and engine constraints are declaratively 
 | :--- | :--- | :--- |
 | `axis_edgerewards` | `acceleratedMultiplier: 0`, `isDiscountOnly: true` | Axis Bank devalued voucher earn to 0; only upfront discount is credited. |
 | `axis_grabdeals` | `acceleratedMultiplier: 0`, `isDiscountOnly: true` | GrabDeals accelerated voucher rewards removed; upfront discount only. |
-| `maximize_money` | Gateway advisory notice | Warns user to pick Easebuzz gateway (5% SBI Cashback / 2 Miles Atlas) to avoid MCC 5947. |
+| `maximize_money` | Card-specific & fallback gateway notice | Warns user to pick Easebuzz gateway (card-specific: 5% vs 0% for SBI Cashback; clawback warning for Axis cards; neutral MCC notice for others). |
 
 ### 15.2 Amazon Portal Overrides (`cardRules.js.amazonPortalOverrides`)
 Amazon operates with dual categorization depending on whether the voucher is a third-party brand or canonical Amazon Pay:

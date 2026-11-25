@@ -21,7 +21,16 @@ export const cardRules = {
       sourceUrl: "https://grabdeals.axisbank.com/"
     },
     maximize_money: {
-      notice: "Gateway Dependent: Choose Easebuzz gateway to avoid MCC 5947 gift card exclusions. SBI Cashback earns 5% and Axis Atlas earns 2 Miles/₹100 via Easebuzz (subject to Axis retrospective clawback). CCAvenue/Razorpay may pass MCC 5947 earning 0%.",
+      cardNotices: {
+        sbi_cashback: "Gateway Dependent: Choose Easebuzz gateway to avoid MCC 5947 gift card exclusions and earn 5% cashback. CCAvenue or Razorpay may pass MCC 5947, resulting in 0% cashback.",
+        axis_atlas: "Gateway & Clawback Warning: Choose Easebuzz gateway to avoid MCC 5947. Axis Bank officially excludes gift vouchers; base miles (2 Miles/₹100) via Easebuzz remain subject to retroactive clawback by Axis Bank.",
+        axis_magnus: "Gateway & Clawback Warning: Choose Easebuzz gateway to avoid MCC 5947. Axis Bank officially excludes gift vouchers; base points via Easebuzz remain subject to retroactive clawback by Axis Bank.",
+        axis_magnus_burgundy: "Gateway & Clawback Warning: Choose Easebuzz gateway to avoid MCC 5947. Axis Bank officially excludes gift vouchers; base points via Easebuzz remain subject to retroactive clawback by Axis Bank.",
+        axis_horizon: "Gateway & Clawback Warning: Choose Easebuzz gateway to avoid MCC 5947. Axis Bank officially excludes gift vouchers; base points via Easebuzz remain subject to retroactive clawback by Axis Bank.",
+        axis_myzone: "Gateway & Clawback Warning: Choose Easebuzz gateway to avoid MCC 5947. Axis Bank officially excludes gift vouchers; base points via Easebuzz remain subject to retroactive clawback by Axis Bank.",
+        axis_flipkart: "Gateway & Clawback Warning: Choose Easebuzz gateway to avoid MCC 5947. Axis Bank officially excludes gift vouchers; base cashback via Easebuzz remains subject to retroactive clawback by Axis Bank."
+      },
+      notice: "Gateway Dependent: Choose Easebuzz gateway at checkout to avoid MCC 5947 gift card exclusions.",
       sourceUrl: "https://www.maximize.money/"
     }
   },
