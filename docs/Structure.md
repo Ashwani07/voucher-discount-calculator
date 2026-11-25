@@ -460,6 +460,10 @@ see only the winning Insta Deal row.
 **Cause**: `results.js` and `calculator.js` route `brand.id === 'amazon_pay'` to `cardRules.amazonPortalOverrides.amazon_pay_gift_card`. The Axis card notices were initially only populated in `brand_voucher`.
 **Fix**: Added all 6 Axis cards (`axis_atlas`, `axis_magnus`, `axis_magnus_burgundy`, `axis_horizon`, `axis_myzone`, `axis_flipkart`) to `amazon_pay_gift_card` with the identical gateway and retrospective clawback warning.
 
+### Bug #27: Top summary reward formatting and forgone either/or reward resolution
+**Symptom**: In `renderResults()`, the top KPI summary box hardcoded `(₹… back)`, claiming cash back even for points/miles cards (Atlas, Infinia). Furthermore, in the either/or "reward not taken" case, it printed `₹0.00 back` because `best.metrics.cashValue` is zeroed out on the losing leg.
+**Fix**: Updated `renderResults()` to use data-driven reward currency formatting. When the reward leg is not taken, it now pulls the true forgone reward points and cash value from `legs.reward` (`legs.reward.pointsEarned` and `legs.reward.cashValue`).
+
 
 ---
 
@@ -886,3 +890,13 @@ GyFTR and SmartBuy enforce purchase limits per mobile number per calendar month:
 1. **Home-Portal Fee Exclusion (`isHomePortal`)**: Fee line items are excluded from the reward basis when a card pays on its home portal (HDFC on SmartBuy, Axis on GrabDeals, ICICI on iShop, SBI on Yono, Amex on Shopwise).
 2. **SmartBuy Dual-Offer Separation (`isEitherOrPortal`)**: Gated split showing both Insta Deals and Accelerated Rewards rows when offers differ.
 3. **Spend Block Flooring (`calculateTrueNetMetricsWithFlooring`)**: Denomination flooring to ₹100 spend blocks.
+
+### 15.6 Data-Driven Multi-Tier Reward Schema (`masterCards.csv`)
+To eliminate hardcoded card IDs and card names in frontend calculation and rendering templates, `masterCards.csv` defines 5 metadata columns across all cards:
+- **`reward_nature`**: Categorizes the financial certainty of the reward (`cashback` = hard statement credit; `portal_points` = bank travel/merchandise portal; `transfer_miles` = external airline/hotel loyalty programs; `brand_currency` = brand-locked ecosystem coins like NeuCoins).
+- **`reward_currency`**: Exact currency label (e.g. `Cashback`, `EDGE Miles`, `EDGE Rewards`, `MR Points`, `NeuCoins`, `CashPoints`, `RP`).
+- **`transfer_multiplier`**: Conversion ratio to partner programs (e.g. `2.0` for Axis Atlas 1:2 ratio; `0.4` for Magnus 5:2 ratio; `0.8` for Burgundy 5:4 ratio; `1.0` for 1:1 transfers; `0.0` for non-transfer cards).
+- **`partner_currency`**: Target currency name (e.g. `Partner Pts`, `Air Miles`).
+- **`redemption_context`**: Explicit qualifier for estimated valuations (e.g. `SmartBuy travel`, `Gold catalogue`, `Tata brands`, `statement cash credit`).
+
+`results.js` renders all reward chains dynamically from these columns without inspecting `card.id`. Adding a new card requires updating only `masterCards.csv`.

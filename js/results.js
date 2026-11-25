@@ -157,47 +157,30 @@ export function groupAndSortResults(results) {
 }
 
 function formatRewardValue(entry, cardYieldPercent, cappedBadge, notTakenTag, rewardNotTaken) {
-  if (entry.card.rewardType !== 'points' || !entry.card.spendBlock) {
-    const rawCash = `₹${entry.metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)${cappedBadge}`;
-    return rawCash + (rewardNotTaken ? notTakenTag : '');
-  }
-
-  const cid = entry.card.id;
-  const rp = entry.metrics.rpEarned;
+  const card = entry.card;
   const cashVal = `₹${entry.metrics.cashValue.toFixed(2)}`;
+  const tag = rewardNotTaken ? notTakenTag : '';
 
-  let text = '';
-  // 1. Transferrable Airline / Hotel Miles
-  if (cid === 'axis_atlas') {
-    const partnerPts = rp * 2;
-    text = `${rp} EDGE Miles → ${partnerPts} Partner Pts (est. ${cashVal}, ${cardYieldPercent}%)${cappedBadge}`;
-  } else if (cid === 'axis_magnus') {
-    const airMiles = Math.round((rp * 2) / 5);
-    text = `${rp} EDGE Rewards → ${airMiles} Air Miles (est. ${cashVal}, ${cardYieldPercent}%)${cappedBadge}`;
-  } else if (cid === 'axis_magnus_burgundy') {
-    const airMiles = Math.round((rp * 4) / 5);
-    text = `${rp} EDGE Rewards → ${airMiles} Air Miles (est. ${cashVal}, ${cardYieldPercent}%)${cappedBadge}`;
-  } else if (cid === 'axis_horizon') {
-    text = `${rp} EDGE Miles → ${rp} Partner Miles (est. ${cashVal}, ${cardYieldPercent}%)${cappedBadge}`;
-  } else if (cid?.startsWith('amex_')) {
-    text = `${rp} MR Points (est. ${cashVal}, ${cardYieldPercent}%)${cappedBadge}`;
-  }
-  // 2. Proprietary Portal Points
-  else if (cid === 'hdfc_infinia' || cid === 'hdfc_dbm' || cid === 'hdfc_diners_black') {
-    text = `${rp} RP (est. ${cashVal} on SmartBuy travel, ${cardYieldPercent}%)${cappedBadge}`;
-  } else if (cid === 'hdfc_regalia_gold') {
-    text = `${rp} RP (est. ${cashVal} on Gold catalogue, ${cardYieldPercent}%)${cappedBadge}`;
-  } else if (cid === 'hdfc_tata_neu_infinity') {
-    text = `${rp} NeuCoins (${cashVal} on Tata brands, ${cardYieldPercent}%)${cappedBadge}`;
-  } else if (cid === 'hdfc_millennia') {
-    text = `${rp} CashPoints (${cashVal} cash credit, ${cardYieldPercent}%)${cappedBadge}`;
-  } else {
-    // 3. Fallback for other point cards
-    const currencyLabel = cid?.startsWith('axis_') ? 'EDGE Rewards' : 'RP';
-    text = `${rp} ${currencyLabel} (est. ${cashVal}, ${cardYieldPercent}%)${cappedBadge}`;
+  // Direct cashback cards (SBI Cashback, Axis Flipkart, etc.)
+  if (card.reward_nature === 'cashback' || card.rewardType === 'cashback' || !card.spendBlock) {
+    return `${cashVal} cashback (${cardYieldPercent}%)${cappedBadge}${tag}`;
   }
 
-  return text + (rewardNotTaken ? notTakenTag : '');
+  const rp = entry.metrics.rpEarned;
+  const cur = card.reward_currency || 'RP';
+  const transferMult = Number(card.transfer_multiplier || 0);
+
+  // Transfer partner cards with conversion ratio (Atlas, Magnus, Burgundy, Horizon, etc.)
+  if (card.reward_nature === 'transfer_miles' && transferMult > 0 && card.partner_currency) {
+    const partnerPts = Math.round(rp * transferMult);
+    return `${rp} ${cur} → ${partnerPts} ${card.partner_currency} (est. ${cashVal}, ${cardYieldPercent}%)${cappedBadge}${tag}`;
+  }
+
+  // Portal points / ecosystem loyalty coins / catalog rewards
+  const ctx = card.redemption_context ? ` on ${card.redemption_context}` : '';
+  const isEstimated = card.reward_nature !== 'cashback' && card.reward_nature !== 'brand_currency';
+  const prefix = isEstimated ? 'est. ' : '';
+  return `${rp} ${cur} (${prefix}${cashVal}${ctx}, ${cardYieldPercent}%)${cappedBadge}${tag}`;
 }
 
 function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
@@ -390,9 +373,28 @@ export function renderResults(groups, brand, shouldScroll, force = false) {
   document.getElementById('upfrontValue').textContent = bestDiscountNotTaken
     ? `${best.upfront.toFixed(2)}% available, not taken (₹${best.metrics.netPaid.toFixed(0)} to pay)`
     : `${best.upfront.toFixed(2)}% (₹${best.metrics.netPaid.toFixed(0)} to pay)`;
-  document.getElementById('rewardValue').textContent = bestRewardNotTaken
-    ? `${forgoneRewardPct.toFixed(2)}% available, not taken (₹${best.metrics.cashValue.toFixed(2)} back)`
-    : `${realizedRewardPct.toFixed(2)}% (₹${best.metrics.cashValue.toFixed(2)} back)${topCappedTag}`;
+  const card = best.card;
+  const isCash = card.reward_nature === 'cashback' || card.rewardType === 'cashback' || !card.spendBlock;
+  const cur = card.reward_currency || 'RP';
+
+  let topRewardText = '';
+  if (bestRewardNotTaken) {
+    const forgoneCash = legs ? legs.reward.cashValue.toFixed(2) : '0.00';
+    if (isCash) {
+      topRewardText = `${forgoneRewardPct.toFixed(2)}% available, not taken (₹${forgoneCash} cashback)`;
+    } else {
+      const forgoneRp = legs ? legs.reward.pointsEarned : 0;
+      topRewardText = `${forgoneRewardPct.toFixed(2)}% available, not taken (${forgoneRp} ${cur}, est. ₹${forgoneCash})`;
+    }
+  } else {
+    const cashVal = best.metrics.cashValue.toFixed(2);
+    if (isCash) {
+      topRewardText = `${realizedRewardPct.toFixed(2)}% (₹${cashVal} cashback)${topCappedTag}`;
+    } else {
+      topRewardText = `${realizedRewardPct.toFixed(2)}% (${best.metrics.rpEarned} ${cur}, est. ₹${cashVal})${topCappedTag}`;
+    }
+  }
+  document.getElementById('rewardValue').textContent = topRewardText;
   document.getElementById('netValue').textContent = `${best.computedTrueNet.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
   const guideLink = document.getElementById('brandGuideLink');

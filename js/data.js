@@ -36294,6 +36294,11 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "MR Points",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "24K Gold Collection",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "5",
@@ -36308,7 +36313,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-amex-gold",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 MR Point = ₹0.33 via 24K Gold Collection Amazon/Flipkart vouchers (up to ₹0.58 on Taj or ₹0.70+ via Marriott Bonvoy 1:1).",
     "direct_reward_note": ""
@@ -36320,6 +36325,11 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "MR Points",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "24K Gold Collection",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "2",
@@ -36334,7 +36344,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-amex-mrcc",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 MR Point = ₹0.33 via 24K Gold Collection Amazon/Flipkart vouchers (up to ₹0.58 on Taj or ₹0.70+ via Marriott Bonvoy 1:1).",
     "direct_reward_note": ""
@@ -36346,6 +36356,11 @@ export const masterCards = [
     "pointValue": "0.33",
     "spendBlock": "50",
     "pointsPerBlock": "1.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "MR Points",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "general catalogue",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "3",
@@ -36372,6 +36387,11 @@ export const masterCards = [
     "pointValue": "0.40",
     "spendBlock": "50",
     "pointsPerBlock": "1.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "MR Points",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "Taj vouchers",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "3",
@@ -36386,7 +36406,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-amex-platinum-travel",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 MR Point = ₹0.40 via Taj vouchers (₹0.70+ via Marriott Bonvoy 1:1; ₹0.33 Gold Collection requires pooling with MRCC/Gold).",
     "direct_reward_note": ""
@@ -36398,6 +36418,11 @@ export const masterCards = [
     "pointValue": "2.0",
     "spendBlock": "100",
     "pointsPerBlock": "2.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "EDGE Miles",
+    "transfer_multiplier": "2.0",
+    "partner_currency": "Partner Pts",
+    "redemption_context": "airline & hotel partners",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36412,7 +36437,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "0"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-axis-atlas",
     "applyStatus": "closed",
     "assumption_note": "Assuming 1 EDGE Mile = 2 Airline/Hotel Partner Points = ₹2.00 travel value (cash credit is ₹0.50/mile).",
     "direct_reward_note": ""
@@ -36424,6 +36449,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.0",
+    "reward_nature": "cashback",
+    "reward_currency": "Cashback",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "statement cash credit",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36438,7 +36468,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "0"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-axis-flipkart",
     "applyStatus": "direct",
     "assumption_note": "",
     "direct_reward_note": ""
@@ -36450,6 +36480,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "2.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "EDGE Miles",
+    "transfer_multiplier": "1.0",
+    "partner_currency": "Partner Miles",
+    "redemption_context": "airline partners",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36476,6 +36511,11 @@ export const masterCards = [
     "pointValue": "0.4",
     "spendBlock": "200",
     "pointsPerBlock": "12.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "EDGE Rewards",
+    "transfer_multiplier": "0.4",
+    "partner_currency": "Air Miles",
+    "redemption_context": "airline partners",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36502,6 +36542,11 @@ export const masterCards = [
     "pointValue": "0.8",
     "spendBlock": "200",
     "pointsPerBlock": "12.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "EDGE Rewards",
+    "transfer_multiplier": "0.8",
+    "partner_currency": "Air Miles",
+    "redemption_context": "airline partners",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36516,7 +36561,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "0"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-axis-magnus-burgundy",
     "applyStatus": "referral",
     "assumption_note": "Assuming 5 Edge Rewards = 4 Air Miles = ₹4.00 (₹0.80 per point).",
     "direct_reward_note": ""
@@ -36528,6 +36573,11 @@ export const masterCards = [
     "pointValue": "0.2",
     "spendBlock": "100",
     "pointsPerBlock": "4.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "EDGE Rewards",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "standard catalogue",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36542,7 +36592,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "0"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-axis-myzone",
     "applyStatus": "direct",
     "assumption_note": "",
     "direct_reward_note": ""
@@ -36554,6 +36604,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "150",
     "pointsPerBlock": "5.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "RP",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "SmartBuy travel",
     "portalMultipliers": {
       "hdfc_smartbuy": "3.0",
       "amex_shopwise": "0",
@@ -36580,6 +36635,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "150",
     "pointsPerBlock": "5.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "RP",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "SmartBuy travel",
     "portalMultipliers": {
       "hdfc_smartbuy": "5.0",
       "amex_shopwise": "0",
@@ -36594,7 +36654,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-infinia",
     "applyStatus": "invite_only",
     "assumption_note": "Assuming 1 Reward Point = ₹1.00 via SmartBuy travel redemption.",
     "direct_reward_note": "5x on SmartBuy capped at ₹22,500/month voucher spend (3,000 RP)"
@@ -36606,6 +36666,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.0",
+    "reward_nature": "cashback",
+    "reward_currency": "CashPoints",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "statement cash credit",
     "portalMultipliers": {
       "hdfc_smartbuy": "5.0",
       "amex_shopwise": "0",
@@ -36620,7 +36685,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-millennia",
     "applyStatus": "direct",
     "assumption_note": "5% CashPoints on SmartBuy & Amazon (named partners); 1% elsewhere. Cap: ₹1,000/month on 5% categories.",
     "direct_reward_note": "Earns 5% CashPoints directly on Amazon, Flipkart, Myntra, Swiggy, Zomato, Uber, BookMyShow, SonyLiv, Tata CLiQ, Cult.fit — buying vouchers for these brands via any portal may not add incremental value. Cap: ₹1,000/month on 5% categories."
@@ -36632,6 +36697,11 @@ export const masterCards = [
     "pointValue": "0.5",
     "spendBlock": "200",
     "pointsPerBlock": "5.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "RP",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "Gold catalogue",
     "portalMultipliers": {
       "hdfc_smartbuy": "5.0",
       "amex_shopwise": "0",
@@ -36658,6 +36728,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.0",
+    "reward_nature": "cashback",
+    "reward_currency": "Cashback",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "statement cash credit",
     "portalMultipliers": {
       "hdfc_smartbuy": "5.0",
       "amex_shopwise": "0",
@@ -36684,6 +36759,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.5",
+    "reward_nature": "brand_currency",
+    "reward_currency": "NeuCoins",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "Tata brands",
     "portalMultipliers": {
       "hdfc_smartbuy": "3.333333333",
       "amex_shopwise": "0",
@@ -36698,7 +36778,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-hdfc-tata-neu-infinity",
     "applyStatus": "direct",
     "assumption_note": "",
     "direct_reward_note": ""
@@ -36710,6 +36790,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.5",
+    "reward_nature": "cashback",
+    "reward_currency": "Cashback",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "statement cash credit",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36736,6 +36821,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "3.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "Reward Points",
+    "transfer_multiplier": "1.0",
+    "partner_currency": "Air Miles",
+    "redemption_context": "airline partners",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36762,6 +36852,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "2.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "Reward Points",
+    "transfer_multiplier": "1.0",
+    "partner_currency": "Air Miles",
+    "redemption_context": "airline partners",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36788,6 +36883,11 @@ export const masterCards = [
     "pointValue": "0.5",
     "spendBlock": "150",
     "pointsPerBlock": "2.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "Reward Points",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "standard catalogue",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36802,7 +36902,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-hsbc-visaplatinum",
     "applyStatus": "direct",
     "assumption_note": "Assuming 2 Reward Point = 1 Air Mile = ₹0.50.",
     "direct_reward_note": ""
@@ -36814,6 +36914,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.0",
+    "reward_nature": "cashback",
+    "reward_currency": "Cashback",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "Amazon Pay balance",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36840,6 +36945,11 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "2.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "RP",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "standard catalogue",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36854,7 +36964,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-icici-coral",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
     "direct_reward_note": ""
@@ -36866,6 +36976,11 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "4.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "RP",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "standard catalogue",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36892,6 +37007,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "200",
     "pointsPerBlock": "6.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "RP",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "in-app redemption",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36906,7 +37026,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-icici-epm",
     "applyStatus": "invite_only",
     "assumption_note": "Assuming 1 Reward Point = ₹1.00 via in-app redemption.",
     "direct_reward_note": "6x on iShop capped at ₹120,000/month spend (18,000 RP)"
@@ -36918,6 +37038,11 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "2.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "RP",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "standard catalogue",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36932,7 +37057,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-icici-sapphiro",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Reward Point = ₹0.25 via standard catalog redemption. iShop gives 6x multiplier per ICICI portal tiers.",
     "direct_reward_note": "6x on iShop capped at ₹90,000/month spend (9,000 RP)"
@@ -36944,6 +37069,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "50",
     "pointsPerBlock": "1.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "RP",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "in-app redemption",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36970,6 +37100,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "2.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "Miles",
+    "transfer_multiplier": "1.0",
+    "partner_currency": "Air India Miles",
+    "redemption_context": "Air India transfer",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -36984,7 +37119,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-kotak-airplus",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Mile = ₹1 (Kotak Unbox) or 1:1 Air India",
     "direct_reward_note": ""
@@ -36996,6 +37131,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "3.0",
+    "reward_nature": "transfer_miles",
+    "reward_currency": "Miles",
+    "transfer_multiplier": "1.0",
+    "partner_currency": "Air India Miles",
+    "redemption_context": "Air India transfer",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -37010,7 +37150,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-kotak-solitare",
     "applyStatus": "direct",
     "assumption_note": "Assuming 1 Mile = ₹1 (Kotak Unbox) or 1:1 Air India",
     "direct_reward_note": ""
@@ -37022,6 +37162,11 @@ export const masterCards = [
     "pointValue": "0.1",
     "spendBlock": "50",
     "pointsPerBlock": "1.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "RP",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "statement cash credit",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -37036,7 +37181,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-onecard",
     "applyStatus": "direct",
     "assumption_note": "Base rate only (0.2%). The 5X on top-2 categories is dynamic and unpredictable — not modelled here. 1 RP = ₹0.10.",
     "direct_reward_note": ""
@@ -37048,6 +37193,11 @@ export const masterCards = [
     "pointValue": "0.25",
     "spendBlock": "100",
     "pointsPerBlock": "1.0",
+    "reward_nature": "brand_currency",
+    "reward_currency": "Reward Points",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "BPCL fuel",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -37062,7 +37212,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-sbi-bpcl",
     "applyStatus": "direct",
     "assumption_note": "",
     "direct_reward_note": ""
@@ -37074,6 +37224,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.0",
+    "reward_nature": "cashback",
+    "reward_currency": "Cashback",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "statement cash credit",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -37100,6 +37255,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.0",
+    "reward_nature": "cashback",
+    "reward_currency": "Cashback",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "statement cash credit",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -37114,7 +37274,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-black",
     "applyStatus": "direct",
     "assumption_note": "5 RP/₹100 on online spends (including Gyftr, Amazon); 1 RP = ₹1. Monthly cap: 2,000 RP per category. Excludes fuel, rent, wallet top-ups.",
     "direct_reward_note": ""
@@ -37126,6 +37286,11 @@ export const masterCards = [
     "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.0",
+    "reward_nature": "cashback",
+    "reward_currency": "Cashback",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "statement cash credit",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
@@ -37140,7 +37305,7 @@ export const masterCards = [
       "indusind_instavouchers": "0",
       "default": "1"
     },
-    "applyURL": "",
+    "applyURL": "https://vouchwise.in/out/apply-sbi-phonepe-purple",
     "applyStatus": "direct",
     "assumption_note": "Online rate 2 RP/₹100 applied to portals. 1 RP = ₹1. Excludes fuel, rent, wallet top-ups.",
     "direct_reward_note": ""
@@ -37152,6 +37317,11 @@ export const masterCards = [
     "pointValue": "0.2",
     "spendBlock": "20",
     "pointsPerBlock": "2.0",
+    "reward_nature": "portal_points",
+    "reward_currency": "Scapia Coins",
+    "transfer_multiplier": "0.0",
+    "partner_currency": "",
+    "redemption_context": "in-app travel booking",
     "portalMultipliers": {
       "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
