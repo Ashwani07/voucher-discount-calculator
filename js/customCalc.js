@@ -4,7 +4,7 @@ import { cards, portals, brands, cardRules } from './data.js';
 import { calculateTrueNetMetricsWithFlooring, getCardRewardRate, getCardPortalMultiplier, isCardPortalEligible } from './calculator.js';
 import { dom } from './dom.js';
 import { state } from './state.js';
-import { getPortalById, renderMetricGrid, validateVoucherAmount, hidePortalResults } from './utils.js';
+import { getPortalById, renderMetricGrid, validateVoucherAmount, hidePortalResults, escapeHtml } from './utils.js';
 import { getActiveWalletIds } from './wallet.js';
 
 function findPortal(portalId) {
@@ -130,12 +130,12 @@ export function renderCustomResults(results, brandName, discountPercent, voucher
   document.getElementById('customUpfrontValue').textContent = `${discountPercent.toFixed(2)}% (₹${best.metrics.netPaid.toFixed(0)} to pay)`;
   document.getElementById('customNetValue').textContent = `${best.net.toFixed(2)}% (₹${best.metrics.finalNetCost.toFixed(0)} net)`;
 
-  renderCustomCardsList(results, voucherAmount, portal);
+  renderCustomCardsList(results, voucherAmount, portal, brandName);
   dom.customResults.classList.remove('hidden');
   dom.customResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-export function renderCustomCardsList(results, voucherAmount, portal = null) {
+export function renderCustomCardsList(results, voucherAmount, portal = null, brandName = '') {
   const generateCardRow = (result, rank) => {
     const card = result.card;
     const metrics = result.metrics;
@@ -158,13 +158,27 @@ export function renderCustomCardsList(results, voucherAmount, portal = null) {
     const cappedBadge = metrics.isCapped
       ? '<span class="text-[9px] font-semibold text-amber-700 bg-amber-100 border border-amber-300 px-1 py-0.5 rounded ml-1" title="Reward is capped by issuer limits">Capped</span>'
       : '';
-    const cardPortalNotice = (portal?.id === 'amazon' && cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id]?.notice)
-      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${cardRules.amazonPortalOverrides.brand_voucher[card.id].notice}</div>`
+
+    const portalRule = cardRules?.portalOverrides?.[portal?.id];
+    const resolvedPortalNotice = portalRule?.cardNotices?.[card.id] || portalRule?.notice;
+    const portalNoticeHtml = resolvedPortalNotice
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(resolvedPortalNotice)}</div>`
+      : '';
+
+    const normBrand = (brandName || '').trim().toLowerCase();
+    const isAmazonPayGiftCard = normBrand === 'amazon_pay' || normBrand === 'amazon_pay_gift_card' || normBrand.includes('amazon pay');
+    const amazonOverride = portal?.id === 'amazon'
+      ? (isAmazonPayGiftCard
+          ? cardRules?.amazonPortalOverrides?.amazon_pay_gift_card?.[card.id]
+          : cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id])
+      : null;
+    const cardPortalNotice = amazonOverride?.notice || amazonOverride?.reason
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(amazonOverride.notice || amazonOverride.reason)}</div>`
       : '';
     const capNoticeHtml = metrics.isCapped && metrics.capNotice
-      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Cap Applied:</strong> ${metrics.capNotice}. <span class="text-amber-700 italic">Calculation does not track your prior spend this cycle.</span></div>`
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Cap Applied:</strong> ${escapeHtml(metrics.capNotice)}. <span class="text-amber-700 italic">Calculation does not track your prior spend this cycle.</span></div>`
       : (metrics.hasCapRule && metrics.cardCapNotice
-        ? `<div class="text-[10px] text-slate-600 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 mt-1">ℹ️ <strong>Card Limit:</strong> ${metrics.cardCapNotice}. <span class="text-slate-500 italic">Assumes ₹0 prior spend this billing cycle.</span></div>`
+        ? `<div class="text-[10px] text-slate-600 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 mt-1">ℹ️ <strong>Card Limit:</strong> ${escapeHtml(metrics.cardCapNotice)}. <span class="text-slate-500 italic">Assumes ₹0 prior spend this billing cycle.</span></div>`
         : '');
     const exampleHTML = renderMetricGrid([
       { label: 'Pay', value: `<span class="text-right">₹${metrics.netPaid.toFixed(0)}</span>` },
@@ -179,14 +193,15 @@ export function renderCustomCardsList(results, voucherAmount, portal = null) {
         <div class="text-sm font-medium text-slate-500 w-7 pt-0.5 shrink-0">${rankEmoji}</div>
         <div class="flex-1">
           <div class="flex items-center justify-between gap-2">
-            <div class="font-medium text-sm text-slate-700">${card.name}${customTag}${statusBadge}${deleteBtn}</div>
+            <div class="font-medium text-sm text-slate-700">${escapeHtml(card.name)}${customTag}${statusBadge}${deleteBtn}</div>
             <span class="font-semibold ${rank <= 3 ? 'text-emerald-600' : 'text-slate-600'} text-sm whitespace-nowrap shrink-0">${result.net.toFixed(2)}%</span>
           </div>
           ${exampleHTML}
           ${flooringNote}
+          ${portalNoticeHtml}
           ${cardPortalNotice}
           ${capNoticeHtml}
-          ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-1">💡 ${card.assumption_note}</div>` : ''}
+          ${card.assumption_note ? `<div class="text-[10px] italic text-slate-400 mt-1">💡 ${escapeHtml(card.assumption_note)}</div>` : ''}
         </div>
       </div>`;
   };

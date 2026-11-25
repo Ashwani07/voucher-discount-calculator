@@ -222,7 +222,8 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
           rpEarned = maxPts;
           cashValue = rpEarned * pointVal;
           capLossAmount = uncappedCashValue - cashValue;
-          capNotice = cardCapRule.notice || `Points capped at ${maxPts.toLocaleString('en-IN')} RP/month`;
+          const cur = card.reward_currency || 'RP';
+          capNotice = cardCapRule.notice || `Points capped at ${maxPts.toLocaleString('en-IN')} ${cur}/month`;
         } else {
           rpEarned = potentialPoints;
           cashValue = uncappedCashValue;
@@ -253,7 +254,8 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
         rpEarned = Math.floor(basePoints + awardedBonus);
         cashValue = rpEarned * (card.pointValue ?? 1);
         capLossAmount = uncappedCashValue - cashValue;
-        capNotice = cardCapRule.notice || `Accelerated points capped at ${maxBonus.toLocaleString('en-IN')} RP/month`;
+        const cur = card.reward_currency || 'RP';
+        capNotice = cardCapRule.notice || `Accelerated points capped at ${maxBonus.toLocaleString('en-IN')} ${cur}/month`;
       } else {
         rpEarned = uncappedRp;
         cashValue = uncappedCashValue;
@@ -264,7 +266,8 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
         rpEarned = cardCapRule.maxTotalPoints;
         cashValue = rpEarned * (card.pointValue ?? 1);
         capLossAmount = uncappedCashValue - cashValue;
-        capNotice = cardCapRule.notice || `Points capped at ${cardCapRule.maxTotalPoints.toLocaleString('en-IN')} RP/month`;
+        const cur = card.reward_currency || 'RP';
+        capNotice = cardCapRule.notice || `Points capped at ${cardCapRule.maxTotalPoints.toLocaleString('en-IN')} ${cur}/month`;
       } else {
         rpEarned = uncappedRp;
         cashValue = uncappedCashValue;
