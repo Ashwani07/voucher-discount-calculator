@@ -36310,7 +36310,7 @@ export const masterCards = [
     },
     "applyURL": "",
     "applyStatus": "closed",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption.",
+    "assumption_note": "Assuming 1 MR Point = ₹0.33 via 24K Gold Collection Amazon/Flipkart vouchers (up to ₹0.58 on Taj or ₹0.70+ via Marriott Bonvoy 1:1).",
     "direct_reward_note": ""
   },
   {
@@ -36336,7 +36336,7 @@ export const masterCards = [
     },
     "applyURL": "",
     "applyStatus": "closed",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on 24K Gold Collection redemption.",
+    "assumption_note": "Assuming 1 MR Point = ₹0.33 via 24K Gold Collection Amazon/Flipkart vouchers (up to ₹0.58 on Taj or ₹0.70+ via Marriott Bonvoy 1:1).",
     "direct_reward_note": ""
   },
   {
@@ -36362,14 +36362,14 @@ export const masterCards = [
     },
     "applyURL": "https://vouchwise.in/out/apply-amex-platinum-reserve",
     "applyStatus": "referral",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33 based on standard catalog yield.",
+    "assumption_note": "Assuming 1 MR Point = ₹0.33 general yield (₹0.40 on Taj; ₹0.70+ via Marriott Bonvoy 1:1).",
     "direct_reward_note": ""
   },
   {
     "id": "amex_platinum_travel",
     "name": "Amex Platinum Travel",
     "rewardType": "points",
-    "pointValue": "0.33",
+    "pointValue": "0.40",
     "spendBlock": "50",
     "pointsPerBlock": "1.0",
     "portalMultipliers": {
@@ -36388,7 +36388,7 @@ export const masterCards = [
     },
     "applyURL": "",
     "applyStatus": "closed",
-    "assumption_note": "Assuming 1 MR Point = ₹0.33; optimal value unlocked at milestone spends.",
+    "assumption_note": "Assuming 1 MR Point = ₹0.40 via Taj vouchers (₹0.70+ via Marriott Bonvoy 1:1; ₹0.33 Gold Collection requires pooling with MRCC/Gold).",
     "direct_reward_note": ""
   },
   {
