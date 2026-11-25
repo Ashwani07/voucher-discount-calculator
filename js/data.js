@@ -36414,7 +36414,7 @@ export const masterCards = [
     },
     "applyURL": "",
     "applyStatus": "closed",
-    "assumption_note": "Assuming 1 Edge Mile = 2 Partner Miles = ₹2.00.",
+    "assumption_note": "Assuming 1 EDGE Mile = 2 Airline/Hotel Partner Points = ₹2.00 travel value (cash credit is ₹0.50/mile).",
     "direct_reward_note": ""
   },
   {
