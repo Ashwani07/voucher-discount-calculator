@@ -469,7 +469,7 @@ see only the winning Insta Deal row.
 
 ### Bug #27: Top summary reward formatting and forgone either/or reward resolution
 **Symptom**: In `renderResults()`, the top KPI summary box hardcoded `(₹… back)`, claiming cash back even for points/miles cards (Atlas, Infinia). Furthermore, in the either/or "reward not taken" case, it printed `₹0.00 back` because `best.metrics.cashValue` is zeroed out on the losing leg.
-**Fix**: Updated `renderResults()` to use data-driven reward currency formatting. When the reward leg is not taken, it now pulls the true forgone reward points and cash value from `legs.reward` (`legs.reward.pointsEarned` and `legs.reward.cashValue`).
+**Fix**: Updated `renderResults()` to use data-driven reward currency formatting. When the reward leg is not taken, it now pulls the true forgone reward points and cash value from `legs.reward` (`legs.reward.rpEarned` and `legs.reward.cashValue`).
 
 
 ---

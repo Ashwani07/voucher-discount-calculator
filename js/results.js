@@ -383,7 +383,7 @@ export function renderResults(groups, brand, shouldScroll, force = false) {
     if (isCash) {
       topRewardText = `${forgoneRewardPct.toFixed(2)}% available, not taken (₹${forgoneCash} cashback)`;
     } else {
-      const forgoneRp = legs ? legs.reward.pointsEarned : 0;
+      const forgoneRp = legs ? (legs.reward.rpEarned ?? legs.reward.pointsEarned ?? 0) : 0;
       topRewardText = `${forgoneRewardPct.toFixed(2)}% available, not taken (${forgoneRp} ${cur}, est. ₹${forgoneCash})`;
     }
   } else {
