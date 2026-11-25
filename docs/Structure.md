@@ -263,6 +263,11 @@ In `vouchwise-admin`, `run_pipeline.py -T` (test mode) must write only to `*_tes
 It must never rotate production `*_latest.csv` or `*_backup.csv` files, must never delist
 brands due to sample row truncation, and must skip downstream compilation/publishing.
 
+### 4.19 Master Cards single source of truth is masterCards.csv
+For brands, the single canonical file is `data/output/masterbrands.xlsx`. For credit cards,
+the single canonical source of truth is `data/input/masterCards.csv`. Do not create or
+maintain parallel `masterCards.xlsx` spreadsheets; editing two formats invites silent data drift.
+`masterCards.csv` opens directly in Microsoft Excel and generates clean line-by-line Git diffs.
 
 ---
 
@@ -391,6 +396,69 @@ categories over "General" or blank strings.
 `.fillna(0.0)` with a scalar float raised `AttributeError: 'float' object has no attribute 'fillna'`.
 **Fix**: Updated `update_masterbrands.py` to return `pd.Series(0.0, index=df.index)` ensuring
 type consistency.
+
+### Bug #18: SmartBuy Redux migration causing all-zero portal discounts
+**Symptom**: All SmartBuy voucher discounts in the latest scraper run returned 0.0%, and brands
+failed to discover.
+**Cause**: GyFTR SmartBuy transitioned Next.js Redux store from `brandInfo` to `vchBrandInfo`.
+The scraper checked `reduxState.get("brandInfo")`, returning empty dicts.
+**Fix**: Sourced catalog directly from `reduxState.vchGlbInfo.allBrandStore` (recovering 327 active
+brands) and parsed `vchBrandInfo.brandDetailStore` for `NOSPC` (Insta Deals) and `SPC` (Accelerated Rewards).
+Added an automated All-Zero Portal Discount guard to HITL Checkpoint 4.
+
+### Bug #19: SmartBuy dual-track offer collapsing and 0 RP assumption on Insta Deals
+**Symptom**: SmartBuy dual-track offers (e.g. Gaana 15% Insta / 7.5% Accelerated, Affinity Luzo 9% / 3.5%)
+collapsed into a single row, and choosing the Insta Deal displayed `Reward 0 RP = ₹0.00 (not taken)`.
+**Cause**: `computeEitherOrMetrics` in `calculator.js` hardcoded 0 reward on the Insta Deal leg.
+In reality, SmartBuy terms explicitly state Insta Deals award 1X base credit card rewards on `netPaid`.
+**Fix**: Updated `calculator.js` to compute standard 1X base card rewards on `netPaid`. Updated `results.js`
+(Option A) to emit two distinct rows whenever both offers exist: `HDFC SmartBuy (Insta Deal)` and
+`HDFC SmartBuy (Accelerated Rewards)`, each showing exact upfront and reward calculations.
+
+### Bug #20: SBI Cashback 1% calculation artifact on Maximize Money
+**Symptom**: On Maximize Money (e.g. Lenskart 13% discount), SBI Cashback showed ₹8.70 (0.87%) reward.
+**Cause**: `mult_maximize_money` was set to `1` in `masterCards.csv`. SBI Cashback's reward structure
+has no 1% online tier; online transactions earn either 5% (eligible online retail) or 0% (excluded MCCs
+like MCC 5947 gift shops). Multiplier 1 calculated (1/100)*100*1 = 1%.
+**Fix**: Updated `mult_maximize_money` to `5` in `masterCards.csv` and added MCC gateway advisory in
+`cardRules.js` (5% via Easebuzz gateway; 0% if passing MCC 5947).
+
+### Bug #21: Axis Atlas & Axis cards zero multiplier exclusion on open portals
+**Symptom**: Axis Atlas was never calculated or shown for Maximize Money (e.g. Lenskart).
+**Cause**: `isCardPortalEligible()` in `calculator.js` checked `multiplier > 0`. Because all portal
+multipliers for Axis cards were set to `0` in `masterCards.csv`, open commercial portals dropped Axis cards
+completely, preventing users from capturing upfront portal discounts.
+**Fix**: Updated `mult_maximize_money` and `mult_amazon` to `1` for Axis cards in `masterCards.csv`,
+enabling standard 1X base rate (2 Edge Miles/₹100 on Atlas) with a prominent gateway & retrospective
+clawback warning in `cardRules.js`.
+
+### Bug #22: Dead external link to in.vouchwise.app (VouchWise Vault)
+**Symptom**: Every voucher card rendered `📲 Track in VouchWise Vault` linking to `https://in.vouchwise.app`,
+which has no active DNS record, resulting in `DNS_PROBE_FINISHED_NXDOMAIN` errors and hurting SEO.
+**Fix**: Removed the dead link block from `results.js`.
+
+### Bug #23: Equal SmartBuy discount SPC resolution in fallback calculation
+**Symptom**: When `instaDiscount === spcDiscount`, the single-row fallback in `computeEitherOrMetrics()`
+defaulted `spcDiscount` to 0% because it only read from `portal?.spcDiscount`, which was undefined.
+**Fix**: Updated `calculator.js` to read `portal?.spcDiscount ?? portalConfig?.spcDiscount ?? 0` and
+passed `spcDiscount` and `instaDiscount` in the single-row branch in `results.js`.
+
+### Bug #24: SmartBuy 0% SPC card multiplier gating
+**Symptom**: On SmartBuy brands with positive Insta discount and 0% SPC (e.g. Swiggy 2.5%, Air India 5%),
+basic 1X cards were shown an Accelerated Rewards row with 0% discount and 1X rewards.
+**Fix**: Gated the emission of the Accelerated Rewards row when `spcDiscount === 0` to cards that
+actually have an accelerated multiplier (`> 1`) on SmartBuy (e.g. Infinia with 5X). Basic 1X cards
+see only the winning Insta Deal row.
+
+### Bug #25: Axis Bank gift voucher clawback warning coverage on Amazon
+**Symptom**: Setting `mult_amazon = 1` across all Axis cards left 5 Axis cards without clawback notices.
+**Fix**: Added explicit gateway & retrospective clawback advisory notices across all 6 Axis cards in
+`cardRules.js.amazonPortalOverrides.brand_voucher`.
+
+### Bug #26: Axis Bank warning routing on canonical Amazon Pay
+**Symptom**: The 6 Axis Bank clawback advisory notices appeared on third-party brand vouchers (e.g. Swiggy) on Amazon, but failed to appear when viewing the canonical `amazon_pay` brand.
+**Cause**: `results.js` and `calculator.js` route `brand.id === 'amazon_pay'` to `cardRules.amazonPortalOverrides.amazon_pay_gift_card`. The Axis card notices were initially only populated in `brand_voucher`.
+**Fix**: Added all 6 Axis cards (`axis_atlas`, `axis_magnus`, `axis_magnus_burgundy`, `axis_horizon`, `axis_myzone`, `axis_flipkart`) to `amazon_pay_gift_card` with the identical gateway and retrospective clawback warning.
 
 
 ---
@@ -758,3 +826,63 @@ before the calculation engine and MITC verification workflow are robust creates
 severe credibility risks. See `docs/WIP/cardCompareArchitecture.md` and
 `vouchwise-admin/docs/backlog/CARD_COMPARE_BACKLOG.md` for architecture details,
 limitations, and launch gates.
+
+---
+
+## 15. Declarative Card Rules & Caps Registry
+
+All fixed card rules, caps, overrides, and engine constraints are declaratively defined in `vouchwise/js/cardRules.js` and `vouchwise/js/calculator.js`.
+
+### 15.1 Portal Devaluations & Gateway Overrides (`cardRules.js.portalOverrides`)
+| Portal ID | Overrides Applied | Purpose |
+| :--- | :--- | :--- |
+| `axis_edgerewards` | `acceleratedMultiplier: 0`, `isDiscountOnly: true` | Axis Bank devalued voucher earn to 0; only upfront discount is credited. |
+| `axis_grabdeals` | `acceleratedMultiplier: 0`, `isDiscountOnly: true` | GrabDeals accelerated voucher rewards removed; upfront discount only. |
+| `maximize_money` | Gateway advisory notice | Warns user to pick Easebuzz gateway (5% SBI Cashback / 2 Miles Atlas) to avoid MCC 5947. |
+
+### 15.2 Amazon Portal Overrides (`cardRules.js.amazonPortalOverrides`)
+Amazon operates with dual categorization depending on whether the voucher is a third-party brand or canonical Amazon Pay:
+- **`brand_voucher`** (e.g., Swiggy, Uber):
+  - `sbi_cashback`: 5.0% reward rate with MCC-dependent gateway notice.
+  - `axis_atlas`: 2% base miles (2 Edge Miles/₹100, valued at 4% via 1:2 partner conversion) with Gateway & Retrospective Clawback Warning.
+  - `axis_magnus`, `axis_magnus_burgundy`, `axis_horizon`, `axis_myzone`, `axis_flipkart`: 1X base rate with Gateway & Retrospective Clawback Warning.
+  - `icici_amazon`: 2.0% fixed gift card rate (vs 5% general retail shopping).
+- **`amazon_pay_gift_card`** (canonical Amazon Pay):
+  - `sbi_cashback`: 0% (MCC 6540 wallet / prepaid card exclusion).
+  - `hdfc_infinia`: 0% (MCC 6540 wallet load exclusion).
+  - `axis_atlas`: 2% base miles (2 Edge Miles/₹100, valued at 4% via 1:2 partner conversion) with Gateway & Retrospective Clawback Warning.
+  - `axis_magnus`, `axis_magnus_burgundy`, `axis_horizon`, `axis_myzone`, `axis_flipkart`: 1X base rate with Gateway & Retrospective Clawback Warning.
+
+### 15.3 Issuer & Card Reward Caps (`cardRules.js.cardCaps`)
+VouchWise models 16 declarative card-portal caps with overflow fallback rules:
+| Card ID | Portal | Period | Cap Limit | Overflow Rule |
+| :--- | :--- | :--- | :--- | :--- |
+| `sbi_cashback` | Default | Statement Cycle | ₹2,000 max cashback | Drops to 0% |
+| `hdfc_infinia` | SmartBuy | Day & Month | 2,500 RP/day, 3,000 RP/mo | Drops to 1X base (3.33%) |
+| `hdfc_dbm` | SmartBuy | Day & Month | 2,500 RP/day, 3,000 RP/mo | Drops to 1X base (3.33%) |
+| `hdfc_diners_black` | SmartBuy | Day & Month | 2,500 RP/day, 3,000 RP/mo | Drops to 1X base (3.33%) |
+| `hdfc_regalia_gold` | SmartBuy | Day & Month | 2,000 RP/day, 3,000 RP/mo | Drops to 1X base (1.33%) |
+| `hdfc_millennia` | SmartBuy | Calendar Month | ₹1,000 CashPoints | Drops to 0% |
+| `hdfc_millennia` | Amazon | Calendar Month | ₹1,000 CashPoints | Drops to 0% |
+| `hdfc_tata_neu_infinity`| SmartBuy | Calendar Month | 1,000 NeuCoins | Drops to 0% |
+| `hdfc_swiggy` | Default | Statement Month | ₹1,500 cashback | Drops to 0% |
+| `icici_emeralde` | iShop | Calendar Month | 12,000 accelerated RP | Drops to 1X base rate |
+| `icici_epm` | iShop | Calendar Month | 18,000 accelerated RP | Drops to 1X base rate |
+| `icici_sapphiro` | iShop | Calendar Month | 9,000 accelerated RP | Drops to 1X base rate |
+| `icici_rubyx` | iShop | Calendar Month | 6,000 accelerated RP | Drops to 1X base rate |
+| `amex_platinum` | Shopwise | Calendar Month | 25,000 bonus MR | Drops to 1X base rate |
+| `amex_gold` | Shopwise | Calendar Month | 10,000 bonus MR | Drops to 1X base rate |
+| `amex_platinum_reserve` | Shopwise | Calendar Month | 10,000 bonus MR | Drops to 1X base rate |
+
+### 15.4 Brand Purchase Limits (`cardRules.js.brandPurchaseCaps`)
+GyFTR and SmartBuy enforce purchase limits per mobile number per calendar month:
+- `amazon_shopping`: ₹10,000 max (SmartBuy, GyFTR)
+- `amazon_pay`: ₹10,000 max (SmartBuy, GyFTR)
+- `swiggy`: ₹10,000 max (SmartBuy)
+- `zomato`: ₹10,000 max (SmartBuy)
+- `flipkart`: ₹25,000 max (SmartBuy)
+
+### 15.5 Calculation Engine Structural Invariants
+1. **Home-Portal Fee Exclusion (`isHomePortal`)**: Fee line items are excluded from the reward basis when a card pays on its home portal (HDFC on SmartBuy, Axis on GrabDeals, ICICI on iShop, SBI on Yono, Amex on Shopwise).
+2. **SmartBuy Dual-Offer Separation (`isEitherOrPortal`)**: Gated split showing both Insta Deals and Accelerated Rewards rows when offers differ.
+3. **Spend Block Flooring (`calculateTrueNetMetricsWithFlooring`)**: Denomination flooring to ₹100 spend blocks.

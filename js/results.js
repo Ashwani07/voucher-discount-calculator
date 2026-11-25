@@ -36,27 +36,106 @@ export function getEligibleResults(brand, walletSelectedIds, voucherAmount) {
 
     allowedCards = allowedCards.filter(card => walletSelectedIds.includes(card.id));
 
-    for (const card of allowedCards) {
-      const metrics = calculateTrueNetMetricsWithFlooring(
-        card,
-        { ...portal, upfrontDiscountPercent: portalConfig.upfrontDiscountPercent },
-        portalConfig,
-        voucherAmount,
-        brand
-      );
-      const cardRewardRate = getCardRewardRate(card, metrics.multiplier, portal, brand);
+    const isSmartBuyDual = portalConfig.portalId === 'hdfc_smartbuy' &&
+      portalConfig.instaDiscount !== undefined &&
+      portalConfig.spcDiscount !== undefined &&
+      portalConfig.instaDiscount !== portalConfig.spcDiscount;
 
-      results.push({
-        portal,
-        portalId: portalConfig.portalId,
-        card,
-        upfront: portalConfig.upfrontDiscountPercent || 0,
-        reward: cardRewardRate,
-        net: metrics.computedTrueNet,
-        computedTrueNet: metrics.computedTrueNet,
-        metrics,
-        portalConfig
-      });
+    if (isSmartBuyDual) {
+      for (const card of allowedCards) {
+        // 1. Insta Deal row (earns 1X base reward)
+        const instaPortal = {
+          ...portal,
+          name: `${portal.name} (Insta Deal)`
+        };
+        const instaPortalConfig = {
+          ...portalConfig,
+          upfrontDiscountPercent: portalConfig.instaDiscount,
+          overrideRewardMultiplier: 1,
+          track: 'insta'
+        };
+        const instaMetrics = calculateTrueNetMetricsWithFlooring(
+          card,
+          instaPortal,
+          instaPortalConfig,
+          voucherAmount,
+          brand
+        );
+        const instaRewardRate = getCardRewardRate(card, 1, portal, brand);
+        results.push({
+          portal: instaPortal,
+          portalId: portalConfig.portalId,
+          track: 'insta',
+          card,
+          upfront: portalConfig.instaDiscount || 0,
+          reward: instaRewardRate,
+          net: instaMetrics.computedTrueNet,
+          computedTrueNet: instaMetrics.computedTrueNet,
+          metrics: instaMetrics,
+          portalConfig: instaPortalConfig
+        });
+
+        // 2. Accelerated Rewards row (earns accelerated multiplier)
+        // If spcDiscount is 0, only emit this row if the card actually earns an accelerated multiplier (> 1)
+        // on SmartBuy (e.g. Infinia with 5X), because for 1X cards, taking 0% discount with 1X rewards is strictly worse.
+        const cardSmartBuyMult = Number(getCardPortalMultiplier(card, portal) || 0);
+        const hasAcceleratedOffer = (portalConfig.spcDiscount > 0) || (cardSmartBuyMult > 1);
+
+        if (hasAcceleratedOffer) {
+          const accelPortal = {
+            ...portal,
+            name: `${portal.name} (Accelerated Rewards)`
+          };
+          const accelPortalConfig = {
+            ...portalConfig,
+            upfrontDiscountPercent: portalConfig.spcDiscount,
+            track: 'accelerated'
+          };
+          const accelMetrics = calculateTrueNetMetricsWithFlooring(
+            card,
+            accelPortal,
+            accelPortalConfig,
+            voucherAmount,
+            brand
+          );
+          const accelRewardRate = getCardRewardRate(card, accelMetrics.multiplier, portal, brand);
+          results.push({
+            portal: accelPortal,
+            portalId: portalConfig.portalId,
+            track: 'accelerated',
+            card,
+            upfront: portalConfig.spcDiscount || 0,
+            reward: accelRewardRate,
+            net: accelMetrics.computedTrueNet,
+            computedTrueNet: accelMetrics.computedTrueNet,
+            metrics: accelMetrics,
+            portalConfig: accelPortalConfig
+          });
+        }
+      }
+    } else {
+      for (const card of allowedCards) {
+        const metrics = calculateTrueNetMetricsWithFlooring(
+          card,
+          { ...portal, upfrontDiscountPercent: portalConfig.upfrontDiscountPercent, instaDiscount: portalConfig.instaDiscount, spcDiscount: portalConfig.spcDiscount },
+          portalConfig,
+          voucherAmount,
+          brand
+        );
+        const cardRewardRate = getCardRewardRate(card, metrics.multiplier, portal, brand);
+
+        results.push({
+          portal,
+          portalId: portalConfig.portalId,
+          card,
+          upfront: portalConfig.upfrontDiscountPercent || 0,
+          reward: cardRewardRate,
+          net: metrics.computedTrueNet,
+          computedTrueNet: metrics.computedTrueNet,
+          metrics,
+          portalConfig
+        });
+      }
     }
   }
 
@@ -97,7 +176,7 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
     // ₹0 / 0% next to a real ₹150 / 15% still reads as "no reward available"
     // rather than "you didn't take this one" — so we label it explicitly
     // instead of leaving it ambiguous. See calculator.js's isEitherOrPortal.
-    const eitherOrChoice = entry.metrics.eitherOrChoice; // 'discount' | 'reward' | undefined
+    const eitherOrChoice = entry.track ? undefined : entry.metrics.eitherOrChoice; // 'discount' | 'reward' | undefined
     const notTakenTag = '<span class="text-[10px] text-slate-400 font-normal ml-1">(not taken)</span>';
 
     const upfrontLabel = entry.upfront > 0 ? 'Upfront Discount' : entry.upfront < 0 ? 'Convenience Charge' : 'Upfront Discount';
@@ -112,9 +191,15 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
     const rewardValue = (entry.card.rewardType === 'points' && entry.card.spendBlock
       ? `${entry.metrics.rpEarned} ${currencyLabel} = ₹${entry.metrics.cashValue.toFixed(2)} (${cardYieldPercent}%)${cappedBadge}`
       : `₹${entry.metrics.cashValue.toFixed(2)} cashback (${cardYieldPercent}%)${cappedBadge}`) + (rewardNotTaken ? notTakenTag : '');
-    const eitherOrNote = eitherOrChoice
-      ? `<div class="text-[10px] text-indigo-700 bg-indigo-50 border border-indigo-100 rounded px-1.5 py-0.5 mt-1">${entry.portal.name} makes you choose one at checkout — this pick uses <strong>${eitherOrChoice === 'reward' ? 'Accelerated Rewards' : 'the Insta Deal discount'}</strong> because it's worth more here.</div>`
-      : '';
+
+    let eitherOrNote = '';
+    if (entry.track === 'insta') {
+      eitherOrNote = `<div class="text-[10px] text-indigo-700 bg-indigo-50 border border-indigo-100 rounded px-1.5 py-0.5 mt-1">SmartBuy Insta Deal promo code (NOSPC) applied at checkout. Earns standard 1X base card rewards.</div>`;
+    } else if (entry.track === 'accelerated') {
+      eitherOrNote = `<div class="text-[10px] text-indigo-700 bg-indigo-50 border border-indigo-100 rounded px-1.5 py-0.5 mt-1">SmartBuy Accelerated Rewards promo code (SPC) applied at checkout. Unlocks accelerated card reward multiplier.</div>`;
+    } else if (eitherOrChoice) {
+      eitherOrNote = `<div class="text-[10px] text-indigo-700 bg-indigo-50 border border-indigo-100 rounded px-1.5 py-0.5 mt-1">${escapeHtml(entry.portal.name)} makes you choose one at checkout — this pick uses <strong>${eitherOrChoice === 'reward' ? 'Accelerated Rewards' : 'the Insta Deal discount'}</strong> because it's worth more here.</div>`;
+    }
     const shownDiscountStr = entry.upfront > 0 ? entry.upfront.toFixed(1) + '%' : 'N/A';
     const reportURL =
       `https://docs.google.com/forms/d/e/1FAIpQLSeDeeY8MielvLxAvq9HCd7iyz9X473A7FwrjLgj-cb0sGAf4Q/viewform?usp=pp_url` +
@@ -131,7 +216,7 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
       ? `<a href="${safeBuyURL}" target="_blank" rel="noopener noreferrer" class="text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Buy ↗</a>`
       : '<span class="text-[10px] text-slate-300">—</span>';
     const portalNotice = cardRules?.portalOverrides?.[entry.portalId]?.notice
-      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${cardRules.portalOverrides[entry.portalId].notice}</div>`
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(cardRules.portalOverrides[entry.portalId].notice)}</div>`
       : '';
 
     const isAmazonPayGiftCard = activeBrandObj?.id === 'amazon_pay' || activeBrandObj?.id === 'amazon_pay_gift_card';
@@ -141,17 +226,17 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
           : cardRules?.amazonPortalOverrides?.brand_voucher?.[entry.card.id])
       : null;
     const cardPortalNotice = amazonOverride?.notice || amazonOverride?.reason
-      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${amazonOverride.notice || amazonOverride.reason}</div>`
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(amazonOverride.notice || amazonOverride.reason)}</div>`
       : '';
 
     const capNoticeHtml = entry.metrics.isCapped && entry.metrics.capNotice
-      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Cap Applied:</strong> ${entry.metrics.capNotice}. <span class="text-amber-700 italic">Calculation does not track your prior spend this cycle.</span></div>`
+      ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Cap Applied:</strong> ${escapeHtml(entry.metrics.capNotice)}. <span class="text-amber-700 italic">Calculation does not track your prior spend this cycle.</span></div>`
       : (entry.metrics.hasCapRule && entry.metrics.cardCapNotice
-        ? `<div class="text-[10px] text-slate-600 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 mt-1">ℹ️ <strong>Card Limit:</strong> ${entry.metrics.cardCapNotice}. <span class="text-slate-500 italic">Assumes ₹0 prior spend this billing cycle.</span></div>`
+        ? `<div class="text-[10px] text-slate-600 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 mt-1">ℹ️ <strong>Card Limit:</strong> ${escapeHtml(entry.metrics.cardCapNotice)}. <span class="text-slate-500 italic">Assumes ₹0 prior spend this billing cycle.</span></div>`
         : '');
 
     const brandCapNoticeHtml = entry.metrics.isBrandCapExceeded && entry.metrics.brandCapNotice
-      ? `<div class="text-[10px] text-rose-800 bg-rose-50 border border-rose-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Purchase Limit:</strong> ${entry.metrics.brandCapNotice}</div>`
+      ? `<div class="text-[10px] text-rose-800 bg-rose-50 border border-rose-200 rounded px-1.5 py-0.5 mt-1">⚠️ <strong>Purchase Limit:</strong> ${escapeHtml(entry.metrics.brandCapNotice)}</div>`
       : '';
 
     const denomChips = entry.portalConfig?.denominations?.length
@@ -168,7 +253,7 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
     return `
       <div class="py-2.5 border-b border-slate-100 last:border-0">
         <div class="flex items-center justify-between gap-2">
-          <div class="font-medium text-sm text-slate-700">${entry.portal.name}${flagHTML}${flaggedBadge}</div>
+          <div class="font-medium text-sm text-slate-700">${escapeHtml(entry.portal.name)}${flagHTML}${flaggedBadge}</div>
           <div class="flex items-center gap-2 shrink-0">
             <span class="font-semibold text-emerald-600 text-sm whitespace-nowrap">${entry.computedTrueNet.toFixed(2)}%</span>
             ${buyBtn}
@@ -188,12 +273,6 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
           { label: 'Reward', value: `<span class="text-right">${rewardValue}</span>` },
           { label: 'Net', value: `<span class="text-right font-medium text-slate-600">₹${entry.metrics.finalNetCost.toFixed(0)}</span>`, labelClass: 'font-medium text-slate-600' }
         ])}
-        <div class="mt-1.5 flex items-center justify-between text-[11px] pt-1 border-t border-slate-50">
-          <span class="text-slate-400">Buying this voucher?</span>
-          <a href="https://in.vouchwise.app" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 font-medium hover:underline inline-flex items-center gap-1">
-            <span>📲 Track in VouchWise Vault</span>
-          </a>
-        </div>
       </div>`;
   }).join('');
 
@@ -201,7 +280,7 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
     <details class="bg-white border border-slate-200 rounded-md mt-3 overflow-hidden group" ${index === 0 ? 'open' : ''}>
       <summary class="flex items-center justify-between px-3 py-2 bg-slate-50 border-b border-slate-200 cursor-pointer list-none">
         <div class="flex items-center gap-2 flex-wrap">
-          <span class="font-semibold text-sm text-slate-800">${group.card.name}</span>
+          <span class="font-semibold text-sm text-slate-800">${escapeHtml(group.card.name)}</span>
           <span class="text-xs font-semibold text-emerald-600">${group.bestNet.toFixed(2)}% best</span>
         </div>
         <div class="flex items-center gap-2">
@@ -210,7 +289,7 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
         </div>
       </summary>
       <div class="px-3">${tableRows}</div>
-      ${noteText ? `<div class="text-[11px] italic text-slate-400 px-3 pb-2 pt-1 border-t border-slate-100">💡 ${noteText}</div>` : ''}
+      ${noteText ? `<div class="text-[11px] italic text-slate-400 px-3 pb-2 pt-1 border-t border-slate-100">💡 ${escapeHtml(noteText)}</div>` : ''}
     </details>`;
 }
 
@@ -249,7 +328,7 @@ export function renderResults(groups, brand, shouldScroll, force = false) {
   // pull the true forgone reward % from eitherOrLegs rather than best.reward.
   // Either way, "available, not taken" only applies when something nonzero
   // was actually on the table — a genuine 0% shouldn't be framed as a choice.
-  const eitherOrChoice = best.metrics.eitherOrChoice;
+  const eitherOrChoice = best.track ? undefined : best.metrics.eitherOrChoice;
   const legs = best.metrics.eitherOrLegs;
   const voucherAmount = best.metrics.flooredAmount + best.metrics.extraAmount;
   // best.reward was the card's theoretical continuous rate (points per block

@@ -19,6 +19,10 @@ export const cardRules = {
       isDiscountOnly: true,
       notice: "GrabDeals accelerated rewards no longer apply to gift vouchers. Net savings reflect upfront discount only.",
       sourceUrl: "https://grabdeals.axisbank.com/"
+    },
+    maximize_money: {
+      notice: "Gateway Dependent: Choose Easebuzz gateway to avoid MCC 5947 gift card exclusions. SBI Cashback earns 5% and Axis Atlas earns 2 Miles/₹100 via Easebuzz (subject to Axis retrospective clawback). CCAvenue/Razorpay may pass MCC 5947 earning 0%.",
+      sourceUrl: "https://www.maximize.money/"
     }
   },
 
@@ -29,6 +33,36 @@ export const cardRules = {
         notice: "MCC Dependent: SBI Card officially excludes gift card MCCs (0%). However, Amazon transactions often code under general retail (earning 5%). Cashback is not guaranteed and depends on Amazon's payment gateway MCC.",
         reason: "Variable MCC at Amazon checkout; earns 5% on retail MCC, 0% if coded under financial/prepaid MCC.",
         sourceUrl: "https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page"
+      },
+      axis_atlas: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base earn of 2 Edge Miles/₹100 (2% base, worth 4% after 1:2 partner conversion) is only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 2 Edge Miles/₹100 (2% base miles, 4% after 1:2 conversion) on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/axis-bank-atlas-credit-card"
+      },
+      axis_magnus: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base points (12 RP/₹200) are only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 12 RP/₹200 on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card"
+      },
+      axis_magnus_burgundy: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base points (12 RP/₹200) are only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 12 RP/₹200 on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card-for-burgundy"
+      },
+      axis_horizon: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base points (2 RP/₹100) are only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 2 RP/₹100 on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/axis-bank-horizon-credit-card"
+      },
+      axis_myzone: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base points (4 RP/₹100) are only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 4 RP/₹100 on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card"
+      },
+      axis_flipkart: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base cashback (1%) is only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 1% cashback on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card"
       },
       icici_amazon: {
         rewardRate: 2.0,
@@ -41,6 +75,36 @@ export const cardRules = {
         rewardRate: 0,
         reason: "Wallet load / gift voucher exclusion.",
         sourceUrl: "https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page"
+      },
+      axis_atlas: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base earn of 2 Edge Miles/₹100 (2% base, worth 4% after 1:2 partner conversion) is only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 2 Edge Miles/₹100 (2% base miles, 4% after 1:2 conversion) on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/axis-bank-atlas-credit-card"
+      },
+      axis_magnus: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base points (12 RP/₹200) are only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 12 RP/₹200 on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card"
+      },
+      axis_magnus_burgundy: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base points (12 RP/₹200) are only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 12 RP/₹200 on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card-for-burgundy"
+      },
+      axis_horizon: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base points (2 RP/₹100) are only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 2 RP/₹100 on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/axis-bank-horizon-credit-card"
+      },
+      axis_myzone: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base points (4 RP/₹100) are only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 4 RP/₹100 on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card"
+      },
+      axis_flipkart: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base cashback (1%) is only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; earns 1% cashback on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card"
       },
       hdfc_infinia: {
         rewardRate: 0,

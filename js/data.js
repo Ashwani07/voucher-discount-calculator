@@ -210,7 +210,7 @@ export const masterBrands = [
       {
         "compositeId": "absolute_barbeque_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-absolute_barbeque-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -351,7 +351,7 @@ export const masterBrands = [
       {
         "compositeId": "adventra_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-adventra-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -452,7 +452,7 @@ export const masterBrands = [
       {
         "compositeId": "affinity_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-affinity_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -515,7 +515,7 @@ export const masterBrands = [
       {
         "compositeId": "air_india_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-air_india-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -755,7 +755,7 @@ export const masterBrands = [
       {
         "compositeId": "ajio_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-ajio-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -850,7 +850,7 @@ export const masterBrands = [
       {
         "compositeId": "ajio_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-ajio_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -944,7 +944,7 @@ export const masterBrands = [
       {
         "compositeId": "aldo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-aldo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -1031,7 +1031,7 @@ export const masterBrands = [
       {
         "compositeId": "aliste_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 32.5,
         "site": "https://vouchwise.in/out/buy-aliste-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -1110,7 +1110,7 @@ export const masterBrands = [
       {
         "compositeId": "allen_solly_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-allen_solly-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -1144,37 +1144,6 @@ export const masterBrands = [
         "portalId": "sbi_gyftr",
         "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-allen_solly-sbi_gyftr",
-        "availability": "available",
-        "disclaimer": ""
-      }
-    ]
-  },
-  {
-    "id": "amazon",
-    "name": "Amazon",
-    "category_name": "Electronics",
-    "portals": [
-      {
-        "compositeId": "amazon_hsbc_instabenefits",
-        "portalId": "hsbc_instabenefits",
-        "upfrontDiscountPercent": 0.0,
-        "site": "https://vouchwise.in/out/buy-amazon-hsbc_instabenefits",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "amazon_indusind_instavouchers",
-        "portalId": "indusind_instavouchers",
-        "upfrontDiscountPercent": 0.25,
-        "site": "https://vouchwise.in/out/buy-amazon-indusind_instavouchers",
-        "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "amazon_sbi_gyftr",
-        "portalId": "sbi_gyftr",
-        "upfrontDiscountPercent": 0.0,
-        "site": "https://vouchwise.in/out/buy-amazon-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1220,7 +1189,7 @@ export const masterBrands = [
       {
         "compositeId": "amazon_fresh_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 1.5,
         "site": "https://vouchwise.in/out/buy-amazon_fresh-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -1321,6 +1290,14 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "amazon_pay_hsbc_instabenefits",
+        "portalId": "hsbc_instabenefits",
+        "upfrontDiscountPercent": 0.0,
+        "site": "https://vouchwise.in/out/buy-amazon_pay-hsbc_instabenefits",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "amazon_pay_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": -4.13,
@@ -1329,10 +1306,26 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
+        "compositeId": "amazon_pay_indusind_instavouchers",
+        "portalId": "indusind_instavouchers",
+        "upfrontDiscountPercent": 0.25,
+        "site": "https://vouchwise.in/out/buy-amazon_pay-indusind_instavouchers",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
         "compositeId": "amazon_pay_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-amazon_pay-maximize_money",
+        "availability": "available",
+        "disclaimer": ""
+      },
+      {
+        "compositeId": "amazon_pay_sbi_gyftr",
+        "portalId": "sbi_gyftr",
+        "upfrontDiscountPercent": 0.0,
+        "site": "https://vouchwise.in/out/buy-amazon_pay-sbi_gyftr",
         "availability": "available",
         "disclaimer": ""
       }
@@ -1454,7 +1447,7 @@ export const masterBrands = [
       {
         "compositeId": "amazon_prime_membership_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-amazon_prime_membership-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -1570,6 +1563,21 @@ export const masterBrands = [
     ]
   },
   {
+    "id": "amazon_shopping",
+    "name": "Amazon Shopping",
+    "category_name": "General",
+    "portals": [
+      {
+        "compositeId": "amazon_shopping_hdfc_smartbuy",
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 0.87,
+        "site": "https://vouchwise.in/out/buy-amazon_shopping-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      }
+    ]
+  },
+  {
     "id": "amazon_shopping_voucher",
     "name": "Amazon Shopping",
     "category_name": "Electronics",
@@ -1619,7 +1627,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-amazon_shopping_voucher-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -1704,7 +1712,7 @@ export const masterBrands = [
       {
         "compositeId": "american_eagle_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-american_eagle-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -1783,7 +1791,7 @@ export const masterBrands = [
       {
         "compositeId": "american_tourister_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-american_tourister-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -1846,7 +1854,7 @@ export const masterBrands = [
       {
         "compositeId": "apollo_diagnostics_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-apollo_diagnostics-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -1917,7 +1925,7 @@ export const masterBrands = [
       {
         "compositeId": "apollo_pharmacy_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-apollo_pharmacy-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2042,7 +2050,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-apparel_group-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -2141,7 +2149,7 @@ export const masterBrands = [
       {
         "compositeId": "archies_gallery_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-archies_gallery-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2228,7 +2236,7 @@ export const masterBrands = [
       {
         "compositeId": "armani_exchange_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-armani_exchange_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2384,7 +2392,7 @@ export const masterBrands = [
       {
         "compositeId": "assembly_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-assembly-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2441,7 +2449,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ather-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -2478,7 +2486,7 @@ export const masterBrands = [
       {
         "compositeId": "aurelia_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-aurelia-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2557,7 +2565,7 @@ export const masterBrands = [
       {
         "compositeId": "auric_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 37.5,
         "site": "https://vouchwise.in/out/buy-auric-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2681,7 +2689,7 @@ export const masterBrands = [
       {
         "compositeId": "bakingo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-bakingo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2760,7 +2768,7 @@ export const masterBrands = [
       {
         "compositeId": "bally_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-bally_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2823,7 +2831,7 @@ export const masterBrands = [
       {
         "compositeId": "barbeque_nation_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-barbeque_nation-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2894,7 +2902,7 @@ export const masterBrands = [
       {
         "compositeId": "bare_anatomy_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-bare_anatomy-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -2965,7 +2973,7 @@ export const masterBrands = [
       {
         "compositeId": "baskin_robbins_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-baskin_robbins-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -3060,7 +3068,7 @@ export const masterBrands = [
       {
         "compositeId": "bata_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-bata-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -3129,14 +3137,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "bath_and_body_works_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 15.0,
-        "site": "https://vouchwise.in/out/buy-bath_and_body_works-hdfc_smartbuy",
-        "availability": "not available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "bath_and_body_works_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0.0,
@@ -3178,7 +3178,7 @@ export const masterBrands = [
       {
         "compositeId": "bath_body_works_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-bath_body_works-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -3256,7 +3256,7 @@ export const masterBrands = [
       {
         "compositeId": "bblunt_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-bblunt_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -3333,7 +3333,7 @@ export const masterBrands = [
       {
         "compositeId": "beer_cafe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-beer_cafe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -3412,7 +3412,7 @@ export const masterBrands = [
       {
         "compositeId": "behrouz_biryani_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-behrouz_biryani-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -3570,7 +3570,7 @@ export const masterBrands = [
       {
         "compositeId": "beyoung_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-beyoung-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -3675,14 +3675,14 @@ export const masterBrands = [
   {
     "id": "bgmi_uc_official",
     "name": "BGMI UC Official",
-    "category_name": "Gaming",
+    "category_name": "[\"Gaming\"]",
     "portals": [
       {
         "compositeId": "bgmi_uc_official_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-bgmi_uc_official-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -3795,7 +3795,7 @@ export const masterBrands = [
       {
         "compositeId": "biba_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-biba-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -3874,7 +3874,7 @@ export const masterBrands = [
       {
         "compositeId": "big_basket_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 1.5,
         "site": "https://vouchwise.in/out/buy-big_basket-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -4115,7 +4115,7 @@ export const masterBrands = [
       {
         "compositeId": "blinkit_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 1.0,
         "site": "https://vouchwise.in/out/buy-blinkit-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -4202,7 +4202,7 @@ export const masterBrands = [
       {
         "compositeId": "blissclub_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-blissclub-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -4467,7 +4467,7 @@ export const masterBrands = [
       {
         "compositeId": "bo_tai_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-bo_tai-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -4537,7 +4537,7 @@ export const masterBrands = [
       {
         "compositeId": "bobbi_brown_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-bobbi_brown-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -4724,7 +4724,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-bose-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -4761,7 +4761,7 @@ export const masterBrands = [
       {
         "compositeId": "bottega_veneta_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-bottega_veneta_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -4823,7 +4823,7 @@ export const masterBrands = [
       {
         "compositeId": "bounce_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-bounce_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -4879,7 +4879,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-bpcl_smart_drive_fuel_e-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -4986,7 +4986,7 @@ export const masterBrands = [
       {
         "compositeId": "brooks_brothers_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-brooks_brothers_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -5080,7 +5080,7 @@ export const masterBrands = [
       {
         "compositeId": "bubbles_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-bubbles_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -5181,7 +5181,7 @@ export const masterBrands = [
       {
         "compositeId": "cafe_delhi_heights_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-cafe_delhi_heights-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -5244,7 +5244,7 @@ export const masterBrands = [
       {
         "compositeId": "cahoot_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-cahoot-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -5291,7 +5291,7 @@ export const masterBrands = [
       {
         "compositeId": "call_it_spring_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-call_it_spring-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -5370,7 +5370,7 @@ export const masterBrands = [
       {
         "compositeId": "campus_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-campus-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -5545,7 +5545,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-candere_diamond_jewellery-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -5600,7 +5600,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-candere_gold_coin-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -5663,7 +5663,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-candere_gold_jewellery-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -5740,7 +5740,7 @@ export const masterBrands = [
       {
         "compositeId": "cello_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-cello-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -5824,14 +5824,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "charles_and_keith_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 15.0,
-        "site": "https://vouchwise.in/out/buy-charles_and_keith-hdfc_smartbuy",
-        "availability": "not available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "charles_and_keith_icici_ishop",
         "portalId": "icici_ishop",
         "upfrontDiscountPercent": 0.0,
@@ -5873,7 +5865,7 @@ export const masterBrands = [
       {
         "compositeId": "charles_keith_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-charles_keith-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -5936,7 +5928,7 @@ export const masterBrands = [
       {
         "compositeId": "charles_tyrwhitt_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-charles_tyrwhitt_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -5975,7 +5967,7 @@ export const masterBrands = [
       {
         "compositeId": "chemist_at_play_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-chemist_at_play-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6092,7 +6084,7 @@ export const masterBrands = [
       {
         "compositeId": "chumbak_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-chumbak-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6163,7 +6155,7 @@ export const masterBrands = [
       {
         "compositeId": "cinepolis_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-cinepolis-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6257,7 +6249,7 @@ export const masterBrands = [
       {
         "compositeId": "citizen_watches_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-citizen_watches-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6336,7 +6328,7 @@ export const masterBrands = [
       {
         "compositeId": "clayco_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-clayco-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6440,7 +6432,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-cleartrip-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -6495,7 +6487,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-cleartrip_generic-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -6572,7 +6564,7 @@ export const masterBrands = [
       {
         "compositeId": "cleartrip_hotel_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-cleartrip_hotel-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6681,7 +6673,7 @@ export const masterBrands = [
       {
         "compositeId": "coach_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-coach_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6744,7 +6736,7 @@ export const masterBrands = [
       {
         "compositeId": "color_plus_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-color_plus-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6823,7 +6815,7 @@ export const masterBrands = [
       {
         "compositeId": "columbia_sportswear_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-columbia_sportswear-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6878,7 +6870,7 @@ export const masterBrands = [
       {
         "compositeId": "cordelia_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-cordelia-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -6920,14 +6912,6 @@ export const masterBrands = [
         "upfrontDiscountPercent": 11.0,
         "site": "https://vouchwise.in/out/buy-cordelia_cruises-gyftr",
         "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "cordelia_cruises_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 12.5,
-        "site": "https://vouchwise.in/out/buy-cordelia_cruises-hdfc_smartbuy",
-        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -6995,7 +6979,7 @@ export const masterBrands = [
       {
         "compositeId": "costa_coffee_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-costa_coffee-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -7090,7 +7074,7 @@ export const masterBrands = [
       {
         "compositeId": "croma_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.0,
         "site": "https://vouchwise.in/out/buy-croma-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -7185,7 +7169,7 @@ export const masterBrands = [
       {
         "compositeId": "crossword_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-crossword-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -7257,7 +7241,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-cult-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -7363,7 +7347,7 @@ export const masterBrands = [
       {
         "compositeId": "cut_style_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-cut_style_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -7410,7 +7394,7 @@ export const masterBrands = [
       {
         "compositeId": "daily_objects_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-daily_objects-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -7504,7 +7488,7 @@ export const masterBrands = [
       {
         "compositeId": "decathlon_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 3.5,
         "site": "https://vouchwise.in/out/buy-decathlon-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -7577,14 +7561,6 @@ export const masterBrands = [
         "upfrontDiscountPercent": 3.0,
         "site": "https://vouchwise.in/out/buy-decathlon_sports-gyftr",
         "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "decathlon_sports_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 3.5,
-        "site": "https://vouchwise.in/out/buy-decathlon_sports-hdfc_smartbuy",
-        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -7878,7 +7854,7 @@ export const masterBrands = [
       {
         "compositeId": "dominos_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-dominos-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -7928,14 +7904,6 @@ export const masterBrands = [
         "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-dominos_pizza-gyftr",
         "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "dominos_pizza_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 17.5,
-        "site": "https://vouchwise.in/out/buy-dominos_pizza-hdfc_smartbuy",
-        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -8049,7 +8017,7 @@ export const masterBrands = [
       {
         "compositeId": "dpauls_travel_tours_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-dpauls_travel_tours-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -8098,7 +8066,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-dream_folks_club_membership-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -8169,7 +8137,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-dune_london_luxe-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -8208,15 +8176,15 @@ export const masterBrands = [
   },
   {
     "id": "dune_luxe",
-    "name": "Dune - Luxe",
-    "category_name": "Fashion",
+    "name": "Dune-Luxe",
+    "category_name": "Electronics",
     "portals": [
       {
         "compositeId": "dune_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-dune_luxe-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -8261,7 +8229,7 @@ export const masterBrands = [
       {
         "compositeId": "duroflex_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-duroflex-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -8316,7 +8284,7 @@ export const masterBrands = [
       {
         "compositeId": "ea_7_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-ea_7_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -8403,7 +8371,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ea_sports_fc_26-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -8465,7 +8433,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-ease_my_trip_generic-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -8534,7 +8502,7 @@ export const masterBrands = [
       {
         "compositeId": "ease_my_trip_holiday_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-ease_my_trip_holiday-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -8627,7 +8595,7 @@ export const masterBrands = [
       {
         "compositeId": "easy_buy_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-easy_buy-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -8705,7 +8673,7 @@ export const masterBrands = [
       {
         "compositeId": "eat_sure_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-eat_sure-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -8775,7 +8743,7 @@ export const masterBrands = [
       {
         "compositeId": "eazy_diner_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-eazy_diner-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -8823,7 +8791,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-electricity_bill_payment-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -8876,7 +8844,7 @@ export const masterBrands = [
       {
         "compositeId": "elivaas_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-elivaas-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -8949,7 +8917,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-elleven-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -9025,7 +8993,7 @@ export const masterBrands = [
       {
         "compositeId": "emporio_armani_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-emporio_armani_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -9095,7 +9063,7 @@ export const masterBrands = [
       {
         "compositeId": "enrich_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-enrich_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -9241,7 +9209,7 @@ export const masterBrands = [
       {
         "compositeId": "estele_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 20.0,
         "site": "https://vouchwise.in/out/buy-estele-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -9406,7 +9374,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-euphoria_jewellery_gold_coin-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -9469,7 +9437,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-euphoria_jewellery_silver_coin-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -9561,7 +9529,7 @@ export const masterBrands = [
       {
         "compositeId": "faasos_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-faasos-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -9632,7 +9600,7 @@ export const masterBrands = [
       {
         "compositeId": "fab_hotels_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-fab_hotels-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -9689,7 +9657,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-fabindia-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -9734,7 +9702,7 @@ export const masterBrands = [
       {
         "compositeId": "farzi_cafe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-farzi_cafe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -9789,7 +9757,7 @@ export const masterBrands = [
       {
         "compositeId": "fashion_factory_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-fashion_factory-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -9846,7 +9814,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-fastag_recharge-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -9899,7 +9867,7 @@ export const masterBrands = [
       {
         "compositeId": "fastrack_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-fastrack-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -9970,7 +9938,7 @@ export const masterBrands = [
       {
         "compositeId": "fastrack_bags_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-fastrack_bags-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10033,7 +10001,7 @@ export const masterBrands = [
       {
         "compositeId": "fastrack_smartwatches_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-fastrack_smartwatches-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10096,7 +10064,7 @@ export const masterBrands = [
       {
         "compositeId": "femmella_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-femmella-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10167,7 +10135,7 @@ export const masterBrands = [
       {
         "compositeId": "ferns_n_petals_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-ferns_n_petals-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10238,7 +10206,7 @@ export const masterBrands = [
       {
         "compositeId": "ferragamo_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-ferragamo_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10340,7 +10308,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-first_cry-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -10417,7 +10385,7 @@ export const masterBrands = [
       {
         "compositeId": "fitpass_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-fitpass-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10504,7 +10472,7 @@ export const masterBrands = [
       {
         "compositeId": "flipkart_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.05,
         "site": "https://vouchwise.in/out/buy-flipkart-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10636,7 +10604,7 @@ export const masterBrands = [
       {
         "compositeId": "flower_aura_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-flower_aura-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10823,7 +10791,7 @@ export const masterBrands = [
       {
         "compositeId": "foxtale_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-foxtale-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10910,7 +10878,7 @@ export const masterBrands = [
       {
         "compositeId": "freecultr_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-freecultr-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -10981,7 +10949,7 @@ export const masterBrands = [
       {
         "compositeId": "french_accent_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-french_accent-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -11083,7 +11051,7 @@ export const masterBrands = [
       {
         "compositeId": "frido_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-frido-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -11192,7 +11160,7 @@ export const masterBrands = [
       {
         "compositeId": "future_world_apple_reseller_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-future_world_apple_reseller-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -11278,7 +11246,7 @@ export const masterBrands = [
       {
         "compositeId": "gaana_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-gaana-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -11373,7 +11341,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-gas_bill_payment-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -11426,7 +11394,7 @@ export const masterBrands = [
       {
         "compositeId": "gas_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-gas_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -11582,7 +11550,7 @@ export const masterBrands = [
       {
         "compositeId": "giorgio_armani_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-giorgio_armani_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -11654,7 +11622,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-giva_gold_jewellery-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -11770,7 +11738,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-giva_silver_coin-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -11841,7 +11809,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-giva_silver_jewellery-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -12043,7 +12011,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-grt_jewellers-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -12098,7 +12066,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-gy_ftr_pay-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -12190,7 +12158,7 @@ export const masterBrands = [
       {
         "compositeId": "hamleys_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-hamleys_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -12245,7 +12213,7 @@ export const masterBrands = [
       {
         "compositeId": "hammer_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 25.0,
         "site": "https://vouchwise.in/out/buy-hammer-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -12339,7 +12307,7 @@ export const masterBrands = [
       {
         "compositeId": "haute_sauce_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-haute_sauce-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -12443,12 +12411,12 @@ export const masterBrands = [
   {
     "id": "health_glow",
     "name": "Health & Glow",
-    "category_name": "Gifting",
+    "category_name": "Fashion & Accessories",
     "portals": [
       {
         "compositeId": "health_glow_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-health_glow-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -12505,7 +12473,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-health_kart-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -12574,7 +12542,7 @@ export const masterBrands = [
       {
         "compositeId": "healthians_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-healthians-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -12683,7 +12651,7 @@ export const masterBrands = [
       {
         "compositeId": "helios_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-helios-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -12748,7 +12716,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-hero_moto-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -12816,7 +12784,7 @@ export const masterBrands = [
       {
         "compositeId": "hidesign_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-hidesign-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -12926,7 +12894,7 @@ export const masterBrands = [
       {
         "compositeId": "himalaya_wellness_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-himalaya_wellness-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -12989,7 +12957,7 @@ export const masterBrands = [
       {
         "compositeId": "hindustan_times_premium_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 47.5,
         "site": "https://vouchwise.in/out/buy-hindustan_times_premium-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -13044,7 +13012,7 @@ export const masterBrands = [
       {
         "compositeId": "hoichoi_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-hoichoi-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -13122,7 +13090,7 @@ export const masterBrands = [
       {
         "compositeId": "home_centre_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-home_centre-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -13177,7 +13145,7 @@ export const masterBrands = [
       {
         "compositeId": "home_centre_online_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-home_centre_online-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -13218,7 +13186,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-home_stop-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       }
     ]
@@ -13257,14 +13225,6 @@ export const masterBrands = [
         "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-homecentre_offline-axis_grabdeals",
         "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "homecentre_offline_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 7.5,
-        "site": "https://vouchwise.in/out/buy-homecentre_offline-hdfc_smartbuy",
-        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -13307,14 +13267,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "homecentre_online_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 7.5,
-        "site": "https://vouchwise.in/out/buy-homecentre_online-hdfc_smartbuy",
-        "availability": "not available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "homecentre_online_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 8.5,
@@ -13340,7 +13292,7 @@ export const masterBrands = [
       {
         "compositeId": "hoora_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-hoora-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -13412,7 +13364,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-hp_pay-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -13510,7 +13462,7 @@ export const masterBrands = [
       {
         "compositeId": "hugo_boss_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-hugo_boss_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -13659,7 +13611,7 @@ export const masterBrands = [
       {
         "compositeId": "hush_puppies_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-hush_puppies-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -13753,7 +13705,7 @@ export const masterBrands = [
       {
         "compositeId": "igp_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-igp-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -13840,7 +13792,7 @@ export const masterBrands = [
       {
         "compositeId": "ikea_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-ikea-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -13905,7 +13857,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-imagine-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -14157,7 +14109,7 @@ export const masterBrands = [
       {
         "compositeId": "inglot_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-inglot-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -14243,7 +14195,7 @@ export const masterBrands = [
       {
         "compositeId": "instafab_plus_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-instafab_plus-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -14276,7 +14228,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-iocl-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -14383,7 +14335,7 @@ export const masterBrands = [
       {
         "compositeId": "itc_hotels_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-itc_hotels-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -14454,7 +14406,7 @@ export const masterBrands = [
       {
         "compositeId": "ixigo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-ixigo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -14517,7 +14469,7 @@ export const masterBrands = [
       {
         "compositeId": "ixigo_hotel_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-ixigo_hotel-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -14595,7 +14547,7 @@ export const masterBrands = [
       {
         "compositeId": "jawed_habib_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-jawed_habib_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -14649,7 +14601,7 @@ export const masterBrands = [
       {
         "compositeId": "jcb_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-jcb_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -14711,7 +14663,7 @@ export const masterBrands = [
       {
         "compositeId": "jimmy_choo_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-jimmy_choo_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -14781,7 +14733,7 @@ export const masterBrands = [
       {
         "compositeId": "jio_hotstar_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-jio_hotstar-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -14883,7 +14835,7 @@ export const masterBrands = [
       {
         "compositeId": "jockey_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-jockey-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -15298,7 +15250,7 @@ export const masterBrands = [
       {
         "compositeId": "kalki_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-kalki-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -15518,7 +15470,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-kalyan_gold_jewellery-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -15655,7 +15607,7 @@ export const masterBrands = [
       {
         "compositeId": "kama_ayurveda_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-kama_ayurveda-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -15726,7 +15678,7 @@ export const masterBrands = [
       {
         "compositeId": "kate_spade_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-kate_spade_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -15799,7 +15751,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ketan_diamonds_diamond_only-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -15862,7 +15814,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ketan_diamonds_gold_coin-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -15933,7 +15885,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ketan_diamonds_gold_jewellery-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -16018,7 +15970,7 @@ export const masterBrands = [
       {
         "compositeId": "kfc_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-kfc-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -16128,7 +16080,7 @@ export const masterBrands = [
       {
         "compositeId": "kimirica_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-kimirica-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -16222,7 +16174,7 @@ export const masterBrands = [
       {
         "compositeId": "klook_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-klook-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -16277,7 +16229,7 @@ export const masterBrands = [
       {
         "compositeId": "koskii_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-koskii-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -16332,7 +16284,7 @@ export const masterBrands = [
       {
         "compositeId": "la_martina_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-la_martina_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -16396,7 +16348,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-lakme_luzo-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -16481,7 +16433,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-landline_bill_payment-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -16649,7 +16601,7 @@ export const masterBrands = [
       {
         "compositeId": "lego_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-lego-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -16736,7 +16688,7 @@ export const masterBrands = [
       {
         "compositeId": "lenskart_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-lenskart-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -16831,7 +16783,7 @@ export const masterBrands = [
       {
         "compositeId": "levis_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-levis-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -16917,7 +16869,7 @@ export const masterBrands = [
       {
         "compositeId": "libas_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-libas-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -16972,7 +16924,7 @@ export const masterBrands = [
       {
         "compositeId": "liberty_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-liberty-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -17025,14 +16977,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "liberty_offline_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 7.5,
-        "site": "https://vouchwise.in/out/buy-liberty_offline-hdfc_smartbuy",
-        "availability": "not available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "liberty_offline_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 8.0,
@@ -17074,7 +17018,7 @@ export const masterBrands = [
       {
         "compositeId": "liberty_online_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-liberty_online-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -17137,7 +17081,7 @@ export const masterBrands = [
       {
         "compositeId": "lifestyle_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-lifestyle-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -17198,14 +17142,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "lifestyle_offline_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
-        "site": "https://vouchwise.in/out/buy-lifestyle_offline-hdfc_smartbuy",
-        "availability": "not available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "lifestyle_offline_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 5.0,
@@ -17263,7 +17199,7 @@ export const masterBrands = [
       {
         "compositeId": "lifestyle_online_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-lifestyle_online-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -17373,7 +17309,7 @@ export const masterBrands = [
       {
         "compositeId": "lionsgate_play_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-lionsgate_play-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -17474,7 +17410,7 @@ export const masterBrands = [
       {
         "compositeId": "live_hindustan_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 47.5,
         "site": "https://vouchwise.in/out/buy-live_hindustan-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -17523,7 +17459,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 47.5,
         "site": "https://vouchwise.in/out/buy-live_mint-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -17592,7 +17528,7 @@ export const masterBrands = [
       {
         "compositeId": "lohono_stays_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-lohono_stays-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -17670,7 +17606,7 @@ export const masterBrands = [
       {
         "compositeId": "looks_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-looks_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -17748,7 +17684,7 @@ export const masterBrands = [
       {
         "compositeId": "louis_philippe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-louis_philippe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -17841,7 +17777,7 @@ export const masterBrands = [
       {
         "compositeId": "lunch_box_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-lunch_box-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -18038,7 +17974,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-luzo_salons-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -18061,7 +17997,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-luzo_salons,_spas,_clinics-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       }
     ]
@@ -18092,7 +18028,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-mac-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -18184,7 +18120,7 @@ export const masterBrands = [
       {
         "compositeId": "made_in_punjab_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-made_in_punjab-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -18270,7 +18206,7 @@ export const masterBrands = [
       {
         "compositeId": "mainland_china_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-mainland_china-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -18414,7 +18350,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -18569,15 +18505,15 @@ export const masterBrands = [
   },
   {
     "id": "make_my_trip_e_pay",
-    "name": "Make My Trip e - Pay",
-    "category_name": "E-Commerce",
+    "name": "Make My Trip E - Pay",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "make_my_trip_e_pay_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip_e_pay-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -18632,7 +18568,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-make_my_trip_holiday-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -18671,15 +18607,15 @@ export const masterBrands = [
   },
   {
     "id": "make_my_trip_holiday_e_pay",
-    "name": "Make My Trip Holiday e - Pay",
-    "category_name": "E-Commerce",
+    "name": "Make My Trip Holiday E Pay",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "make_my_trip_holiday_e_pay_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip_holiday_e_pay-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -18734,7 +18670,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-make_my_trip_hotel-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -18773,15 +18709,15 @@ export const masterBrands = [
   },
   {
     "id": "make_my_trip_hotel_e_pay",
-    "name": "Make My Trip Hotel e - Pay",
-    "category_name": "E-Commerce",
+    "name": "Make My Trip Hotel E Pay",
+    "category_name": "[\"Travel & Leisure\"]",
     "portals": [
       {
         "compositeId": "make_my_trip_hotel_e_pay_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-make_my_trip_hotel_e_pay-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -18965,7 +18901,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-malabar_diamonds-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -19028,7 +18964,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-malabar_gold_coin-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -19106,7 +19042,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-malabar_jewellery-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -19175,7 +19111,7 @@ export const masterBrands = [
       {
         "compositeId": "mango_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-mango-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -19246,7 +19182,7 @@ export const masterBrands = [
       {
         "compositeId": "manyavar_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-manyavar-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -19355,7 +19291,7 @@ export const masterBrands = [
       {
         "compositeId": "marks_spencer_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-marks_spencer-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -19532,7 +19468,7 @@ export const masterBrands = [
       {
         "compositeId": "masala_library_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-masala_library-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -19587,7 +19523,7 @@ export const masterBrands = [
       {
         "compositeId": "matrix_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-matrix-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -19618,7 +19554,7 @@ export const masterBrands = [
       {
         "compositeId": "max_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-max-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -19694,14 +19630,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "max_fashion_offline_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 7.5,
-        "site": "https://vouchwise.in/out/buy-max_fashion_offline-hdfc_smartbuy",
-        "availability": "not available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "max_fashion_offline_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 10.0,
@@ -19759,7 +19687,7 @@ export const masterBrands = [
       {
         "compositeId": "max_fashion_online_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-max_fashion_online-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -19838,7 +19766,7 @@ export const masterBrands = [
       {
         "compositeId": "me_n_moms_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-me_n_moms-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -19926,7 +19854,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-mediwheel-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -19973,7 +19901,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-mia-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20145,7 +20073,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-microsoft_xbox_game_pass_core-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20221,7 +20149,7 @@ export const masterBrands = [
       {
         "compositeId": "milkbasket_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-milkbasket-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -20543,7 +20471,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-moba_legends_5v5-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20582,7 +20510,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-mobile_postpaid_bill_payment-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20613,7 +20541,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-mobile_prepaid_recharge-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20720,9 +20648,9 @@ export const masterBrands = [
       {
         "compositeId": "mother_care_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 10.0,
+        "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-mother_care_luxe-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -20761,15 +20689,15 @@ export const masterBrands = [
   },
   {
     "id": "mothercare_luxe",
-    "name": "Mothercare - Luxe",
-    "category_name": "Fashion",
+    "name": "Mothercare-Luxe",
+    "category_name": "Fashion & Accessories",
     "portals": [
       {
         "compositeId": "mothercare_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-mothercare_luxe-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20846,7 +20774,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-ms_xbox_game_pass_ultimate-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -20906,7 +20834,7 @@ export const masterBrands = [
       {
         "compositeId": "muji_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-muji_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -20985,7 +20913,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-muthoot_gold-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -21092,7 +21020,7 @@ export const masterBrands = [
       {
         "compositeId": "myntra_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.0,
         "site": "https://vouchwise.in/out/buy-myntra-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -21194,7 +21122,7 @@ export const masterBrands = [
       {
         "compositeId": "nat_habit_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 27.5,
         "site": "https://vouchwise.in/out/buy-nat_habit-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -21325,7 +21253,7 @@ export const masterBrands = [
       {
         "compositeId": "naturals_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-naturals_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -21417,7 +21345,7 @@ export const masterBrands = [
       {
         "compositeId": "nautica_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-nautica-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -21496,7 +21424,7 @@ export const masterBrands = [
       {
         "compositeId": "neemans_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-neemans-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -21574,7 +21502,7 @@ export const masterBrands = [
       {
         "compositeId": "nestasia_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-nestasia-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -21637,7 +21565,7 @@ export const masterBrands = [
       {
         "compositeId": "netmeds_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-netmeds-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -21708,7 +21636,7 @@ export const masterBrands = [
       {
         "compositeId": "next_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-next-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -21855,7 +21783,7 @@ export const masterBrands = [
       {
         "compositeId": "noise_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-noise-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -21926,7 +21854,7 @@ export const masterBrands = [
       {
         "compositeId": "nua_woman_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 27.5,
         "site": "https://vouchwise.in/out/buy-nua_woman-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22020,7 +21948,7 @@ export const masterBrands = [
       {
         "compositeId": "nykaa_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-nykaa-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22115,7 +22043,7 @@ export const masterBrands = [
       {
         "compositeId": "nykaa_fashion_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-nykaa_fashion-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22170,7 +22098,7 @@ export const masterBrands = [
       {
         "compositeId": "nykaa_man_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-nykaa_man-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22301,7 +22229,7 @@ export const masterBrands = [
       {
         "compositeId": "oh_calcutta_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-oh_calcutta-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22382,7 +22310,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-ola_cabs-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -22468,7 +22396,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-organic_india-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -22568,7 +22496,7 @@ export const masterBrands = [
       {
         "compositeId": "oven_story_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-oven_story-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22638,7 +22566,7 @@ export const masterBrands = [
       {
         "compositeId": "pa_pa_ya_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-pa_pa_ya-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22711,7 +22639,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-palmonas-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -22796,7 +22724,7 @@ export const masterBrands = [
       {
         "compositeId": "pantaloons_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-pantaloons-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22867,7 +22795,7 @@ export const masterBrands = [
       {
         "compositeId": "park_avenue_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-park_avenue-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22938,7 +22866,7 @@ export const masterBrands = [
       {
         "compositeId": "parx_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-parx-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -22999,14 +22927,6 @@ export const masterBrands = [
         "disclaimer": ""
       },
       {
-        "compositeId": "paul_and_shark_luxe_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 10.0,
-        "site": "https://vouchwise.in/out/buy-paul_and_shark_luxe-hdfc_smartbuy",
-        "availability": "not available",
-        "disclaimer": ""
-      },
-      {
         "compositeId": "paul_and_shark_luxe_maximize_money",
         "portalId": "maximize_money",
         "upfrontDiscountPercent": 7.76,
@@ -23040,7 +22960,7 @@ export const masterBrands = [
       {
         "compositeId": "paul_shark_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-paul_shark_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -23071,7 +22991,7 @@ export const masterBrands = [
       {
         "compositeId": "paul_smith_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-paul_smith_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -23135,7 +23055,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-pc_jeweller_diamond-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -23182,7 +23102,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-pc_jeweller_gold-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -23221,7 +23141,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-pc_jeweller_gold_coin-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -23452,7 +23372,7 @@ export const masterBrands = [
       {
         "compositeId": "peter_england_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-peter_england-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -23530,7 +23450,7 @@ export const masterBrands = [
       {
         "compositeId": "philips_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-philips-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -23633,7 +23553,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-pigeon-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -23771,7 +23691,7 @@ export const masterBrands = [
       {
         "compositeId": "pizza_hut_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-pizza_hut-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -23868,7 +23788,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-planet_fashion-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -23975,7 +23895,7 @@ export const masterBrands = [
       {
         "compositeId": "points_for_good_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-points_for_good-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -24102,7 +24022,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-porter_packers_and_movers-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -24163,7 +24083,7 @@ export const masterBrands = [
       {
         "compositeId": "pottery_barn_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-pottery_barn_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -24233,7 +24153,7 @@ export const masterBrands = [
       {
         "compositeId": "prestige_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-prestige-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -24277,6 +24197,14 @@ export const masterBrands = [
     "name": "Prestige Gifting Delights",
     "category_name": "Miscellaneous",
     "portals": [
+      {
+        "compositeId": "prestige_gifting_delights_hdfc_smartbuy",
+        "portalId": "hdfc_smartbuy",
+        "upfrontDiscountPercent": 15.0,
+        "site": "https://vouchwise.in/out/buy-prestige_gifting_delights-hdfc_smartbuy",
+        "availability": "available",
+        "disclaimer": ""
+      },
       {
         "compositeId": "prestige_gifting_delights_indusind_instavouchers",
         "portalId": "indusind_instavouchers",
@@ -24358,7 +24286,7 @@ export const masterBrands = [
       {
         "compositeId": "pret_a_manger_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-pret_a_manger_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -24421,7 +24349,7 @@ export const masterBrands = [
       {
         "compositeId": "pronto_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-pronto-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -24500,7 +24428,7 @@ export const masterBrands = [
       {
         "compositeId": "puma_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-puma-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -24618,7 +24546,7 @@ export const masterBrands = [
       {
         "compositeId": "pure_home_living_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-pure_home_living-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -24720,7 +24648,7 @@ export const masterBrands = [
       {
         "compositeId": "pvr_inox_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-pvr_inox-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -24806,7 +24734,7 @@ export const masterBrands = [
       {
         "compositeId": "r_b_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-r_b-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -24879,7 +24807,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-rainbow_six_mobile-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -24940,7 +24868,7 @@ export const masterBrands = [
       {
         "compositeId": "rangriti_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-rangriti-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -25011,7 +24939,7 @@ export const masterBrands = [
       {
         "compositeId": "rare_ones_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-rare_ones-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -25050,7 +24978,7 @@ export const masterBrands = [
       {
         "compositeId": "rare_rabbit_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-rare_rabbit-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -25089,7 +25017,7 @@ export const masterBrands = [
       {
         "compositeId": "rareism_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-rareism-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -25128,7 +25056,7 @@ export const masterBrands = [
       {
         "compositeId": "rarez_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-rarez-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -25260,7 +25188,7 @@ export const masterBrands = [
       {
         "compositeId": "raymond_ready_to_wear_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-raymond_ready_to_wear-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -25429,7 +25357,7 @@ export const masterBrands = [
       {
         "compositeId": "relaxo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-relaxo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -25557,7 +25485,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-reliance_jewels-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -25604,7 +25532,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-reliance_jio_mart-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -25785,7 +25713,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-reliance_smart_bazaar-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -25934,7 +25862,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-reliance_trends-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -25995,7 +25923,7 @@ export const masterBrands = [
       {
         "compositeId": "reliance_trends_footwear_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 4.5,
         "site": "https://vouchwise.in/out/buy-reliance_trends_footwear-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -26224,7 +26152,7 @@ export const masterBrands = [
       {
         "compositeId": "ritu_kumar_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-ritu_kumar_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -26281,7 +26209,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-roblox-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -26364,7 +26292,7 @@ export const masterBrands = [
       {
         "compositeId": "rowan_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-rowan_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -26459,7 +26387,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-samsonite-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -26536,7 +26464,7 @@ export const masterBrands = [
       {
         "compositeId": "sandro_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-sandro_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -26561,7 +26489,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-satya_paul_accessories_luxe-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       }
     ]
@@ -26606,7 +26534,7 @@ export const masterBrands = [
       {
         "compositeId": "satya_paul_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-satya_paul_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -26862,7 +26790,7 @@ export const masterBrands = [
       {
         "compositeId": "shemaroo_me_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 32.5,
         "site": "https://vouchwise.in/out/buy-shemaroo_me-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -26932,7 +26860,7 @@ export const masterBrands = [
       {
         "compositeId": "shiva_organic_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-shiva_organic-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -26995,7 +26923,7 @@ export const masterBrands = [
       {
         "compositeId": "shoppers_stop_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-shoppers_stop-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -27084,7 +27012,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-shopy_vision-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -27176,7 +27104,7 @@ export const masterBrands = [
       {
         "compositeId": "simon_carter_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-simon_carter-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -27286,7 +27214,7 @@ export const masterBrands = [
       {
         "compositeId": "skechers_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 8.0,
         "site": "https://vouchwise.in/out/buy-skechers-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -27373,7 +27301,7 @@ export const masterBrands = [
       {
         "compositeId": "skinn_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-skinn-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -27452,7 +27380,7 @@ export const masterBrands = [
       {
         "compositeId": "skullcandy_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-skullcandy-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -27509,7 +27437,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-skullcandy_uproar_anc-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -27538,7 +27466,7 @@ export const masterBrands = [
       {
         "compositeId": "smile_foundation_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-smile_foundation-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -27609,7 +27537,7 @@ export const masterBrands = [
       {
         "compositeId": "snitch_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-snitch-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -27688,7 +27616,7 @@ export const masterBrands = [
       {
         "compositeId": "soch_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-soch-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -27753,7 +27681,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-solara-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -27790,7 +27718,7 @@ export const masterBrands = [
       {
         "compositeId": "sony_liv_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 20.0,
         "site": "https://vouchwise.in/out/buy-sony_liv-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -27923,7 +27851,7 @@ export const masterBrands = [
       {
         "compositeId": "soulflower_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-soulflower-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -28040,7 +27968,7 @@ export const masterBrands = [
       {
         "compositeId": "speedo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-speedo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -28189,7 +28117,7 @@ export const masterBrands = [
       {
         "compositeId": "ssunsu_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-ssunsu-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -28283,7 +28211,7 @@ export const masterBrands = [
       {
         "compositeId": "starbucks_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-starbucks-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -28379,7 +28307,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-steam-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -28601,7 +28529,7 @@ export const masterBrands = [
       {
         "compositeId": "steve_madden_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-steve_madden_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -28710,7 +28638,7 @@ export const masterBrands = [
       {
         "compositeId": "style_baazar_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-style_baazar-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -28797,7 +28725,7 @@ export const masterBrands = [
       {
         "compositeId": "subway_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-subway-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -28923,7 +28851,7 @@ export const masterBrands = [
       {
         "compositeId": "sunscoop_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-sunscoop-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -29008,7 +28936,7 @@ export const masterBrands = [
       {
         "compositeId": "superbottoms_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-superbottoms-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -29071,7 +28999,7 @@ export const masterBrands = [
       {
         "compositeId": "superdry_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-superdry_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -29142,7 +29070,7 @@ export const masterBrands = [
       {
         "compositeId": "superdry_sport_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-superdry_sport_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -29229,7 +29157,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-surat_diamonds-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -29352,7 +29280,7 @@ export const masterBrands = [
       {
         "compositeId": "swan_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-swan-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -29430,7 +29358,7 @@ export const masterBrands = [
       {
         "compositeId": "sweet_bengal_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-sweet_bengal-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -29509,7 +29437,7 @@ export const masterBrands = [
       {
         "compositeId": "sweet_truth_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-sweet_truth-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -29611,7 +29539,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-swiggy_instamart_money-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -29664,7 +29592,7 @@ export const masterBrands = [
       {
         "compositeId": "swiggy_money_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-swiggy_money-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -29837,7 +29765,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-taj_experiences-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -29923,7 +29851,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-taj_hotels_j_wellness_circle-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -30060,7 +29988,7 @@ export const masterBrands = [
       {
         "compositeId": "taneira_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-taneira-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -30117,7 +30045,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-tanishq-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -30242,7 +30170,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-tanishq_gold_jewellery-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -30356,7 +30284,7 @@ export const masterBrands = [
       {
         "compositeId": "tasva_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-tasva-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -30419,7 +30347,7 @@ export const masterBrands = [
       {
         "compositeId": "tata_cli_q_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.5,
         "site": "https://vouchwise.in/out/buy-tata_cli_q-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -30529,7 +30457,7 @@ export const masterBrands = [
       {
         "compositeId": "tata_cli_q_luxury_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 6.5,
         "site": "https://vouchwise.in/out/buy-tata_cli_q_luxury-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -30622,7 +30550,7 @@ export const masterBrands = [
       {
         "compositeId": "tattva_spa_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-tattva_spa-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -30723,7 +30651,7 @@ export const masterBrands = [
       {
         "compositeId": "tego_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 17.5,
         "site": "https://vouchwise.in/out/buy-tego-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -30780,7 +30708,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-tekne-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -30809,7 +30737,7 @@ export const masterBrands = [
       {
         "compositeId": "tgif_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-tgif-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31013,7 +30941,7 @@ export const masterBrands = [
       {
         "compositeId": "the_good_bowl_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-the_good_bowl-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31076,7 +31004,7 @@ export const masterBrands = [
       {
         "compositeId": "the_house_of_rare_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-the_house_of_rare-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31178,7 +31106,7 @@ export const masterBrands = [
       {
         "compositeId": "the_man_company_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-the_man_company-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31279,7 +31207,7 @@ export const masterBrands = [
       {
         "compositeId": "the_raymond_shop_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-the_raymond_shop-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31519,7 +31447,7 @@ export const masterBrands = [
       {
         "compositeId": "tim_hortons_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-tim_hortons-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31582,7 +31510,7 @@ export const masterBrands = [
       {
         "compositeId": "timezone_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-timezone-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31747,7 +31675,7 @@ export const masterBrands = [
       {
         "compositeId": "titan_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-titan-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31841,7 +31769,7 @@ export const masterBrands = [
       {
         "compositeId": "titan_eye_plus_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-titan_eye_plus-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31888,7 +31816,7 @@ export const masterBrands = [
       {
         "compositeId": "titan_minimals_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-titan_minimals-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -31951,7 +31879,7 @@ export const masterBrands = [
       {
         "compositeId": "titan_smartwatches_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-titan_smartwatches-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -32090,7 +32018,7 @@ export const masterBrands = [
       {
         "compositeId": "toni_guy_luzo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-toni_guy_luzo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -32440,7 +32368,7 @@ export const masterBrands = [
       {
         "compositeId": "truefitt_hill_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-truefitt_hill-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -32511,7 +32439,7 @@ export const masterBrands = [
       {
         "compositeId": "tumi_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-tumi_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -32568,7 +32496,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-tvs_motor-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       }
     ]
@@ -32605,7 +32533,7 @@ export const masterBrands = [
       {
         "compositeId": "typsy_beauty_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-typsy_beauty-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -32686,7 +32614,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 1.5,
         "site": "https://vouchwise.in/out/buy-uber-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -33033,7 +32961,7 @@ export const masterBrands = [
       {
         "compositeId": "urban_space_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-urban_space-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -33119,7 +33047,7 @@ export const masterBrands = [
       {
         "compositeId": "v_mart_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-v_mart-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -33213,7 +33141,7 @@ export const masterBrands = [
       {
         "compositeId": "valentino_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-valentino_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -33262,7 +33190,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-valorant-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -33403,7 +33331,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 6.0,
         "site": "https://vouchwise.in/out/buy-van_heusen-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -33487,7 +33415,7 @@ export const masterBrands = [
       {
         "compositeId": "versace_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-versace_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -33550,7 +33478,7 @@ export const masterBrands = [
       {
         "compositeId": "victorias_secret_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-victorias_secret-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -33629,9 +33557,9 @@ export const masterBrands = [
       {
         "compositeId": "victorias_secret_beauty_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 15.0,
+        "upfrontDiscountPercent": 12.0,
         "site": "https://vouchwise.in/out/buy-victorias_secret_beauty-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -33716,7 +33644,7 @@ export const masterBrands = [
       {
         "compositeId": "vijay_sales_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 1.0,
         "site": "https://vouchwise.in/out/buy-vijay_sales-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -33881,7 +33809,7 @@ export const masterBrands = [
       {
         "compositeId": "vinzberry_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-vinzberry-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -33935,7 +33863,7 @@ export const masterBrands = [
       {
         "compositeId": "vrott_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 47.5,
         "site": "https://vouchwise.in/out/buy-vrott-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -33982,7 +33910,7 @@ export const masterBrands = [
       {
         "compositeId": "w_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-w-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -34040,14 +33968,6 @@ export const masterBrands = [
         "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-w_for_women-gyftr",
         "availability": "available",
-        "disclaimer": ""
-      },
-      {
-        "compositeId": "w_for_women_hdfc_smartbuy",
-        "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 10.0,
-        "site": "https://vouchwise.in/out/buy-w_for_women-hdfc_smartbuy",
-        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -34125,7 +34045,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-water_bill_payment-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -34170,7 +34090,7 @@ export const masterBrands = [
       {
         "compositeId": "wellbeing_nutrition_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-wellbeing_nutrition-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -34249,7 +34169,7 @@ export const masterBrands = [
       {
         "compositeId": "wendys_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-wendys-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -34320,7 +34240,7 @@ export const masterBrands = [
       {
         "compositeId": "west_elm_luxe_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-west_elm_luxe-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -34383,7 +34303,7 @@ export const masterBrands = [
       {
         "compositeId": "westside_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-westside-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -34461,7 +34381,7 @@ export const masterBrands = [
       {
         "compositeId": "whats_up_wellness_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 15.0,
         "site": "https://vouchwise.in/out/buy-whats_up_wellness-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -34524,7 +34444,7 @@ export const masterBrands = [
       {
         "compositeId": "wildcraft_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-wildcraft-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -34605,7 +34525,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 5.0,
         "site": "https://vouchwise.in/out/buy-william_penn-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -34713,9 +34633,9 @@ export const masterBrands = [
       {
         "compositeId": "wonderchef_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-wonderchef-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -34792,7 +34712,7 @@ export const masterBrands = [
       {
         "compositeId": "woodland_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-woodland-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -34931,7 +34851,7 @@ export const masterBrands = [
       {
         "compositeId": "wowchicken_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-wowchicken-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -34994,7 +34914,7 @@ export const masterBrands = [
       {
         "compositeId": "wowchina_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-wowchina-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -35065,7 +34985,7 @@ export const masterBrands = [
       {
         "compositeId": "wowmomo_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 9.0,
         "site": "https://vouchwise.in/out/buy-wowmomo-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -35236,7 +35156,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-yalla_ludo-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -35305,7 +35225,7 @@ export const masterBrands = [
       {
         "compositeId": "yatra_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 47.5,
         "site": "https://vouchwise.in/out/buy-yatra-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -35468,7 +35388,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 0.0,
         "site": "https://vouchwise.in/out/buy-yatra_hotel-hdfc_smartbuy",
-        "availability": "available",
+        "availability": "not available",
         "disclaimer": ""
       },
       {
@@ -35591,7 +35511,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 7.5,
         "site": "https://vouchwise.in/out/buy-yatracom-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -35706,7 +35626,7 @@ export const masterBrands = [
       {
         "compositeId": "zee5_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 22.5,
         "site": "https://vouchwise.in/out/buy-zee5-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -36082,7 +36002,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 2.5,
         "site": "https://vouchwise.in/out/buy-zepto-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -36143,7 +36063,7 @@ export const masterBrands = [
       {
         "compositeId": "zomato_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 1.0,
         "site": "https://vouchwise.in/out/buy-zomato-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -36239,7 +36159,7 @@ export const masterBrands = [
         "portalId": "hdfc_smartbuy",
         "upfrontDiscountPercent": 10.0,
         "site": "https://vouchwise.in/out/buy-zoomcar-hdfc_smartbuy",
-        "availability": "not available",
+        "availability": "available",
         "disclaimer": ""
       },
       {
@@ -36300,7 +36220,7 @@ export const masterBrands = [
       {
         "compositeId": "zouk_hdfc_smartbuy",
         "portalId": "hdfc_smartbuy",
-        "upfrontDiscountPercent": 0.0,
+        "upfrontDiscountPercent": 12.5,
         "site": "https://vouchwise.in/out/buy-zouk-hdfc_smartbuy",
         "availability": "available",
         "disclaimer": ""
@@ -36373,9 +36293,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.33",
     "spendBlock": "50",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "5",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36399,9 +36319,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.33",
     "spendBlock": "50",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "2",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36425,9 +36345,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.33",
     "spendBlock": "50",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "3",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36451,9 +36371,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.33",
     "spendBlock": "50",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "3",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36475,18 +36395,18 @@ export const masterCards = [
     "id": "axis_atlas",
     "name": "Axis Atlas",
     "rewardType": "points",
-    "pointValue": "2",
+    "pointValue": "2.0",
     "spendBlock": "100",
-    "pointsPerBlock": "2",
+    "pointsPerBlock": "2.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "0",
-      "amazon": "0",
-      "maximize_money": "0",
+      "amazon": "1",
+      "maximize_money": "1",
       "sbi_gyftr": "0",
       "hsbc_instabenefits": "0",
       "indusind_instavouchers": "0",
@@ -36501,18 +36421,18 @@ export const masterCards = [
     "id": "axis_flipkart",
     "name": "Axis Flipkart",
     "rewardType": "cashback",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "0",
-      "amazon": "0",
-      "maximize_money": "0",
+      "amazon": "1",
+      "maximize_money": "1",
       "sbi_gyftr": "0",
       "hsbc_instabenefits": "0",
       "indusind_instavouchers": "0",
@@ -36527,18 +36447,18 @@ export const masterCards = [
     "id": "axis_horizon",
     "name": "Axis Horizon",
     "rewardType": "points",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "2",
+    "pointsPerBlock": "2.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "0",
-      "amazon": "0",
-      "maximize_money": "0",
+      "amazon": "1",
+      "maximize_money": "1",
       "sbi_gyftr": "0",
       "hsbc_instabenefits": "0",
       "indusind_instavouchers": "0",
@@ -36555,16 +36475,16 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.4",
     "spendBlock": "200",
-    "pointsPerBlock": "12",
+    "pointsPerBlock": "12.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "0",
-      "amazon": "0",
-      "maximize_money": "0",
+      "amazon": "1",
+      "maximize_money": "1",
       "sbi_gyftr": "0",
       "hsbc_instabenefits": "0",
       "indusind_instavouchers": "0",
@@ -36581,16 +36501,16 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.8",
     "spendBlock": "200",
-    "pointsPerBlock": "12",
+    "pointsPerBlock": "12.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "0",
-      "amazon": "0",
-      "maximize_money": "0",
+      "amazon": "1",
+      "maximize_money": "1",
       "sbi_gyftr": "0",
       "hsbc_instabenefits": "0",
       "indusind_instavouchers": "0",
@@ -36607,16 +36527,16 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.2",
     "spendBlock": "100",
-    "pointsPerBlock": "4",
+    "pointsPerBlock": "4.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "0",
-      "amazon": "0",
-      "maximize_money": "0",
+      "amazon": "1",
+      "maximize_money": "1",
       "sbi_gyftr": "0",
       "hsbc_instabenefits": "0",
       "indusind_instavouchers": "0",
@@ -36631,11 +36551,11 @@ export const masterCards = [
     "id": "hdfc_dbm",
     "name": "HDFC Diners Black Metal",
     "rewardType": "points",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "150",
-    "pointsPerBlock": "5",
+    "pointsPerBlock": "5.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "3",
+      "hdfc_smartbuy": "3.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36657,11 +36577,11 @@ export const masterCards = [
     "id": "hdfc_infinia",
     "name": "HDFC Infinia",
     "rewardType": "points",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "150",
-    "pointsPerBlock": "5",
+    "pointsPerBlock": "5.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "5",
+      "hdfc_smartbuy": "5.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36683,11 +36603,11 @@ export const masterCards = [
     "id": "hdfc_millennia",
     "name": "HDFC Millennia",
     "rewardType": "cashback",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "5",
+      "hdfc_smartbuy": "5.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36711,9 +36631,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.5",
     "spendBlock": "200",
-    "pointsPerBlock": "5",
+    "pointsPerBlock": "5.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "5",
+      "hdfc_smartbuy": "5.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36735,11 +36655,11 @@ export const masterCards = [
     "id": "hdfc_swiggy",
     "name": "HDFC Swiggy",
     "rewardType": "cashback",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "5",
+      "hdfc_smartbuy": "5.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36761,7 +36681,7 @@ export const masterCards = [
     "id": "hdfc_tata_neu_infinity",
     "name": "HDFC Tata Neu Infinity",
     "rewardType": "cashback",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.5",
     "portalMultipliers": {
@@ -36787,11 +36707,11 @@ export const masterCards = [
     "id": "hsbc_liveplus",
     "name": "HSBC Live+",
     "rewardType": "cashback",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
     "pointsPerBlock": "1.5",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36813,11 +36733,11 @@ export const masterCards = [
     "id": "hsbc_premier",
     "name": "HSBC Premier",
     "rewardType": "points",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "3",
+    "pointsPerBlock": "3.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36839,11 +36759,11 @@ export const masterCards = [
     "id": "hsbc_travelone",
     "name": "HSBC Travel One",
     "rewardType": "points",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "2",
+    "pointsPerBlock": "2.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36867,9 +36787,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.5",
     "spendBlock": "150",
-    "pointsPerBlock": "2",
+    "pointsPerBlock": "2.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -36891,11 +36811,11 @@ export const masterCards = [
     "id": "icici_amazon",
     "name": "ICICI Amazon",
     "rewardType": "cashback",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "4",
       "axis_edgerewards": "0",
@@ -36919,9 +36839,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.25",
     "spendBlock": "100",
-    "pointsPerBlock": "2",
+    "pointsPerBlock": "2.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
@@ -36945,9 +36865,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.25",
     "spendBlock": "100",
-    "pointsPerBlock": "4",
+    "pointsPerBlock": "4.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
@@ -36969,11 +36889,11 @@ export const masterCards = [
     "id": "icici_epm",
     "name": "ICICI Emeralde Private Metal",
     "rewardType": "points",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "200",
-    "pointsPerBlock": "6",
+    "pointsPerBlock": "6.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
@@ -36997,9 +36917,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.25",
     "spendBlock": "100",
-    "pointsPerBlock": "2",
+    "pointsPerBlock": "2.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
@@ -37021,11 +36941,11 @@ export const masterCards = [
     "id": "icici_times",
     "name": "ICICI Times Black",
     "rewardType": "points",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "50",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "6",
       "axis_edgerewards": "0",
@@ -37047,11 +36967,11 @@ export const masterCards = [
     "id": "kotak_airplus",
     "name": "Kotak Air+",
     "rewardType": "points",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "2",
+    "pointsPerBlock": "2.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -37073,11 +36993,11 @@ export const masterCards = [
     "id": "kotak_solitare",
     "name": "Kotak Solitare",
     "rewardType": "points",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "3",
+    "pointsPerBlock": "3.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -37101,9 +37021,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.1",
     "spendBlock": "50",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -37127,9 +37047,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.25",
     "spendBlock": "100",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -37151,18 +37071,18 @@ export const masterCards = [
     "id": "sbi_cashback",
     "name": "SBI Cashback",
     "rewardType": "cashback",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
       "axis_grabdeals": "0",
       "gyftr": "0",
       "amazon": "5",
-      "maximize_money": "1",
+      "maximize_money": "5",
       "sbi_gyftr": "0",
       "hsbc_instabenefits": "0",
       "indusind_instavouchers": "0",
@@ -37177,11 +37097,11 @@ export const masterCards = [
     "id": "sbi_phonepe_black",
     "name": "SBI PhonePe Select Black",
     "rewardType": "cashback",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -37203,11 +37123,11 @@ export const masterCards = [
     "id": "sbi_phonepe_purple",
     "name": "SBI PhonePe Purple",
     "rewardType": "cashback",
-    "pointValue": "1",
+    "pointValue": "1.0",
     "spendBlock": "100",
-    "pointsPerBlock": "1",
+    "pointsPerBlock": "1.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -37231,9 +37151,9 @@ export const masterCards = [
     "rewardType": "points",
     "pointValue": "0.2",
     "spendBlock": "20",
-    "pointsPerBlock": "2",
+    "pointsPerBlock": "2.0",
     "portalMultipliers": {
-      "hdfc_smartbuy": "0",
+      "hdfc_smartbuy": "0.0",
       "amex_shopwise": "0",
       "icici_ishop": "0",
       "axis_edgerewards": "0",
@@ -37298,6 +37218,8 @@ export function enrichBrandsWithScrapedData(catalog) {
       const existingPortal = brand.portals.find(p => p.portalId === scrapedPortal.portalId);
       if (existingPortal) {
         existingPortal.upfrontDiscountPercent = scrapedPortal.upfrontDiscountPercent;
+        if (scrapedPortal.instaDiscount !== undefined) existingPortal.instaDiscount = scrapedPortal.instaDiscount;
+        if (scrapedPortal.spcDiscount !== undefined) existingPortal.spcDiscount = scrapedPortal.spcDiscount;
         existingPortal.convenienceFee = scrapedPortal.convenienceFee;
         existingPortal.denominations = scrapedPortal.denominations;
         existingPortal.discountsByMethod = scrapedPortal.discountsByMethod;
@@ -37310,6 +37232,8 @@ export function enrichBrandsWithScrapedData(catalog) {
           compositeId: `${brand.id}_${scrapedPortal.portalId}`,
           portalId: scrapedPortal.portalId,
           upfrontDiscountPercent: scrapedPortal.upfrontDiscountPercent,
+          instaDiscount: scrapedPortal.instaDiscount,
+          spcDiscount: scrapedPortal.spcDiscount,
           convenienceFee: scrapedPortal.convenienceFee,
           denominations: scrapedPortal.denominations,
           discountsByMethod: scrapedPortal.discountsByMethod,

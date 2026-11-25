@@ -12,17 +12,18 @@ export function getRewardMultiplier(card, portal, portalEntry) {
 }
 
 export function getCardPortalMultiplier(card, portal) {
+  const pid = portal?.id || portal?.portalId;
   // Check declarative portal overrides (e.g. Axis EdgeRewards/GrabDeals devalued to 0)
-  if (portal?.id && cardRules?.portalOverrides?.[portal.id]) {
-    const override = cardRules.portalOverrides[portal.id];
+  if (pid && cardRules?.portalOverrides?.[pid]) {
+    const override = cardRules.portalOverrides[pid];
     if (override.acceleratedMultiplier !== undefined && card?.id?.startsWith('axis_')) {
       return override.acceleratedMultiplier;
     }
   }
 
   const multipliers = card.portalMultipliers || {};
-  if (portal?.id !== undefined && multipliers[portal.id] !== undefined) {
-    return multipliers[portal.id];
+  if (pid !== undefined && multipliers[pid] !== undefined) {
+    return multipliers[pid];
   }
   if (portal?.group !== undefined && multipliers[portal.group] !== undefined) {
     return multipliers[portal.group];
@@ -35,21 +36,22 @@ export function getCardPortalMultiplier(card, portal) {
 
 export function isCardPortalEligible(card, portal) {
   if (!card || !portal) return false;
+  const pid = portal?.id || portal?.portalId;
 
   // If the portal is an issuer-specific portal that is marked as discount-only (e.g. Axis EdgeRewards / GrabDeals)
-  if (portal.id && cardRules?.portalOverrides?.[portal.id]?.isDiscountOnly) {
+  if (pid && cardRules?.portalOverrides?.[pid]?.isDiscountOnly) {
     // Eligible if the card belongs to the portal's issuing bank
-    if (portal.id.startsWith('axis_') && card.id?.startsWith('axis_')) return true;
-    if (portal.id.startsWith('hdfc_') && card.id?.startsWith('hdfc_')) return true;
-    if (portal.id.startsWith('icici_') && card.id?.startsWith('icici_')) return true;
-    if (portal.id.startsWith('sbi_') && card.id?.startsWith('sbi_')) return true;
-    if (portal.id.startsWith('amex_') && card.id?.startsWith('amex_')) return true;
+    if (pid.startsWith('axis_') && card.id?.startsWith('axis_')) return true;
+    if (pid.startsWith('hdfc_') && card.id?.startsWith('hdfc_')) return true;
+    if (pid.startsWith('icici_') && card.id?.startsWith('icici_')) return true;
+    if (pid.startsWith('sbi_') && card.id?.startsWith('sbi_')) return true;
+    if (pid.startsWith('amex_') && card.id?.startsWith('amex_')) return true;
   }
 
   // Base eligibility: check whether the unoverridden multiplier configured on the card is > 0
   const multipliers = card.portalMultipliers || {};
-  if (portal.id !== undefined && multipliers[portal.id] !== undefined) {
-    return Number(multipliers[portal.id]) > 0;
+  if (pid !== undefined && multipliers[pid] !== undefined) {
+    return Number(multipliers[pid]) > 0;
   }
   if (portal.group !== undefined && multipliers[portal.group] !== undefined) {
     return Number(multipliers[portal.group]) > 0;
@@ -118,11 +120,12 @@ const HOME_PORTAL_OVERRIDES = {
 export function isHomePortal(card, portal) {
   if (!card?.id || !portal?.id) return false;
 
+  const pid = portal?.id || portal?.portalId;
   const overridePortals = HOME_PORTAL_OVERRIDES[card.id];
-  if (overridePortals?.includes(portal.id)) return true;
+  if (overridePortals?.includes(pid)) return true;
 
   const match = HOME_PORTAL_IDS_BY_PREFIX.find(entry => card.id.startsWith(entry.prefix));
-  return match ? match.portalIds.includes(portal.id) : false;
+  return match ? match.portalIds.includes(pid) : false;
 }
 
 // ---------------------------------------------------------------------------
@@ -142,7 +145,8 @@ export function isHomePortal(card, portal) {
 const EITHER_OR_PORTAL_IDS = ['hdfc_smartbuy'];
 
 export function isEitherOrPortal(portal) {
-  return EITHER_OR_PORTAL_IDS.includes(portal?.id);
+  const pid = portal?.id || portal?.portalId;
+  return EITHER_OR_PORTAL_IDS.includes(pid);
 }
 
 /**
@@ -344,45 +348,50 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
 function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount, brand = null) {
   // Surcharge/convenience fee must be preserved even in either-or choices:
   // Promo discounts are waived on the reward leg, but portal fees/surcharges still apply!
-  const rawDiscount = portal?.upfrontDiscountPercent ?? portalConfig?.upfrontDiscountPercent ?? 0;
+  const instaDiscount = portal?.instaDiscount ?? portalConfig?.instaDiscount ?? portal?.upfrontDiscountPercent ?? portalConfig?.upfrontDiscountPercent ?? 0;
+  const spcDiscount = portal?.spcDiscount ?? portalConfig?.spcDiscount ?? 0;
   const rawCcFee = portalConfig?.convenienceFee?.effectiveCcFeePercent;
   const feePercent = (rawCcFee !== undefined && rawCcFee !== null && rawCcFee > 0)
     ? rawCcFee
-    : (rawDiscount < 0 ? Math.abs(rawDiscount) : 0);
+    : (instaDiscount < 0 ? Math.abs(instaDiscount) : 0);
   const feeAmount = voucherAmount * (feePercent / 100);
 
-  // Discount-only leg: take the Insta Deal, earn zero reward on this
-  // transaction — that's the actual choice HDFC presents at checkout.
-  const discountOnlyMetrics = (() => {
-    const positiveDiscount = rawDiscount > 0 ? rawDiscount : 0;
-    const upfrontSavings = voucherAmount * (positiveDiscount / 100);
-    const netPaid = voucherAmount - upfrontSavings + feeAmount;
-    const finalNetCost = netPaid; // no reward earned on this leg, by definition
-    const computedTrueNet = ((voucherAmount - finalNetCost) / voucherAmount) * 100;
-    return {
-      netPaid,
-      rpEarned: 0,
-      cashValue: 0,
-      finalNetCost,
-      computedTrueNet,
-      multiplier: 0,
-      isCapped: false,
-      uncappedCashValue: 0,
-      capLossAmount: 0,
-      capNotice: '',
-      isBrandCapExceeded: false,
-      brandCapLimit: null,
-      brandCapNotice: ''
-    };
-  })();
+  // Insta Deal leg: take the Insta Deal (e.g. 15% on Gaana, 9% on Affinity Luzo).
+  // At checkout, HDFC gives the instant discount and awards standard 1X Base credit card rewards on netPaid.
+  const instaPortal = {
+    ...portal,
+    upfrontDiscountPercent: instaDiscount
+  };
+  const instaPortalConfig = {
+    ...portalConfig,
+    upfrontDiscountPercent: instaDiscount,
+    overrideRewardMultiplier: 1,
+    convenienceFee: {
+      ...(portalConfig?.convenienceFee || {}),
+      baseFeePercent: portalConfig?.convenienceFee?.baseFeePercent !== undefined && portalConfig?.convenienceFee?.baseFeePercent !== null && portalConfig?.convenienceFee?.baseFeePercent > 0
+        ? portalConfig.convenienceFee.baseFeePercent
+        : (feePercent > 0 ? Number((feePercent / 1.18).toFixed(2)) : 0),
+      effectiveCcFeePercent: feePercent
+    }
+  };
 
+  const discountOnlyMetrics = computeStackedMetrics(
+    card,
+    instaPortal,
+    instaPortalConfig,
+    voucherAmount,
+    brand
+  );
+
+  // Accelerated Rewards leg: earns accelerated reward points AND applies the
+  // Accelerated Rewards base upfront discount (spcDiscount, e.g. 3.5% on Affinity Luzo).
   const rewardPortal = {
     ...portal,
-    upfrontDiscountPercent: 0
+    upfrontDiscountPercent: spcDiscount
   };
   const rewardPortalConfig = {
     ...portalConfig,
-    upfrontDiscountPercent: 0,
+    upfrontDiscountPercent: spcDiscount,
     convenienceFee: {
       ...(portalConfig?.convenienceFee || {}),
       baseFeePercent: portalConfig?.convenienceFee?.baseFeePercent !== undefined && portalConfig?.convenienceFee?.baseFeePercent !== null && portalConfig?.convenienceFee?.baseFeePercent > 0
@@ -419,6 +428,9 @@ function computeEitherOrMetrics(card, portal, portalConfig, voucherAmount, brand
  * Core Operational Engine - The single source of truth for financial metrics
  */
 export function calculateTrueNetMetrics(card, portal, portalConfig, voucherAmount = 1000, brand = null) {
+  if (portalConfig?.track || portalConfig?.skipEitherOr) {
+    return computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand);
+  }
   if (isEitherOrPortal(portal)) {
     return computeEitherOrMetrics(card, portal, portalConfig, voucherAmount, brand);
   }
