@@ -160,17 +160,19 @@ export function renderCustomCardsList(results, voucherAmount, portal = null, bra
       : '';
 
     const portalRule = cardRules?.portalOverrides?.[portal?.id];
-    const resolvedPortalNotice = portalRule?.cardNotices?.[card.id] || portalRule?.notice;
+    const resolvedPortalNotice = portalRule?.cardNotices?.[card.id] ||
+      portalRule?.policyNotices?.[card.voucher_risk_policy] ||
+      portalRule?.notice;
     const portalNoticeHtml = resolvedPortalNotice
       ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(resolvedPortalNotice)}</div>`
       : '';
 
     const normBrand = (brandName || '').trim().toLowerCase();
     const isAmazonPayGiftCard = normBrand === 'amazon_pay' || normBrand === 'amazon_pay_gift_card' || normBrand.includes('amazon pay');
+    const subMap = isAmazonPayGiftCard ? 'amazon_pay_gift_card' : 'brand_voucher';
     const amazonOverride = portal?.id === 'amazon'
-      ? (isAmazonPayGiftCard
-          ? cardRules?.amazonPortalOverrides?.amazon_pay_gift_card?.[card.id]
-          : cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id])
+      ? (cardRules?.amazonPortalOverrides?.[subMap]?.[card.id] ||
+         (card?.voucher_risk_policy ? cardRules?.amazonPolicyOverrides?.[subMap]?.[card.voucher_risk_policy] : null))
       : null;
     const cardPortalNotice = amazonOverride?.notice || amazonOverride?.reason
       ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(amazonOverride.notice || amazonOverride.reason)}</div>`

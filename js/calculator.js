@@ -74,9 +74,9 @@ export function getMultiplier(card, portal, portalConfig) {
 export function getCardRewardRate(card, multiplier, portal = null, brand = null) {
   if (portal?.id === 'amazon') {
     const isAmazonPay = brand?.id === 'amazon_pay' || brand?.id === 'amazon_pay_gift_card';
-    const override = isAmazonPay
-      ? cardRules?.amazonPortalOverrides?.amazon_pay_gift_card?.[card.id]
-      : cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id];
+    const subMap = isAmazonPay ? 'amazon_pay_gift_card' : 'brand_voucher';
+    const override = cardRules?.amazonPortalOverrides?.[subMap]?.[card.id] ||
+      (card?.voucher_risk_policy ? cardRules?.amazonPolicyOverrides?.[subMap]?.[card.voucher_risk_policy] : null);
     if (override && override.rewardRate !== undefined) {
       return override.rewardRate;
     }
@@ -189,10 +189,10 @@ function computeStackedMetrics(card, portal, portalConfig, voucherAmount, brand 
   // Check portal-specific brand overrides (e.g. Amazon Pay Gift Card MCC 6540 exclusions)
   const isAmazonPortal = portal?.id === 'amazon';
   const isAmazonPayGiftCard = brand?.id === 'amazon_pay' || brand?.id === 'amazon_pay_gift_card';
+  const subMap = isAmazonPayGiftCard ? 'amazon_pay_gift_card' : 'brand_voucher';
   const amazonOverride = isAmazonPortal
-    ? (isAmazonPayGiftCard
-        ? cardRules?.amazonPortalOverrides?.amazon_pay_gift_card?.[card.id]
-        : cardRules?.amazonPortalOverrides?.brand_voucher?.[card.id])
+    ? (cardRules?.amazonPortalOverrides?.[subMap]?.[card.id] ||
+       (card?.voucher_risk_policy ? cardRules?.amazonPolicyOverrides?.[subMap]?.[card.voucher_risk_policy] : null))
     : null;
 
   if (amazonOverride && amazonOverride.rewardRate !== undefined) {

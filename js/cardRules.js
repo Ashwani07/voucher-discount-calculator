@@ -30,8 +30,40 @@ export const cardRules = {
         axis_myzone: "Gateway & Clawback Warning: Choose Easebuzz gateway to avoid MCC 5947. Axis Bank officially excludes gift vouchers; base points via Easebuzz remain subject to retroactive clawback by Axis Bank.",
         axis_flipkart: "Gateway & Clawback Warning: Choose Easebuzz gateway to avoid MCC 5947. Axis Bank officially excludes gift vouchers; base cashback via Easebuzz remains subject to retroactive clawback by Axis Bank."
       },
+      policyNotices: {
+        mcc_dependent: "Gateway Dependent: Choose Easebuzz gateway to avoid MCC 5947 gift card exclusions and earn 5% cashback. CCAvenue or Razorpay may pass MCC 5947, resulting in 0% cashback.",
+        clawback_risk: "Gateway & Clawback Warning: Choose Easebuzz gateway to avoid MCC 5947. Axis Bank officially excludes gift vouchers; base rewards via Easebuzz remain subject to retroactive clawback by Axis Bank."
+      },
       notice: "Gateway Dependent: Choose Easebuzz gateway at checkout to avoid MCC 5947 gift card exclusions.",
       sourceUrl: "https://www.maximize.money/"
+    }
+  },
+
+  amazonPolicyOverrides: {
+    brand_voucher: {
+      mcc_dependent: {
+        rewardRate: 5.0,
+        notice: "MCC Dependent: SBI Card officially excludes gift card MCCs (0%). However, Amazon transactions often code under general retail (earning 5%). Cashback is not guaranteed and depends on Amazon's payment gateway MCC.",
+        reason: "Variable MCC at Amazon checkout; earns 5% on retail MCC, 0% if coded under financial/prepaid MCC.",
+        sourceUrl: "https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page"
+      },
+      clawback_risk: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base earn is only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; awards base rewards on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/axis-bank-atlas-credit-card"
+      }
+    },
+    amazon_pay_gift_card: {
+      mcc_dependent: {
+        rewardRate: 0,
+        reason: "Wallet load / gift voucher exclusion.",
+        sourceUrl: "https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page"
+      },
+      clawback_risk: {
+        notice: "Gateway & Clawback Warning: Axis Bank officially excludes gift vouchers (MCC 5947). Base earn is only awarded when coded as general retail. Subject to retroactive clawback by Axis Bank.",
+        reason: "Variable MCC at Amazon checkout; awards base rewards on retail MCC, 0% if coded under gift card / financial MCC.",
+        sourceUrl: "https://www.axisbank.com/retail/cards/credit-card/axis-bank-atlas-credit-card"
+      }
     }
   },
 

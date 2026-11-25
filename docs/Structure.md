@@ -480,6 +480,10 @@ see only the winning Insta Deal row.
 **Symptom**: In `calculator.js`, points cap fallback notices (when `cardCapRule.notice` was omitted) hardcoded `RP/month`, which would display "RP" even for cards earning Miles or other currencies. In `customCalc.js`, only Amazon brand vouchers were evaluated for notices, ignoring portal-level overrides (`maximize_money`, Axis GrabDeals/EdgeRewards) and Amazon Pay gift card overrides.
 **Fix**: In `calculator.js`, points cap fallback notices now derive the currency dynamically from `${card.reward_currency || 'RP'}/month`. In `customCalc.js`, added support for `portalOverrides` (with `cardNotices` per-card resolution), distinguished Amazon Pay vouchers from general brand vouchers, and applied `escapeHtml` to all notice interpolations.
 
+### Bug #30: Data-driven voucher risk policy and canonical masterCards.csv consolidation
+**Symptom**: Card-level voucher notices and MCC exclusion policies on open portals (Amazon, Maximize Money) required hardcoding individual card IDs across JavaScript files (`cardRules.js`, `results.js`, `calculator.js`). In addition, two duplicate `masterCards.csv` files were tracked in `vouchwise-admin` (`data/input` and `data/output`).
+**Fix**: Added `voucher_risk_policy` metadata enum (`standard`, `mcc_dependent`, `clawback_risk`) to `masterCards.csv`. Updated `cardRules.js`, `calculator.js`, `results.js`, and `customCalc.js` to resolve notices and overrides via policy templates before falling back to card IDs or neutral notices. Deleted duplicate `data/output/masterCards.csv`, consolidating to the single canonical source `data/input/masterCards.csv`.
+
 
 ---
 
@@ -908,11 +912,12 @@ GyFTR and SmartBuy enforce purchase limits per mobile number per calendar month:
 3. **Spend Block Flooring (`calculateTrueNetMetricsWithFlooring`)**: Denomination flooring to ₹100 spend blocks.
 
 ### 15.6 Data-Driven Multi-Tier Reward Schema (`masterCards.csv`)
-To eliminate hardcoded card IDs and card names in frontend calculation and rendering templates, `masterCards.csv` defines 5 metadata columns across all cards:
+To eliminate hardcoded card IDs and card names in frontend calculation and rendering templates, `masterCards.csv` defines 6 metadata columns across all cards:
 - **`reward_nature`**: Categorizes the financial certainty of the reward (`cashback` = hard statement credit; `portal_points` = bank travel/merchandise portal; `transfer_miles` = external airline/hotel loyalty programs; `brand_currency` = brand-locked ecosystem coins like NeuCoins).
 - **`reward_currency`**: Exact currency label (e.g. `Cashback`, `EDGE Miles`, `EDGE Rewards`, `MR Points`, `NeuCoins`, `CashPoints`, `RP`).
 - **`transfer_multiplier`**: Conversion ratio to partner programs (e.g. `2.0` for Axis Atlas 1:2 ratio; `0.4` for Magnus 5:2 ratio; `0.8` for Burgundy 5:4 ratio; `1.0` for 1:1 transfers; `0.0` for non-transfer cards).
 - **`partner_currency`**: Target currency name (e.g. `Partner Pts`, `Air Miles`).
 - **`redemption_context`**: Explicit qualifier for estimated valuations (e.g. `SmartBuy travel`, `Gold catalogue`, `Tata brands`, `statement cash credit`).
+- **`voucher_risk_policy`**: Categorical issuer policy on open/aggregator voucher purchases (`standard` = standard retail rewards; `mcc_dependent` = variable retail vs MCC 5947/6540 rewards such as SBI Cashback; `clawback_risk` = Axis Bank gift card exclusion with retroactive clawback potential).
 
 `results.js` renders all reward chains dynamically from these columns without inspecting `card.id`. Adding a new card requires updating only `masterCards.csv`.

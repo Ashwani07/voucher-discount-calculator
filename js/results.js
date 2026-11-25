@@ -240,16 +240,18 @@ function buildCardBlock(group, index, activeBrandObj, voucherAmount) {
       ? `<a href="${safeBuyURL}" target="_blank" rel="noopener noreferrer" class="text-[10px] whitespace-nowrap bg-slate-700 hover:bg-slate-900 text-white px-2 py-1 rounded transition-colors">Buy ↗</a>`
       : '<span class="text-[10px] text-slate-300">—</span>';
     const portalRule = cardRules?.portalOverrides?.[entry.portalId];
-    const resolvedPortalNotice = portalRule?.cardNotices?.[entry.card.id] || portalRule?.notice;
+    const resolvedPortalNotice = portalRule?.cardNotices?.[entry.card.id] ||
+      portalRule?.policyNotices?.[entry.card.voucher_risk_policy] ||
+      portalRule?.notice;
     const portalNotice = resolvedPortalNotice
       ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(resolvedPortalNotice)}</div>`
       : '';
 
     const isAmazonPayGiftCard = activeBrandObj?.id === 'amazon_pay' || activeBrandObj?.id === 'amazon_pay_gift_card';
+    const subMap = isAmazonPayGiftCard ? 'amazon_pay_gift_card' : 'brand_voucher';
     const amazonOverride = entry.portalId === 'amazon'
-      ? (isAmazonPayGiftCard
-          ? cardRules?.amazonPortalOverrides?.amazon_pay_gift_card?.[entry.card.id]
-          : cardRules?.amazonPortalOverrides?.brand_voucher?.[entry.card.id])
+      ? (cardRules?.amazonPortalOverrides?.[subMap]?.[entry.card.id] ||
+         (entry.card?.voucher_risk_policy ? cardRules?.amazonPolicyOverrides?.[subMap]?.[entry.card.voucher_risk_policy] : null))
       : null;
     const cardPortalNotice = amazonOverride?.notice || amazonOverride?.reason
       ? `<div class="text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5 mt-1">⚠️ ${escapeHtml(amazonOverride.notice || amazonOverride.reason)}</div>`
